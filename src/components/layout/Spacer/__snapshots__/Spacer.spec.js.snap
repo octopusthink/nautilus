@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spacer Component should match the snapshot 1`] = `<ForwardRef />`;
+
+exports[`Spacer Component should receive correct padding based on size selection 1`] = `
+.c0 {
+  background-color: transparent;
+  display: block;
+  height: 0;
+  padding-bottom: 36px;
+  vertical-align: middle;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Spacer Component should render inline-block if set to horizontal 1`] = `
+.c0 {
+  background-color: transparent;
+  display: inline-block;
+  height: 0;
+  padding-right: 23px;
+  vertical-align: middle;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Spacer Component when provided a responsiveSizes object contains the correct media queries 1`] = `
+.c0 {
+  background-color: transparent;
+  display: block;
+  height: 0;
+  padding-bottom: 23px;
+  vertical-align: middle;
+}
+
+@media (min-width:414px) {
+  .c0 {
+    padding-bottom: 5px;
+  }
+}
+
+@media (min-width:1040px) {
+  .c0 {
+    padding-bottom: 95px;
+  }
+}
+
+<div
+  className="c0"
+/>
+`;

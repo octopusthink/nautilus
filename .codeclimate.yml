@@ -1,0 +1,15 @@
+---
+version: "2"
+plugins:
+  eslint:
+    enabled: true
+checks:
+  complexity:
+    enabled: false
+  duplication:
+    enabled: false
+  similar-code:
+    enabled: false
+  method-lines:
+    config:
+      threshold: 35

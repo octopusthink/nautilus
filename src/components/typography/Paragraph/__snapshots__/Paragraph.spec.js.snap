@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Paragraph Component when nothing specified should render correctly 1`] = `
+<ForwardRef
+  color="dark"
+  size="medium"
+>
+  Hello
+</ForwardRef>
+`;
