@@ -1,7 +1,7 @@
 {
-  "name": "ether-system-react",
+  "name": "nautilus-design-system-react",
   "version": "1.0.3",
-  "description": "A React version of the Ether System libraries",
+  "description": "Nautilus design system for React",
   "main": "index.js",
   "private": true,
   "scripts": {
@@ -27,14 +27,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wearethescenery/ether-system-react.git"
+    "url": "git+https://github.com/octopusthink/nautilus.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wearethescenery/ether-system-react/issues"
+    "url": "https://github.com/octopusthink/nautilus/issues"
   },
-  "homepage": "https://github.com/wearethescenery/ether-system-react#readme",
+  "homepage": "https://github.com/octopusthink/nautilus#readme",
   "dependencies": {
     "color": "^3.0.0",
     "react": "^16.8.1",

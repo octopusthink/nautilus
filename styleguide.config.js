@@ -13,18 +13,22 @@ module.exports = {
       ],
     },
   },
+  theme: {
+    color: {
+      link: 'firebrick',
+      linkHover: 'hotpink',
+    },
+    sidebarWidth: 250,
+  },
   styles: {
     StyleGuide: {
       '@global html': {
-        fontSize: '10px',
+        fontSize: '12px',
       },
       '@global body': {
         fontSize: '1.4rem',
       },
     },
-  },
-  styleguideComponents: {
-    LogoRenderer: path.join(__dirname, './styleguide-ui/StyleGuideHeader'),
   },
   styleguideDir: 'demo',
   pagePerSection: true,
@@ -34,14 +38,14 @@ module.exports = {
       content: 'docs/introduction.md',
     },
     {
-      name: 'Colors',
+      name: 'Colour Palette',
       content: 'docs/colors.md',
-      description: 'The Ether Color System',
+      description: 'Nautilus provides a wide range of colours to use.',
     },
     {
-      name: 'Color Variables',
+      name: 'Colour Variables',
       content: 'docs/colorVariables.md',
-      description: 'Available Color Variables from the Ether Color System',
+      description: 'Variables are used as design tokens.',
     },
     {
       name: 'Typography',
@@ -51,7 +55,7 @@ module.exports = {
     {
       name: 'Spacing',
       content: 'docs/spacing.md',
-      description: 'The Ether Spacing System',
+      description: 'Nautilus uses an 8pt spacing system. Get out your calculator.',
     },
     {
       name: 'Input Components',
