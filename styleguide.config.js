@@ -23,10 +23,10 @@ module.exports = {
   styles: {
     StyleGuide: {
       '@global html': {
-        fontSize: '12px',
+        fontSize: '62.5%',
       },
       '@global body': {
-        fontSize: '1.4rem',
+        fontSize: '1.6rem',
       },
     },
   },

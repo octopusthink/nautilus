@@ -23,7 +23,6 @@ export const headingColors = {
 };
 
 const HeadingBase = styled.span`
-  margin: 0;
   color: ${p => headingColors[p.color]};
   ${p => headingSizes[p.size]};
 `;
