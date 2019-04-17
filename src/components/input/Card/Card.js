@@ -7,12 +7,11 @@ import { Paragraph } from '../../typography/Paragraph';
 
 export const cardOrientations = {
   portrait: css`
-   border-color: pink;
-   grid-template-rows: 400px auto;
+   grid-template-rows: auto auto;
   `,
   landscape: css`
-    border-color: blue;
     grid-template-columns: 1fr 2fr;
+    align-items: center;
   `,
 };
 
@@ -20,7 +19,7 @@ export const StyledCard = styled.article`
   cursor: pointer;
   display: grid;
   margin: 0 0 4.8rem;
-  box-shadow: rgba(0, 0, 0, 0.25) 0 0 2px;
+  box-shadow: rgba(0,0,0,0.05) 0 2px 16px
   ${props => cardOrientations[props.orientation]};
 `;
 
@@ -85,7 +84,7 @@ Card.propTypes = {
 
 Card.defaultProps = {
   onClick: () => {},
-  orientation: 'portrait',
+  orientation: '',
 };
 
 export default Card;
