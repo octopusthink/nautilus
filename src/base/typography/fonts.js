@@ -41,7 +41,7 @@ const fonts = {
   bodyItalic: css`
     font-family: "Harriet Text", Georgia, serif;
     font-style: italic;
-    font-weight: 300;
+    font-weight: 400;
   `,
   bodyRegular: css`
     font-family: "Harriet Text", Georgia, serif;
@@ -51,7 +51,17 @@ const fonts = {
   bodyBold: css`
     font-family: "Harriet Text", Georgia, serif;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
+  `,
+  interfaceRegular: css`
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    font-style: normal;
+    font-weight: 300;
+  `,
+  interfaceBold: css`
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    font-style: normal;
+    font-weight: 500;
   `,
 };
 

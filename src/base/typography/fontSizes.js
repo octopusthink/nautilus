@@ -25,6 +25,11 @@ const desktopSize4 = (Math.round(desktopSize3 * 10 * desktopScale)) / 10; // XL 
 const desktopSize5 = (Math.round(desktopSize4 * 10 * desktopScale)) / 10; // XXL Heading
 const desktopSize6 = (Math.round(desktopSize5 * 10 * desktopScale)) / 10; // XXXL Heading
 
+const smallCapsModifier = 0.7; // Small-caps modifier.
+const desktopSize0SC = (Math.round(desktopSize0 * 10 * desktopScale * smallCapsModifier)) / 10; // Body + Small Heading
+const desktopSize1SC = (Math.round(desktopSize1 * 10 * desktopScale * smallCapsModifier)) / 10; // Body + Small Heading
+
+
 const mobileSize0 = 1.6; // Fine Print + XS Heading
 const mobileSize1 = mobileSize0 * mobileScale; // Body + Small Heading
 const mobileSize2 = mobileSize1 * mobileScale; // Large Body + Heading
@@ -46,6 +51,18 @@ const fontSizes = {
     font-size: ${mobileSize1}rem;
     ${mediaQueries.sm} {
       font-size: ${desktopSize1}rem;
+    }
+  `,
+  size0SC: css`
+    font-size: ${mobileSize0}rem;
+    ${mediaQueries.sm} {
+      font-size: ${desktopSize0SC}rem;
+    }
+  `,
+  size1SC: css`
+    font-size: ${mobileSize1}rem;
+    ${mediaQueries.sm} {
+      font-size: ${desktopSize1SC}rem;
     }
   `,
   size2: css`

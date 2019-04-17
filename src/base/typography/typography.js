@@ -38,12 +38,14 @@ const typography = {
     line-height: 1.4;
   `,
   headingXSmall: css`
-    ${fonts.primaryLight};
+    ${fonts.interfaceBold};
     ${fontSizes.size1};
-    line-height: 1.4;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    text-transform: uppercase;
   `,
   headingXXSmall: css`
-    ${fonts.primaryLight};
+    ${fonts.interfaceBold};
     ${fontSizes.size0};
     letter-spacing: 1px;
     line-height: 1.2;
