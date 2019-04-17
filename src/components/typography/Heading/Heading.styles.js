@@ -28,6 +28,7 @@ const HeadingBase = styled.span`
 `;
 
 export const headingElements = {
+  h0: HeadingBase.withComponent('p'),
   h1: HeadingBase.withComponent('h1'),
   h2: HeadingBase.withComponent('h2'),
   h3: HeadingBase.withComponent('h3'),
