@@ -1,6 +1,6 @@
 {
   "name": "nautilus-design-system-react",
-  "version": "1.0.3",
+  "version": "0.1.0",
   "description": "Nautilus design system for React",
   "main": "index.js",
   "private": true,
