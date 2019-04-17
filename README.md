@@ -68,8 +68,37 @@ Take a look around. Provide feedback! Let us know what you think. Open a PR. Cre
 * `npm build` will compile components into the `lib/` directory.
 * `npm run styleguide:build` will create a static version for serving inside the `demo/` directory
 
-## External Use
+## Using Nautilus in other projects
+
 * `npm link ../path/to/ether-system-react` from your project directory to link to a local copy of `ether-system-react`.
+
+Better instructions!
+
+The system is available as an npm package.
+
+If you're building and testing Nautilus locally, you'll want to use `npm link` to 
+
+First, `cd` to the Nautilus dev root directory.
+
+`cd projects/nautilus-system`
+
+Then, run `npm link` to make a symlink of the folder.
+
+`npm link`
+
+Next, navigate to the project you'd like to include Nautilus in.
+
+`cd projects/my-new-project`
+
+Run `npm link` again to  tell npm to use the library local to your system.
+
+`npm link nautilus-system`
+
+You may also  want to install it, so it's more permanent.
+
+
+
+
 ```jsx
 // import individual components and libraries like so
 import { Button, Heading, Spacer, colors, colorVariables } from 'ether-system-react';
