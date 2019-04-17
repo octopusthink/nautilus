@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import styled, { css } from 'styled-components';
 
+import spacerSizes from '../../../base/spacing';
 import { Heading } from '../../typography/Heading';
 import { Paragraph } from '../../typography/Paragraph';
 
@@ -18,7 +19,7 @@ export const cardOrientations = {
 export const StyledCard = styled.article`
   cursor: pointer;
   display: grid;
-  margin: 0 0 4.8rem;
+  margin: 0 0 ${spacerSizes.large};
   box-shadow: rgba(0,0,0,0.05) 0 2px 16px
   ${props => cardOrientations[props.orientation]};
 `;
@@ -36,7 +37,7 @@ export const StyledImage = styled.img`
 `;
 
 export const StyledCardContent = styled.div`
-  padding: 1.6rem;  
+  padding: ${spacerSizes.small};  
 `;
 
 export const Card = ({ children, onClick, orientation, title, metadata, thumbnail, media }) => (
