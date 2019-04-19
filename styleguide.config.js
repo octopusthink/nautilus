@@ -52,9 +52,9 @@ module.exports = {
           description: 'Nautilus provides a wide range of colours to use.',
         },
         {
-          name: 'Typography',
+          name: 'Typography Styles',
           content: 'docs/typography.md',
-          description: 'Typography samples and variations',
+          description: 'Nautilus provides a library of type styles to use.',
         },
         {
           name: 'Spacing',
@@ -90,7 +90,12 @@ module.exports = {
         {
           name: 'Colour Variables',
           content: 'docs/colorVariables.md',
-          description: 'Variables are used as design tokens.',
+          description: 'Colour variables are design tokens that can be overwritten by a brand in order to  theme the experience.',
+        },
+        {
+          name: 'Typography Variables',
+          content: 'docs/typographyVariables.md',
+          description: 'Typography variables are design tokens that can be overwritten by a brand in order to  theme the experience.',
         },
       ],
       sectionDepth: 3,

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import typography from '../../../base/typography/typography';
+import typography from '../../../base/typography/typographyVariables';
 import { semanticColors, typographicColors } from '../../../base/color/colorVariables';
 
 export const headingSizes = {
