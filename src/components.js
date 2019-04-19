@@ -1,3 +1,6 @@
+// import css
+import './global.css';
+
 // Export main components
 export * from './components/input/Button';
 export * from './components/layout/Spacer';

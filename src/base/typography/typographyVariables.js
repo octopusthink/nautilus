@@ -9,8 +9,27 @@ import { css } from 'styled-components';
 
 import fonts from './fonts';
 import fontSizes from './fontSizes';
+import spacerSizes from '../spacing';
 
-const typography = {
+// const bodyTypography
+
+// const headingTypography
+
+// const interfaceTypography
+
+
+
+
+const typographyVariables = {
+  // PageTitle
+  pageTitle: css`
+    font-family: HarrietDisplay;
+    font-size: 64px;
+    font-weight: bold;
+    line-height: 1;
+    letter-spacing: normal;
+  `,
+
   // Headings
   headingXXLarge: css`
     ${fonts.primaryBold};
@@ -78,4 +97,4 @@ const typography = {
   `,
 };
 
-export default typography;
+export default typographyVariables;

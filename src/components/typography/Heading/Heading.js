@@ -17,7 +17,7 @@ export const Heading = ({ children, color, level, size, ...others }) => {
 };
 
 export const HeadingColors = Object.keys(headingColors);
-export const HeadingLevels = [1, 2, 3, 4, 5, 6];
+export const HeadingLevels = [0, 1, 2, 3, 4, 5, 6];
 export const HeadingSizes = Object.keys(headingSizes);
 
 Heading.propTypes = {

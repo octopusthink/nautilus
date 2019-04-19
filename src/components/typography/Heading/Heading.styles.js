@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import typography from '../../../base/typography/typography';
+import typography from '../../../base/typography/typographyVariables';
 import { semanticColors, typographicColors } from '../../../base/color/colorVariables';
 
 export const headingSizes = {
@@ -23,12 +23,12 @@ export const headingColors = {
 };
 
 const HeadingBase = styled.span`
-  margin: 0;
   color: ${p => headingColors[p.color]};
   ${p => headingSizes[p.size]};
 `;
 
 export const headingElements = {
+  h0: HeadingBase.withComponent('p'),
   h1: HeadingBase.withComponent('h1'),
   h2: HeadingBase.withComponent('h2'),
   h3: HeadingBase.withComponent('h3'),

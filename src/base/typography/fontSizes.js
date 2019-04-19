@@ -3,8 +3,8 @@
 //
 // https://ether.thescenery.co/typography/
 //
-// The font-size value is in ex units.
-// For more information on this unit, see https://developer.mozilla.org/en-US/docs/Web/CSS/length#ex
+// The font-size value is in rem units.
+// For more information on this unit, see https://developer.mozilla.org/en-US/docs/Web/CSS/length#rem
 //
 
 import { css } from 'styled-components';
@@ -12,68 +12,87 @@ import { css } from 'styled-components';
 import mediaQueries from '../breakpoints';
 
 // Edit these scale values to generate all system sizes. Add or remove as many as your system needs.
-const desktopScale = 1.3; // Desktop scale modifier
-const mobileScale = 1.28; // Mobile scale modifier
+const desktopScale = 1.25; // Desktop scale modifier
+const mobileScale = 1.15; // Mobile scale modifier
 
-const dBase0 = 2.8; // Fine Print + XS Heading
-const dBase1 = dBase0 * desktopScale; // Body + Small Heading
-const dBase2 = dBase1 * desktopScale; // Large Body + Heading
-const dBase3 = dBase2 * desktopScale; // Large Heading
-const dBase4 = dBase3 * desktopScale; // XL Heading
-const dBase5 = dBase4 * desktopScale; // XXL Heading
-const dBase6 = dBase5 * desktopScale; // XXXL Heading
+const desktopSize0 = 1.7; // Fine Print + XS Heading
+// In order to get a whole-integer pixel number, we multiply by ten and round,
+// then divide by ten again to get a rem value that works with our base size setting.
+const desktopSize1 = (Math.round(desktopSize0 * 10 * desktopScale)) / 10; // Body + Small Heading
+const desktopSize2 = (Math.round(desktopSize1 * 10 * desktopScale)) / 10; // Large Body + Heading
+const desktopSize3 = (Math.round(desktopSize2 * 10 * desktopScale)) / 10; // Large Heading
+const desktopSize4 = (Math.round(desktopSize3 * 10 * desktopScale)) / 10; // XL Heading
+const desktopSize5 = (Math.round(desktopSize4 * 10 * desktopScale)) / 10; // XXL Heading
+const desktopSize6 = (Math.round(desktopSize5 * 10 * desktopScale)) / 10; // XXXL Heading
 
-const mBase0 = 1.7; // Fine Print + XS Heading
-const mBase1 = mBase0 * mobileScale; // Body + Small Heading
-const mBase2 = mBase1 * mobileScale; // Large Body + Heading
-const mBase3 = mBase2 * mobileScale; // Large Heading
-const mBase4 = mBase3 * mobileScale; // XL Heading
-const mBase5 = mBase4 * mobileScale; // XXL Heading
-const mBase6 = mBase5 * mobileScale; // XXXL Heading
+const smallCapsModifier = 0.7; // Small-caps modifier.
+const desktopSize0SC = (Math.round(desktopSize0 * 10 * desktopScale * smallCapsModifier)) / 10; // Body + Small Heading
+const desktopSize1SC = (Math.round(desktopSize1 * 10 * desktopScale * smallCapsModifier)) / 10; // Body + Small Heading
+
+
+const mobileSize0 = 1.6; // Fine Print + XS Heading
+const mobileSize1 = mobileSize0 * mobileScale; // Body + Small Heading
+const mobileSize2 = mobileSize1 * mobileScale; // Large Body + Heading
+const mobileSize3 = mobileSize2 * mobileScale; // Large Heading
+const mobileSize4 = mobileSize3 * mobileScale; // XL Heading
+const mobileSize5 = mobileSize4 * mobileScale; // XXL Heading
+const mobileSize6 = mobileSize5 * mobileScale; // XXXL Heading
 
 // Create font-size values from calculated scale/base values above
 // Media queries are optional, but we recommend them for better font control at smaller resolutions
 const fontSizes = {
   size0: css`
-    font-size: ${mBase0}ex;
+    font-size: ${mobileSize0}rem;
     ${mediaQueries.sm} {
-      font-size: ${dBase0}ex;
+      font-size: ${desktopSize0}rem;
     }
   `,
   size1: css`
-    font-size: ${mBase1}ex;
+    font-size: ${mobileSize1}rem;
     ${mediaQueries.sm} {
-      font-size: ${dBase1}ex;
+      font-size: ${desktopSize1}rem;
+    }
+  `,
+  size0SC: css`
+    font-size: ${mobileSize0}rem;
+    ${mediaQueries.sm} {
+      font-size: ${desktopSize0SC}rem;
+    }
+  `,
+  size1SC: css`
+    font-size: ${mobileSize1}rem;
+    ${mediaQueries.sm} {
+      font-size: ${desktopSize1SC}rem;
     }
   `,
   size2: css`
-    font-size: ${mBase2}ex;
+    font-size: ${mobileSize2}rem;
     ${mediaQueries.sm} {
-      font-size: ${dBase2}ex;
+      font-size: ${desktopSize2}rem;
     }
   `,
   size3: css`
-    font-size: ${mBase3}ex;
+    font-size: ${mobileSize3}rem;
     ${mediaQueries.sm} {
-      font-size: ${dBase3}ex;
+      font-size: ${desktopSize3}rem;
     }
   `,
   size4: css`
-    font-size: ${mBase4}ex;
+    font-size: ${mobileSize4}rem;
     ${mediaQueries.sm} {
-      font-size: ${dBase4}ex;
+      font-size: ${desktopSize4}rem;
     }
   `,
   size5: css`
-    font-size: ${mBase5}ex;
+    font-size: ${mobileSize5}rem;
     ${mediaQueries.sm} {
-      font-size: ${dBase5}ex;
+      font-size: ${desktopSize5}rem;
     }
   `,
   size6: css`
-    font-size: ${mBase6}ex;
+    font-size: ${mobileSize6}rem;
     ${mediaQueries.sm} {
-      font-size: ${dBase6}ex;
+      font-size: ${desktopSize6}rem;
     }
   `,
 };
