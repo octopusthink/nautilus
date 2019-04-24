@@ -57,11 +57,9 @@ export const Card = ({ children, onClick, orientation, title, metadata, thumbnai
     ) }
 
     <StyledCardContent>
-      <Heading level={0} size="xxsmall">{metadata}</Heading>
+      <Heading level={0} size="metadataSmall" margin={`0 0 ${spacerSizes.small}`}>{metadata}</Heading>
       <Heading level={2} size="large">{title}</Heading>
-      {children && (
-        <Paragraph noMargin size="small">{children}</Paragraph>
-      ) }
+      {children}
     </StyledCardContent>
   </StyledCard>
 );

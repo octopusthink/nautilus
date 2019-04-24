@@ -32,5 +32,5 @@ Paragraph.propTypes = {
 Paragraph.defaultProps = {
   color: 'dark',
   size: 'medium',
-  margin: `0 0 ${spacerSizes.medium}`,
+  margin: `0 0 ${spacerSizes.xlarge}`,
 };
