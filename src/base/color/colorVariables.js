@@ -23,28 +23,43 @@ export const typographicColors = {
 
 export const buttonColors = {
   // Primary
-  buttonPrimaryBackground: colors.blue,
-  buttonPrimaryBackgroundHover: colors.blueDark1,
-  buttonPrimaryBorder: colors.blue,
-  buttonPrimaryText: colors.white,
+  primaryBackground: colors.blue,
+  primaryBorder: colors.blue,
+  primaryText: colors.white,
 
-  // Secondary
-  buttonSecondaryBackground: colors.white,
-  buttonSecondaryBackgroundHover: colors.gray15,
-  buttonSecondaryBorder: colors.gray40,
-  buttonSecondaryColor: colors.black,
+  primaryBackgroundHover: colors.green,
+  primaryBorderHover: colors.green,
+  primaryTextHover: colors.white,
+
+  // Default
+  defaultBackground: colors.white,
+  defaultBorder: colors.blue,
+  defaultText: colors.blueDark,
+
+  defaultBackgroundHover: colors.white,
+  defaultBorderHover: colors.green,
+  defaultTextHover: colors.greenDark,
+
+  // Minimal
+  minimalBackground: 'transparent',
+  minimalBorder: 'pink',
+  minimalText: colors.blueDark,
+
+  minimalBackgroundHover: 'transparent',
+  minimalBorderHover: 'transparent',
+  minimalTextHover: colors.greenDark,
 
   // Danger
-  buttonDangerBackground: semanticColors.colorDanger,
-  buttonDangerBackgroundHover: colors.redDark1,
-  buttonDangerBorder: semanticColors.colorDanger,
-  buttonDangerText: colors.white,
+  dangerBackground: semanticColors.colorDanger,
+  dangerBackgroundHover: colors.redDark1,
+  dangerBorder: semanticColors.colorDanger,
+  dangerText: colors.white,
 
   // Success
-  buttonSuccessBackground: semanticColors.colorSuccess,
-  buttonSuccessBackgroundHover: colors.greenDark1,
-  buttonSuccessBorder: semanticColors.colorSuccess,
-  buttonSuccessText: colors.white,
+  successBackground: semanticColors.colorSuccess,
+  successBackgroundHover: colors.greenDark1,
+  successBorder: semanticColors.colorSuccess,
+  successText: colors.white,
 };
 
 const colorVariables = {

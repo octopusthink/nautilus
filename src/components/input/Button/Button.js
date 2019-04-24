@@ -1,26 +1,26 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { StyledButton, buttonModes, buttonSizes } from './Button.styles';
+import { StyledButton, buttonProminences, buttonSizes } from './Button.styles';
 
-export const Button = ({ children, mode, onClick, size }) => (
+export const Button = ({ children, prominence, onClick, size }) => (
   <StyledButton
     onClick={onClick}
-    mode={mode}
+    prominence={prominence}
     size={size}
   >
     {children}
   </StyledButton>
 );
 
-export const ButtonModes = Object.keys(buttonModes);
+export const ButtonProminences = Object.keys(buttonProminences);
 export const ButtonSizes = Object.keys(buttonSizes);
 
 Button.propTypes = {
   /** Content to be rendered inside a Button */
   children: PropTypes.node,
-  /** Mode of the button. Options are 'primary', 'secondary', 'danger', 'success' */
-  mode: PropTypes.oneOf(ButtonModes),
+  /** Visual prominence. Options are 'primary', 'default, and 'minimal' */
+  prominence: PropTypes.oneOf(ButtonProminences),
   /** Function to run on click */
   onClick: PropTypes.func,
   /** Size of the button. Options are 'small', 'medium', 'large' */
@@ -28,7 +28,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-  mode: 'primary',
+  prominence: 'default',
   onClick: () => {},
   size: 'medium',
 };

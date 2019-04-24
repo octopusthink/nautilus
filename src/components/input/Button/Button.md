@@ -1,13 +1,16 @@
 ### Primary Button
 ```js
-<Button size="small">Small Button</Button>
+<Button>Default</Button>
 ```
 ```js
-<Button>Medium Button</Button>
+<Button prominence="primary">Primary</Button>
 ```
 ```js
-<Button size="large">Large Button</Button>
+<Button prominence="minimal">Minimal</Button>
 ```
+
+
+
 
 ### Secondary Button
 ```js
