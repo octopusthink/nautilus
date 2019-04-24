@@ -6,6 +6,11 @@ Naming here is important?
 base colours + brand colours?
 colour library + colour tokens?
 library tokens + brand tokens?
+foundation tokens + theme tokens?
+
+foundation + brand variables/tokens
+
+
 (read more about design tokens first!)
 
 base, brand, belts-and-braces
