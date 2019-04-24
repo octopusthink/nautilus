@@ -19,9 +19,9 @@ const fonts = {
 };
 
 const smallCapsModifier = css`
-    letter-spacing: 0.06rem;
-    text-transform: uppercase;
-  `;
+  letter-spacing: 0.06rem;
+  text-transform: uppercase;
+`;
 
 export const headingTypography = {
   title: css`
@@ -67,30 +67,26 @@ export const metadataTypography = {
 };
 
 export const bodyTypography = {
-  bodyLarge: css`
-    ${fonts.bodyRegular};
+  large: css`
+    ${fonts.body.regular};
     ${fontSizes.size2};
     line-height: 1.6;
   `,
-  bodyItalic: css`
-    ${fonts.bodyItalic};
-    ${fontSizes.size2};
-    line-height: 1.6;
-  `,
-  bodyBold: css`
-    ${fonts.bodyBold};
-    ${fontSizes.size2};
-    line-height: 1.6;
-  `,
-  bodyMedium: css`
-    ${fonts.bodyRegular};
+  medium: css`
+    ${fonts.body.regular};
     ${fontSizes.size1};
     line-height: 1.6;
   `,
-  bodySmall: css`
-    ${fonts.bodyRegular};
+  small: css`
+    ${fonts.body.regular};
     ${fontSizes.size0};
     line-height: 1.6;
+  `,
+  italic: css`
+    ${fonts.body.italic};
+  `,
+  bold: css`
+    ${fonts.body.bold};
   `,
 };
 
