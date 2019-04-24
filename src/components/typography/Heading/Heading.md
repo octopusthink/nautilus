@@ -8,36 +8,36 @@ This component currently supports metadata and page titles, but these should mos
 
 ### Page Title
 ```js
-<Heading level={1} size="title">This is the page title.</Heading>
+<Heading level={1} size="title" margin="0">This is the page title.</Heading>
 ```
 
 ### Heading (large)
 ```js
-<Heading level={2} size="large">This is a large heading</Heading>
+<Heading level={2} size="large" margin="0">This is a large heading</Heading>
 ```
 
 ### Heading
 ```js
-<Heading level={3} size="medium">This is a medium heading</Heading>
+<Heading level={3} size="medium" margin="0">This is a medium heading</Heading>
 ```
 
 ### Heading (small)
 ```js
-<Heading level={2} size="small">This is a small heading</Heading>
+<Heading level={2} size="small" margin="0">This is a small heading</Heading>
 ```
 
 ### Subheading
 ```js
-<Heading level={0} size="subheading">This is a subheading. Subheadings are intended to be used in a pair with a Heading.</Heading>
+<Heading level={0} size="subheading" margin="0">This is a subheading. Subheadings are intended to be used in a pair with a Heading.</Heading>
 ```
 
 ### Metadata (large)
 ```js
-<Heading level={0} size="metadataLarge">This is some metadata. It is intended to be used for categorical data.</Heading>
+<Heading level={0} size="metadataLarge" margin="0">This is some metadata. It is intended to be used for categorical data.</Heading>
 ```
 
 
 ### Metadata (small)
 ```js
-<Heading level={0} size="metadataSmall">Cats, dogs, people, and unicorns.</Heading>
+<Heading level={0} size="metadataSmall" margin="0">Cats, dogs, people, and unicorns.</Heading>
 ```

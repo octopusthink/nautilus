@@ -23,8 +23,10 @@ export const headingColors = {
 };
 
 const HeadingBase = styled.span`
-  color: ${p => headingColors[p.color]};
-  ${p => headingSizes[p.size]};
+  margin: ${props => props.margin};
+  padding: ${props => props.padding};
+  color: ${props => headingColors[props.color]};
+  ${props => headingSizes[props.size]};
 `;
 
 export const headingElements = {
