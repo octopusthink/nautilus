@@ -1,44 +1,51 @@
 // ----------------------------------------
 // Typography Variables
 //
+// These are typographic styles that are overwriteable by individual brands.
+//
 // https://ether.thescenery.co/typography/
 //
 //
 
 import { css } from 'styled-components';
 
-import fonts from './fonts';
+import { HarrietText, HarrietDisplay, systemFonts } from './fonts';
 import fontSizes from './fontSizes';
 import spacerSizes from '../spacing';
 
+const fonts = {
+  heading: HarrietDisplay,
+  body: HarrietText,
+  interface: systemFonts,
+};
+
 export const headingTypography = {
   title: css`
-    ${fonts.primaryBold};
+    ${fonts.heading.bold};
     ${fontSizes.size6};
     line-height: 1;
     margin: 0 0 ${spacerSizes.xlarge};
   `,
   large: css`
-    ${fonts.primaryBold};
+    ${fonts.heading.bold};
     ${fontSizes.size5};
     line-height: 1;
     margin: 0 0 ${spacerSizes.xlarge};
   `,
   medium: css`
-    ${fonts.primaryBold};
+    ${fonts.heading.bold};
     ${fontSizes.size4};
     line-height: 1;
     margin: 0 0 ${spacerSizes.medium};
   `,
   small: css`
-    ${fonts.primaryBold};
+    ${fonts.heading.bold};
     ${fontSizes.size3};
     line-height: 1.2;
     margin: 0 0 ${spacerSizes.medium};
   `,
   subheading: css`
-    ${fonts.primaryLight};
-    font-style: italic;
+    ${fonts.heading.italic};
     ${fontSizes.size2};
     line-height: 1.4;
     margin: 0 0 ${spacerSizes.small};
@@ -47,7 +54,7 @@ export const headingTypography = {
 
 export const metadataTypography = {
   large: css`
-    ${fonts.primaryLight};
+    ${fonts.interface.bold};
     ${fontSizes.size1};
     letter-spacing: 1px;
     line-height: 1.2;
@@ -55,7 +62,7 @@ export const metadataTypography = {
     margin: 0 0 ${spacerSizes.small};
   `,
   small: css`
-    ${fonts.primaryLight};
+    ${fonts.interface.regular};
     ${fontSizes.size0};
     letter-spacing: 1px;
     line-height: 1.2;

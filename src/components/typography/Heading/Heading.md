@@ -11,7 +11,7 @@ This component currently supports metadata and page titles, but these should mos
 <Heading level={1} size="title">This is the page title.</Heading>
 ```
 
-### Heading Large
+### Heading (large)
 ```js
 <Heading level={2} size="large">This is a large heading</Heading>
 ```
@@ -21,7 +21,7 @@ This component currently supports metadata and page titles, but these should mos
 <Heading level={3} size="medium">This is a medium heading</Heading>
 ```
 
-### Heading Small
+### Heading (small)
 ```js
 <Heading level={2} size="small">This is a small heading</Heading>
 ```
