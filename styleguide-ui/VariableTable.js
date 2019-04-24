@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
 import colors from '../src/base/color/colors';
-//import colorVariables from '../src/base/color/colorVariables';
+import colorVariables from '../src/base/color/colorVariables';
 
 import fonts from '../src/base/typography/fonts';
 import fontSizes from '../src/base/typography/fontSizes';
@@ -65,7 +65,22 @@ const getMatchingVariableName = (colorValue, baseVariables) => {
   return matchingValue ? matchingValue[0] : null; // this is the name of the variable
 };
 
+
+const getNewMatchingVariableName = (colorValue, baseVariables) => {
+  console.log(colorValue);
+  console.log(baseVariables);
+
+  const matchingValue = Object.entries(baseVariables).find(([, value]) => (
+    value === colorValue
+  ));
+
+  return matchingValue ? matchingValue[0] : null; // this is the name of the variable
+};
+
 export const VariableTable = ({ baseVariables, brandVariables }) => {
+  console.log(baseVariables);
+  console.log(brandVariables);
+
   const renderVariableTables = Object.entries(brandVariables).map((category) => {
     const [title, values] = category;
 
@@ -79,7 +94,7 @@ export const VariableTable = ({ baseVariables, brandVariables }) => {
           </StyledCell>
           <StyledCellColor color={colorValue} width="30%">
             <StyledCellColorSpan>
-              {getMatchingVariableName(colorValue, baseVariables)}
+              {getNewMatchingVariableName(colorValue, baseVariables)}
             </StyledCellColorSpan>
           </StyledCellColor>
         </StyledRow>

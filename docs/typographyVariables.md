@@ -26,11 +26,22 @@ building code is helpful—because the code needs to match the mental model and 
 
 
 ```js noeditor
+const { VariableTable } = require('../styleguide-ui/VariableTable');
+
 const colors = require('../src/base/color/colors');
 const colorVariables = require('../src/base/color/colorVariables');
 
-const { VariableTable } = require('../styleguide-ui/VariableTable');
 <VariableTable baseVariables={colors} brandVariables={colorVariables} />
+```
+
+
+```js noeditor
+const { VariableTable } = require('../styleguide-ui/VariableTable');
+
+const fonts = require('../src/base/typography/fonts');
+const typographyVariables = require('../src/base/typography/typographyVariables');
+
+<VariableTable baseVariables={fonts} brandVariables={typographyVariables} />
 ```
 
 
