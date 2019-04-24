@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
-import typography from '../../../base/typography/typographyVariables';
+import { headingTypography, metadataTypography } from '../../../base/typography/typographyVariables';
 import { semanticColors, typographicColors } from '../../../base/color/colorVariables';
 
 export const headingSizes = {
-  xxlarge: typography.headingXXLarge,
-  xlarge: typography.headingXLarge,
-  large: typography.headingLarge,
-  medium: typography.headingMedium,
-  small: typography.headingSmall,
-  xsmall: typography.headingXSmall,
-  xxsmall: typography.headingXXSmall,
+  title: headingTypography.title,
+  large: headingTypography.large,
+  medium: headingTypography.medium,
+  small: headingTypography.small,
+  subheading: headingTypography.subheading,
+  metadataLarge: metadataTypography.large,
+  metadataSmall: metadataTypography.small,
 };
 
 export const headingColors = {

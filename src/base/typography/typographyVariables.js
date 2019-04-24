@@ -11,60 +11,42 @@ import fonts from './fonts';
 import fontSizes from './fontSizes';
 import spacerSizes from '../spacing';
 
-//* Change to use groups for each, like colours, so:
-// const bodyTypography
-
-// const headingTypography
-
-// const interfaceTypography
-//*
-
-const typographyVariables = {
-  // PageTitle
-  pageTitle: css`
-    font-family: HarrietDisplay;
-    font-size: 64px;
-    font-weight: bold;
-    line-height: 1;
-    letter-spacing: normal;
-  `,
-
-  // Headings
-  headingXXLarge: css`
+export const headingTypography = {
+  title: css`
     ${fonts.primaryBold};
     ${fontSizes.size6};
     line-height: 1;
     margin: 0 0 ${spacerSizes.xlarge};
   `,
-  headingXLarge: css`
+  large: css`
     ${fonts.primaryBold};
     ${fontSizes.size5};
     line-height: 1;
-    margin: 0 0 ${spacerSizes.medium};
+    margin: 0 0 ${spacerSizes.xlarge};
   `,
-  headingLarge: css`
+  medium: css`
     ${fonts.primaryBold};
     ${fontSizes.size4};
+    line-height: 1;
+    margin: 0 0 ${spacerSizes.medium};
+  `,
+  small: css`
+    ${fonts.primaryBold};
+    ${fontSizes.size3};
     line-height: 1.2;
     margin: 0 0 ${spacerSizes.medium};
   `,
-
-  headingMedium: css`
-    ${fonts.primaryLight};
-    ${fontSizes.size4};
-    line-height: 1.2;
-    font-style: italic;
-    margin: 0 0 ${spacerSizes.medium};
-  `,
-  headingSmall: css`
+  subheading: css`
     ${fonts.primaryLight};
     font-style: italic;
     ${fontSizes.size2};
     line-height: 1.4;
     margin: 0 0 ${spacerSizes.small};
   `,
+};
 
-  headingXSmall: css`
+export const metadataTypography = {
+  large: css`
     ${fonts.primaryLight};
     ${fontSizes.size1};
     letter-spacing: 1px;
@@ -72,7 +54,7 @@ const typographyVariables = {
     text-transform: uppercase;
     margin: 0 0 ${spacerSizes.small};
   `,
-  headingXXSmall: css`
+  small: css`
     ${fonts.primaryLight};
     ${fontSizes.size0};
     letter-spacing: 1px;
@@ -80,8 +62,9 @@ const typographyVariables = {
     text-transform: uppercase;
     margin: 0 0 ${spacerSizes.small};
   `,
+};
 
-  // Body
+export const bodyTypography = {
   bodyLarge: css`
     ${fonts.bodyRegular};
     ${fontSizes.size2};
@@ -100,18 +83,32 @@ const typographyVariables = {
     line-height: 1.6;
     margin: 0 0 ${spacerSizes.xlarge};
   `,
-  body: css`
+  bodyMedium: css`
     ${fonts.bodyRegular};
     ${fontSizes.size1};
     line-height: 1.6;
     margin: 0 0 ${spacerSizes.xlarge};
   `,
-  finePrint: css`
+  bodySmall: css`
     ${fonts.bodyRegular};
     ${fontSizes.size0};
     line-height: 1.6;
     margin: 0 0 ${spacerSizes.xlarge};
   `,
+};
+
+const typographyVariables = {
+  headings: {
+    ...headingTypography,
+  },
+
+  metadata: {
+    ...metadataTypography,
+  },
+
+  body: {
+    ...bodyTypography,
+  },
 };
 
 export default typographyVariables;
