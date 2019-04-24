@@ -72,6 +72,11 @@ export const systemFonts = {
     font-style: normal;
     font-weight: 400;
   `,
+  semibold: css`
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    font-style: normal;
+    font-weight: 500;
+  `,
   bold: css`
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
     font-style: normal;

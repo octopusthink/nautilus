@@ -43,5 +43,5 @@ Heading.defaultProps = {
   level: 2,
   size: 'medium',
   margin: `0 0 ${spacerSizes.medium}`,
-  padding: `0`,
+  padding: '0',
 };

@@ -18,6 +18,11 @@ const fonts = {
   interface: systemFonts,
 };
 
+const smallCapsModifier = css`
+    letter-spacing: 0.06rem;
+    text-transform: uppercase;
+  `;
+
 export const headingTypography = {
   title: css`
     ${fonts.heading.bold};
@@ -48,18 +53,16 @@ export const headingTypography = {
 
 export const metadataTypography = {
   large: css`
-    ${fonts.interface.bold};
-    ${fontSizes.size1};
-    letter-spacing: 1px;
+    ${fonts.interface.semibold};
+    ${fontSizes.size1SC};
     line-height: 1.2;
-    text-transform: uppercase;
+    ${smallCapsModifier};
   `,
   small: css`
-    ${fonts.interface.regular};
-    ${fontSizes.size0};
-    letter-spacing: 1px;
+    ${fonts.interface.semibold};
+    ${fontSizes.size0SC};
     line-height: 1.2;
-    text-transform: uppercase;
+    ${smallCapsModifier};
   `,
 };
 
