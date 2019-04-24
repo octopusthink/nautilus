@@ -90,6 +90,32 @@ export const bodyTypography = {
   `,
 };
 
+export const interfaceTypography = {
+  large: css`
+    ${fonts.interface.regular};
+    ${fontSizes.size2};
+    line-height: 1.6;
+  `,
+  medium: css`
+    ${fonts.interface.regular};
+    ${fontSizes.size1};
+    line-height: 1.6;
+  `,
+  small: css`
+    ${fonts.interface.regular};
+    ${fontSizes.size0};
+    line-height: 1.6;
+  `,
+  italic: css`
+    ${fonts.interface.italic};
+  `,
+  button: css`
+    ${fonts.interface.semibold};
+    ${fontSizes.size0};
+    line-height: 1.6;
+  `,
+};
+
 const typographyVariables = {
   headings: {
     ...headingTypography,
@@ -101,6 +127,10 @@ const typographyVariables = {
 
   body: {
     ...bodyTypography,
+  },
+
+  interface: {
+    ...interfaceTypography,
   },
 };
 

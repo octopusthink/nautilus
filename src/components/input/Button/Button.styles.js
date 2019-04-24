@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { buttonColors } from '../../../base/color/colorVariables';
 import fontSizes from '../../../base/typography/fontSizes';
+import { interfaceTypography } from '../../../base/typography/typographyVariables';
 import spacerSizes from '../../../base/spacing';
 
 // nix in favour of better options!
@@ -126,8 +127,11 @@ export const buttonBehaviour = {
 export const StyledButton = styled.button`
   ${props => buttonProminences[props.prominence]};
   ${p => buttonSizes[p.size]};
-  border: 2px solid;
+  border-width: 2px;
+  border-style: solid;
   border-radius: 10px;
   cursor: pointer;
-  padding: ${spacerSizes.small} ${spacerSizes.medium};
+  margin: 0 ${spacerSizes.xsmall} ${spacerSizes.small};
+  padding: ${spacerSizes.xsmall} ${spacerSizes.medium};
+  ${interfaceTypography.button};
 `;

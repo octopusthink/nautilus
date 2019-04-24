@@ -42,7 +42,7 @@ export const buttonColors = {
 
   // Minimal
   minimalBackground: 'transparent',
-  minimalBorder: 'pink',
+  minimalBorder: 'transparent',
   minimalText: colors.blueDark,
 
   minimalBackgroundHover: 'transparent',
