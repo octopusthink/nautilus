@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { StyledButton, buttonProminences, buttonSizes } from './Button.styles';
+import { StyledButton, buttonProminences, buttonBehaviours, buttonSizes } from './Button.styles';
 
-export const Button = ({ children, prominence, onClick, size }) => (
+export const Button = ({ children, prominence, behaviour, onClick, size }) => (
   <StyledButton
     onClick={onClick}
     prominence={prominence}
+    behaviour={behaviour}
     size={size}
   >
     {children}
@@ -14,6 +15,7 @@ export const Button = ({ children, prominence, onClick, size }) => (
 );
 
 export const ButtonProminences = Object.keys(buttonProminences);
+export const ButtonBehaviours = Object.keys(buttonBehaviours);
 export const ButtonSizes = Object.keys(buttonSizes);
 
 Button.propTypes = {
@@ -25,10 +27,13 @@ Button.propTypes = {
   onClick: PropTypes.func,
   /** Size of the button. Options are 'small', 'medium', 'large' */
   size: PropTypes.oneOf(ButtonSizes),
+  /** Behaviour. Options are 'navigation' or 'link' */
+  behaviour: PropTypes.oneOf(ButtonBehaviours),
 };
 
 Button.defaultProps = {
   prominence: 'default',
   onClick: () => {},
   size: 'medium',
+  behaviour: 'action',
 };

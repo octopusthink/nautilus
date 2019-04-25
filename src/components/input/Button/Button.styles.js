@@ -114,18 +114,21 @@ export const buttonState = {
 };
 
 // navigaation or action
-export const buttonBehaviour = {
+export const buttonBehaviours = {
   navigation: css`
     &::after {
-      content: '→';
+      content: ' →';
       display: inline;
     }
+  `,
+  action: css`
   `,
 };
 
 // Border-radius should be brandable!
 export const StyledButton = styled.button`
   ${props => buttonProminences[props.prominence]};
+  ${props => buttonBehaviours[props.behaviour]};
   ${p => buttonSizes[p.size]};
   border-width: 2px;
   border-style: solid;
