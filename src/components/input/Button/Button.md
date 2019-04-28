@@ -37,10 +37,14 @@ In these cases, we can use the same element, but apply ever-so-slightly-differen
 
 ### Danger Button
 ```js
-<Button mode="danger">Button</Button>
+<Button intent="danger">Button</Button>
 ```
 
 ### Success Button
 ```js
-<Button mode="success">Button</Button>
+<React.Fragment>
+	<Button intent="success" prominence="primary">Primary</Button>
+	<Button intent="success">Default</Button>
+	<Button intent="success" prominence="minimal">Minimal</Button>
+</React.Fragment>
 ```

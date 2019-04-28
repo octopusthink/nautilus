@@ -22,44 +22,15 @@ export const typographicColors = {
 };
 
 export const buttonColors = {
-  // Primary
-  primaryBackground: colors.blue,
-  primaryBorder: colors.blue,
+  // colour corresponds to state or intent
+  default: colors.blue,
+  hover: colors.darkBlue,
+  active: colors.lightBlue,
+  disabled: colors.grey,
+  danger: colors.red,
+  success: colors.green,
+  warning: colors.yellow,
   primaryText: colors.white,
-
-  primaryBackgroundHover: colors.green,
-  primaryBorderHover: colors.green,
-  primaryTextHover: colors.white,
-
-  // Default
-  defaultBackground: colors.white,
-  defaultBorder: colors.blue,
-  defaultText: colors.blueDark,
-
-  defaultBackgroundHover: colors.white,
-  defaultBorderHover: colors.green,
-  defaultTextHover: colors.greenDark,
-
-  // Minimal
-  minimalBackground: 'transparent',
-  minimalBorder: 'transparent',
-  minimalText: colors.blueDark,
-
-  minimalBackgroundHover: 'transparent',
-  minimalBorderHover: 'transparent',
-  minimalTextHover: colors.greenDark,
-
-  // Danger
-  dangerBackground: semanticColors.colorDanger,
-  dangerBackgroundHover: colors.redDark1,
-  dangerBorder: semanticColors.colorDanger,
-  dangerText: colors.white,
-
-  // Success
-  successBackground: semanticColors.colorSuccess,
-  successBackgroundHover: colors.greenDark1,
-  successBorder: semanticColors.colorSuccess,
-  successText: colors.white,
 };
 
 const colorVariables = {
