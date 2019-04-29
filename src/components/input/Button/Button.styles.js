@@ -5,7 +5,15 @@ import { interfaceTypography } from '../../../base/typography/typographyVariable
 import spacerSizes from '../../../base/spacing';
 
 
-export const buttonProminences = {
+// We're going to try to colour the buttons based on state or intent
+export const setButtonColour = (intent) => {
+  console.log(intent);
+  //const currentButtonColour = buttonColors[intent];
+  console.log(currentButtonColour);
+  return currentButtonColour;
+};
+
+export const buttonProminences = (intent) => {
   primary: css`
     background-color: ${setButtonColour(intent)};
     border: none;
@@ -47,11 +55,6 @@ export const buttonIntents = {
   `,
 };
 
-// We're going to try to colour the buttons based on state or intent
-setButtonColour(intent) {
-  const currentButtonColour = buttonColors[${intent}];
-  return currentButtonColour;
-};
 
 // active, hover, focus, disabled
 export const buttonState = {
@@ -77,6 +80,6 @@ export const StyledButton = styled.button`
   margin: 0 ${spacerSizes.xsmall} ${spacerSizes.small};
   padding: ${spacerSizes.xsmall} ${spacerSizes.medium};
   ${interfaceTypography.button};
-  ${props => buttonProminences[props.prominence]};
+  ${(props, intent) => buttonProminences[props.prominence]};
   ${props => buttonBehaviours[props.behaviour]};
 `;
