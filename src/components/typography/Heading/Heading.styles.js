@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 
-import typography from '../../../base/typography/typographyVariables';
+import { headingTypography, metadataTypography } from '../../../base/typography/typographyVariables';
 import { semanticColors, typographicColors } from '../../../base/color/colorVariables';
 
 export const headingSizes = {
-  xxlarge: typography.headingXXLarge,
-  xlarge: typography.headingXLarge,
-  large: typography.headingLarge,
-  medium: typography.headingMedium,
-  small: typography.headingSmall,
-  xsmall: typography.headingXSmall,
-  xxsmall: typography.headingXXSmall,
+  title: headingTypography.title,
+  large: headingTypography.large,
+  medium: headingTypography.medium,
+  small: headingTypography.small,
+  subheading: headingTypography.subheading,
+  metadataLarge: metadataTypography.large,
+  metadataSmall: metadataTypography.small,
 };
 
 export const headingColors = {
@@ -23,8 +23,10 @@ export const headingColors = {
 };
 
 const HeadingBase = styled.span`
-  color: ${p => headingColors[p.color]};
-  ${p => headingSizes[p.size]};
+  margin: ${props => props.margin};
+  padding: ${props => props.padding};
+  color: ${props => headingColors[props.color]};
+  ${props => headingSizes[props.size]};
 `;
 
 export const headingElements = {

@@ -1,117 +1,137 @@
 // ----------------------------------------
 // Typography Variables
 //
+// These are typographic styles that are overwriteable by individual brands.
+//
 // https://ether.thescenery.co/typography/
 //
 //
 
 import { css } from 'styled-components';
 
-import fonts from './fonts';
+import { HarrietText, HarrietDisplay, systemFonts } from './fonts';
 import fontSizes from './fontSizes';
-import spacerSizes from '../spacing';
 
-//* Change to use groups for each, like colours, so:
-// const bodyTypography
+const fonts = {
+  heading: HarrietDisplay,
+  body: HarrietText,
+  interface: systemFonts,
+};
 
-// const headingTypography
+const smallCapsModifier = css`
+  letter-spacing: 0.06rem;
+  text-transform: uppercase;
+`;
 
-// const interfaceTypography
-//*
-
-const typographyVariables = {
-  // PageTitle
-  pageTitle: css`
-    font-family: HarrietDisplay;
-    font-size: 64px;
-    font-weight: bold;
-    line-height: 1;
-    letter-spacing: normal;
-  `,
-
-  // Headings
-  headingXXLarge: css`
-    ${fonts.primaryBold};
+export const headingTypography = {
+  title: css`
+    ${fonts.heading.bold};
     ${fontSizes.size6};
     line-height: 1;
-    margin: 0 0 ${spacerSizes.xlarge};
   `,
-  headingXLarge: css`
-    ${fonts.primaryBold};
+  large: css`
+    ${fonts.heading.bold};
     ${fontSizes.size5};
     line-height: 1;
-    margin: 0 0 ${spacerSizes.medium};
   `,
-  headingLarge: css`
-    ${fonts.primaryBold};
+  medium: css`
+    ${fonts.heading.bold};
     ${fontSizes.size4};
-    line-height: 1.2;
-    margin: 0 0 ${spacerSizes.medium};
+    line-height: 1;
   `,
-
-  headingMedium: css`
-    ${fonts.primaryLight};
-    ${fontSizes.size4};
+  small: css`
+    ${fonts.heading.bold};
+    ${fontSizes.size3};
     line-height: 1.2;
-    font-style: italic;
-    margin: 0 0 ${spacerSizes.medium};
   `,
-  headingSmall: css`
-    ${fonts.primaryLight};
-    font-style: italic;
+  subheading: css`
+    ${fonts.heading.italic};
     ${fontSizes.size2};
     line-height: 1.4;
-    margin: 0 0 ${spacerSizes.small};
   `,
+};
 
-  headingXSmall: css`
-    ${fonts.primaryLight};
-    ${fontSizes.size1};
-    letter-spacing: 1px;
+export const metadataTypography = {
+  large: css`
+    ${fonts.interface.semibold};
+    ${fontSizes.size1SC};
     line-height: 1.2;
-    text-transform: uppercase;
-    margin: 0 0 ${spacerSizes.small};
+    ${smallCapsModifier};
   `,
-  headingXXSmall: css`
-    ${fonts.primaryLight};
-    ${fontSizes.size0};
-    letter-spacing: 1px;
+  small: css`
+    ${fonts.interface.semibold};
+    ${fontSizes.size0SC};
     line-height: 1.2;
-    text-transform: uppercase;
-    margin: 0 0 ${spacerSizes.small};
+    ${smallCapsModifier};
   `,
+};
 
-  // Body
-  bodyLarge: css`
-    ${fonts.bodyRegular};
+export const bodyTypography = {
+  large: css`
+    ${fonts.body.regular};
     ${fontSizes.size2};
     line-height: 1.6;
-    margin: 0 0 ${spacerSizes.xlarge};
   `,
-  bodyItalic: css`
-    ${fonts.bodyItalic};
-    ${fontSizes.size2};
-    line-height: 1.6;
-    margin: 0 0 ${spacerSizes.xlarge};
-  `,
-  bodyBold: css`
-    ${fonts.bodyBold};
-    ${fontSizes.size2};
-    line-height: 1.6;
-    margin: 0 0 ${spacerSizes.xlarge};
-  `,
-  body: css`
-    ${fonts.bodyRegular};
+  medium: css`
+    ${fonts.body.regular};
     ${fontSizes.size1};
     line-height: 1.6;
-    margin: 0 0 ${spacerSizes.xlarge};
   `,
-  finePrint: css`
-    ${fonts.bodyRegular};
+  small: css`
+    ${fonts.body.regular};
     ${fontSizes.size0};
     line-height: 1.6;
-    margin: 0 0 ${spacerSizes.xlarge};
   `,
+  italic: css`
+    ${fonts.body.italic};
+  `,
+  bold: css`
+    ${fonts.body.bold};
+  `,
+};
+
+export const interfaceTypography = {
+  large: css`
+    ${fonts.interface.regular};
+    ${fontSizes.size2};
+    line-height: 1.6;
+  `,
+  medium: css`
+    ${fonts.interface.regular};
+    ${fontSizes.size1};
+    line-height: 1.6;
+  `,
+  small: css`
+    ${fonts.interface.regular};
+    ${fontSizes.size0};
+    line-height: 1.6;
+  `,
+  italic: css`
+    ${fonts.interface.italic};
+  `,
+  button: css`
+    ${fonts.interface.semibold};
+    ${fontSizes.size0};
+    line-height: 1.6;
+  `,
+};
+
+const typographyVariables = {
+  headings: {
+    ...headingTypography,
+  },
+
+  metadata: {
+    ...metadataTypography,
+  },
+
+  body: {
+    ...bodyTypography,
+  },
+
+  interface: {
+    ...interfaceTypography,
+  },
 };
 
 export default typographyVariables;

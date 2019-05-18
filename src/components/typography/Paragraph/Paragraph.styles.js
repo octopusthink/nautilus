@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-import typography from '../../../base/typography/typographyVariables';
+import { bodyTypography } from '../../../base/typography/typographyVariables';
 import { semanticColors, typographicColors } from '../../../base/color/colorVariables';
 
 export const paragraphSizes = {
-  small: typography.finePrint,
-  medium: typography.body,
-  large: typography.bodyLarge,
+  small: bodyTypography.small,
+  medium: bodyTypography.medium,
+  large: bodyTypography.large,
 };
 
 export const paragraphColors = {
@@ -19,7 +19,7 @@ export const paragraphColors = {
 };
 
 export const StyledParagraph = styled.p`
-  color: ${p => paragraphColors[p.color]};
-  ${p => paragraphSizes[p.size]};
-  ${p => p.noMargin && 'margin: 0'};
+  color: ${props => paragraphColors[props.color]};
+  ${props => paragraphSizes[props.size]};
+  margin: ${props => props.margin};
 `;

@@ -1,34 +1,39 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { StyledButton, buttonModes, buttonSizes } from './Button.styles';
+import { StyledButton, buttonProminences, buttonBehaviours, buttonIntents } from './Button.styles';
 
-export const Button = ({ children, mode, onClick, size }) => (
+export const Button = ({ children, prominence, behaviour, onClick, intent }) => (
   <StyledButton
     onClick={onClick}
-    mode={mode}
-    size={size}
+    prominence={prominence}
+    behaviour={behaviour}
+    intent={intent}
   >
     {children}
   </StyledButton>
 );
 
-export const ButtonModes = Object.keys(buttonModes);
-export const ButtonSizes = Object.keys(buttonSizes);
+export const ButtonProminences = Object.keys(buttonProminences);
+export const ButtonBehaviours = Object.keys(buttonBehaviours);
+export const ButtonIntents = Object.keys(buttonIntents);
 
 Button.propTypes = {
   /** Content to be rendered inside a Button */
   children: PropTypes.node,
-  /** Mode of the button. Options are 'primary', 'secondary', 'danger', 'success' */
-  mode: PropTypes.oneOf(ButtonModes),
+  /** Visual prominence. Options are 'primary', 'default, and 'minimal' */
+  prominence: PropTypes.oneOf(ButtonProminences),
   /** Function to run on click */
   onClick: PropTypes.func,
-  /** Size of the button. Options are 'small', 'medium', 'large' */
-  size: PropTypes.oneOf(ButtonSizes),
+  /** Behaviour. Options are 'navigation' or 'link' */
+  behaviour: PropTypes.oneOf(ButtonBehaviours),
+  /** Intent. Options are 'none', 'danger', 'warning', and 'success'. */
+  intent: PropTypes.oneOf(ButtonIntents),
 };
 
 Button.defaultProps = {
-  mode: 'primary',
+  prominence: 'default',
   onClick: () => {},
-  size: 'medium',
+  behaviour: 'action',
+  intent: 'none',
 };

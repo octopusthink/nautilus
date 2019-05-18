@@ -1,65 +1,87 @@
 import styled, { css } from 'styled-components';
 
 import { buttonColors } from '../../../base/color/colorVariables';
-import fontSizes from '../../../base/typography/fontSizes';
+import { interfaceTypography } from '../../../base/typography/typographyVariables';
+import spacerSizes from '../../../base/spacing';
 
-export const buttonModes = {
-  primary: css`
-    background-color: ${buttonColors.buttonPrimaryBackground};
-    border: 1px solid ${buttonColors.buttonPrimaryBorder};
-    color: ${buttonColors.buttonPrimaryText};
 
-    &:hover {
-      background-color: ${buttonColors.buttonPrimaryBackgroundHover};
-    }
-  `,
-  secondary: css`
-    background-color: ${buttonColors.buttonSecondaryBackground};
-    border: 1px solid ${buttonColors.buttonSecondaryBorder};
-    color: ${buttonColors.buttonSecondaryText};
+// We're going to try to colour the buttons based on state or intent
+export const setButtonColour = (intent) => {
+  console.log(intent);
+  //const currentButtonColour = buttonColors[intent];
+  console.log(currentButtonColour);
+  return currentButtonColour;
+};
 
-    &:hover {
-      background-color: ${buttonColors.buttonSecondaryBackgroundHover};
-    }
-  `,
-  danger: css`
-    background-color: ${buttonColors.buttonDangerBackground};
-    border: 1px solid ${buttonColors.buttonDangerBorder};
-    color: ${buttonColors.buttonDangerText};
+export const buttonProminences = (intent) => {
+  return {
+    primary: css`
+      background-color: ${setButtonColour(intent)};
+      border: none;
+      border-radius: 10px;
+      color: ${buttonColors.primaryText};
 
-    &:hover {
-      background-color: ${buttonColors.buttonDangerBackgroundHover};
-    }
-  `,
+      &:hover {
+        background-color: ${buttonColors.hover};
+      }
+    `,
+    default: css`
+      background: none;
+      border: 2px solid ${buttonColors.default};
+      border-radius: 10px;
+      color: ${buttonColors.default};
+
+      &:hover {
+        border-color: ${buttonColors.hover};
+        color: ${buttonColors.hover};
+      }
+    `,
+    minimal: css`
+      background: none;
+      border: none;
+      border-radius: 10px;
+      color: ${buttonColors.default};
+
+      &:hover {
+        color: ${buttonColors.hover};
+      }
+    `,
+  };
+};
+
+// success, warning, danger, none
+export const buttonIntents = {
   success: css`
-    background-color: ${buttonColors.buttonSuccessBackground};
-    border: 1px solid ${buttonColors.buttonSuccessBorder};
-    color: ${buttonColors.buttonSuccessText};
+    
+    }, 
+  `,
+};
 
-    &:hover {
-      background-color: ${buttonColors.buttonSuccessBackgroundHover};
+
+// active, hover, focus, disabled
+export const buttonState = {
+  active: css`
+  `,
+};
+
+// navigaation or action
+export const buttonBehaviours = {
+  navigation: css`
+    &::after {
+      content: ' →';
+      display: inline;
     }
   `,
-};
-
-export const buttonSizes = {
-  small: css`
-    ${fontSizes.size0};
-    padding: 8px 11px;
-  `,
-  medium: css`
-    ${fontSizes.size1};
-    padding: 10px 12px;
-  `,
-  large: css`
-    ${fontSizes.size2};
-    padding: 12px 15px;
+  action: css`
   `,
 };
 
+// Border-radius should be brandable!
 export const StyledButton = styled.button`
-  ${p => buttonModes[p.mode]};
-  ${p => buttonSizes[p.size]};
-  border-radius: 3px;
   cursor: pointer;
+  margin: 0 ${spacerSizes.xsmall} ${spacerSizes.small};
+  padding: ${spacerSizes.xsmall} ${spacerSizes.medium};
+  ${interfaceTypography.button};
+  ${(props, intent) => buttonProminences[props.prominence]};
+  ${props => buttonBehaviours[props.behaviour]};
 `;
