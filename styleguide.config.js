@@ -19,7 +19,7 @@ module.exports = {
       },
     },
   },
-  styleguideDir: 'demo',
+  styleguideDir: 'dist/styleguide',
   pagePerSection: true,
   sections: [
     {
