@@ -1,1 +1,2 @@
-module.exports = require('./lib');
+/* eslint-disable */
+module.exports = require('./dist');

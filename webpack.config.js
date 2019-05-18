@@ -1,30 +1,37 @@
-var path = require('path');
+const fs = require('fs');
+const path = require('path');
+
+const srcPath = path.resolve(fs.realpathSync(process.cwd()), 'src');
+
 module.exports = {
-  entry: './src/index.js',
-  output: {
-    path: path.resolve(__dirname, 'lib'),
-    filename: 'index.js',
-    libraryTarget: 'commonjs2'
-  },
   module: {
     rules: [
+      // Transform ES6 with Babel
       {
-        test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components|build)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env']
-          }
-        }
-      }
-    ]
+        test: /\.(js|jsx|mjs)$/,
+        include: srcPath,
+        use: [
+          {
+            loader: require.resolve('babel-loader'),
+            options: {
+              babelrc: true,
+              cacheDirectory: true,
+              presets: [],
+            },
+          },
+        ],
+      },
+    ],
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
-  },
-  externals: {
-    'react': 'commonjs react',
-    'styled-components': 'commonjs styled-components',
+    // Add src/ folder for easier includes within the project.
+    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    extensions: ['.mjs', '.jsx', '.js', '.json'],
+    alias: {
+      // This is required so symlinks work during development.
+      // 'webpack/hot/poll': require.resolve('webpack/hot/poll'),
+      // Support React Native Web
+      // 'react-native': 'react-native-web',
+    },
   }
 };

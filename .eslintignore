@@ -3,5 +3,4 @@
 compiled
 config
 coverage
-lib
 webpack.*
