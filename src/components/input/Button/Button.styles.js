@@ -14,37 +14,39 @@ export const setButtonColour = (intent) => {
 };
 
 export const buttonProminences = (intent) => {
-  primary: css`
-    background-color: ${setButtonColour(intent)};
-    border: none;
-    border-radius: 10px;
-    color: ${buttonColors.primaryText};
+  return {
+    primary: css`
+      background-color: ${setButtonColour(intent)};
+      border: none;
+      border-radius: 10px;
+      color: ${buttonColors.primaryText};
 
-    &:hover {
-      background-color: ${buttonColors.hover};
-    }
-  `,
-  default: css`
-    background: none;
-    border: 2px solid ${buttonColors.default};
-    border-radius: 10px;
-    color: ${buttonColors.default};
+      &:hover {
+        background-color: ${buttonColors.hover};
+      }
+    `,
+    default: css`
+      background: none;
+      border: 2px solid ${buttonColors.default};
+      border-radius: 10px;
+      color: ${buttonColors.default};
 
-    &:hover {
-      border-color: ${buttonColors.hover};
-      color: ${buttonColors.hover};
-    }
-  `,
-  minimal: css`
-    background: none;
-    border: none;
-    border-radius: 10px;
-    color: ${buttonColors.default};
+      &:hover {
+        border-color: ${buttonColors.hover};
+        color: ${buttonColors.hover};
+      }
+    `,
+    minimal: css`
+      background: none;
+      border: none;
+      border-radius: 10px;
+      color: ${buttonColors.default};
 
-    &:hover {
-      color: ${buttonColors.hover};
-    }
-  `,
+      &:hover {
+        color: ${buttonColors.hover};
+      }
+    `,
+  };
 };
 
 // success, warning, danger, none
