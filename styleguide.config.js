@@ -1,9 +1,6 @@
 module.exports = {
   components: 'src/components/**/index.{js,jsx,ts,tsx}',
-  ignore: [
-    'src/components/index.js',
-    '**/*.test.{js,jsx,ts,tsx}',
-  ],
+  ignore: ['src/components/index.js', '**/*.test.{js,jsx,ts,tsx}'],
   title: '🦑 Nautilus Design System',
   theme: {
     color: {
@@ -55,8 +52,7 @@ module.exports = {
     {
       name: 'Form',
       content: 'docs/form.md',
-      sections: [
-      ],
+      sections: [],
       sectionDepth: 3,
     },
   ],

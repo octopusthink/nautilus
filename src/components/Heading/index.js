@@ -1,18 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export const Heading = ({
-  children,
-  level,
-  ...otherProps
-}) => {
+export const Heading = ({ children, level, ...otherProps }) => {
   const HeadingElement = `h${level}`;
 
-  return (
-    <HeadingElement {...otherProps}>
-      {children}
-    </HeadingElement>
-  );
+  return <HeadingElement {...otherProps}>{children}</HeadingElement>;
 };
 
 export const HeadingLevels = [1, 2, 3, 4, 5, 6];
