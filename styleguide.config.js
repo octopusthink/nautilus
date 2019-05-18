@@ -1,18 +1,7 @@
-const path = require('path');
-
 module.exports = {
-  components: 'src/components/**/[A-Z]*.{js,jsx,ts,tsx}', // skips index.js
-  ignore: ['**/**/*.styles.{js,jsx,ts,tsx}', '**/*.spec.{js,jsx,ts,tsx}'],
-  template: {
-    head: {
-      links: [
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,700',
-        },
-      ],
-    },
-  },
+  components: 'src/components/**/index.{js,jsx,ts,tsx}',
+  ignore: ['src/components/index.js', '**/*.test.{js,jsx,ts,tsx}'],
+  title: '🦑 Nautilus Design System',
   theme: {
     color: {
       link: 'firebrick',
@@ -30,7 +19,7 @@ module.exports = {
       },
     },
   },
-  styleguideDir: 'demo',
+  styleguideDir: 'dist/styleguide',
   pagePerSection: true,
   sections: [
     {
@@ -43,23 +32,7 @@ module.exports = {
       sections: [
         {
           name: 'Principles',
-          //content: 'docs/principles.md',
           description: 'Overall principles to shape design decisions.',
-        },
-        {
-          name: 'Colour Palette',
-          content: 'docs/colors.md',
-          description: 'Nautilus provides a wide range of colours to use.',
-        },
-        {
-          name: 'Typography Styles',
-          content: 'docs/typography.md',
-          description: 'Nautilus provides a library of type styles to use.',
-        },
-        {
-          name: 'Spacing',
-          content: 'docs/spacing.md',
-          description: 'Nautilus uses an 8pt spacing system. Get out your calculator.',
         },
       ],
       sectionDepth: 2,
@@ -67,37 +40,19 @@ module.exports = {
     {
       name: 'Function',
       content: 'docs/function.md',
+      sectionDepth: 3,
       sections: [
         {
-          name: 'Input Components',
-          components: 'src/components/input/**/[A-Z]*.{js,jsx}',
-        },
-        {
-          name: 'Layout Components',
-          components: 'src/components/layout/**/[A-Z]*.{js,jsx}',
-        },
-        {
-          name: 'Typography Components',
-          components: 'src/components/typography/**/[A-Z]*.{js,jsx}',
+          name: 'Components',
+          components: 'src/components/**/index.{js,jsx,ts,tsx}',
+          content: 'docs/components.md',
         },
       ],
-      sectionDepth: 3,
     },
     {
       name: 'Form',
       content: 'docs/form.md',
-      sections: [
-        {
-          name: 'Colour Variables',
-          content: 'docs/colorVariables.md',
-          description: 'Colour variables are design tokens that can be overwritten by a brand in order to  theme the experience.',
-        },
-        {
-          name: 'Typography Variables',
-          content: 'docs/typographyVariables.md',
-          description: 'Typography variables are design tokens that can be overwritten by a brand in order to  theme the experience.',
-        },
-      ],
+      sections: [],
       sectionDepth: 3,
     },
   ],

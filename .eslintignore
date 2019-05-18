@@ -1,7 +1,5 @@
 **/node_modules/
 **/build/
-compiled
-config
 coverage
-lib
+dist/
 webpack.*
