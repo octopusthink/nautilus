@@ -4,11 +4,17 @@
   "description": "Nautilus design system for React",
   "main": "index.js",
   "scripts": {
+    "ci": "npm run lint && npm run test:all-with-coverage",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "start": "npm run styleguide:server",
     "styleguide:build": "styleguidist build",
-    "styleguide:server": "styleguidist server"
+    "styleguide:server": "styleguidist server",
+    "test": "jest --watch",
+    "test:all": "jest",
+    "test:all-with-coverage": "jest --coverage",
+    "test:coverage": "jest --coverage --watch",
+    "test:update": "jest --updateSnapshot"
   },
   "repository": {
     "type": "git",
@@ -23,6 +29,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.11",
+    "invariant": "^2.2.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
@@ -35,7 +42,9 @@
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
     "@babel/preset-react": "^7.0.0",
+    "@emotion/babel-preset-css-prop": "^10.0.9",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -45,8 +54,10 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",
+    "jest": "^24.8.0",
     "prettier": "1.17.1",
     "react-styleguidist": "^9.1.1",
+    "react-testing-library": "^7.0.0",
     "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2"
   },
