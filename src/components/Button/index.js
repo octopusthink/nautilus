@@ -82,6 +82,12 @@ export const Button = ({
             &::after {
               content: ' →';
               display: inline;
+              transition: margin 200ms;
+            }
+
+            &:hover::after {
+              margin-left: 4px;
+              margin-right: -4px;
             }
           `}
 
