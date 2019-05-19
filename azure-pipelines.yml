@@ -5,11 +5,16 @@
 # https://aka.ms/yaml
 ---
 trigger:
-  branches:
+  pr:
     exclude:
       - gh-pages
     include:
       - '*'
+  branches:
+    exclude:
+      - gh-pages
+    include:
+      - master
 
 pool:
   vmImage: 'ubuntu-latest'

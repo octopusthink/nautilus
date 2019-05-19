@@ -15,6 +15,7 @@
   shelljs
 */
 
+const base64 = require('js-base64').Base64;
 const App = require('@octokit/app');
 const { request } = require('@octokit/request');
 const shell = require('shelljs');
@@ -24,7 +25,7 @@ const path = require('path');
 const processDir = fs.realpathSync(process.cwd());
 
 const APP_ID = process.env['GITHUB_APP_ID'];
-const PRIVATE_KEY = process.env['GITHUB_APP_PRIVATE_KEY'];
+const PRIVATE_KEY = base64.decode(process.env['GITHUB_APP_PRIVATE_KEY']);
 
 const owner = 'octopusthink';
 const repo = 'nautilus';
@@ -41,15 +42,12 @@ const azureBranchInfo = process.env['GIT_SOURCE_BRANCH'];
 
 console.log('azureBranchInfo', azureBranchInfo);
 
-const currentBranch =
-  azureBranchInfo && azureBranchInfo.length
-    ? azureBranchInfo.replace(/^refs\/heads\//g, '')
-    : shell
-        .exec(
-          'git symbolic-ref -q --short HEAD || git describe --tags --exact-match',
-          { silent: true },
-        )
-        .stdout.replace(/\n$/, '');
+const currentBranch = shell
+  .exec(
+    'git symbolic-ref -q --short HEAD || git describe --tags --exact-match',
+    { silent: true },
+  )
+  .stdout.replace(/\n$/, '');
 
 console.log('currentBranch name:', currentBranch);
 
