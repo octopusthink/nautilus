@@ -1,3 +1,5 @@
+import { css } from '@emotion/core';
+
 const colors = {
   white: '#ffffff',
   grey0: '#f8f9fa',
@@ -90,6 +92,21 @@ const colors = {
   green900: '#003b00',
 };
 
+const fonts = {
+  systemFonts:
+    '-apple-system, BlinkMacSystemFont, San Francisco, Roboto, Segoe UI, Helvetica Neue, sans-serif',
+  HarrietDisplay: 'Harriet Display',
+  HarrietText: 'Harriet Text',
+  Graphik: 'Graphik',
+};
+
+// Font sizes should probably be a function that will spit out
+// a) the size in rem, b) the line-height, and c) potentially mobile-scaled sizes
+const fontSizes = {
+  small: '17px',
+  large: '21px',
+};
+
 export const theme = {
   components: {
     ButtonColors: {
@@ -118,7 +135,12 @@ export const theme = {
     },
   },
   typography: {
-    bodyFont: '-apple-system',
+    fonts: {
+      body: fonts.HarrietText,
+      headings: fonts.HarrietDisplay,
+      interface: fonts.HarrietText,
+    },
+    styles: { fontSizes },
   },
 };
 
