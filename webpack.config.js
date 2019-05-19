@@ -9,7 +9,7 @@ module.exports = {
       // Transform ES6 with Babel
       {
         test: /\.(js|jsx|mjs)$/,
-        include: srcPath,
+        include: [srcPath],
         use: [
           {
             loader: require.resolve('babel-loader'),
@@ -25,7 +25,7 @@ module.exports = {
   },
   resolve: {
     // Add src/ folder for easier includes within the project.
-    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+    modules: [srcPath, 'node_modules'],
     extensions: ['.mjs', '.jsx', '.js', '.json'],
     alias: {
       // This is required so symlinks work during development.
@@ -33,5 +33,5 @@ module.exports = {
       // Support React Native Web
       // 'react-native': 'react-native-web',
     },
-  }
+  },
 };

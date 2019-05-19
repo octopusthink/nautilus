@@ -1,8 +1,22 @@
+import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { useTheme } from 'themes';
+
 export const Paragraph = ({ children, ...otherProps }) => {
-  return <p {...otherProps}>{children}</p>;
+  const theme = useTheme();
+
+  return (
+    <p
+      css={css`
+        font-family: ${theme.typography.bodyFont};
+      `}
+      {...otherProps}
+    >
+      {children}
+    </p>
+  );
 };
 
 Paragraph.defaultProps = {

@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   components: 'src/components/**/index.{js,jsx,ts,tsx}',
   ignore: ['src/components/index.js', '**/*.test.{js,jsx,ts,tsx}'],
@@ -19,16 +21,19 @@ module.exports = {
       },
     },
   },
+  styleguideComponents: {
+    Wrapper: path.join(__dirname, 'src/styleguide/ThemeWrapper'),
+  },
   styleguideDir: 'dist/styleguide',
   pagePerSection: true,
   sections: [
     {
       name: 'Introduction',
-      content: 'docs/introduction.md',
+      content: 'src/styleguide/docs/introduction.md',
     },
     {
       name: 'Foundation',
-      content: 'docs/foundation.md',
+      content: 'src/styleguide/docs/foundation.md',
       sections: [
         {
           name: 'Principles',
@@ -39,19 +44,19 @@ module.exports = {
     },
     {
       name: 'Function',
-      content: 'docs/function.md',
+      content: 'src/styleguide/docs/function.md',
       sectionDepth: 3,
       sections: [
         {
           name: 'Components',
           components: 'src/components/**/index.{js,jsx,ts,tsx}',
-          content: 'docs/components.md',
+          content: 'src/styleguide/docs/components.md',
         },
       ],
     },
     {
       name: 'Form',
-      content: 'docs/form.md',
+      content: 'src/styleguide/docs/form.md',
       sections: [],
       sectionDepth: 3,
     },

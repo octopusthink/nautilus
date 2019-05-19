@@ -14,10 +14,11 @@
     "react/jsx-filename-extension": false,
     "prettier/prettier": "error",
   },
-   "settings": {
-    "react": {
-      "pragma": "React",
-      "version": "detect",
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+      },
     },
   },
 }
