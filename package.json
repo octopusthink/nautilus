@@ -4,7 +4,7 @@
   "description": "Nautilus design system for React",
   "main": "index.js",
   "scripts": {
-    "ci": "npm run lint && npm run test:all-coverage",
+    "ci": "npm run lint && npm run test:all-with-coverage",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "start": "npm run styleguide:server",
@@ -12,7 +12,7 @@
     "styleguide:server": "styleguidist server",
     "test": "jest --watch",
     "test:all": "jest",
-    "test:coverage-all": "jest --coverage",
+    "test:all-with-coverage": "jest --coverage",
     "test:coverage": "jest --coverage --watch",
     "test:update": "jest --updateSnapshot"
   },
