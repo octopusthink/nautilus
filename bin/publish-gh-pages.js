@@ -36,12 +36,10 @@ if (!PRIVATE_KEY || !PRIVATE_KEY.length) {
 
 process.on('unhandledRejection', console.dir);
 
-const GIT_BRANCH = process.env['GIT_BRANCH'];
+const GIT_BRANCH = process.env['GIT_BRANCH_PR'] || process.env['GIT_BRANCH'];
 
-const currentBranch = GIT_BRANCH;
-
-if (!currentBranch || !currentBranch.length) {
-  throw new Error('Could not get "currentBranch"');
+if (!GIT_BRANCH || !GIT_BRANCH.length) {
+  throw new Error('Could not get GIT_BRANCH_PR or GIT_BRANCH');
 }
 
 // Build the styleguide.
@@ -54,10 +52,10 @@ shell.exec('git fetch origin');
 shell.exec('git checkout gh-pages');
 shell.exec('git pull origin gh-pages');
 
-shell.rm('-rf', currentBranch);
+shell.rm('-rf', GIT_BRANCH);
 
-shell.mkdir('-p', `./${currentBranch}`);
-shell.mv('dist/styleguide/*', `./${currentBranch}`);
+shell.mkdir('-p', `./${GIT_BRANCH}`);
+shell.mv('dist/styleguide/*', `./${GIT_BRANCH}`);
 
 const files = shell
   .exec('git ls-files --other --modified --exclude-standard', { silent: true })
@@ -101,7 +99,7 @@ request('GET /repos/:owner/:repo/installation', {
       });
 
       shell.exec(
-        `git commit -m 'chore: Deploy styleguide for: ${currentBranch}'`,
+        `git commit -m 'chore: Deploy styleguide for: ${GIT_BRANCH}'`,
         { silent: true },
       );
 
