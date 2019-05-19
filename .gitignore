@@ -1,0 +1,17 @@
+# Ignore SublimeText stuff
+*.sublime-project
+*.sublime-workspace
+
+# Ignore logs...
+logs
+*.log
+npm-debug.log*
+yarn.error-log
+
+# OS-specific junk
+.DS_Store
+
+# Build artifacts
+coverage/
+dist/
+node_modules/
