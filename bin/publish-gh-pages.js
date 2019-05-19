@@ -29,13 +29,15 @@ const PRIVATE_KEY = process.env['GITHUB_APP_PRIVATE_KEY'];
 const owner = 'octopusthink';
 const repo = 'nautilus';
 
+console.log('APP_ID', APP_ID);
+
 if (!PRIVATE_KEY || !PRIVATE_KEY.length) {
   throw new Error('GITHUB_APP_PRIVATE_KEY is required but not set');
 }
 
 process.on('unhandledRejection', console.dir);
 
-const azureBranchInfo = process.env['GIT_BRANCH'];
+const azureBranchInfo = process.env['Build.SourceBranch'];
 
 const currentBranch = azureBranchInfo
   ? azureBranchInfo.replace(/^refs\/heads\//g, '')
@@ -113,10 +115,10 @@ request('GET /repos/:owner/:repo/installation', {
         { silent: true },
       );
 
-      shell.exec(
-        `git remote add authenticated https://x-access-token:${token}@github.com/${owner}/${repo}.git`,
-      );
-      shell.exec('git push authenticated gh-pages');
+      // shell.exec(
+      //   `git remote add authenticated https://x-access-token:${token}@github.com/${owner}/${repo}.git`,
+      // );
+      // shell.exec('git push authenticated gh-pages');
     });
   })
   .catch((error) => {

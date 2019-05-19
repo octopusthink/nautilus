@@ -22,6 +22,5 @@ steps:
   - script: npm run publish:styleguide
     displayName: 'Publish styleguide to gh-pages'
     env:
-      GIT_BRANCH: ${Build.SourceBranch}
       GITHUB_APP_ID: ${nautilus.githubAppID}
       GITHUB_APP_PRIVATE_KEY: ${nautilus.githubAppPrivateKey}
