@@ -3,6 +3,8 @@ import invariant from 'invariant';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { useTheme } from 'themes';
+
 export const Button = ({
   children,
   minimal,
@@ -14,6 +16,7 @@ export const Button = ({
     (minimal === true && primary === true) === false,
     'Cannot use `minimal` and `primary` props together on a <Button> component.',
   );
+  const theme = useTheme();
 
   let Component = 'button';
   if (navigation === true) {
@@ -25,22 +28,22 @@ export const Button = ({
     // eslint-disable-next-line react/button-has-type
     <Component
       css={css`
-        font-family: -apple-system;
+        font-family: ${theme.typography.bodyFont};
         font-size: 17px;
         padding: 12px 32px;
         outline: none;
         text-decoration: none;
-        border: 2px solid #c62e7f;
-        color: #c62e7f;
-        background: #fff;
+        border: 2px solid ${theme.components.Button.defaultColor};
+        color: ${theme.components.Button.defaultColor};
+        background: ${theme.colors.white};
         border-radius: 8px;
         margin: 0 16px 16px;
         line-height: 1.412;
         transition: box-shadow 200ms;
 
         &:active {
-          border-color: #973367;
-          color: #973367;
+          border-color: ${theme.components.Button.activeColor};
+          color: ${theme.components.Button.activeColor};
         }
 
         &:focus {
@@ -53,17 +56,17 @@ export const Button = ({
         }
 
         &:hover {
-          box-shadow: 0 2px 0 0 #973367;
+          box-shadow: 0 2px 0 0 ${theme.components.Button.activeColor};
         }
 
         ${primary &&
           css`
-            background: #c62e7f;
-            color: #fff;
+            background: ${theme.components.Button.defaultColor};
+            color: ${theme.colors.white};
 
             &:active {
-              background: #973367;
-              color: #fff;
+              background: ${theme.components.Button.activeColor};
+              color: ${theme.colors.white};
             }
           `}
 
@@ -92,15 +95,15 @@ export const Button = ({
           `}
 
           &:disabled {
-            border-color: #9f9f9f;
-            color: #9f9f9f;
+            border-color: ${theme.components.Button.disabledColor};
+            color: ${theme.components.Button.disabledColor};
 
             &:hover {
-                box-shadow: 0 2px 0 0 #6C6C6C;
+                box-shadow: 0 2px 0 0 ${theme.components.Button.disabledActive};
             }
 
             &:active {
-              background: #6C6C6C;
+              background: ${theme.components.Button.disabledActive};
             }
 
             &:focus {
@@ -109,10 +112,9 @@ export const Button = ({
 
             &${primary &&
               css`
-                background: #9f9f9f;
-                color: #fff;
+                background: ${theme.components.Button.disabledColor};
+                color: ${theme.colors.white};
               `}
-
       `}
       {...otherProps}
     >

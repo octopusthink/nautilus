@@ -32,6 +32,9 @@ module.exports = {
       // 'webpack/hot/poll': require.resolve('webpack/hot/poll'),
       // Support React Native Web
       // 'react-native': 'react-native-web',
+      // Alias react-testing-library to our own, patched version with
+      // a custom render function that includes our needed providers.
+      // 'react-testing-library': require.resolve('./utils/tests.js'),
     },
   },
 };
