@@ -75,11 +75,14 @@ export const Button = ({
         color: ${currentButtonColor};
         background: ${theme.components.ButtonColors.neutral};
         border-radius: 8px;
-        margin: 0 16px 16px;
+        margin: 0 8px 16px;
         line-height: 1.412;
         transition: box-shadow 200ms;
+        position: relative;
+        top: 0;
 
         &:active {
+          top: 2px;
           border-color: ${currentButtonColorDark};
           color: ${currentButtonColorDark};
         }

@@ -96,25 +96,25 @@ export const theme = {
       neutral: colors.white,
 
       default: colors.pink600,
-      defaultDark: colors.pink900,
-      defaultLight: colors.pink300,
+      defaultDark: colors.pink800,
+      defaultLight: colors.pink200,
 
       disabled: colors.grey700,
       disabledDark: colors.grey800,
-      disabledLight: colors.grey300,
+      disabledLight: colors.grey200,
 
       // These should possibly just be defined as semantic colours, outside of the button colours!
       success: colors.green600,
-      successDark: colors.green900,
-      successLight: colors.green300,
+      successDark: colors.green800,
+      successLight: colors.green200,
 
       warning: colors.yellow600,
-      warningDark: colors.yellow900,
-      warningLight: colors.yellow300,
+      warningDark: colors.yellow800,
+      warningLight: colors.yellow200,
 
       danger: colors.red600,
-      dangerDark: colors.red900,
-      dangerLight: colors.red300,
+      dangerDark: colors.red800,
+      dangerLight: colors.red200,
     },
   },
   typography: {
