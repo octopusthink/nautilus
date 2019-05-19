@@ -17,11 +17,11 @@ const colors = {
   red200: '#e2b6b6',
   red300: '#d49595',
   red400: '#c26767',
-  red500: '#9900',
-  red600: '#8a00',
-  red700: '#7800',
-  red800: '#6300',
-  red900: '#4700',
+  red500: '#990000',
+  red600: '#8a0000',
+  red700: '#780000',
+  red800: '#630000',
+  red900: '#470000',
 
   purple0: '#eeeaf1',
   purple100: '#dbd4e3',
@@ -103,9 +103,18 @@ export const theme = {
       disabledDark: colors.grey800,
       disabledLight: colors.grey300,
 
+      // These should possibly just be defined as semantic colours, outside of the button colours!
       success: colors.green600,
       successDark: colors.green900,
       successLight: colors.green300,
+
+      warning: colors.yellow600,
+      warningDark: colors.yellow900,
+      warningLight: colors.yellow300,
+
+      danger: colors.red600,
+      dangerDark: colors.red900,
+      dangerLight: colors.red300,
     },
   },
   typography: {

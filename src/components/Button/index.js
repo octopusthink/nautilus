@@ -11,12 +11,21 @@ export const Button = ({
   navigation,
   primary,
   disabled,
+  success,
+  warning,
+  danger,
   ...otherProps
 }) => {
   invariant(
     (minimal === true && primary === true) === false,
     'Cannot use `minimal` and `primary` props together on a <Button> component.',
   );
+
+  invariant(
+    [danger, success, warning].filter((prop) => prop).length <= 1,
+    '<Button> component should only use one of `danger`, `warning`, or `success`. Pick a lane!',
+  );
+
   const theme = useTheme();
 
   let Component = 'button';
@@ -32,6 +41,24 @@ export const Button = ({
     currentButtonColor = theme.components.ButtonColors.disabled;
     currentButtonColorDark = theme.components.ButtonColors.disabledDark;
     currentButtonColorLight = theme.components.ButtonColors.disabledLight;
+  }
+
+  if (success === true) {
+    currentButtonColor = theme.components.ButtonColors.success;
+    currentButtonColorDark = theme.components.ButtonColors.successDark;
+    currentButtonColorLight = theme.components.ButtonColors.successLight;
+  }
+
+  if (warning === true) {
+    currentButtonColor = theme.components.ButtonColors.warning;
+    currentButtonColorDark = theme.components.ButtonColors.warningDark;
+    currentButtonColorLight = theme.components.ButtonColors.warningLight;
+  }
+
+  if (danger === true) {
+    currentButtonColor = theme.components.ButtonColors.danger;
+    currentButtonColorDark = theme.components.ButtonColors.dangerDark;
+    currentButtonColorLight = theme.components.ButtonColors.dangerLight;
   }
 
   return (
@@ -119,19 +146,36 @@ Button.defaultProps = {
   navigation: false,
   primary: false,
   type: 'button',
+  success: false,
+  warning: false,
+  danger: false,
 };
 
 Button.propTypes = {
   /** @ignore */
   children: PropTypes.node,
+
   /** Disables the button; this applies a disabled style but **does not disable any event handlers for the button**. Your `onClick` handlers should check for `props.disabled` to modify their behaviour accordingly. */
   disabled: PropTypes.bool,
-  /** Decrease the visual prominence of this button in the UI. */
-  minimal: PropTypes.bool,
-  /** Sometimes, you need a button that's actually a link. We got you! This outputs a `react-router-dom` `<Link>` tag that looks (and largely behaves) like a `<Button>`, but can used as navigation. Setting this to `true` enables `Link` properties; see: https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/Link.md. */
-  navigation: PropTypes.bool,
+
   /** Increase the visual prominence of this button in the UI. */
   primary: PropTypes.bool,
+
+  /** Decrease the visual prominence of this button in the UI. */
+  minimal: PropTypes.bool,
+
+  /** Apply semantic styling to indicate success or positive intent. */
+  success: PropTypes.bool,
+
+  /** Apply semantic styling to indicate a warning. */
+  warning: PropTypes.bool,
+
+  /** Apply semantic styling to indicate danger or negative intent. */
+  danger: PropTypes.bool,
+
+  /** Outputs a `react-router-dom` `<Link>` tag that looks (and largely behaves) like a `<Button>`, but can used as navigation. Setting this to `true` enables `Link` properties; see: https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/Link.md. */
+  navigation: PropTypes.bool,
+
   /** HTML `type` attribute for the button. Defaults to `"button"`. */
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
 };
