@@ -36,10 +36,10 @@ if (!PRIVATE_KEY || !PRIVATE_KEY.length) {
 
 process.on('unhandledRejection', console.dir);
 
-const GIT_BRANCH = process.env['GIT_BRANCH_PR'] || process.env['GIT_BRANCH'];
+const GIT_BRANCH = process.env['GIT_BRANCH'];
 
-if (!GIT_BRANCH || !GIT_BRANCH.length) {
-  throw new Error('Could not get GIT_BRANCH_PR or GIT_BRANCH');
+if (!GIT_BRANCH || !GIT_BRANCH.length || GIT_BRANCH.charAt(0) === '$') {
+  throw new Error('Could not get GIT_BRANCH');
 }
 
 // Build the styleguide.
