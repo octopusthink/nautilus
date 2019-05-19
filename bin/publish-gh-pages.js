@@ -107,6 +107,9 @@ request('GET /repos/:owner/:repo/installation', {
         shell.exec(`git add ${file}`);
       });
 
+      shell.exec('git config --global user.email "robots@octopusthink.com"');
+      shell.exec('git config --global user.name "Nautilus Publisher"');
+
       shell.exec(`git commit -m 'chore: Deploy styleguide for: ${GIT_BRANCH}'`);
 
       shell.exec(
