@@ -3,8 +3,6 @@ import invariant from 'invariant';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { useTheme } from 'themes';
-
 export const Button = ({
   children,
   minimal,
@@ -16,7 +14,6 @@ export const Button = ({
     (minimal === true && primary === true) === false,
     'Cannot use `minimal` and `primary` props together on a <Button> component.',
   );
-  const theme = useTheme();
 
   let Component = 'button';
   if (navigation === true) {

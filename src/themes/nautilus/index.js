@@ -3,8 +3,8 @@ export const theme = {
     black: '#000',
     white: '#fff',
   },
-  fonts: {
-    family: '-apple-system-font',
+  typography: {
+    bodyFont: '-apple-system-font',
   },
 };
 
