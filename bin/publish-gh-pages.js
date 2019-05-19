@@ -30,8 +30,6 @@ const PRIVATE_KEY = base64.decode(process.env['GITHUB_APP_PRIVATE_KEY']);
 const owner = 'octopusthink';
 const repo = 'nautilus';
 
-console.log('APP_ID', APP_ID);
-
 if (!PRIVATE_KEY || !PRIVATE_KEY.length) {
   throw new Error('GITHUB_APP_PRIVATE_KEY is required but not set');
 }
@@ -40,20 +38,7 @@ process.on('unhandledRejection', console.dir);
 
 const GIT_BRANCH = process.env['GIT_BRANCH'];
 
-console.log('GIT_BRANCH', GIT_BRANCH);
-
 const currentBranch = GIT_BRANCH;
-// const currentBranch =
-//   azureBranchInfo && azureBranchInfo.length
-//     ? azureBranchInfo
-//     : shell
-//         .exec(
-//           'git symbolic-ref -q --short HEAD || git describe --tags --exact-match',
-//           { silent: true },
-//         )
-//         .stdout.replace(/\n$/, '');
-
-console.log('currentBranch name:', currentBranch);
 
 if (!currentBranch || !currentBranch.length) {
   throw new Error('Could not get "currentBranch"');
@@ -120,10 +105,11 @@ request('GET /repos/:owner/:repo/installation', {
         { silent: true },
       );
 
-      // shell.exec(
-      //   `git remote add authenticated https://x-access-token:${token}@github.com/${owner}/${repo}.git`,
-      // );
-      // shell.exec('git push authenticated gh-pages');
+      shell.exec(
+        `git remote add authenticated https://x-access-token:${token}@github.com/${owner}/${repo}.git`,
+        { silent: true },
+      );
+      shell.exec('git push authenticated gh-pages');
     });
   })
   .catch((error) => {
