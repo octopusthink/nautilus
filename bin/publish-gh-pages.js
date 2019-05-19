@@ -40,7 +40,7 @@ process.on('unhandledRejection', console.dir);
 
 const GIT_BRANCH = process.env['GIT_BRANCH'];
 
-console.log('azureBranchInfo', azureBranchInfo);
+console.log('GIT_BRANCH', GIT_BRANCH);
 
 const currentBranch = GIT_BRANCH;
 // const currentBranch =
