@@ -38,16 +38,20 @@ if (!PRIVATE_KEY || !PRIVATE_KEY.length) {
 
 process.on('unhandledRejection', console.dir);
 
-const azureBranchInfo = process.env['GIT_SOURCE_BRANCH'];
+const GIT_BRANCH = process.env['GIT_BRANCH'];
 
 console.log('azureBranchInfo', azureBranchInfo);
 
-const currentBranch = shell
-  .exec(
-    'git symbolic-ref -q --short HEAD || git describe --tags --exact-match',
-    { silent: true },
-  )
-  .stdout.replace(/\n$/, '');
+const currentBranch = GIT_BRANCH;
+// const currentBranch =
+//   azureBranchInfo && azureBranchInfo.length
+//     ? azureBranchInfo
+//     : shell
+//         .exec(
+//           'git symbolic-ref -q --short HEAD || git describe --tags --exact-match',
+//           { silent: true },
+//         )
+//         .stdout.replace(/\n$/, '');
 
 console.log('currentBranch name:', currentBranch);
 
