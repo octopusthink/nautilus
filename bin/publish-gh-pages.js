@@ -37,7 +37,7 @@ if (!PRIVATE_KEY || !PRIVATE_KEY.length) {
 
 process.on('unhandledRejection', console.dir);
 
-const azureBranchInfo = process.env['Build.SourceBranch'];
+const azureBranchInfo = process.env['GIT_SOURCE_BRANCH'];
 
 console.log('azureBranchInfo', azureBranchInfo);
 
