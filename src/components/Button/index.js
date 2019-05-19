@@ -25,47 +25,82 @@ export const Button = ({
     // eslint-disable-next-line react/button-has-type
     <Component
       css={css`
-        background: purple;
-        border: 1px solid purple;
-        border-radius: 8px;
-        color: #fff;
-        font-family: sans-serif;
-        font-size: 16px;
-        padding: 8px;
+        font-family: -apple-system;
+        font-size: 17px;
+        padding: 12px 32px;
         outline: none;
         text-decoration: none;
+        border: 2px solid #c62e7f;
+        color: #c62e7f;
+        background: #fff;
+        border-radius: 8px;
+        margin: 0 16px 16px;
+        line-height: 1.412;
+        transition: box-shadow 200ms;
 
         &:active {
-
+          background: #C62E7F;
         }
 
-        &:disabled {
-
+        &:focus {
+          box-shadow: 0 0 1px 4px #F5A3CE;
+          outline: none;
         }
 
-        &:focus, &:hover {
-          
+        &::-moz-focus-inner {
+          border: 0;
+        }
+
+        &:hover {
+          box-shadow: 0 2px 0 0 #973367;
         }
 
         ${primary &&
           css`
-            font-size: 24px;
+            background: #c62e7f;
+            color: #fff;
           `}
 
         ${minimal &&
           css`
-            font-size: 8px;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            border-radius: 0;
+            padding-left: 0;
+            padding-right: 0;
           `}
 
         ${navigation &&
           css`
             &::after {
-              content: '↗️';
+              content: ' →';
               display: inline;
-              height: 12px;
-              width: 12px;
             }
           `}
+
+          &:disabled {
+            border-color: #9f9f9f;
+            color: #9f9f9f;
+
+            &:hover {
+                box-shadow: 0 2px 0 0 #6C6C6C;
+            }
+
+            &:active {
+              background: #6C6C6C;
+            }
+
+            &:focus {
+              box-shadow: 0 0 1px 4px #D4D4D4;
+            }
+
+            &${primary &&
+              css`
+                background: #9f9f9f;
+                color: #fff;
+              `}
+
       `}
       {...otherProps}
     >
