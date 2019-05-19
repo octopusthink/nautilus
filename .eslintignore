@@ -2,4 +2,5 @@
 **/build/
 coverage
 dist/
+*.md
 webpack.*

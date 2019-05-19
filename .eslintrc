@@ -1,15 +1,16 @@
 {
   "extends": [
     "airbnb",
+    "plugin:jest/recommended",
     "prettier",
   ],
   "parser": "babel-eslint",
   "plugins": [
-    "jest",
     "prettier",
   ],
   "rules": {
-    "react/jsx-filename-extension": 0,
+    "import/no-named-as-default": false,
+    "react/jsx-filename-extension": false,
     "prettier/prettier": "error",
   },
    "settings": {
