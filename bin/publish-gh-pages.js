@@ -107,10 +107,7 @@ request('GET /repos/:owner/:repo/installation', {
         shell.exec(`git add ${file}`);
       });
 
-      shell.exec(
-        `git commit -m 'chore: Deploy styleguide for: ${GIT_BRANCH}'`,
-        { silent: true },
-      );
+      shell.exec(`git commit -m 'chore: Deploy styleguide for: ${GIT_BRANCH}'`);
 
       shell.exec(
         `git remote add authenticated https://x-access-token:${token}@github.com/${owner}/${repo}.git`,
