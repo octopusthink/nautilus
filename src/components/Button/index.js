@@ -39,7 +39,8 @@ export const Button = ({
         transition: box-shadow 200ms;
 
         &:active {
-          background: #C62E7F;
+          border-color: #973367;
+          color: #973367;
         }
 
         &:focus {
@@ -59,6 +60,11 @@ export const Button = ({
           css`
             background: #c62e7f;
             color: #fff;
+
+            &:active {
+              background: #973367;
+              color: #fff;
+            }
           `}
 
         ${minimal &&

@@ -42,6 +42,14 @@ In these cases, we can use the same element, but apply ever-so-slightly-differen
 <Button href="https://twitter.com/KittenBreak" navigation target="_blank">
 	Take a break
 </Button>
+
+<Button href="https://twitter.com/KittenBreak" navigation primary>
+	Take a break
+</Button>
+
+<Button href="https://twitter.com/KittenBreak" navigation minimal>
+	Take a break
+</Button>
 ```
 
 ### Intent
