@@ -29,6 +29,10 @@ const PRIVATE_KEY = process.env['GITHUB_APP_PRIVATE_KEY'];
 const owner = 'octopusthink';
 const repo = 'nautilus';
 
+if (!PRIVATE_KEY || !PRIVATE_KEY.length) {
+  throw new Error('GITHUB_APP_PRIVATE_KEY is required but not set');
+}
+
 process.on('unhandledRejection', console.dir);
 
 const azureBranchInfo = process.env['GIT_BRANCH'];
@@ -42,12 +46,17 @@ const currentBranch = azureBranchInfo
       )
       .stdout.replace(/\n$/, '');
 
+console.log('currentBranch name:', currentBranch);
+
 if (!currentBranch || !currentBranch.length) {
   throw new Error('Could not get "currentBranch"');
 }
 
 // Build the styleguide.
 shell.exec('npm run build');
+
+// Ignore differences in npm versions on Azure, etc.
+shell.exec('git checkout package-lock.json');
 
 shell.exec('git fetch origin');
 shell.exec('git checkout gh-pages');
