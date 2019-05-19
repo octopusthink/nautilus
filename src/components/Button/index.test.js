@@ -16,4 +16,41 @@ describe('Button', () => {
 
     expect(container.firstChild.tagName).toEqual('A');
   });
+
+  it('should only allow one of danger/success/warning props', () => {
+    const errorText =
+      '<Button> component should only use one of `danger`, `warning`, or `success`. Pick a lane!';
+
+    expect(() => {
+      render(
+        <Button danger success warning>
+          Bad button
+        </Button>,
+      );
+    }).toThrow(errorText);
+
+    expect(() => {
+      render(
+        <Button danger success>
+          Bad button
+        </Button>,
+      );
+    }).toThrow(errorText);
+
+    expect(() => {
+      render(
+        <Button success warning>
+          Bad button
+        </Button>,
+      );
+    }).toThrow(errorText);
+
+    expect(() => {
+      render(
+        <Button danger warning>
+          Bad button
+        </Button>,
+      );
+    }).toThrow(errorText);
+  });
 });
