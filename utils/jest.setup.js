@@ -12,3 +12,11 @@ global.window.matchMedia = jest.fn().mockImplementation((query) => {
     removeListener: jest.fn(),
   };
 });
+
+// Jest is noisy when we want to test `invariant` code paths, so we just
+// mock out the console in tests anyway.
+jest.spyOn(global.console, 'error').mockImplementation(() => jest.fn());
+jest.spyOn(global.console, 'warn').mockImplementation(() => jest.fn());
+jest.spyOn(global.console, 'log').mockImplementation(() => jest.fn());
+jest.spyOn(global.console, 'info').mockImplementation(() => jest.fn());
+jest.spyOn(global.console, 'debug').mockImplementation(() => jest.fn());
