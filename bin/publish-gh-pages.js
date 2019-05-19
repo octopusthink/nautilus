@@ -39,14 +39,17 @@ process.on('unhandledRejection', console.dir);
 
 const azureBranchInfo = process.env['Build.SourceBranch'];
 
-const currentBranch = azureBranchInfo
-  ? azureBranchInfo.replace(/^refs\/heads\//g, '')
-  : shell
-      .exec(
-        'git symbolic-ref -q --short HEAD || git describe --tags --exact-match',
-        { silent: true },
-      )
-      .stdout.replace(/\n$/, '');
+console.log('azureBranchInfo', azureBranchInfo);
+
+const currentBranch =
+  azureBranchInfo && azureBranchInfo.length
+    ? azureBranchInfo.replace(/^refs\/heads\//g, '')
+    : shell
+        .exec(
+          'git symbolic-ref -q --short HEAD || git describe --tags --exact-match',
+          { silent: true },
+        )
+        .stdout.replace(/\n$/, '');
 
 console.log('currentBranch name:', currentBranch);
 
