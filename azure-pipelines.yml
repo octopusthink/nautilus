@@ -6,6 +6,8 @@
 ---
 trigger:
   branches:
+    exclude:
+      - gh-pages
     include:
       - '*'
 
@@ -17,3 +19,8 @@ steps:
     displayName: 'Install dependencies'
   - script: npm run ci
     displayName: 'Lint and test'
+  - script: npm run publish:styleguide
+    displayName: 'Publish styleguide to gh-pages'
+    env:
+      GITHUB_APP_ID: ${nautilus.githubAppID}
+      GITHUB_APP_PRIVATE_KEY: ${nautilus.githubAppPrivateKey}
