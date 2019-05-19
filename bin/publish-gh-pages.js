@@ -31,12 +31,16 @@ const repo = 'nautilus';
 
 process.on('unhandledRejection', console.dir);
 
-const currentBranch = shell
-  .exec(
-    'git symbolic-ref -q --short HEAD || git describe --tags --exact-match',
-    { silent: true },
-  )
-  .stdout.replace(/\n$/, '');
+const azureBranchInfo = process.env['GIT_BRANCH'];
+
+const currentBranch = azureBranchInfo
+  ? azureBranchInfo.replace(/^refs\/heads\//g, '')
+  : shell
+      .exec(
+        'git symbolic-ref -q --short HEAD || git describe --tags --exact-match',
+        { silent: true },
+      )
+      .stdout.replace(/\n$/, '');
 
 if (!currentBranch || !currentBranch.length) {
   throw new Error('Could not get "currentBranch"');
