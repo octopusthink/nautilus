@@ -22,5 +22,5 @@ steps:
   - script: npm run publish:styleguide
     displayName: 'Publish styleguide to gh-pages'
     env:
-      GITHUB_APP_ID: ${GITHUB_APP_ID}
-      GITHUB_APP_PRIVATE_KEY: ${GITHUB_APP_PRIVATE_KEY}
+      GITHUB_APP_ID: $(GITHUB_APP_ID)
+      GITHUB_APP_PRIVATE_KEY: $(GITHUB_APP_PRIVATE_KEY)
