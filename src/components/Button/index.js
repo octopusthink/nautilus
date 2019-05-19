@@ -10,6 +10,7 @@ export const Button = ({
   minimal,
   navigation,
   primary,
+  disabled,
   ...otherProps
 }) => {
   invariant(
@@ -23,6 +24,16 @@ export const Button = ({
     Component = 'a';
   }
 
+  let currentButtonColor = theme.components.ButtonColors.default;
+  let currentButtonColorDark = theme.components.ButtonColors.defaultDark;
+  let currentButtonColorLight = theme.components.ButtonColors.defaultLight;
+
+  if (disabled === true) {
+    currentButtonColor = theme.components.ButtonColors.disabled;
+    currentButtonColorDark = theme.components.ButtonColors.disabledDark;
+    currentButtonColorLight = theme.components.ButtonColors.disabledLight;
+  }
+
   return (
     // See: https://github.com/yannickcr/eslint-plugin-react/issues/1555
     // eslint-disable-next-line react/button-has-type
@@ -33,21 +44,21 @@ export const Button = ({
         padding: 12px 32px;
         outline: none;
         text-decoration: none;
-        border: 2px solid ${theme.components.Button.defaultColor};
-        color: ${theme.components.Button.defaultColor};
-        background: ${theme.colors.white};
+        border: 2px solid ${currentButtonColor};
+        color: ${currentButtonColor};
+        background: ${theme.components.ButtonColors.neutral};
         border-radius: 8px;
         margin: 0 16px 16px;
         line-height: 1.412;
         transition: box-shadow 200ms;
 
         &:active {
-          border-color: ${theme.components.Button.activeColor};
-          color: ${theme.components.Button.activeColor};
+          border-color: ${currentButtonColorDark};
+          color: ${currentButtonColorDark};
         }
 
         &:focus {
-          box-shadow: 0 0 1px 4px #F5A3CE;
+          box-shadow: 0 0 1px 4px ${currentButtonColorLight};
           outline: none;
         }
 
@@ -56,17 +67,17 @@ export const Button = ({
         }
 
         &:hover {
-          box-shadow: 0 2px 0 0 ${theme.components.Button.activeColor};
+          box-shadow: 0 2px 0 0 ${currentButtonColorDark};
         }
 
         ${primary &&
           css`
-            background: ${theme.components.Button.defaultColor};
-            color: ${theme.colors.white};
+            background: ${currentButtonColor};
+            color: ${theme.components.ButtonColors.neutral};
 
             &:active {
-              background: ${theme.components.Button.activeColor};
-              color: ${theme.colors.white};
+              background: ${currentButtonColorDark};
+              color: ${theme.components.ButtonColors.neutral};
             }
           `}
 
@@ -93,28 +104,6 @@ export const Button = ({
               margin-right: -4px;
             }
           `}
-
-          &:disabled {
-            border-color: ${theme.components.Button.disabledColor};
-            color: ${theme.components.Button.disabledColor};
-
-            &:hover {
-                box-shadow: 0 2px 0 0 ${theme.components.Button.disabledActive};
-            }
-
-            &:active {
-              background: ${theme.components.Button.disabledActive};
-            }
-
-            &:focus {
-              box-shadow: 0 0 1px 4px #D4D4D4;
-            }
-
-            &${primary &&
-              css`
-                background: ${theme.components.Button.disabledColor};
-                color: ${theme.colors.white};
-              `}
       `}
       {...otherProps}
     >
