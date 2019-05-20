@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { useTheme } from 'themes';
-import { interfaceSmall } from 'themes/mixins';
+import { interfaceMedium } from 'themes/mixins';
 
 export const Button = ({
   children,
@@ -69,7 +69,7 @@ export const Button = ({
     // eslint-disable-next-line react/button-has-type
     <Component
       css={css`
-        ${css(interfaceSmall(theme))};
+        ${css(interfaceMedium(theme))};
         padding: 12px 32px;
         outline: none;
         text-decoration: none;

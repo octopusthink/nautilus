@@ -98,13 +98,6 @@ const fonts = {
   Graphik: 'Graphik',
 };
 
-// Font sizes should probably be a function that will spit out
-// a) the size in rem, b) the line-height, and c) potentially mobile-scaled sizes
-const fontSizes = {
-  small: '17px',
-  large: '21px',
-};
-
 export const theme = {
   components: {
     ButtonColors: {
@@ -138,7 +131,6 @@ export const theme = {
       headings: fonts.HarrietDisplay,
       interface: fonts.systemFonts,
     },
-    styles: { fontSizes },
     starterSizes: {
       desktop: 1.7,
       mobile: 1.6,
@@ -146,6 +138,11 @@ export const theme = {
     scaleModifiers: {
       desktop: 1.25,
       mobile: 1.15,
+    },
+    lineHeights: {
+      headings: 1,
+      body: 1.6,
+      interface: 1.2,
     },
   },
 };
