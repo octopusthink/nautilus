@@ -17,9 +17,21 @@ describe('Button', () => {
     expect(container.firstChild.tagName).toEqual('A');
   });
 
+  it('should only allow one of minimal/primary props', () => {
+    expect(() => {
+      render(
+        <Button minimal primary>
+          Important but not
+        </Button>,
+      );
+    }).toThrow(
+      '<Button> should not be both `minimal` and `primary`, so which is it?',
+    );
+  });
+
   it('should only allow one of danger/success/warning props', () => {
     const errorText =
-      '<Button> component should only use one of `danger`, `warning`, or `success`. Pick a lane!';
+      '<Button> should only use one of `danger`, `warning`, or `success`. Pick a lane!';
 
     expect(() => {
       render(

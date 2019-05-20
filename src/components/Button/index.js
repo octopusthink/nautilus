@@ -17,13 +17,13 @@ export const Button = ({
   ...otherProps
 }) => {
   invariant(
-    (minimal === true && primary === true) === false,
-    'Cannot use `minimal` and `primary` props together on a <Button> component.',
+    [minimal, primary].filter((prop) => prop).length <= 1,
+    '<Button> should not be both `minimal` and `primary`, so which is it?',
   );
 
   invariant(
     [danger, success, warning].filter((prop) => prop).length <= 1,
-    '<Button> component should only use one of `danger`, `warning`, or `success`. Pick a lane!',
+    '<Button> should only use one of `danger`, `warning`, or `success`. Pick a lane!',
   );
 
   const theme = useTheme();
