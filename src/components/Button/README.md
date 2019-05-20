@@ -12,7 +12,7 @@ const onClick = (event) => {
 ### Labels
 
 - Keep labels as **short** and direct as possible. Omit articles and unnecessary words wherever possible.
-- Use an **active verb + noun** form. (_Reserve table_, _Delete page_, etc.) In some cases, (_Save_, _Okay_, _Cancel_), a verb alone may suffice.
+- Use an **active verb + noun** form. (_Reserve table_, _Delete page_, etc.) In some cases, a verb alone may suffice. (_Save_, _Okay_, _Cancel_.)
 - Labels should use **sentence case**, not title case. (_Press me_, not _Press Me_.)
 - **Use icons** to convey additional meaning, when appropriate. For important actions, including both text and an icon is a good way to reinforce meaning.
 
