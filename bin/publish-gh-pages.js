@@ -9,29 +9,22 @@
   GitHub API and an app.
 
   When extracted, remove the following libraries from package.json:
-
-  @octokit/app
-  @octokit/request
-  shelljs
 */
 
-const base64 = require('js-base64').Base64;
-const App = require('@octokit/app');
-const { request } = require('@octokit/request');
 const shell = require('shelljs');
 const fs = require('fs');
 const path = require('path');
 
 const processDir = fs.realpathSync(process.cwd());
 
-const APP_ID = process.env['GITHUB_APP_ID'];
-const PRIVATE_KEY = base64.decode(process.env['GITHUB_APP_PRIVATE_KEY']);
+const GITHUB_ACCESS_TOKEN = process.env['GITHUB_ACCESS_TOKEN'];
+const GITHUB_USER = process.env['GITHUB_USER'];
 
-const owner = 'octopusthink';
-const repo = 'nautilus';
+const owner = process.env['GITHUB_OWNER'];
+const repo = process.env['GITHUB_REPO'];
 
-if (!PRIVATE_KEY || !PRIVATE_KEY.length) {
-  throw new Error('GITHUB_APP_PRIVATE_KEY is required but not set');
+if (!GITHUB_ACCESS_TOKEN || !GITHUB_ACCESS_TOKEN.length) {
+  throw new Error('GITHUB_ACCESS_TOKEN is required but not set');
 }
 
 process.on('unhandledRejection', console.dir);
@@ -80,45 +73,19 @@ if (!files || !files.length) {
   process.exit(0);
 }
 
-const app = new App({ id: APP_ID, privateKey: PRIVATE_KEY });
-const jwt = app.getSignedJsonWebToken();
+console.log('files to commit:\n', files.map((file) => file).join('\n'));
 
-// Example of using authenticated app to GET an individual installation
-// https://developer.github.com/v3/apps/#find-repository-installation
-let data;
-request('GET /repos/:owner/:repo/installation', {
-  owner,
-  repo,
-  headers: {
-    authorization: `Bearer ${jwt}`,
-    accept: 'application/vnd.github.machine-man-preview+json',
-  },
-})
-  .then((response) => {
-    data = response.data;
+files.forEach((file) => {
+  shell.exec(`git add ${file}`);
+});
 
-    const installationId = data.id;
+shell.exec('git config --global user.email "robots@octopusthink.com"');
+shell.exec('git config --global user.name "Octopus Think Robot"');
 
-    let installationAccessToken;
-    app.getInstallationAccessToken({ installationId }).then((token) => {
-      console.log('files to commit:\n', files.map((file) => file).join('\n'));
+shell.exec(`git commit -m 'chore: Deploy styleguide for: ${GIT_BRANCH}'`);
 
-      files.forEach((file) => {
-        shell.exec(`git add ${file}`);
-      });
-
-      shell.exec('git config --global user.email "robots@octopusthink.com"');
-      shell.exec('git config --global user.name "Nautilus Publisher"');
-
-      shell.exec(`git commit -m 'chore: Deploy styleguide for: ${GIT_BRANCH}'`);
-
-      shell.exec(
-        `git remote add authenticated https://x-access-token:${token}@github.com/${owner}/${repo}.git`,
-        { silent: true },
-      );
-      shell.exec('git push authenticated gh-pages');
-    });
-  })
-  .catch((error) => {
-    throw error;
-  });
+shell.exec(
+  `git remote add authenticated https://${GITHUB_USER}:${GITHUB_ACCESS_TOKEN}@github.com/${owner}/${repo}.git`,
+  { silent: true },
+);
+shell.exec('git push authenticated gh-pages');

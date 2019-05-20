@@ -9,56 +9,5 @@ This component currently supports metadata and page titles, but these should mos
 ### Page Title
 
 ```jsx
-<Heading level={1} size="title" margin="0">
-	This is the page title.
-</Heading>
-```
-
-### Heading (large)
-
-```jsx
-<Heading level={2} size="large" margin="0">
-	This is a large heading
-</Heading>
-```
-
-### Heading
-
-```jsx
-<Heading level={3} size="medium" margin="0">
-	This is a medium heading
-</Heading>
-```
-
-### Heading (small)
-
-```jsx
-<Heading level={2} size="small" margin="0">
-	This is a small heading
-</Heading>
-```
-
-### Subheading
-
-```jsx
-<Heading level={0} size="subheading" margin="0">
-	This is a subheading. Subheadings are intended to be used in a pair with a
-	Heading.
-</Heading>
-```
-
-### Metadata (large)
-
-```jsx
-<Heading level={0} size="metadataLarge" margin="0">
-	This is some metadata. It is intended to be used for categorical data.
-</Heading>
-```
-
-### Metadata (small)
-
-```jsx
-<Heading level={0} size="metadataSmall" margin="0">
-	Cats, dogs, people, and unicorns.
-</Heading>
+<Heading level={1}>This is the page title.</Heading>
 ```
