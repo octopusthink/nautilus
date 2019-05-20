@@ -1,7 +1,3 @@
-# Ignore SublimeText stuff
-*.sublime-project
-*.sublime-workspace
-
 # Ignore logs...
 logs
 *.log
