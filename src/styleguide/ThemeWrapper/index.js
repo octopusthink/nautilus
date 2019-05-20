@@ -20,6 +20,9 @@ export const ThemeWrapper = ({ children }) => {
 
             /* Enable kerning and optional ligatures */
             text-rendering: optimizeLegibility;
+
+            /* Set base font size for rem units to inherit */
+            font-size: 62.5%;
           }
         `}
       />

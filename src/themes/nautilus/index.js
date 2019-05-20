@@ -1,5 +1,3 @@
-import { css } from '@emotion/core';
-
 const colors = {
   white: '#ffffff',
   grey0: '#f8f9fa',
@@ -138,9 +136,17 @@ export const theme = {
     fonts: {
       body: fonts.HarrietText,
       headings: fonts.HarrietDisplay,
-      interface: fonts.HarrietText,
+      interface: fonts.systemFonts,
     },
     styles: { fontSizes },
+    starterSizes: {
+      desktop: 1.7,
+      mobile: 1.6,
+    },
+    scaleModifiers: {
+      desktop: 1.25,
+      mobile: 1.15,
+    },
   },
 };
 
