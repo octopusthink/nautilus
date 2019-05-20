@@ -9,10 +9,6 @@
   GitHub API and an app.
 
   When extracted, remove the following libraries from package.json:
-
-  @octokit/app
-  @octokit/request
-  shelljs
 */
 
 const base64 = require('js-base64').Base64;
