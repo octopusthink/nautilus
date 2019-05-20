@@ -125,7 +125,13 @@ request('GET /repos/:owner/:repo/installation', {
           authorization: `token ${token}`,
           accept: 'application/vnd.github.mister-fantastic-preview+json',
         },
-      });
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     });
   })
   .catch((error) => {
