@@ -1,6 +1,6 @@
 A button indicates that a user can complete an action or make a choice, using a single click or tap. They are used for submitting forms, navigating to new pages, as well as toolbars and utilities.
 
-```js
+```jsx
 const onClick = (event) => {
   window.alert('🚨 Alarm sounded! 🚨');
 };
@@ -41,7 +41,7 @@ Use a primary button to draw attention to the most important action on the page.
 
 Minimal buttons are good when you don't want to draw too much attention to a button. Use them for secondary actions.
 
-```js
+```jsx
 <Button primary>Sign up now</Button>
 <Button>Sign up sometime</Button>
 <Button minimal>Sign up eventually</Button>
@@ -63,18 +63,18 @@ A link loses focus and means the user needs to reorient themselves, but a button
 
 This is an important different for accessibility needs, but as single page web apps become more common, the difference often starts to blur. In order to keep things flexible, a Button can also act as a link. We add an arrow to the text to indicate that the behaviour won't be exactly the same, and we use an `<a>` tag so screenreaders know what to expect as well.
 
-```js
-  <Button href="https://twitter.com/KittenBreak" navigation>
-    Take a break
-  </Button>
+```jsx
+<Button href="https://twitter.com/KittenBreak" navigation>
+  Take a break
+</Button>
 
-  <Button href="https://twitter.com/KittenBreak" navigation primary>
-    Take a break
-  </Button>
+<Button href="https://twitter.com/KittenBreak" navigation primary>
+  Take a break
+</Button>
 
-  <Button href="https://twitter.com/KittenBreak" navigation minimal>
-    Take a break
-  </Button>
+<Button href="https://twitter.com/KittenBreak" navigation minimal>
+  Take a break
+</Button>
 ```
 
 ### Intent
@@ -87,17 +87,17 @@ Sometimes, you need a button to communicate the choices it's offering up more cl
 
 Use a danger button any time you have a destructive action, like deleting something.
 
-```js
-  <Button primary success>
-    Nobel Peace Prize
-  </Button>
-  <Button success>Got a new job</Button>
-  <Button minimal success>
-    Woke up on time
-  </Button>
+```jsx
+<Button primary success>
+  Nobel Peace Prize
+</Button>
+<Button success>Got a new job</Button>
+<Button minimal success>
+  Woke up on time
+</Button>
 ```
 
-```js
+```jsx
 <Button primary warning>
   Trump 4 prez
 </Button>
@@ -109,7 +109,7 @@ Use a danger button any time you have a destructive action, like deleting someth
 </Button>
 ```
 
-```js
+```jsx
 <Button primary danger>
   Scorpion in your swimsuit
 </Button>
@@ -127,13 +127,13 @@ Use a danger button any time you have a destructive action, like deleting someth
 
 **Changes:** styling
 
-```js
+```jsx
 <Button primary>Active</Button>
 <Button>Hover</Button>
 <Button minimal>Focus</Button>
 ```
 
-```js
+```jsx
 <Button primary disabled>
   Disabled primary
 </Button>

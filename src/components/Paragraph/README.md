@@ -2,7 +2,7 @@
 
 ### Large Paragraph
 
-```js
+```jsx
 <Paragraph size="large">
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
 	augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
@@ -18,7 +18,7 @@
 
 ### Medium Paragraph
 
-```js
+```jsx
 <Paragraph>
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
 	augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
@@ -34,7 +34,7 @@
 
 ### Small (Fine Print) Paragraph
 
-```js
+```jsx
 <Paragraph size="small">
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
 	augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
@@ -52,7 +52,7 @@
 
 ### Paragraph with custom color
 
-```js
+```jsx
 <Paragraph color="accent">Aenean auctor justo nisl, in ullamcorper turpis pharetra mattis. Duis eget vulputate est. Nullam a velit pharetra, hendrerit magna vitae, accumsan magna.</Paragraph>
 <Paragraph color="medium">Aenean auctor justo nisl, in ullamcorper turpis pharetra mattis. Duis eget vulputate est. Nullam a velit pharetra, hendrerit magna vitae, accumsan magna.</Paragraph>
 <Paragraph color="light">Aenean auctor justo nisl, in ullamcorper turpis pharetra mattis. Duis eget vulputate est. Nullam a velit pharetra, hendrerit magna vitae, accumsan magna.</Paragraph>
