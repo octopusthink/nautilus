@@ -39,6 +39,10 @@ module.exports = {
           name: 'Principles',
           description: 'Overall principles to shape design decisions.',
         },
+        {
+          name: 'Typography',
+          content: 'src/styleguide/docs/typography.md',
+        },
       ],
       sectionDepth: 2,
     },

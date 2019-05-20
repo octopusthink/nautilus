@@ -172,11 +172,3 @@ export const metadataLarge = (theme) => {
     ...smallCaps(),
   };
 };
-
-// Other font styles we should generate:
-// Interface L M S
-// Body L M S
-// Heading L M S
-// Page Title
-// Subtitle
-// Metadata L S
