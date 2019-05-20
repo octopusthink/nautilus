@@ -131,6 +131,15 @@ export const theme = {
       headings: fonts.HarrietDisplay,
       interface: fonts.systemFonts,
     },
+    fontWeights: {
+      body: 400,
+      bodyBold: 600,
+      headings: 600,
+      pageTitle: 700,
+      subtitle: 300,
+      interface: 500,
+      interfaceBold: 700,
+    },
     starterSizes: {
       desktop: 1.7,
       mobile: 1.6,

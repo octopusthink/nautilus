@@ -66,24 +66,24 @@ const smallCaps = () => {
 export const interfaceSmall = (theme) => {
   return {
     fontFamily: theme.typography.fonts.interface,
+    fontWeight: theme.typography.fontWeights.interface,
     ...outputTypeDetails({ theme, sizeNumber: -0.5, font: 'interface' }),
-    fontWeight: 500,
   };
 };
 
 export const interfaceMedium = (theme) => {
   return {
     fontFamily: theme.typography.fonts.interface,
+    fontWeight: theme.typography.fontWeights.interface,
     ...outputTypeDetails({ theme, sizeNumber: 0, font: 'interface' }),
-    fontWeight: 500,
   };
 };
 
 export const interfaceLarge = (theme) => {
   return {
     fontFamily: theme.typography.fonts.interface,
+    fontWeight: theme.typography.fontWeights.interface,
     ...outputTypeDetails({ theme, sizeNumber: 1, font: 'interface' }),
-    fontWeight: 500,
   };
 };
 
@@ -91,24 +91,24 @@ export const interfaceLarge = (theme) => {
 export const bodySmall = (theme) => {
   return {
     fontFamily: theme.typography.fonts.body,
+    fontWeight: theme.typography.fontWeights.interface,
     ...outputTypeDetails({ theme, sizeNumber: 0.5, font: 'body' }),
-    fontWeight: 400,
   };
 };
 
 export const bodyMedium = (theme) => {
   return {
     fontFamily: theme.typography.fonts.body,
+    fontWeight: theme.typography.fontWeights.body,
     ...outputTypeDetails({ theme, sizeNumber: 0, font: 'body' }),
-    fontWeight: 400,
   };
 };
 
 export const bodyLarge = (theme) => {
   return {
     fontFamily: theme.typography.fonts.body,
+    fontWeight: theme.typography.fontWeights.body,
     ...outputTypeDetails({ theme, sizeNumber: 1, font: 'body' }),
-    fontWeight: 400,
   };
 };
 
@@ -116,40 +116,40 @@ export const bodyLarge = (theme) => {
 export const headingSmall = (theme) => {
   return {
     fontFamily: theme.typography.fonts.headings,
+    fontWeight: theme.typography.fontWeights.headings,
     ...outputTypeDetails({ theme, sizeNumber: 3, font: 'headings' }),
-    fontWeight: 600,
   };
 };
 
 export const headingMedium = (theme) => {
   return {
     fontFamily: theme.typography.fonts.headings,
+    fontWeight: theme.typography.fontWeights.headings,
     ...outputTypeDetails({ theme, sizeNumber: 4, font: 'headings' }),
-    fontWeight: 600,
   };
 };
 
 export const headingLarge = (theme) => {
   return {
     fontFamily: theme.typography.fonts.headings,
+    fontWeight: theme.typography.fontWeights.headings,
     ...outputTypeDetails({ theme, sizeNumber: 5, font: 'headings' }),
-    fontWeight: 600,
   };
 };
 
 export const pageTitle = (theme) => {
   return {
     fontFamily: theme.typography.fonts.headings,
+    fontWeight: theme.typography.fontWeights.pageTitle,
     ...outputTypeDetails({ theme, sizeNumber: 6, font: 'headings' }),
-    fontWeight: 600,
   };
 };
 
 export const subtitle = (theme) => {
   return {
     fontFamily: theme.typography.fonts.headings,
+    fontWeight: theme.typography.fontWeights.subtitle,
     ...outputTypeDetails({ theme, sizeNumber: 2, font: 'headings' }),
-    fontWeight: 400,
     fontStyle: 'italic',
   };
 };
@@ -158,8 +158,8 @@ export const subtitle = (theme) => {
 export const metadataSmall = (theme) => {
   return {
     fontFamily: theme.typography.fonts.interface,
+    fontWeight: theme.typography.fontWeights.interfaceBold,
     ...outputTypeDetails({ theme, sizeNumber: -0.5, font: 'interface' }),
-    fontWeight: 600,
     ...smallCaps(),
   };
 };
@@ -167,8 +167,8 @@ export const metadataSmall = (theme) => {
 export const metadataLarge = (theme) => {
   return {
     fontFamily: theme.typography.fonts.interface,
+    fontWeight: theme.typography.fontWeights.interfaceBold,
     ...outputTypeDetails({ theme, sizeNumber: 1, font: 'interface' }),
-    fontWeight: 600,
     ...smallCaps(),
   };
 };
