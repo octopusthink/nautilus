@@ -31,5 +31,7 @@ steps:
     env:
       GIT_BRANCH: $(Build.SourceBranchName)
       GIT_BRANCH_PR: $(System.PullRequest.SourceBranch)
-      GITHUB_APP_ID: $(GITHUB_APP_ID)
-      GITHUB_APP_PRIVATE_KEY: $(GITHUB_APP_PRIVATE_KEY)
+      GITHUB_ACCESS_TOKEN: $(github.accessToken)
+      GITHUB_OWNER: octopusthink
+      GITHUB_REPO: nautilus
+      GITHUB_USER: mechanical-octopus
