@@ -11,7 +11,6 @@
   When extracted, remove the following libraries from package.json:
 */
 
-const base64 = require('js-base64').Base64;
 const shell = require('shelljs');
 const fs = require('fs');
 const path = require('path');
