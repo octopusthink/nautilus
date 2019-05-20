@@ -54,6 +54,14 @@ const outputTypeDetails = ({ theme, sizeNumber, font }) => {
   };
 };
 
+// Convert regular case to small-caps.
+const smallCaps = () => {
+  return {
+    letterSpacing: '0.05em',
+    textTransform: 'uppercase',
+  };
+};
+
 // Interface
 export const interfaceSmall = (theme) => {
   return {
@@ -151,8 +159,8 @@ export const metadataSmall = (theme) => {
   return {
     fontFamily: theme.typography.fonts.interface,
     ...outputTypeDetails({ theme, sizeNumber: -0.5, font: 'interface' }),
-    fontWeight: 500,
-    textTransform: 'small-caps',
+    fontWeight: 600,
+    ...smallCaps(),
   };
 };
 
@@ -160,8 +168,8 @@ export const metadataLarge = (theme) => {
   return {
     fontFamily: theme.typography.fonts.interface,
     ...outputTypeDetails({ theme, sizeNumber: 1, font: 'interface' }),
-    fontWeight: 500,
-    textTransform: 'small-caps',
+    fontWeight: 600,
+    ...smallCaps(),
   };
 };
 
