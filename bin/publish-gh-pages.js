@@ -36,9 +36,18 @@ if (!PRIVATE_KEY || !PRIVATE_KEY.length) {
 
 process.on('unhandledRejection', console.dir);
 
-const GIT_BRANCH = process.env['GIT_BRANCH_PR'] || process.env['GIT_BRANCH'];
+let GIT_BRANCH = process.env['GIT_BRANCH_PR'];
+if (
+  !GIT_BRANCH ||
+  !GIT_BRANCH.length ||
+  GIT_BRANCH === '$(System.PullRequest.SourceBranch)'
+) {
+  GIT_BRANCH = process.env['GIT_BRANCH'];
+}
 
-if (!GIT_BRANCH || !GIT_BRANCH.length) {
+console.log('GIT_BRANCH', GIT_BRANCH);
+
+if (!GIT_BRANCH || !GIT_BRANCH.length || GIT_BRANCH.charAt(0) === '$') {
   throw new Error('Could not get GIT_BRANCH_PR or GIT_BRANCH');
 }
 
@@ -98,10 +107,10 @@ request('GET /repos/:owner/:repo/installation', {
         shell.exec(`git add ${file}`);
       });
 
-      shell.exec(
-        `git commit -m 'chore: Deploy styleguide for: ${GIT_BRANCH}'`,
-        { silent: true },
-      );
+      shell.exec('git config --global user.email "robots@octopusthink.com"');
+      shell.exec('git config --global user.name "Nautilus Publisher"');
+
+      shell.exec(`git commit -m 'chore: Deploy styleguide for: ${GIT_BRANCH}'`);
 
       shell.exec(
         `git remote add authenticated https://x-access-token:${token}@github.com/${owner}/${repo}.git`,
