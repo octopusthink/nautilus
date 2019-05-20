@@ -117,6 +117,15 @@ request('GET /repos/:owner/:repo/installation', {
         { silent: true },
       );
       shell.exec('git push authenticated gh-pages');
+
+      request('POST /repos/:owner/:repo/pages/builds', {
+        owner,
+        repo,
+        headers: {
+          authorization: `token ${token}`,
+          accept: 'application/vnd.github.mister-fantastic-preview+json',
+        },
+      });
     });
   })
   .catch((error) => {
