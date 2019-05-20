@@ -30,6 +30,8 @@ export const Button = ({
 
   let Component = 'button';
   if (navigation === true) {
+    // TODO: Use `react-router-dom` `<Link>` (or better a `nautilus` `<Link>`)
+    // component here.
     Component = 'a';
   }
 
