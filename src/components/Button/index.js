@@ -81,6 +81,8 @@ export const Button = ({
         transition: box-shadow 200ms;
         position: relative;
         top: 0;
+        text-align: center;
+        display: inline-block;
 
         &:active {
           top: 2px;
