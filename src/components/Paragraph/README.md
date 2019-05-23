@@ -26,7 +26,7 @@ Don't use a `Paragraph` for:
 Use a **large paragraph** when you want to emphasise an important passage of text.
 
 ```jsx
-<Paragraph>
+<Paragraph large>
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
 	augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
 	lectus in sem viverra volutpat.
@@ -36,7 +36,7 @@ Use a **large paragraph** when you want to emphasise an important passage of tex
 Use a **small paragraph** for fine print, or details that are secondary to the main content.
 
 ```jsx
-<Paragraph size="small">
+<Paragraph small>
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
 	augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
 	lectus in sem viverra volutpat.

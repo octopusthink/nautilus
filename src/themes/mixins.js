@@ -106,7 +106,7 @@ export const interfaceLarge = (theme) => {
 export const bodySmall = (theme) => {
   return {
     fontFamily: theme.typography.fonts.body,
-    fontWeight: theme.typography.fontWeights.interface,
+    fontWeight: theme.typography.fontWeights.body,
     ...typeAttributes({
       theme,
       sizeNumber: 0.5,

@@ -127,7 +127,7 @@ export const theme = {
   },
   typography: {
     fonts: {
-      body: fonts.HarrietText,
+      body: fonts.systemFonts,
       headings: fonts.HarrietDisplay,
       interface: fonts.systemFonts,
     },
@@ -150,7 +150,7 @@ export const theme = {
     },
     lineHeights: {
       headings: 1,
-      body: 1.6,
+      body: 1.4,
       interface: 1.2,
     },
   },
