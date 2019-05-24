@@ -15,7 +15,7 @@ describe('Nautilus', () => {
   it('should render children', () => {
     const { getByText } = render(
       <Nautilus>
-        <Heading level={1}>I'm Important</Heading>
+        <Heading level={1}>I&#39;m Important</Heading>
         <Paragraph>Here I am, rock you like a paragraph.</Paragraph>
       </Nautilus>,
     );

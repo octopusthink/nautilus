@@ -1,6 +1,15 @@
 // Let's start by generating a type scale, along with line-heights and small-caps modifiers.
 // These functions will be used by our type styles below.
 
+// Allows lookup of font types without magic constants, eg:
+// `{ fontType: FONT_TYPES.body }` instead of `{ fontType: 'body' }`.
+const FONT_TYPES = ['body', 'headings', 'interface'].reduce(
+  (accumulator, type) => {
+    return { ...accumulator, [type]: type };
+  },
+  {},
+);
+
 // In order to get a whole-integer pixel number, we multiply by ten and round,
 // then divide by ten again to get a rem value that works with our base size setting.
 const calculateFontSize = ({ scaleModifier, sizeNumber, starterSize }) => {
@@ -64,7 +73,7 @@ export const interfaceSmall = (theme) => {
     ...typeAttributes({
       theme,
       sizeNumber: -0.5,
-      fontType: theme.typography.fonts.interface,
+      fontType: FONT_TYPES.interface,
     }),
   };
 };
@@ -76,7 +85,7 @@ export const interfaceMedium = (theme) => {
     ...typeAttributes({
       theme,
       sizeNumber: 0,
-      fontType: theme.typography.fonts.interface,
+      fontType: FONT_TYPES.interface,
     }),
   };
 };
@@ -88,7 +97,7 @@ export const interfaceLarge = (theme) => {
     ...typeAttributes({
       theme,
       sizeNumber: 1,
-      fontType: theme.typography.fonts.interface,
+      fontType: FONT_TYPES.interface,
     }),
   };
 };
@@ -101,7 +110,7 @@ export const bodySmall = (theme) => {
     ...typeAttributes({
       theme,
       sizeNumber: 0.5,
-      fontType: theme.typography.fonts.body,
+      fontType: FONT_TYPES.body,
     }),
   };
 };
@@ -113,7 +122,7 @@ export const bodyMedium = (theme) => {
     ...typeAttributes({
       theme,
       sizeNumber: 0,
-      fontType: theme.typography.fonts.body,
+      fontType: FONT_TYPES.body,
     }),
   };
 };
@@ -125,7 +134,7 @@ export const bodyLarge = (theme) => {
     ...typeAttributes({
       theme,
       sizeNumber: 1,
-      fontType: theme.typography.fonts.body,
+      fontType: FONT_TYPES.body,
     }),
   };
 };
@@ -138,7 +147,7 @@ export const headingSmall = (theme) => {
     ...typeAttributes({
       theme,
       sizeNumber: 3,
-      fontType: theme.typography.fonts.headings,
+      fontType: FONT_TYPES.headings,
     }),
   };
 };
@@ -150,7 +159,7 @@ export const headingMedium = (theme) => {
     ...typeAttributes({
       theme,
       sizeNumber: 4,
-      fontType: theme.typography.fonts.headings,
+      fontType: FONT_TYPES.headings,
     }),
   };
 };
@@ -162,7 +171,7 @@ export const headingLarge = (theme) => {
     ...typeAttributes({
       theme,
       sizeNumber: 5,
-      fontType: theme.typography.fonts.headings,
+      fontType: FONT_TYPES.headings,
     }),
   };
 };
@@ -174,7 +183,7 @@ export const pageTitle = (theme) => {
     ...typeAttributes({
       theme,
       sizeNumber: 6,
-      fontType: theme.typography.fonts.headings,
+      fontType: FONT_TYPES.headings,
     }),
   };
 };
@@ -186,7 +195,7 @@ export const subtitle = (theme) => {
     ...typeAttributes({
       theme,
       sizeNumber: 2,
-      fontType: theme.typography.fonts.headings,
+      fontType: FONT_TYPES.headings,
     }),
     fontStyle: 'italic',
   };
@@ -200,7 +209,7 @@ export const metadataSmall = (theme) => {
     ...typeAttributes({
       theme,
       sizeNumber: -0.5,
-      fontType: theme.typography.fonts.interface,
+      fontType: FONT_TYPES.interface,
     }),
     ...smallCaps(),
   };
@@ -213,7 +222,7 @@ export const metadataLarge = (theme) => {
     ...typeAttributes({
       theme,
       sizeNumber: 1,
-      fontType: theme.typography.fonts.interface,
+      fontType: FONT_TYPES.interface,
     }),
     ...smallCaps(),
   };

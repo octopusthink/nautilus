@@ -3,7 +3,7 @@ import { ThemeProvider } from 'emotion-theming';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { nautilus as nautilusDefaultTheme } from 'themes';
+import { nautilus as nautilusDefaultTheme, themePropTypes } from 'themes';
 
 export const Nautilus = ({ children, theme }) => {
   return (
@@ -40,7 +40,7 @@ Nautilus.propTypes = {
   /** @ignore */
   children: PropTypes.node,
   /** Theme object used to style this instance of Nautilus and its components. */
-  theme: PropTypes.object,
+  theme: themePropTypes,
 };
 
 export default Nautilus;
