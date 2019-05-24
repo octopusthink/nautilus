@@ -141,7 +141,7 @@ export const theme = {
       interfaceBold: 700,
     },
     starterSizes: {
-      desktop: 1.7,
+      desktop: 1.8,
       mobile: 1.6,
     },
     scaleModifiers: {
@@ -150,7 +150,7 @@ export const theme = {
     },
     lineHeights: {
       headings: 1,
-      body: 1.4,
+      body: 1.5,
       interface: 1.2,
     },
   },

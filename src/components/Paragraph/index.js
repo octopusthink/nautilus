@@ -12,6 +12,11 @@ export const Paragraph = ({ children, large, small, ...otherProps }) => {
     <p
       css={css`
         ${css(bodyMedium(theme))};
+        margin: 0 0 4rem;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
 
         ${large &&
           css`

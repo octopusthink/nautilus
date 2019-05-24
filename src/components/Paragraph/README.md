@@ -3,7 +3,11 @@ A `Paragraph` is a self-contained unit of one or more coherent sentences related
 ```jsx
 <Paragraph size="large">
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
-	augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
+	augue gravida hendrerit.
+</Paragraph>
+
+<Paragraph>
+	Vestibulum ornare eget lacus cursus rhoncus. Cras nec
 	lectus in sem viverra volutpat.
 </Paragraph>
 ```
@@ -22,6 +26,9 @@ Don't use a `Paragraph` for:
 - Line lengths should be between 55-70 characters.
 - Text colour should contrast with the background.
 - Use the large and small variants sparingly when hierarchy is required. Most `Paragraphs` should use the default size.
+
+
+## Variations
 
 Use a **large paragraph** when you want to emphasise an important passage of text.
 
@@ -46,10 +53,17 @@ Use a **small paragraph** for fine print, or details that are secondary to the m
 
 ## Voice & Tone
 
-```jsx
-<Paragraph color="accent">Aenean auctor justo nisl, in ullamcorper turpis pharetra mattis. Duis eget vulputate est. Nullam a velit pharetra, hendrerit magna vitae, accumsan magna.</Paragraph>
-<Paragraph color="medium">Aenean auctor justo nisl, in ullamcorper turpis pharetra mattis. Duis eget vulputate est. Nullam a velit pharetra, hendrerit magna vitae, accumsan magna.</Paragraph>
-<Paragraph color="light">Aenean auctor justo nisl, in ullamcorper turpis pharetra mattis. Duis eget vulputate est. Nullam a velit pharetra, hendrerit magna vitae, accumsan magna.</Paragraph>
-<Paragraph color="danger">Aenean auctor justo nisl, in ullamcorper turpis pharetra mattis. Duis eget vulputate est. Nullam a velit pharetra, hendrerit magna vitae, accumsan magna.</Paragraph>
-<Paragraph color="success">Aenean auctor justo nisl, in ullamcorper turpis pharetra mattis. Duis eget vulputate est. Nullam a velit pharetra, hendrerit magna vitae, accumsan magna.</Paragraph>
-```
+Aim to keep paragraphs as **short as possible**. If a paragraph is longer than five sentences, break it into two.
+
+When writing long passages of text comprised of many paragraphs, highlight important information using **strong** and _emphasis_ tags. Use headings and lists to make content easier to scan.
+
+## Accessibility
+
+- Ensure text colour has a contrast ratio of at least 7:1 (WCAG AAA).
+- Use relative units to ensure that text can be resized by users.
+- Line height should be at least a space-and-a-half within paragraphs. (1.5)
+- Paragraph spacing should be at least 1.5 times the line height.
+- Don't allow line lengths to span more than 80 characters.
+- Font size should be a minimum of 16px.
+
+## Development
