@@ -90,6 +90,14 @@ const colors = {
   green900: '#003b00',
 };
 
+const fonts = {
+  systemFonts:
+    '-apple-system, BlinkMacSystemFont, San Francisco, Roboto, Segoe UI, Helvetica Neue, sans-serif',
+  HarrietDisplay: 'Harriet Display',
+  HarrietText: 'Harriet Text',
+  Graphik: 'Graphik',
+};
+
 export const theme = {
   components: {
     ButtonColors: {
@@ -118,7 +126,33 @@ export const theme = {
     },
   },
   typography: {
-    bodyFont: '-apple-system',
+    fonts: {
+      body: fonts.HarrietText,
+      headings: fonts.HarrietDisplay,
+      interface: fonts.systemFonts,
+    },
+    fontWeights: {
+      body: 400,
+      bodyBold: 600,
+      headings: 600,
+      pageTitle: 700,
+      subtitle: 300,
+      interface: 500,
+      interfaceBold: 700,
+    },
+    starterSizes: {
+      desktop: 1.7,
+      mobile: 1.6,
+    },
+    scaleModifiers: {
+      desktop: 1.25,
+      mobile: 1.15,
+    },
+    lineHeights: {
+      headings: 1,
+      body: 1.6,
+      interface: 1.2,
+    },
   },
 };
 

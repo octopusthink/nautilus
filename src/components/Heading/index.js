@@ -1,7 +1,10 @@
+import invariant from 'invariant';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 export const Heading = ({ children, level, ...otherProps }) => {
+  invariant(level, 'Heading component requires a level prop');
+
   const HeadingElement = `h${level}`;
 
   return <HeadingElement {...otherProps}>{children}</HeadingElement>;

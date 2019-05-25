@@ -1,4 +1,3 @@
-import { ThemeProvider } from 'emotion-theming';
 import PropTypes from 'prop-types';
 import React from 'react';
 // We only use react-testing-library in development, so ignore this linting
@@ -6,20 +5,24 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { render } from 'react-testing-library';
 
-import { nautilus } from 'themes';
+import { Nautilus } from 'components';
+import { nautilus as nautilusDefaultTheme, themePropTypes } from 'themes';
 
 // Wrap `react-testing-library`'s `render` function with our providers.
-const NautilusProviders = ({ children }) => {
-  return <ThemeProvider theme={nautilus}>{children}</ThemeProvider>;
+const NautilusProviders = ({ children, theme }) => {
+  return <Nautilus theme={theme}>{children}</Nautilus>;
 };
 
 NautilusProviders.defaultProps = {
   children: undefined,
+  theme: nautilusDefaultTheme,
 };
 
 NautilusProviders.propTypes = {
   /** @ignore */
   children: PropTypes.node,
+  /** @ignore */
+  theme: themePropTypes,
 };
 
 const customRender = (ui, options) => {
