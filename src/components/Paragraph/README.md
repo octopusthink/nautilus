@@ -24,7 +24,7 @@ Don't use a `<Paragraph>` for:
 ## Appearance
 
 - Line lengths should be between 55-70 characters.
-- Text colour should contrast with the background.
+- Text colour should contrast with the background. (See accessibility section below.)
 - Use the large and small variants sparingly when hierarchy is required. Most `<Paragraph>`s should use the default size.
 
 
