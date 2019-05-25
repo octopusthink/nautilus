@@ -169,7 +169,7 @@ export const theme = {
   },
 
   // All themeable spacing variables go here.
-  // 10 rems = 1px.
+  // 1rem = 10px.
   spacing: {
     margin: {
       none: 0,
