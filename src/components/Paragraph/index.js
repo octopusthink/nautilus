@@ -21,7 +21,7 @@ export const Paragraph = ({
       css={css`
         ${css(bodyMedium(theme))};
         color: ${theme.colors.text.default};
-        margin: 0 0 4rem;
+        margin: 0 0 ${theme.spacing.margin.m};
 
         &:last-of-type {
           margin-bottom: 0;

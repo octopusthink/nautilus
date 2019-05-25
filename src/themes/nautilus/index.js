@@ -99,6 +99,7 @@ const fonts = {
 };
 
 export const theme = {
+  // All themeable colour variables go here.
   colors: {
     intent: {
       success: colors.green600,
@@ -132,6 +133,7 @@ export const theme = {
     },
   },
 
+  // All themeable typography variables go here.
   typography: {
     fonts: {
       body: fonts.systemFonts,
@@ -163,6 +165,32 @@ export const theme = {
       headings: 1,
       body: 1.5,
       interface: 1.2,
+    },
+  },
+
+  // All themeable spacing variables go here.
+  // 10 rems = 1px.
+  spacing: {
+    margin: {
+      none: 0,
+      xxs: '0.4rem',
+      xs: '0.8rem',
+      s: '1.6rem',
+      m: '3.2rem',
+      l: '4.8rem',
+      xl: '6.4rem',
+      xxl: '8.0rem',
+    },
+
+    padding: {
+      none: 0,
+      xxs: '0.2rem',
+      xs: '0.4rem',
+      s: '0.8rem',
+      m: '1.2rem',
+      l: '2.4rem',
+      xl: '3.2rem',
+      xxl: '4.8rem',
     },
   },
 };
