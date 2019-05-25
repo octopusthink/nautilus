@@ -12,9 +12,8 @@ const FONT_TYPES = ['body', 'headings', 'interface'].reduce(
 
 // In order to get a whole-integer pixel number, we multiply by ten and round,
 // then divide by ten again to get a rem value that works with our base size setting.
-const calculateFontSize = ({ scaleModifier, sizeNumber, starterSize }) => {
-  const newSize =
-    Math.round(starterSize * 10 * scaleModifier ** sizeNumber) / 10;
+const calculateFontSize = ({ scaleModifier, sizeNumber, baseSize }) => {
+  const newSize = Math.round(baseSize * 10 * scaleModifier ** sizeNumber) / 10;
 
   return newSize;
 };
@@ -48,7 +47,7 @@ const smallCaps = () => {
 // Output typographic styling to apply to elements.
 const typeAttributes = ({ theme, sizeNumber, fontType }) => {
   const fontSize = calculateFontSize({
-    starterSize: theme.typography.starterSizes.desktop,
+    baseSize: theme.typography.baseSizes.desktop,
     scaleModifier: theme.typography.scaleModifiers.desktop,
     sizeNumber,
   });

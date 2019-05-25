@@ -5,13 +5,22 @@ import React from 'react';
 import { useTheme } from 'themes';
 import { bodySmall, bodyMedium, bodyLarge } from 'themes/mixins';
 
-export const Paragraph = ({ children, large, small, ...otherProps }) => {
+export const Paragraph = ({
+  children,
+  large,
+  small,
+  inverse,
+  dark,
+  light,
+  ...otherProps
+}) => {
   const theme = useTheme();
 
   return (
     <p
       css={css`
         ${css(bodyMedium(theme))};
+        color: ${theme.colors.text.default};
         margin: 0 0 4rem;
 
         &:last-of-type {
@@ -27,6 +36,31 @@ export const Paragraph = ({ children, large, small, ...otherProps }) => {
           css`
             ${css(bodySmall(theme))};
           `}
+
+          ${light &&
+            css`
+              color: ${theme.colors.text.light};
+            `}
+
+          ${dark &&
+            css`
+              color: ${theme.colors.text.dark};
+            `}
+
+          ${inverse &&
+            css`
+              color: ${theme.colors.text.inverse};
+
+              ${light &&
+                css`
+                  color: ${theme.colors.text.inverseLight};
+                `}
+
+              ${dark &&
+                css`
+                  color: ${theme.colors.text.inverseDark};
+                `}
+            `}
       `}
       {...otherProps}
     >
@@ -39,6 +73,9 @@ Paragraph.defaultProps = {
   children: undefined,
   large: false,
   small: false,
+  inverse: false,
+  dark: false,
+  light: false,
 };
 
 Paragraph.propTypes = {
@@ -48,6 +85,12 @@ Paragraph.propTypes = {
   large: PropTypes.bool,
   /** Decrease the visual prominence of the paragraph. */
   small: PropTypes.bool,
+  /** Inverse text colour. Used for dark backgrounds. */
+  inverse: PropTypes.bool,
+  /** Darken text colour. */
+  dark: PropTypes.bool,
+  /** Lighten text colour. */
+  light: PropTypes.bool,
 };
 
 export default Paragraph;

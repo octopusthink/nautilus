@@ -17,7 +17,7 @@ A `Paragraph` is a self-contained unit of one or more coherent sentences related
 Use a `Paragraph` for any body copy comprising of one or more full sentences.
 
 Don't use a `Paragraph` for:
-- A single text link or call to action—use a `Button` instead.
+- A single text link or call to action—use a [Button](../#/Function/Components/Button) instead.
 - A heading or subheading—use a `Heading`, `Subtitle`, or `Page Title`.
 - A list of related, equally weighted items—use a `List` instead.
 
@@ -50,6 +50,44 @@ Use a **small paragraph** for fine print, or details that are secondary to the m
 </Paragraph>
 ```
 
+Use an **inverse paragraph** if you need to put a paragraph on top of a dark background.
+
+```jsx
+<Paragraph inverse>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
+	augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
+	lectus in sem viverra volutpat.
+</Paragraph>
+```
+
+For both inverse and default type colours, you can also use a dark and light variant. Use sparingly when needed to provide an additional level of hierarchy or emphasis.
+
+```jsx
+<Paragraph light>
+	Light
+</Paragraph>
+
+<Paragraph>
+	Default
+</Paragraph>
+
+<Paragraph dark>
+	Dark
+</Paragraph>
+
+<Paragraph inverse light>
+	Inverse light
+</Paragraph>
+
+<Paragraph inverse>
+	Inverse
+</Paragraph>
+
+<Paragraph inverse dark>
+	Inverse dark
+</Paragraph>
+```
+
 
 ## Voice & Tone
 
@@ -65,5 +103,3 @@ When writing long passages of text comprised of many paragraphs, highlight impor
 - Paragraph spacing should be at least 1.5 times the line height.
 - Don't allow line lengths to span more than 80 characters.
 - Font size should be a minimum of 16px.
-
-## Development
