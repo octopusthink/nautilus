@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  assetsDir: 'src/styleguide/assets',
   components: 'src/components/**/index.{js,jsx,ts,tsx}',
   ignore: ['src/components/index.js', '**/*.test.{js,jsx,ts,tsx}'],
   title: '🦑 Nautilus Design System',
@@ -18,6 +19,9 @@ module.exports = {
       },
       '@global body': {
         fontSize: '1.6rem',
+      },
+      '@global img': {
+        maxWidth: '100%',
       },
     },
   },
