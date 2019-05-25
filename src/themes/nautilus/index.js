@@ -10,7 +10,7 @@ const colors = {
   grey700: '#818996',
   grey800: '#666c76',
   grey900: '#3b3f45',
-  black: '#3b3f45',
+  black: '#181b1c',
 
   red0: '#f6e9e9',
   red100: '#edd2d2',
@@ -99,38 +99,46 @@ const fonts = {
 };
 
 export const theme = {
-  components: {
-    ButtonColors: {
-      neutral: colors.white,
-
-      default: colors.pink600,
-      defaultDark: colors.pink800,
-      defaultLight: colors.pink200,
-
-      disabled: colors.grey700,
-      disabledDark: colors.grey800,
-      disabledLight: colors.grey200,
-
-      // These should possibly just be defined as semantic colours, outside of the button colours!
+  colors: {
+    intent: {
       success: colors.green600,
       successDark: colors.green800,
       successLight: colors.green200,
-
       warning: colors.yellow600,
       warningDark: colors.yellow800,
       warningLight: colors.yellow200,
-
       danger: colors.red600,
       dangerDark: colors.red800,
       dangerLight: colors.red200,
     },
+
+    text: {
+      default: colors.grey900,
+      dark: colors.black,
+      light: colors.grey800,
+      inverse: colors.grey0,
+      inverseLight: colors.white,
+      inverseDark: colors.grey100,
+    },
+
+    buttons: {
+      neutral: colors.white,
+      default: colors.pink600,
+      defaultDark: colors.pink800,
+      defaultLight: colors.pink200,
+      disabled: colors.grey700,
+      disabledDark: colors.grey800,
+      disabledLight: colors.grey200,
+    },
   },
+
   typography: {
     fonts: {
-      body: fonts.HarrietText,
+      body: fonts.systemFonts,
       headings: fonts.HarrietDisplay,
       interface: fonts.systemFonts,
     },
+
     fontWeights: {
       body: 400,
       bodyBold: 600,
@@ -140,17 +148,20 @@ export const theme = {
       interface: 500,
       interfaceBold: 700,
     },
-    starterSizes: {
-      desktop: 1.7,
+
+    baseSizes: {
+      desktop: 1.8,
       mobile: 1.6,
     },
+
     scaleModifiers: {
       desktop: 1.25,
       mobile: 1.15,
     },
+
     lineHeights: {
       headings: 1,
-      body: 1.6,
+      body: 1.5,
       interface: 1.2,
     },
   },

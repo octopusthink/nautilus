@@ -36,32 +36,32 @@ export const Button = ({
     Component = 'a';
   }
 
-  let currentButtonColor = theme.components.ButtonColors.default;
-  let currentButtonColorDark = theme.components.ButtonColors.defaultDark;
-  let currentButtonColorLight = theme.components.ButtonColors.defaultLight;
+  let currentButtonColor = theme.colors.buttons.default;
+  let currentButtonColorDark = theme.colors.buttons.defaultDark;
+  let currentButtonColorLight = theme.colors.buttons.defaultLight;
 
   if (disabled === true) {
-    currentButtonColor = theme.components.ButtonColors.disabled;
-    currentButtonColorDark = theme.components.ButtonColors.disabledDark;
-    currentButtonColorLight = theme.components.ButtonColors.disabledLight;
+    currentButtonColor = theme.colors.buttons.disabled;
+    currentButtonColorDark = theme.colors.buttons.disabledDark;
+    currentButtonColorLight = theme.colors.buttons.disabledLight;
   }
 
   if (success === true) {
-    currentButtonColor = theme.components.ButtonColors.success;
-    currentButtonColorDark = theme.components.ButtonColors.successDark;
-    currentButtonColorLight = theme.components.ButtonColors.successLight;
+    currentButtonColor = theme.colors.intent.success;
+    currentButtonColorDark = theme.colors.intent.successDark;
+    currentButtonColorLight = theme.colors.intent.successLight;
   }
 
   if (warning === true) {
-    currentButtonColor = theme.components.ButtonColors.warning;
-    currentButtonColorDark = theme.components.ButtonColors.warningDark;
-    currentButtonColorLight = theme.components.ButtonColors.warningLight;
+    currentButtonColor = theme.colors.intent.warning;
+    currentButtonColorDark = theme.colors.intent.warningDark;
+    currentButtonColorLight = theme.colors.intent.warningLight;
   }
 
   if (danger === true) {
-    currentButtonColor = theme.components.ButtonColors.danger;
-    currentButtonColorDark = theme.components.ButtonColors.dangerDark;
-    currentButtonColorLight = theme.components.ButtonColors.dangerLight;
+    currentButtonColor = theme.colors.intent.danger;
+    currentButtonColorDark = theme.colors.intent.dangerDark;
+    currentButtonColorLight = theme.colors.intent.dangerLight;
   }
 
   return (
@@ -75,7 +75,7 @@ export const Button = ({
         text-decoration: none;
         border: 2px solid ${currentButtonColor};
         color: ${currentButtonColor};
-        background: ${theme.components.ButtonColors.neutral};
+        background: ${theme.colors.buttons.neutral};
         border-radius: 8px;
         margin: 0 8px 16px;
         transition: box-shadow 200ms;
@@ -106,11 +106,11 @@ export const Button = ({
         ${primary &&
           css`
             background: ${currentButtonColor};
-            color: ${theme.components.ButtonColors.neutral};
+            color: ${theme.colors.buttons.neutral};
 
             &:active {
               background: ${currentButtonColorDark};
-              color: ${theme.components.ButtonColors.neutral};
+              color: ${theme.colors.buttons.neutral};
             }
           `}
 
