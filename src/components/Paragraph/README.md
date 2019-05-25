@@ -1,7 +1,7 @@
-A `Paragraph` is a self-contained unit of one or more coherent sentences related to a single topic or idea.
+A `<Paragraph>` is a self-contained unit of one or more coherent sentences related to a single topic or idea.
 
 ```jsx
-<Paragraph size="large">
+<Paragraph>
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
 	augue gravida hendrerit.
 </Paragraph>
@@ -14,18 +14,18 @@ A `Paragraph` is a self-contained unit of one or more coherent sentences related
 
 ## Usage
 
-Use a `Paragraph` for any body copy comprising of one or more full sentences.
+Use a `<Paragraph>` for any body copy comprising of one or more full sentences.
 
-Don't use a `Paragraph` for:
-- A single text link or call to action—use a [Button](../#/Function/Components/Button) instead.
-- A heading or subheading—use a `Heading`, `Subtitle`, or `Page Title`.
-- A list of related, equally weighted items—use a `List` instead.
+Don't use a `<Paragraph>` for:
+- A single text link or call to action. Use a [`<Button>`](../#/Function/Components/Button) instead.
+- A heading or subheading. Use a `<Heading>`, `<Subtitle>`, or `<Page Title>`.
+- A list of related, equally weighted items. Use a `<List>` instead.
 
 ## Appearance
 
 - Line lengths should be between 55-70 characters.
 - Text colour should contrast with the background.
-- Use the large and small variants sparingly when hierarchy is required. Most `Paragraphs` should use the default size.
+- Use the large and small variants sparingly when hierarchy is required. Most `<Paragraph>`s should use the default size.
 
 
 ## Variations
