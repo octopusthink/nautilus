@@ -41,7 +41,7 @@ module.exports = {
       sections: [
         {
           name: 'Principles',
-          description: 'Overall principles to shape design decisions.',
+          content: 'src/styleguide/docs/principles.md',
         },
         {
           name: 'Typography',
