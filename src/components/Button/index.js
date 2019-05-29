@@ -70,14 +70,14 @@ export const Button = ({
     <Component
       css={css`
         ${css(interfaceMedium(theme))};
-        padding: 12px 32px;
+        padding: ${theme.spacing.padding.m} ${theme.spacing.padding.l};
         outline: none;
         text-decoration: none;
         border: 2px solid ${currentButtonColor};
         color: ${currentButtonColor};
         background: ${theme.colors.buttons.neutral};
         border-radius: 8px;
-        margin: 0 8px 16px;
+        margin: 0 ${theme.spacing.margin.xxs} ${theme.spacing.margin.xs};
         transition: box-shadow 200ms;
         position: relative;
         top: 0;
