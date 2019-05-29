@@ -1,25 +1,18 @@
 {
-  "extends": [
-    "airbnb",
-    "plugin:jest/recommended",
-    "prettier",
-  ],
+  "extends": ["airbnb", "plugin:jest/recommended", "prettier"],
   "parser": "babel-eslint",
-  "plugins": [
-    "emotion",
-    "prettier",
-  ],
+  "plugins": ["emotion", "prettier"],
   "rules": {
     "import/no-named-as-default": false,
     "import/prefer-default-export": false,
     "react/jsx-filename-extension": false,
-    "prettier/prettier": "error",
+    "prettier/prettier": "error"
   },
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["./", "src"],
-      },
-    },
-  },
+        "paths": ["./", "src"]
+      }
+    }
+  }
 }

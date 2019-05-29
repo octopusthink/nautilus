@@ -1,0 +1,10 @@
+*.md
+*.yml
+CNAME
+bin/
+dist/
+node_modules/
+package-lock.json
+package.json
+*.png
+*.svg
