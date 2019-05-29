@@ -47,6 +47,10 @@ module.exports = {
           name: 'Typography',
           content: 'src/styleguide/docs/typography.md',
         },
+        {
+          name: 'Spacing',
+          content: 'src/styleguide/docs/spacing.md',
+        },
       ],
       sectionDepth: 2,
     },
