@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const srcPath = path.resolve(fs.realpathSync(process.cwd()), 'src');
+const styleguidePath = path.resolve(fs.realpathSync(process.cwd()), 'styleguide');
 
 module.exports = {
   module: {
@@ -9,7 +10,7 @@ module.exports = {
       // Transform ES6 with Babel
       {
         test: /\.(js|jsx|mjs)$/,
-        include: [srcPath],
+        include: [srcPath, styleguidePath],
         use: [
           {
             loader: require.resolve('babel-loader'),
