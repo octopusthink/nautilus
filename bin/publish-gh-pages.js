@@ -44,9 +44,6 @@ if (!GIT_BRANCH || !GIT_BRANCH.length || GIT_BRANCH.charAt(0) === '$') {
   throw new Error('Could not get GIT_BRANCH_PR or GIT_BRANCH');
 }
 
-// Build the styleguide.
-shell.exec('npm run build');
-
 // Ignore differences in npm versions on Azure, etc.
 shell.exec('git checkout package-lock.json');
 
