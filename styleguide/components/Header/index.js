@@ -13,7 +13,10 @@ export function Header({ children, title, version }) {
         border-bottom: 4px solid ${theme.colors.neutral.grey800};
         padding-bottom: ${theme.spacing.padding.l};
         margin-bottom: ${theme.spacing.margin.xl};
-        grid-column: 1 / 3;
+        @media screen and (min-width: 960px) {
+          grid-column: 1 / 3;
+        }
+
         ${css(metadataLarge(theme))};
       `}
     >

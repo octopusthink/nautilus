@@ -26,7 +26,10 @@ export const StyleGuide = ({
         css={css`
           display: grid;
           padding: ${theme.spacing.padding.xl};
-          grid-template-columns: 2fr 1fr;
+
+          @media screen and (min-width: 960px) {
+            grid-template-columns: 2fr 1fr;
+          }
         `}
       >
         <Header title={title} version={version} />
