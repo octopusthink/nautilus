@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-/* eslint-disable */
-
+/* eslint-disable no-console */
 /*
   Note:
 
@@ -10,42 +9,20 @@
 
   When extracted, remove the following libraries from package.json:
 */
-
+// eslint-disable-next-line import/no-extraneous-dependencies
 const shell = require('shelljs');
-const fs = require('fs');
-const path = require('path');
 
-const processDir = fs.realpathSync(process.cwd());
+const { GITHUB_ACCESS_TOKEN, GITHUB_USER } = process.env;
+const GIT_REF = process.env.GIT_REF || 'master';
 
-const GITHUB_ACCESS_TOKEN = process.env['GITHUB_ACCESS_TOKEN'];
-const GITHUB_USER = process.env['GITHUB_USER'];
-
-const owner = process.env['GITHUB_OWNER'];
-const repo = process.env['GITHUB_REPO'];
+const owner = process.env.GITHUB_OWNER;
+const repo = process.env.GITHUB_REPO;
 
 if (!GITHUB_ACCESS_TOKEN || !GITHUB_ACCESS_TOKEN.length) {
   throw new Error('GITHUB_ACCESS_TOKEN is required but not set');
 }
 
 process.on('unhandledRejection', console.dir);
-
-let GIT_BRANCH = process.env['GIT_BRANCH_PR'];
-if (
-  !GIT_BRANCH ||
-  !GIT_BRANCH.length ||
-  GIT_BRANCH === '$(System.PullRequest.SourceBranch)'
-) {
-  GIT_BRANCH = process.env['GIT_BRANCH'];
-}
-
-console.log('GIT_BRANCH', GIT_BRANCH);
-
-if (!GIT_BRANCH || !GIT_BRANCH.length || GIT_BRANCH.charAt(0) === '$') {
-  throw new Error('Could not get GIT_BRANCH_PR or GIT_BRANCH');
-}
-
-// Build the styleguide.
-shell.exec('npm run build');
 
 // Ignore differences in npm versions on Azure, etc.
 shell.exec('git checkout package-lock.json');
@@ -54,10 +31,10 @@ shell.exec('git fetch origin');
 shell.exec('git checkout gh-pages');
 shell.exec('git pull origin gh-pages');
 
-shell.rm('-rf', GIT_BRANCH);
+shell.rm('-rf', GIT_REF);
 
-shell.mkdir('-p', `./${GIT_BRANCH}`);
-shell.mv('dist/styleguide/*', `./${GIT_BRANCH}`);
+shell.mkdir('-p', `./${GIT_REF}`);
+shell.mv('dist/styleguide', `./${GIT_REF}`);
 
 const files = shell
   .exec('git ls-files --other --modified --exclude-standard', { silent: true })
@@ -82,7 +59,7 @@ files.forEach((file) => {
 shell.exec('git config --global user.email "robots@octopusthink.com"');
 shell.exec('git config --global user.name "Octopus Think Robot"');
 
-shell.exec(`git commit -m 'chore: Deploy styleguide for: ${GIT_BRANCH}'`);
+shell.exec(`git commit -m 'chore: Deploy styleguide for: ${GIT_REF}'`);
 
 shell.exec(
   `git remote add authenticated https://${GITHUB_USER}:${GITHUB_ACCESS_TOKEN}@github.com/${owner}/${repo}.git`,
