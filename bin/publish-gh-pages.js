@@ -34,7 +34,7 @@ shell.exec('git pull origin gh-pages');
 shell.rm('-rf', GIT_REF);
 
 shell.mkdir('-p', `./${GIT_REF}`);
-shell.mv('dist/styleguide', `./${GIT_REF}`);
+shell.mv('dist/styleguide/*', `./${GIT_REF}`);
 
 const files = shell
   .exec('git ls-files --other --modified --exclude-standard', { silent: true })
