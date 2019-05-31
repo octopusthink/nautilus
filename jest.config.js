@@ -19,7 +19,7 @@ module.exports = {
   },
   modulePaths: ['<rootDir>/', '<rootDir>/src/'],
   setupFilesAfterEnv: [
-    'react-testing-library/cleanup-after-each',
+    '@testing-library/react/cleanup-after-each',
     '<rootDir>/utils/jest.setup.js',
   ],
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
