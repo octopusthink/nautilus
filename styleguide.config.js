@@ -5,18 +5,6 @@ module.exports = {
   components: 'src/components/**/index.{js,jsx,ts,tsx}',
   ignore: ['src/components/index.js', '**/*.test.{js,jsx,ts,tsx}'],
   title: 'Nautilus Design System',
-  theme: {
-    color: {
-      link: 'firebrick',
-      linkHover: 'hotpink',
-      base: '#fff',
-      baseBackground: '#fff',
-      codeBackground: '#000000',
-    },
-    borderRadius: 0,
-    maxWidth: 960,
-    sidebarWidth: 320,
-  },
   styles: {
     StyleGuide: {
       '@global html': {

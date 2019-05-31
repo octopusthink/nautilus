@@ -5,9 +5,8 @@
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Logo from 'rsg-components/Logo';
 import Markdown from 'rsg-components/Markdown';
-import Version from 'rsg-components/Version';
+import Header from 'styleguide/components/Header';
 
 import Nautilus from 'components/Nautilus';
 import theme from 'styleguide/theme';
@@ -22,34 +21,26 @@ export const StyleGuide = ({
 }) => {
   return (
     <Nautilus>
-      <header
+      <div
         css={css`
-          background-color: ${theme.colors.neutral.black};
-          border-bottom: 4px solid ${theme.colors.neutral.grey200};
-          color: ${theme.colors.neutral.white};
-          left: ${theme.spacing.margin.l};
-          left: 0;
+          display: grid;
           padding: ${theme.spacing.padding.xl};
-          position: fixed;
-          right: ${theme.spacing.margin.l};
-          right: 0;
-          top: 0;
+          grid-template-columns: 2fr 1fr;
         `}
       >
-        <Logo>{title}</Logo>
-        {version && <Version>{version}</Version>}
-      </header>
+        <Header title={title} version={version} />
 
-      <main>
-        {children}
-        <footer>
-          <Markdown
-            text={`Made with ❤️ by [Octopus Think](https://octopusthink.com/)`}
-          />
-        </footer>
-      </main>
+        <main>
+          {children}
+          <footer>
+            <Markdown
+              text={`Made with ❤️ by [Octopus Think](https://octopusthink.com/)`}
+            />
+          </footer>
+        </main>
 
-      {hasSidebar && toc}
+        {hasSidebar && toc}
+      </div>
     </Nautilus>
   );
 };
