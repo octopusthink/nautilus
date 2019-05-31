@@ -19,20 +19,14 @@ trigger:
       - master
 
 jobs:
-  - job: setup
-    displayName: Setup
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-      - script: npm install
-        displayName: 'Install dependencies'
-
   - job: lint
     displayName: Lint
     dependsOn: setup
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+      - script: npm install
+        displayName: 'Install dependencies'
       - script: npm run lint
         displayName: 'Lint JS'
 
@@ -42,15 +36,21 @@ jobs:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+      - script: npm install
+        displayName: 'Install dependencies'
       - script: npm run test:all-with-coverage
         displayName: 'Run unit tests'
 
   - job: publish_styleguide
     displayName: Publish Styleguide
-    dependsOn: test
+    dependsOn:
+      - lint
+      - test
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+      - script: npm install
+        displayName: 'Install dependencies'
       - script: npm run publish:styleguide
         displayName: 'Publish styleguide to gh-pages'
         env:
