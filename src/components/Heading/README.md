@@ -3,7 +3,7 @@ Headings are short pieces of text used to organise and structure a page's conten
 They provide both a semantic and a presentational role, guiding users (as well as search engines and other bots) through the page content both visually (through hierarchy) and structurally (through markup). They are especially important for users of assistive technology—heading allow quick navigation throughout a page.
 
 ```jsx
-<Heading>This just in: Scotland is rainy</Heading>
+<Heading>This just in: Scotland is rainy 🏴󠁧󠁢󠁳󠁣󠁴󠁿🌦</Heading>
 ```
 
 ## Usage
@@ -29,9 +29,9 @@ Don't use a `<Heading>` for:
 Headings are provided in three different sizes. You should **always use headings sequentially** (a medium heading would be nested underneath a large heading).
 
 ```jsx
-<Heading large>Breaking news</Heading>
-<Heading medium>Kittens are better than dogs</Heading>
-<Heading small>More at eleven</Heading>
+<Heading level={2}>Breaking news 📰</Heading>
+<Heading level={3}>Kittens are better than dogs 😼</Heading>
+<Heading level={4}>More at eleven 🕚</Heading>
 ```
 
 The `large` heading then uses an `<h2>`, the `medium` heading uses `<h3>`, and the `small` heading uses `<h4>`. You should not break this levelling structure; see the Accessibility section for more details.

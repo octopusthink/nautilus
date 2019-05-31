@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Heading should output large CSS when the \`large\` prop is set 1`] = `
+exports[`Heading should output large CSS when the \`level\` prop is 2 1`] = `
 .emotion-0 {
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -16,7 +16,7 @@ exports[`Heading should output large CSS when the \`large\` prop is set 1`] = `
 </h2>
 `;
 
-exports[`Heading should output medium CSS when the \`medium\` prop is set 1`] = `
+exports[`Heading should output medium CSS when the \`level\` prop is 3 1`] = `
 .emotion-0 {
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -32,7 +32,7 @@ exports[`Heading should output medium CSS when the \`medium\` prop is set 1`] = 
 </h3>
 `;
 
-exports[`Heading should output small CSS when the \`small\` prop is set 1`] = `
+exports[`Heading should output small CSS when the \`level\` prop is 4 1`] = `
 .emotion-0 {
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;

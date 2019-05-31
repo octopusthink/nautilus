@@ -6,39 +6,14 @@ import React from 'react';
 import { useTheme } from 'themes';
 import { headingLarge, headingMedium, headingSmall } from 'themes/mixins';
 
-const LARGE = 'large';
-const MEDIUM = 'medium';
-const SMALL = 'small';
+const LARGE = 2;
+const MEDIUM = 3;
+const SMALL = 4;
 
-const HeadingLevels = {
-  [LARGE]: 2,
-  [MEDIUM]: 3,
-  [SMALL]: 4,
-};
+const HeadingLevels = [LARGE, MEDIUM, SMALL];
 
-export const Heading = ({
-  children,
-  large,
-  level,
-  medium,
-  small,
-  ...otherProps
-}) => {
-  invariant(
-    [large, medium, small].filter((prop) => prop).length <= 1,
-    '<Heading> can only be one of large/medium/small. Please only set one.',
-  );
-
-  // Headings are large by default.
-  let size = LARGE;
-  if (medium) {
-    size = MEDIUM;
-  }
-  if (small) {
-    size = SMALL;
-  }
-
-  const HeadingElement = `h${HeadingLevels[size]}`;
+export const Heading = ({ children, level, ...otherProps }) => {
+  const HeadingElement = `h${level}`;
   const theme = useTheme();
 
   return (
@@ -46,17 +21,17 @@ export const Heading = ({
       css={css`
         margin: 0 0 ${theme.spacing.margin.m};
 
-        ${large &&
+        ${level === LARGE &&
           css`
             ${css(headingLarge(theme))}
           `}
 
-        ${medium &&
+        ${level === MEDIUM &&
           css`
             ${css(headingMedium(theme))};
           `}
 
-        ${small &&
+        ${level === SMALL &&
           css`
             ${css(headingSmall(theme))}
           `}
@@ -71,22 +46,13 @@ export const Heading = ({
 Heading.defaultProps = {
   children: undefined,
   level: 2,
-  large: false,
-  medium: false,
-  small: false,
 };
 
 Heading.propTypes = {
   /** @ignore */
   children: PropTypes.node,
-  /** Semantic hierarchy level of the `<h>` element in the markup (ex: `<h3>`). If no size is provided, a `level={2}` outputs a `large` heading; `level={3}` a `medium` heading, and `level={4}` a `small` heading. */
-  level: PropTypes.oneOf(Object.keys(HeadingLevels)).isRequired,
-  /** Make this heading visually large in size. */
-  large: PropTypes.bool,
-  /** Make this heading visually medium in size. */
-  medium: PropTypes.bool,
-  /** Make this heading visually small in size. */
-  small: PropTypes.bool,
+  /** Semantic hierarchy level of the `<h>` element in the markup (ex: `<h3>`). The more semantically important the level, the larger the heading will appear visually; an `<h2>` will be visually styled as "large" while an `<h4>` will be visually small. */
+  level: PropTypes.oneOf(HeadingLevels).isRequired,
 };
 
 export default Heading;
