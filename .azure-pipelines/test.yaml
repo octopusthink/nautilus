@@ -1,0 +1,30 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your
+# code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+---
+pr:
+  branches:
+    exclude:
+      - gh-pages
+    include:
+      - '*'
+
+trigger:
+  branches:
+    exclude:
+      - gh-pages
+    include:
+      - master
+
+jobs:
+  - job: test
+    displayName: Test
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - script: npm install
+        displayName: 'Install dependencies'
+      - script: npm run test:all-with-coverage
+        displayName: 'Run unit tests'
