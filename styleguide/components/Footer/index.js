@@ -12,7 +12,6 @@ export function Footer({ children, title, version }) {
       css={css`
         border-top: 4px solid ${theme.colors.neutral.grey800};
         padding-top: ${theme.spacing.padding.l};
-        margin-top: ${theme.spacing.margin.xl};
         @media screen and (min-width: 960px) {
           grid-column: 1 / 3;
         }

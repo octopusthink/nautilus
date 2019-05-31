@@ -12,7 +12,6 @@ export function Header({ children, title, version }) {
       css={css`
         border-bottom: 4px solid ${theme.colors.neutral.grey800};
         padding-bottom: ${theme.spacing.padding.l};
-        margin-bottom: ${theme.spacing.margin.xl};
         @media screen and (min-width: 960px) {
           grid-column: 1 / 3;
         }

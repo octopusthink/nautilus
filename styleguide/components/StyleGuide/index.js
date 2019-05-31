@@ -25,10 +25,12 @@ export const StyleGuide = ({
       <div
         css={css`
           display: grid;
+          grid-gap: ${theme.spacing.margin.xl};
           padding: ${theme.spacing.padding.xl};
 
           @media screen and (min-width: 960px) {
             grid-template-columns: 2fr 1fr;
+            grid-gap: ${theme.spacing.margin.xxl};
           }
         `}
       >

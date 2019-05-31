@@ -9,10 +9,9 @@ export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
   return (
     <nav
       css={css`
-        @media screen and (max-width: 960px) {
+        @media screen and (max-width: 959px) {
           border-top: 4px solid ${theme.colors.neutral.grey800};
           padding-top: ${theme.spacing.padding.l};
-          margin-top: ${theme.spacing.margin.xl};
         }
 
         ${css(metadataLarge(theme))};
