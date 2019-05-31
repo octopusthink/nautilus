@@ -19,30 +19,35 @@ trigger:
       - master
 
 jobs:
-  - job: Build
+  - job: setup
+    displayName: Setup
     pool:
       vmImage: 'ubuntu-latest'
     steps:
       - script: npm install
         displayName: 'Install dependencies'
-      - script: npm run build
-        displayName: 'Build styleguide'
 
-  - job: Lint
+  - job: lint
+    displayName: Lint
+    dependsOn: setup
     pool:
       vmImage: 'ubuntu-latest'
     steps:
       - script: npm run lint
         displayName: 'Lint JS'
 
-  - job: Test
+  - job: test
+    displayName: Test
+    dependsOn: setup
     pool:
       vmImage: 'ubuntu-latest'
     steps:
       - script: npm run test:all-with-coverage
         displayName: 'Run unit tests'
 
-  - job: Publish Styleguide
+  - job: publish_styleguide
+    displayName: Publish Styleguide
+    dependsOn: test
     pool:
       vmImage: 'ubuntu-latest'
     steps:
