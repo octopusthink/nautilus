@@ -1,9 +1,9 @@
 Headings are short pieces of text used to organise and structure a page's content.
 
-They provide both a semantic and a presentational role, guiding users as well as search engines and other bots through the page content both visually (through hierarchy) and structurally (through markup). They are especially important to help users of assistive technology navigate a page quickly.
+They provide both a semantic and a presentational role, guiding users (as well as search engines and other bots) through the page content both visually (through hierarchy) and structurally (through markup). They are especially important for users of assistive technology—heading allow quick navigation throughout a page.
 
 ```jsx
-<Heading level={1}>Hamburglar foxgloves candyshack.</Heading>
+<Heading>This just in: Scotland is rainy</Heading>
 ```
 
 ## Usage
@@ -20,21 +20,21 @@ Don't use a `<Heading>` for:
 
 - Use a consistent colour and style for headings across the site.
 - Use variations in size to establish hierarchy in headings.
-- The space between a heading and the content it titles should be notably smaller than the space between the heading and its preceeding content. This helps establish a relationship by ensuring that headings are in close proximity to the content they describe.
-- Headings shouldn't span longer than two or three lines.
+- The space between a heading and the content it titles should be notably smaller than the space between the heading and its preceding content. This helps establish a relationship by ensuring that headings are in close proximity to the content they describe.
+- Headings shouldn't span longer than two lines.
 - Headings should be visibly larger and more prominent than body copy, and should be more tightly spaced between lines.
 
 ## Variations
 
-Headings are provided in three different visual sizes. Try to use headings sequentially as much as possible, so a medium heading would be nested underneath a large heading.
+Headings are provided in three different sizes. You should **always use headings sequentially** (a medium heading would be nested underneath a large heading).
 
 ```jsx
-<Heading large>Hamburglar foxgloves candyshack.</Heading>
-<Heading medium>Hamburglar foxgloves candyshack.</Heading>
-<Heading small>Hamburglar foxgloves candyshack.</Heading>
+<Heading large>Breaking news</Heading>
+<Heading medium>Kittens are better than dogs</Heading>
+<Heading small>More at eleven</Heading>
 ```
 
-By default, the largest heading then uses an `<h2>`, the medium heading uses `<h3>`, and the smallest heading uses `<h4>`. Only break this levelling structure if you have a good reason for doing so.
+The `large` heading then uses an `<h2>`, the `medium` heading uses `<h3>`, and the `small` heading uses `<h4>`. You should not break this levelling structure; see the Accessibility section for more details.
 
 ## Voice & Tone
 
@@ -46,7 +46,7 @@ By default, the largest heading then uses an `<h2>`, the medium heading uses `<h
 
 ## Accessibility
 
-Whilst it's generally good practise for the visual hierarchy of the heading to match the semantic hierarchy of the content structure, this won't always be the case. For accessibility reasons, it's important that `<h>` tags follow proper semantic order.
+For accessibility reasons, it's important that `<h>` tags follow proper semantic order.
 
 - Never skip a heading level (ie, going from `<h2>` to `<h4>`).
 - Don't traverse heading levels (ie, nesting an `<h2>` under an `<h4>`). Headings should be used sequentially to provide further separation inside an existing section.

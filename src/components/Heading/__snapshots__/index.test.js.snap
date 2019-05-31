@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Heading should output large CSS when the \`large\` prop is set 1`] = `
+.emotion-0 {
+  margin: 0 0 3.2rem;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 600;
+  font-size: 5.5rem;
+  line-height: 1.018181818181818;
+}
+
+<h2
+  class="emotion-0"
+>
+  Big heading
+</h2>
+`;
+
+exports[`Heading should output medium CSS when the \`medium\` prop is set 1`] = `
+.emotion-0 {
+  margin: 0 0 3.2rem;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 600;
+  font-size: 4.4rem;
+  line-height: 1;
+}
+
+<h3
+  class="emotion-0"
+>
+  So-so heading
+</h3>
+`;
+
+exports[`Heading should output small CSS when the \`small\` prop is set 1`] = `
+.emotion-0 {
+  margin: 0 0 3.2rem;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 600;
+  font-size: 3.5rem;
+  line-height: 1.0285714285714285;
+}
+
+<h4
+  class="emotion-0"
+>
+  Tiny heading
+</h4>
+`;
