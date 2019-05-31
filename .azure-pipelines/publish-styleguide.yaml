@@ -7,8 +7,6 @@
 pr:
   branches:
     exclude:
-      - gh-pages
-    include:
       - '*'
 
 trigger:
