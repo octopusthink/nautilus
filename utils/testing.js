@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import React from 'react';
 // We only use react-testing-library in development, so ignore this linting
 // error.
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { render } from 'react-testing-library';
+import { render } from '@testing-library/react';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import { Nautilus } from 'components';
 import { nautilus as nautilusDefaultTheme, themePropTypes } from 'themes';
@@ -30,7 +30,7 @@ const customRender = (ui, options) => {
 };
 
 // Re-export everything else as normal.
-export * from 'react-testing-library';
+export * from '@testing-library/react';
 
 // override render method
 export { customRender as render };
