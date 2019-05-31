@@ -33,20 +33,35 @@ module.exports = {
   // For a full list of available components we can override, see:
   // https://github.com/styleguidist/react-styleguidist/tree/0f461ab8f5070d5e91e8911bc2b22d805c07fb98/src/client/rsg-components
   styleguideComponents: {
-    // TODO: Wrap these components somehow or have them ignore the extra props
-    // sent to them by React Styleguidist to prevent the propTypes warnings
-    // in the console.
+    CodeRenderer: path.join(__dirname, 'styleguide/components/Code'),
+    ComponentsListRenderer: path.join(
+      __dirname,
+      'styleguide/components/ComponentsList',
+    ),
+    ExamplesRenderer: path.join(__dirname, 'styleguide/components/Content'),
     Heading: path.join(__dirname, 'src/components/Heading'),
     Para: path.join(__dirname, 'src/components/Paragraph'),
+    PathlineRenderer: path.join(__dirname, 'styleguide/components/Pathline'),
+    PlaygroundRenderer: path.join(
+      __dirname,
+      'styleguide/components/Playground',
+    ),
+    PropsRenderer: path.join(__dirname, 'styleguide/components/Props'),
     // This wraps all actual page content in a `<Nautilus />` provider so
     // the content we output from Markdown has a theme available.
     StyleGuideRenderer: path.join(
       __dirname,
-      'styleguide/components/StyleGuideRenderer',
+      'styleguide/components/StyleGuide',
     ),
+    TableRenderer: path.join(__dirname, 'styleguide/components/Table'),
+    TableOfContentsRenderer: path.join(
+      __dirname,
+      'styleguide/components/TableOfContents',
+    ),
+    TypeRenderer: path.join(__dirname, 'styleguide/components/PropType'),
     // Wraps the example components in a `<Nautilus />` provider to ensure they
-    // have a theme loaded.
-    Wrapper: path.join(__dirname, 'src/components/Nautilus'),
+    // have a theme loaded, and allows them to be custom-styled.
+    Wrapper: path.join(__dirname, 'styleguide/components/Wrapper'),
   },
   styleguideDir: 'dist/styleguide',
   pagePerSection: true,

@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const projectPath = path.resolve(fs.realpathSync(process.cwd()), '.');
 const srcPath = path.resolve(fs.realpathSync(process.cwd()), 'src');
 const styleguidePath = path.resolve(fs.realpathSync(process.cwd()), 'styleguide');
 
@@ -26,7 +27,7 @@ module.exports = {
   },
   resolve: {
     // Add src/ folder for easier includes within the project.
-    modules: [srcPath, 'node_modules'],
+    modules: [srcPath, projectPath, 'node_modules'],
     extensions: ['.mjs', '.jsx', '.js', '.json'],
     alias: {
       // Support React Native Web
