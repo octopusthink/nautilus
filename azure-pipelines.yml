@@ -21,7 +21,6 @@ trigger:
 jobs:
   - job: lint
     displayName: Lint
-    dependsOn: setup
     pool:
       vmImage: 'ubuntu-latest'
     steps:
@@ -32,7 +31,6 @@ jobs:
 
   - job: test
     displayName: Test
-    dependsOn: setup
     pool:
       vmImage: 'ubuntu-latest'
     steps:
