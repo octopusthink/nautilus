@@ -27,8 +27,8 @@ jobs:
       - script: npm run publish:styleguide
         displayName: 'Publish styleguide to gh-pages'
         env:
-          GIT_BRANCH: $(Build.SourceBranchName)
-          GIT_BRANCH_PR: $(System.PullRequest.SourceBranch)
+          # GIT_BRANCH: $(Build.SourceBranchName)
+          # GIT_BRANCH_PR: $(System.PullRequest.SourceBranch)
           GITHUB_ACCESS_TOKEN: $(github.accessToken)
           GITHUB_OWNER: octopusthink
           GITHUB_REPO: nautilus
