@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Markdown from 'rsg-components/Markdown';
 import Header from 'styleguide/components/Header';
+import Footer from 'styleguide/components/Footer';
 
 import Nautilus from 'components/Nautilus';
 import theme from 'styleguide/theme';
@@ -30,16 +31,15 @@ export const StyleGuide = ({
       >
         <Header title={title} version={version} />
 
-        <main>
-          {children}
-          <footer>
-            <Markdown
-              text={`Made with ❤️ by [Octopus Think](https://octopusthink.com/)`}
-            />
-          </footer>
-        </main>
+        <main>{children}</main>
 
         {hasSidebar && toc}
+
+        <Footer>
+          <Markdown
+            text={`Made with ❤️ by [Octopus Think](https://octopusthink.com/). Say 👋 on [Github](https://github.com/octopusthink/nautilus).`}
+          />
+        </Footer>
       </div>
     </Nautilus>
   );
