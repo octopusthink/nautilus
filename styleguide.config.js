@@ -9,6 +9,7 @@ module.exports = {
     StyleGuide: {
       '@global html': {
         fontSize: '62.5%',
+        boxSizing: 'border-box',
       },
       '@global body': {
         fontSize: '1.6rem',
