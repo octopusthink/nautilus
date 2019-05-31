@@ -18,11 +18,10 @@ trigger:
     include:
       - master
 
-pool:
-  vmImage: 'ubuntu-latest'
-
 jobs:
   - job: Build
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
       - script: npm install
         displayName: 'Install dependencies'
@@ -30,16 +29,22 @@ jobs:
         displayName: 'Build styleguide'
 
   - job: Lint
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
       - script: npm run lint
         displayName: 'Lint JS'
 
   - job: Test
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
       - script: npm run test:all-with-coverage
         displayName: 'Run unit tests'
 
   - job: Publish Styleguide
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
       - script: npm run publish:styleguide
         displayName: 'Publish styleguide to gh-pages'
