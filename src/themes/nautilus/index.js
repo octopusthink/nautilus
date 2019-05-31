@@ -101,6 +101,20 @@ const fonts = {
 export const theme = {
   // All themeable colour variables go here.
   colors: {
+    accent: {
+      primary: colors.pink600,
+      primaryDark: colors.pink800,
+      primaryLight: colors.pink400,
+    },
+    neutral: {
+      white: colors.white,
+      grey0: colors.grey0,
+      grey200: colors.grey200,
+      grey400: colors.grey400,
+      grey600: colors.grey600,
+      grey800: colors.grey800,
+      black: colors.black,
+    },
     intent: {
       success: colors.green600,
       successDark: colors.green800,
@@ -137,14 +151,14 @@ export const theme = {
   typography: {
     fonts: {
       body: fonts.systemFonts,
-      headings: fonts.HarrietDisplay,
+      headings: fonts.systemFonts,
       interface: fonts.systemFonts,
     },
 
     fontWeights: {
       body: 400,
       bodyBold: 600,
-      headings: 600,
+      headings: 700,
       pageTitle: 700,
       subtitle: 300,
       interface: 500,

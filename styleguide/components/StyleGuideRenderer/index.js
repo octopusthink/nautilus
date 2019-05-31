@@ -9,8 +9,11 @@ import Markdown from 'rsg-components/Markdown';
 import Styled from 'rsg-components/Styled';
 import cx from 'clsx';
 import Version from 'rsg-components/Version';
+import { css } from '@emotion/core';
 
 import Nautilus from 'components/Nautilus';
+import { theme } from 'themes/nautilus';
+//const theme = useTheme();
 
 const styles = ({
   color,
@@ -23,7 +26,8 @@ const styles = ({
 }) => ({
   root: {
     minHeight: '100vh',
-    backgroundColor: color.baseBackground,
+    backgroundColor: theme.colors.neutral.black,
+    color: theme.colors.neutral.white,
   },
   hasSidebar: {
     paddingLeft: sidebarWidth,
@@ -33,17 +37,17 @@ const styles = ({
   },
   content: {
     maxWidth,
-    padding: [[space[2], space[4]]],
+    padding: theme.spacing.padding.xxl,
     margin: [[0, 'auto']],
+    marginTop: theme.spacing.margin.xl,
     [mq.small]: {
       padding: space[2],
     },
     display: 'block',
   },
   sidebar: {
-    backgroundColor: color.sidebarBackground,
-    border: [[color.border, 'solid']],
-    borderWidth: [[0, 1, 0, 0]],
+    backgroundColor: 'none',
+    border: 0,
     position: 'fixed',
     top: 0,
     left: 0,
@@ -51,6 +55,8 @@ const styles = ({
     width: sidebarWidth,
     overflow: 'auto',
     WebkitOverflowScrolling: 'touch',
+    padding: theme.spacing.padding.xl,
+    marginTop: theme.spacing.margin.xl,
     [mq.small]: {
       position: 'static',
       width: 'auto',
@@ -58,9 +64,16 @@ const styles = ({
       paddingBottom: space[0],
     },
   },
+  link: {
+    padding: '40px',
+  },
   logo: {
     padding: space[2],
-    borderBottom: [[1, color.border, 'solid']],
+  },
+  preview: {
+    background: 'white',
+    color: 'hotpink',
+    border: 'none',
   },
   footer: {
     display: 'block',
@@ -82,6 +95,25 @@ export const StyleGuideRenderer = ({
   return (
     <Nautilus>
       <div className={cx(classes.root, hasSidebar && classes.hasSidebar)}>
+        <header
+          css={css`
+            background-color: ${theme.colors.neutral.black};
+            border-bottom: 4px solid ${theme.colors.neutral.grey200};
+            color: ${theme.colors.neutral.white};
+            padding: ${theme.spacing.padding.xl};
+            position: fixed;
+            top: 0;
+            left: ${theme.spacing.margin.l};
+            right: ${theme.spacing.margin.l};
+            left: 0;
+            right: 0;
+          `}
+          className={classes.logo}
+        >
+          <Logo>{title}</Logo>
+          {version && <Version>{version}</Version>}
+        </header>
+
         <main className={classes.content}>
           {children}
           <footer className={classes.footer}>
@@ -90,15 +122,7 @@ export const StyleGuideRenderer = ({
             />
           </footer>
         </main>
-        {hasSidebar && (
-          <div className={classes.sidebar}>
-            <header className={classes.logo}>
-              <Logo>{title}</Logo>
-              {version && <Version>{version}</Version>}
-            </header>
-            {toc}
-          </div>
-        )}
+        {hasSidebar && <div className={classes.sidebar}>{toc}</div>}
       </div>
     </Nautilus>
   );
