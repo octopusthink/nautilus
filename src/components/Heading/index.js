@@ -15,8 +15,6 @@ const HeadingLevels = [LARGE, MEDIUM, SMALL];
 export const Heading = ({ children, level, ...otherProps }) => {
   const HeadingElement = `h${level}`;
 
-  const smallerHeadings = HeadingLevels.filter((l) => l > level);
-
   return <HeadingElement {...otherProps}>{children}</HeadingElement>;
 };
 
@@ -29,7 +27,7 @@ Heading.propTypes = {
   /** @ignore */
   children: PropTypes.node,
   /** Semantic hierarchy level of the `<h>` element in the markup (ex: `<h3>`). The more semantically important the level, the larger the heading will appear visually; an `<h2>` will be visually styled as "large" while an `<h4>` will be visually small. */
-  level: PropTypes.oneOf(HeadingLevels).isRequired,
+  level: PropTypes.oneOf(HeadingLevels),
 };
 
 export default styled(Heading)(({ level, theme }) => {

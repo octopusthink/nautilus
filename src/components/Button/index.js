@@ -4,7 +4,6 @@ import invariant from 'invariant';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { useTheme } from 'themes';
 import { interfaceMedium } from 'themes/mixins';
 
 export const Button = ({
