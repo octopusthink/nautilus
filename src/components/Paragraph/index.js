@@ -46,9 +46,9 @@ export default styled(Paragraph)(
     return css`
       color: ${theme.colors.text.default};
       margin: 0 0 ${theme.spacing.margin.m};
-      ${small && bodySmall(theme)}
-      ${!small && !large && bodyMedium(theme)}
-      ${large && bodyLarge(theme)}
+      ${small && bodySmall(theme)};
+      ${!small && !large && bodyMedium(theme)};
+      ${large && bodyLarge(theme)};
       ${light &&
         css`
           color: ${theme.colors.text.light};

@@ -43,7 +43,7 @@ export default styled(Heading)(({ level, theme }) => {
 
     ${level === LARGE &&
       css`
-        ${css(headingLarge(theme))}
+        ${css(headingLarge(theme))};
       `}
 
     ${level === MEDIUM &&
@@ -53,7 +53,7 @@ export default styled(Heading)(({ level, theme }) => {
 
     ${level === SMALL &&
       css`
-        ${css(headingSmall(theme))}
+        ${css(headingSmall(theme))};
       `}
   `;
 });
