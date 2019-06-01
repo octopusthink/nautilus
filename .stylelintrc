@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-styled-components",
+    "stylelint-prettier/recommended",
+  ],
+  "order/order": [
+    "custom-properties",
+    "declarations",
+  ],
+  "plugins": [
+    "stylelint-order",
+  ],
+  "processors": ["stylelint-processor-styled-components"],
+  "rules": {},
+}

@@ -122,34 +122,34 @@ export default styled(Button)(
     }
 
     return css`
-      ${css(interfaceMedium(theme))};
-      padding: ${theme.spacing.padding.m} ${theme.spacing.padding.l};
-      outline: none;
-      text-decoration: none;
-      border: 2px solid ${currentButtonColor};
-      color: ${currentButtonColor};
+      ${interfaceMedium(theme)}
       background: ${theme.colors.buttons.neutral};
+      border: 2px solid ${currentButtonColor};
       border-radius: 8px;
-      margin: 0 ${theme.spacing.margin.xxs} ${theme.spacing.margin.xs};
-      transition: box-shadow 200ms;
-      position: relative;
-      top: 0;
-      text-align: center;
+      color: ${currentButtonColor};
       display: inline-block;
+      margin: 0 ${theme.spacing.margin.xxs} ${theme.spacing.margin.xs};
+      outline: none;
+      padding: ${theme.spacing.padding.m} ${theme.spacing.padding.l};
+      position: relative;
+      text-align: center;
+      text-decoration: none;
+      top: 0;
+      transition: box-shadow 200ms;
+
+      &::-moz-focus-inner {
+        border: 0;
+      }
 
       &:active {
-        top: 2px;
         border-color: ${currentButtonColorDark};
         color: ${currentButtonColorDark};
+        top: 2px;
       }
 
       &:focus {
         box-shadow: 0 0 1px 4px ${currentButtonColorLight};
         outline: none;
-      }
-
-      &::-moz-focus-inner {
-        border: 0;
       }
 
       &:hover {
@@ -169,10 +169,10 @@ export default styled(Button)(
 
       ${minimal &&
         css`
-          border-top: 0;
           border-left: 0;
-          border-right: 0;
           border-radius: 0;
+          border-right: 0;
+          border-top: 0;
           padding-left: 0;
           padding-right: 0;
         `}
