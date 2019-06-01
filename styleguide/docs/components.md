@@ -8,7 +8,7 @@ const components = Object.keys(loadComponents).map((name) => {
 
 	return (
 		<li key={name}>
-			<a href={`#/Function/Components/${normalisedName}`}>
+			<a href={`#/🛠%20Function/Components/${normalisedName}`}>
 				<code>&lt;{normalisedName} /&gt;</code>
 			</a>
 		</li>
