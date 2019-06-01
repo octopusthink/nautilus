@@ -23,10 +23,6 @@ export const Paragraph = ({
         color: ${theme.colors.text.default};
         margin: 0 0 ${theme.spacing.margin.m};
 
-        &:last-of-type {
-          margin-bottom: 0;
-        }
-
         ${large &&
           css`
             ${css(bodyLarge(theme))};
