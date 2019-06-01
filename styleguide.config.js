@@ -30,7 +30,6 @@ module.exports = {
     ExamplesRenderer: path.join(__dirname, 'styleguide/components/Content'),
     Heading: path.join(__dirname, 'src/components/Heading'),
     Para: path.join(__dirname, 'src/components/Paragraph'),
-    // Markdown: path.join(__dirname, 'styleguide/components/Markdown'),
     PathlineRenderer: path.join(__dirname, 'styleguide/components/Pathline'),
     PlaygroundRenderer: path.join(
       __dirname,

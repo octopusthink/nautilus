@@ -46,7 +46,7 @@ The `large` heading then uses an `<h2>`, the `medium` heading uses `<h3>`, and t
 
 ## Accessibility
 
-For accessibility reasons, it's important that `<h>` tags follow proper semantic order.
+For accessibility reasons, it's important that `<Heading>` components follow proper semantic order.
 
 - Never skip a heading level (ie, going from `<h2>` to `<h4>`).
 - Don't traverse heading levels (ie, nesting an `<h2>` under an `<h4>`). Headings should be used sequentially to provide further separation inside an existing section.

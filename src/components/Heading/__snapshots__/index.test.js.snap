@@ -4,13 +4,20 @@ exports[`Heading should output large CSS when the \`level\` prop is 2 1`] = `
 .emotion-0 {
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 5.5rem;
   line-height: 1.018181818181818;
 }
 
+.eijrly0 + .emotion-0,
+ul + .emotion-0,
+ol + .emotion-0,
+dl + .emotion-0 {
+  margin-top: 3.2rem;
+}
+
 <h2
-  class="emotion-0"
+  class="emotion-0 emotion-1"
 >
   Big heading
 </h2>
@@ -20,13 +27,20 @@ exports[`Heading should output medium CSS when the \`level\` prop is 3 1`] = `
 .emotion-0 {
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 4.4rem;
   line-height: 1;
 }
 
+.eijrly0 + .emotion-0,
+ul + .emotion-0,
+ol + .emotion-0,
+dl + .emotion-0 {
+  margin-top: 3.2rem;
+}
+
 <h3
-  class="emotion-0"
+  class="emotion-0 emotion-1"
 >
   So-so heading
 </h3>
@@ -36,13 +50,20 @@ exports[`Heading should output small CSS when the \`level\` prop is 4 1`] = `
 .emotion-0 {
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 3.5rem;
   line-height: 1.0285714285714285;
 }
 
+.eijrly0 + .emotion-0,
+ul + .emotion-0,
+ol + .emotion-0,
+dl + .emotion-0 {
+  margin-top: 3.2rem;
+}
+
 <h4
-  class="emotion-0"
+  class="emotion-0 emotion-1"
 >
   Tiny heading
 </h4>
