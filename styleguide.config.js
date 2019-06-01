@@ -4,7 +4,11 @@ module.exports = {
   assetsDir: 'styleguide/assets',
   components: 'src/components/**/index.{js,jsx,ts,tsx}',
   ignore: ['src/components/index.js', '**/*.test.{js,jsx,ts,tsx}'],
+  moduleAliases: {
+    Nautilus: path.resolve(__dirname, 'src/components'),
+  },
   title: 'Nautilus Design System',
+  skipComponentsWithoutExample: true,
   styles: {
     StyleGuide: {
       '@global html': {

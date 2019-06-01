@@ -34,7 +34,12 @@ Headings are provided in three different sizes. You should **always use headings
 <Heading level={4}>More at eleven 🕚</Heading>
 ```
 
-The `large` heading then uses an `<h2>`, the `medium` heading uses `<h3>`, and the `small` heading uses `<h4>`. You should not break this levelling structure; see the Accessibility section for more details.
+Alternatively you can import `<H2>`, `<H3>`, and `<H4>` as components if you prefer:
+
+```jsx inside Markdown
+import { H2 } from 'Nautilus';
+<H2>Titlecase for life</H2>
+```
 
 ## Voice & Tone
 
