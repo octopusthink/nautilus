@@ -1,8 +1,9 @@
 import { css } from '@emotion/core';
-import invariant from 'invariant';
+import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import Paragraph from 'components/Paragraph';
 import { useTheme } from 'themes';
 import { headingLarge, headingMedium, headingSmall } from 'themes/mixins';
 
@@ -16,10 +17,23 @@ export const Heading = ({ children, level, ...otherProps }) => {
   const HeadingElement = `h${level}`;
   const theme = useTheme();
 
+  const smallerHeadings = HeadingLevels.filter((l) => l > level);
+
   return (
     <HeadingElement
       css={css`
         margin: 0 0 ${theme.spacing.margin.m};
+
+        ${`${Paragraph} + &`},
+        /* TODO: Replace these with actual list components */
+        ul + &,
+        ol + &,
+        dl + &,
+        ${`${StyledHeadingH2} + &`},
+        ${`${StyledHeadingH3} + &`},
+        ${`${StyledHeadingH4} + &`} {
+          margin-top: ${theme.spacing.margin.m};
+        }
 
         ${level === LARGE &&
           css`
@@ -55,4 +69,9 @@ Heading.propTypes = {
   level: PropTypes.oneOf(HeadingLevels).isRequired,
 };
 
-export default Heading;
+const StyledHeading = styled(Heading)``;
+const StyledHeadingH2 = styled(() => <Heading level={2} />)``;
+const StyledHeadingH3 = styled(() => <Heading level={3} />)``;
+const StyledHeadingH4 = styled(() => <Heading level={4} />)``;
+
+export default StyledHeading;
