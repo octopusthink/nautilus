@@ -15,12 +15,12 @@ describe('Nautilus', () => {
   it('should render children', () => {
     const { getByText } = render(
       <Nautilus>
-        <Heading level={1}>I&#39;m Important</Heading>
+        <Heading>I&#39;m Important</Heading>
         <Paragraph>Here I am, rock you like a paragraph.</Paragraph>
       </Nautilus>,
     );
 
-    expect(getByText("I'm Important").tagName).toEqual('H1');
+    expect(getByText("I'm Important").tagName).toEqual('H2');
     expect(getByText('Here I am, rock you like a paragraph.').tagName).toEqual(
       'P',
     );

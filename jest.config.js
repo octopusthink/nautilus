@@ -1,19 +1,7 @@
 module.exports = {
-  collectCoverageFrom: [
-    'src/**/**.js',
-    // This in the entry-point for `npm start` and doesn't need code coverage.
-    '!src/index.js',
-  ],
+  collectCoverageFrom: ['src/**/**.js'],
   coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
   coverageReporters: ['html', 'text-summary'],
-  // coverageThreshold: {
-  //   global: {
-  //     branches: 70,
-  //     functions: 70,
-  //     lines: 70,
-  //     statements: 70,
-  //   },
-  // },
   moduleNameMapper: {
     '^react-native$': 'react-native-web',
   },
@@ -22,6 +10,7 @@ module.exports = {
     '@testing-library/react/cleanup-after-each',
     '<rootDir>/utils/jest.setup.js',
   ],
+  snapshotSerializers: ['jest-emotion'],
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
   testURL: 'http://localhost',
   transform: {
@@ -29,5 +18,4 @@ module.exports = {
     // Replace other files with their filename.
     '^(?!.*\\.(js|jsx|json)$)': '<rootDir>/utils/jest.file-transform.js',
   },
-  // transformIgnorePatterns: ['node_modules/(?!(payment-icons)/)'],
 };

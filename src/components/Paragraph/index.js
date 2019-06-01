@@ -1,8 +1,8 @@
 import { css } from '@emotion/core';
+import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { useTheme } from 'themes';
 import { bodySmall, bodyMedium, bodyLarge } from 'themes/mixins';
 
 export const Paragraph = ({
@@ -14,55 +14,7 @@ export const Paragraph = ({
   light,
   ...otherProps
 }) => {
-  const theme = useTheme();
-
-  return (
-    <p
-      css={css`
-        ${css(bodyMedium(theme))};
-        color: ${theme.colors.text.default};
-        margin: 0 0 ${theme.spacing.margin.m};
-
-        ${large &&
-          css`
-            ${css(bodyLarge(theme))};
-          `}
-
-        ${small &&
-          css`
-            ${css(bodySmall(theme))};
-          `}
-
-          ${light &&
-            css`
-              color: ${theme.colors.text.light};
-            `}
-
-          ${dark &&
-            css`
-              color: ${theme.colors.text.dark};
-            `}
-
-          ${inverse &&
-            css`
-              color: ${theme.colors.text.inverse};
-
-              ${light &&
-                css`
-                  color: ${theme.colors.text.inverseLight};
-                `}
-
-              ${dark &&
-                css`
-                  color: ${theme.colors.text.inverseDark};
-                `}
-            `}
-      `}
-      {...otherProps}
-    >
-      {children}
-    </p>
-  );
+  return <p {...otherProps}>{children}</p>;
 };
 
 Paragraph.defaultProps = {
@@ -89,4 +41,39 @@ Paragraph.propTypes = {
   light: PropTypes.bool,
 };
 
-export default Paragraph;
+export default styled(Paragraph)(
+  ({ dark, inverse, large, light, small, theme }) => {
+    return css`
+      color: ${theme.colors.text.default};
+      margin: 0 0 ${theme.spacing.margin.m};
+
+      ${small && bodySmall(theme)}
+      ${!small && !large && bodyMedium(theme)}
+      ${large && bodyLarge(theme)}
+
+      ${light &&
+        css`
+          color: ${theme.colors.text.light};
+        `}
+
+      ${dark &&
+        css`
+          color: ${theme.colors.text.dark};
+        `}
+
+      ${inverse &&
+        css`
+          color: ${theme.colors.text.inverse};
+
+          ${light &&
+            css`
+              color: ${theme.colors.text.inverseLight};
+            `}
+          ${dark &&
+            css`
+              color: ${theme.colors.text.inverseDark};
+            `}
+        `}
+    `;
+  },
+);
