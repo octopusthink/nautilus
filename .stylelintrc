@@ -13,6 +13,5 @@
   ],
   "processors": ["stylelint-processor-styled-components"],
   "rules": {
-    "order/properties-alphabetical-order": true,
   },
 }

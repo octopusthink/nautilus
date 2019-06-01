@@ -1,10 +1,9 @@
-*.md
-*.yml
 CNAME
+__snapshots__
 bin/
+coverage/
 dist/
 node_modules/
+styleguide/
 package-lock.json
 package.json
-*.png
-*.svg

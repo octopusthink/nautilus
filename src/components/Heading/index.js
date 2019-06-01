@@ -33,7 +33,6 @@ Heading.propTypes = {
 export default styled(Heading)(({ level, theme }) => {
   return css`
     margin: 0 0 ${theme.spacing.margin.m};
-
     ${`${Paragraph} + &`},
     /* TODO: Replace these with actual Nautilus components */
     ul + &,

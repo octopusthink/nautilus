@@ -11,12 +11,12 @@ export const Nautilus = ({ children, theme }) => {
       <Global
         styles={css`
           html {
+            /* Set base font size for rem units to inherit. */
+            font-size: 62.5%;
+
             /* Makes type rendering look crisper. */
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-
-            /* Set base font size for rem units to inherit .*/
-            font-size: 62.5%;
 
             /* Enable kerning and optional ligatures. */
             text-rendering: optimizeLegibility;
