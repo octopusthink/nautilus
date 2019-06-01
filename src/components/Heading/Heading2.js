@@ -4,7 +4,7 @@ import React from 'react';
 
 import Heading from './';
 
-// We define `<H2>` for developer convenience.
+// We define `<Heading2>` for developer convenience.
 export const Heading2 = (props) => {
   return <Heading level={2} {...props} />;
 };
