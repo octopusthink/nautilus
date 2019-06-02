@@ -51,18 +51,18 @@ export const themePropTypes = PropTypes.shape({
   typography: PropTypes.shape({
     fonts: PropTypes.shape({
       body: PropTypes.string,
-      headings: PropTypes.string,
-      interface: PropTypes.string,
+      heading: PropTypes.string,
+      interfaceUI: PropTypes.string,
     }),
 
     fontWeights: PropTypes.shape({
       body: PropTypes.number,
       bodyBold: PropTypes.number,
-      headings: PropTypes.number,
+      heading: PropTypes.number,
       pageTitle: PropTypes.number,
       subtitle: PropTypes.number,
-      interface: PropTypes.number,
-      interfaceBold: PropTypes.number,
+      interfaceUI: PropTypes.number,
+      interfaceUIBold: PropTypes.number,
     }),
 
     baseSizes: PropTypes.shape({
@@ -76,9 +76,9 @@ export const themePropTypes = PropTypes.shape({
     }),
 
     lineHeights: PropTypes.shape({
-      headings: PropTypes.number,
+      heading: PropTypes.number,
       body: PropTypes.number,
-      interface: PropTypes.number,
+      interfaceUI: PropTypes.number,
     }),
   }),
 
