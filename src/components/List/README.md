@@ -1,11 +1,13 @@
-A `<List>` is a collection of related elements of equal weight, presented in an itemised fashion:
+A `<List>` is a collection of related elements of equal weight, presented in an itemised fashion.
+
+Use the `<List.Item>` component for each item in your list.
 
 ```jsx
 <List numbered>
-  <List.Heading>To-do list</List.Heading>
-  <List.Item>Take shower 🛀</List.Item>
-  <List.Item>Brush teeth 😁</List.Item>
-  <List.Item>Take over world 🌍</List.Item>
+  <List.Heading>Things to do</List.Heading>
+  <List.Item>Take shower. 🛀</List.Item>
+  <List.Item>Brush teeth. 😁</List.Item>
+  <List.Item>Take over world. 🌍</List.Item>
 </List>
 ```
 
@@ -13,7 +15,6 @@ A `<List>` is a collection of related elements of equal weight, presented in an 
 
 Use a list to make blocks of text easier to read, and to break information into manageable chunks.
 
-Use the `<List.Item>` component for each item in your list.
 
 Don't use a `<List>` for:
 
@@ -37,9 +38,9 @@ Use a bulleted list when the order of items doesn't matter and to present conten
 
 ```jsx
 <List>
-  <List.Item>Cats</List.Item>
-  <List.Item>Dogs</List.Item>
-  <List.Item>Mice</List.Item>
+  <List.Item>cats</List.Item>
+  <List.Item>dogs</List.Item>
+  <List.Item>mice</List.Item>
 </List>
 ```
 
@@ -55,16 +56,17 @@ Use numbered lists when the order of the items is relevant, or to imply sequence
 ```jsx
 <List numbered>
   <List.Paragraph>How to file taxes:</List.Paragraph>
-  <List.Item>Obtain Wine</List.Item>
-  <List.Item>Open Wine</List.Item>
-  <List.Item>Consume Wine</List.Item>
-  <List.Item>Do taxes</List.Item>
+  <List.Item>Obtain wine.</List.Item>
+  <List.Item>Crack open wine.</List.Item>
+  <List.Item>Start drinking.</List.Item>
+  <List.Item>Spread papers in an organised fashion around room.</List.Item>
+  <List.Item>Reluctantly do taxes.</List.Item>
 </List>
 ```
 
 ## Voice & Tone
 
-- Introduce lists with a lead-in line ending in a colon (eg: "My favourite things:") or a `<Heading>` with no punctuation.
+- Introduce lists with a lead-in `<List.Paragraph>` ending in a colon (eg: "My favourite things:") or a `<List.Heading>` with no punctuation.
 - If list items use a single word only, start each item with a lowercase letter, and do not use a full stop at the end. (eg: "cat")
 - If list items use full sentences or sentence fragments (subject and verb), start each item with an uppercase letter and use a full stop at the end. (eg: "The cat ate a mouse.")
 - Never use commas or semicolons at the end of list items.
@@ -72,18 +74,22 @@ Use numbered lists when the order of the items is relevant, or to imply sequence
 
 ## Accessibility
 
-List items are conveyed as a group of related elements to assistive technology users.
+Using lists well will help improve the accessibility of your site.
 
-- If your list is described by a `<Heading />` or `<Paragraph />` component, put that component inside the list as the first component. This will identify it as the list header using the `aria-labelledby` attribute.
+List items are conveyed as a group of related elements to assistive technology users. Assistive technologies may announce the total number of items in a list, give the relevant position of each item in a list, and provide shortcuts to quickly traverse a list.
+
+- If your list has a title or lead-in phrase, use a `<List.Heading>` or `<List.Paragraph>` component, inside the list as the first component. This will identify it as the list header using the `aria-labelledby` attribute.
 - Keep list labels as short as possible to communicate your intent.
-- Use semantic HTML elements (`<ol>`, `<ul>`, and `<li>`) to mark up lists. This helps users of assistive technology navigate your list.
+- Use a bulleted list for lists where the order isn't important, and a numbered list when it is.
+- Don't use a list for stylistic or presentation needs only.
+- Use semantic HTML elements (`<ol>`, `<ul>`, and `<li>`) to mark up lists. (Nautilus will handle this for you!)
 
 ```jsx
 <List>
-  <List.Heading level={4}>Tasty Fruit</List.Heading>
-  <List.Item>Apples 🍏</List.Item>
-  <List.Item>Kiwis 🥝</List.Item>
-  <List.Item>Mangos 🥭</List.Item>
+  <List.Heading level={4}>Tasty fruit</List.Heading>
+  <List.Item>apples 🍏</List.Item>
+  <List.Item>kiwis 🥝</List.Item>
+  <List.Item>mangos 🥭</List.Item>
 </List>
 
 <List numbered>
