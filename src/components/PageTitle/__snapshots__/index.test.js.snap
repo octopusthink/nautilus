@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageTitle should output pageTitle CSS 1`] = `
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 700;
+  font-size: 6.9rem;
+  line-height: 1.0434782608695652;
+}
+
+<h1
+  class="emotion-0 emotion-1"
+>
+  My Blog Posts
+</h1>
+`;
