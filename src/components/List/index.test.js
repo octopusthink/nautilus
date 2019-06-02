@@ -80,7 +80,7 @@ describe('List', () => {
 
   describe('List.Item', () => {
     it('should render a list item inside the list', () => {
-      const { container, getByTestId } = render(
+      const { getByTestId } = render(
         <List>
           <List.Item data-testid="one">hello</List.Item>
           <List.Item data-testid="two">goodbye</List.Item>
