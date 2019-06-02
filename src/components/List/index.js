@@ -105,7 +105,6 @@ const StyledList = styled(List)(
     return css`
       ${textStyles({ dark, inverse, large, light, small, theme })};
       padding: 0;
-
       ${numbered &&
         css`
           counter-reset: list-counter;
@@ -119,7 +118,6 @@ const StyledList = styled(List)(
             }
           }
         `}
-
       ${!numbered &&
         css`
           > ${ListItem} {
