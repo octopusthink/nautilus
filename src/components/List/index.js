@@ -1,3 +1,4 @@
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React, { Children, Fragment } from 'react';
@@ -99,7 +100,41 @@ List.propTypes = {
   numbered: PropTypes.bool,
 };
 
-const StyledList = styled(List)(textStyles);
+const StyledList = styled(List)(
+  ({ dark, inverse, large, light, numbered, small, theme }) => {
+    return css`
+      ${textStyles({ dark, inverse, large, light, small, theme })};
+      padding: 0;
+
+      ${numbered &&
+        css`
+          counter-reset: list-counter;
+
+          > ${ListItem} {
+            list-style: none;
+            counter-increment: list-counter;
+
+            &::before {
+              content: counter(list-counter) '. ';
+            }
+          }
+        `}
+
+      ${!numbered &&
+        css`
+          > ${ListItem} {
+            list-style: none;
+
+            &::before {
+              content: '\\2022';
+              font-size: 0.6em;
+              line-height: 2.8;
+            }
+          }
+        `}
+    `;
+  },
+);
 
 // Export ListHeading as `List.Heading`.
 StyledList.Heading = ListHeading;
