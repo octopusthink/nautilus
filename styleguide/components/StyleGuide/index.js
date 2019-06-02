@@ -9,7 +9,7 @@ import Markdown from 'rsg-components/Markdown';
 import Header from 'styleguide/components/Header';
 import Footer from 'styleguide/components/Footer';
 
-import Nautilus from 'components/Nautilus';
+import { Nautilus } from 'components';
 import theme from 'styleguide/theme';
 
 export const StyleGuide = ({

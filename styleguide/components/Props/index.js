@@ -12,7 +12,7 @@ import Type from 'rsg-components/Type';
 import Text from 'rsg-components/Text';
 import Table from 'rsg-components/Table';
 
-import Paragraph from 'components/Paragraph';
+import { Paragraph } from 'components';
 
 import { unquote, getType, showSpaces } from './utils';
 

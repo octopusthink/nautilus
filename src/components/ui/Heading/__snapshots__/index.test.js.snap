@@ -9,7 +9,7 @@ exports[`Heading should output large CSS when the \`level\` prop is 2 1`] = `
   line-height: 1.018181818181818;
 }
 
-.eijrly0 + .emotion-0,
+.e1ad7wa0 + .emotion-0,
 ul + .emotion-0,
 ol + .emotion-0,
 dl + .emotion-0 {
@@ -32,7 +32,7 @@ exports[`Heading should output medium CSS when the \`level\` prop is 3 1`] = `
   line-height: 1;
 }
 
-.eijrly0 + .emotion-0,
+.e1ad7wa0 + .emotion-0,
 ul + .emotion-0,
 ol + .emotion-0,
 dl + .emotion-0 {
@@ -55,7 +55,7 @@ exports[`Heading should output small CSS when the \`level\` prop is 4 1`] = `
   line-height: 1.0285714285714285;
 }
 
-.eijrly0 + .emotion-0,
+.e1ad7wa0 + .emotion-0,
 ul + .emotion-0,
 ol + .emotion-0,
 dl + .emotion-0 {

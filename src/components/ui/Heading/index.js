@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Paragraph from 'components/Paragraph';
+import { Paragraph } from 'components';
 import { heading } from 'styles';
 
 const LARGE = 2;

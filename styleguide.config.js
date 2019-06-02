@@ -32,8 +32,8 @@ module.exports = {
       'styleguide/components/ComponentsList',
     ),
     ExamplesRenderer: path.join(__dirname, 'styleguide/components/Content'),
-    Heading: path.join(__dirname, 'src/components/Heading'),
-    Para: path.join(__dirname, 'src/components/Paragraph'),
+    Heading: path.join(__dirname, 'src/components/ui/Heading'),
+    Para: path.join(__dirname, 'src/components/ui/Paragraph'),
     PathlineRenderer: path.join(__dirname, 'styleguide/components/Pathline'),
     PlaygroundRenderer: path.join(
       __dirname,
@@ -89,9 +89,14 @@ module.exports = {
       sectionDepth: 3,
       sections: [
         {
-          name: 'Components',
-          components: 'src/components/**/index.{js,jsx,ts,tsx}',
-          content: 'styleguide/docs/components.md',
+          name: 'Higher-order Components',
+          components: 'src/components/hoc/**/index.{js,jsx,ts,tsx}',
+          content: 'styleguide/docs/components/hoc.md',
+        },
+        {
+          name: 'UI Components',
+          components: 'src/components/ui/**/index.{js,jsx,ts,tsx}',
+          content: 'styleguide/docs/components/ui.md',
         },
       ],
     },
