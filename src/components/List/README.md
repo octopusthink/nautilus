@@ -2,7 +2,7 @@ A `<List>` is a collection of related elements of equal weight, presented in a p
 
 ```jsx
 <List>
-	- thing one
+  - thing one
   - thing two
   - thing three
 </List>
@@ -10,7 +10,7 @@ A `<List>` is a collection of related elements of equal weight, presented in a p
 
 ```jsx
 <List numbered>
-	- thing one
+  - thing one
   - thing two
   - thing three
 </List>
