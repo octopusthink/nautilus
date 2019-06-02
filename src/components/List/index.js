@@ -12,9 +12,21 @@ export const List = ({
   inverse,
   dark,
   light,
+  numbered,
   ...otherProps
 }) => {
-  return <ul {...otherProps}>{children}</ul>;
+  let Component = 'ul';
+  if (numbered === true) {
+    Component = 'ol';
+  }
+
+  return (
+    <Component {...otherProps}>
+      <li>thing one</li>
+      <li>thing two</li>
+      {children}
+    </Component>
+  );
 };
 
 List.defaultProps = {
@@ -24,6 +36,7 @@ List.defaultProps = {
   inverse: false,
   dark: false,
   light: false,
+  numbered: false,
 };
 
 List.propTypes = {
@@ -39,6 +52,8 @@ List.propTypes = {
   dark: PropTypes.bool,
   /** Lighten text colour. */
   light: PropTypes.bool,
+  /** Use numbers instead of bullets. */
+  numbered: PropTypes.bool,
 };
 
 export default styled(List)(({ dark, inverse, large, light, small, theme }) => {
