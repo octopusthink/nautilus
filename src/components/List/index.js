@@ -1,9 +1,14 @@
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Children, Fragment } from 'react';
+import shortid from 'shortid';
 
-import { bodySmall, bodyMedium, bodyLarge } from 'themes/mixins';
+import { Heading, Paragraph } from 'components';
+import { textStyles } from 'themes/mixins';
+
+import ListHeading from './Heading';
+import ListItem from './Item';
+import ListParagraph from './Paragraph';
 
 export const List = ({
   children,
@@ -15,17 +20,55 @@ export const List = ({
   numbered,
   ...otherProps
 }) => {
-  let Component = 'ul';
+  let ListComponent = 'ul';
   if (numbered === true) {
-    Component = 'ol';
+    ListComponent = 'ol';
   }
 
+  let descriptionComponent;
+  let descriptionId;
+  const description = Children.toArray(children)
+    .filter((child) => {
+      return child.type === ListHeading || child.type === ListParagraph;
+    })
+    // Return the first description component used.
+    .reduce((acc, child) => {
+      if (acc) {
+        return acc;
+      }
+
+      return child;
+    }, null);
+
+  if (description) {
+    descriptionId = description.props.id || shortid.generate();
+
+    if (description.type === ListHeading) {
+      descriptionComponent = (
+        <Heading {...description.props} id={descriptionId} />
+      );
+    } else if (description.type === ListParagraph) {
+      descriptionComponent = (
+        <Paragraph {...description.props} id={descriptionId} />
+      );
+    }
+  }
+
+  const items = React.Children.toArray(children).filter((child) => {
+    return child.type === ListItem;
+  });
+
+  const ariaProps = {
+    'aria-labelledby': descriptionId,
+  };
+
   return (
-    <Component {...otherProps}>
-      <li>thing one</li>
-      <li>thing two</li>
-      {children}
-    </Component>
+    <Fragment>
+      {descriptionComponent}
+      <ListComponent {...ariaProps} {...otherProps}>
+        {items}
+      </ListComponent>
+    </Fragment>
   );
 };
 
@@ -42,9 +85,9 @@ List.defaultProps = {
 List.propTypes = {
   /** @ignore */
   children: PropTypes.node,
-  /** Increase the visual prominence of the paragraph. */
+  /** Increase the visual prominence of the list. */
   large: PropTypes.bool,
-  /** Decrease the visual prominence of the paragraph. */
+  /** Decrease the visual prominence of the list. */
   small: PropTypes.bool,
   /** Inverse text colour. Used for dark backgrounds. */
   inverse: PropTypes.bool,
@@ -56,35 +99,13 @@ List.propTypes = {
   numbered: PropTypes.bool,
 };
 
-export default styled(List)(({ dark, inverse, large, light, small, theme }) => {
-  return css`
-      color: ${theme.colors.text.default};
-      margin: 0 0 ${theme.spacing.margin.m};
-      ${small && bodySmall(theme)};
-      ${!small && !large && bodyMedium(theme)};
-      ${large && bodyLarge(theme)};
-      ${light &&
-        css`
-          color: ${theme.colors.text.light};
-        `}
+const StyledList = styled(List)(textStyles);
 
-      ${dark &&
-        css`
-          color: ${theme.colors.text.dark};
-        `}
+// Export ListHeading as `List.Heading`.
+StyledList.Heading = ListHeading;
+// Export ListItem as `List.Item`.
+StyledList.Item = ListItem;
+// Export ListParagraph as `List.Paragraph`.
+StyledList.Paragraph = ListParagraph;
 
-      ${inverse &&
-        css`
-          color: ${theme.colors.text.inverse};
-
-          ${light &&
-            css`
-              color: ${theme.colors.text.inverseLight};
-            `}
-          ${dark &&
-            css`
-              color: ${theme.colors.text.inverseDark};
-            `}
-        `}
-    `;
-});
+export default StyledList;
