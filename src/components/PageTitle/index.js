@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { pageTitle } from 'themes/mixins';
+import { pageTitle } from 'styles';
 
 export const PageTitle = ({ children, documentTitle, ...otherProps }) => {
   // const documentTitleToUse = documentTitle || children;

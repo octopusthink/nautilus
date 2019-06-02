@@ -1,8 +1,9 @@
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { textStyles } from 'themes/mixins';
+import { bodyStyles } from 'styles';
 
 export const Paragraph = ({
   children,
@@ -40,6 +41,10 @@ Paragraph.propTypes = {
   light: PropTypes.bool,
 };
 
-const StyledParagraph = styled(Paragraph)(textStyles);
+const StyledParagraph = styled(Paragraph)(({ theme, ...otherProps }) => {
+  return css`
+    ${bodyStyles({ ...otherProps, theme })}
+  `;
+});
 
 export default StyledParagraph;

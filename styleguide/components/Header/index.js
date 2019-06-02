@@ -4,7 +4,7 @@ import React from 'react';
 import Version from 'rsg-components/Version';
 
 import theme from 'styleguide/theme';
-import { metadataLarge } from 'themes/mixins';
+import { metadata } from 'styles';
 
 export function Header({ children, title, version }) {
   return (
@@ -15,8 +15,7 @@ export function Header({ children, title, version }) {
         @media screen and (min-width: 960px) {
           grid-column: 1 / 3;
         }
-
-        ${css(metadataLarge(theme))};
+        ${metadata.large(theme)};
       `}
     >
       {title}

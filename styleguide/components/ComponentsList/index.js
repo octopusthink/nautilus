@@ -5,7 +5,6 @@ import Link from 'rsg-components/Link';
 import Styled from 'rsg-components/Styled';
 
 import theme from 'styleguide/theme';
-import { metadataLarge } from 'themes/mixins';
 
 import { getHash } from './getHash';
 

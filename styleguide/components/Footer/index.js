@@ -4,7 +4,7 @@ import React from 'react';
 import Version from 'rsg-components/Version';
 
 import theme from 'styleguide/theme';
-import { bodySmall, headingLarge } from 'themes/mixins';
+import { heading } from 'styles';
 
 export function Footer({ children, title, version }) {
   return (
@@ -15,7 +15,7 @@ export function Footer({ children, title, version }) {
         @media screen and (min-width: 960px) {
           grid-column: 1 / 3;
         }
-        ${css(headingLarge(theme))};
+        ${heading.large(theme)};
       `}
     >
       {children}
