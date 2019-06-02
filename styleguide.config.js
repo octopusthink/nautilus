@@ -33,6 +33,8 @@ module.exports = {
     ),
     ExamplesRenderer: path.join(__dirname, 'styleguide/components/Content'),
     Heading: path.join(__dirname, 'src/components/ui/Heading'),
+    ListRenderer: path.join(__dirname, 'styleguide/components/List'),
+    Markdown: path.join(__dirname, 'styleguide/components/Markdown'),
     Para: path.join(__dirname, 'src/components/ui/Paragraph'),
     PathlineRenderer: path.join(__dirname, 'styleguide/components/Pathline'),
     PlaygroundRenderer: path.join(
@@ -40,7 +42,7 @@ module.exports = {
       'styleguide/components/Playground',
     ),
     PropsRenderer: path.join(__dirname, 'styleguide/components/Props'),
-    // This wraps all actual page content in a `<Nautilus />` provider so
+    // This wraps all actual page content in a `<Nautilus>` provider so
     // the content we output from Markdown has a theme available.
     StyleGuideRenderer: path.join(
       __dirname,
@@ -53,7 +55,7 @@ module.exports = {
       'styleguide/components/TableOfContents',
     ),
     TypeRenderer: path.join(__dirname, 'styleguide/components/PropType'),
-    // Wraps the example components in a `<Nautilus />` provider to ensure they
+    // Wraps the example components in a `<Nautilus>` provider to ensure they
     // have a theme loaded, and allows them to be custom-styled.
     Wrapper: path.join(__dirname, 'styleguide/components/Wrapper'),
   },

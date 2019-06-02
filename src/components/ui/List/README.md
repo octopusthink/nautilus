@@ -3,7 +3,7 @@ A `<List>` is a collection of related elements of equal weight, presented in an 
 Use the `<List.Item>` component for each item in your list.
 
 ```jsx
-<List numbered>
+<List ordered>
   <List.Heading>Things to do</List.Heading>
   <List.Item>Take shower. 🛀</List.Item>
   <List.Item>Brush teeth. 😁</List.Item>
@@ -51,10 +51,10 @@ Use an icon list when you want to provide additional semantic meaning—for inst
 [example]
 -->
 
-Use numbered lists when the order of the items is relevant, or to imply sequence and order. They are commonly used when giving instructions or steps in a process.
+Use ordered lists when item order is relevant, or to imply sequence and order. Ordered lists are commonly used when giving instructions or steps in a process.
 
 ```jsx
-<List numbered>
+<List ordered>
   <List.Paragraph>How to file taxes:</List.Paragraph>
   <List.Item>Obtain wine.</List.Item>
   <List.Item>Crack open wine.</List.Item>
@@ -80,7 +80,7 @@ List items are conveyed as a group of related elements to assistive technology u
 
 - If your list has a title or lead-in phrase, use a `<List.Heading>` or `<List.Paragraph>` component, inside the list as the first component. This will identify it as the list header using the `aria-labelledby` attribute.
 - Keep list labels as short as possible to communicate your intent.
-- Use a bulleted list for lists where the order isn't important, and a numbered list when it is.
+- Use a bulleted list for lists where the order isn't important, and a ordered list when it is.
 - Don't use a list for stylistic or presentation needs only.
 - Use semantic HTML elements (`<ol>`, `<ul>`, and `<li>`) to mark up lists. (Nautilus will handle this for you!)
 
@@ -92,7 +92,7 @@ List items are conveyed as a group of related elements to assistive technology u
   <List.Item>mangos 🥭</List.Item>
 </List>
 
-<List numbered>
+<List ordered>
   <List.Paragraph>The best motorcycles, in order:</List.Paragraph>
   <List.Item>Honda CBR 125R</List.Item>
   <List.Item>Honda CB400 Four</List.Item>

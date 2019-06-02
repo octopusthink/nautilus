@@ -11,7 +11,7 @@ module.exports = {
     '<rootDir>/utils/jest.setup.js',
   ],
   snapshotSerializers: ['jest-emotion'],
-  testPathIgnorePatterns: ['<rootDir>/node_modules/'],
+  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/styleguide/'],
   testURL: 'http://localhost',
   transform: {
     '^.+\\.(js|jsx)$': 'babel-jest',
