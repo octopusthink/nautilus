@@ -1,9 +1,8 @@
-import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { bodySmall, bodyMedium, bodyLarge } from 'themes/mixins';
+import { textStyles } from 'themes/mixins';
 
 export const Paragraph = ({
   children,
@@ -41,37 +40,6 @@ Paragraph.propTypes = {
   light: PropTypes.bool,
 };
 
-export default styled(Paragraph)(
-  ({ dark, inverse, large, light, small, theme }) => {
-    return css`
-      color: ${theme.colors.text.default};
-      margin: 0 0 ${theme.spacing.margin.m};
-      ${small && bodySmall(theme)};
-      ${!small && !large && bodyMedium(theme)};
-      ${large && bodyLarge(theme)};
-      ${light &&
-        css`
-          color: ${theme.colors.text.light};
-        `}
+const StyledParagraph = styled(Paragraph)(textStyles);
 
-      ${dark &&
-        css`
-          color: ${theme.colors.text.dark};
-        `}
-
-      ${inverse &&
-        css`
-          color: ${theme.colors.text.inverse};
-
-          ${light &&
-            css`
-              color: ${theme.colors.text.inverseLight};
-            `}
-          ${dark &&
-            css`
-              color: ${theme.colors.text.inverseDark};
-            `}
-        `}
-    `;
-  },
-);
+export default StyledParagraph;

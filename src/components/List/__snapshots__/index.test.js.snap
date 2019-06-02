@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List List.Heading should render a heading outside the list if one is provided 1`] = `
+.emotion-2 {
+  color: #3b3f45;
+  margin: 0 0 3.2rem;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.5555555555555556;
+  padding: 0;
+}
+
+.emotion-2 > .eo6n83v0 {
+  list-style: none;
+}
+
+.emotion-2 > .eo6n83v0::before {
+  content: '\\2022';
+  font-size: 0.6em;
+  line-height: 2.8;
+}
+
+.emotion-0 {
+  margin: 0 0 3.2rem;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 700;
+  font-size: 4.4rem;
+  line-height: 1;
+}
+
+.eijrly0 + .emotion-0,
+ul + .emotion-0,
+ol + .emotion-0,
+dl + .emotion-0 {
+  margin-top: 3.2rem;
+}
+
+<div>
+  <h3
+    class="emotion-0 emotion-1"
+    data-testid="description"
+    id="fruits"
+  >
+    Tasty fruits
+  </h3>
+  <ul
+    aria-labelledby="fruits"
+    class="emotion-2 emotion-3"
+  />
+</div>
+`;
+
+exports[`List List.Paragraph should render a paragraph outside the list if one is provided 1`] = `
+.emotion-6 {
+  color: #3b3f45;
+  margin: 0 0 3.2rem;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.5555555555555556;
+  padding: 0;
+}
+
+.emotion-6 > .emotion-3 {
+  list-style: none;
+}
+
+.emotion-6 > .emotion-3::before {
+  content: '\\2022';
+  font-size: 0.6em;
+  line-height: 2.8;
+}
+
+.emotion-2 {
+  position: relative;
+  margin: 0 0 0.4rem;
+}
+
+.emotion-2::before {
+  position: absolute;
+  right: 101%;
+}
+
+.emotion-0 {
+  color: #3b3f45;
+  margin: 0 0 3.2rem;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.5555555555555556;
+}
+
+<div>
+  <p
+    class="emotion-0 emotion-1"
+    data-testid="description"
+    id="cars"
+  >
+    Here are some cars:
+  </p>
+  <ul
+    aria-labelledby="cars"
+    class="emotion-6 emotion-7"
+  >
+    <li
+      class="emotion-2 emotion-3"
+    >
+      Honda Civic
+    </li>
+    <li
+      class="emotion-2 emotion-3"
+    >
+      Ford Prefect
+    </li>
+  </ul>
+</div>
+`;

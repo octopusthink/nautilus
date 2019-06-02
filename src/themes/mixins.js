@@ -1,3 +1,5 @@
+import { css } from '@emotion/core';
+
 // Let's start by generating a type scale, along with line-heights and small-caps modifiers.
 // These functions will be used by our type styles below.
 
@@ -225,4 +227,37 @@ export const metadataLarge = (theme) => {
     }),
     ...smallCaps(),
   };
+};
+
+export const textStyles = ({ dark, inverse, large, light, small, theme }) => {
+  return css`
+    color: ${theme.colors.text.default};
+    margin: 0 0 ${theme.spacing.margin.m};
+    ${small && bodySmall(theme)};
+    ${!small && !large && bodyMedium(theme)};
+    ${large && bodyLarge(theme)};
+    ${light &&
+      css`
+        color: ${theme.colors.text.light};
+      `}
+
+    ${dark &&
+      css`
+        color: ${theme.colors.text.dark};
+      `}
+
+    ${inverse &&
+      css`
+        color: ${theme.colors.text.inverse};
+
+        ${light &&
+          css`
+            color: ${theme.colors.text.inverseLight};
+          `}
+        ${dark &&
+          css`
+            color: ${theme.colors.text.inverseDark};
+          `}
+      `}
+  `;
 };
