@@ -28,5 +28,5 @@ jobs:
         displayName: 'Install dependencies'
       - script: npm run lint:eslint
         displayName: 'Lint JS'
-      - script: npm run lint:stylelint
-        displayName: 'Lint CSS'
+      # - script: npm run lint:stylelint
+      #   displayName: 'Lint CSS'
