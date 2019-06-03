@@ -11,11 +11,11 @@ exports[`List List.Heading should render a heading outside the list if one is pr
   padding: 0;
 }
 
-.emotion-2 > .eo6n83v0 {
+.emotion-2 > .e1hnlpvv0 {
   list-style: none;
 }
 
-.emotion-2 > .eo6n83v0::before {
+.emotion-2 > .e1hnlpvv0::before {
   content: '\\2022';
   font-size: 0.6em;
   line-height: 2.8;
@@ -29,9 +29,8 @@ exports[`List List.Heading should render a heading outside the list if one is pr
   line-height: 1;
 }
 
-.eijrly0 + .emotion-0,
-ul + .emotion-0,
-ol + .emotion-0,
+.emotion-3 + .emotion-0,
+.e1ad7wa0 + .emotion-0,
 dl + .emotion-0 {
   margin-top: 3.2rem;
 }

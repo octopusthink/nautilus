@@ -1,6 +1,6 @@
 // This file is largely the same as
 // https://github.com/styleguidist/react-styleguidist/blob/0f461ab8f5070d5e91e8911bc2b22d805c07fb98/src/client/rsg-components/StyleGuide/StyleGuide.js,
-// but adds a `<Nautilus />` wrapper so we can use our own components as
+// but adds a `<Nautilus>` wrapper so we can use our own components as
 // the output components of React Styleguidist's Markdown.
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
@@ -9,7 +9,7 @@ import Markdown from 'rsg-components/Markdown';
 import Header from 'styleguide/components/Header';
 import Footer from 'styleguide/components/Footer';
 
-import Nautilus from 'components/Nautilus';
+import { Nautilus } from 'components';
 import theme from 'styleguide/theme';
 
 export const StyleGuide = ({

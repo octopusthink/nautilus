@@ -13,16 +13,16 @@ import ListParagraph from './Paragraph';
 
 export const List = ({
   children,
-  large,
-  small,
-  inverse,
   dark,
+  inverse,
+  large,
   light,
-  numbered,
+  ordered,
+  small,
   ...otherProps
 }) => {
   let ListComponent = 'ul';
-  if (numbered === true) {
+  if (ordered === true) {
     ListComponent = 'ol';
   }
 
@@ -80,7 +80,7 @@ List.defaultProps = {
   inverse: false,
   dark: false,
   light: false,
-  numbered: false,
+  ordered: false,
 };
 
 List.propTypes = {
@@ -97,40 +97,43 @@ List.propTypes = {
   /** Lighten text colour. */
   light: PropTypes.bool,
   /** Use numbers instead of bullets. */
-  numbered: PropTypes.bool,
+  ordered: PropTypes.bool,
 };
 
-const StyledList = styled(List)(({ numbered, theme, ...otherProps }) => {
-  return css`
-    ${bodyStyles({ ...otherProps, theme })};
-    padding: 0;
-    ${numbered &&
-      css`
-        counter-reset: list-counter;
+const StyledList = styled(List)(
+  ({ dark, inverse, large, light, ordered, small, theme }) => {
+    return css`
+      ${bodyStyles({ dark, inverse, large, light, small, theme })};
+      padding: 0;
+      ${ordered &&
+        css`
+          counter-reset: list-counter;
 
-        > ${ListItem} {
-          list-style: none;
-          counter-increment: list-counter;
+          > ${ListItem} {
+            list-style: none;
+            counter-increment: list-counter;
 
-          &::before {
-            content: counter(list-counter) '. ';
+            &::before {
+              content: counter(list-counter) '. ';
+            }
+          }
+        `}
+      ${!ordered &&
+        css`
+          > ${ListItem} {
+            list-style: none;
+
+            &::before {
+              content: '\\2022';
+              font-size: 0.6em;
+              line-height: 2.8;
+            }
           }
         }
       `}
-    ${!numbered &&
-      css`
-        > ${ListItem} {
-          list-style: none;
-
-          &::before {
-            content: '\\2022';
-            font-size: 0.6em;
-            line-height: 2.8;
-          }
-        }
-      `}
-  `;
-});
+    `;
+  },
+);
 
 // Export ListHeading as `List.Heading`.
 StyledList.Heading = ListHeading;

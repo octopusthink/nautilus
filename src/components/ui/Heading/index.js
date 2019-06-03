@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Paragraph from 'components/Paragraph';
+import { List, Paragraph } from 'components';
 import { heading } from 'styles';
 
 const LARGE = 2;
@@ -33,10 +33,9 @@ Heading.propTypes = {
 export default styled(Heading)(({ level, theme }) => {
   return css`
     margin: 0 0 ${theme.spacing.margin.m};
+    ${`${List} + &`},
     ${`${Paragraph} + &`},
     /* TODO: Replace these with actual Nautilus components */
-    ul + &,
-    ol + &,
     dl + & {
       margin-top: ${theme.spacing.margin.m};
     }

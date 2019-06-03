@@ -11,8 +11,8 @@ describe('List', () => {
     expect(container.firstChild.tagName).toEqual('UL');
   });
 
-  it('should render an <ol> when the numbered prop is true', () => {
-    const { container } = render(<List numbered />);
+  it('should render an <ol> when the ordered prop is true', () => {
+    const { container } = render(<List ordered />);
 
     expect(container.firstChild.tagName).toEqual('OL');
   });
@@ -67,7 +67,7 @@ describe('List', () => {
 
     it('should set a random, short unique ID for the heading if no ID was provided', () => {
       const { getByTestId } = render(
-        <List numbered>
+        <List ordered>
           <List.Heading data-testid="description">My list</List.Heading>
           <List.Item>One</List.Item>
           <List.Item>Two</List.Item>
@@ -110,7 +110,7 @@ describe('List', () => {
 
     it('should set a random, short unique ID for the paragraph if no ID was provided', () => {
       const { getByTestId } = render(
-        <List numbered>
+        <List ordered>
           <List.Paragraph data-testid="description">My list</List.Paragraph>
           <List.Item>One</List.Item>
           <List.Item>Two</List.Item>
