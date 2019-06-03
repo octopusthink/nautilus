@@ -17,8 +17,8 @@ export function Playground({
   return (
     <div
       css={css`
-        border: 2px solid ${theme.colors.neutral.grey800};
-        background: ${theme.colors.neutral.grey800};
+        border: 2px solid ${theme.colors.neutral.black};
+        background: ${theme.colors.neutral.black};
         margin-bottom: ${theme.spacing.margin.xl};
       `}
     >
