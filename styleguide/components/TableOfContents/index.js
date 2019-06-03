@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import theme from 'styleguide/theme';
-import { metadataLarge } from 'themes/mixins';
+import { metadata } from 'styles';
 
 export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
   return (
@@ -14,7 +14,7 @@ export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
           padding-top: ${theme.spacing.padding.l};
         }
 
-        ${css(metadataLarge(theme))};
+        ${metadata.large(theme)};
       `}
     >
       <input

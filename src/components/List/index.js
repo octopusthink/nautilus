@@ -5,7 +5,7 @@ import React, { Children, Fragment } from 'react';
 import shortid from 'shortid';
 
 import { Heading, Paragraph } from 'components';
-import { textStyles } from 'themes/mixins';
+import { bodyStyles } from 'styles';
 
 import ListHeading from './Heading';
 import ListItem from './Item';
@@ -100,39 +100,37 @@ List.propTypes = {
   numbered: PropTypes.bool,
 };
 
-const StyledList = styled(List)(
-  ({ dark, inverse, large, light, numbered, small, theme }) => {
-    return css`
-      ${textStyles({ dark, inverse, large, light, small, theme })};
-      padding: 0;
-      ${numbered &&
-        css`
-          counter-reset: list-counter;
+const StyledList = styled(List)(({ numbered, theme, ...otherProps }) => {
+  return css`
+    ${bodyStyles({ ...otherProps, theme })};
+    padding: 0;
+    ${numbered &&
+      css`
+        counter-reset: list-counter;
 
-          > ${ListItem} {
-            list-style: none;
-            counter-increment: list-counter;
+        > ${ListItem} {
+          list-style: none;
+          counter-increment: list-counter;
 
-            &::before {
-              content: counter(list-counter) '. ';
-            }
+          &::before {
+            content: counter(list-counter) '. ';
           }
-        `}
-      ${!numbered &&
-        css`
-          > ${ListItem} {
-            list-style: none;
+        }
+      `}
+    ${!numbered &&
+      css`
+        > ${ListItem} {
+          list-style: none;
 
-            &::before {
-              content: '\\2022';
-              font-size: 0.6em;
-              line-height: 2.8;
-            }
+          &::before {
+            content: '\\2022';
+            font-size: 0.6em;
+            line-height: 2.8;
           }
-        `}
-    `;
-  },
-);
+        }
+      `}
+  `;
+});
 
 // Export ListHeading as `List.Heading`.
 StyledList.Heading = ListHeading;

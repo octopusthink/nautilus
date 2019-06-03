@@ -151,18 +151,18 @@ export const theme = {
   typography: {
     fonts: {
       body: fonts.systemFonts,
-      headings: fonts.systemFonts,
-      interface: fonts.systemFonts,
+      heading: fonts.systemFonts,
+      interfaceUI: fonts.systemFonts,
     },
 
     fontWeights: {
       body: 400,
       bodyBold: 600,
-      headings: 700,
+      heading: 700,
       pageTitle: 700,
       subtitle: 300,
-      interface: 500,
-      interfaceBold: 700,
+      interfaceUI: 500,
+      interfaceUIBold: 700,
     },
 
     baseSizes: {
@@ -176,9 +176,9 @@ export const theme = {
     },
 
     lineHeights: {
-      headings: 1,
+      heading: 1,
       body: 1.5,
-      interface: 1.2,
+      interfaceUI: 1.2,
     },
   },
 

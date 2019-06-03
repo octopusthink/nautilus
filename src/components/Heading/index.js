@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Paragraph from 'components/Paragraph';
-import { headingLarge, headingMedium, headingSmall } from 'themes/mixins';
+import { heading } from 'styles';
 
 const LARGE = 2;
 const MEDIUM = 3;
@@ -41,19 +41,8 @@ export default styled(Heading)(({ level, theme }) => {
       margin-top: ${theme.spacing.margin.m};
     }
 
-    ${level === LARGE &&
-      css`
-        ${css(headingLarge(theme))};
-      `}
-
-    ${level === MEDIUM &&
-      css`
-        ${css(headingMedium(theme))};
-      `}
-
-    ${level === SMALL &&
-      css`
-        ${css(headingSmall(theme))};
-      `}
+    ${level === SMALL && heading.small(theme)};
+    ${level === MEDIUM && heading.medium(theme)};
+    ${level === LARGE && heading.large(theme)};
   `;
 });

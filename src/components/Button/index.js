@@ -4,7 +4,7 @@ import invariant from 'invariant';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { interfaceMedium } from 'themes/mixins';
+import { interfaceUI } from 'styles';
 
 export const Button = ({
   children,
@@ -122,7 +122,7 @@ export default styled(Button)(
     }
 
     return css`
-      ${interfaceMedium(theme)}
+      ${interfaceUI.medium(theme)}
       background: ${theme.colors.buttons.neutral};
       border: 2px solid ${currentButtonColor};
       border-radius: 8px;
