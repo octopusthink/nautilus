@@ -26,7 +26,7 @@ export function Playground({
         {...props}
         data-preview={name}
         css={css`
-          border: 2px solid ${theme.colors.neutral.grey800};
+          border: 2px solid ${theme.colors.neutral.black};
           background: ${theme.colors.neutral.white};
           padding: ${theme.spacing.padding.l};
         `}
