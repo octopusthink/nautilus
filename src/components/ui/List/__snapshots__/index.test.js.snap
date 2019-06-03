@@ -29,9 +29,8 @@ exports[`List List.Heading should render a heading outside the list if one is pr
   line-height: 1;
 }
 
+.emotion-3 + .emotion-0,
 .e1ad7wa0 + .emotion-0,
-ul + .emotion-0,
-ol + .emotion-0,
 dl + .emotion-0 {
   margin-top: 3.2rem;
 }
