@@ -1,5 +1,9 @@
+import { css } from '@emotion/core';
+
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import theme from 'styleguide/theme';
 
 export function Playground({
   name,
@@ -11,11 +15,32 @@ export function Playground({
 }) {
   const { ...props } = previewProps;
   return (
-    <div>
-      <div {...props} data-preview={name}>
+    <div
+      css={css`
+        border: 2px solid ${theme.colors.neutral.black};
+        background: ${theme.colors.neutral.black};
+        margin-bottom: ${theme.spacing.margin.xl};
+      `}
+    >
+      <div
+        {...props}
+        data-preview={name}
+        css={css`
+          border: 2px solid ${theme.colors.neutral.black};
+          background: ${theme.colors.neutral.white};
+          padding: ${theme.spacing.padding.l};
+        `}
+      >
         {preview}
       </div>
-      <div>
+      <div
+        css={css`
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: ${theme.spacing.padding.s} ${theme.spacing.padding.m};
+        `}
+      >
         <div>{tabButtons}</div>
         <div>{toolbar}</div>
       </div>

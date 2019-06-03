@@ -46,6 +46,7 @@ module.exports = {
       __dirname,
       'styleguide/components/StyleGuide',
     ),
+    TabButtonRenderer: path.join(__dirname, 'styleguide/components/TabButton'),
     TableRenderer: path.join(__dirname, 'styleguide/components/Table'),
     TableOfContentsRenderer: path.join(
       __dirname,
