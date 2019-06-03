@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import theme from 'styleguide/theme';
-import { interfaceSmall } from 'themes/mixins';
+import { interface } from 'styles';
 
 
 export function TabButtonRenderer({ classes, name, className, onClick, active, children }) {
@@ -13,7 +13,7 @@ export function TabButtonRenderer({ classes, name, className, onClick, active, c
 			border: none;
 			color: ${theme.colors.neutral.white};
 			padding: 10px;
-			${css(interfaceSmall(theme))};
+			${interface.small(theme)};
 
 			&::before {
 				display: inline-block;
