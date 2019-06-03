@@ -12,7 +12,7 @@ import Hr from 'rsg-components/Markdown/Hr';
 import { Details, DetailsSummary } from 'rsg-components/Markdown/Details';
 import { Table, TableHead, TableBody, TableRow, TableCell } from 'rsg-components/Markdown/Table';
 
-import { Heading, Paragraph } from 'components';
+import { Heading, PageTitle, Paragraph } from 'components';
 import List from 'styleguide/components/List';
 
 const Pre = props => {
@@ -31,10 +31,7 @@ export const baseOverrides = {
 		component: Link,
 	},
 	h1: {
-		component: Heading,
-		props: {
-			level: 1,
-		},
+		component: PageTitle,
 	},
 	h2: {
 		component: Heading,
