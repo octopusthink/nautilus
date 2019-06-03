@@ -27,7 +27,7 @@ export function Header({ children, title, version }) {
 Header.propTypes = {
   children: PropTypes.node,
   title: PropTypes.string.isRequired,
-  version: PropTypes.string.isRequired,
+  version: PropTypes.string,
 };
 
 export default Header;

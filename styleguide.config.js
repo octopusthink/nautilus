@@ -32,7 +32,7 @@ module.exports = {
       'styleguide/components/ComponentsList',
     ),
     ExamplesRenderer: path.join(__dirname, 'styleguide/components/Content'),
-    Heading: path.join(__dirname, 'src/components/ui/Heading'),
+    Heading: path.join(__dirname, 'styleguide/components/Heading'),
     ListRenderer: path.join(__dirname, 'styleguide/components/List'),
     Markdown: path.join(__dirname, 'styleguide/components/Markdown'),
     Para: path.join(__dirname, 'src/components/ui/Paragraph'),
