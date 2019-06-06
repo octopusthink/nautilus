@@ -42715,16 +42715,7 @@ module.exports = {
         'previewDelay': 500,
         'ribbon': void 0,
         'showSidebar': true,
-        'styles': {
-            'StyleGuide': {
-                '@global html': {
-                    'fontSize': '62.5%',
-                    'boxSizing': 'border-box'
-                },
-                '@global body': { 'fontSize': '1.6rem' },
-                '@global img': { 'maxWidth': '100%' }
-            }
-        },
+        'styles': {},
         'theme': {},
         'title': 'Nautilus Design System',
         'version': void 0
@@ -45229,14 +45220,24 @@ var src_components = __webpack_require__(6);
 
 
 
-var StyleGuide_StyleGuide = function StyleGuide(_ref) {
-  var children = _ref.children,
-      hasSidebar = _ref.hasSidebar,
-      homepageUrl = _ref.homepageUrl,
-      title = _ref.title,
-      toc = _ref.toc,
-      version = _ref.version;
-  return Object(core_browser_esm["d" /* jsx */])(src_components["Nautilus"], null, Object(core_browser_esm["d" /* jsx */])("div", {
+
+var StyleGuide_ref =  true ? {
+  name: "wiks95",
+  styles: "html{box-sizing:border-box;font-size:62.5%;}body{font-size:1.6rem;}img{max-width:100%;}"
+} : undefined;
+
+var StyleGuide_StyleGuide = function StyleGuide(_ref2) {
+  var children = _ref2.children,
+      hasSidebar = _ref2.hasSidebar,
+      homepageUrl = _ref2.homepageUrl,
+      title = _ref2.title,
+      toc = _ref2.toc,
+      version = _ref2.version;
+  return Object(core_browser_esm["d" /* jsx */])(src_components["Nautilus"], null, Object(core_browser_esm["d" /* jsx */])(core_browser_esm["a" /* Global */], {
+    styles:
+    /*#__PURE__*/
+    StyleGuide_ref
+  }), Object(core_browser_esm["d" /* jsx */])("div", {
     css:
     /*#__PURE__*/
 
