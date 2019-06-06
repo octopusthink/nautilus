@@ -14,7 +14,7 @@
     "lint:eslint-fix": "eslint --fix .",
     "lint:stylelint": "stylelint '**/*.js'",
     "lint:stylelint-fix": "stylelint --fix '**/*.js'",
-    "prepublish": "npm run build",
+    "prepublish": "echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc && npm run build",
     "prepublish:styleguide": "npm run build",
     "publish:styleguide": "node bin/publish-gh-pages.js",
     "prepublish:styleguide-for-version": "npm run build",
