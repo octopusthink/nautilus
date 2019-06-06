@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 const shell = require('shelljs');
 
-// eslint-disable-next-line no-template-curly-in-string
-const authInfoString = '//registry.npmjs.org/:_authToken=${NPM_TOKEN}';
+const { NPM_TOKEN } = process.env;
 
-shell.exec(`${authInfoString} > ~/.npmrc`, { silent: true });
+shell.exec(`echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > ~/.npmrc`, {
+  silent: true,
+});
