@@ -15,7 +15,6 @@
     "lint:stylelint": "stylelint '**/*.js'",
     "lint:stylelint-fix": "stylelint --fix '**/*.js'",
     "prepare": "npm run build",
-    "prepublishOnly": "node bin/prepare-release.js",
     "prepublish:styleguide": "npm run build",
     "publish:styleguide": "node bin/publish-gh-pages.js",
     "prepublish:styleguide-for-version": "npm run build",
