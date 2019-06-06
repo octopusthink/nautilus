@@ -30,16 +30,14 @@ const config = {
     ],
   },
   optimization: {
-    minimize: false
+    minimize: false,
   },
   output: {
     library: 'nautilus',
     libraryTarget: 'umd',
     path: path.join(__dirname, 'dist'),
   },
-  plugins: [
-    new PeerDepsExternalsPlugin(),
-  ],
+  plugins: [],
   resolve: {
     // Add src/ folder for easier includes within the project.
     modules: [srcPath, projectPath, 'node_modules'],
@@ -50,5 +48,9 @@ const config = {
     },
   },
 };
+
+if (process.env.NODE_ENV === 'production' && !process.env.DISABLE_PEER_DEPS_PLUGIN) {
+  config.plugins.push(new PeerDepsExternalsPlugin());
+}
 
 module.exports = config;

@@ -7,7 +7,7 @@
     "prebuild": "npm run clean",
     "build": "npm run build:package && npm run build:styleguide",
     "build:package": "NODE_ENV=production webpack",
-    "build:styleguide": "NODE_ENV=production webpack",
+    "build:styleguide": "DISABLE_PEER_DEPS_PLUGIN=true NODE_ENV=production styleguidist build",
     "clean": "shx rm -rf coverage/ dist/",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint .",
