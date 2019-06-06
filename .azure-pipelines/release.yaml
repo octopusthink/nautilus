@@ -38,5 +38,5 @@ jobs:
         displayName: 'Set NPM Auth Token'
         env:
           NPM_TOKEN: $(npm.accessToken)
-      - script: npm publish
+      - script: npm publish --access=public
         displayName: 'Publish release'
