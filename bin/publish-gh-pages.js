@@ -13,7 +13,10 @@
 const shell = require('shelljs');
 
 const { GITHUB_ACCESS_TOKEN, GITHUB_USER } = process.env;
-const GIT_REF = process.env.GIT_REF || 'master';
+let GIT_REF = process.env.GIT_REF || 'master';
+if (process.env.PUBLISH_VERSION_FOLDER === 'true') {
+  GIT_REF = `v${process.env.npm_package_version}`;
+}
 
 const owner = process.env.GITHUB_OWNER;
 const repo = process.env.GITHUB_REPO;

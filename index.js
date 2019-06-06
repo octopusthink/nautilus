@@ -1,2 +1,2 @@
 /* eslint-disable */
-module.exports = require('./dist');
+module.exports = require('./dist/main.js');

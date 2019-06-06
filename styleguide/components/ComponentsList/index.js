@@ -31,7 +31,6 @@ export function ComponentsList({ classes, items }) {
     >
       {items.map(
         ({ heading, visibleName, href, content, shouldOpenInNewTab }) => {
-          console.log(content);
           const isItemSelected = windowHash === href;
           return (
             <li

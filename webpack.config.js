@@ -1,11 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 
+const PeerDepsExternalsPlugin = require('peer-deps-externals-webpack-plugin');
+
 const projectPath = path.resolve(fs.realpathSync(process.cwd()), '.');
 const srcPath = path.resolve(fs.realpathSync(process.cwd()), 'src');
 const styleguidePath = path.resolve(fs.realpathSync(process.cwd()), 'styleguide');
 
-module.exports = {
+const config = {
+  entry: ['./src/index.js'],
+  mode: process.env.NODE_ENV,
   module: {
     rules: [
       // Transform ES6 with Babel
@@ -25,6 +29,15 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    minimize: false,
+  },
+  output: {
+    library: 'nautilus',
+    libraryTarget: 'umd',
+    path: path.join(__dirname, 'dist'),
+  },
+  plugins: [],
   resolve: {
     // Add src/ folder for easier includes within the project.
     modules: [srcPath, projectPath, 'node_modules'],
@@ -35,3 +48,9 @@ module.exports = {
     },
   },
 };
+
+if (process.env.NODE_ENV === 'production' && !process.env.DISABLE_PEER_DEPS_PLUGIN) {
+  config.plugins.push(new PeerDepsExternalsPlugin());
+}
+
+module.exports = config;
