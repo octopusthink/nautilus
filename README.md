@@ -8,6 +8,12 @@ https://nautilus.octopusthink.com/
 
 Want to use Nautilus in your next web app? Well: tough! It's much too early and it's nowhere near ready for production usage. Check back later. 😅
 
+You can _technically_ install it from NPM, but you can't say we didn't warn you!
+
+```bash
+npm install @octopusthink/nautilus
+```
+
 ## Development 🛠
 
 Want to contribute to Nautilus, or test it locally? Here's how!
