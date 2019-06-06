@@ -7,9 +7,10 @@ pr:
 trigger:
   branches:
     exclude:
-      - gh-pages
+      - '*'
+  tags:
     include:
-      - master
+      - v*
 
 jobs:
   - job: publish_styleguide
@@ -19,10 +20,21 @@ jobs:
     steps:
       - script: npm install
         displayName: 'Install dependencies'
-      - script: npm run publish:styleguide
-        displayName: 'Publish styleguide to gh-pages'
+      - script: npm run publish:styleguide-for-version
+        displayName: 'Publish styleguide to gh-pages for this release'
         env:
           GITHUB_ACCESS_TOKEN: $(github.accessToken)
           GITHUB_OWNER: octopusthink
           GITHUB_REPO: nautilus
           GITHUB_USER: mechanical-octopus
+  - job: publish_to_npm
+    displayName: Publish package to NPM
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - script: npm install
+        displayName: 'Install dependencies'
+      - script: npm publish
+        displayName: 'Publish release'
+        env:
+          NPM_TOKEN: $(npm.accessToken)
