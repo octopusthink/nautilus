@@ -9,20 +9,6 @@ module.exports = {
   },
   title: 'Nautilus Design System',
   skipComponentsWithoutExample: true,
-  styles: {
-    StyleGuide: {
-      '@global html': {
-        fontSize: '62.5%',
-        boxSizing: 'border-box',
-      },
-      '@global body': {
-        fontSize: '1.6rem',
-      },
-      '@global img': {
-        maxWidth: '100%',
-      },
-    },
-  },
   // For a full list of available components we can override, see:
   // https://github.com/styleguidist/react-styleguidist/tree/0f461ab8f5070d5e91e8911bc2b22d805c07fb98/src/client/rsg-components
   styleguideComponents: {
