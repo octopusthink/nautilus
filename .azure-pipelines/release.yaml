@@ -34,6 +34,8 @@ jobs:
     steps:
       - script: npm install
         displayName: 'Install dependencies'
+      - script: npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+        displayName: 'Set NPM Auth Token'
       - script: npm publish
         displayName: 'Publish release'
         env:
