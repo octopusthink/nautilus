@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import React, { Children, Fragment } from 'react';
 import shortid from 'shortid';
 
-import { Heading, Paragraph } from 'components';
+import Heading from 'components/ui/Heading';
+import Paragraph from 'components/ui/Paragraph';
 import { bodyStyles } from 'styles';
 
-import ListHeading from './Heading';
 import ListItem from './Item';
-import ListParagraph from './Paragraph';
+
+export const ALLOWED_DESCRIPTION_COMPONENTS = [Heading, Paragraph];
 
 export const List = ({
   children,
@@ -30,7 +31,7 @@ export const List = ({
   let descriptionId;
   const description = Children.toArray(children)
     .filter((child) => {
-      return child.type === ListHeading || child.type === ListParagraph;
+      return ALLOWED_DESCRIPTION_COMPONENTS.includes(child.type);
     })
     // Return the first description component used.
     .reduce((acc, child) => {
@@ -44,15 +45,10 @@ export const List = ({
   if (description) {
     descriptionId = description.props.id || shortid.generate();
 
-    if (description.type === ListHeading) {
-      descriptionComponent = (
-        <Heading {...description.props} id={descriptionId} />
-      );
-    } else if (description.type === ListParagraph) {
-      descriptionComponent = (
-        <Paragraph {...description.props} id={descriptionId} />
-      );
-    }
+    const DescriptionComponent = description.type;
+    descriptionComponent = (
+      <DescriptionComponent {...description.props} id={descriptionId} />
+    );
   }
 
   const items = React.Children.toArray(children).filter((child) => {
@@ -71,6 +67,47 @@ export const List = ({
       </ListComponent>
     </Fragment>
   );
+};
+
+export const styles = ({
+  dark,
+  inverse,
+  large,
+  light,
+  ordered,
+  small,
+  theme,
+}) => {
+  return css`
+    ${bodyStyles({ dark, inverse, large, light, small, theme })};
+    padding: 0;
+    ${ordered &&
+      css`
+        counter-reset: list-counter;
+
+        > ${ListItem} {
+          list-style: none;
+          counter-increment: list-counter;
+
+          &::before {
+            content: counter(list-counter) '. ';
+          }
+        }
+      `}
+    ${!ordered &&
+      css`
+        > ${ListItem} {
+          list-style: none;
+
+          &::before {
+            content: '\\2022';
+            font-size: 0.6em;
+            line-height: 2.8;
+          }
+        }
+      }
+    `}
+  `;
 };
 
 List.defaultProps = {
@@ -100,46 +137,9 @@ List.propTypes = {
   ordered: PropTypes.bool,
 };
 
-const StyledList = styled(List)(
-  ({ dark, inverse, large, light, ordered, small, theme }) => {
-    return css`
-      ${bodyStyles({ dark, inverse, large, light, small, theme })};
-      padding: 0;
-      ${ordered &&
-        css`
-          counter-reset: list-counter;
+const StyledList = styled(List)(styles);
 
-          > ${ListItem} {
-            list-style: none;
-            counter-increment: list-counter;
-
-            &::before {
-              content: counter(list-counter) '. ';
-            }
-          }
-        `}
-      ${!ordered &&
-        css`
-          > ${ListItem} {
-            list-style: none;
-
-            &::before {
-              content: '\\2022';
-              font-size: 0.6em;
-              line-height: 2.8;
-            }
-          }
-        }
-      `}
-    `;
-  },
-);
-
-// Export ListHeading as `List.Heading`.
-StyledList.Heading = ListHeading;
 // Export ListItem as `List.Item`.
 StyledList.Item = ListItem;
-// Export ListParagraph as `List.Paragraph`.
-StyledList.Paragraph = ListParagraph;
 
 export default StyledList;

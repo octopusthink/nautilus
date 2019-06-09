@@ -42,4 +42,14 @@ describe('Paragraph', () => {
 
     expect(container.firstChild).toMatchSnapshot();
   });
+
+  it('should accept and pass through other props', () => {
+    const { getByTestId } = render(
+      <Paragraph className="custom-class" data-testid="myText">
+        hello
+      </Paragraph>,
+    );
+
+    expect(getByTestId('myText').classList).toContain('custom-class');
+  });
 });

@@ -11,6 +11,12 @@ export const PageTitle = ({ children, documentTitle, ...otherProps }) => {
   return <h1 {...otherProps}>{children}</h1>;
 };
 
+export const styles = ({ theme }) => {
+  return css`
+    ${pageTitle(theme)}
+  `;
+};
+
 PageTitle.defaultProps = {
   children: undefined,
   documentTitle: undefined,
@@ -23,8 +29,4 @@ PageTitle.propTypes = {
   documentTitle: PropTypes.string,
 };
 
-export default styled(PageTitle)(({ theme }) => {
-  return css`
-    ${pageTitle(theme)}
-  `;
-});
+export default styled(PageTitle)(styles);
