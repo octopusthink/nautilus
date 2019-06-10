@@ -14,6 +14,7 @@ export const TextInput = ({
   placeholder,
   helpText,
   optional,
+  multiline,
   ...otherProps
 }) => {
   const labelId = label || shortid.generate();
@@ -28,17 +29,23 @@ export const TextInput = ({
     optionalOutput = <span class="optional">(Optional)</span>;
   }
 
+  let Component = 'input';
+  if (multiline) {
+    Component = 'textarea';
+  }
+
   return (
     <div {...otherProps}>
       <label for={labelId}>
         {label} {optionalOutput}
       </label>
       {helpTextOutput}
-      <input
+      <Component
         id={labelId}
         type="text"
         value={children}
         placeholder={placeholder}
+        rows="4"
       />
     </div>
   );
@@ -51,6 +58,7 @@ TextInput.defaultProps = {
   placeholder: '',
   helpText: '',
   optional: false,
+  multiline: false,
 };
 
 TextInput.propTypes = {
@@ -71,6 +79,9 @@ TextInput.propTypes = {
 
   /** Mark the current input as optional. */
   optional: PropTypes.bool,
+
+  /** Mutliline switches from an input to a textarea */
+  multiline: PropTypes.bool,
 };
 
 export default styled(TextInput)(({ disabled, theme }) => {
@@ -99,7 +110,8 @@ export default styled(TextInput)(({ disabled, theme }) => {
       margin-left: ${theme.spacing.margin.xs};
     }
 
-    input {
+    input,
+    textarea {
       ${interfaceUI.medium(theme)};
       background: ${theme.colors.buttons.neutral};
       border: 2px solid ${theme.colors.text.default};
