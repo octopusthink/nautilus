@@ -2,67 +2,32 @@ import React from 'react';
 
 import { render } from 'utils/testing';
 
-import Button from '.';
+import TextInput from '.';
 
-describe('Button', () => {
-  it('should render a <button> by default', () => {
-    const { container } = render(<Button>Hello</Button>);
+describe('TextInput', () => {
+  it('should render a <label> and <input> by default', () => {
+    const { container } = render(<TextInput />);
 
-    expect(container.firstChild.tagName).toEqual('BUTTON');
+    expect(container.children[0].tagName).toEqual('LABEL');
+    expect(container.children[1].tagName).toEqual('INPUT');
   });
 
-  it('should render an <a> tag when `navigation` is set', () => {
-    const { container } = render(<Button navigation>Follow link</Button>);
-
-    expect(container.firstChild.tagName).toEqual('A');
-  });
-
-  it('should only allow one of minimal/primary props', () => {
-    expect(() => {
-      render(
-        <Button minimal primary>
-          Important but not
-        </Button>,
-      );
-    }).toThrow(
-      '<Button> should not be both `minimal` and `primary`, so which is it?',
+  it('will render `children` after the <label> and <input> elements', () => {
+    const { container } = render(
+      <TextInput>
+        <span>Why is this even here? I dunno</span>
+      </TextInput>,
     );
+
+    expect(container.children[0].tagName).toEqual('LABEL');
+    expect(container.children[1].tagName).toEqual('INPUT');
+    expect(container.children[2].tagName).toEqual('SPAN');
   });
 
-  it('should only allow one of danger/success/warning props', () => {
-    const errorText =
-      '<Button> should only use one of `danger`, `warning`, or `success`. Pick a lane!';
+  it('should render a <label> and <textarea> when `multiline` is `true`', () => {
+    const { container } = render(<TextInput multiline />);
 
-    expect(() => {
-      render(
-        <Button danger success warning>
-          Bad button
-        </Button>,
-      );
-    }).toThrow(errorText);
-
-    expect(() => {
-      render(
-        <Button danger success>
-          Bad button
-        </Button>,
-      );
-    }).toThrow(errorText);
-
-    expect(() => {
-      render(
-        <Button success warning>
-          Bad button
-        </Button>,
-      );
-    }).toThrow(errorText);
-
-    expect(() => {
-      render(
-        <Button danger warning>
-          Bad button
-        </Button>,
-      );
-    }).toThrow(errorText);
+    expect(container.children[0].tagName).toEqual('LABEL');
+    expect(container.children[1].tagName).toEqual('TEXTAREA');
   });
 });
