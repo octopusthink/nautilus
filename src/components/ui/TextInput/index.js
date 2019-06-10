@@ -15,6 +15,7 @@ export const TextInput = ({
   helpText,
   optional,
   multiline,
+  size,
   ...otherProps
 }) => {
   const labelId = label || shortid.generate();
@@ -59,6 +60,7 @@ TextInput.defaultProps = {
   helpText: '',
   optional: false,
   multiline: false,
+  size: undefined,
 };
 
 TextInput.propTypes = {
@@ -82,9 +84,12 @@ TextInput.propTypes = {
 
   /** Mutliline switches from an input to a textarea */
   multiline: PropTypes.bool,
+
+  /** Size defines the number of characters the field is intended to support. */
+  size: PropTypes.number,
 };
 
-export default styled(TextInput)(({ disabled, theme }) => {
+export default styled(TextInput)(({ disabled, size, theme }) => {
   return css`
     label {
       ${interfaceUI.medium(theme)};
@@ -134,6 +139,10 @@ export default styled(TextInput)(({ disabled, theme }) => {
       &::placeholder {
         color: ${theme.colors.text.light};
       }
-    }
+
+      ${size &&
+        css`
+          max-width: ${size}em;
+        `}
   `;
 });
