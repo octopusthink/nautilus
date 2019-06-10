@@ -14,6 +14,8 @@ export const TextInput = ({
   placeholder,
   helpText,
   optional,
+  multiline,
+  size,
   ...otherProps
 }) => {
   const labelId = label || shortid.generate();
@@ -28,17 +30,23 @@ export const TextInput = ({
     optionalOutput = <span class="optional">(Optional)</span>;
   }
 
+  let Component = 'input';
+  if (multiline) {
+    Component = 'textarea';
+  }
+
   return (
     <div {...otherProps}>
       <label for={labelId}>
         {label} {optionalOutput}
       </label>
       {helpTextOutput}
-      <input
+      <Component
         id={labelId}
         type="text"
         value={children}
         placeholder={placeholder}
+        rows="4"
       />
     </div>
   );
@@ -51,6 +59,8 @@ TextInput.defaultProps = {
   placeholder: '',
   helpText: '',
   optional: false,
+  multiline: false,
+  size: undefined,
 };
 
 TextInput.propTypes = {
@@ -71,9 +81,15 @@ TextInput.propTypes = {
 
   /** Mark the current input as optional. */
   optional: PropTypes.bool,
+
+  /** Mutliline switches from an input to a textarea */
+  multiline: PropTypes.bool,
+
+  /** Size defines the number of characters the field is intended to support. */
+  size: PropTypes.number,
 };
 
-export default styled(TextInput)(({ disabled, theme }) => {
+export default styled(TextInput)(({ disabled, size, theme }) => {
   return css`
     label {
       ${interfaceUI.medium(theme)};
@@ -99,7 +115,8 @@ export default styled(TextInput)(({ disabled, theme }) => {
       margin-left: ${theme.spacing.margin.xs};
     }
 
-    input {
+    input,
+    textarea {
       ${interfaceUI.medium(theme)};
       background: ${theme.colors.buttons.neutral};
       border: 2px solid ${theme.colors.text.default};
@@ -122,6 +139,10 @@ export default styled(TextInput)(({ disabled, theme }) => {
       &::placeholder {
         color: ${theme.colors.text.light};
       }
-    }
+
+      ${size &&
+        css`
+          max-width: ${size}em;
+        `}
   `;
 });
