@@ -1,0 +1,285 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextInput should not set a \`max-width\` on the input element without a \`size\` prop 1`] = `
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  color: #3b3f45;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 50%;
+  -ms-flex: 1 0 50%;
+  flex: 1 0 50%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 0.4rem;
+}
+
+.emotion-0:focus {
+  color: #cd2f83;
+}
+
+.emotion-2 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  background: #ffffff;
+  border-radius: 0;
+  border: 2px solid #3b3f45;
+  box-sizing: border-box;
+  color: #3b3f45;
+  display: block;
+  margin: 0 0 3.2rem;
+  outline: none;
+  padding: 1.2rem 1.2rem;
+  -webkit-transition: box-shadow 200ms;
+  transition: box-shadow 200ms;
+  width: 100%;
+}
+
+.emotion-2:required {
+  box-shadow: none;
+}
+
+.emotion-2:focus {
+  box-shadow: 0 0 1px 4px #f5bbda;
+  color: #181b1c;
+  outline: none;
+}
+
+.emotion-2::-webkit-input-placeholder {
+  color: #666c76;
+}
+
+.emotion-2::-moz-placeholder {
+  color: #666c76;
+}
+
+.emotion-2:-ms-input-placeholder {
+  color: #666c76;
+}
+
+.emotion-2::placeholder {
+  color: #666c76;
+}
+
+<div>
+  <label
+    class="emotion-0"
+    for="testInput"
+  >
+    
+  </label>
+  <input
+    class="emotion-1 emotion-2"
+    id="testInput"
+    placeholder=""
+    required=""
+    type="text"
+  />
+</div>
+`;
+
+exports[`TextInput should set a \`max-width\` on the input element when \`size\` is set 1`] = `
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  color: #3b3f45;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 50%;
+  -ms-flex: 1 0 50%;
+  flex: 1 0 50%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 0.4rem;
+}
+
+.emotion-0:focus {
+  color: #cd2f83;
+}
+
+.emotion-2 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  background: #ffffff;
+  border-radius: 0;
+  border: 2px solid #3b3f45;
+  box-sizing: border-box;
+  color: #3b3f45;
+  display: block;
+  margin: 0 0 3.2rem;
+  outline: none;
+  padding: 1.2rem 1.2rem;
+  -webkit-transition: box-shadow 200ms;
+  transition: box-shadow 200ms;
+  width: 100%;
+  max-width: 9em;
+}
+
+.emotion-2:required {
+  box-shadow: none;
+}
+
+.emotion-2:focus {
+  box-shadow: 0 0 1px 4px #f5bbda;
+  color: #181b1c;
+  outline: none;
+}
+
+.emotion-2::-webkit-input-placeholder {
+  color: #666c76;
+}
+
+.emotion-2::-moz-placeholder {
+  color: #666c76;
+}
+
+.emotion-2:-ms-input-placeholder {
+  color: #666c76;
+}
+
+.emotion-2::placeholder {
+  color: #666c76;
+}
+
+<div>
+  <label
+    class="emotion-0"
+    for="testInput"
+  >
+    
+  </label>
+  <input
+    class="emotion-1 emotion-2"
+    id="testInput"
+    maxlength="10"
+    placeholder=""
+    required=""
+    type="text"
+  />
+</div>
+`;
+
+exports[`TextInput should set a \`max-width\` on the textarea element when \`size\` is set 1`] = `
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  color: #3b3f45;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 50%;
+  -ms-flex: 1 0 50%;
+  flex: 1 0 50%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 0.4rem;
+}
+
+.emotion-0:focus {
+  color: #cd2f83;
+}
+
+.emotion-2 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  background: #ffffff;
+  border-radius: 0;
+  border: 2px solid #3b3f45;
+  box-sizing: border-box;
+  color: #3b3f45;
+  display: block;
+  margin: 0 0 3.2rem;
+  outline: none;
+  padding: 1.2rem 1.2rem;
+  -webkit-transition: box-shadow 200ms;
+  transition: box-shadow 200ms;
+  width: 100%;
+  max-width: 9em;
+}
+
+.emotion-2:required {
+  box-shadow: none;
+}
+
+.emotion-2:focus {
+  box-shadow: 0 0 1px 4px #f5bbda;
+  color: #181b1c;
+  outline: none;
+}
+
+.emotion-2::-webkit-input-placeholder {
+  color: #666c76;
+}
+
+.emotion-2::-moz-placeholder {
+  color: #666c76;
+}
+
+.emotion-2:-ms-input-placeholder {
+  color: #666c76;
+}
+
+.emotion-2::placeholder {
+  color: #666c76;
+}
+
+<div>
+  <label
+    class="emotion-0"
+    for="testInput"
+  >
+    
+  </label>
+  <textarea
+    class="emotion-1 emotion-2"
+    id="testInput"
+    maxlength="10"
+    placeholder=""
+    required=""
+    rows="4"
+    type="text"
+  />
+</div>
+`;

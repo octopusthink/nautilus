@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
 
 export const themePropTypes = PropTypes.shape({
+  components: PropTypes.shape({
+    TextInput: PropTypes.shape({
+      /** Message used for TextInput fields that are marked as `optional`. */
+      optionalMessage: PropTypes.string,
+    }),
+  }),
   colors: PropTypes.shape({
     accent: PropTypes.shape({
       primary: PropTypes.string,

@@ -22,20 +22,21 @@ export const TextInput = (props) => {
     children,
     disabled,
     label,
-    id,
+    labelId,
+    inputId,
     placeholder,
     instructions,
     multiline,
     rows,
     size,
-    subLabel,
+    optional,
     type,
     ...otherProps
   } = props;
 
   const theme = useTheme();
 
-  const labelId = id || shortid.generate();
+  const idToUse = inputId || shortid.generate();
 
   let InputComponent = 'input';
   if (multiline) {
@@ -59,16 +60,17 @@ export const TextInput = (props) => {
             color: ${theme.colors.intent.focusText};
           }
         `}
-        htmlFor={labelId}
+        htmlFor={idToUse}
+        id={labelId}
       >
         {label}
-        {subLabel && (
+        {optional && theme.components.TextInput.optionalMessage && (
           <span
             css={css`
               ${smallText({ theme })};
             `}
           >
-            {subLabel}
+            {theme.components.TextInput.optionalMessage}
           </span>
         )}
         {instructions && (
@@ -100,6 +102,22 @@ export const TextInput = (props) => {
           transition: box-shadow 200ms;
           width: 100%;
 
+          ${size &&
+            css`
+              max-width: ${size - 1}em;
+            `}
+
+          &:optional {
+          }
+
+          &:required {
+            /*
+              This might be a React Styleguidist style that we're overriding.
+              TODO: Remove this from the styleguide styles.
+            */
+            box-shadow: none;
+          }
+
           &:focus {
             box-shadow: 0 0 1px 4px ${theme.colors.intent.focusOutline};
             color: ${theme.colors.text.dark};
@@ -110,9 +128,12 @@ export const TextInput = (props) => {
             color: ${theme.colors.text.light};
           }
         `}
-        id={labelId}
+        disabled={disabled}
+        id={idToUse}
         placeholder={placeholder}
+        required={!optional && 'required'}
         rows={multiline && rows}
+        maxLength={size}
         type={type}
         {...otherProps}
       />
@@ -134,12 +155,13 @@ TextInput.defaultProps = {
   disabled: false,
   instructions: undefined,
   label: '',
-  id: undefined,
+  labelId: undefined,
+  inputId: undefined,
   placeholder: '',
   multiline: false,
   rows: 4,
   size: undefined,
-  subLabel: undefined,
+  optional: false,
   type: 'text',
 };
 
@@ -150,11 +172,14 @@ TextInput.propTypes = {
   /** Disables this input; this applies a disabled style and disables user input/interaction with this element. This is useful if you have inputs that are conditionally allowed based on other states in your UI. */
   disabled: PropTypes.bool,
 
-  /** HTML ID attribute, used for both the `<input>` `id` attribute and the `<label>` `for` attribute. */
-  id: PropTypes.string,
+  /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
+  labelId: PropTypes.string,
+
+  /** HTML `id` attribute of the input component (either an `input` if `multiline` is `false` or `textarea` if `multiline` is `true`). Used for both the input component `id` attribute and the `<label>` `for` attribute. */
+  inputId: PropTypes.string,
 
   /** Additional context to help users understand the purpose of the input. */
-  instructions: PropTypes.string,
+  instructions: PropTypes.node,
 
   /** Visible text that serves to introduce the input. */
   label: PropTypes.string,
@@ -171,8 +196,8 @@ TextInput.propTypes = {
   /** Placeholder text, used only for examples. */
   placeholder: PropTypes.string,
 
-  /** Visible text or other content that can be used for information like "required" or "optional". */
-  subLabel: PropTypes.node,
+  /** Used to mark this input as optional. Will output text in `theme.components.TextInput.optionalMessage`, if set. */
+  optional: PropTypes.bool,
 
   /** HTML `type` attribute for the `<input>` element. */
   type: PropTypes.oneOf([

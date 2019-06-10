@@ -5,7 +5,7 @@ A button indicates that a user can complete an action or make a choice, using a 
 
 <TextInput defaultValue="Value" label="Also me!"></TextInput>
 
-<TextInput label="I am optional" subLabel="(optional)" />
+<TextInput label="I am optional" optional />
 
 <TextInput label="Fluffy things" placeholder="e.g.: Kittens, puppies, and ponies." />
 
@@ -13,7 +13,5 @@ A button indicates that a user can complete an action or make a choice, using a 
 
 <TextInput label="I am a textarea" multiline />
 
-<TextInput label="Postcode" size={6}></TextInput>
-
-<TextInput label="Kitchen sink of context" instructions="This input provides a lot of instructions to users. Maybe even too much?" placeholder="This is where your text goes" subLabel="(required)" />
+<TextInput label="Postcode" size={7} />
 ```

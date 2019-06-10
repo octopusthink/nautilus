@@ -149,6 +149,13 @@ export const theme = {
     },
   },
 
+  // Component-specific text and values.
+  components: {
+    TextInput: {
+      optionalMessage: '(optional)',
+    },
+  },
+
   // All themeable typography variables go here.
   typography: {
     fonts: {
