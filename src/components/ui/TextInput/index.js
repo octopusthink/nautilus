@@ -56,8 +56,13 @@ export const TextInput = (props) => {
           justify-content: space-between;
           margin: 0 0 ${theme.spacing.padding.xs};
 
+          ${disabled &&
+            css`
+              color: ${theme.colors.state.disabled};
+            `}
+
           &:focus {
-            color: ${theme.colors.intent.focusText};
+            color: ${theme.colors.state.focusText};
           }
         `}
         htmlFor={idToUse}
@@ -107,6 +112,13 @@ export const TextInput = (props) => {
               max-width: ${size - 1}em;
             `}
 
+          ${disabled &&
+            css`
+              color: ${theme.colors.state.disabled};
+              background-color: ${theme.colors.state.disabledLight};
+              border-color: ${theme.colors.state.disabledLight};
+            `}
+
           &:optional {
           }
 
@@ -119,7 +131,7 @@ export const TextInput = (props) => {
           }
 
           &:focus {
-            box-shadow: 0 0 1px 4px ${theme.colors.intent.focusOutline};
+            box-shadow: 0 0 1px 4px ${theme.colors.state.focusOutline};
             color: ${theme.colors.text.dark};
             outline: none;
           }

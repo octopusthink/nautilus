@@ -106,6 +106,7 @@ export const theme = {
       primaryDark: colors.pink800,
       primaryLight: colors.pink400,
     },
+
     neutral: {
       white: colors.white,
       grey0: colors.grey0,
@@ -115,6 +116,7 @@ export const theme = {
       grey800: colors.grey800,
       black: colors.black,
     },
+
     intent: {
       success: colors.green600,
       successDark: colors.green800,
@@ -125,8 +127,14 @@ export const theme = {
       danger: colors.red600,
       dangerDark: colors.red800,
       dangerLight: colors.red200,
+    },
+
+    state: {
       focusOutline: colors.pink200,
       focusText: colors.pink600,
+      disabled: colors.grey700,
+      disabledDark: colors.grey800,
+      disabledLight: colors.grey200,
     },
 
     text: {
@@ -143,9 +151,6 @@ export const theme = {
       default: colors.pink600,
       defaultDark: colors.pink800,
       defaultLight: colors.pink200,
-      disabled: colors.grey700,
-      disabledDark: colors.grey800,
-      disabledLight: colors.grey200,
     },
   },
 

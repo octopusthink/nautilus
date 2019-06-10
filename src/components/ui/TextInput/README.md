@@ -14,4 +14,7 @@ A button indicates that a user can complete an action or make a choice, using a 
 <TextInput label="I am a textarea" multiline />
 
 <TextInput label="Postcode" size={7} />
+
+
+<TextInput label="Disabled input" size={100} disabled defaultValue="Why, hello there."/>
 ```
