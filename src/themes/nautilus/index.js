@@ -125,6 +125,8 @@ export const theme = {
       danger: colors.red600,
       dangerDark: colors.red800,
       dangerLight: colors.red200,
+      focusOutline: colors.pink200,
+      focusText: colors.pink600,
     },
 
     text: {
