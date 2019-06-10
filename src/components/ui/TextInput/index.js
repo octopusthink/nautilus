@@ -13,6 +13,7 @@ export const TextInput = ({
   label,
   placeholder,
   helpText,
+  optional,
   ...otherProps
 }) => {
   const labelId = label || shortid.generate();
@@ -22,9 +23,16 @@ export const TextInput = ({
     helpTextOutput = <div class="helpText">{helpText}</div>;
   }
 
+  let optionalOutput;
+  if (optional) {
+    optionalOutput = <span class="optional">(Optional)</span>;
+  }
+
   return (
     <div {...otherProps}>
-      <label for={labelId}>{label}</label>
+      <label for={labelId}>
+        {label} {optionalOutput}
+      </label>
       {helpTextOutput}
       <input
         id={labelId}
@@ -42,6 +50,7 @@ TextInput.defaultProps = {
   label: '',
   placeholder: '',
   helpText: '',
+  optional: false,
 };
 
 TextInput.propTypes = {
@@ -59,6 +68,9 @@ TextInput.propTypes = {
 
   /** Placeholder text, used only for examples. */
   placeholder: PropTypes.string,
+
+  /** Mark the current input as optional. */
+  optional: PropTypes.bool,
 };
 
 export default styled(TextInput)(({ disabled, theme }) => {
@@ -66,7 +78,8 @@ export default styled(TextInput)(({ disabled, theme }) => {
     label {
       ${interfaceUI.medium(theme)};
       color: ${theme.colors.text.default};
-      display: block;
+      display: flex;
+      justify-content: space-between;
       margin: 0 0 ${theme.spacing.padding.xs};
 
       &:focus {
@@ -78,6 +91,12 @@ export default styled(TextInput)(({ disabled, theme }) => {
       ${interfaceUI.small(theme)};
       color: ${theme.colors.text.light};
       margin: 0 0 ${theme.spacing.padding.xs};
+    }
+
+    .optional {
+      ${interfaceUI.small(theme)};
+      color: ${theme.colors.text.light};
+      margin-left: ${theme.spacing.margin.xs};
     }
 
     input {
