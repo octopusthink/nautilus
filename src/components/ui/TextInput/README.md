@@ -4,4 +4,8 @@ A button indicates that a user can complete an action or make a choice, using a 
 <TextInput label="Feed me sentences!"></TextInput>;
 
 <TextInput label="Also me!">Value</TextInput>;
+
+<TextInput label="Fluffy things" placeholder="e.g.: Kittens, puppies, and ponies." />;
+
+<TextInput label="Fluffy things" helpText="List the fluffiest things you can think of, ideally in alphabetical order." placeholder="e.g.: Kittens, puppies, and ponies." />;
 ```

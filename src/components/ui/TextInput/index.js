@@ -7,13 +7,31 @@ import shortid from 'shortid';
 
 import { interfaceUI } from 'styles';
 
-export const TextInput = ({ children, disabled, label, ...otherProps }) => {
+export const TextInput = ({
+  children,
+  disabled,
+  label,
+  placeholder,
+  helpText,
+  ...otherProps
+}) => {
   const labelId = label || shortid.generate();
+
+  let helpTextOutput;
+  if (helpText) {
+    helpTextOutput = <div class="helpText">{helpText}</div>;
+  }
 
   return (
     <div {...otherProps}>
       <label for={labelId}>{label}</label>
-      <input id={labelId} type="text" value={children} />
+      {helpTextOutput}
+      <input
+        id={labelId}
+        type="text"
+        value={children}
+        placeholder={placeholder}
+      />
     </div>
   );
 };
@@ -22,6 +40,8 @@ TextInput.defaultProps = {
   children: undefined,
   disabled: false,
   label: '',
+  placeholder: '',
+  helpText: '',
 };
 
 TextInput.propTypes = {
@@ -33,6 +53,12 @@ TextInput.propTypes = {
 
   /** Visible text that serves to introduce the input. */
   label: PropTypes.string,
+
+  /** Additional context to help users understand the purpose of the input. */
+  helpText: PropTypes.string,
+
+  /** Placeholder text, used only for examples. */
+  placeholder: PropTypes.string,
 };
 
 export default styled(TextInput)(({ disabled, theme }) => {
@@ -46,6 +72,12 @@ export default styled(TextInput)(({ disabled, theme }) => {
       &:focus {
         color: ${theme.colors.intent.focusText};
       }
+    }
+
+    .helpText {
+      ${interfaceUI.small(theme)};
+      color: ${theme.colors.text.light};
+      margin: 0 0 ${theme.spacing.padding.xs};
     }
 
     input {
@@ -66,6 +98,10 @@ export default styled(TextInput)(({ disabled, theme }) => {
         box-shadow: 0 0 1px 4px ${theme.colors.intent.focusOutline};
         outline: none;
         color: ${theme.colors.text.dark};
+      }
+
+      &::placeholder {
+        color: ${theme.colors.text.light};
       }
     }
   `;
