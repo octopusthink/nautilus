@@ -44,7 +44,7 @@ export const TextField = (props) => {
   } = props;
 
   const [focus, setFocus] = useState(otherProps.autofocus);
-  const generatedId = useMemo(shortid.generate, []);
+  const [generatedId] = useState(shortid.generate());
   const inputId = useMemo(() => {
     return id || generatedId;
   }, [id]);
