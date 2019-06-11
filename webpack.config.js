@@ -42,10 +42,6 @@ const config = {
     // Add src/ folder for easier includes within the project.
     modules: [srcPath, projectPath, 'node_modules'],
     extensions: ['.mjs', '.jsx', '.js', '.json'],
-    alias: {
-      // Support React Native Web
-      // 'react-native': 'react-native-web',
-    },
   },
 };
 

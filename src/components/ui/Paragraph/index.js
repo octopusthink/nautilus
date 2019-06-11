@@ -5,16 +5,16 @@ import React from 'react';
 
 import { bodyStyles } from 'styles';
 
-export const Paragraph = ({
-  children,
-  large,
-  small,
-  inverse,
-  dark,
-  light,
-  ...otherProps
-}) => {
+export const Paragraph = (props) => {
+  const { children, large, small, inverse, dark, light, ...otherProps } = props;
+
   return <p {...otherProps}>{children}</p>;
+};
+
+export const styles = ({ theme, ...otherProps }) => {
+  return css`
+    ${bodyStyles({ ...otherProps, theme })}
+  `;
 };
 
 Paragraph.defaultProps = {
@@ -41,10 +41,6 @@ Paragraph.propTypes = {
   light: PropTypes.bool,
 };
 
-const StyledParagraph = styled(Paragraph)(({ theme, ...otherProps }) => {
-  return css`
-    ${bodyStyles({ ...otherProps, theme })}
-  `;
-});
+export const { defaultProps, propTypes } = Paragraph;
 
-export default StyledParagraph;
+export default styled(Paragraph)(styles);

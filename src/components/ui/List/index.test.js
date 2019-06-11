@@ -2,6 +2,7 @@ import React from 'react';
 
 import { render } from 'utils/testing';
 
+import { Heading, Paragraph } from 'components';
 import List from '.';
 
 describe('List', () => {
@@ -51,13 +52,45 @@ describe('List', () => {
     }).toThrow('Unable to find an element');
   });
 
-  describe('List.Heading', () => {
+  it('should render several list items inside the list', () => {
+    const { getByTestId } = render(
+      <List>
+        <List.Item data-testid="one">hello</List.Item>
+        <List.Item data-testid="two">goodbye</List.Item>
+      </List>,
+    );
+
+    expect(getByTestId('one').tagName).toEqual('LI');
+    expect(getByTestId('two').tagName).toEqual('LI');
+  });
+
+  it('should ignore extra Heading or Paragraph components after the first ones', () => {
+    const { getByTestId } = render(
+      <List>
+        <Heading level={3} data-testid="firstDescription">
+          Tasty fruits
+        </Heading>
+        <Heading level={3} data-testid="secondDescription">
+          Tasty fruits
+        </Heading>
+        <List.Item data-testid="one">hello</List.Item>
+        <List.Item data-testid="two">goodbye</List.Item>
+      </List>,
+    );
+
+    expect(getByTestId('firstDescription')).toBeDefined();
+    expect(() => {
+      getByTestId('secondDescription');
+    }).toThrow('Unable to find an element');
+  });
+
+  describe('described by Heading component', () => {
     it('should render a heading outside the list if one is provided', () => {
       const { container, getByTestId } = render(
         <List>
-          <List.Heading level={3} id="fruits" data-testid="description">
+          <Heading level={3} id="fruits" data-testid="description">
             Tasty fruits
-          </List.Heading>
+          </Heading>
         </List>,
       );
 
@@ -68,7 +101,7 @@ describe('List', () => {
     it('should set a random, short unique ID for the heading if no ID was provided', () => {
       const { getByTestId } = render(
         <List ordered>
-          <List.Heading data-testid="description">My list</List.Heading>
+          <Heading data-testid="description">My list</Heading>
           <List.Item>One</List.Item>
           <List.Item>Two</List.Item>
         </List>,
@@ -78,27 +111,13 @@ describe('List', () => {
     });
   });
 
-  describe('List.Item', () => {
-    it('should render a list item inside the list', () => {
-      const { getByTestId } = render(
-        <List>
-          <List.Item data-testid="one">hello</List.Item>
-          <List.Item data-testid="two">goodbye</List.Item>
-        </List>,
-      );
-
-      expect(getByTestId('one').tagName).toEqual('LI');
-      expect(getByTestId('two').tagName).toEqual('LI');
-    });
-  });
-
-  describe('List.Paragraph', () => {
+  describe('described by Paragraph component', () => {
     it('should render a paragraph outside the list if one is provided', () => {
       const { container, getByTestId } = render(
         <List>
-          <List.Paragraph id="cars" data-testid="description">
+          <Paragraph id="cars" data-testid="description">
             Here are some cars:
-          </List.Paragraph>
+          </Paragraph>
           <List.Item>Honda Civic</List.Item>
           <List.Item>Ford Prefect</List.Item>
         </List>,
@@ -111,7 +130,7 @@ describe('List', () => {
     it('should set a random, short unique ID for the paragraph if no ID was provided', () => {
       const { getByTestId } = render(
         <List ordered>
-          <List.Paragraph data-testid="description">My list</List.Paragraph>
+          <Paragraph data-testid="description">My list</Paragraph>
           <List.Item>One</List.Item>
           <List.Item>Two</List.Item>
         </List>,

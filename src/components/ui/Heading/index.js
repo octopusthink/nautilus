@@ -18,19 +18,7 @@ export const Heading = ({ children, level, ...otherProps }) => {
   return <HeadingElement {...otherProps}>{children}</HeadingElement>;
 };
 
-Heading.defaultProps = {
-  children: undefined,
-  level: 2,
-};
-
-Heading.propTypes = {
-  /** @ignore */
-  children: PropTypes.node,
-  /** Semantic hierarchy level of the `<h>` element in the markup (ex: `<h3>`). The more semantically important the level, the larger the heading will appear visually; an `<h2>` will be visually styled as "large" while an `<h4>` will be visually small. */
-  level: PropTypes.oneOf(HeadingLevels),
-};
-
-export default styled(Heading)(({ level, theme }) => {
+export const styles = ({ level, theme }) => {
   return css`
     margin: 0 0 ${theme.spacing.margin.m};
     ${`${List} + &`},
@@ -44,4 +32,18 @@ export default styled(Heading)(({ level, theme }) => {
     ${level === MEDIUM && heading.medium(theme)};
     ${level === LARGE && heading.large(theme)};
   `;
-});
+};
+
+Heading.defaultProps = {
+  children: undefined,
+  level: 2,
+};
+
+Heading.propTypes = {
+  /** @ignore */
+  children: PropTypes.node,
+  /** Semantic hierarchy level of the `<h>` element in the markup (ex: `<h3>`). The more semantically important the level, the larger the heading will appear visually; an `<h2>` will be visually styled as "large" while an `<h4>` will be visually small. */
+  level: PropTypes.oneOf(HeadingLevels),
+};
+
+export default styled(Heading)(styles);

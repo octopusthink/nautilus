@@ -5,7 +5,7 @@ module.exports = {
   components: 'src/components/**/index.{js,jsx,ts,tsx}',
   ignore: ['src/components/index.js', '**/*.test.{js,jsx,ts,tsx}'],
   moduleAliases: {
-    Nautilus: path.resolve(__dirname, 'src/components'),
+    '@octopusthink/nautilus': path.resolve(__dirname, 'src/index'),
   },
   title: 'Nautilus Design System',
   skipComponentsWithoutExample: true,
