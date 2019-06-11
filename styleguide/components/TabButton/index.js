@@ -6,7 +6,7 @@ import theme from 'styleguide/theme';
 import { interfaceUI } from 'styles';
 
 
-export function TabButtonRenderer({ classes, name, className, onClick, active, children }) {
+export function TabButtonRenderer({ name, className, onClick, active, children }) {
 	return (
 		<button css={css`
 			background: none;
@@ -38,7 +38,6 @@ export function TabButtonRenderer({ classes, name, className, onClick, active, c
 }
 
 TabButtonRenderer.propTypes = {
-	classes: PropTypes.object.isRequired,
 	name: PropTypes.string,
 	className: PropTypes.string,
 	onClick: PropTypes.func,
