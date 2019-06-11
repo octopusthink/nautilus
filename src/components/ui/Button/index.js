@@ -6,17 +6,9 @@ import React from 'react';
 
 import { interfaceUI } from 'styles';
 
-export const Button = ({
-  children,
-  minimal,
-  navigation,
-  primary,
-  disabled,
-  success,
-  warning,
-  danger,
-  ...otherProps
-}) => {
+export const qualityControl = (props) => {
+  const { minimal, primary, success, warning, danger } = props;
+
   invariant(
     [minimal, primary].filter((prop) => prop).length <= 1,
     '<Button> should not be both `minimal` and `primary`, so which is it?',
@@ -26,6 +18,22 @@ export const Button = ({
     [danger, success, warning].filter((prop) => prop).length <= 1,
     '<Button> should only use one of `danger`, `warning`, or `success`. Pick a lane!',
   );
+};
+
+export const Button = (props) => {
+  const {
+    children,
+    minimal,
+    navigation,
+    primary,
+    disabled,
+    success,
+    warning,
+    danger,
+    ...otherProps
+  } = props;
+
+  qualityControl(props);
 
   let Component = 'button';
   if (navigation === true) {
@@ -37,8 +45,122 @@ export const Button = ({
   return (
     // See: https://github.com/yannickcr/eslint-plugin-react/issues/1555
     // eslint-disable-next-line react/button-has-type
-    <Component {...otherProps}>{children}</Component>
+    <Component disabled={!navigation && disabled} {...otherProps}>
+      {children}
+    </Component>
   );
+};
+
+export const styles = (props) => {
+  const {
+    danger,
+    disabled,
+    minimal,
+    navigation,
+    primary,
+    success,
+    theme,
+    warning,
+  } = props;
+
+  let currentButtonColor = theme.colors.state.default;
+  let currentButtonColorDark = theme.colors.state.defaultDark;
+  let currentButtonColorLight = theme.colors.state.defaultLight;
+
+  if (disabled === true) {
+    currentButtonColor = theme.colors.state.disabled;
+    currentButtonColorDark = theme.colors.state.disabledDark;
+    currentButtonColorLight = theme.colors.state.disabledLight;
+  }
+
+  if (success === true) {
+    currentButtonColor = theme.colors.intent.success;
+    currentButtonColorDark = theme.colors.intent.successDark;
+    currentButtonColorLight = theme.colors.intent.successLight;
+  }
+
+  if (warning === true) {
+    currentButtonColor = theme.colors.intent.warning;
+    currentButtonColorDark = theme.colors.intent.warningDark;
+    currentButtonColorLight = theme.colors.intent.warningLight;
+  }
+
+  if (danger === true) {
+    currentButtonColor = theme.colors.intent.danger;
+    currentButtonColorDark = theme.colors.intent.dangerDark;
+    currentButtonColorLight = theme.colors.intent.dangerLight;
+  }
+
+  return css`
+    ${interfaceUI.medium(theme)}
+    background: ${theme.colors.state.neutral};
+    border: 2px solid ${currentButtonColor};
+    border-radius: 8px;
+    color: ${currentButtonColor};
+    display: inline-block;
+    margin: 0 ${theme.spacing.margin.xxs} ${theme.spacing.margin.xs};
+    outline: none;
+    padding: ${theme.spacing.padding.m} ${theme.spacing.padding.l};
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    top: 0;
+    transition: box-shadow 200ms;
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
+    &:active {
+      border-color: ${currentButtonColorDark};
+      color: ${currentButtonColorDark};
+      top: 2px;
+    }
+
+    &:focus {
+      box-shadow: 0 0 1px 4px ${currentButtonColorLight};
+      outline: none;
+    }
+
+    &:hover {
+      box-shadow: 0 2px 0 0 ${currentButtonColorDark};
+    }
+
+    ${primary &&
+      css`
+        background: ${currentButtonColor};
+        color: ${theme.colors.state.neutral};
+
+        &:active {
+          background: ${currentButtonColorDark};
+          color: ${theme.colors.state.neutral};
+        }
+      `}
+
+    ${minimal &&
+      css`
+        border-left: 0;
+        border-radius: 0;
+        border-right: 0;
+        border-top: 0;
+        padding-left: 0;
+        padding-right: 0;
+      `}
+
+    ${navigation &&
+      css`
+        &::after {
+          content: ' →';
+          display: inline;
+          transition: margin 200ms;
+        }
+
+        &:hover::after {
+          margin-left: 4px;
+          margin-right: -4px;
+        }
+      `}
+  `;
 };
 
 Button.defaultProps = {
@@ -57,7 +179,7 @@ Button.propTypes = {
   /** @ignore */
   children: PropTypes.node,
 
-  /** Disables the button; this applies a disabled style but **does not disable any event handlers for the button**. Your `onClick` handlers should check for `props.disabled` to modify their behaviour accordingly. */
+  /** Disables the button; this applies a disabled style but **does not disable any event handlers for the button**. Your `onClick`, `onTap`, etc. handlers should check for the `disabled` prop to modify their behaviour accordingly. */
   disabled: PropTypes.bool,
 
   /** Increase the visual prominence of this button in the UI. */
@@ -82,114 +204,6 @@ Button.propTypes = {
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
 };
 
-export default styled(Button)(
-  ({
-    danger,
-    disabled,
-    minimal,
-    navigation,
-    primary,
-    success,
-    theme,
-    warning,
-  }) => {
-    let currentButtonColor = theme.colors.buttons.default;
-    let currentButtonColorDark = theme.colors.buttons.defaultDark;
-    let currentButtonColorLight = theme.colors.buttons.defaultLight;
+export const { defaultProps, propTypes } = Button;
 
-    if (disabled === true) {
-      currentButtonColor = theme.colors.state.disabled;
-      currentButtonColorDark = theme.colors.state.disabledDark;
-      currentButtonColorLight = theme.colors.state.disabledLight;
-    }
-
-    if (success === true) {
-      currentButtonColor = theme.colors.intent.success;
-      currentButtonColorDark = theme.colors.intent.successDark;
-      currentButtonColorLight = theme.colors.intent.successLight;
-    }
-
-    if (warning === true) {
-      currentButtonColor = theme.colors.intent.warning;
-      currentButtonColorDark = theme.colors.intent.warningDark;
-      currentButtonColorLight = theme.colors.intent.warningLight;
-    }
-
-    if (danger === true) {
-      currentButtonColor = theme.colors.intent.danger;
-      currentButtonColorDark = theme.colors.intent.dangerDark;
-      currentButtonColorLight = theme.colors.intent.dangerLight;
-    }
-
-    return css`
-      ${interfaceUI.medium(theme)}
-      background: ${theme.colors.buttons.neutral};
-      border: 2px solid ${currentButtonColor};
-      border-radius: 8px;
-      color: ${currentButtonColor};
-      display: inline-block;
-      margin: 0 ${theme.spacing.margin.xxs} ${theme.spacing.margin.xs};
-      outline: none;
-      padding: ${theme.spacing.padding.m} ${theme.spacing.padding.l};
-      position: relative;
-      text-align: center;
-      text-decoration: none;
-      top: 0;
-      transition: box-shadow 200ms;
-
-      &::-moz-focus-inner {
-        border: 0;
-      }
-
-      &:active {
-        border-color: ${currentButtonColorDark};
-        color: ${currentButtonColorDark};
-        top: 2px;
-      }
-
-      &:focus {
-        box-shadow: 0 0 1px 4px ${currentButtonColorLight};
-        outline: none;
-      }
-
-      &:hover {
-        box-shadow: 0 2px 0 0 ${currentButtonColorDark};
-      }
-
-      ${primary &&
-        css`
-          background: ${currentButtonColor};
-          color: ${theme.colors.buttons.neutral};
-
-          &:active {
-            background: ${currentButtonColorDark};
-            color: ${theme.colors.buttons.neutral};
-          }
-        `}
-
-      ${minimal &&
-        css`
-          border-left: 0;
-          border-radius: 0;
-          border-right: 0;
-          border-top: 0;
-          padding-left: 0;
-          padding-right: 0;
-        `}
-
-      ${navigation &&
-        css`
-          &::after {
-            content: ' →';
-            display: inline;
-            transition: margin 200ms;
-          }
-
-          &:hover::after {
-            margin-left: 4px;
-            margin-right: -4px;
-          }
-        `}
-    `;
-  },
-);
+export default styled(Button)(styles);

@@ -3,8 +3,23 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export const ListItem = ({ children, ...otherProps }) => {
+export const ListItem = (props) => {
+  const { children, ...otherProps } = props;
+
   return <li {...otherProps}>{children}</li>;
+};
+
+export const styles = (props) => {
+  const { theme } = props;
+
+  return css`
+    position: relative;
+    margin: 0 0 ${theme.spacing.padding.xs};
+    &::before {
+      position: absolute;
+      right: 101%;
+    }
+  `;
 };
 
 ListItem.defaultProps = {
@@ -16,15 +31,6 @@ ListItem.propTypes = {
   children: PropTypes.node,
 };
 
-const StyledListItem = styled(ListItem)(({ theme }) => {
-  return css`
-    position: relative;
-    margin: 0 0 ${theme.spacing.padding.xs};
-    &::before {
-      position: absolute;
-      right: 101%;
-    }
-  `;
-});
+const StyledListItem = styled(ListItem)(styles);
 
 export default StyledListItem;

@@ -1,15 +1,22 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { Children, Fragment, useState } from 'react';
+import React, {
+  Children,
+  Fragment,
+  cloneElement,
+  useMemo,
+  useState,
+} from 'react';
 import shortid from 'shortid';
 
-import { Heading, Paragraph } from 'components';
+import Heading from 'components/ui/Heading';
+import Paragraph from 'components/ui/Paragraph';
 import { bodyStyles } from 'styles';
 
-import ListHeading from './Heading';
 import ListItem from './Item';
-import ListParagraph from './Paragraph';
+
+export const ALLOWED_DESCRIPTION_COMPONENTS = [Heading, Paragraph];
 
 export const List = ({
   children,
@@ -26,51 +33,88 @@ export const List = ({
     ListComponent = 'ol';
   }
 
-  let descriptionComponent;
-  const description = Children.toArray(children)
-    .filter((child) => {
-      return child.type === ListHeading || child.type === ListParagraph;
-    })
-    // Return the first description component used.
-    .reduce((acc, child) => {
-      if (acc) {
-        return acc;
-      }
+  const [generatedId] = useState(shortid.generate());
+  const description = useMemo(() => {
+    const descriptionComponent = Children.toArray(children)
+      .filter((child) => {
+        return ALLOWED_DESCRIPTION_COMPONENTS.includes(child.type);
+      })
+      // Return the first description component used.
+      .reduce((acc, child) => {
+        if (acc) {
+          return acc;
+        }
 
-      return child;
-    }, null);
+        return child;
+      }, undefined);
 
-  const [descriptionId] = useState(
-    description ? description.props.id : shortid.generate(),
-  );
-  if (description) {
-    if (description.type === ListHeading) {
-      descriptionComponent = (
-        <Heading {...description.props} id={descriptionId} />
-      );
-    } else if (description.type === ListParagraph) {
-      descriptionComponent = (
-        <Paragraph {...description.props} id={descriptionId} />
-      );
+    if (!descriptionComponent) {
+      return undefined;
     }
-  }
 
-  const items = React.Children.toArray(children).filter((child) => {
-    return child.type === ListItem;
-  });
+    return cloneElement(descriptionComponent, {
+      id: descriptionComponent.props.id || generatedId,
+    });
+  }, [children, otherProps.id]);
 
-  const ariaProps = {
-    'aria-labelledby': descriptionComponent && descriptionId,
-  };
+  const items = useMemo(() => {
+    return Children.toArray(children).filter((child) => {
+      return child.type === ListItem;
+    });
+  }, [children, otherProps.id]);
 
   return (
     <Fragment>
-      {descriptionComponent}
-      <ListComponent {...ariaProps} {...otherProps}>
+      {description}
+      <ListComponent
+        aria-labelledby={description && description.props.id}
+        {...otherProps}
+      >
         {items}
       </ListComponent>
     </Fragment>
   );
+};
+
+export const styles = ({
+  dark,
+  inverse,
+  large,
+  light,
+  ordered,
+  small,
+  theme,
+}) => {
+  return css`
+    ${bodyStyles({ dark, inverse, large, light, small, theme })};
+    padding: 0;
+    ${ordered &&
+      css`
+        counter-reset: list-counter;
+
+        > ${ListItem} {
+          list-style: none;
+          counter-increment: list-counter;
+
+          &::before {
+            content: counter(list-counter) '. ';
+          }
+        }
+      `}
+    ${!ordered &&
+      css`
+        > ${ListItem} {
+          list-style: none;
+
+          &::before {
+            content: '\\2022';
+            font-size: 0.6em;
+            line-height: 2.8;
+          }
+        }
+      }
+    `}
+  `;
 };
 
 List.defaultProps = {
@@ -100,46 +144,9 @@ List.propTypes = {
   ordered: PropTypes.bool,
 };
 
-const StyledList = styled(List)(
-  ({ dark, inverse, large, light, ordered, small, theme }) => {
-    return css`
-      ${bodyStyles({ dark, inverse, large, light, small, theme })};
-      padding: 0;
-      ${ordered &&
-        css`
-          counter-reset: list-counter;
+const StyledList = styled(List)(styles);
 
-          > ${ListItem} {
-            list-style: none;
-            counter-increment: list-counter;
-
-            &::before {
-              content: counter(list-counter) '. ';
-            }
-          }
-        `}
-      ${!ordered &&
-        css`
-          > ${ListItem} {
-            list-style: none;
-
-            &::before {
-              content: '\\2022';
-              font-size: 0.6em;
-              line-height: 2.8;
-            }
-          }
-        }
-      `}
-    `;
-  },
-);
-
-// Export ListHeading as `List.Heading`.
-StyledList.Heading = ListHeading;
 // Export ListItem as `List.Item`.
 StyledList.Item = ListItem;
-// Export ListParagraph as `List.Paragraph`.
-StyledList.Paragraph = ListParagraph;
 
 export default StyledList;

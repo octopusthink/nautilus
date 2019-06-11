@@ -3,8 +3,10 @@ A `<List>` is a collection of related elements of equal weight, presented in an 
 Use the `<List.Item>` component for each item in your list.
 
 ```jsx
+import { Heading } from '@octopusthink/nautilus';
+
 <List ordered>
-  <List.Heading>Things to do</List.Heading>
+  <Heading>Things to do</Heading>
   <List.Item>Take shower. 🛀</List.Item>
   <List.Item>Brush teeth. 😁</List.Item>
   <List.Item>Take over world. 🌍</List.Item>
@@ -14,7 +16,6 @@ Use the `<List.Item>` component for each item in your list.
 ## Usage
 
 Use a list to make blocks of text easier to read, and to break information into manageable chunks.
-
 
 Don't use a `<List>` for:
 
@@ -54,8 +55,10 @@ Use an icon list when you want to provide additional semantic meaning—for inst
 Use ordered lists when item order is relevant, or to imply sequence and order. Ordered lists are commonly used when giving instructions or steps in a process.
 
 ```jsx
+import { Paragraph } from '@octopusthink/nautilus';
+
 <List ordered>
-  <List.Paragraph>How to file taxes:</List.Paragraph>
+  <Paragraph>How to file taxes:</Paragraph>
   <List.Item>Obtain wine.</List.Item>
   <List.Item>Crack open wine.</List.Item>
   <List.Item>Start drinking.</List.Item>
@@ -66,7 +69,7 @@ Use ordered lists when item order is relevant, or to imply sequence and order. O
 
 ## Voice & Tone
 
-- Introduce lists with a lead-in `<List.Paragraph>` ending in a colon (eg: "My favourite things:") or a `<List.Heading>` with no punctuation.
+- Introduce lists with a lead-in `<Paragraph>` ending in a colon (eg: "My favourite things:") or a `<Heading>` with no punctuation.
 - If list items use a single word only, start each item with a lowercase letter, and do not use a full stop at the end. (eg: "cat")
 - If list items use full sentences or sentence fragments (subject and verb), start each item with an uppercase letter and use a full stop at the end. (eg: "The cat ate a mouse.")
 - Never use commas or semicolons at the end of list items.
@@ -78,22 +81,32 @@ Using lists well will help improve the accessibility of your site.
 
 List items are conveyed as a group of related elements to assistive technology users. Assistive technologies may announce the total number of items in a list, give the relevant position of each item in a list, and provide shortcuts to quickly traverse a list.
 
-- If your list has a title or lead-in phrase, use a `<List.Heading>` or `<List.Paragraph>` component, inside the list as the first component. This will identify it as the list header using the `aria-labelledby` attribute.
+- If your list has a title or lead-in phrase, use a `<Heading>` or `<Paragraph>` component, inside the list as the first component. This will identify it as the list header using the `aria-labelledby` attribute.
 - Keep list labels as short as possible to communicate your intent.
 - Use a bulleted list for lists where the order isn't important, and a ordered list when it is.
 - Don't use a list for stylistic or presentation needs only.
 - Use semantic HTML elements (`<ol>`, `<ul>`, and `<li>`) to mark up lists. (Nautilus will handle this for you!)
 
+Here's how you should describe a list with a `<Heading>` component:
+
 ```jsx
+import { Heading } from '@octopusthink/nautilus';
+
 <List>
-  <List.Heading level={4}>Tasty fruit</List.Heading>
+  <Heading level={4}>Tasty fruit</Heading>
   <List.Item>apples 🍏</List.Item>
   <List.Item>kiwis 🥝</List.Item>
   <List.Item>mangos 🥭</List.Item>
 </List>
+```
+
+Here's how you should describe a list with a `<Paragraph>` component:
+
+```jsx
+import { Paragraph } from '@octopusthink/nautilus';
 
 <List ordered>
-  <List.Paragraph>The best motorcycles, in order:</List.Paragraph>
+  <Paragraph>The best motorcycles, in order:</Paragraph>
   <List.Item>Honda CBR 125R</List.Item>
   <List.Item>Honda CB400 Four</List.Item>
   <List.Item>Ducati 848</List.Item>
