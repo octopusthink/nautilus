@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { Children, Fragment } from 'react';
+import React, { Children, Fragment, useState } from 'react';
 import shortid from 'shortid';
 
 import { Heading, Paragraph } from 'components';
@@ -27,7 +27,6 @@ export const List = ({
   }
 
   let descriptionComponent;
-  let descriptionId;
   const description = Children.toArray(children)
     .filter((child) => {
       return child.type === ListHeading || child.type === ListParagraph;
@@ -41,9 +40,10 @@ export const List = ({
       return child;
     }, null);
 
+  const [descriptionId] = useState(
+    description ? description.props.id : shortid.generate(),
+  );
   if (description) {
-    descriptionId = description.props.id || shortid.generate();
-
     if (description.type === ListHeading) {
       descriptionComponent = (
         <Heading {...description.props} id={descriptionId} />
@@ -60,7 +60,7 @@ export const List = ({
   });
 
   const ariaProps = {
-    'aria-labelledby': descriptionId,
+    'aria-labelledby': descriptionComponent && descriptionId,
   };
 
   return (

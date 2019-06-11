@@ -119,5 +119,29 @@ describe('List', () => {
 
       expect(getByTestId('description').getAttribute('id')).toBeDefined();
     });
+
+    it('should not regenerate the unique ID on subsequent renders', () => {
+      const { getByTestId, rerender } = render(
+        <List ordered>
+          <List.Paragraph data-testid="description">My list</List.Paragraph>
+          <List.Item>One</List.Item>
+          <List.Item>Two</List.Item>
+        </List>,
+      );
+
+      const originalID = getByTestId('description').getAttribute('id');
+
+      expect(originalID).toBeDefined();
+
+      rerender(
+        <List>
+          <List.Paragraph data-testid="description">My list</List.Paragraph>
+          <List.Item>One</List.Item>
+          <List.Item>Two</List.Item>
+        </List>,
+      );
+
+      expect(getByTestId('description').getAttribute('id')).toEqual(originalID);
+    });
   });
 });
