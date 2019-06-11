@@ -156,7 +156,7 @@ export const theme = {
 
   // Component-specific text and values.
   components: {
-    TextInput: {
+    TextField: {
       optionalMessage: '(optional)',
     },
   },
