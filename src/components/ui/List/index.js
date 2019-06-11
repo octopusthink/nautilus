@@ -1,7 +1,13 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { Children, Fragment } from 'react';
+import React, {
+  Children,
+  Fragment,
+  cloneElement,
+  useMemo,
+  useState,
+} from 'react';
 import shortid from 'shortid';
 
 import Heading from 'components/ui/Heading';
@@ -27,42 +33,43 @@ export const List = ({
     ListComponent = 'ol';
   }
 
-  let descriptionComponent;
-  let descriptionId;
-  const description = Children.toArray(children)
-    .filter((child) => {
-      return ALLOWED_DESCRIPTION_COMPONENTS.includes(child.type);
-    })
-    // Return the first description component used.
-    .reduce((acc, child) => {
-      if (acc) {
-        return acc;
-      }
+  const [generatedId] = useState(shortid.generate());
+  const description = useMemo(() => {
+    const descriptionComponent = Children.toArray(children)
+      .filter((child) => {
+        return ALLOWED_DESCRIPTION_COMPONENTS.includes(child.type);
+      })
+      // Return the first description component used.
+      .reduce((acc, child) => {
+        if (acc) {
+          return acc;
+        }
 
-      return child;
-    }, null);
+        return child;
+      }, undefined);
 
-  if (description) {
-    descriptionId = description.props.id || shortid.generate();
+    if (!descriptionComponent) {
+      return undefined;
+    }
 
-    const DescriptionComponent = description.type;
-    descriptionComponent = (
-      <DescriptionComponent {...description.props} id={descriptionId} />
-    );
-  }
+    return cloneElement(descriptionComponent, {
+      id: descriptionComponent.props.id || generatedId,
+    });
+  }, [children, otherProps.id]);
 
-  const items = React.Children.toArray(children).filter((child) => {
-    return child.type === ListItem;
-  });
-
-  const ariaProps = {
-    'aria-labelledby': descriptionId,
-  };
+  const items = useMemo(() => {
+    return Children.toArray(children).filter((child) => {
+      return child.type === ListItem;
+    });
+  }, [children, otherProps.id]);
 
   return (
     <Fragment>
-      {descriptionComponent}
-      <ListComponent {...ariaProps} {...otherProps}>
+      {description}
+      <ListComponent
+        aria-labelledby={description && description.props.id}
+        {...otherProps}
+      >
         {items}
       </ListComponent>
     </Fragment>

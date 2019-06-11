@@ -64,7 +64,7 @@ describe('List', () => {
     expect(getByTestId('two').tagName).toEqual('LI');
   });
 
-  it('should ignore extra Heading or Paragraph components after the first ones', () => {
+  it('should ignore extra description components after the first ones', () => {
     const { getByTestId } = render(
       <List>
         <Heading level={3} data-testid="firstDescription">
@@ -73,8 +73,8 @@ describe('List', () => {
         <Heading level={3} data-testid="secondDescription">
           Tasty fruits
         </Heading>
-        <List.Item data-testid="one">hello</List.Item>
-        <List.Item data-testid="two">goodbye</List.Item>
+        <List.Item data-testid="one">apple</List.Item>
+        <List.Item data-testid="two">banana</List.Item>
       </List>,
     );
 
@@ -82,6 +82,62 @@ describe('List', () => {
     expect(() => {
       getByTestId('secondDescription');
     }).toThrow('Unable to find an element');
+  });
+
+  it('should update the description component when it changes', () => {
+    const { getByTestId, rerender } = render(
+      <List>
+        <Heading level={3} data-testid="firstDescription">
+          Tasty fruits
+        </Heading>
+        <List.Item data-testid="one">apple</List.Item>
+        <List.Item data-testid="two">raspberry</List.Item>
+      </List>,
+    );
+
+    expect(getByTestId('firstDescription').tagName).toEqual('H3');
+
+    rerender(
+      <List>
+        <Heading level={2} data-testid="firstDescription">
+          Red fruits
+        </Heading>
+        <List.Item data-testid="one">apple</List.Item>
+        <List.Item data-testid="two">raspberry</List.Item>
+      </List>,
+    );
+
+    expect(getByTestId('firstDescription').tagName).toEqual('H2');
+  });
+
+  it('should not change the generated ID between renders', () => {
+    const { getByTestId, rerender } = render(
+      <List>
+        <Heading level={3} data-testid="firstDescription">
+          Tasty fruits
+        </Heading>
+        <List.Item data-testid="one">apple</List.Item>
+        <List.Item data-testid="two">raspberry</List.Item>
+      </List>,
+    );
+
+    const originalDescriptionId = getByTestId('firstDescription').getAttribute(
+      'id',
+    );
+
+    rerender(
+      <List>
+        <Heading level={2} data-testid="firstDescription">
+          Red fruits
+        </Heading>
+        <List.Item data-testid="one">apple</List.Item>
+        <List.Item data-testid="two">raspberry</List.Item>
+      </List>,
+    );
+
+    expect(originalDescriptionId).toEqual(
+      getByTestId('firstDescription').getAttribute('id'),
+    );
   });
 
   describe('described by Heading component', () => {
