@@ -1,7 +1,13 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { Children, Fragment, cloneElement, useMemo } from 'react';
+import React, {
+  Children,
+  Fragment,
+  cloneElement,
+  useMemo,
+  useState,
+} from 'react';
 import shortid from 'shortid';
 
 import Heading from 'components/ui/Heading';
@@ -27,7 +33,7 @@ export const List = ({
     ListComponent = 'ol';
   }
 
-  const generatedId = useMemo(shortid.generate, []);
+  const [generatedId] = useState(shortid.generate());
   const description = useMemo(() => {
     const descriptionComponent = Children.toArray(children)
       .filter((child) => {
