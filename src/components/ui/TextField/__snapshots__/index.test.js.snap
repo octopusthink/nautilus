@@ -161,6 +161,7 @@ exports[`TextField should not set a \`max-width\` on the input element without a
     class="emotion-1 emotion-2"
     id="testInput"
     required=""
+    type="text"
   />
 </div>
 `;
@@ -256,6 +257,7 @@ exports[`TextField should set a \`max-width\` on the input element when \`size\`
     id="testInput"
     maxlength="10"
     required=""
+    type="text"
   />
 </div>
 `;
@@ -351,6 +353,7 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
     id="testInput"
     maxlength="10"
     required=""
+    rows="4"
   />
 </div>
 `;

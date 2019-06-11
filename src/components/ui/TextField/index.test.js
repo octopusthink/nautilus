@@ -31,6 +31,12 @@ describe('TextField', () => {
     expect(container.children[1].tagName).toEqual('TEXTAREA');
   });
 
+  it('should set rows to 4 by default', () => {
+    const { getByTestId } = render(<TextField data-testid="input" multiline />);
+
+    expect(getByTestId('input').getAttribute('rows')).toEqual('4');
+  });
+
   it('should not set a `max-width` on the input element without a `size` prop', () => {
     const { container } = render(<TextField id="testInput" />);
 

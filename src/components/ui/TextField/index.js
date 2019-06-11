@@ -37,7 +37,6 @@ export const TextField = (props) => {
     onFocus,
     hint,
     multiline,
-    ref,
     rows,
     size,
     optional,
@@ -209,10 +208,9 @@ export const TextField = (props) => {
         required={!optional && 'required'}
         onBlur={onBlurHandler}
         onFocus={onFocusHandler}
-        ref={ref}
-        rows={multiline && rows}
+        rows={multiline ? rows : undefined}
         maxLength={size}
-        type={type}
+        type={!multiline ? type : undefined}
         {...otherProps}
       />
       {errorComponent}
@@ -234,14 +232,13 @@ TextField.defaultProps = {
   disabled: false,
   error: undefined,
   hint: undefined,
-  label: '',
+  label: undefined,
   labelId: undefined,
   id: undefined,
-  placeholder: '',
+  placeholder: undefined,
   onBlur: undefined,
   onFocus: undefined,
   multiline: false,
-  ref: undefined,
   rows: 4,
   size: undefined,
   optional: false,
@@ -255,11 +252,6 @@ TextField.propTypes = {
   onBlur: PropTypes.func,
   /** @ignore */
   onFocus: PropTypes.func,
-  /** @ignore */
-  ref: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(global.Element) }),
-  ]),
 
   /** Disables this input; this applies a disabled style and disables user input/interaction with this element. This is useful if you have inputs that are conditionally allowed based on other states in your UI. */
   disabled: PropTypes.bool,
@@ -313,4 +305,4 @@ TextField.propTypes = {
   ]),
 };
 
-export default styled(forwardRef(TextField))(styles);
+export default styled(TextField)(styles);
