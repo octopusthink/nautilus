@@ -15,6 +15,7 @@ A button indicates that a user can complete an action or make a choice, using a 
 
 <TextField label="Postcode" size={7} />
 
+<TextField label="Problematic Input" size={14} error="I have an error." />
 
-<TextField label="Disabled input" size={100} disabled defaultValue="Why, hello there."/>
+<TextField label="Disabled input" size={100} disabled defaultValue="You don't need to worry about me."/>
 ```

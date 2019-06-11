@@ -32,20 +32,20 @@ describe('TextField', () => {
   });
 
   it('should not set a `max-width` on the input element without a `size` prop', () => {
-    const { container } = render(<TextField inputId="testInput" />);
+    const { container } = render(<TextField id="testInput" />);
 
     expect(container).toMatchSnapshot();
   });
 
   it('should set a `max-width` on the input element when `size` is set', () => {
-    const { container } = render(<TextField inputId="testInput" size={10} />);
+    const { container } = render(<TextField id="testInput" size={10} />);
 
     expect(container).toMatchSnapshot();
   });
 
   it('should set a `max-width` on the textarea element when `size` is set', () => {
     const { container } = render(
-      <TextField inputId="testInput" multiline size={10} />,
+      <TextField id="testInput" multiline size={10} />,
     );
 
     expect(container).toMatchSnapshot();
@@ -63,6 +63,54 @@ describe('TextField', () => {
       .getAttribute('id');
 
     expect(reRenderedInputId).toEqual(inputId);
+  });
+
+  it('should set `aria-errormessage` prop on input component when `error` prop is set', () => {
+    const { getByTestId } = render(
+      <TextField data-testid="input" error="Bad input!" />,
+    );
+
+    const ariaLabel = getByTestId('input').getAttribute('aria-errormessage');
+    expect(ariaLabel).toBeDefined();
+  });
+
+  it("should use the error message's ID for `aria-errormessage`", () => {
+    const error = <div data-testid="errorMessage">Something went wrong!</div>;
+    const { getByTestId } = render(
+      <TextField data-testid="input" error={error} />,
+    );
+
+    const ariaLabel = getByTestId('input').getAttribute('aria-errormessage');
+    const errorId = getByTestId('errorMessage').getAttribute('id');
+    expect(ariaLabel).toEqual(errorId);
+  });
+
+  it('should not change a generated error message ID on subsequent renders', () => {
+    const error = <div data-testid="errorMessage">Something went wrong!</div>;
+    const { getByTestId, rerender } = render(<TextField error={error} />);
+
+    const errorId = getByTestId('errorMessage').getAttribute('id');
+
+    rerender(<TextField error={error} size={7} />);
+    const reRenderedErrorId = getByTestId('errorMessage').getAttribute('id');
+
+    expect(reRenderedErrorId).toEqual(errorId);
+  });
+
+  it('should use the existing `id` prop on an error component', () => {
+    const error = (
+      <div id="cool-error-one" data-testid="errorMessage">
+        Something went wrong!
+      </div>
+    );
+    const { getByTestId } = render(
+      <TextField data-testid="input" error={error} />,
+    );
+
+    const ariaLabel = getByTestId('input').getAttribute('aria-errormessage');
+    const errorId = getByTestId('errorMessage').getAttribute('id');
+    expect(ariaLabel).toEqual('cool-error-one');
+    expect(errorId).toEqual('cool-error-one');
   });
 
   it('should call `onBlur` function prop', () => {

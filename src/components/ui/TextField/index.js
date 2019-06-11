@@ -1,7 +1,14 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { Fragment, forwardRef, useCallback, useState } from 'react';
+import React, {
+  Fragment,
+  cloneElement,
+  forwardRef,
+  useCallback,
+  useMemo,
+  useState,
+} from 'react';
 import shortid from 'shortid';
 
 import { interfaceUI } from 'styles';
@@ -21,9 +28,10 @@ export const TextField = (props) => {
   const {
     children,
     disabled,
+    error,
     label,
     labelId,
-    inputId,
+    id,
     placeholder,
     onBlur,
     onFocus,
@@ -38,9 +46,12 @@ export const TextField = (props) => {
   } = props;
 
   const [focus, setFocus] = useState(otherProps.autofocus);
-  const [id] = useState(inputId || shortid.generate());
+  const inputId = useMemo(() => {
+    return id || shortid.generate();
+  }, [id]);
   const theme = useTheme();
 
+  // Memoise our handlers as they don't need to be re-created on every render.
   const onBlurHandler = useCallback(
     (...args) => {
       setFocus(false);
@@ -59,6 +70,23 @@ export const TextField = (props) => {
     },
     [onFocus],
   );
+
+  let errorComponent;
+  let errorId;
+  if (error) {
+    errorId = useMemo(() => {
+      return error.props && error.props.id
+        ? error.props.id
+        : shortid.generate();
+    }, [error]);
+    if (typeof error === 'string') {
+      // TODO: Use error styling here. Eventually we probably want some kind of
+      // <Message> component with an error style.
+      errorComponent = <div id={errorId}>{error}</div>;
+    } else {
+      errorComponent = cloneElement(error, { id: errorId });
+    }
+  }
 
   let InputComponent = 'input';
   if (multiline) {
@@ -99,7 +127,7 @@ export const TextField = (props) => {
               color: ${theme.colors.state.focusText};
             `}
         `}
-        htmlFor={id}
+        htmlFor={inputId}
         id={labelId}
       >
         {label}
@@ -127,6 +155,7 @@ export const TextField = (props) => {
         )}
       </label>
       <InputComponent
+        aria-errormessage={errorId}
         css={css`
           ${interfaceUI.medium(theme)};
           background: ${theme.colors.buttons.neutral};
@@ -175,7 +204,7 @@ export const TextField = (props) => {
           }
         `}
         disabled={disabled}
-        id={id}
+        id={inputId}
         placeholder={placeholder}
         required={!optional && 'required'}
         onBlur={onBlurHandler}
@@ -186,6 +215,7 @@ export const TextField = (props) => {
         type={type}
         {...otherProps}
       />
+      {errorComponent}
       {children}
     </Fragment>
   );
@@ -202,10 +232,11 @@ export const styles = () => {
 TextField.defaultProps = {
   children: undefined,
   disabled: false,
+  error: undefined,
   hint: undefined,
   label: '',
   labelId: undefined,
-  inputId: undefined,
+  id: undefined,
   placeholder: '',
   onBlur: undefined,
   onFocus: undefined,
@@ -233,11 +264,14 @@ TextField.propTypes = {
   /** Disables this input; this applies a disabled style and disables user input/interaction with this element. This is useful if you have inputs that are conditionally allowed based on other states in your UI. */
   disabled: PropTypes.bool,
 
+  /** An error message (either a simple string or a component) used to output an error message related to this component's value. If provided, an `aria-errormessage` will be set on the input component that will tell users of assistive technology the error message relates to this input. */
+  error: PropTypes.node,
+
   /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
   labelId: PropTypes.string,
 
   /** HTML `id` attribute of the input component (either an `input` if `multiline` is `false` or `textarea` if `multiline` is `true`). Used for both the input component `id` attribute and the `<label>` `for` attribute. */
-  inputId: PropTypes.string,
+  id: PropTypes.string,
 
   /** Additional context to help users understand the purpose of the input. */
   hint: PropTypes.node,
