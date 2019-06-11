@@ -2,11 +2,11 @@ import React from 'react';
 
 import { fireEvent, render } from 'utils/testing';
 
-import TextInput from '.';
+import TextField from '.';
 
-describe('TextInput', () => {
+describe('TextField', () => {
   it('should render a <label> and <input> by default', () => {
-    const { container } = render(<TextInput />);
+    const { container } = render(<TextField />);
 
     expect(container.children[0].tagName).toEqual('LABEL');
     expect(container.children[1].tagName).toEqual('INPUT');
@@ -14,9 +14,9 @@ describe('TextInput', () => {
 
   it('will render `children` after the <label> and <input> elements', () => {
     const { container } = render(
-      <TextInput>
+      <TextField>
         <span>Why is this even here? I dunno</span>
-      </TextInput>,
+      </TextField>,
     );
 
     expect(container.children[0].tagName).toEqual('LABEL');
@@ -25,39 +25,39 @@ describe('TextInput', () => {
   });
 
   it('should render a <label> and <textarea> when `multiline` is `true`', () => {
-    const { container } = render(<TextInput multiline />);
+    const { container } = render(<TextField multiline />);
 
     expect(container.children[0].tagName).toEqual('LABEL');
     expect(container.children[1].tagName).toEqual('TEXTAREA');
   });
 
   it('should not set a `max-width` on the input element without a `size` prop', () => {
-    const { container } = render(<TextInput inputId="testInput" />);
+    const { container } = render(<TextField inputId="testInput" />);
 
     expect(container).toMatchSnapshot();
   });
 
   it('should set a `max-width` on the input element when `size` is set', () => {
-    const { container } = render(<TextInput inputId="testInput" size={10} />);
+    const { container } = render(<TextField inputId="testInput" size={10} />);
 
     expect(container).toMatchSnapshot();
   });
 
   it('should set a `max-width` on the textarea element when `size` is set', () => {
     const { container } = render(
-      <TextInput inputId="testInput" multiline size={10} />,
+      <TextField inputId="testInput" multiline size={10} />,
     );
 
     expect(container).toMatchSnapshot();
   });
 
   it('should not change a generated ID on subsequent renders', () => {
-    const { container, rerender } = render(<TextInput />);
+    const { container, rerender } = render(<TextField />);
 
     const inputId = container.querySelector('input').getAttribute('id');
     expect(inputId).toBeDefined();
 
-    rerender(<TextInput size={4} />);
+    rerender(<TextField size={4} />);
     const reRenderedInputId = container
       .querySelector('input')
       .getAttribute('id');
@@ -68,7 +68,7 @@ describe('TextInput', () => {
   it('should call `onBlur` function prop', () => {
     const onBlur = jest.fn();
     const { getByTestId } = render(
-      <TextInput data-testid="blurInput" onBlur={onBlur} />,
+      <TextField data-testid="blurInput" onBlur={onBlur} />,
     );
 
     fireEvent.blur(getByTestId('blurInput'));
@@ -80,7 +80,7 @@ describe('TextInput', () => {
   it('should call `onFocus` function prop', () => {
     const onFocus = jest.fn();
     const { getByTestId } = render(
-      <TextInput data-testid="focusInput" onFocus={onFocus} />,
+      <TextField data-testid="focusInput" onFocus={onFocus} />,
     );
 
     fireEvent.focus(getByTestId('focusInput'));

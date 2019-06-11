@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TextInput should call \`onBlur\` function prop 1`] = `
+exports[`TextField should call \`onBlur\` function prop 1`] = `
 [MockFunction] {
   "calls": Array [
     Array [
@@ -36,7 +36,7 @@ exports[`TextInput should call \`onBlur\` function prop 1`] = `
 }
 `;
 
-exports[`TextInput should call \`onFocus\` function prop 1`] = `
+exports[`TextField should call \`onFocus\` function prop 1`] = `
 [MockFunction] {
   "calls": Array [
     Array [
@@ -72,7 +72,7 @@ exports[`TextInput should call \`onFocus\` function prop 1`] = `
 }
 `;
 
-exports[`TextInput should not set a \`max-width\` on the input element without a \`size\` prop 1`] = `
+exports[`TextField should not set a \`max-width\` on the input element without a \`size\` prop 1`] = `
 .emotion-0 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
@@ -100,6 +100,10 @@ exports[`TextInput should not set a \`max-width\` on the input element without a
 }
 
 .emotion-0:active {
+  color: #cd2f83;
+}
+
+.emotion-0:focus {
   color: #cd2f83;
 }
 
@@ -161,7 +165,7 @@ exports[`TextInput should not set a \`max-width\` on the input element without a
 </div>
 `;
 
-exports[`TextInput should set a \`max-width\` on the input element when \`size\` is set 1`] = `
+exports[`TextField should set a \`max-width\` on the input element when \`size\` is set 1`] = `
 .emotion-0 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
@@ -189,6 +193,10 @@ exports[`TextInput should set a \`max-width\` on the input element when \`size\`
 }
 
 .emotion-0:active {
+  color: #cd2f83;
+}
+
+.emotion-0:focus {
   color: #cd2f83;
 }
 
@@ -252,7 +260,7 @@ exports[`TextInput should set a \`max-width\` on the input element when \`size\`
 </div>
 `;
 
-exports[`TextInput should set a \`max-width\` on the textarea element when \`size\` is set 1`] = `
+exports[`TextField should set a \`max-width\` on the textarea element when \`size\` is set 1`] = `
 .emotion-0 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
@@ -280,6 +288,10 @@ exports[`TextInput should set a \`max-width\` on the textarea element when \`siz
 }
 
 .emotion-0:active {
+  color: #cd2f83;
+}
+
+.emotion-0:focus {
   color: #cd2f83;
 }
 

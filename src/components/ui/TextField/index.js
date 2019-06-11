@@ -81,7 +81,7 @@ export const TextField = (props) => {
           ${!disabled &&
             css`
               &:active {
-                color: ${theme.colors.intent.focusText};
+                color: ${theme.colors.state.focusText};
               }
             `}
 
@@ -96,7 +96,7 @@ export const TextField = (props) => {
 
           ${focus &&
             css`
-              color: ${theme.colors.intent.focusText};
+              color: ${theme.colors.state.focusText};
             `}
         `}
         htmlFor={id}
