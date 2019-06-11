@@ -44,8 +44,9 @@ export const TextField = (props) => {
   } = props;
 
   const [focus, setFocus] = useState(otherProps.autofocus);
+  const generatedId = useMemo(shortid.generate, []);
   const inputId = useMemo(() => {
-    return id || shortid.generate();
+    return id || generatedId;
   }, [id]);
   const theme = useTheme();
 
@@ -75,7 +76,7 @@ export const TextField = (props) => {
     errorId = useMemo(() => {
       return error.props && error.props.id
         ? error.props.id
-        : shortid.generate();
+        : `error-${generatedId}`;
     }, [error]);
     if (typeof error === 'string') {
       // TODO: Use error styling here. Eventually we probably want some kind of
