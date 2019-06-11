@@ -11,6 +11,7 @@
     "prettier/prettier": "error"
   },
   "settings": {
+    "import/ignore": ["utils/testing"],
     "import/resolver": {
       "node": {
         "paths": ["./", "src"]
