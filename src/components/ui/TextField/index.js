@@ -25,7 +25,7 @@ export const TextField = (props) => {
     labelId,
     inputId,
     placeholder,
-    instructions,
+    hint,
     multiline,
     rows,
     size,
@@ -78,7 +78,7 @@ export const TextField = (props) => {
             {theme.components.TextField.optionalMessage}
           </span>
         )}
-        {instructions && (
+        {hint && (
           <span
             css={css`
               ${smallText({ theme })};
@@ -88,7 +88,7 @@ export const TextField = (props) => {
               flex-grow: 1;
             `}
           >
-            {instructions}
+            {hint}
           </span>
         )}
       </label>
@@ -165,7 +165,7 @@ export const styles = () => {
 TextField.defaultProps = {
   children: undefined,
   disabled: false,
-  instructions: undefined,
+  hint: undefined,
   label: '',
   labelId: undefined,
   inputId: undefined,
@@ -191,7 +191,7 @@ TextField.propTypes = {
   inputId: PropTypes.string,
 
   /** Additional context to help users understand the purpose of the input. */
-  instructions: PropTypes.node,
+  hint: PropTypes.node,
 
   /** Visible text that serves to introduce the input. */
   label: PropTypes.string,

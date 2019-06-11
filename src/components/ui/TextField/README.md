@@ -9,7 +9,7 @@ A button indicates that a user can complete an action or make a choice, using a 
 
 <TextField label="Fluffy things" placeholder="e.g.: Kittens, puppies, and ponies." />
 
-<TextField label="Fluffy things" instructions="List the fluffiest things you can think of, ideally in alphabetical order." placeholder="e.g.: Kittens, puppies, and ponies." />
+<TextField label="Fluffy things" hint="List the fluffiest things you can think of, ideally in alphabetical order." placeholder="e.g.: Kittens, puppies, and ponies." />
 
 <TextField label="I am a textarea" multiline />
 
