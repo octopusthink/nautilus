@@ -17,7 +17,7 @@ const smallText = (props) => {
   `;
 };
 
-export const TextInput = (props) => {
+export const TextField = (props) => {
   const {
     children,
     disabled,
@@ -27,7 +27,7 @@ export const TextInput = (props) => {
     placeholder,
     onBlur,
     onFocus,
-    instructions,
+    hint,
     multiline,
     ref,
     rows,
@@ -78,8 +78,20 @@ export const TextInput = (props) => {
           justify-content: space-between;
           margin: 0 0 ${theme.spacing.padding.xs};
 
-          &:active {
-            color: ${theme.colors.intent.focusText};
+          ${!disabled &&
+            css`
+              &:active {
+                color: ${theme.colors.intent.focusText};
+              }
+            `}
+
+          ${disabled &&
+            css`
+              color: ${theme.colors.state.disabled};
+            `}
+
+          &:focus {
+            color: ${theme.colors.state.focusText};
           }
 
           ${focus &&
@@ -91,16 +103,16 @@ export const TextInput = (props) => {
         id={labelId}
       >
         {label}
-        {optional && theme.components.TextInput.optionalMessage && (
+        {optional && theme.components.TextField.optionalMessage && (
           <span
             css={css`
               ${smallText({ theme })};
             `}
           >
-            {theme.components.TextInput.optionalMessage}
+            {theme.components.TextField.optionalMessage}
           </span>
         )}
-        {instructions && (
+        {hint && (
           <span
             css={css`
               ${smallText({ theme })};
@@ -110,7 +122,7 @@ export const TextInput = (props) => {
               flex-grow: 1;
             `}
           >
-            {instructions}
+            {hint}
           </span>
         )}
       </label>
@@ -134,6 +146,13 @@ export const TextInput = (props) => {
               max-width: ${size - 1}em;
             `}
 
+          ${disabled &&
+            css`
+              color: ${theme.colors.state.disabled};
+              background-color: ${theme.colors.state.disabledLight};
+              border-color: ${theme.colors.state.disabledLight};
+            `}
+
           &:optional {
           }
 
@@ -146,7 +165,7 @@ export const TextInput = (props) => {
           }
 
           &:focus {
-            box-shadow: 0 0 1px 4px ${theme.colors.intent.focusOutline};
+            box-shadow: 0 0 1px 4px ${theme.colors.state.focusOutline};
             color: ${theme.colors.text.dark};
             outline: none;
           }
@@ -180,10 +199,10 @@ export const styles = () => {
   return css``;
 };
 
-TextInput.defaultProps = {
+TextField.defaultProps = {
   children: undefined,
   disabled: false,
-  instructions: undefined,
+  hint: undefined,
   label: '',
   labelId: undefined,
   inputId: undefined,
@@ -198,7 +217,7 @@ TextInput.defaultProps = {
   type: 'text',
 };
 
-TextInput.propTypes = {
+TextField.propTypes = {
   /** @ignore */
   children: PropTypes.node,
   /** @ignore */
@@ -221,7 +240,7 @@ TextInput.propTypes = {
   inputId: PropTypes.string,
 
   /** Additional context to help users understand the purpose of the input. */
-  instructions: PropTypes.node,
+  hint: PropTypes.node,
 
   /** Visible text that serves to introduce the input. */
   label: PropTypes.string,
@@ -238,7 +257,7 @@ TextInput.propTypes = {
   /** Placeholder text, used only for examples. */
   placeholder: PropTypes.string,
 
-  /** Used to mark this input as optional. Will output text in `theme.components.TextInput.optionalMessage`, if set. */
+  /** Used to mark this input as optional. Will output text in `theme.components.TextField.optionalMessage`, if set. */
   optional: PropTypes.bool,
 
   /** HTML `type` attribute for the `<input>` element. */
@@ -260,4 +279,4 @@ TextInput.propTypes = {
   ]),
 };
 
-export default styled(forwardRef(TextInput))(styles);
+export default styled(forwardRef(TextField))(styles);

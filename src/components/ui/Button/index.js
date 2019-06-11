@@ -98,9 +98,9 @@ export default styled(Button)(
     let currentButtonColorLight = theme.colors.buttons.defaultLight;
 
     if (disabled === true) {
-      currentButtonColor = theme.colors.buttons.disabled;
-      currentButtonColorDark = theme.colors.buttons.disabledDark;
-      currentButtonColorLight = theme.colors.buttons.disabledLight;
+      currentButtonColor = theme.colors.state.disabled;
+      currentButtonColorDark = theme.colors.state.disabledDark;
+      currentButtonColorLight = theme.colors.state.disabledLight;
     }
 
     if (success === true) {
