@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React, { Fragment, forwardRef, useState } from 'react';
 import shortid from 'shortid';
 
 import { interfaceUI } from 'styles';
@@ -25,8 +25,11 @@ export const TextInput = (props) => {
     labelId,
     inputId,
     placeholder,
+    onBlur,
+    onFocus,
     instructions,
     multiline,
+    ref,
     rows,
     size,
     optional,
@@ -34,7 +37,21 @@ export const TextInput = (props) => {
     ...otherProps
   } = props;
 
+  const [focus, setFocus] = useState(otherProps.autofocus);
   const theme = useTheme();
+
+  const onBlurHandler = (...args) => {
+    setFocus(false);
+    if (onBlur) {
+      onBlur(...args);
+    }
+  };
+  const onFocusHandler = (...args) => {
+    setFocus(true);
+    if (onFocus) {
+      onFocus(...args);
+    }
+  };
 
   const idToUse = inputId || shortid.generate();
 
@@ -56,9 +73,14 @@ export const TextInput = (props) => {
           justify-content: space-between;
           margin: 0 0 ${theme.spacing.padding.xs};
 
-          &:focus {
+          &:active {
             color: ${theme.colors.intent.focusText};
           }
+
+          ${focus &&
+            css`
+              color: ${theme.colors.intent.focusText};
+            `}
         `}
         htmlFor={idToUse}
         id={labelId}
@@ -132,6 +154,9 @@ export const TextInput = (props) => {
         id={idToUse}
         placeholder={placeholder}
         required={!optional && 'required'}
+        onBlur={onBlurHandler}
+        onFocus={onFocusHandler}
+        ref={ref}
         rows={multiline && rows}
         maxLength={size}
         type={type}
@@ -158,7 +183,10 @@ TextInput.defaultProps = {
   labelId: undefined,
   inputId: undefined,
   placeholder: '',
+  onBlur: undefined,
+  onFocus: undefined,
   multiline: false,
+  ref: undefined,
   rows: 4,
   size: undefined,
   optional: false,
@@ -168,6 +196,15 @@ TextInput.defaultProps = {
 TextInput.propTypes = {
   /** @ignore */
   children: PropTypes.node,
+  /** @ignore */
+  onBlur: PropTypes.func,
+  /** @ignore */
+  onFocus: PropTypes.func,
+  /** @ignore */
+  ref: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(global.Element) }),
+  ]),
 
   /** Disables this input; this applies a disabled style and disables user input/interaction with this element. This is useful if you have inputs that are conditionally allowed based on other states in your UI. */
   disabled: PropTypes.bool,
@@ -218,4 +255,4 @@ TextInput.propTypes = {
   ]),
 };
 
-export default styled(TextInput)(styles);
+export default styled(forwardRef(TextInput))(styles);

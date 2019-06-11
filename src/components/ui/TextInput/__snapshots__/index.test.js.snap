@@ -1,5 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`TextInput should call \`onBlur\` function prop 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Class {
+        "_dispatchInstances": null,
+        "_dispatchListeners": null,
+        "_targetInst": null,
+        "bubbles": null,
+        "cancelable": null,
+        "currentTarget": [Function],
+        "defaultPrevented": null,
+        "detail": null,
+        "dispatchConfig": null,
+        "eventPhase": null,
+        "isDefaultPrevented": [Function],
+        "isPropagationStopped": [Function],
+        "isTrusted": null,
+        "nativeEvent": null,
+        "relatedTarget": null,
+        "target": null,
+        "timeStamp": [Function],
+        "type": null,
+        "view": null,
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`TextInput should call \`onFocus\` function prop 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Class {
+        "_dispatchInstances": null,
+        "_dispatchListeners": null,
+        "_targetInst": null,
+        "bubbles": null,
+        "cancelable": null,
+        "currentTarget": [Function],
+        "defaultPrevented": null,
+        "detail": null,
+        "dispatchConfig": null,
+        "eventPhase": null,
+        "isDefaultPrevented": [Function],
+        "isPropagationStopped": [Function],
+        "isTrusted": null,
+        "nativeEvent": null,
+        "relatedTarget": null,
+        "target": null,
+        "timeStamp": [Function],
+        "type": null,
+        "view": null,
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
 exports[`TextInput should not set a \`max-width\` on the input element without a \`size\` prop 1`] = `
 .emotion-0 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -27,7 +99,7 @@ exports[`TextInput should not set a \`max-width\` on the input element without a
   margin: 0 0 0.4rem;
 }
 
-.emotion-0:focus {
+.emotion-0:active {
   color: #cd2f83;
 }
 
@@ -80,15 +152,11 @@ exports[`TextInput should not set a \`max-width\` on the input element without a
   <label
     class="emotion-0"
     for="testInput"
-  >
-    
-  </label>
+  />
   <input
     class="emotion-1 emotion-2"
     id="testInput"
-    placeholder=""
     required=""
-    type="text"
   />
 </div>
 `;
@@ -120,7 +188,7 @@ exports[`TextInput should set a \`max-width\` on the input element when \`size\`
   margin: 0 0 0.4rem;
 }
 
-.emotion-0:focus {
+.emotion-0:active {
   color: #cd2f83;
 }
 
@@ -174,16 +242,12 @@ exports[`TextInput should set a \`max-width\` on the input element when \`size\`
   <label
     class="emotion-0"
     for="testInput"
-  >
-    
-  </label>
+  />
   <input
     class="emotion-1 emotion-2"
     id="testInput"
     maxlength="10"
-    placeholder=""
     required=""
-    type="text"
   />
 </div>
 `;
@@ -215,7 +279,7 @@ exports[`TextInput should set a \`max-width\` on the textarea element when \`siz
   margin: 0 0 0.4rem;
 }
 
-.emotion-0:focus {
+.emotion-0:active {
   color: #cd2f83;
 }
 
@@ -269,17 +333,12 @@ exports[`TextInput should set a \`max-width\` on the textarea element when \`siz
   <label
     class="emotion-0"
     for="testInput"
-  >
-    
-  </label>
+  />
   <textarea
     class="emotion-1 emotion-2"
     id="testInput"
     maxlength="10"
-    placeholder=""
     required=""
-    rows="4"
-    type="text"
   />
 </div>
 `;

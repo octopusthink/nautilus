@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from 'utils/testing';
+import { fireEvent, render } from 'utils/testing';
 
 import TextInput from '.';
 
@@ -49,5 +49,29 @@ describe('TextInput', () => {
     );
 
     expect(container).toMatchSnapshot();
+  });
+
+  it('should call `onBlur` function prop', () => {
+    const onBlur = jest.fn();
+    const { getByTestId } = render(
+      <TextInput data-testid="blurInput" onBlur={onBlur} />,
+    );
+
+    fireEvent.blur(getByTestId('blurInput'));
+
+    expect(onBlur).toHaveBeenCalled();
+    expect(onBlur).toMatchSnapshot();
+  });
+
+  it('should call `onFocus` function prop', () => {
+    const onFocus = jest.fn();
+    const { getByTestId } = render(
+      <TextInput data-testid="focusInput" onFocus={onFocus} />,
+    );
+
+    fireEvent.focus(getByTestId('focusInput'));
+
+    expect(onFocus).toHaveBeenCalled();
+    expect(onFocus).toMatchSnapshot();
   });
 });
