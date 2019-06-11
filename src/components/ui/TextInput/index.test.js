@@ -51,6 +51,20 @@ describe('TextInput', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should not change a generated ID on subsequent renders', () => {
+    const { container, rerender } = render(<TextInput />);
+
+    const inputId = container.querySelector('input').getAttribute('id');
+    expect(inputId).toBeDefined();
+
+    rerender(<TextInput size={4} />);
+    const reRenderedInputId = container
+      .querySelector('input')
+      .getAttribute('id');
+
+    expect(reRenderedInputId).toEqual(inputId);
+  });
+
   it('should call `onBlur` function prop', () => {
     const onBlur = jest.fn();
     const { getByTestId } = render(

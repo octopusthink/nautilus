@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { Fragment, forwardRef, useState } from 'react';
+import React, { Fragment, forwardRef, useCallback, useState } from 'react';
 import shortid from 'shortid';
 
 import { interfaceUI } from 'styles';
@@ -38,22 +38,27 @@ export const TextInput = (props) => {
   } = props;
 
   const [focus, setFocus] = useState(otherProps.autofocus);
+  const [id] = useState(inputId || shortid.generate());
   const theme = useTheme();
 
-  const onBlurHandler = (...args) => {
-    setFocus(false);
-    if (onBlur) {
-      onBlur(...args);
-    }
-  };
-  const onFocusHandler = (...args) => {
-    setFocus(true);
-    if (onFocus) {
-      onFocus(...args);
-    }
-  };
-
-  const idToUse = inputId || shortid.generate();
+  const onBlurHandler = useCallback(
+    (...args) => {
+      setFocus(false);
+      if (onBlur) {
+        onBlur(...args);
+      }
+    },
+    [onBlur],
+  );
+  const onFocusHandler = useCallback(
+    (...args) => {
+      setFocus(true);
+      if (onFocus) {
+        onFocus(...args);
+      }
+    },
+    [onFocus],
+  );
 
   let InputComponent = 'input';
   if (multiline) {
@@ -82,7 +87,7 @@ export const TextInput = (props) => {
               color: ${theme.colors.intent.focusText};
             `}
         `}
-        htmlFor={idToUse}
+        htmlFor={id}
         id={labelId}
       >
         {label}
@@ -151,7 +156,7 @@ export const TextInput = (props) => {
           }
         `}
         disabled={disabled}
-        id={idToUse}
+        id={id}
         placeholder={placeholder}
         required={!optional && 'required'}
         onBlur={onBlurHandler}
