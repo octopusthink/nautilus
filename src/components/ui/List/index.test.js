@@ -210,9 +210,10 @@ describe('List', () => {
 
       rerender(
         <List>
-          <Paragraph data-testid="description">My list</Paragraph>
+          <Paragraph data-testid="description">My lists</Paragraph>
           <List.Item>One</List.Item>
           <List.Item>Two</List.Item>
+          <List.Item>Three</List.Item>
         </List>,
       );
 
