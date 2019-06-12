@@ -198,7 +198,7 @@ describe('List', () => {
     it('should not regenerate the unique ID on subsequent renders', () => {
       const { getByTestId, rerender } = render(
         <List ordered>
-          <List.Paragraph data-testid="description">My list</List.Paragraph>
+          <Paragraph data-testid="description">My list</Paragraph>
           <List.Item>One</List.Item>
           <List.Item>Two</List.Item>
         </List>,
@@ -210,7 +210,7 @@ describe('List', () => {
 
       rerender(
         <List>
-          <List.Paragraph data-testid="description">My list</List.Paragraph>
+          <Paragraph data-testid="description">My list</Paragraph>
           <List.Item>One</List.Item>
           <List.Item>Two</List.Item>
         </List>,

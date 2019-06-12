@@ -131,9 +131,9 @@ exports[`TextField should not set a \`max-width\` on the input element without a
 }
 
 .emotion-2:focus {
-  box-shadow: 0 0 1px 4px #f5bbda;
   color: #181b1c;
-  outline: none;
+  box-shadow: 0 0 0.1rem 0.4rem #f5bbda;
+  outline: 0;
 }
 
 .emotion-2::-webkit-input-placeholder {
@@ -226,9 +226,9 @@ exports[`TextField should set a \`max-width\` on the input element when \`size\`
 }
 
 .emotion-2:focus {
-  box-shadow: 0 0 1px 4px #f5bbda;
   color: #181b1c;
-  outline: none;
+  box-shadow: 0 0 0.1rem 0.4rem #f5bbda;
+  outline: 0;
 }
 
 .emotion-2::-webkit-input-placeholder {
@@ -322,9 +322,9 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
 }
 
 .emotion-2:focus {
-  box-shadow: 0 0 1px 4px #f5bbda;
   color: #181b1c;
-  outline: none;
+  box-shadow: 0 0 0.1rem 0.4rem #f5bbda;
+  outline: 0;
 }
 
 .emotion-2::-webkit-input-placeholder {

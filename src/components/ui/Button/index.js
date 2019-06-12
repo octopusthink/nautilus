@@ -63,9 +63,9 @@ export const styles = (props) => {
     warning,
   } = props;
 
-  let currentButtonColor = theme.colors.state.default;
-  let currentButtonColorDark = theme.colors.state.defaultDark;
-  let currentButtonColorLight = theme.colors.state.defaultLight;
+  let currentButtonColor = theme.colors.buttons.default;
+  let currentButtonColorDark = theme.colors.buttons.defaultDark;
+  let currentButtonColorLight = theme.colors.buttons.defaultLight;
 
   if (disabled === true) {
     currentButtonColor = theme.colors.state.disabled;
@@ -93,7 +93,7 @@ export const styles = (props) => {
 
   return css`
     ${interfaceUI.medium(theme)}
-    background: ${theme.colors.state.neutral};
+    background: ${theme.colors.buttons.neutral};
     border: 2px solid ${currentButtonColor};
     border-radius: 8px;
     color: ${currentButtonColor};
@@ -129,11 +129,11 @@ export const styles = (props) => {
     ${primary &&
       css`
         background: ${currentButtonColor};
-        color: ${theme.colors.state.neutral};
+        color: ${theme.colors.buttons.neutral};
 
         &:active {
           background: ${currentButtonColorDark};
-          color: ${theme.colors.state.neutral};
+          color: ${theme.colors.buttons.neutral};
         }
       `}
 
