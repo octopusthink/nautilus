@@ -2,17 +2,17 @@
 const focusOutline = (theme) => {
   return {
     boxShadow: 0 0 1px 4px theme.colors.intent.focusOutline,
-    outline: 0;
+    outline: 0,
   };
 };
 
-cons focusText = (theme) => {
+const focusText = (theme) => {
   return {
     color: theme.colors.intent.focusText,
-  }
-}
+  };
+};
 
-export const focus = {
+export const focusStyle = {
   outline: focusOutline,
   text: focusText,
 };

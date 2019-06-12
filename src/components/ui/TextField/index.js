@@ -11,7 +11,7 @@ import React, {
 import shortid from 'shortid';
 
 import { interfaceUI } from 'styles';
-import { focusOutline } from 'styles';
+import { focusStyle } from 'styles';
 import { useTheme } from 'themes';
 
 const smallText = (props) => {
@@ -109,7 +109,7 @@ export const TextField = (props) => {
           ${!disabled &&
             css`
               &:active {
-                color: ${theme.colors.state.focusText};
+                ${focusStyle.text(theme)};
               }
             `}
 
@@ -119,12 +119,12 @@ export const TextField = (props) => {
             `}
 
           &:focus {
-            ${focus.text(theme)};
+            ${focusStyle.text(theme)};
           }
 
           ${focus &&
             css`
-              color: ${theme.colors.state.focusText};
+              ${focusStyle.text(theme)};
             `}
         `}
         htmlFor={inputId}
@@ -195,7 +195,7 @@ export const TextField = (props) => {
 
           &:focus {
             color: ${theme.colors.text.dark};
-            ${focus.outline(theme)};
+            ${focusStyle.outline(theme)};
           }
 
           &::placeholder {
