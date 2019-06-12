@@ -86,9 +86,7 @@ describe('CustomPropTypes', () => {
       expect(global.console.error.mock.calls[0][0]).toMatch(
         `Failed prop type: ${
           ParagraphParent.displayName
-        } component only accepts the following components as children: ${
-          Paragraph.displayName
-        }`,
+        } component only accepts the following components as children: Paragraph`,
       );
     });
 

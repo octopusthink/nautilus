@@ -46,7 +46,4 @@ Heading.propTypes = {
   level: PropTypes.oneOf(HeadingLevels),
 };
 
-const StyledHeading = styled(Heading)(styles);
-StyledHeading.displayName = 'Heading';
-
-export default StyledHeading;
+export default styled(Heading)(styles);

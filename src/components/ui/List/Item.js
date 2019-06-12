@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export const ListItemBase = (props) => {
+export const ListItem = (props) => {
   const { children, ...otherProps } = props;
 
   return <li {...otherProps}>{children}</li>;
@@ -22,16 +22,13 @@ export const styles = (props) => {
   `;
 };
 
-ListItemBase.defaultProps = {
+ListItem.defaultProps = {
   children: undefined,
 };
 
-ListItemBase.propTypes = {
+ListItem.propTypes = {
   /** @ignore */
   children: PropTypes.node,
 };
 
-const ListItem = styled(ListItemBase)(styles);
-ListItem.displayName = 'List.Item';
-
-export default ListItem;
+export default styled(ListItem)(styles);

@@ -2,7 +2,6 @@ const path = require('path');
 
 module.exports = {
   assetsDir: 'styleguide/assets',
-  components: 'src/components/**/index.{js,jsx,ts,tsx}',
   ignore: ['src/components/index.js', '**/*.test.{js,jsx,ts,tsx}'],
   moduleAliases: {
     '@octopusthink/nautilus': path.resolve(__dirname, 'src/index'),

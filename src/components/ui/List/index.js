@@ -149,7 +149,6 @@ List.propTypes = {
 };
 
 const StyledList = styled(List)(styles);
-StyledList.displayName = 'List';
 
 // Export ListItem as `List.Item`.
 StyledList.Item = ListItem;

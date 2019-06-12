@@ -60,7 +60,4 @@ Paragraph.propTypes = {
 
 export const { defaultProps, propTypes } = Paragraph;
 
-const StyledParagraph = styled(Paragraph)(styles);
-StyledParagraph.displayName = 'Paragraph';
-
-export default StyledParagraph;
+export default styled(Paragraph)(styles);
