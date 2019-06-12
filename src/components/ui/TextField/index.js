@@ -10,7 +10,8 @@ import React, {
 } from 'react';
 import shortid from 'shortid';
 
-import { focusStyle, interfaceUI } from 'styles';
+import { interfaceUI } from 'styles';
+import { focusStyle } from 'styles';
 import { useTheme } from 'themes';
 
 const smallText = (props) => {
@@ -79,9 +80,21 @@ export const TextField = (props) => {
         : `error-${generatedId}`;
     }, [error]);
     if (typeof error === 'string') {
-      // TODO: Use error styling here. Eventually we probably want some kind of
+      // TODO: Use error styling here, and move margins to TextField component, maybe in a wrapper? Eventually we probably want some kind of
       // <Message> component with an error style.
-      errorComponent = <div id={errorId}>{error}</div>;
+      errorComponent = (
+        <div
+          id={errorId}
+          css={css`
+            ${interfaceUI.medium(theme)};
+            color: ${theme.colors.state.errorText};
+            margin-top: -${theme.spacing.padding.l};
+            margin-bottom: ${theme.spacing.padding.l};
+          `}
+        >
+          {error}
+        </div>
+      );
     } else {
       errorComponent = cloneElement(error, { id: errorId });
     }
@@ -179,6 +192,11 @@ export const TextField = (props) => {
               color: ${theme.colors.state.disabled};
               background-color: ${theme.colors.state.disabledLight};
               border-color: ${theme.colors.state.disabledLight};
+            `}
+
+          ${error &&
+            css`
+              border-color: ${theme.colors.state.errorOutline};
             `}
 
           &:optional {
@@ -304,7 +322,4 @@ TextField.propTypes = {
   ]),
 };
 
-const StyledTextField = styled(TextField)(styles);
-StyledTextField.displayName = 'TextField';
-
-export default StyledTextField;
+export default styled(TextField)(styles);

@@ -135,6 +135,8 @@ export const theme = {
       disabled: colors.grey700,
       disabledDark: colors.grey800,
       disabledLight: colors.grey200,
+      errorOutline: colors.red400,
+      errorText: colors.red600,
     },
 
     text: {

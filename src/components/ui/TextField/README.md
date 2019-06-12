@@ -78,7 +78,7 @@ Use a disabled input to indicate that an input isn't ready yet, or relies on ano
 Error validation should happen inline in order to give users immediate feedback. Don't start validation until the user has stopped typing inside the input, to avoid frustration.
 
 ```jsx
-<TextField label="Problematic Input" size={14} error="I have an error." />
+<TextField label="Trouble in paradise" size={14} error="Please fix me!" />
 ```
 
 ### Autocomplete
