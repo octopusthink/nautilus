@@ -10,8 +10,7 @@ import React, {
 } from 'react';
 import shortid from 'shortid';
 
-import { interfaceUI } from 'styles';
-import { focusStyle } from 'styles';
+import { focusStyle, interfaceUI } from 'styles';
 import { useTheme } from 'themes';
 
 const smallText = (props) => {
