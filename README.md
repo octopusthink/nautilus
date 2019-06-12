@@ -77,7 +77,7 @@ Please read (`CONTRIBUTING.md`) for details on our code of conduct and the proce
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/octopusthink/nautilus/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [releases page](https://github.com/octopusthink/nautilus/releases).
 
 ## Authors
 
@@ -88,7 +88,7 @@ See also the list of [contributors](https://github.com/octopusthink/nautilus/con
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgments
 
