@@ -29,6 +29,12 @@ const customRender = (ui, options) => {
   return render(ui, { wrapper: NautilusProviders, ...options });
 };
 
+export const muteConsole = ({ times, type } = {}) => {
+  Array.from({ length: times }).forEach(() => {
+    global.console[type].mockImplementationOnce(() => jest.fn());
+  });
+};
+
 // Re-export everything else as normal.
 export * from '@testing-library/react';
 

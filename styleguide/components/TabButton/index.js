@@ -15,6 +15,10 @@ export function TabButtonRenderer({ classes, name, className, onClick, active, c
 			padding: 10px;
 			${css(interfaceUI.small(theme))};
 
+			.rsg--tabButtons-7 & {
+				color: hotpink !important;
+			}
+
 			&::before {
 				display: inline-block;
 				content: '↓';

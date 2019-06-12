@@ -29,4 +29,7 @@ PageTitle.propTypes = {
   documentTitle: PropTypes.string,
 };
 
-export default styled(PageTitle)(styles);
+const StyledPageTitle = styled(PageTitle)(styles);
+StyledPageTitle.displayName = 'PageTitle';
+
+export default StyledPageTitle;

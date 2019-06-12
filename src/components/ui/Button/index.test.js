@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from 'utils/testing';
+import { muteConsole, render } from 'utils/testing';
 
 import Button from '.';
 
@@ -41,6 +41,7 @@ describe('Button', () => {
 
   it('should only allow one of minimal/primary props', () => {
     expect(() => {
+      muteConsole({ times: 2, type: 'error' });
       render(
         <Button minimal primary>
           Important but not
@@ -56,6 +57,7 @@ describe('Button', () => {
       '<Button> should only use one of `danger`, `warning`, or `success`. Pick a lane!';
 
     expect(() => {
+      muteConsole({ times: 2, type: 'error' });
       render(
         <Button danger success warning>
           Bad button
@@ -64,6 +66,7 @@ describe('Button', () => {
     }).toThrow(errorText);
 
     expect(() => {
+      muteConsole({ times: 2, type: 'error' });
       render(
         <Button danger success>
           Bad button
@@ -72,6 +75,7 @@ describe('Button', () => {
     }).toThrow(errorText);
 
     expect(() => {
+      muteConsole({ times: 2, type: 'error' });
       render(
         <Button success warning>
           Bad button
@@ -80,6 +84,7 @@ describe('Button', () => {
     }).toThrow(errorText);
 
     expect(() => {
+      muteConsole({ times: 2, type: 'error' });
       render(
         <Button danger warning>
           Bad button

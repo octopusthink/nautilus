@@ -2,7 +2,6 @@
 // import AxiosMockAdapter from 'axios-mock-adapter';
 // import { JSDOM } from 'jsdom';
 
-// Required for react-slick.
 global.window.matchMedia = jest.fn().mockImplementation((query) => {
   return {
     matches: false,
@@ -13,10 +12,16 @@ global.window.matchMedia = jest.fn().mockImplementation((query) => {
   };
 });
 
-// Jest is noisy when we want to test `invariant` code paths, so we just
-// mock out the console in tests anyway.
-jest.spyOn(global.console, 'error').mockImplementation(() => jest.fn());
-jest.spyOn(global.console, 'warn').mockImplementation(() => jest.fn());
-jest.spyOn(global.console, 'log').mockImplementation(() => jest.fn());
-jest.spyOn(global.console, 'info').mockImplementation(() => jest.fn());
-jest.spyOn(global.console, 'debug').mockImplementation(() => jest.fn());
+jest.spyOn(global.console, 'error');
+jest.spyOn(global.console, 'warn');
+jest.spyOn(global.console, 'log');
+jest.spyOn(global.console, 'info');
+jest.spyOn(global.console, 'debug');
+
+beforeEach(() => {
+  global.console.error.mockClear();
+  global.console.warn.mockClear();
+  global.console.log.mockClear();
+  global.console.info.mockClear();
+  global.console.debug.mockClear();
+});

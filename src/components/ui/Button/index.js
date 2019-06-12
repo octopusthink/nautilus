@@ -206,4 +206,7 @@ Button.propTypes = {
 
 export const { defaultProps, propTypes } = Button;
 
-export default styled(Button)(styles);
+const StyledButton = styled(Button)(styles);
+StyledButton.displayName = 'Button';
+
+export default StyledButton;
