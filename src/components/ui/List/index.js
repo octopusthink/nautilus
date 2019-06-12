@@ -13,6 +13,7 @@ import shortid from 'shortid';
 import Heading from 'components/ui/Heading';
 import Paragraph from 'components/ui/Paragraph';
 import { bodyStyles } from 'styles';
+import { CustomPropTypes } from 'utils';
 
 import ListItem from './Item';
 
@@ -128,8 +129,11 @@ List.defaultProps = {
 };
 
 List.propTypes = {
-  /** @ignore */
-  children: PropTypes.node,
+  /** @ignore The list items for this list (using the `List.Item` component), as well as the optional list description `Heading` or `Paragraph` component. */
+  children: CustomPropTypes.allowedChildren(
+    ...ALLOWED_DESCRIPTION_COMPONENTS,
+    ListItem,
+  ),
   /** Increase the visual prominence of the list. */
   large: PropTypes.bool,
   /** Decrease the visual prominence of the list. */

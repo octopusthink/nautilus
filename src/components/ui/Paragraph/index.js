@@ -1,12 +1,29 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
+import invariant from 'invariant';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import { bodyStyles } from 'styles';
 
+export const qualityControl = (props) => {
+  const { dark, large, light, small } = props;
+
+  invariant(
+    [dark, light].filter((prop) => prop).length <= 1,
+    'Paragraph cannot have both `dark` and `light` props set.',
+  );
+
+  invariant(
+    [large, small].filter((prop) => prop).length <= 1,
+    'Paragraph cannot have both `large` and `small` props set.',
+  );
+};
+
 export const Paragraph = (props) => {
   const { children, large, small, inverse, dark, light, ...otherProps } = props;
+
+  qualityControl(props);
 
   return <p {...otherProps}>{children}</p>;
 };

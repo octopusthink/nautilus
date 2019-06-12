@@ -31,6 +31,4 @@ ListItem.propTypes = {
   children: PropTypes.node,
 };
 
-const StyledListItem = styled(ListItem)(styles);
-
-export default StyledListItem;
+export default styled(ListItem)(styles);

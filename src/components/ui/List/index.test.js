@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from 'utils/testing';
+import { muteConsole, render } from 'utils/testing';
 
 import { Heading, Paragraph } from 'components';
 import List from '.';
@@ -29,6 +29,7 @@ describe('List', () => {
   });
 
   it('should not render non-List components as direct children', () => {
+    muteConsole({ times: 1, type: 'error' });
     const { getByTestId } = render(
       <List>
         <div data-testid="child">hello</div>
@@ -41,6 +42,7 @@ describe('List', () => {
   });
 
   it('should not render regular <li> tags as direct children', () => {
+    muteConsole({ times: 1, type: 'error' });
     const { getByTestId } = render(
       <List>
         <li data-testid="child">hello</li>
