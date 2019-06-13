@@ -9,7 +9,7 @@
     "jsx-a11y/label-has-for": false,
     "jsx-a11y/label-has-associated-control": "error",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "error",
     "react/jsx-filename-extension": false,
     "prettier/prettier": "error"
   },

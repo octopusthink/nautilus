@@ -128,7 +128,6 @@ describe('TextField', () => {
     fireEvent.blur(getByTestId('blurInput'));
 
     expect(onBlur).toHaveBeenCalled();
-    expect(onBlur).toMatchSnapshot();
   });
 
   it('should call `onFocus` function prop', () => {
@@ -140,6 +139,5 @@ describe('TextField', () => {
     fireEvent.focus(getByTestId('focusInput'));
 
     expect(onFocus).toHaveBeenCalled();
-    expect(onFocus).toMatchSnapshot();
   });
 });
