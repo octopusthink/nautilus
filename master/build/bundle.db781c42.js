@@ -13641,7 +13641,7 @@ var CustomPropTypes_allowedChildren = function allowedChildren() {
       if (!types.includes(child.type)) {
         error = new Error("".concat(componentName, " component only accepts the following components as children: ").concat(types.map(function (element) {
           return getUnstyledComponentName(element.displayName) || element;
-        }).join(', '), "."));
+        }).join(', '), ". You tried to use: \"").concat(child.type, "\"."));
       }
     });
     return error;
@@ -13682,6 +13682,7 @@ Item_ListItem.propTypes = {
   /** @ignore */
   children: prop_types_default.a.node
 };
+Item_ListItem.displayName = 'List.Item';
 /* harmony default export */ var Item = (/*#__PURE__*/Object(styled_base_browser_esm["a" /* default */])(Item_ListItem, {
   target: "e1hnlpvv0"
 })(Item_styles,  true ? "" : undefined));
