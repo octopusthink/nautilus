@@ -56,13 +56,13 @@ export const List = ({
     return cloneElement(descriptionComponent, {
       id: descriptionComponent.props.id || generatedId,
     });
-  }, [children, otherProps.id]);
+  }, [children, generatedId]);
 
   const items = useMemo(() => {
     return Children.toArray(children).filter((child) => {
       return child.type === ListItem;
     });
-  }, [children, otherProps.id]);
+  }, [children]);
 
   return (
     <Fragment>

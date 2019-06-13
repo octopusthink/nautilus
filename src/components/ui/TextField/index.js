@@ -47,7 +47,7 @@ export const TextField = (props) => {
   const [generatedId] = useState(shortid.generate());
   const inputId = useMemo(() => {
     return id || generatedId;
-  }, [id]);
+  }, [generatedId, id]);
   const theme = useTheme();
 
   // Memoise our handlers as they don't need to be re-created on every render.
@@ -70,18 +70,24 @@ export const TextField = (props) => {
     [onFocus],
   );
 
-  let errorComponent;
-  let errorId;
-  if (error) {
-    errorId = useMemo(() => {
-      return error.props && error.props.id
-        ? error.props.id
-        : `error-${generatedId}`;
-    }, [error]);
+  const errorId = useMemo(() => {
+    if (!error) {
+      return undefined;
+    }
+
+    return error.props && error.props.id
+      ? error.props.id
+      : `error-${generatedId}`;
+  }, [error, generatedId]);
+  const errorComponent = useMemo(() => {
+    if (!error) {
+      return undefined;
+    }
+
     if (typeof error === 'string') {
       // TODO: Use error styling here, and move margins to TextField component, maybe in a wrapper? Eventually we probably want some kind of
       // <Message> component with an error style.
-      errorComponent = (
+      return (
         <div
           id={errorId}
           css={css`
@@ -94,10 +100,10 @@ export const TextField = (props) => {
           {error}
         </div>
       );
-    } else {
-      errorComponent = cloneElement(error, { id: errorId });
     }
-  }
+
+    return cloneElement(error, { id: errorId });
+  }, [error, errorId, theme]);
 
   let InputComponent = 'input';
   if (multiline) {
