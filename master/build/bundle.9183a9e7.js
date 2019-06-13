@@ -13743,12 +13743,12 @@ var List_List = function List(_ref) {
     return Object(react["cloneElement"])(descriptionComponent, {
       id: descriptionComponent.props.id || generatedId
     });
-  }, [children, otherProps.id]);
+  }, [children, generatedId]);
   var items = Object(react["useMemo"])(function () {
     return react["Children"].toArray(children).filter(function (child) {
       return child.type === Item;
     });
-  }, [children, otherProps.id]);
+  }, [children]);
   return Object(core_browser_esm["d" /* jsx */])(react["Fragment"], null, description, Object(core_browser_esm["d" /* jsx */])(ListComponent, extends_default()({
     "aria-labelledby": description && description.props.id
   }, otherProps), items));
@@ -20371,7 +20371,7 @@ var TextField = function TextField(props) {
 
   var inputId = Object(react__WEBPACK_IMPORTED_MODULE_6__["useMemo"])(function () {
     return id || generatedId;
-  }, [id]);
+  }, [generatedId, id]);
   var theme = Object(themes__WEBPACK_IMPORTED_MODULE_9__[/* useTheme */ "c"])(); // Memoise our handlers as they don't need to be re-created on every render.
 
   var onBlurHandler = Object(react__WEBPACK_IMPORTED_MODULE_6__["useCallback"])(function () {
@@ -20388,18 +20388,22 @@ var TextField = function TextField(props) {
       onFocus.apply(void 0, arguments);
     }
   }, [onFocus]);
-  var errorComponent;
-  var errorId;
+  var errorId = Object(react__WEBPACK_IMPORTED_MODULE_6__["useMemo"])(function () {
+    if (!error) {
+      return undefined;
+    }
 
-  if (error) {
-    errorId = Object(react__WEBPACK_IMPORTED_MODULE_6__["useMemo"])(function () {
-      return error.props && error.props.id ? error.props.id : "error-".concat(generatedId);
-    }, [error]);
+    return error.props && error.props.id ? error.props.id : "error-".concat(generatedId);
+  }, [error, generatedId]);
+  var errorComponent = Object(react__WEBPACK_IMPORTED_MODULE_6__["useMemo"])(function () {
+    if (!error) {
+      return undefined;
+    }
 
     if (typeof error === 'string') {
       // TODO: Use error styling here, and move margins to TextField component, maybe in a wrapper? Eventually we probably want some kind of
       // <Message> component with an error style.
-      errorComponent = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_4__[/* jsx */ "d"])("div", {
+      return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_4__[/* jsx */ "d"])("div", {
         id: errorId,
         css:
         /*#__PURE__*/
@@ -20407,13 +20411,12 @@ var TextField = function TextField(props) {
         /*#__PURE__*/
         Object(_emotion_core__WEBPACK_IMPORTED_MODULE_4__[/* css */ "c"])(styles__WEBPACK_IMPORTED_MODULE_8__[/* interfaceUI */ "d"].medium(theme), ";color:", theme.colors.state.errorText, ";margin-top:-", theme.spacing.padding.l, ";margin-bottom:", theme.spacing.padding.l, ";" + ( true ? "" : undefined))
       }, error);
-    } else {
-      errorComponent = Object(react__WEBPACK_IMPORTED_MODULE_6__["cloneElement"])(error, {
-        id: errorId
-      });
     }
-  }
 
+    return Object(react__WEBPACK_IMPORTED_MODULE_6__["cloneElement"])(error, {
+      id: errorId
+    });
+  }, [error, errorId, theme]);
   var InputComponent = 'input';
 
   if (multiline) {
