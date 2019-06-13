@@ -31,4 +31,6 @@ ListItem.propTypes = {
   children: PropTypes.node,
 };
 
+ListItem.displayName = 'List.Item';
+
 export default styled(ListItem)(styles);

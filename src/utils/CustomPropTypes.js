@@ -22,7 +22,7 @@ const allowedChildren = (...types) => {
               (element) =>
                 getUnstyledComponentName(element.displayName) || element,
             )
-            .join(', ')}.`,
+            .join(', ')}. You tried to use: "${child.type}".`,
         );
       }
     });
