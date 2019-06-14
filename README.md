@@ -1,9 +1,9 @@
 # Nautilus Design System
 
-Nautilus is an open-source (MIT) design system and component library to help designers and developers build better digital products and work more easily together. ❤️
+Nautilus is an open-source design system and component library to help designers and developers build better digital products together. ❤️
 
-- Designed for maximum accessibility and usability.
-- Themeable and customisable.
+- Designed for accessibility and usability.
+- Flexible themeing and customisation.
 - Clear guidelines and extensive documentation.
 - Focussed on consistency, ease of use, and scaleability.
 
