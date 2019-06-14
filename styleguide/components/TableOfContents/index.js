@@ -24,6 +24,7 @@ export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
           border: 2px solid ${theme.colors.neutral.grey800};
           font-size: 1.8rem;
           box-sizing: border-box;
+          display: none;
         `}
         aria-label="Filter by name"
         onChange={(event) => onSearchTermChange(event.target.value)}
