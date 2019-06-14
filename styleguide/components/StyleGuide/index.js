@@ -43,18 +43,20 @@ export const StyleGuide = ({
           display: grid;
           grid-gap: ${theme.spacing.margin.xl};
           padding: ${theme.spacing.padding.xl};
+          max-width: 960px;
+          margin: 0 auto;
 
           @media screen and (min-width: 960px) {
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 2fr 5fr;
             grid-gap: ${theme.spacing.margin.xxl};
           }
         `}
       >
         <Header title={title} version={version} />
 
-        <main>{children}</main>
-
         {hasSidebar && toc}
+
+        <main>{children}</main>
 
         <Footer>
           <Markdown

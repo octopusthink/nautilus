@@ -48,11 +48,11 @@ module.exports = {
   pagePerSection: true,
   sections: [
     {
-      name: '👋 Introduction',
+      name: 'Introduction',
       content: 'styleguide/docs/introduction.md',
     },
     {
-      name: '🔑 Foundation',
+      name: 'Foundation',
       content: 'styleguide/docs/foundation.md',
       sections: [
         {
@@ -71,7 +71,7 @@ module.exports = {
       sectionDepth: 2,
     },
     {
-      name: '🛠 Function',
+      name: 'Function',
       content: 'styleguide/docs/function.md',
       sectionDepth: 3,
       sections: [
@@ -88,7 +88,7 @@ module.exports = {
       ],
     },
     {
-      name: '🎨 Form',
+      name: 'Form',
       content: 'styleguide/docs/form.md',
       sections: [],
       sectionDepth: 3,

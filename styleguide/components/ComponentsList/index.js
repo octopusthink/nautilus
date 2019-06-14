@@ -43,16 +43,19 @@ export function ComponentsList({ classes, items }) {
                 css={css`
                   color: ${theme.colors.neutral.grey800} !important;
                   width: 100% !important;
-                  padding: 16px 0 !important;
+                  padding: ${theme.spacing.padding.m} 0 !important;
                   border-top: 2px solid !important;
                   display: block !important;
+                  text-transform: uppercase !important;
 
                   li li & {
-                    padding-left: 40px !important;
+                    text-transform: none !important;
+                    font-weight: 400 !important;
+                    border-top: 1px solid ${theme.colors.neutral.grey200} !important;
                   }
 
                   li li li & {
-                    padding-left: 80px !important;
+                    padding-left: 20px !important;
                   }
                 `}
                 href={href}

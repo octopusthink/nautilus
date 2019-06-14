@@ -14,7 +14,7 @@ export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
           padding-top: ${theme.spacing.padding.l};
         }
 
-        ${metadata.large(theme)};
+        ${metadata.small(theme)};
       `}
     >
       <input
