@@ -10,12 +10,11 @@ export function Footer({ children, title, version }) {
   return (
     <footer
       css={css`
-        border-top: 4px solid ${theme.colors.neutral.grey800};
-        padding-top: ${theme.spacing.padding.l};
+        padding: ${theme.spacing.padding.l} ${theme.spacing.padding.xl};
+        background: ${theme.colors.neutral.black};
         @media screen and (min-width: 960px) {
           grid-column: 1 / 3;
         }
-        ${heading.large(theme)};
       `}
     >
       {children}

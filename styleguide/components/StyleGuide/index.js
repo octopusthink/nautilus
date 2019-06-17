@@ -42,12 +42,10 @@ export const StyleGuide = ({
         css={css`
           display: grid;
           grid-gap: ${theme.spacing.margin.xl};
-          padding: ${theme.spacing.padding.xl};
-          max-width: 960px;
           margin: 0 auto;
 
           @media screen and (min-width: 960px) {
-            grid-template-columns: 2fr 5fr;
+            grid-template-columns: 320px auto;
             grid-gap: ${theme.spacing.margin.xxl};
           }
         `}
@@ -56,7 +54,10 @@ export const StyleGuide = ({
 
         {hasSidebar && toc}
 
-        <main>{children}</main>
+        <main css={css`
+          max-width: 800px;
+          margin: 0 auto;
+        `}>{children}</main>
 
         <Footer>
           <Markdown
