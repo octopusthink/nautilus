@@ -33,6 +33,7 @@ const config = {
     minimize: false,
   },
   output: {
+    globalObject: 'this',
     library: 'nautilus',
     libraryTarget: 'umd',
     path: path.join(__dirname, 'dist'),
