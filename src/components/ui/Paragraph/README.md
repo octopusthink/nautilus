@@ -2,13 +2,13 @@ A `<Paragraph>` is a self-contained unit of one or more coherent sentences relat
 
 ```jsx
 <Paragraph>
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
-	augue gravida hendrerit.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
+  augue gravida hendrerit.
 </Paragraph>
 
 <Paragraph>
-	Vestibulum ornare eget lacus cursus rhoncus. Cras nec
-	lectus in sem viverra volutpat.
+  Vestibulum ornare eget lacus cursus rhoncus. Cras nec
+  lectus in sem viverra volutpat.
 </Paragraph>
 ```
 
@@ -34,9 +34,9 @@ Use a **large paragraph** when you want to emphasise an important passage of tex
 
 ```jsx
 <Paragraph large>
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
-	augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
-	lectus in sem viverra volutpat.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
+  augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
+  lectus in sem viverra volutpat.
 </Paragraph>
 ```
 
@@ -44,9 +44,9 @@ Use a **small paragraph** for fine print, or details that are secondary to the m
 
 ```jsx
 <Paragraph small>
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
-	augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
-	lectus in sem viverra volutpat.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
+  augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
+  lectus in sem viverra volutpat.
 </Paragraph>
 ```
 
@@ -54,9 +54,9 @@ Use an **inverse paragraph** if you need to put a paragraph on top of a dark bac
 
 ```jsx
 <Paragraph inverse>
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
-	augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
-	lectus in sem viverra volutpat.
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
+  augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
+  lectus in sem viverra volutpat.
 </Paragraph>
 ```
 
@@ -64,27 +64,27 @@ For both inverse and default type colours, you can also use a dark and light var
 
 ```jsx
 <Paragraph light>
-	Light
+  Light
 </Paragraph>
 
 <Paragraph>
-	Default
+  Default
 </Paragraph>
 
 <Paragraph dark>
-	Dark
+  Dark
 </Paragraph>
 
 <Paragraph inverse light>
-	Inverse light
+  Inverse light
 </Paragraph>
 
 <Paragraph inverse>
-	Inverse
+  Inverse
 </Paragraph>
 
 <Paragraph inverse dark>
-	Inverse dark
+  Inverse dark
 </Paragraph>
 ```
 
