@@ -13,7 +13,7 @@ https://nautilus.octopusthink.com/
 
 ## Project status
 
-Nautilus is currently pre-pre-pre-beta software. You can feel free to use it in your projects, but be warned that the API is likely to change still, and things may work in unexpected ways.
+Nautilus is currently pre-pre-pre-beta software. You can feel free to use it in your projects, but be warned that the API is likely to change and things may work in unexpected ways.
 
 Point releases are distributed to `npm` on the 5th of every month. You can see our near-term plans and upcoming components in the Project tab.
 
