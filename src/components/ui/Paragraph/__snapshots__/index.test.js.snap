@@ -6,8 +6,8 @@ exports[`Paragraph should output large CSS the \`large\` prop is set 1`] = `
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
-  font-size: 2.3rem;
-  line-height: 1.565217391304348;
+  font-size: 2.1rem;
+  line-height: 1.5238095238095237;
 }
 
 <p
@@ -40,8 +40,8 @@ exports[`Paragraph should output small CSS the \`small\` prop is set 1`] = `
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
-  font-size: 1.6rem;
-  line-height: 1.5;
+  font-size: 1.7rem;
+  line-height: 1.6470588235294117;
 }
 
 <p
