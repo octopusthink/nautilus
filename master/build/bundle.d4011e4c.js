@@ -44137,7 +44137,7 @@ module.exports = [
     },
     {
         'type': 'code',
-        'content': '<Paragraph>\n\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit\n\taugue gravida hendrerit.\n</Paragraph>\n\n<Paragraph>\n\tVestibulum ornare eget lacus cursus rhoncus. Cras nec\n\tlectus in sem viverra volutpat.\n</Paragraph>',
+        'content': '<Paragraph>\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit\n  augue gravida hendrerit.\n</Paragraph>\n\n<Paragraph>\n  Vestibulum ornare eget lacus cursus rhoncus. Cras nec\n  lectus in sem viverra volutpat.\n</Paragraph>',
         'settings': {},
         'evalInContext': evalInContext
     },
@@ -44147,7 +44147,7 @@ module.exports = [
     },
     {
         'type': 'code',
-        'content': '<Paragraph large>\n\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit\n\taugue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec\n\tlectus in sem viverra volutpat.\n</Paragraph>',
+        'content': '<Paragraph large>\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit\n  augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec\n  lectus in sem viverra volutpat.\n</Paragraph>',
         'settings': {},
         'evalInContext': evalInContext
     },
@@ -44157,7 +44157,7 @@ module.exports = [
     },
     {
         'type': 'code',
-        'content': '<Paragraph small>\n\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit\n\taugue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec\n\tlectus in sem viverra volutpat.\n</Paragraph>',
+        'content': '<Paragraph small>\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit\n  augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec\n  lectus in sem viverra volutpat.\n</Paragraph>',
         'settings': {},
         'evalInContext': evalInContext
     },
@@ -44167,7 +44167,7 @@ module.exports = [
     },
     {
         'type': 'code',
-        'content': '<Paragraph inverse>\n\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit\n\taugue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec\n\tlectus in sem viverra volutpat.\n</Paragraph>',
+        'content': '<Paragraph inverse>\n  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit\n  augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec\n  lectus in sem viverra volutpat.\n</Paragraph>',
         'settings': {},
         'evalInContext': evalInContext
     },
@@ -44177,7 +44177,7 @@ module.exports = [
     },
     {
         'type': 'code',
-        'content': '<Paragraph light>\n\tLight\n</Paragraph>\n\n<Paragraph>\n\tDefault\n</Paragraph>\n\n<Paragraph dark>\n\tDark\n</Paragraph>\n\n<Paragraph inverse light>\n\tInverse light\n</Paragraph>\n\n<Paragraph inverse>\n\tInverse\n</Paragraph>\n\n<Paragraph inverse dark>\n\tInverse dark\n</Paragraph>',
+        'content': '<Paragraph light>\n  Light\n</Paragraph>\n\n<Paragraph>\n  Default\n</Paragraph>\n\n<Paragraph dark>\n  Dark\n</Paragraph>\n\n<Paragraph inverse light>\n  Inverse light\n</Paragraph>\n\n<Paragraph inverse>\n  Inverse\n</Paragraph>\n\n<Paragraph inverse dark>\n  Inverse dark\n</Paragraph>',
         'settings': {},
         'evalInContext': evalInContext
     },
