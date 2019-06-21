@@ -63,6 +63,10 @@ export const StyleGuide = ({
             padding: 0 ${theme.spacing.margin.xl} 0 0;
           }
 
+          img {
+            max-width: 100%;
+          }
+
         `}>{children}</main>
 
         <Footer>
