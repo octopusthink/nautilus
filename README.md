@@ -3,7 +3,7 @@
 Nautilus is an open-source design system and component library to help designers and developers build better digital products together. ❤️
 
 - Designed for accessibility and usability.
-- Flexible themeing and customisation.
+- Flexible theming and customisation.
 - Clear guidelines and extensive documentation.
 - Focussed on consistency, ease of use, and scaleability.
 
