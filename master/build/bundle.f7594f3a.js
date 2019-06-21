@@ -14137,7 +14137,7 @@ var theme = {
     fontWeights: {
       body: 400,
       bodyBold: 600,
-      heading: 700,
+      heading: 600,
       pageTitle: 700,
       subtitle: 300,
       interfaceUI: 500,
@@ -14148,11 +14148,11 @@ var theme = {
       mobile: 1.6
     },
     scaleModifiers: {
-      desktop: 1.25,
+      desktop: 1.15,
       mobile: 1.15
     },
     lineHeights: {
-      heading: 1,
+      heading: 1.2,
       body: 1.5,
       interfaceUI: 1.2
     }
@@ -43120,12 +43120,12 @@ module.exports = {
     'patterns': void 0,
     'sections': [
         {
-            'name': '\uD83D\uDC4B Introduction',
+            'name': 'Introduction',
             'exampleMode': 'collapse',
             'usageMode': 'collapse',
             'sectionDepth': 0,
             'description': void 0,
-            'slug': 'section--introduction',
+            'slug': 'section-introduction',
             'sections': [],
             'filepath': 'styleguide/docs/introduction.md',
             'href': void 0,
@@ -43134,12 +43134,12 @@ module.exports = {
             'external': void 0
         },
         {
-            'name': '\uD83D\uDD11 Foundation',
+            'name': 'Foundation',
             'exampleMode': 'collapse',
             'usageMode': 'collapse',
             'sectionDepth': 2,
             'description': void 0,
-            'slug': 'section--foundation',
+            'slug': 'section-foundation',
             'sections': [
                 {
                     'name': 'Principles',
@@ -43191,12 +43191,12 @@ module.exports = {
             'external': void 0
         },
         {
-            'name': '\uD83D\uDEE0 Function',
+            'name': 'Function',
             'exampleMode': 'collapse',
             'usageMode': 'collapse',
             'sectionDepth': 3,
             'description': void 0,
-            'slug': 'section--function',
+            'slug': 'section-function',
             'sections': [
                 {
                     'name': 'Higher-order Components',
@@ -43297,12 +43297,12 @@ module.exports = {
             'external': void 0
         },
         {
-            'name': '\uD83C\uDFA8 Form',
+            'name': 'Form',
             'exampleMode': 'collapse',
             'usageMode': 'collapse',
             'sectionDepth': 3,
             'description': void 0,
-            'slug': 'section--form',
+            'slug': 'section-form',
             'sections': [],
             'filepath': 'styleguide/docs/form.md',
             'href': void 0,
@@ -45575,7 +45575,7 @@ function ComponentsList(_ref2) {
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(core_browser_esm["c" /* css */])("color:", styleguide_theme["a" /* default */].colors.neutral.grey800, " !important;width:100% !important;padding:16px 0 !important;border-top:2px solid !important;display:block !important;li li &{padding-left:40px !important;}li li li &{padding-left:80px !important;}" + ( true ? "" : undefined)),
+      Object(core_browser_esm["c" /* css */])("color:", styleguide_theme["a" /* default */].colors.neutral.grey800, " !important;width:100% !important;padding:", styleguide_theme["a" /* default */].spacing.padding.m, " 0 !important;border-top:2px solid !important;display:block !important;text-transform:uppercase !important;li li &{text-transform:none !important;font-weight:400 !important;border-top:1px solid ", styleguide_theme["a" /* default */].colors.neutral.grey200, " !important;}li li li &{padding-left:20px !important;}" + ( true ? "" : undefined)),
       href: href,
       target: shouldOpenInNewTab ? '_blank' : undefined
     }, visibleName), content);
@@ -45645,13 +45645,13 @@ function TableOfContents_TableOfContents(_ref) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("@media screen and (max-width:959px){border-top:4px solid ", styleguide_theme["a" /* default */].colors.neutral.grey800, ";padding-top:", styleguide_theme["a" /* default */].spacing.padding.l, ";}", src_styles["e" /* metadata */].large(styleguide_theme["a" /* default */]), ";" + ( true ? "" : undefined))
+    Object(core_browser_esm["c" /* css */])("padding:0 ", styleguide_theme["a" /* default */].spacing.padding.l, ";", src_styles["e" /* metadata */].small(styleguide_theme["a" /* default */]), ";@media screen and (min-width:960px){padding:0 0 0 ", styleguide_theme["a" /* default */].spacing.padding.xl, ";}" + ( true ? "" : undefined))
   }, Object(core_browser_esm["d" /* jsx */])("input", {
     css:
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("width:100%;padding:16px;border:2px solid ", styleguide_theme["a" /* default */].colors.neutral.grey800, ";font-size:1.8rem;box-sizing:border-box;" + ( true ? "" : undefined)),
+    Object(core_browser_esm["c" /* css */])("width:100%;padding:16px;border:2px solid ", styleguide_theme["a" /* default */].colors.neutral.grey800, ";font-size:1.8rem;box-sizing:border-box;display:none;" + ( true ? "" : undefined)),
     "aria-label": "Filter by name",
     onChange: function onChange(event) {
       return onSearchTermChange(event.target.value);
@@ -45905,7 +45905,7 @@ function Header(_ref) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("border-bottom:4px solid ", styleguide_theme["a" /* default */].colors.neutral.grey800, ";padding-bottom:", styleguide_theme["a" /* default */].spacing.padding.l, ";@media screen and (min-width:960px){grid-column:1 / 3;}", src_styles["e" /* metadata */].large(styleguide_theme["a" /* default */]), ";" + ( true ? "" : undefined))
+    Object(core_browser_esm["c" /* css */])("padding:", styleguide_theme["a" /* default */].spacing.padding.l, ";background:", styleguide_theme["a" /* default */].colors.neutral.black, ";", src_styles["e" /* metadata */].large(styleguide_theme["a" /* default */]), ";color:", styleguide_theme["a" /* default */].colors.neutral.white, ";@media screen and (min-width:960px){grid-column:1 / 3;padding:", styleguide_theme["a" /* default */].spacing.padding.l, " ", styleguide_theme["a" /* default */].spacing.padding.xl, ";}" + ( true ? "" : undefined))
   }, title, version && Object(core_browser_esm["d" /* jsx */])(Version_VersionRenderer, null, version));
 }
 Header.propTypes = {
@@ -45931,7 +45931,7 @@ function Footer(_ref) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("border-top:4px solid ", styleguide_theme["a" /* default */].colors.neutral.grey800, ";padding-top:", styleguide_theme["a" /* default */].spacing.padding.l, ";@media screen and (min-width:960px){grid-column:1 / 3;}", src_styles["c" /* heading */].large(styleguide_theme["a" /* default */]), ";" + ( true ? "" : undefined))
+    Object(core_browser_esm["c" /* css */])("padding:", styleguide_theme["a" /* default */].spacing.padding.l, " ", styleguide_theme["a" /* default */].spacing.padding.l, ";background:", styleguide_theme["a" /* default */].colors.neutral.black, ";@media screen and (min-width:960px){grid-column:1 / 3;padding:", styleguide_theme["a" /* default */].spacing.padding.l, " ", styleguide_theme["a" /* default */].spacing.padding.xl, ";}p{color:", styleguide_theme["a" /* default */].colors.neutral.grey200, " !important;margin-bottom:0;}a{color:", styleguide_theme["a" /* default */].colors.neutral.white, " !important;}" + ( true ? "" : undefined))
   }, children);
 }
 Footer.propTypes = {
@@ -45977,11 +45977,17 @@ var StyleGuide_StyleGuide = function StyleGuide(_ref2) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("display:grid;grid-gap:", styleguide_theme["a" /* default */].spacing.margin.xl, ";padding:", styleguide_theme["a" /* default */].spacing.padding.xl, ";@media screen and (min-width:960px){grid-template-columns:2fr 1fr;grid-gap:", styleguide_theme["a" /* default */].spacing.margin.xxl, ";}" + ( true ? "" : undefined))
+    Object(core_browser_esm["c" /* css */])("display:grid;grid-gap:", styleguide_theme["a" /* default */].spacing.margin.xl, ";margin:0 auto;@media screen and (min-width:960px){grid-template-columns:320px auto;grid-gap:", styleguide_theme["a" /* default */].spacing.margin.xxl, ";}" + ( true ? "" : undefined))
   }, Object(core_browser_esm["d" /* jsx */])(components_Header, {
     title: title,
     version: version
-  }), Object(core_browser_esm["d" /* jsx */])("main", null, children), hasSidebar && toc, Object(core_browser_esm["d" /* jsx */])(components_Footer, null, Object(core_browser_esm["d" /* jsx */])(Markdown["a" /* default */], {
+  }), hasSidebar && toc, Object(core_browser_esm["d" /* jsx */])("main", {
+    css:
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+    Object(core_browser_esm["c" /* css */])("max-width:800px;margin:0 auto;padding:0 ", styleguide_theme["a" /* default */].spacing.padding.l, ";@media screen and (min-width:960px){padding:0 ", styleguide_theme["a" /* default */].spacing.margin.xl, " 0 0;}img{max-width:100%;}" + ( true ? "" : undefined))
+  }, children), Object(core_browser_esm["d" /* jsx */])(components_Footer, null, Object(core_browser_esm["d" /* jsx */])(Markdown["a" /* default */], {
     text: "Made with \u2764\uFE0F by [Octopus Think](https://octopusthink.com/). Say \uD83D\uDC4B on [Github](https://github.com/octopusthink/nautilus)."
   }))));
 };
