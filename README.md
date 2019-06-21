@@ -5,7 +5,7 @@ Nautilus is an open-source design system and component library to help designers
 - Designed for accessibility and usability.
 - Flexible theming and customisation.
 - Clear guidelines and extensive documentation.
-- Focussed on consistency, ease of use, and scaleability.
+- Focused on consistency, ease of use, and scaleability.
 
 Nautilus is available both as a Sketch library and an `npm` package for use in React projects.
 
