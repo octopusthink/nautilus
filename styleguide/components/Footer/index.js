@@ -12,8 +12,16 @@ export function Footer({ children, title, version }) {
       css={css`
         padding: ${theme.spacing.padding.l} ${theme.spacing.padding.xl};
         background: ${theme.colors.neutral.black};
+
         @media screen and (min-width: 960px) {
           grid-column: 1 / 3;
+        }
+
+        p {
+          color: ${theme.colors.neutral.grey200} !important;
+        }
+        a {
+          color: ${theme.colors.neutral.white} !important;
         }
       `}
     >
