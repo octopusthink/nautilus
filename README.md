@@ -1,10 +1,33 @@
-# Nautilus
+# Nautilus Design System
 
-An open-source design system optimised for accessibility, quality, and flexibility. Built for the web.
+Nautilus is an open-source design system and component library to help designers and developers build better digital products together. ❤️
+
+- Designed for accessibility and usability.
+- Flexible theming and customisation.
+- Clear guidelines and extensive documentation.
+- Focused on consistency, ease of use, and scalability.
+
+Nautilus is available both as a Sketch library and an `npm` package for use in React projects.
 
 https://nautilus.octopusthink.com/
 
-## Usage ⌨️
+## Project status
+
+Nautilus is currently pre-pre-pre-beta software. You can feel free to use it in your projects, but be warned that the API is likely to change and things may work in unexpected ways.
+
+Point releases are distributed to `npm` on the 5th of every month. You can see our near-term plans and upcoming components in the Project tab.
+
+- Design principles & guidelines (in progress)
+- Design tokens (in progress)
+- Accessible React components (in progress)
+- React Native components (planned)
+- Sketch library (in progress)
+- Figma library (planned)
+- Brand tokens and themeability (planned)
+- Automated theme generation (planned)
+
+
+## Usage
 
 Want to use Nautilus in your next web app? Well: tough! It's much too early and it's nowhere near ready for production usage. Check back later. 😅
 
@@ -14,7 +37,7 @@ You can _technically_ install it from NPM, but you can't say we didn't warn you!
 npm install @octopusthink/nautilus
 ```
 
-## Development 🛠
+## Development
 
 Want to contribute to Nautilus, or test it locally? Here's how!
 
@@ -48,6 +71,7 @@ And use `npm` to compile files, watch for changes, and build the styleguide:
 `npm start`
 
 This will start a server for the styleguide at http://localhost:6060/ and watch for any changes.
+
 You'll need to restart `npm` if you make changes to `styleguide.config.js`, but otherwise you should be good to go!
 
 ## Running the tests
@@ -93,8 +117,9 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 Nautilus has been heavily inspired by, and borrows from:
-* Ether
-* Carbon
-* Polaris
-* Material Design
-* Inclusive Components
+* [Ether](https://ether.thescenery.co/)
+* [GOV.UK Design System](https://design-system.service.gov.uk/)
+* [Carbon](https://www.carbondesignsystem.com)
+* [Polaris](https://polaris.shopify.com)
+* [Material Design](https://material.io/design/)
+* [Inclusive Components](https://inclusive-components.design/)

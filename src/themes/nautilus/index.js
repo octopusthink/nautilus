@@ -174,7 +174,7 @@ export const theme = {
     fontWeights: {
       body: 400,
       bodyBold: 600,
-      heading: 700,
+      heading: 600,
       pageTitle: 700,
       subtitle: 300,
       interfaceUI: 500,
@@ -187,12 +187,12 @@ export const theme = {
     },
 
     scaleModifiers: {
-      desktop: 1.25,
+      desktop: 1.15,
       mobile: 1.15,
     },
 
     lineHeights: {
-      heading: 1,
+      heading: 1.2,
       body: 1.5,
       interfaceUI: 1.2,
     },

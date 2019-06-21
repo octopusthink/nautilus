@@ -10,12 +10,22 @@ export function Footer({ children, title, version }) {
   return (
     <footer
       css={css`
-        border-top: 4px solid ${theme.colors.neutral.grey800};
-        padding-top: ${theme.spacing.padding.l};
+        padding: ${theme.spacing.padding.l} ${theme.spacing.padding.l};
+        background: ${theme.colors.neutral.black};
+
         @media screen and (min-width: 960px) {
           grid-column: 1 / 3;
+          padding: ${theme.spacing.padding.l} ${theme.spacing.padding.xl};
         }
-        ${heading.large(theme)};
+
+        p {
+          color: ${theme.colors.neutral.grey200} !important;
+          margin-bottom: 0;
+        }
+        
+        a {
+          color: ${theme.colors.neutral.white} !important;
+        }
       `}
     >
       {children}

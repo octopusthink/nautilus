@@ -9,12 +9,13 @@ export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
   return (
     <nav
       css={css`
-        @media screen and (max-width: 959px) {
-          border-top: 4px solid ${theme.colors.neutral.grey800};
-          padding-top: ${theme.spacing.padding.l};
+        padding: 0 ${theme.spacing.padding.l};
+        ${metadata.small(theme)};
+
+        @media screen and (min-width: 960px) {
+          padding: 0 0 0 ${theme.spacing.padding.xl};
         }
 
-        ${metadata.large(theme)};
       `}
     >
       <input
@@ -24,6 +25,7 @@ export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
           border: 2px solid ${theme.colors.neutral.grey800};
           font-size: 1.8rem;
           box-sizing: border-box;
+          display: none;
         `}
         aria-label="Filter by name"
         onChange={(event) => onSearchTermChange(event.target.value)}

@@ -4,8 +4,8 @@ exports[`PageTitle should output pageTitle CSS 1`] = `
 .emotion-0 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 700;
-  font-size: 6.9rem;
-  line-height: 1.0434782608695652;
+  font-size: 4.2rem;
+  line-height: 1.2380952380952381;
 }
 
 <h1

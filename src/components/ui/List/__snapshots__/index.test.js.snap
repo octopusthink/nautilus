@@ -24,9 +24,9 @@ exports[`List described by Heading component should render a heading outside the
 .emotion-0 {
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 700;
-  font-size: 4.4rem;
-  line-height: 1;
+  font-weight: 600;
+  font-size: 3.1rem;
+  line-height: 1.2903225806451613;
 }
 
 .emotion-3 + .emotion-0,
