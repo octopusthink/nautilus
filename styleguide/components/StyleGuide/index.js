@@ -60,7 +60,7 @@ export const StyleGuide = ({
           padding: 0 ${theme.spacing.padding.l};
 
           @media screen and (min-width: 960px) {
-            padding: 0;
+            padding: 0 ${theme.spacing.margin.xl} 0 0;
           }
 
         `}>{children}</main>
