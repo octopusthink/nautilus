@@ -5,7 +5,7 @@ Nautilus is an open-source design system and component library to help designers
 - Designed for accessibility and usability.
 - Flexible theming and customisation.
 - Clear guidelines and extensive documentation.
-- Focused on consistency, ease of use, and scaleability.
+- Focused on consistency, ease of use, and scalability.
 
 Nautilus is available both as a Sketch library and an `npm` package for use in React projects.
 
@@ -27,7 +27,7 @@ Point releases are distributed to `npm` on the 5th of every month. You can see o
 - Automated theme generation (planned)
 
 
-## Usage ⌨️
+## Usage
 
 Want to use Nautilus in your next web app? Well: tough! It's much too early and it's nowhere near ready for production usage. Check back later. 😅
 
@@ -37,7 +37,7 @@ You can _technically_ install it from NPM, but you can't say we didn't warn you!
 npm install @octopusthink/nautilus
 ```
 
-## Development 🛠
+## Development
 
 Want to contribute to Nautilus, or test it locally? Here's how!
 
@@ -71,6 +71,7 @@ And use `npm` to compile files, watch for changes, and build the styleguide:
 `npm start`
 
 This will start a server for the styleguide at http://localhost:6060/ and watch for any changes.
+
 You'll need to restart `npm` if you make changes to `styleguide.config.js`, but otherwise you should be good to go!
 
 ## Running the tests
@@ -100,11 +101,7 @@ Please read (`CONTRIBUTING.md`) for details on our code of conduct and the proce
 
 ## Versioning
 
-<<<<<<< HEAD
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [releases page](https://github.com/octopusthink/nautilus/releases).
-=======
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/octopusthink/nautilus/tags).
->>>>>>> Tweak project overview and add a list of features.
 
 ## Authors
 
@@ -122,7 +119,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 Nautilus has been heavily inspired by, and borrows from:
 * [Ether](https://ether.thescenery.co/)
 * [GOV.UK Design System](https://design-system.service.gov.uk/)
-* [Carbon](https://www.carbondesignsystem.com), MIT
-* Polaris
-* Material Design
+* [Carbon](https://www.carbondesignsystem.com)
+* [Polaris](https://polaris.shopify.com)
+* [Material Design](https://material.io/design/)
 * [Inclusive Components](https://inclusive-components.design/)
