@@ -10,13 +10,15 @@ export function Header({ children, title, version }) {
   return (
     <header
       css={css`
-        padding: ${theme.spacing.padding.l} ${theme.spacing.padding.xl};
+        padding: ${theme.spacing.padding.l};
         background: ${theme.colors.neutral.black};
-        @media screen and (min-width: 960px) {
-          grid-column: 1 / 3;
-        }
         ${metadata.large(theme)};
         color: ${theme.colors.neutral.white};
+
+        @media screen and (min-width: 960px) {
+          grid-column: 1 / 3;
+          padding: ${theme.spacing.padding.l} ${theme.spacing.padding.xl};
+        }
       `}
     >
       {title}

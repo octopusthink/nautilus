@@ -9,12 +9,11 @@ export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
   return (
     <nav
       css={css`
-        padding-left: ${theme.spacing.padding.xl};
+        padding: 0 ${theme.spacing.padding.l};
         ${metadata.small(theme)};
 
-        @media screen and (max-width: 959px) {
-          border-top: 4px solid ${theme.colors.neutral.grey800};
-          padding-top: ${theme.spacing.padding.l};
+        @media screen and (min-width: 960px) {
+          padding: 0 0 0 ${theme.spacing.padding.xl};
         }
 
       `}

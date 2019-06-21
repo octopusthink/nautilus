@@ -57,6 +57,12 @@ export const StyleGuide = ({
         <main css={css`
           max-width: 800px;
           margin: 0 auto;
+          padding: 0 ${theme.spacing.padding.l};
+
+          @media screen and (min-width: 960px) {
+            padding: 0;
+          }
+
         `}>{children}</main>
 
         <Footer>
