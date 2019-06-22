@@ -1,53 +1,51 @@
 import React from 'react';
 
-import { render } from 'utils/testing';
+import { muteConsole, render } from 'utils/testing';
 
-import Paragraph from '.';
+import Icon from '.';
 
-describe('Paragraph', () => {
-  it('should render a <p> by default', () => {
-    const { container } = render(<Paragraph>Hello</Paragraph>);
+describe('Icon', () => {
+  it('requires a name prop', () => {
+    muteConsole({ times: 1, type: 'error' });
+    render(<Icon />);
 
-    expect(container.firstChild.tagName).toEqual('P');
+    expect(
+      global.console.error.mock.calls[
+        global.console.error.mock.calls.length - 1
+      ][0],
+    ).toMatch('The prop `name` is marked as required in `Icon`');
+  });
+
+  it('should return `null` when no `name` prop is supplied', () => {
+    muteConsole({ times: 1, type: 'error' });
+    const { container } = render(<Icon />);
+
+    // Nothing is rendered by `Icon` when no `name` prop is used.
+    expect(container.firstChild).toBeNull();
+  });
+
+  it('should render an <svg> tag inside a <span> wrapper', () => {
+    const { container } = render(<Icon name="airplay" />);
+
+    expect(container.firstChild.tagName).toEqual('SPAN');
+    expect(container.firstChild.firstChild.tagName).toEqual('svg');
   });
 
   it('should output its children', () => {
     const { getByTestId } = render(
-      <Paragraph>
+      <Icon name="archive">
         <span data-testid="child" />
-      </Paragraph>,
+      </Icon>,
     );
 
     expect(getByTestId('child')).toBeDefined();
   });
 
-  it('should output large CSS the `large` prop is set', () => {
-    const { container } = render(
-      <Paragraph large>I&apos;m an important body of text.</Paragraph>,
-    );
-
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
-  it('should output regular CSS when neither `large` nor `small` props are set', () => {
-    const { container } = render(<Paragraph>Lorem ipsum.</Paragraph>);
-
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
-  it('should output small CSS the `small` prop is set', () => {
-    const { container } = render(
-      <Paragraph small>I&apos;m a tiny body of text.</Paragraph>,
-    );
-
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
   it('should accept and pass through other props', () => {
     const { getByTestId } = render(
-      <Paragraph className="custom-class" data-testid="myText">
+      <Icon className="custom-class" data-testid="myText" name="archive">
         hello
-      </Paragraph>,
+      </Icon>,
     );
 
     expect(getByTestId('myText').classList).toContain('custom-class');

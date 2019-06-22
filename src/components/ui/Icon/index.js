@@ -1,34 +1,83 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import invariant from 'invariant';
+import Feather from 'feather-icons';
 import PropTypes from 'prop-types';
-import React from 'react';
-import SVG from 'react-inlinesvg';
+import React, { useState, useMemo } from 'react';
+import shortid from 'shortid';
 
-const LARGE = 48;
-const MEDIUM = 24;
-const SMALL = 16;
+// const LARGE = 48;
+// const MEDIUM = 24;
+// const SMALL = 16;
 
-const IconSizes = [LARGE, MEDIUM, SMALL];
+// const IconSizes = [SMALL, MEDIUM, LARGE];
 
 export const Icon = (props) => {
-  const { children, name, size, color, ...otherProps } = props;
+  const {
+    children,
+    className,
+    color,
+    description,
+    id,
+    name,
+    // size,
+    title,
+    ...otherProps
+  } = props;
+
+  const [generatedId] = useState(shortid.generate());
+  const svgId = useMemo(() => {
+    return id || generatedId;
+  }, [generatedId, id]);
+  const descriptionId = `${svgId}-description`;
+  const titleId = `${svgId}-title`;
+
+  const hasTitle = title && title.length;
+
+  if (!name) {
+    return null;
+  }
+
+  // Get special attributes from Feather for the SVG.
+  const {
+    class: featherClassName,
+    'stroke-linecap': strokeLinecap,
+    'stroke-linejoin': strokeLinejoin,
+    'stroke-width': strokeWidth,
+    // Get the rest of the needed Feather attributes.
+    ...otherFeatherAttrs
+  } = Feather.icons[name].attrs;
+
+  const combinedClassName =
+    `${className} ${featherClassName}`.trim().length &&
+    `${className} ${featherClassName}`;
 
   return (
-    <SVG
-      css={css`
-        height: 128px;
-        width: 128px;
-      `}
-      src={`icons/${name}.svg`}
-      wrapper={React.createFactory('span')}
-    >
-      <img src={`icons/${name}.svg`} />
-    </SVG>
+    // eslint-disable-next-line react/destructuring-assignment
+    <span aria-hidden={!hasTitle || props['aria-hidden']}>
+      <svg
+        {...otherProps}
+        {...otherFeatherAttrs}
+        aria-labelledby={title && titleId}
+        className={combinedClassName}
+        id={svgId}
+        role="img"
+        strokeLinecap={strokeLinecap}
+        strokeLinejoin={strokeLinejoin}
+        strokeWidth={strokeWidth}
+      >
+        {title && <title id={titleId}>{title}</title>}
+        {description && <desc id={descriptionId}>{description}</desc>}
+        <g
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: Feather.icons[name].contents }}
+        />
+        {children}
+      </svg>
+    </span>
   );
 };
 
-export const styles = ({ theme, ...otherProps }) => {
+export const styles = () => {
   return css`
     svg {
       height: 128px;
@@ -38,21 +87,34 @@ export const styles = ({ theme, ...otherProps }) => {
 };
 
 Icon.defaultProps = {
+  'aria-hidden': undefined,
   children: undefined,
-  name: undefined,
-  size: 'medium',
+  className: undefined,
+  description: undefined,
+  id: undefined,
   color: undefined,
+  title: undefined,
 };
 
 Icon.propTypes = {
   /** @ignore */
+  'aria-hidden': PropTypes.bool,
+  /** @ignore */
   children: PropTypes.node,
-  /** The name of the icon to use. */
-  name: PropTypes.string,
-  /** Change the size of the icon. */
-  size: PropTypes.oneOf(IconSizes),
+  /** @ignore */
+  className: PropTypes.string,
   /** Apply colour to the icon. */
   color: PropTypes.string,
+  /** A longer description of this icon, used by assistive technology. */
+  description: PropTypes.string,
+  /** @ignore */
+  id: PropTypes.string,
+  /** The name of the icon to use. */
+  name: PropTypes.string.isRequired,
+  /** Change the size of the icon. */
+  // size: PropTypes.oneOf(IconSizes),
+  /** A short description of this icon's content. Leave blank if the icon is entirely decorative. */
+  title: PropTypes.string,
 };
 
 export const { defaultProps, propTypes } = Icon;
