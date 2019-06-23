@@ -64,8 +64,14 @@ export const Icon = (props) => {
         strokeLinecap={strokeLinecap}
         strokeLinejoin={strokeLinejoin}
         strokeWidth={strokeWidth}
+        css={css`
+          stroke: {color};
+          height: 48px;
+          width: 48px;
+        `}
       >
         {title && <title id={titleId}>{title}</title>}
+        {color}
         {description && <desc id={descriptionId}>{description}</desc>}
         <g
           // eslint-disable-next-line react/no-danger
@@ -75,15 +81,6 @@ export const Icon = (props) => {
       </svg>
     </span>
   );
-};
-
-export const styles = () => {
-  return css`
-    svg {
-      height: 128px;
-      width: 128px;
-    }
-  `;
 };
 
 Icon.defaultProps = {
@@ -119,4 +116,4 @@ Icon.propTypes = {
 
 export const { defaultProps, propTypes } = Icon;
 
-export default styled(Icon)(styles);
+export default Icon;
