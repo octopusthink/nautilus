@@ -53,28 +53,30 @@ export const Icon = (props) => {
       : undefined;
 
   return (
-    <svg
-      {...otherFeatherAttrs}
-      // These props are placed above the {...otherProps} spread so
-      // user-supplied props can override our default values.
-      role="img"
-      strokeLinecap={strokeLinecap}
-      strokeLinejoin={strokeLinejoin}
-      strokeWidth={strokeWidth}
-      {...otherProps}
-      aria-hidden={title ? undefined : true}
-      aria-labelledby={title && titleId}
-      className={combinedClassName}
-      id={svgId}
-    >
-      {title && <title id={titleId}>{title}</title>}
-      {description && <desc id={descriptionId}>{description}</desc>}
-      <g
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: Feather.icons[name].contents }}
-      />
-      {children}
-    </svg>
+    <span>
+      <svg
+        {...otherFeatherAttrs}
+        // These props are placed above the {...otherProps} spread so
+        // user-supplied props can override our default values.
+        role="img"
+        strokeLinecap={strokeLinecap}
+        strokeLinejoin={strokeLinejoin}
+        strokeWidth={strokeWidth}
+        {...otherProps}
+        aria-hidden={title ? undefined : true}
+        aria-labelledby={title && titleId}
+        className={combinedClassName}
+        id={svgId}
+      >
+        {title && <title id={titleId}>{title}</title>}
+        {description && <desc id={descriptionId}>{description}</desc>}
+        <g
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: Feather.icons[name].contents }}
+        />
+        {children}
+      </svg>
+    </span>
   );
 };
 
@@ -89,10 +91,13 @@ export const styles = (props) => {
     extraLarge,
     padding,
     margin,
+    border,
+    background,
   } = props;
 
   let size = theme.components.Icon.sizes.m.size;
   let strokeWidth = theme.components.Icon.sizes.m.strokeWidth;
+  let borderBackground;
 
   if (extraSmall) {
     size = theme.components.Icon.sizes.xs.size;
@@ -108,22 +113,35 @@ export const styles = (props) => {
     strokeWidth = theme.components.Icon.sizes.xl.strokeWidth;
   }
 
-  return css`
-    height: ${size};
-    margin: ${margin};
-    padding: ${padding};
-    stroke: ${color};
-    stroke-width: ${strokeWidth};
-    width: ${size};
-    vertical-align: -15%;
+  if (border || background) {
+    borderBackground = css`
+      border: 2px solid ${border};
+      background: ${background};
+      border-radius: 50%;
+      padding: 0.8rem;
+    `;
+  }
 
-    ${!color &&
-      // If no explicit colour was specified, we drop the opacity to
-      // simulate lowering the intensity of the icon's colour.
-      css`
-        stroke: currentColor;
-        opacity: 0.8;
-      `}
+  return css`
+    ${borderBackground};
+
+    svg {
+      height: ${size};
+      margin: ${margin};
+      padding: ${padding};
+      stroke: ${color};
+      stroke-width: ${strokeWidth};
+      width: ${size};
+      vertical-align: -15%;
+
+      ${!color &&
+        // If no explicit colour was specified, we drop the opacity to
+        // simulate lowering the intensity of the icon's colour.
+        css`
+          stroke: currentColor;
+          opacity: 0.8;
+        `}
+    }
   `;
 };
 
@@ -141,9 +159,15 @@ Icon.defaultProps = {
   extraLarge: false,
   margin: '0 0.4rem 0 0', // @todo this default should probably just pull from the theme padding!
   padding: '0',
+  border: undefined,
+  background: undefined,
 };
 
 Icon.propTypes = {
+  /** Background colour. */
+  background: PropTypes.string,
+  /** Border colour. */
+  border: PropTypes.string,
   /** @ignore */
   children: PropTypes.node,
   /** @ignore */

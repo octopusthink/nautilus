@@ -108,9 +108,11 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 ### Border & background
 
-An icon can optionally have a border and/or a background. These use a circular shape by default because it looks nicest, but this value can be changed in your theme.
+An icon can optionally have a border and/or a background. These use a circular shape by default because it looks nicest, but this value, along with border width, can be changed in your theme.
 
-[examples]
+```jsx
+<Icon name="zap" background="#181b1c" border="#cd2f83" color="#cd2f83" large/>
+```
 
 This is generally best when an `Icon` is used inside a `Tab` or a `Button`, since it gives the icon additional emphasis and creates a clear touch target.
 
