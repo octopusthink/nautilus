@@ -21,18 +21,27 @@ Use an `Icon` when you want to emphasise or clarify an important piece of text. 
 
 ### Colour
 
-An icon can be passed a single colour value. When pairing an icon with a label, using a slightly lighter variant of the text colour helps make the two elements feel more connected, whilst ensuring the icon doesn't have more visual weight than the text.
+An icon can be passed a single colour value.
+
+```jsx
+<Icon name="pen-tool" color="#053e6c" large/>
+<Icon name="target" color="#8a0000" large/>
+<Icon name="star" color="#eeb600" large/>
+```
+
+When pairing an icon with a label, using a slightly lighter variant of the text colour helps make the two elements feel connected, whilst ensuring the icon doesn't have more visual weight than the text. Nautilus does this by default because we always want you to look good. 🙌
 
 ```jsx
 import { Paragraph } from '@octopusthink/nautilus';
 
 <React.Fragment>
-<Icon name="pen-tool" color="#76d0d6" />
-<Paragraph>
-  <Icon name="heart" color="#e33592" />
-  <span style={{ color: '#b32973' }}>I love Lucy</span>
-</Paragraph>
-<Icon name="coffee" color="#8a0000" />
+  <Paragraph style={{ color: '#b32973' }}>
+    <Icon name="heart"/> I love Lucy
+  </Paragraph>
+  <Paragraph>
+    <Icon name="coffee" />
+    Lucy loves coffee
+  </Paragraph>
 </React.Fragment>
 ```
 

@@ -93,11 +93,13 @@ export const styles = (props) => {
     height: ${size};
     stroke: ${color};
     width: ${size};
+    vertical-align: -15%;
 
     ${!color &&
       // If no explicit colour was specified, we drop the opacity to
       // simulate lowering the intensity of the icon's colour.
       css`
+        stroke: currentColor;
         opacity: 0.8;
       `}
   `;

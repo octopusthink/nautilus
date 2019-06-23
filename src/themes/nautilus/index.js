@@ -166,7 +166,7 @@ export const theme = {
       sizes: {
         xs: '0.8rem',
         s: '1.6rem',
-        m: '3.2rem',
+        m: '2.4rem',
         l: '4.8rem',
         xl: '6.4rem',
       },
