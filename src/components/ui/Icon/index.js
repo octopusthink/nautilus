@@ -5,12 +5,6 @@ import PropTypes from 'prop-types';
 import React, { useState, useMemo } from 'react';
 import shortid from 'shortid';
 
-// const LARGE = 48;
-// const MEDIUM = 24;
-// const SMALL = 16;
-
-// const IconSizes = [SMALL, MEDIUM, LARGE];
-
 export const Icon = (props) => {
   const {
     children,
@@ -19,7 +13,6 @@ export const Icon = (props) => {
     description,
     id,
     name,
-    // size,
     title,
     ...otherProps
   } = props;
@@ -30,8 +23,6 @@ export const Icon = (props) => {
   }, [generatedId, id]);
   const descriptionId = `${svgId}-description`;
   const titleId = `${svgId}-title`;
-
-  const hasTitle = title && title.length;
 
   if (!name) {
     return null;
@@ -48,43 +39,54 @@ export const Icon = (props) => {
   } = Feather.icons[name].attrs;
 
   const combinedClassName =
-    `${className} ${featherClassName}`.trim().length &&
-    `${className} ${featherClassName}`;
+    className || featherClassName
+      ? `${className || ''} ${featherClassName || ''}`.trim()
+      : undefined;
 
   return (
-    // eslint-disable-next-line react/destructuring-assignment
-    <span aria-hidden={!hasTitle || props['aria-hidden']}>
-      <svg
-        {...otherProps}
-        {...otherFeatherAttrs}
-        aria-labelledby={title && titleId}
-        className={combinedClassName}
-        id={svgId}
-        role="img"
-        strokeLinecap={strokeLinecap}
-        strokeLinejoin={strokeLinejoin}
-        strokeWidth={strokeWidth}
-        css={css`
-          stroke: ${color};
-          height: 24px;
-          width: 24px;
-        `}
-      >
-        {title && <title id={titleId}>{title}</title>}
-        {color}
-        {description && <desc id={descriptionId}>{description}</desc>}
-        <g
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: Feather.icons[name].contents }}
-        />
-        {children}
-      </svg>
-    </span>
+    <svg
+      {...otherFeatherAttrs}
+      // These props are placed above the {...otherProps} spread so
+      // user-supplied props can override our default values.
+      role="img"
+      strokeLinecap={strokeLinecap}
+      strokeLinejoin={strokeLinejoin}
+      strokeWidth={strokeWidth}
+      {...otherProps}
+      aria-hidden={title ? undefined : true}
+      aria-labelledby={title && titleId}
+      className={combinedClassName}
+      id={svgId}
+    >
+      {title && <title id={titleId}>{title}</title>}
+      {description && <desc id={descriptionId}>{description}</desc>}
+      <g
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: Feather.icons[name].contents }}
+      />
+      {children}
+    </svg>
   );
 };
 
+export const styles = (props) => {
+  const { color } = props;
+
+  return css`
+    height: 24px;
+    stroke: ${color};
+    width: 24px;
+
+    ${!color &&
+      // If no explicit colour was specified, we drop the opacity to
+      // simulate lowering the intensity of the icon's colour.
+      css`
+        opacity: 0.8;
+      `}
+  `;
+};
+
 Icon.defaultProps = {
-  'aria-hidden': undefined,
   children: undefined,
   className: undefined,
   description: undefined,
@@ -94,8 +96,6 @@ Icon.defaultProps = {
 };
 
 Icon.propTypes = {
-  /** @ignore */
-  'aria-hidden': PropTypes.bool,
   /** @ignore */
   children: PropTypes.node,
   /** @ignore */
@@ -108,12 +108,10 @@ Icon.propTypes = {
   id: PropTypes.string,
   /** The name of the icon to use. */
   name: PropTypes.string.isRequired,
-  /** Change the size of the icon. */
-  // size: PropTypes.oneOf(IconSizes),
   /** A short description of this icon's content. Leave blank if the icon is entirely decorative. */
   title: PropTypes.string,
 };
 
 export const { defaultProps, propTypes } = Icon;
 
-export default Icon;
+export default styled(Icon)(styles);
