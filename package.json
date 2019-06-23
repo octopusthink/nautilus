@@ -41,7 +41,6 @@
     "feather-icons": "^4.22.1",
     "invariant": "^2.2.4",
     "prop-types": "^15.7.2",
-    "react-inlinesvg": "^0.8.4",
     "shortid": "^2.2.14",
     "shx": "^0.3.2"
   },
