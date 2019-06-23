@@ -90,24 +90,32 @@ export const styles = (props) => {
     padding,
     margin,
   } = props;
-  let size = theme.components.Icon.sizes.m;
+
+  let size = theme.components.Icon.sizes.m.size;
+  let strokeWidth = theme.components.Icon.sizes.m.strokeWidth;
+
   if (extraSmall) {
-    size = theme.components.Icon.sizes.xs;
+    size = theme.components.Icon.sizes.xs.size;
+    strokeWidth = theme.components.Icon.sizes.xs.strokeWidth;
   } else if (small) {
-    size = theme.components.Icon.sizes.s;
+    size = theme.components.Icon.sizes.s.size;
+    strokeWidth = theme.components.Icon.sizes.s.strokeWidth;
   } else if (large) {
-    size = theme.components.Icon.sizes.l;
+    size = theme.components.Icon.sizes.l.size;
+    strokeWidth = theme.components.Icon.sizes.l.strokeWidth;
   } else if (extraLarge) {
-    size = theme.components.Icon.sizes.xl;
+    size = theme.components.Icon.sizes.xl.size;
+    strokeWidth = theme.components.Icon.sizes.xl.strokeWidth;
   }
 
   return css`
     height: ${size};
-    stroke: ${color};
-    width: ${size};
-    vertical-align: -15%;
     margin: ${margin};
     padding: ${padding};
+    stroke: ${color};
+    stroke-width: ${strokeWidth};
+    width: ${size};
+    vertical-align: -15%;
 
     ${!color &&
       // If no explicit colour was specified, we drop the opacity to

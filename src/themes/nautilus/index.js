@@ -164,11 +164,26 @@ export const theme = {
 
     Icon: {
       sizes: {
-        xs: '0.8rem',
-        s: '1.6rem',
-        m: '2.4rem',
-        l: '4.8rem',
-        xl: '6.4rem',
+        xs: {
+          size: '1.2rem',
+          strokeWidth: '0.2125rem',
+        },
+        s: {
+          size: '1.6rem',
+          strokeWidth: '0.2rem',
+        },
+        m: {
+          size: '2.4rem',
+          strokeWidth: '0.175rem',
+        },
+        l: {
+          size: '4.8rem',
+          strokeWidth: '0.125rem',
+        },
+        xl: {
+          size: '6.4rem',
+          strokeWidth: '0.1125rem',
+        },
       },
     },
   },

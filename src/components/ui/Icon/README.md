@@ -57,7 +57,21 @@ The default icon sizes can be tweaked in your theme. Sizes should be defined in 
 <Icon name="heart" medium />
 <Icon name="heart" large />
 <Icon name="heart" extraLarge />
+
+<Icon name="star" extraSmall />
+<Icon name="star" small />
+<Icon name="star" medium />
+<Icon name="star" large />
+<Icon name="star" extraLarge />
+
+<Icon name="pen-tool" extraSmall />
+<Icon name="pen-tool" small />
+<Icon name="pen-tool" medium />
+<Icon name="pen-tool" large />
+<Icon name="pen-tool" extraLarge />
 ```
+
+Stroke widths scale with the icon size for better legibility. Stroke widths are also customisable via your theme.
 
 If you need more fine-grained control, you can also pass an integer to use a custom size. To maintain vertical rhythm, aim for a multiple of 8 (best), 4 (good), or 2 (worst).
 
