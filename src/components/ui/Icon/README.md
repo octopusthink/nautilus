@@ -38,7 +38,9 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 ### Size
 
-Icons are available in five different sizes: `extraLarge` (`64px`), `large` (`48px`), `medium` (`24px`), `small` (`16px`), and `extraSmall` (`8px`). These values are themable and should be defined in `rem`, to ensure the icons adjust to the user's font size. The above sizes are the pixel equivalents of the default sizes, provided for reference. Icons default to the medium size.
+Icons are available in five different sizes: `extraLarge` (`64rem`), `large` (`48rem`), `medium` (`24px`), `small` (`16px`), and `extraSmall` (`8px`). If you don't pass a size value, your icons will use the medium size.
+
+The default icon sizes can be tweaked in your theme. Sizes should be defined in `rem` to ensure the icons adjust to the user's font size. (The above sizes are the pixel equivalents of the `rem` sizes provided for reference.)
 
 ```jsx
 <Icon name="heart" extraSmall />

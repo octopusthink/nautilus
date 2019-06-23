@@ -161,6 +161,16 @@ export const theme = {
     TextField: {
       optionalMessage: '(optional)',
     },
+
+    Icon: {
+      sizes: {
+        xs: '0.8rem',
+        s: '1.6rem',
+        m: '3.2rem',
+        l: '4.8rem',
+        xl: '6.4rem',
+      },
+    },
   },
 
   // All themeable typography variables go here.

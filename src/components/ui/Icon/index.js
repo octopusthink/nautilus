@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import React, { useState, useMemo } from 'react';
 import shortid from 'shortid';
 
+import { useTheme } from 'themes';
+
 export const Icon = (props) => {
   const {
     children,
@@ -14,6 +16,11 @@ export const Icon = (props) => {
     id,
     name,
     title,
+    extraSmall,
+    small,
+    medium,
+    large,
+    extraLarge,
     ...otherProps
   } = props;
 
@@ -70,12 +77,22 @@ export const Icon = (props) => {
 };
 
 export const styles = (props) => {
-  const { color } = props;
+  const { color, theme, extraSmall, small, medium, large, extraLarge } = props;
+  let size = theme.components.Icon.sizes.m;
+  if (extraSmall) {
+    size = theme.components.Icon.sizes.xs;
+  } else if (small) {
+    size = theme.components.Icon.sizes.s;
+  } else if (large) {
+    size = theme.components.Icon.sizes.l;
+  } else if (extraLarge) {
+    size = theme.components.Icon.sizes.xl;
+  }
 
   return css`
-    height: 24px;
+    height: ${size};
     stroke: ${color};
-    width: 24px;
+    width: ${size};
 
     ${!color &&
       // If no explicit colour was specified, we drop the opacity to
@@ -93,6 +110,11 @@ Icon.defaultProps = {
   id: undefined,
   color: undefined,
   title: undefined,
+  extraSmall: false,
+  small: false,
+  medium: true,
+  large: false,
+  extraLarge: false,
 };
 
 Icon.propTypes = {
@@ -104,10 +126,20 @@ Icon.propTypes = {
   color: PropTypes.string,
   /** A longer description of this icon, used by assistive technology. */
   description: PropTypes.string,
+  /** Extra-large icon size. */
+  extraLarge: PropTypes.bool,
+  /** Extra-small icon size. */
+  extraSmall: PropTypes.bool,
   /** @ignore */
   id: PropTypes.string,
+  /** Large icon size. */
+  large: PropTypes.bool,
+  /** Medium icon size. */
+  medium: PropTypes.bool,
   /** The name of the icon to use. */
   name: PropTypes.string.isRequired,
+  /** Small icon size. */
+  small: PropTypes.bool,
   /** A short description of this icon's content. Leave blank if the icon is entirely decorative. */
   title: PropTypes.string,
 };
