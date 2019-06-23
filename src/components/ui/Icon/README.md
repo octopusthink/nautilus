@@ -65,7 +65,32 @@ If you need more fine-grained control, you can also pass an integer to use a cus
 
 ### Padding & margin
 
-By default, an `Icon` has no padding or margin. Either can be added to ensure proper placement in your layout. Aim to use the padding and spacing values provided by your theme to maintain visual consistency.
+By default, an `Icon` has a small amount of margin to its right, to give it some breathing space when used with text.
+
+You can add either padding or margin to the `Icon` to ensure proper placement in your layout. To maintain visual consistency, it's best to use the padding and spacing values provided by your theme.
+
+
+```jsx
+import { Paragraph } from '@octopusthink/nautilus';
+
+<React.Fragment>
+  <Paragraph>
+    <Icon name="alert-circle" />
+    Don't stand so close to me.
+  </Paragraph>
+
+  <Paragraph>
+    <Icon name="users" margin="0" />
+    Let's get cuddly.
+  </Paragraph>
+
+  <Paragraph>
+    <Icon name="zap" margin="0.8rem" padding="0.8rem" />
+    It's not you, it's me.
+  </Paragraph>
+</React.Fragment>
+```
+
 
 ### Border & background
 

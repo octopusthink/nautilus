@@ -21,6 +21,8 @@ export const Icon = (props) => {
     medium,
     large,
     extraLarge,
+    padding,
+    margin,
     ...otherProps
   } = props;
 
@@ -77,7 +79,17 @@ export const Icon = (props) => {
 };
 
 export const styles = (props) => {
-  const { color, theme, extraSmall, small, medium, large, extraLarge } = props;
+  const {
+    color,
+    theme,
+    extraSmall,
+    small,
+    medium,
+    large,
+    extraLarge,
+    padding,
+    margin,
+  } = props;
   let size = theme.components.Icon.sizes.m;
   if (extraSmall) {
     size = theme.components.Icon.sizes.xs;
@@ -94,6 +106,8 @@ export const styles = (props) => {
     stroke: ${color};
     width: ${size};
     vertical-align: -15%;
+    margin: ${margin};
+    padding: ${padding};
 
     ${!color &&
       // If no explicit colour was specified, we drop the opacity to
@@ -117,6 +131,8 @@ Icon.defaultProps = {
   medium: true,
   large: false,
   extraLarge: false,
+  margin: '0 0.4rem 0 0', // @todo this default should probably just pull from the theme padding!
+  padding: '0',
 };
 
 Icon.propTypes = {
@@ -136,10 +152,14 @@ Icon.propTypes = {
   id: PropTypes.string,
   /** Large icon size. */
   large: PropTypes.bool,
+  /** Margins around icon, defined as per CSS format. */
+  margin: PropTypes.string,
   /** Medium icon size. */
   medium: PropTypes.bool,
   /** The name of the icon to use. */
   name: PropTypes.string.isRequired,
+  /** Padding inside icon, defined as per CSS format. */
+  padding: PropTypes.string,
   /** Small icon size. */
   small: PropTypes.bool,
   /** A short description of this icon's content. Leave blank if the icon is entirely decorative. */
