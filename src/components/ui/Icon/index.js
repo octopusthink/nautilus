@@ -65,9 +65,9 @@ export const Icon = (props) => {
         strokeLinejoin={strokeLinejoin}
         strokeWidth={strokeWidth}
         css={css`
-          stroke: {color};
-          height: 48px;
-          width: 48px;
+          stroke: ${color};
+          height: 24px;
+          width: 24px;
         `}
       >
         {title && <title id={titleId}>{title}</title>}

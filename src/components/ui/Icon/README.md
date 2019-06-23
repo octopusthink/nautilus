@@ -25,9 +25,16 @@ Use a `TextField` when you want users to be able to enter or edit free-form text
 An icon can be passed a single colour value. When pairing an icon with a label, using a slightly lighter variant of the text colour (drop down 100 or 200 steps) helps make the two elements feel more connected, whilst ensuring the icon doesn't have more visual weight than the text.
 
 ```jsx
-<Icon name="coffee" color="hotpink" />
-<p><Icon name="heart" color="hotpink" /> I love Lucy</p>
-<Icon name="coffee" color="hotpink" />
+import { Paragraph } from '@octopusthink/nautilus';
+
+<React.Fragment>
+<Icon name="pen-tool" color="#76d0d6" />
+<Paragraph>
+  <Icon name="heart" color="#e33592" />
+  <span>I love Lucy</span>
+</Paragraph>
+<Icon name="coffee" color="#8a0000" />
+</React.Fragment>
 ```
 
 ## Variations
