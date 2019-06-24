@@ -23,7 +23,6 @@ export const Icon = (props) => {
     medium,
     large,
     extraLarge,
-    padding,
     margin,
     ...otherProps
   } = props;
@@ -110,7 +109,7 @@ export const Icon = (props) => {
 };
 
 export const styles = (props) => {
-  const { margin, border, background } = props;
+  const { border, background, margin, verticalAlign } = props;
   let borderBackground;
 
   if (border || background) {
@@ -126,7 +125,7 @@ export const styles = (props) => {
     ${borderBackground};
     display: inline-block;
     margin: ${margin};
-    vertical-align: -15%;
+    vertical-align: ${verticalAlign};
   `;
 };
 
@@ -146,6 +145,7 @@ Icon.defaultProps = {
   padding: '0',
   border: undefined,
   background: undefined,
+  verticalAlign: 'middle',
 };
 
 Icon.propTypes = {
@@ -175,8 +175,8 @@ Icon.propTypes = {
   medium: PropTypes.bool,
   /** The name of the icon to use. */
   name: PropTypes.string.isRequired,
-  /** Padding inside icon, defined as per CSS format. */
-  padding: PropTypes.string,
+  /** Vertical alignment. */
+  verticalAlign: PropTypes.string,
   /** Small icon size. */
   small: PropTypes.bool,
   /** A short description of this icon's content. Leave blank if the icon is entirely decorative. */

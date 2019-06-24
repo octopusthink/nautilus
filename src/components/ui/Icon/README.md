@@ -77,12 +77,13 @@ If you need more fine-grained control, you can also pass an integer to use a cus
 
 [example]
 
-### Padding & margin
+### Margin & alignment
 
 By default, an `Icon` has a small amount of margin to its right, to give it some breathing space when used with text.
 
-You can add either padding or margin to the `Icon` to ensure proper placement in your layout. To maintain visual consistency, it's best to use the padding and spacing values provided by your theme.
+You can customise the margin value to ensure proper placement in your layout. To maintain visual consistency, it's best to use the spacing values provided by your theme.
 
+Aligning an icon perfectly to text it's inline with can sometimes be tricky. By default, the container is set to vertical-align middle, but you can override this if needed.
 
 ```jsx
 import { Paragraph } from '@octopusthink/nautilus';
@@ -99,8 +100,13 @@ import { Paragraph } from '@octopusthink/nautilus';
   </Paragraph>
 
   <Paragraph>
-    <Icon name="zap" margin="0.8rem" padding="0.8rem" />
+    <Icon name="zap" margin="2.4rem 2.4rem 2.4rem 0" />
     It's not you, it's me.
+  </Paragraph>
+
+  <Paragraph>
+    <Icon name="arrow-up" verticalAlign="1px"/>
+    Put your hands in the air
   </Paragraph>
 </React.Fragment>
 ```
