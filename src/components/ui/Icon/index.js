@@ -9,6 +9,8 @@ import { useTheme } from 'themes';
 
 export const Icon = (props) => {
   const {
+    background,
+    border,
     children,
     className,
     color,
@@ -26,6 +28,7 @@ export const Icon = (props) => {
     ...otherProps
   } = props;
 
+  const theme = useTheme();
   const [generatedId] = useState(shortid.generate());
   const svgId = useMemo(() => {
     return id || generatedId;
@@ -42,62 +45,13 @@ export const Icon = (props) => {
     class: featherClassName,
     'stroke-linecap': strokeLinecap,
     'stroke-linejoin': strokeLinejoin,
-    'stroke-width': strokeWidth,
+    //'stroke-width': strokeWidth,
     // Get the rest of the needed Feather attributes.
     ...otherFeatherAttrs
   } = Feather.icons[name].attrs;
 
-  const combinedClassName =
-    className || featherClassName
-      ? `${className || ''} ${featherClassName || ''}`.trim()
-      : undefined;
-
-  return (
-    <span>
-      <svg
-        {...otherFeatherAttrs}
-        // These props are placed above the {...otherProps} spread so
-        // user-supplied props can override our default values.
-        role="img"
-        strokeLinecap={strokeLinecap}
-        strokeLinejoin={strokeLinejoin}
-        strokeWidth={strokeWidth}
-        {...otherProps}
-        aria-hidden={title ? undefined : true}
-        aria-labelledby={title && titleId}
-        className={combinedClassName}
-        id={svgId}
-      >
-        {title && <title id={titleId}>{title}</title>}
-        {description && <desc id={descriptionId}>{description}</desc>}
-        <g
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: Feather.icons[name].contents }}
-        />
-        {children}
-      </svg>
-    </span>
-  );
-};
-
-export const styles = (props) => {
-  const {
-    color,
-    theme,
-    extraSmall,
-    small,
-    medium,
-    large,
-    extraLarge,
-    padding,
-    margin,
-    border,
-    background,
-  } = props;
-
   let size = theme.components.Icon.sizes.m.size;
   let strokeWidth = theme.components.Icon.sizes.m.strokeWidth;
-  let borderBackground;
 
   if (extraSmall) {
     size = theme.components.Icon.sizes.xs.size;
@@ -113,35 +67,66 @@ export const styles = (props) => {
     strokeWidth = theme.components.Icon.sizes.xl.strokeWidth;
   }
 
+  return (
+    <span className={className}>
+      <svg
+        {...otherFeatherAttrs}
+        // These props are placed above the {...otherProps} spread so
+        // user-supplied props can override our default values.
+        role="img"
+        strokeLinecap={strokeLinecap}
+        strokeLinejoin={strokeLinejoin}
+        strokeWidth={strokeWidth}
+        {...otherProps}
+        aria-hidden={title ? undefined : true}
+        aria-labelledby={title && titleId}
+        id={svgId}
+        css={css`
+          height: ${size};
+          margin: 0.8rem;
+          stroke: ${color};
+          stroke-width: ${strokeWidth};
+          width: ${size};
+
+          ${!color &&
+            // If no explicit colour was specified, we drop the opacity to
+            // simulate lowering the intensity of the icon's colour.
+            css`
+              stroke: currentColor;
+              opacity: 0.8;
+            `}
+        `}
+      >
+        {title && <title id={titleId}>{title}</title>}
+        {description && <desc id={descriptionId}>{description}</desc>}
+        <g
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: Feather.icons[name].contents }}
+        />
+        {children}
+      </svg>
+    </span>
+  );
+};
+
+export const styles = (props) => {
+  const { margin, border, background } = props;
+  let borderBackground;
+
   if (border || background) {
     borderBackground = css`
       border: 2px solid ${border};
       background: ${background};
       border-radius: 50%;
-      padding: 0.8rem;
+      height: 4rem;
+      width: 4rem;
     `;
   }
-
   return css`
     ${borderBackground};
-
-    svg {
-      height: ${size};
-      margin: ${margin};
-      padding: ${padding};
-      stroke: ${color};
-      stroke-width: ${strokeWidth};
-      width: ${size};
-      vertical-align: -15%;
-
-      ${!color &&
-        // If no explicit colour was specified, we drop the opacity to
-        // simulate lowering the intensity of the icon's colour.
-        css`
-          stroke: currentColor;
-          opacity: 0.8;
-        `}
-    }
+    display: inline-block;
+    margin: ${margin};
+    vertical-align: -15%;
   `;
 };
 
