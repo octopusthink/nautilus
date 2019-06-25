@@ -111,16 +111,29 @@ export const Icon = (props) => {
 export const styles = (props) => {
   const { border, background, margin, verticalAlign } = props;
   let borderBackground;
+  let backgroundCSS;
+  let borderCSS;
+
+  if (border) {
+    borderCSS = css`
+      border: 2px solid ${border};
+    `;
+  }
+
+  if (background) {
+    backgroundCSS = css`
+      background: ${background};
+    `;
+  }
 
   if (border || background) {
     borderBackground = css`
-      border: 2px solid ${border};
-      background: ${background};
+      ${backgroundCSS};
+      ${borderCSS};
       border-radius: 50%;
-      height: 4rem;
-      width: 4rem;
     `;
   }
+
   return css`
     ${borderBackground};
     display: inline-block;

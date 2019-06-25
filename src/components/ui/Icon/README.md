@@ -121,6 +121,10 @@ An icon can optionally have a border and/or a background. These use a circular s
 <Icon name="mic" border="#cd2f83" color="#cd2f83"/>
 <Icon name="mic" background="#cd2f83" color="#181b1c"/>
 
+<Icon name="mic" background="#181b1c" border="#cd2f83" color="#cd2f83" small/>
+<Icon name="mic" border="#cd2f83" color="#cd2f83"/>
+<Icon name="mic" background="#cd2f83" color="#181b1c" large/>
+
 ```
 
 This is generally best when an `Icon` is used inside a `Tab` or a `Button`, since it gives the icon additional emphasis and creates a clear touch target.
