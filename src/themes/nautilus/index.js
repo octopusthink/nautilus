@@ -165,22 +165,32 @@ export const theme = {
     Icon: {
       sizes: {
         extraSmall: {
+          borderWidth: 1,
+          padding: 4,
           size: 12,
           strokeWidth: 2.125,
         },
         small: {
+          borderWidth: 1.5,
+          padding: 6,
           size: 16,
           strokeWidth: 2,
         },
         medium: {
+          borderWidth: 2,
+          padding: 8,
           size: 24,
           strokeWidth: 1.75,
         },
         large: {
+          borderWidth: 2.5,
+          padding: 16,
           size: 48,
           strokeWidth: 1.25,
         },
         extraLarge: {
+          borderWidth: 3,
+          padding: 24,
           size: 64,
           strokeWidth: 1.125,
         },

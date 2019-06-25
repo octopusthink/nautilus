@@ -117,13 +117,19 @@ import { Paragraph } from '@octopusthink/nautilus';
 An icon can optionally have a border and/or a background. These use a circular shape by default because it looks nicest, but this value, along with border width, can be changed in your theme.
 
 ```jsx
-<Icon name="mic" background="#181b1c" border="#cd2f83" color="#cd2f83"/>
+<Icon name="mic" background="#181b1c" color="#cd2f83"/>
 <Icon name="mic" border="#cd2f83" color="#cd2f83"/>
-<Icon name="mic" background="#cd2f83" color="#181b1c"/>
+<Icon name="mic" background="#cd2f83" border="#181b1c" color="#181b1c"/>
+<Icon name="mic" background="#181b1c" color="#fff"/>
 
-<Icon name="mic" background="#181b1c" border="#cd2f83" color="#cd2f83" small/>
+
+<br />
+<Icon name="mic" border="#cd2f83" color="#cd2f83" extraSmall/>
+<Icon name="mic" border="#cd2f83" color="#cd2f83" small/>
 <Icon name="mic" border="#cd2f83" color="#cd2f83"/>
-<Icon name="mic" background="#cd2f83" color="#181b1c" large/>
+<Icon name="mic" border="#cd2f83" color="#cd2f83" large/>
+<Icon name="mic" border="#cd2f83" color="#cd2f83" extraLarge/>
+
 
 ```
 

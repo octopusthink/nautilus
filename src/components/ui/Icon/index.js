@@ -24,14 +24,16 @@ const defineIconSizes = (props) => {
     iconSize = 'extraLarge';
   }
 
-  const { size, strokeWidth } = theme.components.Icon.sizes[iconSize];
-
-  // Determine the overall size.
-  const padding = 8;
+  const {
+    size,
+    strokeWidth,
+    padding,
+    borderWidth,
+  } = theme.components.Icon.sizes[iconSize];
 
   const wrapperSize = Math.ceil(size + padding * 2);
 
-  return { size, strokeWidth, wrapperSize };
+  return { borderWidth, padding, size, strokeWidth, wrapperSize };
 };
 
 export const Icon = (props) => {
@@ -78,7 +80,7 @@ export const Icon = (props) => {
     ...otherFeatherAttrs
   } = Feather.icons[name].attrs;
 
-  const { size, strokeWidth } = defineIconSizes({ ...props, theme });
+  const { padding, size, strokeWidth } = defineIconSizes({ ...props, theme });
 
   return (
     <span className={className} data-testid={dataTestId}>
@@ -96,7 +98,7 @@ export const Icon = (props) => {
         id={svgId}
         css={css`
           height: ${toUnits(size)};
-          margin: 0.8rem;
+          margin: ${toUnits(padding)};
           stroke: ${color};
           stroke-width: ${toUnits(strokeWidth)};
           width: ${toUnits(size)};
@@ -124,14 +126,14 @@ export const Icon = (props) => {
 
 export const styles = (props) => {
   const { border, background, margin, verticalAlign } = props;
-  const { wrapperSize } = defineIconSizes(props);
+  const { borderWidth, wrapperSize } = defineIconSizes(props);
   let borderBackground;
   let backgroundCSS;
   let borderCSS;
 
   if (border) {
     borderCSS = css`
-      border: 2px solid ${border};
+      border: ${toUnits(borderWidth)} solid ${border};
     `;
   }
 
