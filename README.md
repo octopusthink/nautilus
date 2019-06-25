@@ -15,21 +15,21 @@ https://nautilus.octopusthink.com/
 
 Nautilus is currently pre-pre-pre-beta software. You can feel free to use it in your projects, but be warned that the API is likely to change and things may work in unexpected ways.
 
-Point releases are distributed to `npm` on the 5th of every month. You can see our near-term plans and upcoming components in the Project tab.
+Point releases are distributed to `npm` on the 5th of every month. You can see our near-term plans and upcoming components in the [Project](https://github.com/octopusthink/nautilus/projects) tab.
 
-- Design principles & guidelines (in progress)
-- Design tokens (in progress)
-- Accessible React components (in progress)
-- React Native components (planned)
-- Sketch library (in progress)
-- Figma library (planned)
-- Brand tokens and themeability (planned)
-- Automated theme generation (planned)
+- Design principles & guidelines (in progress 🛠)
+- Design tokens (in progress 🛠)
+- Accessible React components (in progress 🛠)
+- React Native components (planned 💡)
+- Sketch library (in progress 🛠)
+- Figma library (planned 💡)
+- Brand tokens and theme-ability (planned 💡)
+- Automated theme generation (planned 💡)
 
 
 ## Usage
 
-Want to use Nautilus in your next web app? Well: tough! It's much too early and it's nowhere near ready for production usage. Check back later. 😅
+Want to use Nautilus in your next web app? Well: don't! It's much too early and it's nowhere near ready for production usage. Check back later. 😅
 
 You can _technically_ install it from NPM, but you can't say we didn't warn you!
 
@@ -93,7 +93,8 @@ npm run lint
 ## Built With
 
 * [React](https://reactjs.org/) - Making JavaScript simultaneously modern and also more like HTML since 1998.
-* [React Styleguidist](https://react-styleguidist.js.org) - Running the styleguide.
+* [React Styleguidist](https://react-styleguidist.js.org) - Is your styleguide running? You'd better go catch it!
+* [Feather](https://feathericons.com/) - The prettiest open-source icons in town.
 
 ## Contributing
 
