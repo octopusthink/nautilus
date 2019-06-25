@@ -164,25 +164,25 @@ export const theme = {
 
     Icon: {
       sizes: {
-        xs: {
-          size: '1.2rem',
-          strokeWidth: '0.2125rem',
+        extraSmall: {
+          size: 12,
+          strokeWidth: 2,
         },
-        s: {
-          size: '1.6rem',
-          strokeWidth: '0.2rem',
+        small: {
+          size: 16,
+          strokeWidth: 2,
         },
-        m: {
-          size: '2.4rem',
-          strokeWidth: '0.175rem',
+        medium: {
+          size: 24,
+          strokeWidth: 1,
         },
-        l: {
-          size: '4.8rem',
-          strokeWidth: '0.125rem',
+        large: {
+          size: 48,
+          strokeWidth: 1,
         },
-        xl: {
-          size: '6.4rem',
-          strokeWidth: '0.1125rem',
+        extraLarge: {
+          size: 64,
+          strokeWidth: 1,
         },
       },
     },
@@ -207,8 +207,8 @@ export const theme = {
     },
 
     baseSizes: {
-      desktop: 1.8,
-      mobile: 1.6,
+      desktop: 18,
+      mobile: 16,
     },
 
     scaleModifiers: {
@@ -228,24 +228,24 @@ export const theme = {
   spacing: {
     margin: {
       none: 0,
-      xxs: '0.4rem',
-      xs: '0.8rem',
-      s: '1.6rem',
-      m: '3.2rem',
-      l: '4.8rem',
-      xl: '6.4rem',
-      xxl: '8.0rem',
+      xxs: 4,
+      extraSmall: 8,
+      small: 16,
+      medium: 32,
+      large: 48,
+      extraLarge: 64,
+      xxl: 80,
     },
 
     padding: {
       none: 0,
-      xxs: '0.2rem',
-      xs: '0.4rem',
-      s: '0.8rem',
-      m: '1.2rem',
-      l: '2.4rem',
-      xl: '3.2rem',
-      xxl: '4.8rem',
+      xxs: 2,
+      extraSmall: 4,
+      small: 8,
+      medium: 12,
+      large: 24,
+      extraLarge: 32,
+      xxl: 48,
     },
   },
 };

@@ -3,6 +3,7 @@ import { css } from '@emotion/core';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { toUnits } from 'styles';
 import theme from 'styleguide/theme';
 
 export function Playground({
@@ -19,7 +20,7 @@ export function Playground({
       css={css`
         border: 2px solid ${theme.colors.neutral.black};
         background: ${theme.colors.neutral.black};
-        margin-bottom: ${theme.spacing.margin.xl};
+        margin-bottom: ${toUnits(theme.spacing.margin.extraLarge)};
       `}
     >
       <div
@@ -28,7 +29,7 @@ export function Playground({
         css={css`
           border: 2px solid ${theme.colors.neutral.black};
           background: ${theme.colors.neutral.white};
-          padding: ${theme.spacing.padding.l};
+          padding: ${toUnits(theme.spacing.padding.large)};
         `}
       >
         {preview}
@@ -38,7 +39,7 @@ export function Playground({
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: ${theme.spacing.padding.s} ${theme.spacing.padding.m};
+          padding: ${toUnits(theme.spacing.padding.small)} ${toUnits(theme.spacing.padding.medium)};
         `}
       >
         <div>{tabButtons}</div>

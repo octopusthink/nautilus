@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import theme from 'styleguide/theme';
-import { metadata } from 'styles';
+import { metadata, toUnits } from 'styles';
 
 export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
   return (
     <nav
       css={css`
-        padding: 0 ${theme.spacing.padding.l};
+        padding: 0 ${toUnits(theme.spacing.padding.large)};
         ${metadata.small(theme)};
 
         @media screen and (min-width: 960px) {
-          padding: 0 0 0 ${theme.spacing.padding.xl};
+          padding: 0 0 0 ${toUnits(theme.spacing.padding.extraLarge)};
         }
 
       `}

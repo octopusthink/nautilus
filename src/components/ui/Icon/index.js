@@ -5,27 +5,26 @@ import PropTypes from 'prop-types';
 import React, { useState, useMemo } from 'react';
 import shortid from 'shortid';
 
+import { toUnits } from 'styles';
 import { useTheme } from 'themes';
 
 const defineIconSizes = (props) => {
   const { small, extraSmall, large, extraLarge, theme } = props;
 
-  let { size, strokeWidth } = theme.components.Icon.sizes.m;
+  let iconSize = 'medium';
 
   // Determine the size of the SVG.
   if (extraSmall) {
-    size = theme.components.Icon.sizes.xs.size;
-    strokeWidth = theme.components.Icon.sizes.xs.strokeWidth;
+    iconSize = 'extraSmall';
   } else if (small) {
-    size = theme.components.Icon.sizes.s.size;
-    strokeWidth = theme.components.Icon.sizes.s.strokeWidth;
+    iconSize = 'small';
   } else if (large) {
-    size = theme.components.Icon.sizes.l.size;
-    strokeWidth = theme.components.Icon.sizes.l.strokeWidth;
+    iconSize = 'large';
   } else if (extraLarge) {
-    size = theme.components.Icon.sizes.xl.size;
-    strokeWidth = theme.components.Icon.sizes.xl.strokeWidth;
+    iconSize = 'extraLarge';
   }
+
+  const { size, strokeWidth } = theme.components.Icon.sizes[iconSize];
 
   // Determine the overall size.
   const padding = 0.8;
@@ -41,6 +40,7 @@ export const Icon = (props) => {
     children,
     className,
     color,
+    'data-testid': dataTestId,
     description,
     id,
     name,
@@ -71,7 +71,8 @@ export const Icon = (props) => {
     class: featherClassName,
     'stroke-linecap': strokeLinecap,
     'stroke-linejoin': strokeLinejoin,
-    //'stroke-width': strokeWidth,
+    // Unused, but defined so it's not in the `otherFeatherAttrs` object.
+    'stroke-width': featherStrokeWidth,
     // Get the rest of the needed Feather attributes.
     ...otherFeatherAttrs
   } = Feather.icons[name].attrs;
@@ -79,7 +80,7 @@ export const Icon = (props) => {
   const { size, strokeWidth } = defineIconSizes({ ...props, theme });
 
   return (
-    <span className={className}>
+    <span className={className} data-testid={dataTestId}>
       <svg
         {...otherFeatherAttrs}
         // These props are placed above the {...otherProps} spread so
@@ -93,11 +94,11 @@ export const Icon = (props) => {
         aria-labelledby={title && titleId}
         id={svgId}
         css={css`
-          height: ${size};
+          height: ${toUnits(size)};
           margin: 0.8rem;
           stroke: ${color};
-          stroke-width: ${strokeWidth};
-          width: ${size};
+          stroke-width: ${toUnits(strokeWidth)};
+          width: ${toUnits(size)};
 
           ${!color &&
             // If no explicit colour was specified, we drop the opacity to
@@ -170,7 +171,6 @@ Icon.defaultProps = {
   large: false,
   extraLarge: false,
   margin: '0 0.4rem 0 0', // @todo this default should probably just pull from the theme padding!
-  padding: '0',
   border: undefined,
   background: undefined,
   verticalAlign: 'middle',

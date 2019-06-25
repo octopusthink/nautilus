@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import { toUnits } from 'styles';
+
 export const ListItem = (props) => {
   const { children, ...otherProps } = props;
 
@@ -14,7 +16,7 @@ export const styles = (props) => {
 
   return css`
     position: relative;
-    margin: 0 0 ${theme.spacing.padding.xs};
+    margin: 0 0 ${toUnits(theme.spacing.padding.extraSmall)};
     &::before {
       position: absolute;
       right: 101%;

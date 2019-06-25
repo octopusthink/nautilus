@@ -24,16 +24,17 @@ describe('Icon', () => {
     expect(container.firstChild).toBeNull();
   });
 
-  it('should render an <svg> tag with no wrapper', () => {
+  it('should render an <svg> tag with a <span> wrapper', () => {
     const { container } = render(<Icon name="airplay" />);
 
-    expect(container.firstChild.tagName).toEqual('svg');
+    expect(container.firstChild.tagName).toEqual('SPAN');
+    expect(container.firstChild.firstChild.tagName).toEqual('svg');
   });
 
   it('should output the svg content inside a <g> tag', () => {
     const { container } = render(<Icon name="airplay" />);
 
-    expect(container.firstChild.firstChild.tagName).toEqual('g');
+    expect(container.firstChild.firstChild.firstChild.tagName).toEqual('g');
   });
 
   it('should output its children', () => {
@@ -60,7 +61,9 @@ describe('Icon', () => {
     it('should set `aria-hidden` if no `title` exists', () => {
       const { container } = render(<Icon name="archive" />);
 
-      expect(container.firstChild.getAttribute('aria-hidden')).toEqual('true');
+      expect(
+        container.firstChild.firstChild.getAttribute('aria-hidden'),
+      ).toEqual('true');
     });
 
     it('should not set `aria-hidden` if a `title` is supplied', () => {
@@ -68,7 +71,9 @@ describe('Icon', () => {
         <Icon name="archive" title="Paper filing box" />,
       );
 
-      expect(container.firstChild.getAttribute('aria-hidden')).toBeNull();
+      expect(
+        container.firstChild.firstChild.getAttribute('aria-hidden'),
+      ).toBeNull();
     });
   });
 });
