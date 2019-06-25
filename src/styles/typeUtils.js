@@ -1,5 +1,3 @@
-import { toUnits } from './toUnits';
-
 // Let's start by generating a type scale, along with line-heights and small-caps modifiers.
 // These functions will be used by our type styles below.
 

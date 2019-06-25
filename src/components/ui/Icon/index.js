@@ -162,6 +162,7 @@ export const styles = (props) => {
 Icon.defaultProps = {
   children: undefined,
   className: undefined,
+  'data-testid': undefined,
   description: undefined,
   id: undefined,
   color: undefined,
@@ -188,6 +189,8 @@ Icon.propTypes = {
   className: PropTypes.string,
   /** Apply colour to the icon. */
   color: PropTypes.string,
+  /** @ignore */
+  'data-testid': PropTypes.string,
   /** A longer description of this icon, used by assistive technology. */
   description: PropTypes.string,
   /** Extra-large icon size. */
