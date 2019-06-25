@@ -7,6 +7,33 @@ import shortid from 'shortid';
 
 import { useTheme } from 'themes';
 
+const defineIconSizes = (props) => {
+  const { small, extraSmall, large, extraLarge, theme } = props;
+
+  let { size, strokeWidth } = theme.components.Icon.sizes.m;
+
+  // Determine the size of the SVG.
+  if (extraSmall) {
+    size = theme.components.Icon.sizes.xs.size;
+    strokeWidth = theme.components.Icon.sizes.xs.strokeWidth;
+  } else if (small) {
+    size = theme.components.Icon.sizes.s.size;
+    strokeWidth = theme.components.Icon.sizes.s.strokeWidth;
+  } else if (large) {
+    size = theme.components.Icon.sizes.l.size;
+    strokeWidth = theme.components.Icon.sizes.l.strokeWidth;
+  } else if (extraLarge) {
+    size = theme.components.Icon.sizes.xl.size;
+    strokeWidth = theme.components.Icon.sizes.xl.strokeWidth;
+  }
+
+  // Determine the overall size.
+  const padding = 0.8;
+  const wrapperSize = size + padding * 2;
+
+  return { size, strokeWidth, wrapperSize };
+};
+
 export const Icon = (props) => {
   const {
     background,
@@ -49,22 +76,7 @@ export const Icon = (props) => {
     ...otherFeatherAttrs
   } = Feather.icons[name].attrs;
 
-  let size = theme.components.Icon.sizes.m.size;
-  let strokeWidth = theme.components.Icon.sizes.m.strokeWidth;
-
-  if (extraSmall) {
-    size = theme.components.Icon.sizes.xs.size;
-    strokeWidth = theme.components.Icon.sizes.xs.strokeWidth;
-  } else if (small) {
-    size = theme.components.Icon.sizes.s.size;
-    strokeWidth = theme.components.Icon.sizes.s.strokeWidth;
-  } else if (large) {
-    size = theme.components.Icon.sizes.l.size;
-    strokeWidth = theme.components.Icon.sizes.l.strokeWidth;
-  } else if (extraLarge) {
-    size = theme.components.Icon.sizes.xl.size;
-    strokeWidth = theme.components.Icon.sizes.xl.strokeWidth;
-  }
+  const { size, strokeWidth } = defineIconSizes({ ...props, theme });
 
   return (
     <span className={className}>
@@ -110,6 +122,7 @@ export const Icon = (props) => {
 
 export const styles = (props) => {
   const { border, background, margin, verticalAlign } = props;
+  const { wrapperSize } = defineIconSizes(props);
   let borderBackground;
   let backgroundCSS;
   let borderCSS;
@@ -131,6 +144,8 @@ export const styles = (props) => {
       ${backgroundCSS};
       ${borderCSS};
       border-radius: 50%;
+      height: ${wrapperSize};
+      width: ${wrapperSize};
     `;
   }
 
