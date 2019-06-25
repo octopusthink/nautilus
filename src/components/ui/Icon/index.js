@@ -27,8 +27,9 @@ const defineIconSizes = (props) => {
   const { size, strokeWidth } = theme.components.Icon.sizes[iconSize];
 
   // Determine the overall size.
-  const padding = 0.8;
-  const wrapperSize = size + padding * 2;
+  const padding = 8;
+
+  const wrapperSize = Math.ceil(size + padding * 2);
 
   return { size, strokeWidth, wrapperSize };
 };
@@ -145,8 +146,8 @@ export const styles = (props) => {
       ${backgroundCSS};
       ${borderCSS};
       border-radius: 50%;
-      height: ${wrapperSize};
-      width: ${wrapperSize};
+      height: ${toUnits(wrapperSize)};
+      width: ${toUnits(wrapperSize)};
     `;
   }
 

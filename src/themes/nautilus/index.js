@@ -166,7 +166,7 @@ export const theme = {
       sizes: {
         extraSmall: {
           size: 12,
-          strokeWidth: 2,
+          strokeWidth: 2.125,
         },
         small: {
           size: 16,
@@ -174,15 +174,15 @@ export const theme = {
         },
         medium: {
           size: 24,
-          strokeWidth: 1,
+          strokeWidth: 1.75,
         },
         large: {
           size: 48,
-          strokeWidth: 1,
+          strokeWidth: 1.25,
         },
         extraLarge: {
           size: 64,
-          strokeWidth: 1,
+          strokeWidth: 1.125,
         },
       },
     },
