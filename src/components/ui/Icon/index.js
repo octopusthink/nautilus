@@ -9,7 +9,15 @@ import { toUnits } from 'styles';
 import { useTheme } from 'themes';
 
 const defineIconSizes = (props) => {
-  const { small, extraSmall, large, extraLarge, theme } = props;
+  const {
+    background,
+    border,
+    small,
+    extraSmall,
+    large,
+    extraLarge,
+    theme,
+  } = props;
 
   let iconSize = 'medium';
 
@@ -33,7 +41,14 @@ const defineIconSizes = (props) => {
 
   const wrapperSize = Math.ceil(size + padding * 2);
 
-  return { borderWidth, padding, size, strokeWidth, wrapperSize };
+  let hasContainer;
+  if (border || background) {
+    hasContainer = true;
+  } else {
+    hasContainer = false;
+  }
+
+  return { borderWidth, hasContainer, padding, size, strokeWidth, wrapperSize };
 };
 
 export const Icon = (props) => {
@@ -81,7 +96,10 @@ export const Icon = (props) => {
     ...otherFeatherAttrs
   } = Feather.icons[name].attrs;
 
-  const { padding, size, strokeWidth } = defineIconSizes({ ...props, theme });
+  const { hasContainer, padding, size, strokeWidth } = defineIconSizes({
+    ...props,
+    theme,
+  });
 
   return (
     <span className={className} data-testid={dataTestId}>
@@ -100,10 +118,14 @@ export const Icon = (props) => {
         css={css`
           fill: ${fillColor};
           height: ${toUnits(size)};
-          margin: ${toUnits(padding)};
           stroke: ${strokeColor};
           stroke-width: ${toUnits(strokeWidth)};
           width: ${toUnits(size)};
+
+          ${hasContainer &&
+            css`
+              margin: ${toUnits(padding)};
+            `}
 
           ${!fillColor &&
             !strokeColor &&
@@ -178,7 +200,7 @@ Icon.defaultProps = {
   medium: true,
   large: false,
   extraLarge: false,
-  margin: '0 0.4rem 0 0', // @todo this default should probably just pull from the theme padding!
+  margin: '0 0.8rem 0 0', // @todo this default should probably just pull from the theme padding!
   border: undefined,
   background: undefined,
   verticalAlign: 'middle',
