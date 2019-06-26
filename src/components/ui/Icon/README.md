@@ -129,8 +129,6 @@ An icon can optionally have a border and/or a background. These use a circular s
 <Icon name="mic" border="#cd2f83" color="#cd2f83"/>
 <Icon name="mic" background="#cd2f83" border="#181b1c" color="#181b1c"/>
 <Icon name="mic" background="#181b1c" color="#fff"/>
-
-
 <br />
 <Icon name="mic" border="#cd2f83" color="#cd2f83" extraSmall/>
 <Icon name="mic" border="#cd2f83" color="#cd2f83" small/>
@@ -165,10 +163,24 @@ When using an icon to represent text, be mindful of how that icon might be inter
 
 If an icon is used without a text label, it needs to have a text alternative so that screen readers can read it. This adds a `title` tag inside the `svg` that’s conveyed to screen reader users.
 
-[example]
+Best practises for label text:
+- Don't describe what the icon looks like
+- Don't include "icon" in the text
+- Duplicate information that already exists in the text or programmatically
+
+
+```jsx
+<Icon name="eye" title="Eye" />
+```
 
 If necessary, you can also add a `description` element to describe the icon in more detail. This isn't often necessary to communicate your intention, so only use it for complex iconography.
 
-[exmaple]
+```jsx
+<Icon name="eye" title="Eye" description="An open human eye, with no eyelashes." />
+```
 
 If an icon has a visible text label, the icon doesn't need a title attribute and should be hidden from screen readers. If you don't pass a title attribute to the icon, it will be automatically hidden from assistive technology using the `aria-hidden` property.
+
+```jsx
+<Icon name="eye-off" aria-hidden />
+```
