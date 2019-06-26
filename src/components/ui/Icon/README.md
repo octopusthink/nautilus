@@ -81,8 +81,6 @@ The default icon sizes can be tweaked in your theme. Sizes should be defined in 
 
 Stroke widths scale with the icon size for better legibility. Stroke widths are also customisable via your theme.
 
-If you need more fine-grained control, you can also pass an integer to use a custom size. To maintain vertical rhythm, aim for a multiple of 8 (best), 4 (good), or 2 (worst).
-
 [example]
 
 ### Margin & alignment
