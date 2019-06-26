@@ -42,9 +42,9 @@ export const Icon = (props) => {
     border,
     children,
     className,
-    color,
     'data-testid': dataTestId,
     description,
+    fillColor,
     id,
     name,
     title,
@@ -54,6 +54,7 @@ export const Icon = (props) => {
     large,
     extraLarge,
     margin,
+    strokeColor,
     ...otherProps
   } = props;
 
@@ -97,13 +98,15 @@ export const Icon = (props) => {
         aria-labelledby={title && titleId}
         id={svgId}
         css={css`
+          fill: ${fillColor};
           height: ${toUnits(size)};
           margin: ${toUnits(padding)};
-          stroke: ${color};
+          stroke: ${strokeColor};
           stroke-width: ${toUnits(strokeWidth)};
           width: ${toUnits(size)};
 
-          ${!color &&
+          ${!fillColor &&
+            !strokeColor &&
             // If no explicit colour was specified, we drop the opacity to
             // simulate lowering the intensity of the icon's colour.
             css`
@@ -167,7 +170,8 @@ Icon.defaultProps = {
   'data-testid': undefined,
   description: undefined,
   id: undefined,
-  color: undefined,
+  fillColor: undefined,
+  strokeColor: undefined,
   title: undefined,
   extraSmall: false,
   small: false,
@@ -189,8 +193,6 @@ Icon.propTypes = {
   children: PropTypes.node,
   /** @ignore */
   className: PropTypes.string,
-  /** Apply colour to the icon. */
-  color: PropTypes.string,
   /** @ignore */
   'data-testid': PropTypes.string,
   /** A longer description of this icon, used by assistive technology. */
@@ -199,6 +201,8 @@ Icon.propTypes = {
   extraLarge: PropTypes.bool,
   /** Extra-small icon size. */
   extraSmall: PropTypes.bool,
+  /** Apply colour to the icon fill. */
+  fillColor: PropTypes.string,
   /** @ignore */
   id: PropTypes.string,
   /** Large icon size. */
@@ -213,6 +217,8 @@ Icon.propTypes = {
   verticalAlign: PropTypes.string,
   /** Small icon size. */
   small: PropTypes.bool,
+  /** Apply colour to the icon stroke. */
+  strokeColor: PropTypes.string,
   /** A short description of this icon's content. Leave blank if the icon is entirely decorative. */
   title: PropTypes.string,
 };

@@ -21,12 +21,20 @@ Use an `Icon` when you want to emphasise or clarify an important piece of text. 
 
 ### Colour
 
-An icon can be passed a single colour value.
+An icon can be passed either a stroke or a fill colour.
 
 ```jsx
-<Icon name="pen-tool" color="#053e6c" large/>
-<Icon name="target" color="#8a0000" large/>
-<Icon name="star" color="#eeb600" large/>
+<Icon name="pen-tool" strokeColor="#053e6c" large/>
+<Icon name="target" strokeColor="#8a0000" large/>
+<Icon name="star" strokeColor="#eeb600" large/>
+<br />
+<Icon name="pen-tool" fillColor="#053e6c" large/>
+<Icon name="target" fillColor="#8a0000" large/>
+<Icon name="star" fillColor="#eeb600" large/>
+<br />
+<Icon name="pen-tool" fillColor="#5788b1" strokeColor="#043258" large/>
+<Icon name="target" fillColor="#c26767" strokeColor="#780000" large/>
+<Icon name="star" fillColor="#f7e095" strokeColor="#d7a400" large/>
 ```
 
 When pairing an icon with a label, using a slightly lighter variant of the text colour helps make the two elements feel connected, whilst ensuring the icon doesn't have more visual weight than the text. Nautilus does this by default because we always want you to look good. 🙌
