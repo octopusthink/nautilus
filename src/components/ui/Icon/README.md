@@ -2,7 +2,7 @@ An `<Icon>` is a graphical representation of a concept, used to illustrate or cl
 
 ```jsx
 <Icon name="airplay" />
-<Icon aria-hidden name="aperture" title="Camera Aperture" />
+<Icon name="aperture" title="Camera Aperture" />
 <Icon name="anchor" title="Boat anchor" />
 ```
 
@@ -182,5 +182,9 @@ If necessary, you can also add a `description` element to describe the icon in m
 If an icon has a visible text label, the icon doesn't need a title attribute and should be hidden from screen readers. If you don't pass a title attribute to the icon, it will be automatically hidden from assistive technology using the `aria-hidden` property.
 
 ```jsx
-<Icon name="eye-off" aria-hidden />
+import { Paragraph } from '@octopusthink/nautilus';
+
+<Paragraph>
+<Icon name="eye-off" /> Now you see me, now you don't.
+</Paragraph>
 ```
