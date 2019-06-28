@@ -21,41 +21,51 @@ Use an `Icon` when you want to emphasise or clarify an important piece of text. 
 
 ### Colour
 
-An icon can be passed either a stroke or a fill colour.
+An icon can be passed either a stroke colour or a fill colour.
+
+`strokeColor` affects the outline of the icon:
 
 ```jsx
-<Icon name="pen-tool" strokeColor="#053e6c" large/>
-<Icon name="target" strokeColor="#8a0000" large/>
-<Icon name="star" strokeColor="#eeb600" large/>
-<br />
-<Icon name="pen-tool" fillColor="#053e6c" large/>
-<Icon name="target" fillColor="#8a0000" large/>
-<Icon name="star" fillColor="#eeb600" large/>
-<br />
-<Icon name="pen-tool" fillColor="#5788b1" strokeColor="#043258" large/>
-<Icon name="target" fillColor="#c26767" strokeColor="#780000" large/>
-<Icon name="star" fillColor="#f7e095" strokeColor="#d7a400" large/>
+<Icon name="pen-tool" strokeColor="#053e6c" large />
+<Icon name="target" strokeColor="#8a0000" large />
+<Icon name="star" strokeColor="#eeb600" large />
 ```
 
-When pairing an icon with a label, using a slightly lighter variant of the text colour helps make the two elements feel connected, whilst ensuring the icon doesn't have more visual weight than the text. Nautilus does this by default because we always want you to look good. 🙌
+`fillColor` affects the inside of the icon:
+
+```jsx
+<Icon name="pen-tool" fillColor="#053e6c" large />
+<Icon name="target" fillColor="#8a0000" large />
+<Icon name="star" fillColor="#eeb600" large />
+```
+
+You can combine both colours if you like:
+
+```jsx
+<Icon name="pen-tool" fillColor="#5788b1" strokeColor="#043258" large />
+<Icon name="target" fillColor="#c26767" strokeColor="#780000" large />
+<Icon name="star" fillColor="#f7e095" strokeColor="#d7a400" large />
+```
+
+When pairing an icon with a label, use a slightly lighter variant of the text colour for the icon colour. This make the two elements feel connected, whilst ensuring the icon doesn't have more visual weight than the text. (Nautilus does this by default because we always want you to look good. 🙌)
 
 ```jsx
 import { Paragraph } from '@octopusthink/nautilus';
 
 <React.Fragment>
   <Paragraph style={{ color: '#b32973' }}>
-    <Icon name="heart"/> I love Lucy
+    <Icon name="heart"/> I love Lucy.
   </Paragraph>
   <Paragraph>
     <Icon name="coffee" />
-    Lucy loves coffee
+    Lucy loves coffee.
   </Paragraph>
 </React.Fragment>
 ```
 
 ### Size
 
-Icons are available in five different sizes: `extraLarge` (`64rem`), `large` (`48rem`), `medium` (`24px`), `small` (`16px`), and `extraSmall` (`8px`). If you don't pass a size value, your icons will use the medium size.
+Icons are available in five different sizes: `extraLarge` (`64px`), `large` (`48px`), `medium` (`24px`), `small` (`16px`), and `extraSmall` (`8px`). If you don't pass a size value, your icons will use the `medium` size.
 
 The default icon sizes can be tweaked in your theme. Sizes should be defined in `rem` to ensure the icons adjust to the user's font size. (The above sizes are the pixel equivalents of the `rem` sizes provided for reference.)
 
@@ -87,63 +97,36 @@ Stroke widths scale with the icon size for better legibility. Stroke widths are 
 
 By default, an `Icon` has a small amount of margin to its right, to give it some breathing space when used with text.
 
-You can customise the margin value to ensure proper placement in your layout. To maintain visual consistency, it's best to use the spacing values provided by your theme.
+You can customise the margin value to ensure proper placement in your layout. To maintain visual consistency, Nautilus uses the spacing values provided by your theme by default.
 
-Aligning an icon perfectly to text it's inline with can sometimes be tricky. By default, the container is set to vertical-align middle, but you can override this if needed.
+Aligning an icon perfectly to text it's inline with can sometimes be tricky. By default, the container is set to vertical-align middle, but you can override this in your CSS if needed.
 
-```jsx
-import { Paragraph } from '@octopusthink/nautilus';
-
-<React.Fragment>
-  <Paragraph>
-    <Icon name="alert-circle" />
-    Don't stand so close to me.
-  </Paragraph>
-
-  <Paragraph>
-    <Icon name="users" margin="0" />
-    Let's get cuddly.
-  </Paragraph>
-
-  <Paragraph>
-    <Icon name="zap" margin="2.4rem 2.4rem 2.4rem 0" />
-    It's not you, it's me.
-  </Paragraph>
-
-  <Paragraph>
-    <Icon name="arrow-up" verticalAlign="1px"/>
-    Put your hands in the air
-  </Paragraph>
-</React.Fragment>
-```
-
+If you have an Icon visually on its own that doesn't accompany any visible text, you may want to use the `noMargin` prop, which removes the default margins.
 
 ### Border & background
 
-An icon can optionally have a border and/or a background. These use a circular shape by default because it looks nicest, but this value, along with border width, can be changed in your theme.
+An icon can have a border and a background. These use a circular shape by default because it looks nicest, but this value, along with border width, can be changed in your theme.
 
 ```jsx
-<Icon name="mic" background="#181b1c" color="#cd2f83"/>
-<Icon name="mic" border="#cd2f83" color="#cd2f83"/>
-<Icon name="mic" background="#cd2f83" border="#181b1c" color="#181b1c"/>
-<Icon name="mic" background="#181b1c" color="#fff"/>
+<Icon name="mic" background="#181b1c" color="#cd2f83" />
+<Icon name="mic" border="#cd2f83" color="#cd2f83" />
+<Icon name="mic" background="#cd2f83" border="#181b1c" color="#181b1c" />
+<Icon name="mic" background="#181b1c" color="#fff" />
 <br />
-<Icon name="mic" border="#cd2f83" color="#cd2f83" extraSmall/>
-<Icon name="mic" border="#cd2f83" color="#cd2f83" small/>
-<Icon name="mic" border="#cd2f83" color="#cd2f83"/>
-<Icon name="mic" border="#cd2f83" color="#cd2f83" large/>
-<Icon name="mic" border="#cd2f83" color="#cd2f83" extraLarge/>
-
-
+<Icon name="mic" border="#cd2f83" color="#cd2f83" extraSmall />
+<Icon name="mic" border="#cd2f83" color="#cd2f83" small />
+<Icon name="mic" border="#cd2f83" color="#cd2f83" medium />
+<Icon name="mic" border="#cd2f83" color="#cd2f83" large />
+<Icon name="mic" border="#cd2f83" color="#cd2f83" extraLarge />
 ```
 
 This is generally best when an `Icon` is used inside a `Tab` or a `Button`, since it gives the icon additional emphasis and creates a clear touch target.
 
 ## Accessibility
 
-### An icon + text is the best choice for accessiblity.
+### An icon + text is the best choice for accessiblity
 
-Icons can help people who have troubles processing text or who are trying to navigate a product written in a language they aren't familiar with. Use icons to increase the "scan-ability" of large blocks of content.
+Icons can help people who have trouble processing text or who are trying to navigate a product written in a foreign language. Use icons to increase the "scan-ability" of large blocks of content.
 
 Remember that an icon may have different meanings in different contexts, or when interpreted through the lenses of different cultures, and they provide no meaning to people with vision loss.
 
@@ -166,7 +149,6 @@ Best practises for label text:
 - Don't include "icon" in the text
 - Duplicate information that already exists in the text or programmatically
 
-
 ```jsx
 <Icon name="eye" title="Eye" />
 ```
@@ -183,6 +165,6 @@ If an icon has a visible text label, the icon doesn't need a title attribute and
 import { Paragraph } from '@octopusthink/nautilus';
 
 <Paragraph>
-<Icon name="eye-off" /> Now you see me, now you don't.
+  <Icon name="eye-off" /> Now you see me, now you don't.
 </Paragraph>
 ```
