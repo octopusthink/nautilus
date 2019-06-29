@@ -91,7 +91,6 @@ The default icon sizes can be tweaked in your theme. Sizes should be defined in 
 
 Stroke widths scale with the icon size for better legibility. Stroke widths are also customisable via your theme.
 
-[example]
 
 ### Margin & alignment
 
@@ -124,7 +123,7 @@ This is generally best when an `Icon` is used inside a `Tab` or a `Button`, sinc
 
 ## Accessibility
 
-### An icon + text is the best choice for accessiblity
+### An icon + text is the best choice for accessibility
 
 Icons can help people who have trouble processing text or who are trying to navigate a product written in a foreign language. Use icons to increase the "scan-ability" of large blocks of content.
 
