@@ -17,6 +17,7 @@ const defineIconSizes = (props) => {
     large,
     extraLarge,
     theme,
+    margin,
   } = props;
 
   let iconSize = 'medium';
@@ -37,6 +38,7 @@ const defineIconSizes = (props) => {
     strokeWidth,
     padding,
     borderWidth,
+    marginSize,
   } = theme.components.Icon.sizes[iconSize];
 
   const wrapperSize = Math.ceil(size + padding * 2);
@@ -48,7 +50,15 @@ const defineIconSizes = (props) => {
     hasContainer = false;
   }
 
-  return { borderWidth, hasContainer, padding, size, strokeWidth, wrapperSize };
+  return {
+    borderWidth,
+    hasContainer,
+    marginSize,
+    padding,
+    size,
+    strokeWidth,
+    wrapperSize,
+  };
 };
 
 export const Icon = (props) => {
@@ -68,7 +78,6 @@ export const Icon = (props) => {
     medium,
     large,
     extraLarge,
-    margin,
     strokeColor,
     ...otherProps
   } = props;
@@ -150,8 +159,8 @@ export const Icon = (props) => {
 };
 
 export const styles = (props) => {
-  const { border, background, margin, verticalAlign } = props;
-  const { borderWidth, wrapperSize } = defineIconSizes(props);
+  const { border, background, verticalAlign } = props;
+  const { borderWidth, marginSize, wrapperSize } = defineIconSizes(props);
   let borderBackground;
   let backgroundCSS;
   let borderCSS;
@@ -181,7 +190,7 @@ export const styles = (props) => {
   return css`
     ${borderBackground};
     display: inline-block;
-    margin: ${margin};
+    margin: ${marginSize};
     vertical-align: ${verticalAlign};
   `;
 };
@@ -200,7 +209,7 @@ Icon.defaultProps = {
   medium: true,
   large: false,
   extraLarge: false,
-  margin: '0 0.8rem 0 0', // @todo this default should probably just pull from the theme padding!
+  margin: undefined,
   border: undefined,
   background: undefined,
   verticalAlign: 'middle',
