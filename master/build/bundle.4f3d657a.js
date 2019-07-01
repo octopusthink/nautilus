@@ -3796,17 +3796,6 @@ module.exports = _objectWithoutProperties;
 
 /***/ }),
 /* 14 */
-/***/ (function(module, exports) {
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-module.exports = typeof window == 'object' && window && window.Math == Math ? window
-  : typeof self == 'object' && self && self.Math == Math ? self
-  // eslint-disable-next-line no-new-func
-  : Function('return this')();
-
-
-/***/ }),
-/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3826,7 +3815,7 @@ function requireInRuntime(requireMap, filepath) {
 }
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3856,6 +3845,17 @@ function evalInContext(header, require, code) {
 
   return func.bind(null, require);
 }
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+module.exports = typeof window == 'object' && window && window.Math == Math ? window
+  : typeof self == 'object' && self && self.Math == Math ? self
+  // eslint-disable-next-line no-new-func
+  : Function('return this')();
+
 
 /***/ }),
 /* 17 */
@@ -4171,7 +4171,7 @@ var styled_base_browser_esm_createStyled = function createStyled(tag, options) {
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(14);
+var global = __webpack_require__(16);
 var getOwnPropertyDescriptor = __webpack_require__(123).f;
 var hide = __webpack_require__(44);
 var redefine = __webpack_require__(53);
@@ -4255,7 +4255,7 @@ module.exports = function (it) {
 
 var store = __webpack_require__(69)('wks');
 var uid = __webpack_require__(85);
-var Symbol = __webpack_require__(14).Symbol;
+var Symbol = __webpack_require__(16).Symbol;
 var NATIVE_SYMBOL = __webpack_require__(169);
 
 module.exports = function (name) {
@@ -5334,7 +5334,7 @@ module.exports = baseGetTag;
 "use strict";
 
 // ECMAScript 6 symbols shim
-var global = __webpack_require__(14);
+var global = __webpack_require__(16);
 var has = __webpack_require__(31);
 var DESCRIPTORS = __webpack_require__(29);
 var IS_PURE = __webpack_require__(160);
@@ -5624,7 +5624,7 @@ var has = __webpack_require__(31);
 var isObject = __webpack_require__(22);
 var defineProperty = __webpack_require__(25).f;
 var copyConstructorProperties = __webpack_require__(162);
-var NativeSymbol = __webpack_require__(14).Symbol;
+var NativeSymbol = __webpack_require__(16).Symbol;
 
 if (DESCRIPTORS && typeof NativeSymbol == 'function' && (!('description' in NativeSymbol.prototype) ||
   // Safari 12 bug
@@ -5901,7 +5901,7 @@ module.exports = function (argument) {
 /* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(14);
+var global = __webpack_require__(16);
 var hide = __webpack_require__(44);
 var has = __webpack_require__(31);
 var setGlobal = __webpack_require__(124);
@@ -11884,7 +11884,7 @@ module.exports = function (argument) {
 /* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(14);
+var global = __webpack_require__(16);
 var setGlobal = __webpack_require__(124);
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || setGlobal(SHARED, {});
@@ -14746,7 +14746,7 @@ exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnProper
 /* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(14);
+var global = __webpack_require__(16);
 var hide = __webpack_require__(44);
 
 module.exports = function (key, value) {
@@ -15654,7 +15654,7 @@ __webpack_require__(90)(
 var DOMIterables = __webpack_require__(828);
 var forEach = __webpack_require__(829);
 var hide = __webpack_require__(44);
-var global = __webpack_require__(14);
+var global = __webpack_require__(16);
 
 for (var COLLECTION_NAME in DOMIterables) {
   var Collection = global[COLLECTION_NAME];
@@ -16589,7 +16589,7 @@ module.exports = !__webpack_require__(29) && !__webpack_require__(12)(function (
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(22);
-var document = __webpack_require__(14).document;
+var document = __webpack_require__(16).document;
 // typeof document.createElement is 'object' in old IE
 var exist = isObject(document) && isObject(document.createElement);
 
@@ -16622,7 +16622,7 @@ var hide = __webpack_require__(44);
 var objectHas = __webpack_require__(31);
 var sharedKey = __webpack_require__(125);
 var hiddenKeys = __webpack_require__(67);
-var WeakMap = __webpack_require__(14).WeakMap;
+var WeakMap = __webpack_require__(16).WeakMap;
 var set, get, has;
 
 var enforce = function (it) {
@@ -19633,7 +19633,7 @@ exports.f = __webpack_require__(24);
 /* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(14);
+module.exports = __webpack_require__(16);
 
 
 /***/ }),
@@ -20047,7 +20047,7 @@ module.exports = toString;
 
 var DESCRIPTORS = __webpack_require__(29);
 var MATCH = __webpack_require__(24)('match');
-var global = __webpack_require__(14);
+var global = __webpack_require__(16);
 var isForced = __webpack_require__(163);
 var inheritIfRequired = __webpack_require__(409);
 var defineProperty = __webpack_require__(25).f;
@@ -25252,7 +25252,7 @@ module.exports = isFinite;
 /* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(863);
+module.exports = __webpack_require__(864);
 
 
 /***/ }),
@@ -26928,7 +26928,7 @@ module.exports = function (index, length) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var nativeFunctionToString = __webpack_require__(159);
-var WeakMap = __webpack_require__(14).WeakMap;
+var WeakMap = __webpack_require__(16).WeakMap;
 
 module.exports = typeof WeakMap === 'function' && /native code/.test(nativeFunctionToString.call(WeakMap));
 
@@ -26940,7 +26940,7 @@ module.exports = typeof WeakMap === 'function' && /native code/.test(nativeFunct
 var getOwnPropertyNamesModule = __webpack_require__(86);
 var getOwnPropertySymbolsModule = __webpack_require__(81);
 var anObject = __webpack_require__(23);
-var Reflect = __webpack_require__(14).Reflect;
+var Reflect = __webpack_require__(16).Reflect;
 
 // all object keys, includes non-enumerable and symbols
 module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
@@ -32442,7 +32442,7 @@ module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperti
 /* 354 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var document = __webpack_require__(14).document;
+var document = __webpack_require__(16).document;
 
 module.exports = document && document.documentElement;
 
@@ -34256,7 +34256,7 @@ module.exports = function (CONSTRUCTOR_NAME) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var path = __webpack_require__(187);
-var global = __webpack_require__(14);
+var global = __webpack_require__(16);
 
 var aFunction = function (variable) {
   return typeof variable == 'function' ? variable : undefined;
@@ -43182,12 +43182,26 @@ module.exports = {
                     'components': [],
                     'content': __webpack_require__(842),
                     'external': void 0
+                },
+                {
+                    'name': 'Colour',
+                    'exampleMode': 'collapse',
+                    'usageMode': 'collapse',
+                    'sectionDepth': 1,
+                    'description': void 0,
+                    'slug': 'section-colour',
+                    'sections': [],
+                    'filepath': 'styleguide/docs/colour.md',
+                    'href': void 0,
+                    'components': [],
+                    'content': __webpack_require__(843),
+                    'external': void 0
                 }
             ],
             'filepath': 'styleguide/docs/foundation.md',
             'href': void 0,
             'components': [],
-            'content': __webpack_require__(843),
+            'content': __webpack_require__(844),
             'external': void 0
         },
         {
@@ -43213,11 +43227,11 @@ module.exports = {
                             'slug': 'nautilus',
                             'pathLine': 'src/components/hoc/Nautilus/index.js',
                             'module': __webpack_require__(108),
-                            'props': __webpack_require__(844),
+                            'props': __webpack_require__(845),
                             'hasExamples': true,
                             'metadata': {}
                         }],
-                    'content': __webpack_require__(846),
+                    'content': __webpack_require__(847),
                     'external': void 0
                 },
                 {
@@ -43236,7 +43250,7 @@ module.exports = {
                             'slug': 'button',
                             'pathLine': 'src/components/ui/Button/index.js',
                             'module': __webpack_require__(100),
-                            'props': __webpack_require__(847),
+                            'props': __webpack_require__(848),
                             'hasExamples': true,
                             'metadata': {}
                         },
@@ -43245,7 +43259,7 @@ module.exports = {
                             'slug': 'heading',
                             'pathLine': 'src/components/ui/Heading/index.js',
                             'module': __webpack_require__(57),
-                            'props': __webpack_require__(849),
+                            'props': __webpack_require__(850),
                             'hasExamples': true,
                             'metadata': {}
                         },
@@ -43254,7 +43268,7 @@ module.exports = {
                             'slug': 'list',
                             'pathLine': 'src/components/ui/List/index.js',
                             'module': __webpack_require__(107),
-                            'props': __webpack_require__(851),
+                            'props': __webpack_require__(852),
                             'hasExamples': true,
                             'metadata': {}
                         },
@@ -43263,7 +43277,7 @@ module.exports = {
                             'slug': 'pagetitle',
                             'pathLine': 'src/components/ui/PageTitle/index.js',
                             'module': __webpack_require__(102),
-                            'props': __webpack_require__(854),
+                            'props': __webpack_require__(855),
                             'hasExamples': true,
                             'metadata': {}
                         },
@@ -43272,7 +43286,7 @@ module.exports = {
                             'slug': 'paragraph',
                             'pathLine': 'src/components/ui/Paragraph/index.js',
                             'module': __webpack_require__(42),
-                            'props': __webpack_require__(856),
+                            'props': __webpack_require__(857),
                             'hasExamples': true,
                             'metadata': {}
                         },
@@ -43281,19 +43295,19 @@ module.exports = {
                             'slug': 'textfield',
                             'pathLine': 'src/components/ui/TextField/index.js',
                             'module': __webpack_require__(207),
-                            'props': __webpack_require__(858),
+                            'props': __webpack_require__(859),
                             'hasExamples': true,
                             'metadata': {}
                         }
                     ],
-                    'content': __webpack_require__(860),
+                    'content': __webpack_require__(861),
                     'external': void 0
                 }
             ],
             'filepath': 'styleguide/docs/function.md',
             'href': void 0,
             'components': [],
-            'content': __webpack_require__(861),
+            'content': __webpack_require__(862),
             'external': void 0
         },
         {
@@ -43307,7 +43321,7 @@ module.exports = {
             'filepath': 'styleguide/docs/form.md',
             'href': void 0,
             'components': [],
-            'content': __webpack_require__(862),
+            'content': __webpack_require__(863),
             'external': void 0
         }
     ]
@@ -43322,9 +43336,9 @@ module.exports = {
 if (false) {}
 
 var requireMap = { 'react': __webpack_require__(2) };
-var requireInRuntimeBase = __webpack_require__(15).default;
+var requireInRuntimeBase = __webpack_require__(14).default;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
+var evalInContextBase = __webpack_require__(15).default;
 var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;", requireInRuntime);
 
 module.exports = [{
@@ -43341,9 +43355,9 @@ module.exports = [{
 if (false) {}
 
 var requireMap = { 'react': __webpack_require__(2) };
-var requireInRuntimeBase = __webpack_require__(15).default;
+var requireInRuntimeBase = __webpack_require__(14).default;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
+var evalInContextBase = __webpack_require__(15).default;
 var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;", requireInRuntime);
 
 module.exports = [{
@@ -43360,9 +43374,9 @@ module.exports = [{
 if (false) {}
 
 var requireMap = { 'react': __webpack_require__(2) };
-var requireInRuntimeBase = __webpack_require__(15).default;
+var requireInRuntimeBase = __webpack_require__(14).default;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
+var evalInContextBase = __webpack_require__(15).default;
 var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;", requireInRuntime);
 
 module.exports = [{
@@ -43379,9 +43393,9 @@ module.exports = [{
 if (false) {}
 
 var requireMap = { 'react': __webpack_require__(2) };
-var requireInRuntimeBase = __webpack_require__(15).default;
+var requireInRuntimeBase = __webpack_require__(14).default;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
+var evalInContextBase = __webpack_require__(15).default;
 var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;", requireInRuntime);
 
 module.exports = [{
@@ -43398,9 +43412,28 @@ module.exports = [{
 if (false) {}
 
 var requireMap = { 'react': __webpack_require__(2) };
-var requireInRuntimeBase = __webpack_require__(15).default;
+var requireInRuntimeBase = __webpack_require__(14).default;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
+var evalInContextBase = __webpack_require__(15).default;
+var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;", requireInRuntime);
+
+module.exports = [{
+        'type': 'markdown',
+        'content': 'Colour is a way to communicate both functional cues and emotional resonance. Purposeful colour choices make interacting with a product easier and more predictable.\n\n## Principles\n\n### 1. Colour is accessible.\n\nColour can be used as an additional layer of meaning for users who are more comfortable navigating an interface in a visual way, but should never be the sole source of differentiation in a UI. When choosing colours, take into account users with various forms of colour blindness or low vision.\n\nColour should never be the sole indicator of meaning. Include icons, shapes, or text to supplement anything communicated via colour. Text contrast must [pass WCAG AA across the board](https://webaim.org/resources/contrastchecker/). Test your colours in grayscale to make sure they have sufficient contrast when colour is removed.\n\n### 2. Colour expresses meaning.\n\nDon\'t apply colour to an element at random. Colour can be decorative in both editorial and product contexts, but clear communication is more important than pretty colours.\n\nColour can be used to reinforce meaning (error and success messages), to group related items that aren\'t in physical proximity, to reinforce similar interaction patterns, to denote the most important element on a page, or to guide users more efficiently through an interface. Colour choices should be intentional and rational (eg. red for error; green for success).\n\n### 3. Colour focuses attention.\n\nThe use of colour should help bring attention to the most important elements on a page. Colour should support the hierarchy of the page. Use restraint with colour elsewhere in order to focus users\' attention on the task at hand or the most important element on a screen. Don\'t overuse colour, or you run the risk of undermining the hierarchy of your system.\n\n### 4. Colour considers its context.\n\nColour, when used to express meaning, is highly dependent on cultural norms. White may mean purity to a Western audience, but it can mean death to an Eastern one. To skilfully make use of colour\'s emotional resonance, it\'s important to have an understanding of your audience and the cultural context in which your design will exist.\n\nIn many countries, colour is also tightly coupled to political parties, which may have consequences you don\'t initially anticipate when choosing your colours.\n\n## What does Foundation provide?\n\nNautilus provides a palette of seven colours (red, pink, purple, blue, cyan, green, yellow), each with 10 tints and shades. It also provides a neutral palette of greys in 10 steps, plus white and black.\n\n![](diagrams/colour-palette.png)\n\nThis palette has been designed to be flexible enough to build a wide variety of different distinct colour palettes for a range of brand expression, whilst retaining a sense of consistency and balance across different product lines.\n\n## Colour tokens\n\nWhen applying colours to elements it\'s best to use Nautilus\' Colour Tokens. Colour Tokens are semantic variables that abstract colour by role or usage, independent of the actual color values. Tokens can be customised in themes.\n\nUsing these Colour Tokens rather than applying colour values directly mean that it\'s easier to make cross-site changes to colour in a consistent and semantic way.\n\n[table of all colour tokens]\n\n## Choosing colours\n\n**Themes** can select primary, secondary, and accent colours for a brand and the colours will be automatically applied to elements in a consistent way. For themes that require more granular control of colour choices, semantic and component colours can also be set by themes directly.\n\n![](diagrams/sample-theme-palettes.png)\n\nWe recommend choosing colours from Nautilus\' palette for increased harmony and usability, but you can use any colour values in your theme.\n\n[Link to brand section]\n\n### Accessible colour\n\nThe steps in Nautilus\' palette are designed to help make it simpler to make accessible colour choices. Any colour from `500` to `900` will have sufficient contrast against white for AA contrast, and any colour from `0` to `400` will have sufficient contrast against black for AA contrast.\n\nBeyond black and white, the colour values themselves can be used to approximate colour contrast. Any pair of colours with a difference of 500 or more will pass AA level contrast for text and other elements.\n\n[diagram of applied accessibility]'
+    }]
+	
+
+/***/ }),
+/* 844 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+if (false) {}
+
+var requireMap = { 'react': __webpack_require__(2) };
+var requireInRuntimeBase = __webpack_require__(14).default;
+var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
+var evalInContextBase = __webpack_require__(15).default;
 var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;", requireInRuntime);
 
 module.exports = [{
@@ -43410,7 +43443,7 @@ module.exports = [{
 	
 
 /***/ }),
-/* 844 */
+/* 845 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -43435,30 +43468,8 @@ module.exports = {
             'name': 'theme'
         }],
     'doclets': {},
-    'examples': __webpack_require__(845)
+    'examples': __webpack_require__(846)
 }
-	
-
-/***/ }),
-/* 845 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-if (false) {}
-
-var requireMap = {
-    'react': __webpack_require__(2),
-    './index.js': __webpack_require__(108)
-};
-var requireInRuntimeBase = __webpack_require__(15).default;
-var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
-var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;\nconst Nautilus$0 = require('./index.js');\nconst Nautilus = Nautilus$0.default || Nautilus$0;", requireInRuntime);
-
-module.exports = [{
-        'type': 'markdown',
-        'content': '`Nautilus` is the base component (eg. the _higher-order component_ or _HOC_) used to inject the Nautilus Design System into your app. It provides a `theme` prop used to customise your Nautilus components, as well as injecting some sane default styles into your app. Your "root" components should be wrapped in the `<Nautilus>` component; any of your components that use a Nautilus component will need to be wrapped in a `<Nautilus>` component.'
-    }]
 	
 
 /***/ }),
@@ -43468,10 +43479,32 @@ module.exports = [{
 
 if (false) {}
 
-var requireMap = { 'react': __webpack_require__(2) };
-var requireInRuntimeBase = __webpack_require__(15).default;
+var requireMap = {
+    'react': __webpack_require__(2),
+    './index.js': __webpack_require__(108)
+};
+var requireInRuntimeBase = __webpack_require__(14).default;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
+var evalInContextBase = __webpack_require__(15).default;
+var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;\nconst Nautilus$0 = require('./index.js');\nconst Nautilus = Nautilus$0.default || Nautilus$0;", requireInRuntime);
+
+module.exports = [{
+        'type': 'markdown',
+        'content': '`Nautilus` is the base component (eg. the _higher-order component_ or _HOC_) used to inject the Nautilus Design System into your app. It provides a `theme` prop used to customise your Nautilus components, as well as injecting some sane default styles into your app. Your "root" components should be wrapped in the `<Nautilus>` component; any of your components that use a Nautilus component will need to be wrapped in a `<Nautilus>` component.'
+    }]
+	
+
+/***/ }),
+/* 847 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+if (false) {}
+
+var requireMap = { 'react': __webpack_require__(2) };
+var requireInRuntimeBase = __webpack_require__(14).default;
+var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
+var evalInContextBase = __webpack_require__(15).default;
 var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;", requireInRuntime);
 
 module.exports = [{
@@ -43481,7 +43514,7 @@ module.exports = [{
 	
 
 /***/ }),
-/* 847 */
+/* 848 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -43598,12 +43631,12 @@ module.exports = {
         }
     ],
     'doclets': {},
-    'examples': __webpack_require__(848)
+    'examples': __webpack_require__(849)
 }
 	
 
 /***/ }),
-/* 848 */
+/* 849 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -43613,9 +43646,9 @@ var requireMap = {
     'react': __webpack_require__(2),
     './index.js': __webpack_require__(100)
 };
-var requireInRuntimeBase = __webpack_require__(15).default;
+var requireInRuntimeBase = __webpack_require__(14).default;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
+var evalInContextBase = __webpack_require__(15).default;
 var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;\nconst Button$0 = require('./index.js');\nconst Button = Button$0.default || Button$0;", requireInRuntime);
 
 module.exports = [
@@ -43695,7 +43728,7 @@ module.exports = [
 	
 
 /***/ }),
-/* 849 */
+/* 850 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -43733,12 +43766,12 @@ module.exports = {
             'name': 'level'
         }],
     'doclets': {},
-    'examples': __webpack_require__(850)
+    'examples': __webpack_require__(851)
 }
 	
 
 /***/ }),
-/* 850 */
+/* 851 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -43748,9 +43781,9 @@ var requireMap = {
     'react': __webpack_require__(2),
     './index.js': __webpack_require__(57)
 };
-var requireInRuntimeBase = __webpack_require__(15).default;
+var requireInRuntimeBase = __webpack_require__(14).default;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
+var evalInContextBase = __webpack_require__(15).default;
 var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;\nconst Heading$0 = require('./index.js');\nconst Heading = Heading$0.default || Heading$0;", requireInRuntime);
 
 module.exports = [
@@ -43782,7 +43815,7 @@ module.exports = [
 	
 
 /***/ }),
-/* 851 */
+/* 852 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -43861,25 +43894,25 @@ module.exports = {
         }
     ],
     'doclets': {},
-    'examples': __webpack_require__(852)
+    'examples': __webpack_require__(853)
 }
 	
 
 /***/ }),
-/* 852 */
+/* 853 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 if (false) {}
 
 var requireMap = {
-    '@octopusthink/nautilus': __webpack_require__(853),
+    '@octopusthink/nautilus': __webpack_require__(854),
     'react': __webpack_require__(2),
     './index.js': __webpack_require__(107)
 };
-var requireInRuntimeBase = __webpack_require__(15).default;
+var requireInRuntimeBase = __webpack_require__(14).default;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
+var evalInContextBase = __webpack_require__(15).default;
 var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;\nconst List$0 = require('./index.js');\nconst List = List$0.default || List$0;", requireInRuntime);
 
 module.exports = [
@@ -43937,7 +43970,7 @@ module.exports = [
 	
 
 /***/ }),
-/* 853 */
+/* 854 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -43968,7 +44001,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (_components__WEBPACK_IMPORTED_MODULE_0__[/* Nautilus */ "d"]);
 
 /***/ }),
-/* 854 */
+/* 855 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -43990,12 +44023,12 @@ module.exports = {
             'name': 'documentTitle'
         }],
     'doclets': {},
-    'examples': __webpack_require__(855)
+    'examples': __webpack_require__(856)
 }
 	
 
 /***/ }),
-/* 855 */
+/* 856 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -44005,9 +44038,9 @@ var requireMap = {
     'react': __webpack_require__(2),
     './index.js': __webpack_require__(102)
 };
-var requireInRuntimeBase = __webpack_require__(15).default;
+var requireInRuntimeBase = __webpack_require__(14).default;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
+var evalInContextBase = __webpack_require__(15).default;
 var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;\nconst PageTitle$0 = require('./index.js');\nconst PageTitle = PageTitle$0.default || PageTitle$0;", requireInRuntime);
 
 module.exports = [
@@ -44042,7 +44075,7 @@ module.exports = [
 	
 
 /***/ }),
-/* 856 */
+/* 857 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -44110,12 +44143,12 @@ module.exports = {
         }
     ],
     'doclets': {},
-    'examples': __webpack_require__(857)
+    'examples': __webpack_require__(858)
 }
 	
 
 /***/ }),
-/* 857 */
+/* 858 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -44125,9 +44158,9 @@ var requireMap = {
     'react': __webpack_require__(2),
     './index.js': __webpack_require__(42)
 };
-var requireInRuntimeBase = __webpack_require__(15).default;
+var requireInRuntimeBase = __webpack_require__(14).default;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
+var evalInContextBase = __webpack_require__(15).default;
 var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;\nconst Paragraph$0 = require('./index.js');\nconst Paragraph = Paragraph$0.default || Paragraph$0;", requireInRuntime);
 
 module.exports = [
@@ -44189,7 +44222,7 @@ module.exports = [
 	
 
 /***/ }),
-/* 858 */
+/* 859 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -44394,12 +44427,12 @@ module.exports = {
         }
     ],
     'doclets': {},
-    'examples': __webpack_require__(859)
+    'examples': __webpack_require__(860)
 }
 	
 
 /***/ }),
-/* 859 */
+/* 860 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -44409,9 +44442,9 @@ var requireMap = {
     'react': __webpack_require__(2),
     './index.js': __webpack_require__(207)
 };
-var requireInRuntimeBase = __webpack_require__(15).default;
+var requireInRuntimeBase = __webpack_require__(14).default;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
+var evalInContextBase = __webpack_require__(15).default;
 var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;\nconst TextField$0 = require('./index.js');\nconst TextField = TextField$0.default || TextField$0;", requireInRuntime);
 
 module.exports = [
@@ -44493,25 +44526,6 @@ module.exports = [
 	
 
 /***/ }),
-/* 860 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-if (false) {}
-
-var requireMap = { 'react': __webpack_require__(2) };
-var requireInRuntimeBase = __webpack_require__(15).default;
-var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
-var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;", requireInRuntime);
-
-module.exports = [{
-        'type': 'markdown',
-        'content': 'Use UI Components to display elements visually on a screen. Think of these as the "UI Kit" portion of Nautilus; if you want to display a header, an image, or tabular data\u2014you should be using a UI component.\n\nOur UI Components are _very_ low-level and should be used as replacement for HTML elements. This is to provide a more consistent API around content (that adheres to the rules of our design system) and to provide a platform-agnostic UI library\u2014you should be able to use Nautilus components in both a React and React Native app.'
-    }]
-	
-
-/***/ }),
 /* 861 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -44519,14 +44533,14 @@ module.exports = [{
 if (false) {}
 
 var requireMap = { 'react': __webpack_require__(2) };
-var requireInRuntimeBase = __webpack_require__(15).default;
+var requireInRuntimeBase = __webpack_require__(14).default;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
+var evalInContextBase = __webpack_require__(15).default;
 var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;", requireInRuntime);
 
 module.exports = [{
         'type': 'markdown',
-        'content': 'Function is a collection of functional patterns, defined as much as possible by their function.\n\nWe reference these in three layers:\n\n-   components (buttons, headings) make up the smallest unit\n-   patterns (cards, navigation) are comprised of components pieced together\n-   layouts (search results, article page) are full-page layouts comprising of patterns and components\n\nFunction provides a series of components and patterns with a defined behaviour. Basically, if something is a React component, it\'s going to be in here. And basically everything is a React component, so if you\'re looking to build something, start here.'
+        'content': 'Use UI Components to display elements visually on a screen. Think of these as the "UI Kit" portion of Nautilus; if you want to display a header, an image, or tabular data\u2014you should be using a UI component.\n\nOur UI Components are _very_ low-level and should be used as replacement for HTML elements. This is to provide a more consistent API around content (that adheres to the rules of our design system) and to provide a platform-agnostic UI library\u2014you should be able to use Nautilus components in both a React and React Native app.'
     }]
 	
 
@@ -44538,9 +44552,28 @@ module.exports = [{
 if (false) {}
 
 var requireMap = { 'react': __webpack_require__(2) };
-var requireInRuntimeBase = __webpack_require__(15).default;
+var requireInRuntimeBase = __webpack_require__(14).default;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
-var evalInContextBase = __webpack_require__(16).default;
+var evalInContextBase = __webpack_require__(15).default;
+var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;", requireInRuntime);
+
+module.exports = [{
+        'type': 'markdown',
+        'content': 'Function is a collection of functional patterns, defined as much as possible by their function.\n\nWe reference these in three layers:\n\n-   components (buttons, headings) make up the smallest unit\n-   patterns (cards, navigation) are comprised of components pieced together\n-   layouts (search results, article page) are full-page layouts comprising of patterns and components\n\nFunction provides a series of components and patterns with a defined behaviour. Basically, if something is a React component, it\'s going to be in here. And basically everything is a React component, so if you\'re looking to build something, start here.'
+    }]
+	
+
+/***/ }),
+/* 863 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+if (false) {}
+
+var requireMap = { 'react': __webpack_require__(2) };
+var requireInRuntimeBase = __webpack_require__(14).default;
+var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
+var evalInContextBase = __webpack_require__(15).default;
 var evalInContext = evalInContextBase.bind(null, "const React$0 = require('react');\nconst React = React$0.default || React$0;", requireInRuntime);
 
 module.exports = [{
@@ -44550,7 +44583,7 @@ module.exports = [{
 	
 
 /***/ }),
-/* 863 */
+/* 864 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
