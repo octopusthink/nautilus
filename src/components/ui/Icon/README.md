@@ -94,9 +94,9 @@ Stroke widths scale with the icon size for better legibility. Stroke widths are 
 
 ### Margin & alignment
 
-By default, an `Icon` has a small amount of margin to its right, to give it some breathing space when used with text.
+By default, an `Icon` has a small amount margin beside it to give it some breathing space when used with text.
 
-You can customise the margin value to ensure proper placement in your layout. To maintain visual consistency, Nautilus uses the spacing values provided by your theme by default.
+You can customise the margin value to ensure proper placement in your layout. To maintain visual consistency, Nautilus uses the spacing values provided by your theme.
 
 Aligning an icon perfectly to text it's inline with can sometimes be tricky. By default, the container is set to vertical-align middle, but you can override this in your CSS if needed.
 
@@ -142,9 +142,9 @@ When using an icon to represent text, be mindful of how that icon might be inter
 If an icon is used without a text label, it needs to have a text alternative so that screen readers can read it. This adds a `title` tag inside the `svg` that’s conveyed to screen reader users.
 
 Best practises for label text:
-- Don't describe what the icon looks like
-- Don't include "icon" in the text
-- Duplicate information that already exists in the text or programmatically
+- Don't describe what the icon looks like.
+- Don't include "icon" in the text.
+- Duplicate information that already exists in the text or programmatically.
 
 ```jsx
 <Icon name="eye" title="Eye" />
