@@ -100,6 +100,8 @@ npm run lint
 
 Please read (`CONTRIBUTING.md`) for details on our code of conduct and the process for submitting pull requests.
 
+We use the [Conventional Commits](https://www.conventionalcommits.org/) specification for commit messages to ensure that commit messages are written in a consistent and predictable way.
+
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [releases page](https://github.com/octopusthink/nautilus/releases).
