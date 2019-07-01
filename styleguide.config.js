@@ -97,6 +97,11 @@ module.exports = {
           content: 'styleguide/docs/components/hoc.md',
         },
         {
+          name: 'Inline Text Components',
+          components: 'src/components/inline/**/index.{js,jsx,ts,tsx}',
+          content: 'styleguide/docs/components/inline.md',
+        },
+        {
           name: 'UI Components',
           components: 'src/components/ui/**/index.{js,jsx,ts,tsx}',
           content: 'styleguide/docs/components/ui.md',
