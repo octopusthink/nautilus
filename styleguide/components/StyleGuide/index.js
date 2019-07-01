@@ -37,6 +37,16 @@ export const StyleGuide = ({
           img {
             max-width: 100%;
           }
+
+          h2 {
+            margin-top: ${theme.spacing.margin.xxl} !important;
+            border-top: 3px solid;
+            padding-top: ${theme.spacing.padding.xl};
+          }
+
+          h3 {
+            margin-top: ${theme.spacing.margin.l} !important;
+          }
         `}
       />
       <div
