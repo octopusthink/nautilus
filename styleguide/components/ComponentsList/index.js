@@ -5,6 +5,7 @@ import Link from 'rsg-components/Link';
 import Styled from 'rsg-components/Styled';
 
 import theme from 'styleguide/theme';
+import { toUnits } from 'styles';
 
 import { getHash } from './getHash';
 
@@ -22,7 +23,7 @@ export function ComponentsList({ classes, items }) {
         padding: 0;
         list-style-type: none;
         display: grid;
-        grid-gap: ${theme.spacing.margin.m};
+        grid-gap: ${toUnits(theme.spacing.margin.medium)};
 
         ul & {
           display: block;
@@ -43,7 +44,7 @@ export function ComponentsList({ classes, items }) {
                 css={css`
                   color: ${theme.colors.neutral.grey800} !important;
                   width: 100% !important;
-                  padding: ${theme.spacing.padding.m} 0 !important;
+                  padding: ${toUnits(theme.spacing.padding.medium)} 0 !important;
                   border-top: 2px solid !important;
                   display: block !important;
                   text-transform: uppercase !important;
@@ -55,7 +56,7 @@ export function ComponentsList({ classes, items }) {
                   }
 
                   li li li & {
-                    padding-left: 20px !important;
+                    padding-left: ${toUnits(theme.spacing.padding.medium)} !important;
                   }
                 `}
                 href={href}

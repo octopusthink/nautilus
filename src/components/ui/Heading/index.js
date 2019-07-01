@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { List, Paragraph } from 'components';
-import { heading } from 'styles';
+import { heading, toUnits } from 'styles';
 
 const LARGE = 2;
 const MEDIUM = 3;
@@ -20,12 +20,12 @@ export const Heading = ({ children, level, ...otherProps }) => {
 
 export const styles = ({ level, theme }) => {
   return css`
-    margin: 0 0 ${theme.spacing.margin.m};
+    margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
     ${`${List} + &`},
     ${`${Paragraph} + &`},
     /* TODO: Replace these with actual Nautilus components */
     dl + & {
-      margin-top: ${theme.spacing.margin.m};
+      margin-top: ${toUnits(theme.spacing.margin.medium)};
     }
 
     ${level === SMALL && heading.small(theme)};

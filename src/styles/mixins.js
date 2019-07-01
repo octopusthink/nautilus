@@ -1,11 +1,12 @@
 import { css } from '@emotion/core';
 
+import { toUnits } from './toUnits';
 import { body } from './typeTokens';
 
 export const bodyStyles = ({ dark, inverse, large, light, small, theme }) => {
   return css`
     color: ${theme.colors.text.default};
-    margin: 0 0 ${theme.spacing.margin.m};
+    margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
     ${small && body.small(theme)};
     ${!small && !large && body.medium(theme)};
     ${large && body.large(theme)};

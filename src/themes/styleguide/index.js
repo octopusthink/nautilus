@@ -106,6 +106,7 @@ export const theme = {
       primaryDark: colors.pink800,
       primaryLight: colors.pink400,
     },
+
     neutral: {
       white: colors.white,
       grey0: colors.grey0,
@@ -115,6 +116,7 @@ export const theme = {
       grey800: colors.grey800,
       black: colors.black,
     },
+
     intent: {
       success: colors.green600,
       successDark: colors.green800,
@@ -125,6 +127,16 @@ export const theme = {
       danger: colors.red600,
       dangerDark: colors.red800,
       dangerLight: colors.red200,
+    },
+
+    state: {
+      focusOutline: colors.pink200,
+      focusText: colors.pink600,
+      disabled: colors.grey700,
+      disabledDark: colors.grey800,
+      disabledLight: colors.grey200,
+      errorOutline: colors.red400,
+      errorText: colors.red600,
     },
 
     text: {
@@ -141,16 +153,38 @@ export const theme = {
       default: colors.pink600,
       defaultDark: colors.pink800,
       defaultLight: colors.pink200,
-      disabled: colors.grey700,
-      disabledDark: colors.grey800,
-      disabledLight: colors.grey200,
     },
   },
 
   // Component-specific text and values.
   components: {
-    TextInput: {
+    TextField: {
       optionalMessage: '(optional)',
+    },
+
+    Icon: {
+      sizes: {
+        extraSmall: {
+          size: 12,
+          strokeWidth: 2,
+        },
+        small: {
+          size: 16,
+          strokeWidth: 2,
+        },
+        medium: {
+          size: 24,
+          strokeWidth: 1,
+        },
+        large: {
+          size: 48,
+          strokeWidth: 1,
+        },
+        extraLarge: {
+          size: 64,
+          strokeWidth: 1,
+        },
+      },
     },
   },
 
@@ -165,7 +199,7 @@ export const theme = {
     fontWeights: {
       body: 400,
       bodyBold: 600,
-      heading: 700,
+      heading: 600,
       pageTitle: 700,
       subtitle: 300,
       interfaceUI: 500,
@@ -173,12 +207,12 @@ export const theme = {
     },
 
     baseSizes: {
-      desktop: 1.8,
-      mobile: 1.6,
+      desktop: 18,
+      mobile: 16,
     },
 
     scaleModifiers: {
-      desktop: 1.25,
+      desktop: 1.15,
       mobile: 1.15,
     },
 
@@ -194,24 +228,24 @@ export const theme = {
   spacing: {
     margin: {
       none: 0,
-      xxs: '0.4rem',
-      xs: '0.8rem',
-      s: '1.6rem',
-      m: '3.2rem',
-      l: '4.8rem',
-      xl: '6.4rem',
-      xxl: '8.0rem',
+      xxs: 4,
+      extraSmall: 8,
+      small: 16,
+      medium: 32,
+      large: 48,
+      extraLarge: 64,
+      xxl: 80,
     },
 
     padding: {
       none: 0,
-      xxs: '0.2rem',
-      xs: '0.4rem',
-      s: '0.8rem',
-      m: '1.2rem',
-      l: '2.4rem',
-      xl: '3.2rem',
-      xxl: '4.8rem',
+      xxs: 2,
+      extraSmall: 4,
+      small: 8,
+      medium: 12,
+      large: 24,
+      extraLarge: 32,
+      xxl: 48,
     },
   },
 };

@@ -4,7 +4,7 @@ import invariant from 'invariant';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { interfaceUI } from 'styles';
+import { interfaceUI, toUnits } from 'styles';
 
 export const qualityControl = (props) => {
   const { minimal, primary, success, warning, danger } = props;
@@ -98,9 +98,13 @@ export const styles = (props) => {
     border-radius: 8px;
     color: ${currentButtonColor};
     display: inline-block;
-    margin: 0 ${theme.spacing.margin.xxs} ${theme.spacing.margin.xs};
+    margin: 0 ${toUnits(theme.spacing.margin.xxs)} ${toUnits(
+    theme.spacing.margin.extraSmall,
+  )};
     outline: none;
-    padding: ${theme.spacing.padding.m} ${theme.spacing.padding.l};
+    padding: ${toUnits(theme.spacing.padding.medium)} ${toUnits(
+    theme.spacing.padding.large,
+  )};
     position: relative;
     text-align: center;
     text-decoration: none;

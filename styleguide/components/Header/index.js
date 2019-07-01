@@ -4,20 +4,20 @@ import React from 'react';
 import Version from 'rsg-components/Version';
 
 import theme from 'styleguide/theme';
-import { metadata } from 'styles';
+import { metadata, toUnits } from 'styles';
 
 export function Header({ children, title, version }) {
   return (
     <header
       css={css`
-        padding: ${theme.spacing.padding.l};
+        padding: ${toUnits(theme.spacing.padding.large)};
         background: ${theme.colors.neutral.black};
         ${metadata.large(theme)};
         color: ${theme.colors.neutral.white};
 
         @media screen and (min-width: 960px) {
           grid-column: 1 / 3;
-          padding: ${theme.spacing.padding.l} ${theme.spacing.padding.xl};
+          padding: ${toUnits(theme.spacing.padding.large)} ${toUnits(theme.spacing.padding.extraLarge)};
         }
       `}
     >

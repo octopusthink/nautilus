@@ -38,6 +38,7 @@
   },
   "homepage": "https://github.com/octopusthink/nautilus#readme",
   "dependencies": {
+    "feather-icons": "^4.22.1",
     "invariant": "^2.2.4",
     "prop-types": "^15.7.2",
     "shortid": "^2.2.14",

@@ -10,6 +10,7 @@ import Header from 'styleguide/components/Header';
 import Footer from 'styleguide/components/Footer';
 
 import { Nautilus } from 'components';
+import { toUnits } from 'styles';
 import theme from 'styleguide/theme';
 
 export const StyleGuide = ({
@@ -41,12 +42,12 @@ export const StyleGuide = ({
       <div
         css={css`
           display: grid;
-          grid-gap: ${theme.spacing.margin.xl};
+          grid-gap: ${toUnits(theme.spacing.margin.extraLarge)};
           margin: 0 auto;
 
           @media screen and (min-width: 960px) {
             grid-template-columns: 320px auto;
-            grid-gap: ${theme.spacing.margin.xxl};
+            grid-gap: ${toUnits(theme.spacing.margin.xxl)};
           }
         `}
       >
@@ -57,10 +58,10 @@ export const StyleGuide = ({
         <main css={css`
           max-width: 800px;
           margin: 0 auto;
-          padding: 0 ${theme.spacing.padding.l};
+          padding: 0 ${toUnits(theme.spacing.padding.large)};
 
           @media screen and (min-width: 960px) {
-            padding: 0 ${theme.spacing.margin.xl} 0 0;
+            padding: 0 ${toUnits(theme.spacing.margin.extraLarge)} 0 0;
           }
 
           img {

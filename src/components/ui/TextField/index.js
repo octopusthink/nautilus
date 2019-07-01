@@ -10,7 +10,7 @@ import React, {
 } from 'react';
 import shortid from 'shortid';
 
-import { focusStyle, interfaceUI } from 'styles';
+import { focusStyle, interfaceUI, toUnits } from 'styles';
 import { useTheme } from 'themes';
 
 const smallText = (props) => {
@@ -19,7 +19,7 @@ const smallText = (props) => {
   return css`
     ${interfaceUI.small(theme)};
     color: ${theme.colors.text.light};
-    margin: 0 0 ${theme.spacing.padding.xs};
+    margin: 0 0 ${toUnits(theme.spacing.padding.extraSmall)};
   `;
 };
 
@@ -93,8 +93,8 @@ export const TextField = (props) => {
           css={css`
             ${interfaceUI.medium(theme)};
             color: ${theme.colors.state.errorText};
-            margin-top: -${theme.spacing.padding.l};
-            margin-bottom: ${theme.spacing.padding.l};
+            margin-top: -${toUnits(theme.spacing.padding.large)};
+            margin-bottom: ${toUnits(theme.spacing.padding.large)};
           `}
         >
           {error}
@@ -121,7 +121,7 @@ export const TextField = (props) => {
           flex-direction: row;
           flex-wrap: wrap;
           justify-content: space-between;
-          margin: 0 0 ${theme.spacing.padding.xs};
+          margin: 0 0 ${toUnits(theme.spacing.padding.extraSmall)};
 
           ${!disabled &&
             css`
@@ -181,9 +181,11 @@ export const TextField = (props) => {
           box-sizing: border-box;
           color: ${theme.colors.text.default};
           display: block;
-          margin: 0 0 ${theme.spacing.margin.m};
+          margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
           outline: none;
-          padding: ${theme.spacing.padding.m} ${theme.spacing.padding.m};
+          padding: ${toUnits(theme.spacing.padding.medium)} ${toUnits(
+          theme.spacing.padding.medium,
+        )};
           transition: box-shadow 200ms;
           width: 100%;
 

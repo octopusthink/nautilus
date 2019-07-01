@@ -4,7 +4,7 @@
 // In order to get a whole-integer pixel number, we multiply by ten and round,
 // then divide by ten again to get a rem value that works with our base size setting.
 export const calculateFontSize = ({ scaleModifier, sizeNumber, baseSize }) => {
-  const newSize = Math.round(baseSize * 10 * scaleModifier ** sizeNumber) / 10;
+  const newSize = Math.round(baseSize * scaleModifier ** sizeNumber) / 10;
 
   return newSize;
 };
