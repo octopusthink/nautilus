@@ -100,8 +100,6 @@ You can customise the margin value to ensure proper placement in your layout. To
 
 Aligning an icon perfectly to text it's inline with can sometimes be tricky. By default, the container is set to vertical-align middle, but you can override this in your CSS if needed.
 
-If you have an Icon visually on its own that doesn't accompany any visible text, you may want to use the `noMargin` prop, which removes the default margins.
-
 ### Border & background
 
 An icon can have a border and a background. These use a circular shape by default because it looks nicest, but this value, along with border width, can be changed in your theme.

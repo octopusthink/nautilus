@@ -17,7 +17,6 @@ const defineIconSizes = (props) => {
     large,
     extraLarge,
     theme,
-    margin,
   } = props;
 
   let iconSize = 'medium';
@@ -209,7 +208,6 @@ Icon.defaultProps = {
   medium: true,
   large: false,
   extraLarge: false,
-  margin: undefined,
   border: undefined,
   background: undefined,
   verticalAlign: 'middle',
@@ -238,8 +236,6 @@ Icon.propTypes = {
   id: PropTypes.string,
   /** Large icon size. */
   large: PropTypes.bool,
-  /** Margins around icon, defined as per CSS format. */
-  margin: PropTypes.string,
   /** Medium icon size. */
   medium: PropTypes.bool,
   /** The name of the icon to use. */
