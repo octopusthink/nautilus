@@ -67,6 +67,10 @@ module.exports = {
           name: 'Spacing',
           content: 'styleguide/docs/spacing.md',
         },
+        {
+          name: 'Colour',
+          content: 'styleguide/docs/colour.md',
+        },
       ],
       sectionDepth: 2,
     },
