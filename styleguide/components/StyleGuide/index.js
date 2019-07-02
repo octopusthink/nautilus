@@ -39,13 +39,13 @@ export const StyleGuide = ({
           }
 
           h2 {
-            margin-top: ${theme.spacing.margin.xxl} !important;
+            margin-top: ${toUnits(theme.spacing.margin.xxl)} !important;
             border-top: 3px solid;
-            padding-top: ${theme.spacing.padding.xl};
+            padding-top: ${toUnits(theme.spacing.padding.extraLarge)};
           }
 
           h3 {
-            margin-top: ${theme.spacing.margin.l} !important;
+            margin-top: ${toUnits(theme.spacing.margin.large)} !important;
           }
         `}
       />
