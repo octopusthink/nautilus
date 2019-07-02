@@ -1,6 +1,8 @@
 A `<Strong>` component is an inline text component used to mark a section of text within a list or paragraph as important.
 
 ```jsx
+import { Paragraph } from '@octopusthink/nautilus';
+
 <Paragraph>
   <Strong>Rick James was a great musician.</Strong> He played the bass.
 </Paragraph>

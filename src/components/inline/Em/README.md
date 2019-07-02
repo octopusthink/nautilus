@@ -1,6 +1,8 @@
 An `<Emphasis>` component is an inline text component used to emphasise a selection of text inside a list, paragraph, or other section of text.
 
 ```jsx
+import { Paragraph } from '@octopusthink/nautilus';
+
 <Paragraph>
   He wanted to eat a peanut butter cup, but he was <Emphasis>allergic</Emphasis>.
 </Paragraph>
