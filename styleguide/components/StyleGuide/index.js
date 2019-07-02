@@ -38,6 +38,10 @@ export const StyleGuide = ({
             max-width: 100%;
           }
 
+          h1 {
+            margin: 0 0 ${toUnits(theme.spacing.margin.extraLarge)};
+          }
+
           h2 {
             margin-top: ${toUnits(theme.spacing.margin.xxl)} !important;
             border-top: 3px solid;
