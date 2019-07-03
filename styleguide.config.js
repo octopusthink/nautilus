@@ -27,6 +27,14 @@ module.exports = {
       'styleguide/components/Playground',
     ),
     PropsRenderer: path.join(__dirname, 'styleguide/components/Props'),
+    'slots/CodeTabButton': path.join(
+      __dirname,
+      'styleguide/components/slots/CodeTabButton',
+    ),
+    'slots/UsageTabButton': path.join(
+      __dirname,
+      'styleguide/components/slots/UsageTabButton',
+    ),
     // This wraps all actual page content in a `<Nautilus>` provider so
     // the content we output from Markdown has a theme available.
     StyleGuideRenderer: path.join(

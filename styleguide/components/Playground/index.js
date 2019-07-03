@@ -39,7 +39,7 @@ export function Playground({
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: ${toUnits(theme.spacing.padding.small)} ${toUnits(theme.spacing.padding.medium)};
+          padding: 0 ${toUnits(theme.spacing.padding.extraSmall)};
         `}
       >
         <div>{tabButtons}</div>

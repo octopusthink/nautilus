@@ -49,7 +49,7 @@ export const StyleGuide = ({
           }
 
           .rsg--wrapper-11 > h2 {
-            margin-top: 0 !important;
+            margin: 0 !important;
             padding-top: 0;
             border-top: 0;
           }
