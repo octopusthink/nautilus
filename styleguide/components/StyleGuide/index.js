@@ -48,6 +48,12 @@ export const StyleGuide = ({
             padding-top: ${toUnits(theme.spacing.padding.extraLarge)};
           }
 
+          .rsg--wrapper-11 > h2 {
+            margin-top: 0 !important;
+            padding-top: 0;
+            border-top: 0;
+          }
+
           h3 {
             margin-top: ${toUnits(theme.spacing.margin.large)} !important;
           }
