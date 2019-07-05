@@ -3,32 +3,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import theme from 'styleguide/theme';
-import { interfaceUI } from 'styles';
-
+import { interfaceUI, toUnits } from 'styles';
 
 export function TabButtonRenderer({ name, className, onClick, active, children }) {
 	return (
 		<button css={css`
-			background: none;
+			background: ${theme.colors.neutral.black};
 			border: none;
-			color: ${theme.colors.neutral.white};
-			padding: 10px;
+			color: ${theme.colors.text.inverseLight};
+			padding: ${toUnits(theme.spacing.padding.medium)};
 			${css(interfaceUI.small(theme))};
-
-			.rsg--tabButtons-7 & {
-				color: hotpink !important;
-			}
 
 			&::before {
 				display: inline-block;
 				content: '↓';
-				margin-right: ${theme.spacing.padding.xxs};
+				margin-right: ${toUnits(theme.spacing.padding.extraSmall)};
 			}
 
 			${active &&
 			 css`
-				color: hotpink !important;
-				border-bottom: 2px solid hotpink;
+				color: ${theme.colors.text.inverseDark} !important;
+				border-bottom: 2px solid ${theme.colors.text.inverseDark};
 
 				&::before {
 					content: '↑';
