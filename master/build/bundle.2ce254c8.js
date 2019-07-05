@@ -2935,6 +2935,17 @@ var mixins_bodyStyles = function bodyStyles(_ref) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var themes_nautilus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(110);
+// HACK: Use our theme variables directly for now until we use 100% Nautilus
+// components in our styleguide.
+
+/* harmony default export */ __webpack_exports__["a"] = (themes_nautilus__WEBPACK_IMPORTED_MODULE_0__[/* theme */ "b"]);
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__(9);
@@ -3038,17 +3049,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 /***/ }),
-/* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var themes_nautilus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(110);
-// HACK: Use our theme variables directly for now until we use 100% Nautilus
-// components in our styleguide.
-
-/* harmony default export */ __webpack_exports__["a"] = (themes_nautilus__WEBPACK_IMPORTED_MODULE_0__[/* theme */ "b"]);
-
-/***/ }),
 /* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3110,7 +3110,7 @@ module.exports = _objectSpread;
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(29);
-var defineProperty = __webpack_require__(25).f;
+var defineProperty = __webpack_require__(24).f;
 var FunctionPrototype = Function.prototype;
 var FunctionPrototypeToString = FunctionPrototype.toString;
 var nameRE = /^\s*function ([^ (]*)/;
@@ -3199,10 +3199,10 @@ var Link = __webpack_require__(120);
 var Text = __webpack_require__(33);
 
 // EXTERNAL MODULE: ./node_modules/clsx/dist/clsx.m.js
-var clsx_m = __webpack_require__(20);
+var clsx_m = __webpack_require__(27);
 
 // EXTERNAL MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/Styled/index.js + 2 modules
-var Styled = __webpack_require__(5);
+var Styled = __webpack_require__(6);
 
 // CONCATENATED MODULE: ./styleguide/components/Markdown/Blockquote/BlockquoteRenderer.js
 
@@ -3785,7 +3785,7 @@ var assign = __webpack_require__(243);
 
 // `Object.assign` method
 // https://tc39.github.io/ecma262/#sec-object.assign
-__webpack_require__(21)({ target: 'Object', stat: true, forced: Object.assign !== assign }, { assign: assign });
+__webpack_require__(20)({ target: 'Object', stat: true, forced: Object.assign !== assign }, { assign: assign });
 
 
 /***/ }),
@@ -4132,50 +4132,6 @@ function showSpaces(string) {
 
 /***/ }),
 /* 20 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-function toVal(mix) {
-	var k, y, str='';
-	if (mix) {
-		if (typeof mix === 'object') {
-			if (!!mix.push) {
-				for (k=0; k < mix.length; k++) {
-					if (mix[k] && (y = toVal(mix[k]))) {
-						str && (str += ' ');
-						str += y;
-					}
-				}
-			} else {
-				for (k in mix) {
-					if (mix[k] && (y = toVal(k))) {
-						str && (str += ' ');
-						str += y;
-					}
-				}
-			}
-		} else if (typeof mix !== 'boolean' && !mix.call) {
-			str && (str += ' ');
-			str += mix;
-		}
-	}
-	return str;
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (function () {
-	var i=0, x, str='';
-	while (i < arguments.length) {
-		if (x = toVal(arguments[i++])) {
-			str && (str += ' ');
-			str += x
-		}
-	}
-	return str;
-});
-
-
-/***/ }),
-/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(17);
@@ -4235,7 +4191,7 @@ module.exports = function (options, source) {
 
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -4244,10 +4200,10 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(22);
+var isObject = __webpack_require__(21);
 
 module.exports = function (it) {
   if (!isObject(it)) {
@@ -4257,7 +4213,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var store = __webpack_require__(71)('wks');
@@ -4272,12 +4228,12 @@ module.exports = function (name) {
 
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(29);
 var IE8_DOM_DEFINE = __webpack_require__(158);
-var anObject = __webpack_require__(23);
+var anObject = __webpack_require__(22);
 var toPrimitive = __webpack_require__(85);
 var nativeDefineProperty = Object.defineProperty;
 
@@ -4295,7 +4251,7 @@ exports.f = DESCRIPTORS ? nativeDefineProperty : function defineProperty(O, P, A
 
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var freeGlobal = __webpack_require__(173);
@@ -4310,7 +4266,7 @@ module.exports = root;
 
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4322,10 +4278,54 @@ var SPECIES_SUPPORT = __webpack_require__(131)('map');
 // `Array.prototype.map` method
 // https://tc39.github.io/ecma262/#sec-array.prototype.map
 // with adding support of @@species
-__webpack_require__(21)({ target: 'Array', proto: true, forced: !SPECIES_SUPPORT }, {
+__webpack_require__(20)({ target: 'Array', proto: true, forced: !SPECIES_SUPPORT }, {
   map: function map(callbackfn /* , thisArg */) {
     return internalMap(this, callbackfn, arguments[1]);
   }
+});
+
+
+/***/ }),
+/* 27 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+function toVal(mix) {
+	var k, y, str='';
+	if (mix) {
+		if (typeof mix === 'object') {
+			if (!!mix.push) {
+				for (k=0; k < mix.length; k++) {
+					if (mix[k] && (y = toVal(mix[k]))) {
+						str && (str += ' ');
+						str += y;
+					}
+				}
+			} else {
+				for (k in mix) {
+					if (mix[k] && (y = toVal(k))) {
+						str && (str += ' ');
+						str += y;
+					}
+				}
+			}
+		} else if (typeof mix !== 'boolean' && !mix.call) {
+			str && (str += ' ');
+			str += mix;
+		}
+	}
+	return str;
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (function () {
+	var i=0, x, str='';
+	while (i < arguments.length) {
+		if (x = toVal(arguments[i++])) {
+			str && (str += ' ');
+			str += x
+		}
+	}
+	return str;
 });
 
 
@@ -4469,10 +4469,10 @@ var prop_types = __webpack_require__(0);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/Styled/index.js + 2 modules
-var Styled = __webpack_require__(5);
+var Styled = __webpack_require__(6);
 
 // EXTERNAL MODULE: ./node_modules/clsx/dist/clsx.m.js
-var clsx_m = __webpack_require__(20);
+var clsx_m = __webpack_require__(27);
 
 // CONCATENATED MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/Text/TextRenderer.js
 
@@ -5118,12 +5118,12 @@ module.exports = warning;
 "use strict";
 
 var isArray = __webpack_require__(130);
-var isObject = __webpack_require__(22);
+var isObject = __webpack_require__(21);
 var toObject = __webpack_require__(70);
 var toLength = __webpack_require__(53);
 var createProperty = __webpack_require__(278);
 var arraySpeciesCreate = __webpack_require__(171);
-var IS_CONCAT_SPREADABLE = __webpack_require__(24)('isConcatSpreadable');
+var IS_CONCAT_SPREADABLE = __webpack_require__(23)('isConcatSpreadable');
 var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
 var MAXIMUM_ALLOWED_INDEX_EXCEEDED = 'Maximum allowed index exceeded';
 
@@ -5146,7 +5146,7 @@ var FORCED = !IS_CONCAT_SPREADABLE_SUPPORT || !SPECIES_SUPPORT;
 // `Array.prototype.concat` method
 // https://tc39.github.io/ecma262/#sec-array.prototype.concat
 // with adding support of @@isConcatSpreadable and @@species
-__webpack_require__(21)({ target: 'Array', proto: true, forced: FORCED }, {
+__webpack_require__(20)({ target: 'Array', proto: true, forced: FORCED }, {
   concat: function concat(arg) { // eslint-disable-line no-unused-vars
     var O = toObject(this);
     var A = arraySpeciesCreate(O, 0);
@@ -5256,7 +5256,7 @@ var SPECIES_SUPPORT = __webpack_require__(131)('filter');
 // `Array.prototype.filter` method
 // https://tc39.github.io/ecma262/#sec-array.prototype.filter
 // with adding support of @@species
-__webpack_require__(21)({ target: 'Array', proto: true, forced: !SPECIES_SUPPORT }, {
+__webpack_require__(20)({ target: 'Array', proto: true, forced: !SPECIES_SUPPORT }, {
   filter: function filter(callbackfn /* , thisArg */) {
     return internalFilter(this, callbackfn, arguments[1]);
   }
@@ -5403,7 +5403,7 @@ PropType_PropType.propTypes = {
 /* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var definePropertyModule = __webpack_require__(25);
+var definePropertyModule = __webpack_require__(24);
 var createPropertyDescriptor = __webpack_require__(84);
 
 module.exports = __webpack_require__(29) ? function (object, key, value) {
@@ -5482,27 +5482,27 @@ var global = __webpack_require__(17);
 var has = __webpack_require__(31);
 var DESCRIPTORS = __webpack_require__(29);
 var IS_PURE = __webpack_require__(161);
-var $export = __webpack_require__(21);
+var $export = __webpack_require__(20);
 var redefine = __webpack_require__(54);
 var hiddenKeys = __webpack_require__(69);
 var fails = __webpack_require__(13);
 var shared = __webpack_require__(71);
 var setToStringTag = __webpack_require__(352);
 var uid = __webpack_require__(86);
-var wellKnownSymbol = __webpack_require__(24);
+var wellKnownSymbol = __webpack_require__(23);
 var wrappedWellKnownSymbolModule = __webpack_require__(187);
 var defineWellKnownSymbol = __webpack_require__(353);
 var enumKeys = __webpack_require__(354);
 var isArray = __webpack_require__(130);
-var anObject = __webpack_require__(23);
-var isObject = __webpack_require__(22);
+var anObject = __webpack_require__(22);
+var isObject = __webpack_require__(21);
 var toIndexedObject = __webpack_require__(52);
 var toPrimitive = __webpack_require__(85);
 var createPropertyDescriptor = __webpack_require__(84);
 var nativeObjectCreate = __webpack_require__(355);
 var getOwnPropertyNamesExternal = __webpack_require__(358);
 var getOwnPropertyDescriptorModule = __webpack_require__(123);
-var definePropertyModule = __webpack_require__(25);
+var definePropertyModule = __webpack_require__(24);
 var propertyIsEnumerableModule = __webpack_require__(83);
 var hide = __webpack_require__(45);
 var objectKeys = __webpack_require__(67);
@@ -5765,8 +5765,8 @@ hiddenKeys[HIDDEN] = true;
 
 var DESCRIPTORS = __webpack_require__(29);
 var has = __webpack_require__(31);
-var isObject = __webpack_require__(22);
-var defineProperty = __webpack_require__(25).f;
+var isObject = __webpack_require__(21);
+var defineProperty = __webpack_require__(24).f;
 var copyConstructorProperties = __webpack_require__(163);
 var NativeSymbol = __webpack_require__(17).Symbol;
 
@@ -5803,7 +5803,7 @@ if (DESCRIPTORS && typeof NativeSymbol == 'function' && (!('description' in Nati
     }
   });
 
-  __webpack_require__(21)({ global: true, forced: true }, { Symbol: SymbolWrapper });
+  __webpack_require__(20)({ global: true, forced: true }, { Symbol: SymbolWrapper });
 }
 
 
@@ -5844,10 +5844,10 @@ var prop_types = __webpack_require__(0);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/Styled/index.js + 2 modules
-var Styled = __webpack_require__(5);
+var Styled = __webpack_require__(6);
 
 // EXTERNAL MODULE: ./node_modules/clsx/dist/clsx.m.js
-var clsx_m = __webpack_require__(20);
+var clsx_m = __webpack_require__(27);
 
 // CONCATENATED MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/Name/NameRenderer.js
 
@@ -6147,7 +6147,7 @@ var FORCED = __webpack_require__(133)('small');
 
 // `String.prototype.small` method
 // https://tc39.github.io/ecma262/#sec-string.prototype.small
-__webpack_require__(21)({ target: 'String', proto: true, forced: FORCED }, {
+__webpack_require__(20)({ target: 'String', proto: true, forced: FORCED }, {
   small: function small() {
     return createHTML(this, 'small', '', '');
   }
@@ -6161,7 +6161,7 @@ __webpack_require__(21)({ target: 'String', proto: true, forced: FORCED }, {
 "use strict";
 
 
-var anObject = __webpack_require__(23);
+var anObject = __webpack_require__(22);
 var toObject = __webpack_require__(70);
 var toLength = __webpack_require__(53);
 var toInteger = __webpack_require__(81);
@@ -11503,7 +11503,7 @@ var prop_types = __webpack_require__(0);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/Styled/index.js + 2 modules
-var Styled = __webpack_require__(5);
+var Styled = __webpack_require__(6);
 
 // EXTERNAL MODULE: ./styleguide/components/Markdown/index.js + 20 modules
 var Markdown = __webpack_require__(11);
@@ -11603,7 +11603,7 @@ var es_array_filter = __webpack_require__(42);
 var es_array_join = __webpack_require__(76);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
-var es_array_map = __webpack_require__(27);
+var es_array_map = __webpack_require__(26);
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(2);
@@ -11845,7 +11845,7 @@ var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 var styles = __webpack_require__(4);
 
 // EXTERNAL MODULE: ./styleguide/theme.js
-var theme = __webpack_require__(6);
+var theme = __webpack_require__(5);
 
 // CONCATENATED MODULE: ./styleguide/components/Code/index.js
 
@@ -12268,7 +12268,7 @@ var FAILS_ON_PRIMITIVES = __webpack_require__(13)(function () { nativeKeys(1); }
 
 // `Object.keys` method
 // https://tc39.github.io/ecma262/#sec-object.keys
-__webpack_require__(21)({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES }, {
+__webpack_require__(20)({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES }, {
   keys: function keys(it) {
     return nativeKeys(toObject(it));
   }
@@ -12289,7 +12289,7 @@ var SLOPPY_METHOD = __webpack_require__(189)('join', ',');
 
 // `Array.prototype.join` method
 // https://tc39.github.io/ecma262/#sec-array.prototype.join
-__webpack_require__(21)({ target: 'Array', proto: true, forced: ES3_STRINGS || SLOPPY_METHOD }, {
+__webpack_require__(20)({ target: 'Array', proto: true, forced: ES3_STRINGS || SLOPPY_METHOD }, {
   join: function join(separator) {
     return nativeJoin.call(toIndexedObject(this), separator === undefined ? ',' : separator);
   }
@@ -12587,7 +12587,7 @@ module.exports = function (bitmap, value) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(22);
+var isObject = __webpack_require__(21);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (it, S) {
@@ -12764,7 +12764,7 @@ module.exports = function (R, S) {
 var hide = __webpack_require__(45);
 var redefine = __webpack_require__(54);
 var fails = __webpack_require__(13);
-var wellKnownSymbol = __webpack_require__(24);
+var wellKnownSymbol = __webpack_require__(23);
 var regexpExec = __webpack_require__(128);
 
 var SPECIES = wellKnownSymbol('species');
@@ -12924,7 +12924,7 @@ module.exports = assocIndexOf;
 /* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(26);
+var root = __webpack_require__(25);
 
 /** Built-in value references. */
 var Symbol = root.Symbol;
@@ -13038,7 +13038,7 @@ module.exports = isArguments;
 /* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(26),
+/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(25),
     stubFalse = __webpack_require__(321);
 
 /** Detect free variable `exports`. */
@@ -13571,7 +13571,7 @@ module.exports = toKey;
 
 "use strict";
 
-var anObject = __webpack_require__(23);
+var anObject = __webpack_require__(22);
 var fails = __webpack_require__(13);
 var flags = __webpack_require__(129);
 var DESCRIPTORS = __webpack_require__(29);
@@ -14574,7 +14574,7 @@ Table.propTypes = {
 "use strict";
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
-var es_array_map = __webpack_require__(27);
+var es_array_map = __webpack_require__(26);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__(9);
@@ -14597,7 +14597,7 @@ var Argument = __webpack_require__(62);
 var Heading = __webpack_require__(114);
 
 // EXTERNAL MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/Styled/index.js + 2 modules
-var Styled = __webpack_require__(5);
+var Styled = __webpack_require__(6);
 
 // CONCATENATED MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/Arguments/ArgumentsRenderer.js
 
@@ -14682,10 +14682,10 @@ var prop_types = __webpack_require__(0);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./node_modules/clsx/dist/clsx.m.js
-var clsx_m = __webpack_require__(20);
+var clsx_m = __webpack_require__(27);
 
 // EXTERNAL MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/Styled/index.js + 2 modules
-var Styled = __webpack_require__(5);
+var Styled = __webpack_require__(6);
 
 // CONCATENATED MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/Link/LinkRenderer.js
 
@@ -15001,7 +15001,7 @@ module.exports = patchedExec;
 
 "use strict";
 
-var anObject = __webpack_require__(23);
+var anObject = __webpack_require__(22);
 
 // `RegExp.prototype.flags` getter implementation
 // https://tc39.github.io/ecma262/#sec-get-regexp.prototype.flags
@@ -15035,7 +15035,7 @@ module.exports = Array.isArray || function isArray(arg) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var fails = __webpack_require__(13);
-var SPECIES = __webpack_require__(24)('species');
+var SPECIES = __webpack_require__(23)('species');
 
 module.exports = function (METHOD_NAME) {
   return !fails(function () {
@@ -15135,7 +15135,7 @@ module.exports = Stack;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(46),
-    root = __webpack_require__(26);
+    root = __webpack_require__(25);
 
 /* Built-in method references that are verified to be native. */
 var Map = getNative(root, 'Map');
@@ -15561,7 +15561,7 @@ module.exports = exports['default'];
 
 
 var isRegExp = __webpack_require__(201);
-var anObject = __webpack_require__(23);
+var anObject = __webpack_require__(22);
 var requireObjectCoercible = __webpack_require__(34);
 var speciesConstructor = __webpack_require__(417);
 var advanceStringIndex = __webpack_require__(134);
@@ -19052,7 +19052,7 @@ module.exports = !__webpack_require__(29) && !__webpack_require__(13)(function (
 /* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(22);
+var isObject = __webpack_require__(21);
 var document = __webpack_require__(17).document;
 // typeof document.createElement is 'object' in old IE
 var exist = isObject(document) && isObject(document.createElement);
@@ -19081,7 +19081,7 @@ module.exports = false;
 /***/ (function(module, exports, __webpack_require__) {
 
 var NATIVE_WEAK_MAP = __webpack_require__(246);
-var isObject = __webpack_require__(22);
+var isObject = __webpack_require__(21);
 var hide = __webpack_require__(45);
 var objectHas = __webpack_require__(31);
 var sharedKey = __webpack_require__(125);
@@ -19148,7 +19148,7 @@ module.exports = {
 var has = __webpack_require__(31);
 var ownKeys = __webpack_require__(247);
 var getOwnPropertyDescriptorModule = __webpack_require__(123);
-var definePropertyModule = __webpack_require__(25);
+var definePropertyModule = __webpack_require__(24);
 
 module.exports = function (target, source) {
   var keys = ownKeys(source);
@@ -19655,9 +19655,9 @@ module.exports = !__webpack_require__(13)(function () {
 /* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(22);
+var isObject = __webpack_require__(21);
 var isArray = __webpack_require__(130);
-var SPECIES = __webpack_require__(24)('species');
+var SPECIES = __webpack_require__(23)('species');
 
 // `ArraySpeciesCreate` abstract operation
 // https://tc39.github.io/ecma262/#sec-arrayspeciescreate
@@ -19686,7 +19686,7 @@ var FORCED = __webpack_require__(133)('link');
 
 // `String.prototype.link` method
 // https://tc39.github.io/ecma262/#sec-string.prototype.link
-__webpack_require__(21)({ target: 'String', proto: true, forced: FORCED }, {
+__webpack_require__(20)({ target: 'String', proto: true, forced: FORCED }, {
   link: function link(url) {
     return createHTML(this, 'a', 'href', url);
   }
@@ -19805,7 +19805,7 @@ module.exports = baseFor;
 /* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(26);
+var root = __webpack_require__(25);
 
 /** Built-in value references. */
 var Uint8Array = root.Uint8Array;
@@ -22090,7 +22090,7 @@ module.exports = function (it) {
 /* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.f = __webpack_require__(24);
+exports.f = __webpack_require__(23);
 
 
 /***/ }),
@@ -22510,11 +22510,11 @@ module.exports = toString;
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(29);
-var MATCH = __webpack_require__(24)('match');
+var MATCH = __webpack_require__(23)('match');
 var global = __webpack_require__(17);
 var isForced = __webpack_require__(164);
 var inheritIfRequired = __webpack_require__(412);
-var defineProperty = __webpack_require__(25).f;
+var defineProperty = __webpack_require__(24).f;
 var getOwnPropertyNames = __webpack_require__(87).f;
 var isRegExp = __webpack_require__(201);
 var getFlags = __webpack_require__(129);
@@ -22572,9 +22572,9 @@ __webpack_require__(415)('RegExp');
 /* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(22);
+var isObject = __webpack_require__(21);
 var classof = __webpack_require__(68);
-var MATCH = __webpack_require__(24)('match');
+var MATCH = __webpack_require__(23)('match');
 
 // `IsRegExp` abstract operation
 // https://tc39.github.io/ecma262/#sec-isregexp
@@ -22677,7 +22677,7 @@ if (toString !== ObjectPrototype.toString) {
 "use strict";
 
 
-var anObject = __webpack_require__(23);
+var anObject = __webpack_require__(22);
 var toLength = __webpack_require__(53);
 var requireObjectCoercible = __webpack_require__(34);
 var advanceStringIndex = __webpack_require__(134);
@@ -22736,7 +22736,7 @@ var FORCED = __webpack_require__(422)('trim');
 
 // `String.prototype.trim` method
 // https://tc39.github.io/ecma262/#sec-string.prototype.trim
-__webpack_require__(21)({ target: 'String', proto: true, forced: FORCED }, {
+__webpack_require__(20)({ target: 'String', proto: true, forced: FORCED }, {
   trim: function trim() {
     return internalStringTrim(this, 3);
   }
@@ -28011,7 +28011,7 @@ module.exports = exports['default'];
 /* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(26);
+var root = __webpack_require__(25);
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
 var nativeIsFinite = root.isFinite;
@@ -29740,7 +29740,7 @@ module.exports = typeof WeakMap === 'function' && /native code/.test(nativeFunct
 
 var getOwnPropertyNamesModule = __webpack_require__(87);
 var getOwnPropertySymbolsModule = __webpack_require__(82);
-var anObject = __webpack_require__(23);
+var anObject = __webpack_require__(22);
 var Reflect = __webpack_require__(17).Reflect;
 
 // all object keys, includes non-enumerable and symbols
@@ -32338,7 +32338,7 @@ exports.unstable_shouldYield=function(){return!e&&(null!==d&&d.expirationTime<l|
 "use strict";
 
 
-var anObject = __webpack_require__(23);
+var anObject = __webpack_require__(22);
 var requireObjectCoercible = __webpack_require__(34);
 var sameValue = __webpack_require__(277);
 var regExpExec = __webpack_require__(90);
@@ -32395,7 +32395,7 @@ module.exports = Object.is || function is(x, y) {
 "use strict";
 
 var toPrimitive = __webpack_require__(85);
-var definePropertyModule = __webpack_require__(25);
+var definePropertyModule = __webpack_require__(24);
 var createPropertyDescriptor = __webpack_require__(84);
 
 module.exports = function (object, key, value) {
@@ -32992,7 +32992,7 @@ module.exports = isMasked;
 /* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(26);
+var root = __webpack_require__(25);
 
 /** Used to detect overreaching core-js shims. */
 var coreJsData = root['__core-js_shared__'];
@@ -33474,7 +33474,7 @@ module.exports = baseMergeDeep;
 /* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(26);
+/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(25);
 
 /** Detect free variable `exports`. */
 var freeExports =  true && exports && !exports.nodeType && exports;
@@ -35118,9 +35118,9 @@ module.exports = function (fn, that, length) {
 /* 352 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var defineProperty = __webpack_require__(25).f;
+var defineProperty = __webpack_require__(24).f;
 var has = __webpack_require__(31);
-var TO_STRING_TAG = __webpack_require__(24)('toStringTag');
+var TO_STRING_TAG = __webpack_require__(23)('toStringTag');
 
 module.exports = function (it, TAG, STATIC) {
   if (it && !has(it = STATIC ? it : it.prototype, TO_STRING_TAG)) {
@@ -35136,7 +35136,7 @@ module.exports = function (it, TAG, STATIC) {
 var path = __webpack_require__(188);
 var has = __webpack_require__(31);
 var wrappedWellKnownSymbolModule = __webpack_require__(187);
-var defineProperty = __webpack_require__(25).f;
+var defineProperty = __webpack_require__(24).f;
 
 module.exports = function (NAME) {
   var Symbol = path.Symbol || (path.Symbol = {});
@@ -35173,7 +35173,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(23);
+var anObject = __webpack_require__(22);
 var defineProperties = __webpack_require__(356);
 var enumBugKeys = __webpack_require__(122);
 var html = __webpack_require__(357);
@@ -35224,8 +35224,8 @@ __webpack_require__(69)[IE_PROTO] = true;
 /***/ (function(module, exports, __webpack_require__) {
 
 var DESCRIPTORS = __webpack_require__(29);
-var definePropertyModule = __webpack_require__(25);
-var anObject = __webpack_require__(23);
+var definePropertyModule = __webpack_require__(24);
+var anObject = __webpack_require__(22);
 var objectKeys = __webpack_require__(67);
 
 module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperties(O, Properties) {
@@ -36440,7 +36440,7 @@ module.exports = nativeKeys;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(46),
-    root = __webpack_require__(26);
+    root = __webpack_require__(25);
 
 /* Built-in method references that are verified to be native. */
 var DataView = getNative(root, 'DataView');
@@ -36453,7 +36453,7 @@ module.exports = DataView;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(46),
-    root = __webpack_require__(26);
+    root = __webpack_require__(25);
 
 /* Built-in method references that are verified to be native. */
 var Promise = getNative(root, 'Promise');
@@ -36466,7 +36466,7 @@ module.exports = Promise;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(46),
-    root = __webpack_require__(26);
+    root = __webpack_require__(25);
 
 /* Built-in method references that are verified to be native. */
 var Set = getNative(root, 'Set');
@@ -36479,7 +36479,7 @@ module.exports = Set;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(46),
-    root = __webpack_require__(26);
+    root = __webpack_require__(25);
 
 /* Built-in method references that are verified to be native. */
 var WeakMap = getNative(root, 'WeakMap');
@@ -36967,7 +36967,7 @@ var FORCED = __webpack_require__(133)('anchor');
 
 // `String.prototype.anchor` method
 // https://tc39.github.io/ecma262/#sec-string.prototype.anchor
-__webpack_require__(21)({ target: 'String', proto: true, forced: FORCED }, {
+__webpack_require__(20)({ target: 'String', proto: true, forced: FORCED }, {
   anchor: function anchor(name) {
     return createHTML(this, 'a', 'name', name);
   }
@@ -36978,7 +36978,7 @@ __webpack_require__(21)({ target: 'String', proto: true, forced: FORCED }, {
 /* 412 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(22);
+var isObject = __webpack_require__(21);
 var setPrototypeOf = __webpack_require__(413);
 
 module.exports = function (that, target, C) {
@@ -37020,8 +37020,8 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
 /* 414 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(22);
-var anObject = __webpack_require__(23);
+var isObject = __webpack_require__(21);
+var anObject = __webpack_require__(22);
 
 module.exports = function (O, proto) {
   anObject(O);
@@ -37038,9 +37038,9 @@ module.exports = function (O, proto) {
 "use strict";
 
 var getBuiltIn = __webpack_require__(416);
-var definePropertyModule = __webpack_require__(25);
+var definePropertyModule = __webpack_require__(24);
 var DESCRIPTORS = __webpack_require__(29);
-var SPECIES = __webpack_require__(24)('species');
+var SPECIES = __webpack_require__(23)('species');
 
 module.exports = function (CONSTRUCTOR_NAME) {
   var C = getBuiltIn(CONSTRUCTOR_NAME);
@@ -37073,9 +37073,9 @@ module.exports = function (namespace, method) {
 /* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(23);
+var anObject = __webpack_require__(22);
 var aFunction = __webpack_require__(186);
-var SPECIES = __webpack_require__(24)('species');
+var SPECIES = __webpack_require__(23)('species');
 
 // `SpeciesConstructor` abstract operation
 // https://tc39.github.io/ecma262/#sec-speciesconstructor
@@ -37090,7 +37090,7 @@ module.exports = function (O, defaultConstructor) {
 /* 418 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(26);
+var root = __webpack_require__(25);
 
 /**
  * Gets the timestamp of the number of milliseconds that have elapsed since
@@ -37122,7 +37122,7 @@ module.exports = now;
 "use strict";
 
 var classof = __webpack_require__(420);
-var TO_STRING_TAG = __webpack_require__(24)('toStringTag');
+var TO_STRING_TAG = __webpack_require__(23)('toStringTag');
 var test = {};
 
 test[TO_STRING_TAG] = 'z';
@@ -37139,7 +37139,7 @@ module.exports = String(test) !== '[object z]' ? function toString() {
 /***/ (function(module, exports, __webpack_require__) {
 
 var classofRaw = __webpack_require__(68);
-var TO_STRING_TAG = __webpack_require__(24)('toStringTag');
+var TO_STRING_TAG = __webpack_require__(23)('toStringTag');
 // ES3 wrong here
 var CORRECT_ARGUMENTS = classofRaw(function () { return arguments; }()) == 'Arguments';
 
@@ -45767,7 +45767,7 @@ module.exports = toFinite;
 /* 838 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(22);
+var isObject = __webpack_require__(21);
 var onFreeze = __webpack_require__(839).onFreeze;
 var nativeFreeze = Object.freeze;
 var FREEZING = __webpack_require__(207);
@@ -45775,7 +45775,7 @@ var FAILS_ON_PRIMITIVES = __webpack_require__(13)(function () { nativeFreeze(1);
 
 // `Object.freeze` method
 // https://tc39.github.io/ecma262/#sec-object.freeze
-__webpack_require__(21)({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES, sham: !FREEZING }, {
+__webpack_require__(20)({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES, sham: !FREEZING }, {
   freeze: function freeze(it) {
     return nativeFreeze && isObject(it) ? nativeFreeze(onFreeze(it)) : it;
   }
@@ -45788,9 +45788,9 @@ __webpack_require__(21)({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITI
 
 var METADATA = __webpack_require__(86)('meta');
 var FREEZING = __webpack_require__(207);
-var isObject = __webpack_require__(22);
+var isObject = __webpack_require__(21);
 var has = __webpack_require__(31);
-var defineProperty = __webpack_require__(25).f;
+var defineProperty = __webpack_require__(24).f;
 var id = 0;
 
 var isExtensible = Object.isExtensible || function () {
@@ -47712,7 +47712,7 @@ var prop_types = __webpack_require__(0);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/Styled/index.js + 2 modules
-var Styled = __webpack_require__(5);
+var Styled = __webpack_require__(6);
 
 // CONCATENATED MODULE: ./node_modules/react-lifecycles-compat/react-lifecycles-compat.es.js
 /**
@@ -48237,7 +48237,7 @@ var fullscreen_exit = __webpack_require__(225);
 var fullscreen_exit_default = /*#__PURE__*/__webpack_require__.n(fullscreen_exit);
 
 // EXTERNAL MODULE: ./node_modules/clsx/dist/clsx.m.js
-var clsx_m = __webpack_require__(20);
+var clsx_m = __webpack_require__(27);
 
 // CONCATENATED MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/ToolbarButton/ToolbarButtonRenderer.js
 
@@ -48450,7 +48450,7 @@ IsolateButton_IsolateButton.propTypes = {
 var core_browser_esm = __webpack_require__(3);
 
 // EXTERNAL MODULE: ./styleguide/theme.js
-var styleguide_theme = __webpack_require__(6);
+var styleguide_theme = __webpack_require__(5);
 
 // EXTERNAL MODULE: ./src/styles/index.js + 6 modules
 var src_styles = __webpack_require__(4);
@@ -48462,30 +48462,26 @@ var src_styles = __webpack_require__(4);
 
 
 
-
-var TabButton_ref =  true ? {
-  name: "n3b7kw",
-  styles: "color:hotpink !important;border-bottom:2px solid hotpink;&::before{content:'\u2191';}"
-} : undefined;
-
-function TabButtonRenderer(_ref2) {
-  var name = _ref2.name,
-      className = _ref2.className,
-      onClick = _ref2.onClick,
-      active = _ref2.active,
-      children = _ref2.children;
+function TabButtonRenderer(_ref) {
+  var name = _ref.name,
+      className = _ref.className,
+      onClick = _ref.onClick,
+      active = _ref.active,
+      children = _ref.children;
   return Object(core_browser_esm["d" /* jsx */])("button", {
     css:
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("background:none;border:none;color:", styleguide_theme["a" /* default */].colors.neutral.white, ";padding:10px;",
+    Object(core_browser_esm["c" /* css */])("background:", styleguide_theme["a" /* default */].colors.neutral.black, ";border:none;color:", styleguide_theme["a" /* default */].colors.text.inverseLight, ";padding:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.medium), ";",
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])(src_styles["d" /* interfaceUI */].small(styleguide_theme["a" /* default */]),  true ? "" : undefined,  true ? "" : undefined), ";.rsg--tabButtons-7 &{color:hotpink !important;}&::before{display:inline-block;content:'\u2193';margin-right:", styleguide_theme["a" /* default */].spacing.padding.xxs, ";}", active &&
+    Object(core_browser_esm["c" /* css */])(src_styles["d" /* interfaceUI */].small(styleguide_theme["a" /* default */]),  true ? "" : undefined,  true ? "" : undefined), ";&::before{display:inline-block;content:'\u2193';margin-right:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.extraSmall), ";}", active &&
     /*#__PURE__*/
-    TabButton_ref,  true ? "" : undefined),
+
+    /*#__PURE__*/
+    Object(core_browser_esm["c" /* css */])("color:", styleguide_theme["a" /* default */].colors.text.inverseDark, " !important;border-bottom:2px solid ", styleguide_theme["a" /* default */].colors.text.inverseDark, ";&::before{content:'\u2191';}" + ( true ? "" : undefined)),  true ? "" : undefined),
     type: "button",
     name: name,
     onClick: onClick
@@ -48501,13 +48497,14 @@ TabButtonRenderer.propTypes = {
 /* harmony default export */ var TabButton = (TabButtonRenderer);
 // CONCATENATED MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/TabButton/index.js
 
-// CONCATENATED MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/slots/CodeTabButton.js
+// CONCATENATED MODULE: ./styleguide/components/slots/CodeTabButton.js
+
 
 
 
 
 var CodeTabButton_CodeTabButton = function CodeTabButton(props) {
-  return react_default.a.createElement(TabButton, props, "View Code");
+  return Object(core_browser_esm["d" /* jsx */])(TabButton, props, "Code");
 };
 
 CodeTabButton_CodeTabButton.propTypes = {
@@ -48516,7 +48513,8 @@ CodeTabButton_CodeTabButton.propTypes = {
   active: prop_types_default.a.bool
 };
 /* harmony default export */ var slots_CodeTabButton = (CodeTabButton_CodeTabButton);
-// CONCATENATED MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/slots/UsageTabButton.js
+// CONCATENATED MODULE: ./styleguide/components/slots/UsageTabButton.js
+
 
 
 
@@ -48525,7 +48523,7 @@ CodeTabButton_CodeTabButton.propTypes = {
 var UsageTabButton_UsageTabButton = function UsageTabButton(props) {
   var component = props.props;
   var showButton = !isEmpty_default()(component.props) || !isEmpty_default()(component.methods);
-  return showButton ? react_default.a.createElement(TabButton, props, "Props & methods") : null;
+  return showButton ? Object(core_browser_esm["d" /* jsx */])(TabButton, props, "Props") : null;
 };
 
 UsageTabButton_UsageTabButton.propTypes = {
@@ -48571,7 +48569,7 @@ var DOCS_TAB_USAGE = 'rsg-usage';
   };
 });
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
-var es_array_map = __webpack_require__(27);
+var es_array_map = __webpack_require__(26);
 
 // EXTERNAL MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/Link/index.js + 1 modules
 var Link = __webpack_require__(120);
@@ -48648,7 +48646,7 @@ function ComponentsList(_ref2) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("padding:0;list-style-type:none;display:grid;grid-gap:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.medium), ";ul &{display:block;}" + ( true ? "" : undefined))
+    Object(core_browser_esm["c" /* css */])("padding:0;list-style-type:none;display:grid;grid-gap:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.medium), ";margin-top:1.2rem;ul &{display:block;}" + ( true ? "" : undefined))
   }, items.map(function (_ref3) {
     var heading = _ref3.heading,
         visibleName = _ref3.visibleName,
@@ -49047,23 +49045,19 @@ var src_components = __webpack_require__(7);
 
 
 
-
-var StyleGuide_ref =  true ? {
-  name: "wiks95",
-  styles: "html{box-sizing:border-box;font-size:62.5%;}body{font-size:1.6rem;}img{max-width:100%;}"
-} : undefined;
-
-var StyleGuide_StyleGuide = function StyleGuide(_ref2) {
-  var children = _ref2.children,
-      hasSidebar = _ref2.hasSidebar,
-      homepageUrl = _ref2.homepageUrl,
-      title = _ref2.title,
-      toc = _ref2.toc,
-      version = _ref2.version;
+var StyleGuide_StyleGuide = function StyleGuide(_ref) {
+  var children = _ref.children,
+      hasSidebar = _ref.hasSidebar,
+      homepageUrl = _ref.homepageUrl,
+      title = _ref.title,
+      toc = _ref.toc,
+      version = _ref.version;
   return Object(core_browser_esm["d" /* jsx */])(src_components["d" /* Nautilus */], null, Object(core_browser_esm["d" /* jsx */])(core_browser_esm["a" /* Global */], {
     styles:
     /*#__PURE__*/
-    StyleGuide_ref
+
+    /*#__PURE__*/
+    Object(core_browser_esm["c" /* css */])("html{box-sizing:border-box;font-size:62.5%;}body{font-size:1.6rem;}img{max-width:100%;}h1{margin:0 0 ", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.extraLarge), ";}h2{margin-top:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.xxl), " !important;border-top:3px solid;padding-top:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.extraLarge), ";}.rsg--wrapper-11 > h2{margin:0 !important;padding-top:0;border-top:0;}h3{margin-top:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.large), " !important;}" + ( true ? "" : undefined))
   }), Object(core_browser_esm["d" /* jsx */])("div", {
     css:
     /*#__PURE__*/
@@ -54676,8 +54670,8 @@ function Playground_Playground(_ref) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("display:flex;justify-content:space-between;align-items:center;padding:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.small), " ", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.medium), ";" + ( true ? "" : undefined))
-  }, Object(core_browser_esm["d" /* jsx */])("div", null, tabButtons), Object(core_browser_esm["d" /* jsx */])("div", null, toolbar)), Object(core_browser_esm["d" /* jsx */])("div", null, tabBody));
+    Object(core_browser_esm["c" /* css */])("display:flex;justify-content:space-between;align-items:center;padding:0 ", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.extraSmall), ";" + ( true ? "" : undefined))
+  }, Object(core_browser_esm["d" /* jsx */])("div", null, tabButtons)), Object(core_browser_esm["d" /* jsx */])("div", null, tabBody));
 }
 Playground_Playground.propTypes = {
   name: prop_types_default.a.string.isRequired,
@@ -54926,7 +54920,8 @@ Examples.contextTypes = {
 // EXTERNAL MODULE: ./styleguide/components/Heading/index.js
 var Heading = __webpack_require__(114);
 
-// CONCATENATED MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/SectionHeading/SectionHeadingRenderer.js
+// CONCATENATED MODULE: ./styleguide/components/SectionHeading/index.js
+
 
 
 
@@ -54934,61 +54929,29 @@ var Heading = __webpack_require__(114);
 
 
 function SectionHeadingRenderer(_ref) {
-  var _cx;
-
-  var classes = _ref.classes,
-      children = _ref.children,
+  var children = _ref.children,
       toolbar = _ref.toolbar,
       id = _ref.id,
       href = _ref.href,
       depth = _ref.depth,
       deprecated = _ref.deprecated;
-  var headingLevel = Math.min(6, depth);
-  var sectionNameClasses = Object(clsx_m["a" /* default */])(classes.sectionName, (_cx = {}, _cx[classes.isDeprecated] = deprecated, _cx));
-  return react_default.a.createElement("div", {
-    className: classes.wrapper
-  }, react_default.a.createElement(Heading["a" /* default */], {
+  // const headingLevel = Math.min(6, depth);
+  // Overwrite RSG's classification of headings, since we're only using top-level headings here!
+  var headingLevel = 1;
+  return Object(core_browser_esm["d" /* jsx */])(Heading["a" /* default */], {
     level: headingLevel,
     id: id
-  }, react_default.a.createElement("a", {
+  }, Object(core_browser_esm["d" /* jsx */])("a", {
     href: href,
-    className: sectionNameClasses
-  }, children)), react_default.a.createElement("div", {
-    className: classes.toolbar
-  }, toolbar));
+    css:
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+    Object(core_browser_esm["c" /* css */])("text-decoration:none;color:", styleguide_theme["a" /* default */].colors.text["default"], ";" + ( true ? "" : undefined))
+  }, children));
 }
 
-var SectionHeadingRenderer_styles = function styles(_ref2) {
-  var color = _ref2.color,
-      space = _ref2.space;
-  return {
-    wrapper: {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      marginBottom: space[1]
-    },
-    toolbar: {
-      marginLeft: 'auto'
-    },
-    sectionName: {
-      '&:hover, &:active': {
-        isolate: false,
-        textDecoration: 'underline',
-        cursor: 'pointer'
-      }
-    },
-    isDeprecated: {
-      color: color.light,
-      '&, &:hover': {
-        textDecoration: 'line-through'
-      }
-    }
-  };
-};
-
 SectionHeadingRenderer.propTypes = {
-  classes: prop_types_default.a.object.isRequired,
   children: prop_types_default.a.node,
   toolbar: prop_types_default.a.node,
   id: prop_types_default.a.string.isRequired,
@@ -54996,7 +54959,7 @@ SectionHeadingRenderer.propTypes = {
   depth: prop_types_default.a.number.isRequired,
   deprecated: prop_types_default.a.bool
 };
-/* harmony default export */ var SectionHeading_SectionHeadingRenderer = (Object(Styled["a" /* default */])(SectionHeadingRenderer_styles)(SectionHeadingRenderer));
+/* harmony default export */ var SectionHeading = (SectionHeadingRenderer);
 // CONCATENATED MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/SectionHeading/SectionHeading.js
 
 
@@ -55010,7 +54973,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 
 
-function SectionHeading(_ref) {
+function SectionHeading_SectionHeading(_ref) {
   var slotName = _ref.slotName,
       slotProps = _ref.slotProps,
       children = _ref.children,
@@ -55026,7 +54989,7 @@ function SectionHeading(_ref) {
     slug: id,
     anchor: true
   });
-  return react_default.a.createElement(SectionHeading_SectionHeadingRenderer, SectionHeading_extends({
+  return react_default.a.createElement(SectionHeading, SectionHeading_extends({
     toolbar: react_default.a.createElement(Slot, {
       name: slotName,
       props: slotProps
@@ -55035,7 +54998,7 @@ function SectionHeading(_ref) {
     href: href
   }, rest), children);
 }
-SectionHeading.propTypes = {
+SectionHeading_SectionHeading.propTypes = {
   children: prop_types_default.a.node,
   id: prop_types_default.a.string.isRequired,
   slotName: prop_types_default.a.string.isRequired,
@@ -55245,7 +55208,7 @@ function (_Component) {
       description: description && react_default.a.createElement(Markdown["a" /* default */], {
         text: description
       }),
-      heading: react_default.a.createElement(SectionHeading, {
+      heading: react_default.a.createElement(SectionHeading_SectionHeading, {
         id: slug,
         pagePerSection: pagePerSection,
         deprecated: !!tags.deprecated,
@@ -55366,7 +55329,7 @@ function SectionRenderer(allProps) {
       pagePerSection = allProps.pagePerSection;
   return react_default.a.createElement("section", {
     className: classes.root
-  }, name && react_default.a.createElement(SectionHeading, {
+  }, name && react_default.a.createElement(SectionHeading_SectionHeading, {
     depth: depth,
     id: slug,
     slotName: "sectionToolbar",
