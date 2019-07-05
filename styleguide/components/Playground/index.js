@@ -43,7 +43,6 @@ export function Playground({
         `}
       >
         <div>{tabButtons}</div>
-        <div>{toolbar}</div>
       </div>
       <div>{tabBody}</div>
     </div>

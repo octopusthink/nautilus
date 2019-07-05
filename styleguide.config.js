@@ -41,6 +41,10 @@ module.exports = {
       __dirname,
       'styleguide/components/StyleGuide',
     ),
+    SectionHeadingRenderer: path.join(
+      __dirname,
+      'styleguide/components/SectionHeading',
+    ),
     TabButtonRenderer: path.join(__dirname, 'styleguide/components/TabButton'),
     TableRenderer: path.join(__dirname, 'styleguide/components/Table'),
     TableOfContentsRenderer: path.join(
