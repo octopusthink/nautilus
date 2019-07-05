@@ -27,6 +27,9 @@ module.exports = {
       'styleguide/components/Playground',
     ),
     PropsRenderer: path.join(__dirname, 'styleguide/components/Props'),
+    ReactComponentRenderer: path.join(
+      __dirname,
+      'styleguide/components/ReactComponent',
     'slots/CodeTabButton': path.join(
       __dirname,
       'styleguide/components/slots/CodeTabButton',
@@ -84,12 +87,12 @@ module.exports = {
           content: 'styleguide/docs/colour.md',
         },
       ],
-      sectionDepth: 2,
+      sectionDepth: 1,
     },
     {
       name: 'Function',
       content: 'styleguide/docs/function.md',
-      sectionDepth: 3,
+      sectionDepth: 1,
       sections: [
         {
           name: 'Higher-order Components',
@@ -112,7 +115,7 @@ module.exports = {
       name: 'Form',
       content: 'styleguide/docs/form.md',
       sections: [],
-      sectionDepth: 3,
+      sectionDepth: 1,
     },
   ],
 };
