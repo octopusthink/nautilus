@@ -39,31 +39,43 @@ export const Tabs = (props) => {
           <li role="presentation">
             <a
               css={css`
+                color: ${theme.colors.text.default};
                 display: inline-block;
                 padding: ${toUnits(theme.spacing.padding.small)}
                   ${toUnits(theme.spacing.padding.large)};
+                position: relative;
                 text-decoration: none;
-                color: ${theme.colors.neutral.grey800};
 
-                ${index === activeTab &&
-                  css`
-                    color: ${theme.colors.text.dark};
-                    position: relative;
+                &::after {
+                  display: block;
+                  border-bottom: 3px solid transparent;
+                  content: '';
+                  position: absolute;
+                  bottom: -2px;
+                  left: 0;
+                  right: 0;
+                }
 
-                    &::after {
-                      display: block;
-                      border-bottom: 3px solid;
-                      content: '';
-                      position: absolute;
-                      bottom: -2px;
-                      left: 0;
-                      right: 0;
-                    }
-                  `}
+                &:hover {
+                  //color: ${theme.colors.accent.primaryDark};
+
+                  &::after {
+                    border-color: ${theme.colors.neutral.grey400};
+                  }
+                }
 
                 &:focus {
                   ${focusStyle.outline(theme)};
                 }
+
+                ${index === activeTab &&
+                  css`
+                    color: ${theme.colors.text.dark};
+
+                    &::after {
+                      border-bottom: 3px solid;
+                    }
+                  `}
               `}
               role="tab"
               href={`#UNIQUEIDHERESOON-section-${index}`}
