@@ -11,24 +11,69 @@ import React, {
 import shortid from 'shortid';
 
 import Paragraph from 'components/ui/Paragraph';
-import { bodyStyles } from 'styles';
+import { bodyStyles, toUnits } from 'styles';
+import { useTheme } from 'themes';
 import { CustomPropTypes } from 'utils';
 
 import Tab from './Tab';
 
 export const Tabs = (props) => {
   const { children, ...otherProps } = props;
+  const theme = useTheme();
 
-  const tabs = useMemo(() => {
-    return Children.toArray(children).filter((child) => {
-      return child.type === Tab;
-    });
+  const labels = useMemo(() => {
+    return Children.toArray(children)
+      .filter((child) => {
+        return child.type === Tab;
+      })
+      .map((child, index) => {
+        return (
+          <li role="presentation">
+            <a
+              css={css`
+                display: inline-block;
+                padding: 0 ${toUnits(theme.spacing.padding.large)}
+                  ${toUnits(theme.spacing.padding.small)} 0;
+                text-decoration: none;
+                color: ${theme.colors.neutral.grey800};
+              `}
+              role="tab"
+              href={`#UNIQUEIDHERESOON-section-${index}`}
+              id={`UNIQUEIDHERESOON-tab-${index}`}
+              // aria-selected={TODO}
+            >
+              {child.props.label}
+            </a>
+          </li>
+        );
+      });
+  }, [children]);
+
+  const tabPanels = useMemo(() => {
+    return Children.toArray(children)
+      .filter((child) => {
+        return child.type === Tab;
+      })
+      .map((child, index) => {
+        return (
+          <section
+            role="tabpanel"
+            id={`UNIQUEIDHERESOON-section-${index}`}
+            aria-labelledby={`UNIQUEIDHERESOON-tab-${index}`}
+          >
+            {child}
+          </section>
+        );
+      });
   }, [children]);
 
   return (
-    <ul role="tablist" {...otherProps}>
-      {tabs}
-    </ul>
+    <React.Fragment>
+      <ul role="tablist" {...otherProps}>
+        {labels}
+      </ul>
+      {tabPanels}
+    </React.Fragment>
   );
 };
 
@@ -46,6 +91,7 @@ export const styles = ({
     padding: 0;
     display: flex;
     list-style-type: none;
+    border-bottom: 1px solid ${theme.colors.neutral.grey600};
   `;
 };
 

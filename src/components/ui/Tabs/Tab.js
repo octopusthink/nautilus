@@ -10,31 +10,7 @@ export const Tab = (props) => {
   const { children, label, ...otherProps } = props;
   const theme = useTheme();
 
-  return (
-    <li role="presentation">
-      <a
-        css={css`
-          padding: ${toUnits(theme.spacing.padding.small)};
-          text-decoration: none;
-          color: ${theme.colors.neutral.grey800};
-        `}
-        role="tab"
-        href="#section1"
-        id="tab1"
-        aria-selected="true"
-      >
-        {label}
-      </a>
-    </li>
-  );
-};
-
-export const styles = (props) => {
-  const { theme } = props;
-
-  return css`
-    margin: 0 ${toUnits(theme.spacing.padding.small)} 0 0;
-  `;
+  return children;
 };
 
 Tab.defaultProps = {
@@ -48,4 +24,4 @@ Tab.propTypes = {
 
 Tab.displayName = 'Tabs.Tab';
 
-export default styled(Tab)(styles);
+export default Tab;
