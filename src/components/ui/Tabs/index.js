@@ -11,7 +11,7 @@ import React, {
 import shortid from 'shortid';
 
 import Paragraph from 'components/ui/Paragraph';
-import { bodyStyles, toUnits } from 'styles';
+import { focusStyle, bodyStyles, toUnits } from 'styles';
 import { useTheme } from 'themes';
 import { CustomPropTypes } from 'utils';
 
@@ -20,6 +20,14 @@ import Tab from './Tab';
 export const Tabs = (props) => {
   const { children, ...otherProps } = props;
   const theme = useTheme();
+  const [activeTab, setActiveTab] = useState(0);
+
+  const tabOnClickFactory = (index) => {
+    return (event) => {
+      event.preventDefault();
+      setActiveTab(index);
+    };
+  };
 
   const labels = useMemo(() => {
     return Children.toArray(children)
@@ -32,22 +40,43 @@ export const Tabs = (props) => {
             <a
               css={css`
                 display: inline-block;
-                padding: 0 ${toUnits(theme.spacing.padding.large)}
-                  ${toUnits(theme.spacing.padding.small)} 0;
+                padding: ${toUnits(theme.spacing.padding.small)}
+                  ${toUnits(theme.spacing.padding.large)};
                 text-decoration: none;
                 color: ${theme.colors.neutral.grey800};
+
+                ${index === activeTab &&
+                  css`
+                    color: ${theme.colors.text.dark};
+                    position: relative;
+
+                    &::after {
+                      display: block;
+                      border-bottom: 3px solid;
+                      content: '';
+                      position: absolute;
+                      bottom: -2px;
+                      left: 0;
+                      right: 0;
+                    }
+                  `}
+
+                &:focus {
+                  ${focusStyle.outline(theme)};
+                }
               `}
               role="tab"
               href={`#UNIQUEIDHERESOON-section-${index}`}
               id={`UNIQUEIDHERESOON-tab-${index}`}
-              // aria-selected={TODO}
+              onClick={tabOnClickFactory(index)}
+              aria-selected={index === activeTab}
             >
               {child.props.label}
             </a>
           </li>
         );
       });
-  }, [children]);
+  }, [children, activeTab]);
 
   const tabPanels = useMemo(() => {
     return Children.toArray(children)
@@ -60,12 +89,18 @@ export const Tabs = (props) => {
             role="tabpanel"
             id={`UNIQUEIDHERESOON-section-${index}`}
             aria-labelledby={`UNIQUEIDHERESOON-tab-${index}`}
+            css={css`
+              ${index !== activeTab &&
+                css`
+                  display: none;
+                `}
+            `}
           >
             {child}
           </section>
         );
       });
-  }, [children]);
+  }, [children, activeTab]);
 
   return (
     <React.Fragment>
