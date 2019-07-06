@@ -30,6 +30,7 @@ module.exports = {
     ReactComponentRenderer: path.join(
       __dirname,
       'styleguide/components/ReactComponent',
+    ),
     'slots/CodeTabButton': path.join(
       __dirname,
       'styleguide/components/slots/CodeTabButton',
