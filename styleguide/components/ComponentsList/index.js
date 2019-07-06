@@ -24,7 +24,7 @@ export function ComponentsList({ classes, items }) {
         list-style-type: none;
         display: grid;
         grid-gap: ${toUnits(theme.spacing.margin.medium)};
-        margin-top: 1.2rem;
+        margin-top: 0;
 
         ul & {
           display: block;

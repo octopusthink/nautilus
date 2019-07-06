@@ -92,12 +92,12 @@ module.exports = {
       sectionDepth: 1,
       sections: [
         {
-          name: 'Higher-order Components',
+          name: 'Higher-order components',
           components: 'src/components/hoc/**/index.{js,jsx,ts,tsx}',
           content: 'styleguide/docs/components/hoc.md',
         },
         {
-          name: 'Inline Text Components',
+          name: 'Inline text components',
           components: 'src/components/inline/**/index.{js,jsx,ts,tsx}',
           content: 'styleguide/docs/components/inline.md',
         },
