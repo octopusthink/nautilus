@@ -4,10 +4,21 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 
-export const Link = (props) => {
-  const { children, ...otherProps } = props;
+import { Icon } from 'components/ui/Icon';
 
-  return <ReactRouterLink {...otherProps}>{children}</ReactRouterLink>;
+export const Link = (props) => {
+  const { children, external, ...otherProps } = props;
+  let icon;
+
+  if (external) {
+    icon = <Icon name="external-link" title="External link" small />;
+  }
+
+  return (
+    <ReactRouterLink {...otherProps}>
+      {children} {icon}
+    </ReactRouterLink>
+  );
 };
 
 export const styles = () => {
@@ -16,11 +27,14 @@ export const styles = () => {
 
 Link.defaultProps = {
   children: undefined,
+  external: false,
 };
 
 Link.propTypes = {
   /** @ignore */
   children: PropTypes.node,
+  /** Use to indicate that a link points to an external resource. */
+  external: PropTypes.boolean,
 };
 
 export const { defaultProps, propTypes } = Link;

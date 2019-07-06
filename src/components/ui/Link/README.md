@@ -29,6 +29,16 @@ Use a `<Link>` component where you would usually use an `<a>` tag in HTML.
 
 ## Behaviour
 
+Use the `external` prop to indicate that a link navigates to an off-site, external resource. This helps users know what to expect before they click a link.
+
+```jsx
+import { Paragraph } from '@octopusthink/nautilus';
+
+<Paragraph>
+  Make sure to read the <Link to="https://tpsreports.com" external>TPS Reports</Link> prior to the Monday Mega-Meeting.
+</Paragraph>
+```
+
 
 ## Voice & tone
 
@@ -50,6 +60,6 @@ If you have multiple links on a page that navigate to similar, but unique, conte
 
 ### Don't open links in new windows
 
-Don't open links in new windows. This hijacks the user experience and forces users to open new tabs, whether they want to or not. Instead, use an `external` indicator to show that the link leads to off-site content, and allow users to choose whether they want that content to open in a new tab or not.
+Don't open links in new windows. Whilst this may be done with good intent, it often has a negative impact on the usability and accessibility of the page and can disorient users.
 
-Whilst this may be done with good intent, it often has a negative impact on the usability and accessibility of the page.
+Opening links in new windows hijacks the user experience and forces users to open new tabs, whether they want to or not. Instead, use an `external` indicator to show that the link leads to off-site content, and allow users to choose whether they want that content to open in a new tab or not.
