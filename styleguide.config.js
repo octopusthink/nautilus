@@ -27,10 +27,6 @@ module.exports = {
       'styleguide/components/Playground',
     ),
     PropsRenderer: path.join(__dirname, 'styleguide/components/Props'),
-    ReactComponentRenderer: path.join(
-      __dirname,
-      'styleguide/components/ReactComponent',
-    ),
     'slots/CodeTabButton': path.join(
       __dirname,
       'styleguide/components/slots/CodeTabButton',
