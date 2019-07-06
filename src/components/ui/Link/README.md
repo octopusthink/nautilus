@@ -26,6 +26,15 @@ Use a `<Link>` component where you would usually use an `<a>` tag in HTML.
 
 ## Appearance
 
+Links are styled consistently throughout, using a distinct colour and a slightly lighter underline. Colours are adjustable in your theme.
+
+```jsx
+import { Paragraph } from '@octopusthink/nautilus';
+
+<Paragraph>
+  Looking for a new furry friend? Browse our <Link to="/puppies">puppies</Link> and <Link to="/kittens">kittens</Link> for adoption.
+</Paragraph>
+```
 
 ## Behaviour
 
@@ -63,3 +72,9 @@ If you have multiple links on a page that navigate to similar, but unique, conte
 Don't open links in new windows. Whilst this may be done with good intent, it often has a negative impact on the usability and accessibility of the page and can disorient users.
 
 Opening links in new windows hijacks the user experience and forces users to open new tabs, whether they want to or not. Instead, use an `external` indicator to show that the link leads to off-site content, and allow users to choose whether they want that content to open in a new tab or not.
+
+### Ensure links are clearly identified
+
+It's best to use two different indicators for links: an underline and an accent colour. This is a long-established pattern for identifying links on the web, so be extremely careful deviating for this pattern.
+
+Never rely on colour or hover states alone to differentiate links. Be very careful with underlining text that isn't a link, since users may expect these to function as links.
