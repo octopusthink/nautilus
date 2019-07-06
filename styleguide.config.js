@@ -84,12 +84,12 @@ module.exports = {
           content: 'styleguide/docs/colour.md',
         },
       ],
-      sectionDepth: 1,
+      sectionDepth: 2,
     },
     {
       name: 'Function',
       content: 'styleguide/docs/function.md',
-      sectionDepth: 1,
+      sectionDepth: 3,
       sections: [
         {
           name: 'Higher-order components',
