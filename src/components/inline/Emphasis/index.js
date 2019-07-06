@@ -9,8 +9,14 @@ export const Emphasis = (props) => {
   return <em {...otherProps}>{children}</em>;
 };
 
-export const styles = () => {
-  return css``;
+export const styles = (props) => {
+  const { theme } = props;
+
+  return css`
+    background: ${theme.colors.text.emphasisBackground};
+    color: ${theme.colors.text.emphasis};
+    font-style: italic;
+  `;
 };
 
 Emphasis.defaultProps = {

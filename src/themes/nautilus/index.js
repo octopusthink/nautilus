@@ -153,6 +153,10 @@ export const theme = {
       inverse: colors.grey0,
       inverseLight: colors.white,
       inverseDark: colors.grey100,
+      emphasis: colors.grey800,
+      emphasisBackground: 'transparent',
+      strong: colors.black,
+      strongBackground: colors.yellow100,
     },
 
     buttons: {

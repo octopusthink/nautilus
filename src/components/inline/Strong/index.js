@@ -9,8 +9,14 @@ export const Strong = (props) => {
   return <strong {...otherProps}>{children}</strong>;
 };
 
-export const styles = () => {
-  return css``;
+export const styles = (props) => {
+  const { theme } = props;
+
+  return css`
+    background: ${theme.colors.text.strongBackground};
+    color: ${theme.colors.text.strong};
+    font-weight: ${theme.typography.fontWeights.bodyBold};
+  `;
 };
 
 Strong.defaultProps = {
