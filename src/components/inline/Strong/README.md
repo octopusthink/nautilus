@@ -1,10 +1,10 @@
-A `<Strong>` component is an inline text component used to mark a section of text within a list or paragraph as important.
+`<Strong>` is used to mark a short span of text within body copy as important.
 
 ```jsx
 import { Paragraph } from '@octopusthink/nautilus';
 
 <Paragraph>
-  <Strong>Rick James was a great musician.</Strong> He played the bass.
+  <Strong>Rick James</Strong> was a great musician. He played the bass.
 </Paragraph>
 ```
 
@@ -12,21 +12,33 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 Use a `<Strong>` component where you would usually use a `<strong>` tag in HTML.
 
-Don't use a `<Strong>` for:
-- A heading or subheading. Using a `<Heading>` or `<Subtitle>` instead.
+### Use this component for...
+
+- Highlighting important information.
+- Helping users who are skimming to pick out key phrases and concepts.
+- A piece of text requiring "global" emphasis (emphasis when scanning the page as a whole).
+
+### Don't use this component for...
+
+- A heading or subheading. Use a `<Heading>` or `<Subtitle>` instead.
+- Highlighting a navigational link. Use a `<Link>` instead.
+- Indicating a stress or shifted intonation in a passage of text. Use an `<Emphasis>` instead.
+- A piece of text requiring "local" emphasis (emphasis when reading the passage). Use an `<Emphasis>` instead.
 
 ## Appearance
 
-TBD
+`<Strong>` spans are styled consistently throughout and have more visual weight than `<Emphasis>` spans. Colours are adjustable in your theme.
 
-## Variations
+```jsx
+import { Paragraph, Emphasis } from '@octopusthink/nautilus';
 
-TBD
-
-## Voice & Tone
-
-TBD
+<Paragraph>
+  The puppies <Strong>chased their tails</Strong> <Emphasis>almost</Emphasis> every single afternoon.
+</Paragraph>
+```
 
 ## Accessibility
 
-TBD
+Use care when highlighting text. Only highlight a few words at a time, and restrict it to key passages or important concepts.
+
+Using `<Strong>` judiciously can help make your text more accessible. Consider using this component to highlight key passages in your text, especially when text is long. This can help users more quickly parse a text and pull out the important details.
