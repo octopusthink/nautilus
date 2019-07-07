@@ -60,7 +60,7 @@ exports[`TextField should not set a \`max-width\` on the input element without a
 
 .emotion-2:focus {
   color: #181b1c;
-  box-shadow: 0 0 0.1rem 0.4rem #f5bbda;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
@@ -155,7 +155,7 @@ exports[`TextField should set a \`max-width\` on the input element when \`size\`
 
 .emotion-2:focus {
   color: #181b1c;
-  box-shadow: 0 0 0.1rem 0.4rem #f5bbda;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
@@ -251,7 +251,7 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
 
 .emotion-2:focus {
   color: #181b1c;
-  box-shadow: 0 0 0.1rem 0.4rem #f5bbda;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
