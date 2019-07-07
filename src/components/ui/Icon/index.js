@@ -78,6 +78,7 @@ export const Icon = (props) => {
     large,
     extraLarge,
     strokeColor,
+    verticalAlign,
     ...otherProps
   } = props;
 

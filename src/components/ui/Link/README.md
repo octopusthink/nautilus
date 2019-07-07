@@ -10,17 +10,17 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 ## Usage
 
-Use a `<Link>` component where you would usually use an `<a>` tag in HTML.
+Use a `<Link>` component where you would usually use an `<a>` tag in HTML. If you use the `href` prop, this link will behave exactly like an `<a>` tag; if you use the `to` prop instead, this component will use `react-router-dom`'s `Link` component to output a link that your app can use to navigate to other routes you have defined.
 
 ### Use this component for...
 
 - Navigating to other pages or content, on the same site or another site.
 - Creating an inline link in a paragraph or other span of text.
-- Creating a link to wrap around multiple elements (ie, an image and some text).
+- Creating a link to wrap around multiple elements (eg: an image and some text).
 
 ### Don't use this component for...
 
-- Primary navigation for your site. Use a Menu instead.
+- Primary navigation for your site. Use a `<Menu>` instead.
 - Performing an action. Use a `<Button>` instead.
 - A standalone navigational link. Use a `<Button navigation>` instead.
 
@@ -44,10 +44,9 @@ Use the `external` prop to indicate that a link navigates to an off-site, extern
 import { Paragraph } from '@octopusthink/nautilus';
 
 <Paragraph>
-  Make sure to read the <Link to="https://tpsreports.com" external>TPS Reports</Link> prior to the Monday Mega-Meeting.
+  Make sure to read the <Link to="https://tpsreports.com" external useHref>TPS Reports</Link> prior to the Monday Mega-Meeting.
 </Paragraph>
 ```
-
 
 ## Voice & tone
 
@@ -56,20 +55,19 @@ import { Paragraph } from '@octopusthink/nautilus';
 - Don't use "click here" or another link to "here".
 - Don't use the web address itself, unless it's the most meaningful descriptive label for the link.
 
-
 ## Accessibility
 
 ### Use a clear, unique text label for link text
 
-Use text for links. If using graphics or icons, provide a text alternative or pair with a text label.
+Use text for links. If using graphics or icons, provide a text alternative or pair them with a text label.
 
-Since screen reader users may choose to skim all the links in a page without reading the surrounding content, it's especially important to ensure that your link text works on its own and accurately labels the intended destination. Test your link text to make sure it's sufficiently descriptive and unique when read on its own.
+Since screen reader users may choose to skim all the links in a page without reading the surrounding content, it's especially important to ensure that your link text works on its own and accurately labels the intended destination. Test your link text to make sure it's sufficiently descriptive and unique when read on its own. Don't use "here" as your link text.
 
 If you have multiple links on a page that navigate to similar, but unique, content, make sure they have unique labels. For instance, if you're showing blog post previews followed by a "Read more" link, ensure the title of the post is somewhere in the link so that screen reader users can differentiate the posts.
 
 ### Don't open links in new windows
 
-Don't open links in new windows. Whilst this may be done with good intent, it often has a negative impact on the usability and accessibility of the page and can disorient users.
+Don't open links in new windows. This may be done with good intent, but it often has a negative impact on the usability and accessibility of the page and can disorient users.
 
 Opening links in new windows hijacks the user experience and forces users to open new tabs, whether they want to or not. Instead, use an `external` indicator to show that the link leads to off-site content, and allow users to choose whether they want that content to open in a new tab or not.
 

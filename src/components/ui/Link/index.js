@@ -1,24 +1,30 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 
 import { Icon } from 'components/ui/Icon';
-import { useTheme } from 'themes';
 
 export const Link = (props) => {
-  const { children, external, ...otherProps } = props;
-  let icon;
-
-  if (external) {
-    icon = <Icon name="external-link" title="External link" small />;
-  }
+  const { children, external, to, useHref, ...otherProps } = props;
+  const hrefOnly = external || useHref;
+  const LinkComponent = hrefOnly ? 'a' : ReactRouterLink;
 
   return (
-    <ReactRouterLink {...otherProps}>
-      {children} {icon}
-    </ReactRouterLink>
+    <LinkComponent
+      href={hrefOnly ? to : undefined}
+      to={!hrefOnly ? to : undefined}
+      {...otherProps}
+    >
+      {children}
+      {external && (
+        <Fragment>
+          {' '}
+          <Icon name="external-link" title="External link" small />
+        </Fragment>
+      )}
+    </LinkComponent>
   );
 };
 
@@ -48,13 +54,19 @@ export const styles = (props) => {
 Link.defaultProps = {
   children: undefined,
   external: false,
+  useHref: false,
 };
 
 Link.propTypes = {
   /** @ignore */
   children: PropTypes.node,
   /** Use to indicate that a link points to an external resource. */
-  external: PropTypes.boolean,
+  external: PropTypes.bool,
+  /** Used to link to a route that will be handled by the app's router. */
+  to: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func])
+    .isRequired,
+  /** Set to true to disable react-router integration. */
+  useHref: PropTypes.bool,
 };
 
 export const { defaultProps, propTypes } = Link;

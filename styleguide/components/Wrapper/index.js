@@ -2,7 +2,7 @@
 import { createMemoryHistory } from 'history';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Router } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 import { Nautilus } from 'components';
 
@@ -10,11 +10,11 @@ import { Nautilus } from 'components';
 // Markdown).
 export const Wrapper = ({ children }) => {
   return (
-    <Router history={createMemoryHistory({ initialEntries: ['/'] })}>
+    <MemoryRouter>
       <Nautilus>
         {children}
       </Nautilus>
-    </Router>
+    </MemoryRouter>
   );
 };
 
