@@ -41,4 +41,4 @@ import { Paragraph, Emphasis } from '@octopusthink/nautilus';
 
 Use care when highlighting text. Only highlight a few words at a time, and restrict it to key passages or important concepts.
 
-Using `<Strong>` judiciously can help make your text more accessible. Consider using this component to highlight key passages in your text, especially when text is long. This can help users more quickly parse a text and pull out the important details.
+Using `<Strong>` judiciously can help make your text more accessible. Consider using this component to highlight key passages in your text, especially when text is long. This can help users more quickly parse text and pull out the important details.
