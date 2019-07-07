@@ -105,6 +105,9 @@ export const theme = {
       primary: colors.pink600,
       primaryDark: colors.pink800,
       primaryLight: colors.pink400,
+      secondary: colors.cyan600,
+      secondaryDark: colors.cyan800,
+      secondaryLight: colors.cyan400,
     },
 
     neutral: {
@@ -130,6 +133,10 @@ export const theme = {
     },
 
     state: {
+      interactive: colors.pink200,
+      interactiveText: colors.pink600,
+      hover: colors.cyan200,
+      hoverText: colors.cyan600,
       focusOutline: colors.pink200,
       focusText: colors.pink600,
       disabled: colors.grey700,
@@ -146,6 +153,10 @@ export const theme = {
       inverse: colors.grey0,
       inverseLight: colors.white,
       inverseDark: colors.grey100,
+      emphasis: colors.grey800,
+      emphasisBackground: 'transparent',
+      strong: colors.black,
+      strongBackground: colors.yellow100,
     },
 
     buttons: {

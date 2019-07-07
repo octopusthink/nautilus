@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Strong should match styles 1`] = `
+.emotion-0 {
+  background: #faebbb;
+  color: #181b1c;
+  font-weight: 600;
+}
+
+<div>
+  <strong
+    class="emotion-0 emotion-1"
+  >
+    hello
+  </strong>
+</div>
+`;

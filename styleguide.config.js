@@ -92,9 +92,14 @@ module.exports = {
       sectionDepth: 3,
       sections: [
         {
-          name: 'Higher-order Components',
+          name: 'Higher-order components',
           components: 'src/components/hoc/**/index.{js,jsx,ts,tsx}',
           content: 'styleguide/docs/components/hoc.md',
+        },
+        {
+          name: 'Inline text components',
+          components: 'src/components/inline/**/index.{js,jsx,ts,tsx}',
+          content: 'styleguide/docs/components/inline.md',
         },
         {
           name: 'UI Components',
@@ -107,7 +112,7 @@ module.exports = {
       name: 'Form',
       content: 'styleguide/docs/form.md',
       sections: [],
-      sectionDepth: 3,
+      sectionDepth: 1,
     },
   ],
 };

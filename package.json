@@ -72,12 +72,14 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-react-hooks": "^1.6.0",
+    "history": "^4.9.0",
     "jest": "^24.8.0",
     "jest-emotion": "^10.0.11",
     "peer-deps-externals-webpack-plugin": "^1.0.4",
     "prettier": "1.17.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
     "react-styleguidist": "^9.1.1",
     "shelljs": "^0.8.3",
     "stylelint": "^10.0.1",
@@ -95,6 +97,7 @@
     "@emotion/styled": "^10.0.11",
     "emotion-theming": "^10.0.10",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1"
   }
 }
