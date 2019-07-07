@@ -4,7 +4,7 @@ An `<Emphasis>` is used to mark a short span of text within body copy as having 
 import { Paragraph } from '@octopusthink/nautilus';
 
 <Paragraph>
-  He wanted to eat a peanut butter cup, but he was <Emphasis>super</Emphasis> allergic to peanuts and may have perished in the attempt..
+  He wanted to eat a peanut butter cup, but he was <Emphasis>super</Emphasis> allergic to peanuts and may have perished in the attempt.
 </Paragraph>
 ```
 
@@ -16,7 +16,7 @@ Use an `<Emphasis>` component where you would usually use a `<em>` tag in HTML.
 
 - Indicating stress or a shift in intonation in a passage of text.
 - A piece of text requiring "local" emphasis (emphasis when reading the passage).
-- Offsetting titles of books, articles, and other works. 
+- Distinguishing titles of books, articles, and other works. 
 
 ### Don't use this component for...
 
