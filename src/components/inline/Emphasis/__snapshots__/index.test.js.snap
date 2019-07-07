@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Emphasis should match styles 1`] = `
+.emotion-0 {
+  background: transparent;
+  color: #666c76;
+  font-style: italic;
+}
+
+<div>
+  <em
+    class="emotion-0 emotion-1"
+  >
+    hello
+  </em>
+</div>
+`;

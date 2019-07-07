@@ -30,4 +30,10 @@ describe('Emphasis', () => {
 
     expect(getByTestId('myText').classList).toContain('custom-class');
   });
+
+  it('should match styles', () => {
+    const { container } = render(<Emphasis>hello</Emphasis>);
+
+    expect(container).toMatchSnapshot();
+  });
 });

@@ -30,4 +30,10 @@ describe('Strong', () => {
 
     expect(getByTestId('myText').classList).toContain('custom-class');
   });
+
+  it('should match styles', () => {
+    const { container } = render(<Strong>hello</Strong>);
+
+    expect(container).toMatchSnapshot();
+  });
 });
