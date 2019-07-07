@@ -20,7 +20,7 @@ import { CustomPropTypes } from 'utils';
 import Tab from './Tab';
 
 export const Tabs = (props) => {
-  const { children, dark, inverse, light, ...otherProps } = props;
+  const { children, dark, inverse, light, id, ...otherProps } = props;
   const sectionToFocusRef = useRef();
   const tabToFocusRef = useRef();
   const [generatedId] = useState(shortid.generate());
@@ -84,6 +84,15 @@ export const Tabs = (props) => {
         return;
       }
 
+      // If these key presses weren't able to move the focused tab because
+      // we're at the end of the row, at least ensure the correct tab is
+      // still focused.
+      if (newTabIndex !== undefined) {
+        event.preventDefault();
+        setFocusedTab(activeTab);
+        return;
+      }
+
       // 40 is the keycode for down arrow, which will move the focus into the
       // active tab's content.
       if (event.which === 40) {
@@ -101,6 +110,8 @@ export const Tabs = (props) => {
     };
   };
 
+  const tabsId = id || generatedId;
+
   const labels = useMemo(() => {
     return Children.toArray(children)
       .filter(isTab)
@@ -113,7 +124,7 @@ export const Tabs = (props) => {
         } = labelProps;
 
         return (
-          <li key={`${generatedId}-tab-${label}`} role="presentation">
+          <li key={`${tabsId}-tab-${label}`} role="presentation">
             <a
               aria-selected={index === activeTab}
               css={css`
@@ -155,8 +166,8 @@ export const Tabs = (props) => {
                     }
                   `}
               `}
-              href={`#${generatedId}-section-${index}`}
-              id={`${generatedId}-tab-${index}`}
+              href={`#${tabsId}-section-${index}`}
+              id={`${tabsId}-tab-${index}`}
               onClick={(event) => {
                 onClickFactory(index)(event);
                 if (onClickTab) {
@@ -183,7 +194,7 @@ export const Tabs = (props) => {
     children,
     activeTab,
     focusedTab,
-    generatedId,
+    tabsId,
     onKeyDown,
     tabToFocusRef,
     theme,
@@ -196,14 +207,14 @@ export const Tabs = (props) => {
         const { label } = child.props;
 
         return cloneElement(child, {
-          'aria-labelledby': `${generatedId}-tab-${index}`,
+          'aria-labelledby': `${tabsId}-tab-${index}`,
           isActive: activeTab === index,
-          id: `${generatedId}-section-${index}`,
-          key: `${generatedId}-section-${label}`,
+          id: `${tabsId}-section-${index}`,
+          key: `${tabsId}-section-${label}`,
           ref: focusedSection === index ? sectionToFocusRef : undefined,
         });
       });
-  }, [children, activeTab, focusedSection, generatedId, sectionToFocusRef]);
+  }, [children, activeTab, focusedSection, tabsId, sectionToFocusRef]);
 
   return (
     <Fragment>
@@ -231,8 +242,9 @@ export const styles = (props) => {
 
 Tabs.defaultProps = {
   children: undefined,
-  inverse: false,
   dark: false,
+  id: undefined,
+  inverse: false,
   light: false,
 };
 
@@ -243,6 +255,8 @@ Tabs.propTypes = {
   inverse: PropTypes.bool,
   /** Darken text colour. */
   dark: PropTypes.bool,
+  /** @ignore HTML ID prop */
+  id: PropTypes.string,
   /** Lighten text colour. */
   light: PropTypes.bool,
 };

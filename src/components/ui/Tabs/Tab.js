@@ -9,6 +9,10 @@ import { focusStyle } from 'styles';
 export const Tab = forwardRef((props, ref) => {
   const { isActive, children, label, labelProps, ...otherProps } = props;
 
+  if (!children) {
+    return null;
+  }
+
   return (
     <section role="tabpanel" tabIndex="-1" {...otherProps} ref={ref}>
       <Heading level={4}>{label}</Heading>
