@@ -5,7 +5,7 @@ import { render } from 'utils/testing';
 import Emphasis from '.';
 
 describe('Emphasis', () => {
-  it('should render a <strong> tag', () => {
+  it('should render an <em> tag', () => {
     const { container } = render(<Emphasis>Hello</Emphasis>);
 
     expect(container.firstChild.tagName).toEqual('EM');
