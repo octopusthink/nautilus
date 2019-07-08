@@ -83,7 +83,7 @@ export const StyleGuide = ({
             z-index: 1000;
             position: fixed;
             overflow: auto;
-            top: 76px;
+            top: 0;
             box-sizing: border-box;
             padding: 0 ${toUnits(theme.spacing.padding.large)};
 
@@ -92,24 +92,34 @@ export const StyleGuide = ({
             `}
           `} >
           <a href="#" css={css`
-            ${metadata.small(theme)};
+            ${metadata.large(theme)};
             display: flex;
-            flex-direction: column;
-            font-size: 1.2rem;
             text-decoration: none;
             color: ${theme.colors.neutral.grey200};
-            align-items: center;
-            justify-content: center;
-            height: 60px;
             width: 100%;
-            align-items: end;
+            align-items: center;
+            justify-content: space-between;
           `}
           onClick = {toggleSidebar}
           >
+            Nautilus
+            <div css={css`
+              ${metadata.small(theme)};
+              display: flex;
+              flex-direction: column;
+              font-size: 1.2rem;
+              text-decoration: none;
+              height: 76px;
+              width: 60px;
+              align-items: center;
+              justify-content: center;
+              margin-right: -${toUnits(theme.spacing.padding.large)};
+
+            `} >
             <Icon name="menu" />
             Menu
-          </a>
-
+          </div>
+        </a>
             {toc}
 
           </div>
@@ -119,7 +129,7 @@ export const StyleGuide = ({
           margin-top: 80px;
           margin-left: 300px;
           max-width: 800px;
-          padding: 0 ${toUnits(theme.spacing.padding.large)};
+          padding: ${toUnits(theme.spacing.padding.xxl)};
 
           img {
             max-width: 100%;

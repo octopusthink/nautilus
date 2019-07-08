@@ -23,7 +23,7 @@ export function ComponentsList({ classes, items }) {
         padding: 0;
         list-style-type: none;
         display: grid;
-        grid-gap: ${toUnits(theme.spacing.margin.medium)};
+        grid-gap: ${toUnits(theme.spacing.margin.small)};
         margin-top: 0;
 
         ul & {
