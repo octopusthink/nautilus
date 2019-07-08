@@ -72,7 +72,6 @@ export const StyleGuide = ({
           }
         `}
       />
-        <Header title={title} version={version} />
 
         {hasSidebar && (
           <div css={css`
@@ -114,10 +113,8 @@ export const StyleGuide = ({
               align-items: center;
               justify-content: center;
               margin-right: -${toUnits(theme.spacing.padding.large)};
-
             `} >
-            <Icon name="menu" />
-            Menu
+            <Icon name="menu" background="white" border="#cd2f83" background="hotpink" />
           </div>
         </a>
             {toc}
@@ -126,7 +123,6 @@ export const StyleGuide = ({
         )}
 
         <main css={css`
-          margin-top: 80px;
           margin-left: 300px;
           max-width: 800px;
           padding: ${toUnits(theme.spacing.padding.xxl)};
@@ -135,13 +131,15 @@ export const StyleGuide = ({
             max-width: 100%;
           }
 
-        `}>{children}</main>
+        `}>{children}
 
         <Footer>
           <Markdown
             text={`Made with ❤️ by [Octopus Think](https://octopusthink.com/). Say 👋 on [Github](https://github.com/octopusthink/nautilus).`}
           />
         </Footer>
+      </main>
+
     </Nautilus>
   );
 };

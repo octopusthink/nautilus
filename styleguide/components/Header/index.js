@@ -17,10 +17,10 @@ export function Header({ children, title, version }) {
         background: ${theme.colors.neutral.black};
         ${metadata.large(theme)};
         color: ${theme.colors.neutral.white};
-        margin-left: 60px;
+        margin-left: 40px;
       `}
     >
-      Nautilus
+      {title}
       {version && <Version>{version}</Version>}
     </header>
   );

@@ -10,21 +10,16 @@ export function Footer({ children, title, version }) {
   return (
     <footer
       css={css`
-        padding: ${toUnits(theme.spacing.padding.large)} ${toUnits(theme.spacing.padding.large)};
-        background: ${theme.colors.neutral.black};
-
-        @media screen and (min-width: 960px) {
-          grid-column: 1 / 3;
-          padding: ${toUnits(theme.spacing.padding.large)} ${toUnits(theme.spacing.padding.extraLarge)};
-        }
+        margin-top: ${toUnits(theme.spacing.margin.xxl)};
+        padding-top: ${toUnits(theme.spacing.padding.large)};
 
         p {
-          color: ${theme.colors.neutral.grey200} !important;
+          color: ${theme.colors.neutral.grey800} !important;
           margin-bottom: 0;
         }
 
         a {
-          color: ${theme.colors.neutral.white} !important;
+          color: ${theme.colors.neutral.grey800} !important;
         }
       `}
     >
