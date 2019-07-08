@@ -4,14 +4,16 @@
 // the output components of React Styleguidist's Markdown.
 import { Global, css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import React from 'react';
+import { React, useState } from 'react';
 import Markdown from 'rsg-components/Markdown';
 import Header from 'styleguide/components/Header';
 import Footer from 'styleguide/components/Footer';
 
 import { Nautilus } from 'components';
-import { toUnits } from 'styles';
+import { metadata, toUnits } from 'styles';
 import theme from 'styleguide/theme';
+import { Icon } from 'components/ui/Icon';
+
 
 export const StyleGuide = ({
   children,
@@ -21,6 +23,17 @@ export const StyleGuide = ({
   toc,
   version,
 }) => {
+  const [showSidebar, setSidebarState] = useState(true);
+
+  const toggleSidebar = (event) => {
+      event.preventDefault();
+      if (showSidebar) {
+        setSidebarState(false);
+      } else {
+        setSidebarState(true);
+    };
+  }
+
   return (
     <Nautilus>
       <Global
@@ -61,7 +74,46 @@ export const StyleGuide = ({
       />
         <Header title={title} version={version} />
 
-        {hasSidebar && toc}
+        {hasSidebar && (
+          <div css={css`
+            background: ${theme.colors.neutral.black};
+            width: 300px;
+            height: 100%;
+            left: -240px;
+            z-index: 1000;
+            position: fixed;
+            overflow: auto;
+            top: 76px;
+            box-sizing: border-box;
+            padding: 0 ${toUnits(theme.spacing.padding.large)};
+
+            ${showSidebar && css`
+              left: 0px;
+            `}
+          `} >
+          <a href="#" css={css`
+            ${metadata.small(theme)};
+            display: flex;
+            flex-direction: column;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: ${theme.colors.neutral.grey200};
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            width: 100%;
+            align-items: end;
+          `}
+          onClick = {toggleSidebar}
+          >
+            <Icon name="menu" />
+            Menu
+          </a>
+
+            {toc}
+
+          </div>
+        )}
 
         <main css={css`
           margin-top: 80px;
