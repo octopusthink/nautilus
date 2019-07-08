@@ -59,30 +59,15 @@ export const StyleGuide = ({
           }
         `}
       />
-      <div
-        css={css`
-          display: grid;
-          grid-gap: ${toUnits(theme.spacing.margin.extraLarge)};
-          margin: 0 auto;
-
-          @media screen and (min-width: 960px) {
-            grid-template-columns: 320px auto;
-            grid-gap: ${toUnits(theme.spacing.margin.xxl)};
-          }
-        `}
-      >
         <Header title={title} version={version} />
 
         {hasSidebar && toc}
 
         <main css={css`
+          margin-top: 80px;
+          margin-left: 300px;
           max-width: 800px;
-          margin: 0 auto;
           padding: 0 ${toUnits(theme.spacing.padding.large)};
-
-          @media screen and (min-width: 960px) {
-            padding: 0 ${toUnits(theme.spacing.margin.extraLarge)} 0 0;
-          }
 
           img {
             max-width: 100%;
@@ -95,7 +80,6 @@ export const StyleGuide = ({
             text={`Made with ❤️ by [Octopus Think](https://octopusthink.com/). Say 👋 on [Github](https://github.com/octopusthink/nautilus).`}
           />
         </Footer>
-      </div>
     </Nautilus>
   );
 };

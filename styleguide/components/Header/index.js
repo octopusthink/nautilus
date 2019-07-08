@@ -10,15 +10,13 @@ export function Header({ children, title, version }) {
   return (
     <header
       css={css`
+        position: fixed;
+        top: 0;
+        width: 100%;
         padding: ${toUnits(theme.spacing.padding.large)};
         background: ${theme.colors.neutral.black};
         ${metadata.large(theme)};
         color: ${theme.colors.neutral.white};
-
-        @media screen and (min-width: 960px) {
-          grid-column: 1 / 3;
-          padding: ${toUnits(theme.spacing.padding.large)} ${toUnits(theme.spacing.padding.extraLarge)};
-        }
       `}
     >
       {title}

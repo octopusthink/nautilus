@@ -9,14 +9,12 @@ import { Icon } from 'components/ui/Icon';
 export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
   const [showSidebar, setSidebarState] = useState(true);
 
-  const toggleSidebar = (showSidebar) => {
-    return (event) => {
+  const toggleSidebar = (event) => {
       event.preventDefault();
       if (showSidebar) {
         setSidebarState(false);
       } else {
         setSidebarState(true);
-      }
     };
   }
 
@@ -25,21 +23,17 @@ export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
       css={css`
         padding: 0 ${toUnits(theme.spacing.padding.large)};
         ${metadata.small(theme)};
-        background: ${theme.colors.neutral.grey200};
+        background: ${theme.colors.neutral.black};
         width: 240px;
         height: 100%;
-        top: 0;
-        left: -240px;
+        left: -320px;
         z-index: 1000;
-        position: relative;
+        position: fixed;
+        overflow: auto;
 
         ${showSidebar && css`
           left: 0;
         `}
-
-        @media screen and (min-width: 960px) {
-          padding: 0 0 0 ${toUnits(theme.spacing.padding.extraLarge)};
-        }
 
       `}
     >
@@ -48,7 +42,7 @@ export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
         flex-direction: column;
         font-size: 1.2rem;
         text-decoration: none;
-        color: ${theme.colors.neutral.grey800};
+        color: ${theme.colors.neutral.grey200};
         align-items: center;
         position: absolute;
         justify-content: center;
@@ -56,7 +50,7 @@ export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
         right: -60px;
         height: 60px;
         width: 60px;
-        background: ${theme.colors.neutral.grey200};
+        background: ${theme.colors.neutral.black};
       `}
       onClick = {toggleSidebar}
       >
