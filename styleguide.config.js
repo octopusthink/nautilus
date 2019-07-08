@@ -116,6 +116,6 @@ module.exports = {
     },
   ],
   template: {
-    lang: 'en-CA',
+    lang: 'en-GB',
   },
 };
