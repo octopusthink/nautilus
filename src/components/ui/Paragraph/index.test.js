@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 
 import { render } from 'utils/testing';
 
@@ -51,5 +51,14 @@ describe('Paragraph', () => {
     );
 
     expect(getByTestId('myText').classList).toContain('custom-class');
+  });
+
+  it('should forward refs', () => {
+    const ref = createRef();
+
+    render(<Paragraph ref={ref}>Puppies are cute.</Paragraph>);
+
+    expect(ref.current).not.toBeNull();
+    expect(ref.current.tagName).toEqual('P');
   });
 });

@@ -2,7 +2,7 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import invariant from 'invariant';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import { bodyStyles } from 'styles';
 
@@ -20,13 +20,17 @@ export const qualityControl = (props) => {
   );
 };
 
-export const Paragraph = (props) => {
+export const Paragraph = forwardRef((props, ref) => {
   const { children, large, small, inverse, dark, light, ...otherProps } = props;
 
   qualityControl(props);
 
-  return <p {...otherProps}>{children}</p>;
-};
+  return (
+    <p ref={ref} {...otherProps}>
+      {children}
+    </p>
+  );
+});
 
 export const styles = ({ theme, ...otherProps }) => {
   return css`
@@ -57,6 +61,8 @@ Paragraph.propTypes = {
   /** Lighten text colour. */
   light: PropTypes.bool,
 };
+
+Paragraph.displayName = 'Paragraph';
 
 export const { defaultProps, propTypes } = Paragraph;
 

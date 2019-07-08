@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tabs.Tab should render styles for a Tab 1`] = `
+exports[`Tabs.Tabs.Tabs.Tab should render styles for a Tabs.Tab 1`] = `
 .emotion-4 {
   display: none;
 }

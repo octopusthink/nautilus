@@ -1,15 +1,19 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import { toUnits } from 'styles';
 
-export const ListItem = (props) => {
+export const Item = forwardRef((props, ref) => {
   const { children, ...otherProps } = props;
 
-  return <li {...otherProps}>{children}</li>;
-};
+  return (
+    <li ref={ref} {...otherProps}>
+      {children}
+    </li>
+  );
+});
 
 export const styles = (props) => {
   const { theme } = props;
@@ -24,15 +28,17 @@ export const styles = (props) => {
   `;
 };
 
-ListItem.defaultProps = {
+Item.defaultProps = {
   children: undefined,
 };
 
-ListItem.propTypes = {
+Item.propTypes = {
   /** @ignore */
   children: PropTypes.node,
 };
 
-ListItem.displayName = 'List.Item';
+Item.displayName = 'List.Item';
 
-export default styled(ListItem)(styles);
+export const { defaultProps, propTypes } = Item;
+
+export default styled(Item)(styles);

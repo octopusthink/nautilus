@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import React, {
   Fragment,
   cloneElement,
+  forwardRef,
   useCallback,
   useMemo,
   useState,
@@ -23,7 +24,7 @@ const smallText = (props) => {
   `;
 };
 
-export const TextField = (props) => {
+export const TextField = forwardRef((props, ref) => {
   const {
     children,
     disabled,
@@ -232,6 +233,7 @@ export const TextField = (props) => {
         required={!optional && 'required'}
         onBlur={onBlurHandler}
         onFocus={onFocusHandler}
+        ref={ref}
         rows={multiline ? rows : undefined}
         maxLength={size}
         type={!multiline ? type : undefined}
@@ -241,7 +243,7 @@ export const TextField = (props) => {
       {children}
     </Fragment>
   );
-};
+});
 
 // We export all components as styled components to allow component targetting
 // in our styles, but because this component renders multiple DOM elements (
@@ -328,5 +330,9 @@ TextField.propTypes = {
     'week',
   ]),
 };
+
+TextField.displayName = 'TextField';
+
+export const { defaultProps, propTypes } = TextField;
 
 export default styled(TextField)(styles);
