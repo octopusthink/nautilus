@@ -4,7 +4,7 @@
 // the output components of React Styleguidist's Markdown.
 import { Global, css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import Markdown from 'rsg-components/Markdown';
 import Header from 'styleguide/components/Header';
 import Footer from 'styleguide/components/Footer';
