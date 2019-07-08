@@ -115,4 +115,7 @@ module.exports = {
       sectionDepth: 1,
     },
   ],
+  template: {
+    lang: 'en-GB',
+  },
 };
