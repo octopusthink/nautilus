@@ -5,6 +5,7 @@ import React, {
   Children,
   Fragment,
   cloneElement,
+  forwardRef,
   useMemo,
   useState,
 } from 'react';
@@ -15,20 +16,22 @@ import Paragraph from 'components/ui/Paragraph';
 import { bodyStyles } from 'styles';
 import { CustomPropTypes } from 'utils';
 
-import ListItem from './Item';
+import Item from './Item';
 
 export const ALLOWED_DESCRIPTION_COMPONENTS = [Heading, Paragraph];
 
-export const List = ({
-  children,
-  dark,
-  inverse,
-  large,
-  light,
-  ordered,
-  small,
-  ...otherProps
-}) => {
+export const List = forwardRef((props, ref) => {
+  const {
+    children,
+    dark,
+    inverse,
+    large,
+    light,
+    ordered,
+    small,
+    ...otherProps
+  } = props;
+
   let ListComponent = 'ul';
   if (ordered === true) {
     ListComponent = 'ol';
@@ -60,7 +63,7 @@ export const List = ({
 
   const items = useMemo(() => {
     return Children.toArray(children).filter((child) => {
-      return child.type === ListItem;
+      return child.type === Item;
     });
   }, [children]);
 
@@ -69,13 +72,14 @@ export const List = ({
       {description}
       <ListComponent
         aria-labelledby={description && description.props.id}
+        ref={ref}
         {...otherProps}
       >
         {items}
       </ListComponent>
     </Fragment>
   );
-};
+});
 
 export const styles = ({
   dark,
@@ -93,7 +97,7 @@ export const styles = ({
       css`
         counter-reset: list-counter;
 
-        > ${ListItem} {
+        > ${Item} {
           list-style: none;
           counter-increment: list-counter;
 
@@ -104,7 +108,7 @@ export const styles = ({
       `}
     ${!ordered &&
       css`
-        > ${ListItem} {
+        > ${Item} {
           list-style: none;
 
           &::before {
@@ -132,7 +136,7 @@ List.propTypes = {
   /** @ignore The list items for this list (using the `List.Item` component), as well as the optional list description `Heading` or `Paragraph` component. */
   children: CustomPropTypes.allowedChildren(
     ...ALLOWED_DESCRIPTION_COMPONENTS,
-    ListItem,
+    Item,
   ),
   /** Increase the visual prominence of the list. */
   large: PropTypes.bool,
@@ -148,9 +152,11 @@ List.propTypes = {
   ordered: PropTypes.bool,
 };
 
+List.displayName = 'List';
+
 const StyledList = styled(List)(styles);
 
-// Export ListItem as `List.Item`.
-StyledList.Item = ListItem;
+// Export Item as `List.Item`.
+StyledList.Item = Item;
 
 export default StyledList;

@@ -1,19 +1,23 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React, { Fragment, forwardRef } from 'react';
 import { Link as ReactRouterLink } from 'react-router-dom';
 
 import { Icon } from 'components/ui/Icon';
 
-export const Link = (props) => {
+const LinkTag = 'a';
+
+export const Link = forwardRef((props, ref) => {
   const { children, external, to, useHref, ...otherProps } = props;
   const hrefOnly = external || useHref;
-  const LinkComponent = hrefOnly ? 'a' : ReactRouterLink;
+  const LinkComponent = hrefOnly ? LinkTag : ReactRouterLink;
 
   return (
     <LinkComponent
       href={hrefOnly ? to : undefined}
+      innerRef={LinkComponent === ReactRouterLink ? ref : undefined}
+      ref={LinkComponent === LinkTag ? ref : undefined}
       to={!hrefOnly ? to : undefined}
       {...otherProps}
     >
@@ -26,7 +30,7 @@ export const Link = (props) => {
       )}
     </LinkComponent>
   );
-};
+});
 
 export const styles = (props) => {
   const { theme } = props;
@@ -68,6 +72,8 @@ Link.propTypes = {
   /** Set to true to disable react-router integration. */
   useHref: PropTypes.bool,
 };
+
+Link.displayName = 'Link';
 
 export const { defaultProps, propTypes } = Link;
 

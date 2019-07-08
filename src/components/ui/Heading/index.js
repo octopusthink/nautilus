@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import { List, Paragraph } from 'components';
 import { heading, toUnits } from 'styles';
@@ -12,11 +12,16 @@ const SMALL = 4;
 
 const HeadingLevels = [LARGE, MEDIUM, SMALL];
 
-export const Heading = ({ children, level, ...otherProps }) => {
+export const Heading = forwardRef((props, ref) => {
+  const { children, level, ...otherProps } = props;
   const HeadingElement = `h${level}`;
 
-  return <HeadingElement {...otherProps}>{children}</HeadingElement>;
-};
+  return (
+    <HeadingElement {...otherProps} ref={ref}>
+      {children}
+    </HeadingElement>
+  );
+});
 
 export const styles = ({ level, theme }) => {
   return css`
@@ -45,5 +50,7 @@ Heading.propTypes = {
   /** Semantic hierarchy level of the `<h>` element in the markup (ex: `<h3>`). The more semantically important the level, the larger the heading will appear visually; an `<h2>` will be visually styled as "large" while an `<h4>` will be visually small. */
   level: PropTypes.oneOf(HeadingLevels),
 };
+
+Heading.displayName = 'Heading';
 
 export default styled(Heading)(styles);

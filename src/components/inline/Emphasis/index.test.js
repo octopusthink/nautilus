@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 
 import { render } from 'utils/testing';
 
@@ -35,5 +35,14 @@ describe('Emphasis', () => {
     const { container } = render(<Emphasis>hello</Emphasis>);
 
     expect(container).toMatchSnapshot();
+  });
+
+  it('should forward refs', () => {
+    const ref = createRef();
+
+    render(<Emphasis ref={ref}>Italicised text</Emphasis>);
+
+    expect(ref.current).not.toBeNull();
+    expect(ref.current.tagName).toEqual('EM');
   });
 });

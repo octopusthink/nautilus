@@ -2,7 +2,7 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import invariant from 'invariant';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import { interfaceUI, toUnits } from 'styles';
 
@@ -20,7 +20,7 @@ export const qualityControl = (props) => {
   );
 };
 
-export const Button = (props) => {
+export const Button = forwardRef((props, ref) => {
   const {
     children,
     minimal,
@@ -45,11 +45,11 @@ export const Button = (props) => {
   return (
     // See: https://github.com/yannickcr/eslint-plugin-react/issues/1555
     // eslint-disable-next-line react/button-has-type
-    <Component disabled={!navigation && disabled} {...otherProps}>
+    <Component disabled={!navigation && disabled} ref={ref} {...otherProps}>
       {children}
     </Component>
   );
-};
+});
 
 export const styles = (props) => {
   const {
@@ -207,6 +207,8 @@ Button.propTypes = {
   /** HTML `type` attribute for the button. Defaults to `"button"`. */
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
 };
+
+Button.displayName = 'Button';
 
 export const { defaultProps, propTypes } = Button;
 

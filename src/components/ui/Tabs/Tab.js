@@ -14,7 +14,7 @@ export const Tab = forwardRef((props, ref) => {
   }
 
   return (
-    <section role="tabpanel" tabIndex="-1" {...otherProps} ref={ref}>
+    <section role="tabpanel" tabIndex="-1" ref={ref} {...otherProps}>
       <Heading level={4}>{label}</Heading>
 
       {children}
@@ -56,5 +56,7 @@ Tab.propTypes = {
 };
 
 Tab.displayName = 'Tabs.Tab';
+
+export const { defaultProps, propTypes } = Tab;
 
 export default styled(Tab)(styles);

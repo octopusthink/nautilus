@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 
 import { fireEvent, render } from 'utils/testing';
 
@@ -139,5 +139,14 @@ describe('TextField', () => {
     fireEvent.focus(getByTestId('focusInput'));
 
     expect(onFocus).toHaveBeenCalled();
+  });
+
+  it('should forward refs', () => {
+    const ref = createRef();
+
+    render(<TextField ref={ref} />);
+
+    expect(ref.current).not.toBeNull();
+    expect(ref.current.tagName).toEqual('INPUT');
   });
 });

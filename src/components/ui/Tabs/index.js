@@ -5,6 +5,7 @@ import React, {
   Children,
   Fragment,
   cloneElement,
+  forwardRef,
   useCallback,
   useEffect,
   useMemo,
@@ -19,7 +20,7 @@ import { CustomPropTypes } from 'utils';
 
 import Tab from './Tab';
 
-export const Tabs = (props) => {
+export const Tabs = forwardRef((props, ref) => {
   const { children, dark, inverse, light, id, ...otherProps } = props;
   const sectionToFocusRef = useRef();
   const tabToFocusRef = useRef();
@@ -120,6 +121,7 @@ export const Tabs = (props) => {
         const {
           onClick: onClickTab,
           onKeyDown: onKeyDownTab,
+          ref: refTab,
           ...otherTabProps
         } = labelProps;
 
@@ -180,7 +182,7 @@ export const Tabs = (props) => {
                   onKeyDownTab(event);
                 }
               }}
-              ref={focusedTab === index ? tabToFocusRef : undefined}
+              ref={focusedTab === index ? tabToFocusRef : refTab}
               role="tab"
               tabIndex={index !== activeTab ? '-1' : undefined}
               {...otherTabProps}
@@ -219,14 +221,14 @@ export const Tabs = (props) => {
   return (
     <Fragment>
       {labels && !!labels.length && (
-        <ul role="tablist" {...otherProps}>
+        <ul ref={ref} role="tablist" {...otherProps}>
           {labels}
         </ul>
       )}
       {tabPanels}
     </Fragment>
   );
-};
+});
 
 export const styles = (props) => {
   const { dark, inverse, large, light, small, theme } = props;
@@ -260,6 +262,10 @@ Tabs.propTypes = {
   /** Lighten text colour. */
   light: PropTypes.bool,
 };
+
+Tabs.displayName = 'Tabs';
+
+export const { defaultProps, propTypes } = Tabs;
 
 const StyledTabs = styled(Tabs)(styles);
 

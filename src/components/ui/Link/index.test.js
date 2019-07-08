@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 
 import { muteConsole, renderWithRouter } from 'utils/testing';
 
@@ -74,5 +74,31 @@ describe('Link', () => {
     );
 
     expect(container).toMatchSnapshot();
+  });
+
+  it('should forward refs when using ReactRouterLink', () => {
+    const ref = createRef();
+
+    renderWithRouter(
+      <Link to="/" ref={ref}>
+        Homepage
+      </Link>,
+    );
+
+    expect(ref.current).not.toBeNull();
+    expect(ref.current.tagName).toEqual('A');
+  });
+
+  it('should forward refs when using useHref', () => {
+    const ref = createRef();
+
+    renderWithRouter(
+      <Link ref={ref} to="/" useHref>
+        Homepage
+      </Link>,
+    );
+
+    expect(ref.current).not.toBeNull();
+    expect(ref.current.tagName).toEqual('A');
   });
 });

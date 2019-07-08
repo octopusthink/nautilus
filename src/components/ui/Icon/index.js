@@ -2,7 +2,7 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Feather from 'feather-icons';
 import PropTypes from 'prop-types';
-import React, { useState, useMemo } from 'react';
+import React, { forwardRef, useState, useMemo } from 'react';
 import shortid from 'shortid';
 
 import { toUnits } from 'styles';
@@ -60,7 +60,7 @@ const defineIconSizes = (props) => {
   };
 };
 
-export const Icon = (props) => {
+export const Icon = forwardRef((props, ref) => {
   const {
     background,
     border,
@@ -123,7 +123,6 @@ export const Icon = (props) => {
         {...otherProps}
         aria-hidden={title ? undefined : true}
         aria-labelledby={title && titleId}
-        id={svgId}
         css={css`
           fill: ${fillColor};
           height: ${toUnits(size)};
@@ -145,6 +144,8 @@ export const Icon = (props) => {
               opacity: 0.8;
             `}
         `}
+        id={svgId}
+        ref={ref}
       >
         {title && <title id={titleId}>{title}</title>}
         {description && <desc id={descriptionId}>{description}</desc>}
@@ -156,7 +157,7 @@ export const Icon = (props) => {
       </svg>
     </span>
   );
-};
+});
 
 export const styles = (props) => {
   const { border, background, verticalAlign } = props;
@@ -250,6 +251,8 @@ Icon.propTypes = {
   /** A short description of this icon's content. Leave blank if the icon is entirely decorative. */
   title: PropTypes.string,
 };
+
+Icon.displayName = 'Icon';
 
 export const { defaultProps, propTypes } = Icon;
 
