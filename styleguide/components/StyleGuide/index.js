@@ -123,9 +123,17 @@ export const StyleGuide = ({
         )}
 
         <main css={css`
-          margin-left: 300px;
-          max-width: 800px;
-          padding: ${toUnits(theme.spacing.padding.xxl)};
+          padding: ${toUnits(theme.spacing.margin.medium)};
+          margin-left: 60px;
+
+          @media screen and (min-width: 768px) {
+            padding: ${toUnits(theme.spacing.margin.medium)} ${toUnits(theme.spacing.margin.xxl)};
+            max-width: 800px;
+
+            ${showSidebar && css`
+              margin-left: 300px;
+            `}
+          }
 
           img {
             max-width: 100%;
