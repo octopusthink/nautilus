@@ -4,18 +4,14 @@ import React from 'react';
 
 import theme from 'styleguide/theme';
 import { metadata, toUnits } from 'styles';
+import { Icon } from 'components/ui/Icon';
 
 export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
   return (
     <nav
       css={css`
-        padding: 0 ${toUnits(theme.spacing.padding.large)};
         ${metadata.small(theme)};
-
-        @media screen and (min-width: 960px) {
-          padding: 0 0 0 ${toUnits(theme.spacing.padding.extraLarge)};
-        }
-
+        box-sizing: border-box;
       `}
     >
       <input

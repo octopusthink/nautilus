@@ -10,6 +10,11 @@ export const Nautilus = ({ children, theme }) => {
     <ThemeProvider theme={theme}>
       <Global
         styles={css`
+          * {
+            /* For the love of everything, use better box-sizing by default. */
+            box-sizing: border-box;
+          }
+
           html {
             /* Set base font size for rem units to inherit. */
             font-size: 62.5%;

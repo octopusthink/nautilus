@@ -1,3 +1,4 @@
+import { css } from '@emotion/core';
 import React, { isValidElement } from 'react';
 import PropTypes from 'prop-types';
 import { compiler } from 'markdown-to-jsx';
@@ -13,6 +14,7 @@ import { Details, DetailsSummary } from 'rsg-components/Markdown/Details';
 import { Table, TableHead, TableBody, TableRow, TableCell } from 'rsg-components/Markdown/Table';
 
 import { Heading, PageTitle, Paragraph } from 'components';
+import { toUnits } from 'styles';
 import List from 'styleguide/components/List';
 
 const Pre = props => {
@@ -36,12 +38,14 @@ export const baseOverrides = {
 	h2: {
 		component: Heading,
 		props: {
+			className: 'markdown-h2',
 			level: 2,
 		},
 	},
 	h3: {
 		component: Heading,
 		props: {
+			className: 'markdown-h3',
 			level: 3,
 		},
 	},

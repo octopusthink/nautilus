@@ -23,7 +23,7 @@ export function ComponentsList({ classes, items }) {
         padding: 0;
         list-style-type: none;
         display: grid;
-        grid-gap: ${toUnits(theme.spacing.margin.medium)};
+        grid-gap: ${toUnits(theme.spacing.margin.small)};
         margin-top: 0;
 
         ul & {
@@ -43,17 +43,16 @@ export function ComponentsList({ classes, items }) {
             >
               <Link
                 css={css`
-                  color: ${theme.colors.neutral.grey800} !important;
+                  color: ${theme.colors.neutral.grey600} !important;
                   width: 100% !important;
-                  padding: ${toUnits(theme.spacing.padding.medium)} 0 !important;
-                  border-top: 2px solid !important;
+                  padding: ${toUnits(theme.spacing.padding.small)} 0 !important;
                   display: block !important;
                   text-transform: uppercase !important;
 
                   li li & {
+                    color: ${theme.colors.neutral.white} !important;
                     text-transform: none !important;
                     font-weight: 400 !important;
-                    border-top: 1px solid ${theme.colors.neutral.grey200} !important;
                   }
 
                   li li li & {
