@@ -4,7 +4,7 @@
 // the output components of React Styleguidist's Markdown.
 import { Global, css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Markdown from 'rsg-components/Markdown';
 import Header from 'styleguide/components/Header';
 import Footer from 'styleguide/components/Footer';
@@ -28,6 +28,7 @@ export const StyleGuide = ({
   const menuRef = useRef();
   const windowWidth = useWindowWidth(mobileBreakpoint, { wait: 100 });
   const isMobile = windowWidth < mobileBreakpoint;
+  const [hasToggledSidebar, setHasToggledSidebar] = useState(false);
   const [showSidebar, setSidebarState] = useState(!isMobile);
 
   const toggleSidebar = (event) => {
@@ -36,12 +37,18 @@ export const StyleGuide = ({
 
     setSidebarState(!showSidebar);
 
-    // Reset the scroll position of this div (if we're on mobile and we don't
-    // do this, the menu will get "stuck" in a weird position.
-    // if (menuRef && menuRef.current) {
-    //   menuRef.current.scrollTop = 0;
-    // }
+    setHasToggledSidebar(true);
   }
+
+  useEffect(() => {
+    if (!hasToggledSidebar && !isMobile && !showSidebar) {
+      setSidebarState(true);
+    }
+
+    if (isMobile && showSidebar) {
+      setSidebarState(false);
+    }
+  }, [hasToggledSidebar, isMobile, windowWidth])
 
   return (
     <Nautilus>
@@ -86,18 +93,19 @@ export const StyleGuide = ({
           <div
             css={css`
               background: ${theme.colors.neutral.black};
-              z-index: 1000;
-              position: fixed;
-              overflow: hidden;
-              top: 0;
               box-sizing: border-box;
+              height: 100%;
+              overflow: hidden;
               padding: 0 ${toUnits(theme.spacing.padding.large)};
+              position: fixed;
+              top: 0;
+              z-index: 1000;
 
               ${showSidebar && css`
                 overflow: auto;
               `}
 
-              @media screen and (max-width: 767px) {
+              @media (max-width: 767px) {
                 height: 76px;
                 left: 0;
                 right: 0;
@@ -107,8 +115,7 @@ export const StyleGuide = ({
                 `}
               }
 
-              @media screen and (min-width: 768px) {
-                height: 100%;
+              @media (min-width: 768px) {
                 left: -240px;
                 width: 300px;
 
@@ -120,6 +127,12 @@ export const StyleGuide = ({
             onClick={() => {
               if (isMobile) {
                 setSidebarState(false);
+
+                // Reset the scroll position of this div (if we're on mobile and we don't
+                // do this, the menu will get "stuck" in a weird position.
+                if (menuRef && menuRef.current) {
+                  menuRef.current.scrollTop = 0;
+                }
               }
             }}
             ref={menuRef}
@@ -159,11 +172,11 @@ export const StyleGuide = ({
         <main css={css`
           padding: ${toUnits(theme.spacing.padding.large)};
 
-          @media screen and (max-width: 767px) {
+          @media (max-width: 767px) {
             margin-top: 76px;
           }
 
-          @media screen and (min-width: 768px) {
+          @media (min-width: 768px) {
             margin-left: 60px;
             padding: ${toUnits(theme.spacing.margin.medium)} ${toUnits(theme.spacing.margin.xxl)};
             max-width: 800px;
