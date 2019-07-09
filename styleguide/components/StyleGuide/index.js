@@ -4,10 +4,11 @@
 // the output components of React Styleguidist's Markdown.
 import { Global, css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Markdown from 'rsg-components/Markdown';
 import Header from 'styleguide/components/Header';
 import Footer from 'styleguide/components/Footer';
+import { useWindowWidth } from '@react-hook/window-size'
 
 import { Nautilus } from 'components';
 import { metadata, toUnits } from 'styles';
@@ -23,15 +24,23 @@ export const StyleGuide = ({
   toc,
   version,
 }) => {
-  const [showSidebar, setSidebarState] = useState(true);
+  const mobileBreakpoint = 768;
+  const menuRef = useRef();
+  const windowWidth = useWindowWidth(mobileBreakpoint, { wait: 100 });
+  const isMobile = windowWidth < mobileBreakpoint;
+  const [showSidebar, setSidebarState] = useState(!isMobile);
 
   const toggleSidebar = (event) => {
-      event.preventDefault();
-      if (showSidebar) {
-        setSidebarState(false);
-      } else {
-        setSidebarState(true);
-    };
+    event.preventDefault();
+    event.stopPropagation();
+
+    setSidebarState(!showSidebar);
+
+    // Reset the scroll position of this div (if we're on mobile and we don't
+    // do this, the menu will get "stuck" in a weird position.
+    // if (menuRef && menuRef.current) {
+    //   menuRef.current.scrollTop = 0;
+    // }
   }
 
   return (
@@ -74,35 +83,47 @@ export const StyleGuide = ({
       />
 
         {hasSidebar && (
-          <div css={css`
-            background: ${theme.colors.neutral.black};
-            z-index: 1000;
-            position: fixed;
-            overflow: auto;
-            top: 0;
-            box-sizing: border-box;
-            padding: 0 ${toUnits(theme.spacing.padding.large)};
-
-            @media screen and (max-width: 767px) {
-              height: 76px;
-              left: 0;
-              right: 0;
+          <div
+            css={css`
+              background: ${theme.colors.neutral.black};
+              z-index: 1000;
+              position: fixed;
+              overflow: hidden;
+              top: 0;
+              box-sizing: border-box;
+              padding: 0 ${toUnits(theme.spacing.padding.large)};
 
               ${showSidebar && css`
-                height: 100%;
+                overflow: auto;
               `}
-            }
 
-            @media screen and (min-width: 768px) {
-              height: 100%;
-              left: -240px;
-              width: 300px;
-
-              ${showSidebar && css`
+              @media screen and (max-width: 767px) {
+                height: 76px;
                 left: 0;
-              `}
-            }
-          `} >
+                right: 0;
+
+                ${showSidebar && css`
+                  height: 100%;
+                `}
+              }
+
+              @media screen and (min-width: 768px) {
+                height: 100%;
+                left: -240px;
+                width: 300px;
+
+                ${showSidebar && css`
+                  left: 0;
+                `}
+              }
+            `}
+            onClick={() => {
+              if (isMobile) {
+                setSidebarState(false);
+              }
+            }}
+            ref={menuRef}
+          >
           <a href="#" css={css`
             ${metadata.large(theme)};
             display: flex;
