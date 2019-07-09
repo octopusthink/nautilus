@@ -12,6 +12,7 @@ export function Footer({ children, title, version }) {
       css={css`
         margin-top: ${toUnits(theme.spacing.margin.xxl)};
         padding-top: ${toUnits(theme.spacing.padding.large)};
+        text-align: center;
 
         p {
           color: ${theme.colors.neutral.grey800} !important;
