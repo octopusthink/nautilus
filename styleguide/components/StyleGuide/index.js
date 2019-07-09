@@ -77,7 +77,7 @@ export const StyleGuide = ({
             margin: 0 0 ${toUnits(theme.spacing.margin.large)};
           }
 
-          h2 {
+          .markdown-h2 {
             margin-top: ${toUnits(theme.spacing.margin.xxl)} !important;
           }
 
@@ -133,8 +133,9 @@ export const StyleGuide = ({
               if (isMobile) {
                 setSidebarState(false);
 
-                // Reset the scroll position of this div (if we're on mobile and we don't
-                // do this, the menu will get "stuck" in a weird position.
+                // Reset the scroll position of this div. If we're on mobile
+                // and we don't do this, the menu will get "stuck" in a weird
+                // position.
                 if (menuRef && menuRef.current) {
                   menuRef.current.scrollTop = 0;
                 }
