@@ -25,6 +25,9 @@ export const StyleGuide = ({
   version,
 }) => {
   const mobileBreakpoint = 768;
+  const mobileMenuPadding = toUnits(theme.spacing.padding.large);
+  const tabletMenuPadding = toUnits(theme.spacing.padding.extraLarge);
+
   const menuRef = useRef();
   const windowWidth = useWindowWidth(mobileBreakpoint, { wait: 100 });
   const isMobile = windowWidth < mobileBreakpoint;
@@ -94,7 +97,6 @@ export const StyleGuide = ({
               box-sizing: border-box;
               height: 100%;
               overflow: hidden;
-              padding: 0 ${toUnits(theme.spacing.padding.large)};
               position: fixed;
               top: 0;
               z-index: 1000;
@@ -104,13 +106,11 @@ export const StyleGuide = ({
                 height: 76px;
                 left: 0;
                 right: 0;
-                padding: 0 ${toUnits(theme.spacing.padding.large)};
               }
 
               @media (min-width: 768px) {
                 left: -240px;
                 width: 300px;
-                padding: 0 ${toUnits(theme.spacing.padding.extraLarge)};
               }
 
               ${showSidebar && css`
@@ -124,9 +124,8 @@ export const StyleGuide = ({
                   left: 0;
                 }
               `}
-
-
             `}
+
             onClick={() => {
               if (isMobile) {
                 setSidebarState(false);
@@ -150,6 +149,15 @@ export const StyleGuide = ({
                 width: 100%;
                 align-items: center;
                 justify-content: space-between;
+
+                @media (max-width: 767px) {
+                  padding-left: ${mobileMenuPadding};
+                }
+
+                @media (min-width: 768px) {
+                  padding-left: ${tabletMenuPadding};
+                }
+
               `}
               onClick = {toggleSidebar}
             >
@@ -165,13 +173,24 @@ export const StyleGuide = ({
                   width: 60px;
                   align-items: center;
                   justify-content: center;
-                  margin-right: -${toUnits(theme.spacing.padding.extraLarge)};
                 `}
               >
-                <Icon name="menu" background="white" border="#cd2f83" background="hotpink" />
+                <Icon name="menu" title="Toggle menu"/>
               </div>
             </a>
+            <div css={css`
+              @media (max-width: 767px) {
+                padding-left: ${mobileMenuPadding};
+                padding-right: ${mobileMenuPadding};
+              }
+
+              @media (min-width: 768px) {
+                padding-left: ${tabletMenuPadding};
+                padding-right: ${tabletMenuPadding};
+              }
+            `}>
             {toc}
+          </div>
           </div>
         )}
 
