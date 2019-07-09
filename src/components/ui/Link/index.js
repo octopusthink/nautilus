@@ -13,13 +13,19 @@ export const Link = forwardRef((props, ref) => {
   const hrefOnly = external || useHref;
   const LinkComponent = hrefOnly ? LinkTag : ReactRouterLink;
 
+  const refProps = {};
+  if (hrefOnly) {
+    refProps.ref = ref;
+  } else {
+    refProps.innerRef = ref;
+  }
+
   return (
     <LinkComponent
       href={hrefOnly ? to : undefined}
-      innerRef={LinkComponent === ReactRouterLink ? ref : undefined}
-      ref={LinkComponent === LinkTag ? ref : undefined}
       to={!hrefOnly ? to : undefined}
       {...otherProps}
+      {...refProps}
     >
       {children}
       {external && (
