@@ -15,7 +15,6 @@ import { metadata, toUnits } from 'styles';
 import theme from 'styleguide/theme';
 import { Icon } from 'components/ui/Icon';
 
-
 export const StyleGuide = ({
   children,
   hasSidebar,
@@ -50,11 +49,22 @@ export const StyleGuide = ({
     if (!hasToggledSidebar && !isMobile && !showSidebar) {
       setSidebarState(true);
     }
+  }, [hasToggledSidebar, isMobile, menuRef, showSidebar, windowWidth]);
 
-    if (isMobile && showSidebar) {
+  useEffect(() => {
+    if (isMobile) {
       setSidebarState(false);
     }
-  }, [hasToggledSidebar, isMobile, windowWidth])
+  }, [isMobile, windowWidth]);
+
+  useEffect(() => {
+    if (isMobile && menuRef && menuRef.current) {
+      // Reset the scroll position of this div. If we're on mobile
+      // and we don't do this, the menu will get "stuck" in a weird
+      // position.
+      menuRef.current.scrollTop = 0;
+    }
+  }, [isMobile, menuRef]);
 
   return (
     <Nautilus>
@@ -81,18 +91,17 @@ export const StyleGuide = ({
             margin-top: ${toUnits(theme.spacing.margin.xxl)} !important;
           }
 
+          .markdown-h3 {
+            margin-top: ${toUnits(theme.spacing.margin.large)} !important;
+          }
+
           .rsg--wrapper-11 > h2 {
             margin: 0 !important;
             padding-top: 0;
             border-top: 0;
           }
-
-          h3 {
-            margin-top: ${toUnits(theme.spacing.margin.large)} !important;
-          }
         `}
       />
-
         {hasSidebar && (
           <div
             css={css`

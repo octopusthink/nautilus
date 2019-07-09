@@ -45,6 +45,7 @@ export const baseOverrides = {
 	h3: {
 		component: Heading,
 		props: {
+			className: 'markdown-h3',
 			level: 3,
 		},
 	},
