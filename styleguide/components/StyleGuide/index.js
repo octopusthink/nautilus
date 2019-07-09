@@ -199,6 +199,10 @@ export const StyleGuide = ({
 
         <main css={css`
           padding: ${toUnits(theme.spacing.padding.large)};
+          display: flex;
+          justify-content: center;
+          transition: 160ms all ease-in-out;
+
 
           @media (max-width: 767px) {
             margin-top: ${toUnits(menuToggleHeight)};
@@ -207,7 +211,6 @@ export const StyleGuide = ({
           @media (min-width: 768px) {
             margin-left: ${toUnits(menuToggleWidth)};
             padding: ${toUnits(theme.spacing.margin.medium)};
-            max-width: 800px;
           }
 
           @media screen and (min-width: 980px) {
@@ -220,13 +223,18 @@ export const StyleGuide = ({
               margin-left: ${toUnits(sidebarWidth)};
             }
           `}
-        `}>{children}
+        `}>
+        <div css={css`
+          max-width: 800px;
+        `}>
+          {children}
 
-        <Footer>
-          <Markdown
-            text={`Made with ❤️ by [Octopus Think](https://octopusthink.com/). Say 👋 on [Github](https://github.com/octopusthink/nautilus).`}
-          />
-        </Footer>
+          <Footer>
+            <Markdown
+              text={`Made with ❤️ by [Octopus Think](https://octopusthink.com/). Say 👋 on [Github](https://github.com/octopusthink/nautilus).`}
+            />
+          </Footer>
+        </div>
       </main>
 
     </Nautilus>
