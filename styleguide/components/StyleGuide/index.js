@@ -68,13 +68,11 @@ export const StyleGuide = ({
           }
 
           h1 {
-            margin: 0 0 ${toUnits(theme.spacing.margin.extraLarge)};
+            margin: 0 0 ${toUnits(theme.spacing.margin.large)};
           }
 
           h2 {
             margin-top: ${toUnits(theme.spacing.margin.xxl)} !important;
-            border-top: 3px solid;
-            padding-top: ${toUnits(theme.spacing.padding.extraLarge)};
           }
 
           .rsg--wrapper-11 > h2 {
@@ -85,10 +83,6 @@ export const StyleGuide = ({
 
           h3 {
             margin-top: ${toUnits(theme.spacing.margin.large)} !important;
-          }
-
-          img {
-            max-width: 100%;
           }
         `}
       />
