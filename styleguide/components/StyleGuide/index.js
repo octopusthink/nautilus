@@ -27,6 +27,9 @@ export const StyleGuide = ({
   const mobileBreakpoint = 768;
   const mobileMenuPadding = toUnits(theme.spacing.padding.large);
   const tabletMenuPadding = toUnits(theme.spacing.padding.extraLarge);
+  const sidebarWidth = 300;
+  const menuToggleWidth = 60;
+  const menuToggleHeight = 76;
 
   const menuRef = useRef();
   const windowWidth = useWindowWidth(mobileBreakpoint, { wait: 100 });
@@ -103,14 +106,14 @@ export const StyleGuide = ({
               transition: 160ms all ease-in-out;
 
               @media (max-width: 767px) {
-                height: 76px;
+                height: ${toUnits(menuToggleHeight)};
                 left: 0;
                 right: 0;
               }
 
               @media (min-width: 768px) {
-                left: -240px;
-                width: 300px;
+                left: ${toUnits(menuToggleWidth - sidebarWidth)};
+                width: ${toUnits(sidebarWidth)};
               }
 
               ${showSidebar && css`
@@ -169,8 +172,8 @@ export const StyleGuide = ({
                   flex-direction: column;
                   font-size: 1.2rem;
                   text-decoration: none;
-                  height: 76px;
-                  width: 60px;
+                  height: ${toUnits(menuToggleHeight)};
+                  width: ${toUnits(menuToggleWidth)};
                   align-items: center;
                   justify-content: center;
                 `}
@@ -198,11 +201,11 @@ export const StyleGuide = ({
           padding: ${toUnits(theme.spacing.padding.large)};
 
           @media (max-width: 767px) {
-            margin-top: 76px;
+            margin-top: ${toUnits(menuToggleHeight)};
           }
 
           @media (min-width: 768px) {
-            margin-left: 60px;
+            margin-left: ${toUnits(menuToggleWidth)};
             padding: ${toUnits(theme.spacing.margin.medium)};
             max-width: 800px;
           }
@@ -214,7 +217,7 @@ export const StyleGuide = ({
 
           ${showSidebar && css`
             @media (min-width: 768px) {
-              margin-left: 300px;
+              margin-left: ${toUnits(sidebarWidth)};
             }
           `}
         `}>{children}
