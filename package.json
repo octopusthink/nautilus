@@ -1,8 +1,9 @@
 {
   "name": "@octopusthink/nautilus",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Nautilus design system for React",
-  "main": "index.js",
+  "main": "dist/main.js",
+  "module": "src/index.js",
   "scripts": {
     "prebuild": "npm run clean",
     "build": "npm run build:package && npm run build:styleguide",
