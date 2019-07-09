@@ -16,7 +16,8 @@ export function ComponentsList({ classes, items }) {
     return null;
   }
 
-  const windowHash = window.location.pathname + getHash(window.location.hash);
+  const windowHash = `${window.location.pathname}#/${getHash(window.location.hash)}`;
+
   return (
     <ul
       css={css`
@@ -34,6 +35,7 @@ export function ComponentsList({ classes, items }) {
       {items.map(
         ({ heading, visibleName, href, content, shouldOpenInNewTab }) => {
           const isItemSelected = windowHash === href;
+
           return (
             <li
               key={href}
@@ -58,6 +60,10 @@ export function ComponentsList({ classes, items }) {
                   li li li & {
                     padding-left: ${toUnits(theme.spacing.padding.medium)} !important;
                   }
+
+                  ${isItemSelected && css`
+                    background: rgba(290, 0, 0, .2) !important;
+                  `}
                 `}
                 href={href}
                 target={shouldOpenInNewTab ? '_blank' : undefined}
