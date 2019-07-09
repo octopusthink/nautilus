@@ -76,9 +76,6 @@ export const StyleGuide = ({
         {hasSidebar && (
           <div css={css`
             background: ${theme.colors.neutral.black};
-            width: 300px;
-            height: 100%;
-            left: -240px;
             z-index: 1000;
             position: fixed;
             overflow: auto;
@@ -86,9 +83,25 @@ export const StyleGuide = ({
             box-sizing: border-box;
             padding: 0 ${toUnits(theme.spacing.padding.large)};
 
-            ${showSidebar && css`
-              left: 0px;
-            `}
+            @media screen and (max-width: 767px) {
+              height: 76px;
+              left: 0;
+              right: 0;
+
+              ${showSidebar && css`
+                height: 100%;
+              `}
+            }
+
+            @media screen and (min-width: 768px) {
+              height: 100%;
+              left: -240px;
+              width: 300px;
+
+              ${showSidebar && css`
+                left: 0;
+              `}
+            }
           `} >
           <a href="#" css={css`
             ${metadata.large(theme)};
@@ -123,10 +136,14 @@ export const StyleGuide = ({
         )}
 
         <main css={css`
-          padding: ${toUnits(theme.spacing.margin.medium)};
-          margin-left: 60px;
+          padding: ${toUnits(theme.spacing.padding.large)};
+
+          @media screen and (max-width: 767px) {
+            margin-top: 76px;
+          }
 
           @media screen and (min-width: 768px) {
+            margin-left: 60px;
             padding: ${toUnits(theme.spacing.margin.medium)} ${toUnits(theme.spacing.margin.xxl)};
             max-width: 800px;
 
