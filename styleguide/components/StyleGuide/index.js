@@ -98,6 +98,7 @@ export const StyleGuide = ({
               position: fixed;
               top: 0;
               z-index: 1000;
+              transition: 160ms all ease-in-out;
 
               @media (max-width: 767px) {
                 height: 76px;
