@@ -177,6 +177,10 @@ export const StyleGuide = ({
                   `}
                 }
 
+                &:focus {
+                  color: ${theme.colors.state.interactive};
+                }
+
               `}
               onClick = {toggleSidebar}
             >

@@ -5,7 +5,7 @@ import Link from 'rsg-components/Link';
 import Styled from 'rsg-components/Styled';
 
 import theme from 'styleguide/theme';
-import { toUnits } from 'styles';
+import { toUnits, focusStyle } from 'styles';
 
 import { getHash } from './getHash';
 
@@ -59,6 +59,21 @@ export function ComponentsList({ classes, items }) {
 
                   li li li & {
                     padding-left: ${toUnits(theme.spacing.padding.medium)} !important;
+
+                  }
+
+                  &:hover {
+                    color: ${theme.colors.state.interactive} !important;
+                  }
+
+                  &:focus  {
+                    //outline: none;
+                    color: ${theme.colors.state.interactive} !important;
+                  }
+
+                  &:active {
+                    outline: none;
+                    color: hotpink !important;
                   }
 
                   ${isItemSelected && css`
