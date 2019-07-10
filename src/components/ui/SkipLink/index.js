@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
 
 import { Link } from 'components';
+import { bodyStyles, toUnits } from 'styles';
 
 export const SkipLink = forwardRef((props, ref) => {
-  const { children, contentId, ...otherProps } = props;
+  const { children, toId, ...otherProps } = props;
 
   return (
-    <Link {...otherProps} ref={ref} to={contentId} useHref>
+    <Link {...otherProps} ref={ref} to={`#${toId}`} useHref>
       {children}
     </Link>
   );
@@ -19,20 +20,47 @@ export const styles = (props) => {
   const { theme } = props;
 
   return css`
-    border-bottom: 2px solid ${theme.colors.state.interactive};
+    // We should hide the SkipLink by default, only showing it when its been
+    // focused by the user.
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 0;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 0;
+    transition: none;
+
+    &:focus {
+      ${bodyStyles({ large: true, theme })}
+      background: ${theme.colors.neutral.white};
+      border: ${toUnits(theme.spacing.padding.xxs)} solid
+        ${theme.colors.state.focusOutline};
+      color: ${theme.colors.state.focusText};
+      clip: auto;
+      height: auto;
+      left: 0;
+      margin: 0;
+      padding: ${toUnits(theme.spacing.padding.medium)};
+      overflow: auto;
+      top: 0;
+      width: auto;
+      z-index: 100;
+    }
   `;
 };
 
 SkipLink.defaultProps = {
   children: 'Skip to main content',
-  contentId: '#content',
+  toId: 'content',
 };
 
 SkipLink.propTypes = {
   /** @ignore */
   children: PropTypes.node,
-  /** The HTML ID of the main "content" element on the page; this is what the skip link will take the user to when used.. */
-  contentId: PropTypes.string,
+  /** The HTML ID of the main "content" element on the page. This is what the skip link will take the user to when used. */
+  toId: PropTypes.string,
 };
 
 SkipLink.displayName = 'SkipLink';

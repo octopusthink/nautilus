@@ -6,9 +6,34 @@ import SkipLink from '.';
 
 describe('SkipLink', () => {
   it('should render an <a> tag', () => {
-    const { container } = renderWithRouter(<SkipLink>Hello</SkipLink>);
+    const { container } = renderWithRouter(<SkipLink />);
 
     expect(container.firstChild.tagName).toEqual('A');
+  });
+
+  it('should contain styles, including focus styles that reveal the link', () => {
+    const { container } = renderWithRouter(<SkipLink />);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should include default text', () => {
+    const { getByText } = renderWithRouter(<SkipLink />);
+
+    expect(getByText('Skip to main content')).toBeDefined();
+  });
+
+  it('should not require any props', () => {
+    const { container, getByText } = renderWithRouter(<SkipLink />);
+
+    expect(container.firstChild.tagName).toEqual('A');
+    expect(getByText('Skip to main content')).toBeDefined();
+  });
+
+  it('should change the ID used when the `toId` prop is supplied', () => {
+    const { container } = renderWithRouter(<SkipLink toId="main" />);
+
+    expect(container.firstChild.getAttribute('href')).toEqual('#main');
   });
 
   it('should output its children', () => {

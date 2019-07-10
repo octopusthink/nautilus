@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SkipLink should contain styles, including focus styles that reveal the link 1`] = `
+.emotion-1 {
+  border-bottom: 2px solid #f5bbda;
+  color: #cd2f83;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  height: 0;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 0;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.emotion-1:hover {
+  border-color: #a0dee3;
+  color: #0097a2;
+}
+
+.emotion-1:focus {
+  background: #f5bbda;
+  border-color: #cd2f83;
+  color: #181b1c;
+  outline: none;
+}
+
+.emotion-1:focus {
+  color: #3b3f45;
+  margin: 0 0 3.2rem;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-size: 2.1rem;
+  line-height: 1.5238095238095237;
+  background: #ffffff;
+  border: 0.2rem solid #f5bbda;
+  color: #cd2f83;
+  -webkit-clip: auto;
+  clip: auto;
+  height: auto;
+  left: 0;
+  margin: 0;
+  padding: 1.2rem;
+  overflow: auto;
+  top: 0;
+  width: auto;
+  z-index: 100;
+}
+
+<div>
+  <a
+    class="emotion-0 emotion-1 emotion-2"
+    href="#content"
+  >
+    Skip to main content
+  </a>
+</div>
+`;
