@@ -30,6 +30,7 @@ export function Playground({
           border: 2px solid ${theme.colors.neutral.black};
           background: ${theme.colors.neutral.white};
           padding: ${toUnits(theme.spacing.padding.large)};
+          position: relative;
         `}
       >
         {preview}
