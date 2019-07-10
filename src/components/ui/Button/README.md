@@ -64,15 +64,15 @@ A link loses focus and means the user needs to reorient themselves, but a button
 This is an important different for accessibility needs, but as single page web apps become more common, the difference often starts to blur. In order to keep things flexible, a Button can also act as a link. We add an arrow to the text to indicate that the behaviour won't be exactly the same, and we use an `<a>` tag so screenreaders know what to expect as well.
 
 ```jsx
-<Button href="https://twitter.com/KittenBreak" navigation>
+<Button navigation to="https://twitter.com/KittenBreak" useHref>
   Take a break
 </Button>
 
-<Button href="https://twitter.com/KittenBreak" navigation primary>
+<Button navigation primary to="https://twitter.com/KittenBreak" useHref>
   Take a break
 </Button>
 
-<Button href="https://twitter.com/KittenBreak" navigation minimal>
+<Button navigation minimal to="https://twitter.com/KittenBreak" useHref>
   Take a break
 </Button>
 ```
