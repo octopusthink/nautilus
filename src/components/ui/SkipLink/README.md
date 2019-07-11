@@ -4,7 +4,6 @@ A `<SkipLink>` is a hidden internal link at the beginning of a page that provide
 import { Paragraph } from '@octopusthink/nautilus';
 
 <React.Fragment>
-
   <Paragraph>Click or tab here, then press `tab` to move focus to the `SkipLink` component.</Paragraph>
 
   <SkipLink toId="/Function/UI Components/SkipLink" />
@@ -20,7 +19,7 @@ Your app/site should have a single `<SkipLink>`, located early in your content s
 ### Use this component for...
 
 - Providing an easy way for users to skip to the main content of your page.
-- Any page that includes a page navigation must include a skip link.
+- Any page that includes page navigation. Without a skip link, keyboard users will find it incredibly difficult to navigate your site.
 
 ### Don't use this component for...
 
