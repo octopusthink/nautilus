@@ -4,6 +4,9 @@ import invariant from 'invariant';
 import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
 
+// Import the non-styled Link so we don't have to overwrite Link styles if
+// the `navigation` prop is used by a button.
+import { Link as UnstyledLink } from 'components/ui/Link';
 import { interfaceUI, toUnits } from 'styles';
 
 export const qualityControl = (props) => {
@@ -23,13 +26,15 @@ export const qualityControl = (props) => {
 export const Button = forwardRef((props, ref) => {
   const {
     children,
+    danger,
+    disabled,
     minimal,
     navigation,
     primary,
-    disabled,
     success,
+    to,
+    useHref,
     warning,
-    danger,
     ...otherProps
   } = props;
 
@@ -37,15 +42,22 @@ export const Button = forwardRef((props, ref) => {
 
   let Component = 'button';
   if (navigation === true) {
-    // TODO: Use `react-router-dom` `<Link>` (or better a `nautilus` `<Link>`)
-    // component here.
-    Component = 'a';
+    Component = UnstyledLink;
+    // Set properties that only a Link component should use.
+    otherProps.to = to;
+    otherProps.useHref = useHref;
+    // Unset certain button-specific props.
+    otherProps.type = undefined;
   }
 
   return (
     // See: https://github.com/yannickcr/eslint-plugin-react/issues/1555
     // eslint-disable-next-line react/button-has-type
-    <Component disabled={!navigation && disabled} ref={ref} {...otherProps}>
+    <Component
+      disabled={!navigation ? disabled : undefined}
+      ref={ref}
+      {...otherProps}
+    >
       {children}
     </Component>
   );
@@ -156,12 +168,13 @@ export const styles = (props) => {
         &::after {
           content: ' →';
           display: inline;
-          transition: margin 200ms;
+          padding-right: ${toUnits(theme.spacing.padding.extraSmall)};
+          transition: all 200ms;
         }
 
         &:hover::after {
-          margin-left: 4px;
-          margin-right: -4px;
+          margin-left: ${toUnits(theme.spacing.padding.extraSmall)};
+          padding-right: 0;
         }
       `}
   `;
@@ -169,14 +182,16 @@ export const styles = (props) => {
 
 Button.defaultProps = {
   children: undefined,
+  danger: false,
   disabled: false,
   minimal: false,
   navigation: false,
   primary: false,
-  type: 'button',
   success: false,
+  to: undefined,
+  type: 'button',
+  useHref: false,
   warning: false,
-  danger: false,
 };
 
 Button.propTypes = {
@@ -204,8 +219,14 @@ Button.propTypes = {
   /** Outputs a `react-router-dom` `<Link>` tag that looks (and largely behaves) like a `<Button>`, but can used as navigation. Setting this to `true` enables `Link` properties; see: https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/Link.md. */
   navigation: PropTypes.bool,
 
+  /** Used to link to a route that will be handled by the app's router or to a plain URL when `useHref` is set. */
+  to: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func]),
+
   /** HTML `type` attribute for the button. Defaults to `"button"`. */
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
+
+  /** Set to true to disable react-router integration if `navigation` is `true`. */
+  useHref: PropTypes.bool,
 };
 
 Button.displayName = 'Button';
