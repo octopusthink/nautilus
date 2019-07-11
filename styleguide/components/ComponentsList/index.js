@@ -5,7 +5,7 @@ import Link from 'rsg-components/Link';
 import Styled from 'rsg-components/Styled';
 
 import theme from 'styleguide/theme';
-import { toUnits } from 'styles';
+import { toUnits, focusStyle } from 'styles';
 
 import { getHash } from './getHash';
 
@@ -16,7 +16,8 @@ export function ComponentsList({ classes, items }) {
     return null;
   }
 
-  const windowHash = window.location.pathname + getHash(window.location.hash);
+  const windowHash = `${window.location.pathname}#/${getHash(window.location.hash)}`;
+
   return (
     <ul
       css={css`
@@ -34,6 +35,7 @@ export function ComponentsList({ classes, items }) {
       {items.map(
         ({ heading, visibleName, href, content, shouldOpenInNewTab }) => {
           const isItemSelected = windowHash === href;
+
           return (
             <li
               key={href}
@@ -57,9 +59,47 @@ export function ComponentsList({ classes, items }) {
 
                   li li li & {
                     padding-left: ${toUnits(theme.spacing.padding.medium)} !important;
+
                   }
+
+                  &:hover {
+                    color: ${theme.colors.state.interactive} !important;
+                  }
+
+                  &:focus  {
+                    color: ${theme.colors.state.interactive} !important;
+                  }
+
+                  &:active {
+                    color: ${theme.colors.state.interactiveText} !important;
+                    outline: none;
+                  }
+
+                  ${isItemSelected && css`
+                    color: ${theme.colors.neutral.white} !important;
+                    position: relative !important;
+                    z-index: 2;
+
+                    &::before {
+                      display: block;
+                      position: absolute;
+                      top: 0;
+                      right: -${toUnits(theme.spacing.padding.medium)};
+                      bottom: 0;
+                      left: -${toUnits(theme.spacing.padding.medium)};
+                      background: ${theme.colors.accent.primaryDark};
+                      border-left: 3px solid ${theme.colors.accent.primaryLight};
+                      content: '';
+                      z-index: -1;
+                    }
+                  `}
                 `}
                 href={href}
+                onClick={(event) => {
+                  // Mimic changing the page when clicked; this doesn't happen
+                  // in react-styleguidist because of the hash-based routing.
+                  event.currentTarget.blur();
+                }}
                 target={shouldOpenInNewTab ? '_blank' : undefined}
               >
                 {visibleName}

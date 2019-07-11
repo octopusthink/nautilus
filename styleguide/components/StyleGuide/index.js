@@ -160,8 +160,9 @@ export const StyleGuide = ({
                 text-decoration: none;
                 color: ${theme.colors.neutral.grey200};
                 width: 100%;
-                align-items: center;
+                align-items: start;
                 justify-content: space-between;
+                transition: 160ms all ease-in-out;
 
                 @media (max-width: 767px) {
                   padding-left: ${mobileMenuPadding};
@@ -169,19 +170,37 @@ export const StyleGuide = ({
 
                 @media (min-width: 768px) {
                   padding-left: ${tabletMenuPadding};
+
+                  ${!showSidebar && css`
+                    background: ${theme.colors.neutral.black};
+                    height: 100%;
+                  `}
+                }
+
+                &:focus {
+                  color: ${theme.colors.state.interactive};
                 }
 
               `}
-              onClick = {toggleSidebar}
+              onClick={toggleSidebar}
+            >
+            <span
+              css={css`
+                color: ${theme.colors.neutral.white} !important;
+                display: flex;
+                flex-direction: column;
+                height: ${toUnits(menuToggleHeight)};
+                align-items: center;
+                justify-content: center;
+              `}
             >
               Nautilus
+            </span>
               <div
                 css={css`
-                  ${metadata.small(theme)};
+                  color: ${theme.colors.neutral.white} !important;
                   display: flex;
                   flex-direction: column;
-                  font-size: 1.2rem;
-                  text-decoration: none;
                   height: ${toUnits(menuToggleHeight)};
                   width: ${toUnits(menuToggleWidth)};
                   align-items: center;
