@@ -70,7 +70,9 @@ export const Button = forwardRef((props, ref) => {
       ref={ref}
       {...otherProps}
     >
-      {leadingIcon} {children}
+      {leadingIcon}
+      {'\u00A0'}
+      {children}
     </Component>
   );
 });
