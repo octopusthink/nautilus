@@ -16,7 +16,7 @@ export function ComponentsList({ classes, items }) {
     return null;
   }
 
-  const windowHash = `${window.location.pathname}#/${getHash(window.location.hash)}`;
+  const windowHash = window.location.hash.length ? `${window.location.pathname}#/${getHash(window.location.hash)}` : `${window.location.pathname}#/Introduction`;
 
   return (
     <ul

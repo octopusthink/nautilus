@@ -18,8 +18,8 @@ describe('Button', () => {
   });
 
   it('should not render a disabled attribute when `disabled` prop is set on a navigation button', () => {
-    const { container } = render(
-      <Button disabled navigation>
+    const { container } = renderWithRouter(
+      <Button disabled navigation to="/some-route/">
         Hello
       </Button>,
     );
@@ -34,7 +34,11 @@ describe('Button', () => {
   });
 
   it('should render an <a> tag when `navigation` is set', () => {
-    const { container } = render(<Button navigation>Follow link</Button>);
+    const { container } = renderWithRouter(
+      <Button navigation to="/some-page/">
+        Follow link
+      </Button>,
+    );
 
     expect(container.firstChild.tagName).toEqual('A');
   });

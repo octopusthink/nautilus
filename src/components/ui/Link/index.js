@@ -66,7 +66,7 @@ Link.propTypes = {
   children: PropTypes.node,
   /** Use to indicate that a link points to an external resource. */
   external: PropTypes.bool,
-  /** Used to link to a route that will be handled by the app's router. */
+  /** Used to link to a route that will be handled by the app's router or to a plain URL when `useHref` is set. */
   to: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func])
     .isRequired,
   /** Set to true to disable react-router integration. */
