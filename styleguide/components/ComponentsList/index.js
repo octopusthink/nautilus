@@ -67,13 +67,12 @@ export function ComponentsList({ classes, items }) {
                   }
 
                   &:focus  {
-                    //outline: none;
                     color: ${theme.colors.state.interactive} !important;
                   }
 
                   &:active {
+                    color: ${theme.colors.state.interactiveText} !important;
                     outline: none;
-                    color: hotpink !important;
                   }
 
                   ${isItemSelected && css`
@@ -96,6 +95,11 @@ export function ComponentsList({ classes, items }) {
                   `}
                 `}
                 href={href}
+                onClick={(event) => {
+                  // Mimic changing the page when clicked; this doesn't happen
+                  // in react-styleguidist because of the hash-based routing.
+                  event.currentTarget.blur();
+                }}
                 target={shouldOpenInNewTab ? '_blank' : undefined}
               >
                 {visibleName}
