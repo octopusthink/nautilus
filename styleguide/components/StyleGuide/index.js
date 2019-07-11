@@ -182,19 +182,23 @@ export const StyleGuide = ({
                 }
 
               `}
-              onClick = {toggleSidebar}
+              onClick={toggleSidebar}
             >
-            <span css={css`
+            <span
+              css={css`
+                color: ${theme.colors.neutral.white} !important;
                 display: flex;
                 flex-direction: column;
                 height: ${toUnits(menuToggleHeight)};
                 align-items: center;
                 justify-content: center;
-              `} >
+              `}
+            >
               Nautilus
             </span>
               <div
                 css={css`
+                  color: ${theme.colors.neutral.white} !important;
                   display: flex;
                   flex-direction: column;
                   height: ${toUnits(menuToggleHeight)};
