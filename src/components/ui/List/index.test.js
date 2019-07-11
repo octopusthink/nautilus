@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
 
-import { muteConsole, render } from 'utils/testing';
+import { axe, muteConsole, render } from 'utils/testing';
 
 import { Heading, Paragraph } from 'components';
 import List from '.';
@@ -245,6 +245,43 @@ describe('List', () => {
       );
 
       expect(getByTestId('description').getAttribute('id')).toEqual(originalID);
+    });
+  });
+
+  describe('accessibility', () => {
+    it('should pass aXe tests', async () => {
+      const { container } = render(
+        <List>
+          <List.Item>Honda Civic</List.Item>
+          <List.Item>Ford Prefect</List.Item>
+        </List>,
+      );
+
+      expect(await axe(container.innerHTML)).toHaveNoViolations();
+    });
+
+    it('should pass aXe tests when described by a Heading', async () => {
+      const { container } = render(
+        <List>
+          <Heading level={2}>Here are some cars:</Heading>
+          <List.Item>Honda Civic</List.Item>
+          <List.Item>Ford Prefect</List.Item>
+        </List>,
+      );
+
+      expect(await axe(container.innerHTML)).toHaveNoViolations();
+    });
+
+    it('should pass aXe tests when described by a Paragraph', async () => {
+      const { container } = render(
+        <List>
+          <Paragraph>Here are some cars:</Paragraph>
+          <List.Item>Honda Civic</List.Item>
+          <List.Item>Ford Prefect</List.Item>
+        </List>,
+      );
+
+      expect(await axe(container.innerHTML)).toHaveNoViolations();
     });
   });
 });

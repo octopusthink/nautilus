@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
 
-import { muteConsole, render } from 'utils/testing';
+import { axe, muteConsole, render, renderWithRouter } from 'utils/testing';
 
 import Button from '.';
 
@@ -110,5 +110,23 @@ describe('Button', () => {
 
     expect(ref.current).not.toBeNull();
     expect(ref.current.tagName).toEqual('BUTTON');
+  });
+
+  describe('accessibility', () => {
+    it('should pass aXe tests', async () => {
+      const { container } = render(<Button>hello</Button>);
+
+      expect(await axe(container.innerHTML)).toHaveNoViolations();
+    });
+
+    it('should pass aXe tests when navigation is set', async () => {
+      const { container } = renderWithRouter(
+        <Button navigation to="/somewhere">
+          hello link
+        </Button>,
+      );
+
+      expect(await axe(container.innerHTML)).toHaveNoViolations();
+    });
   });
 });

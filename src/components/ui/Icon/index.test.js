@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
 
-import { muteConsole, render } from 'utils/testing';
+import { axe, muteConsole, render } from 'utils/testing';
 
 import Icon from '.';
 
@@ -66,6 +66,12 @@ describe('Icon', () => {
       ).toEqual('true');
     });
 
+    it('should pass aXe tests without a title', async () => {
+      const { container } = render(<Icon name="archive" />);
+
+      expect(await axe(container.innerHTML)).toHaveNoViolations();
+    });
+
     it('should not set `aria-hidden` if a `title` is supplied', () => {
       const { container } = render(
         <Icon name="archive" title="Paper filing box" />,
@@ -74,6 +80,14 @@ describe('Icon', () => {
       expect(
         container.firstChild.firstChild.getAttribute('aria-hidden'),
       ).toBeNull();
+    });
+
+    it('should pass aXe tests with a title', async () => {
+      const { container } = render(
+        <Icon name="archive" title="Paper filing box" />,
+      );
+
+      expect(await axe(container.innerHTML)).toHaveNoViolations();
     });
   });
 

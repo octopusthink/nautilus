@@ -2,6 +2,8 @@
 // import AxiosMockAdapter from 'axios-mock-adapter';
 // import { JSDOM } from 'jsdom';
 // eslint-disable-next-line import/no-extraneous-dependencies
+import 'jest-axe/extend-expect';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'jest-dom/extend-expect';
 
 global.window.matchMedia = jest.fn().mockImplementation((query) => {

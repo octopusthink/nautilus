@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
 
-import { render } from 'utils/testing';
+import { axe, render } from 'utils/testing';
 
 import Strong from '.';
 
@@ -44,5 +44,13 @@ describe('Strong', () => {
 
     expect(ref.current).not.toBeNull();
     expect(ref.current.tagName).toEqual('STRONG');
+  });
+
+  describe('accessibility', () => {
+    it('should pass aXe tests', async () => {
+      const { container } = render(<Strong>hello</Strong>);
+
+      expect(await axe(container.innerHTML)).toHaveNoViolations();
+    });
   });
 });

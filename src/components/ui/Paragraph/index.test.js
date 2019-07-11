@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
 
-import { render } from 'utils/testing';
+import { axe, render } from 'utils/testing';
 
 import Paragraph from '.';
 
@@ -60,5 +60,15 @@ describe('Paragraph', () => {
 
     expect(ref.current).not.toBeNull();
     expect(ref.current.tagName).toEqual('P');
+  });
+
+  describe('accessibility', () => {
+    it('should pass aXe tests', async () => {
+      const { container } = render(
+        <Paragraph>I&apos;m some text in a paragraph.</Paragraph>,
+      );
+
+      expect(await axe(container.innerHTML)).toHaveNoViolations();
+    });
   });
 });

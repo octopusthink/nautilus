@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
 
-import { muteConsole, renderWithRouter } from 'utils/testing';
+import { axe, muteConsole, renderWithRouter } from 'utils/testing';
 
 import Link from '.';
 
@@ -100,5 +100,13 @@ describe('Link', () => {
 
     expect(ref.current).not.toBeNull();
     expect(ref.current.tagName).toEqual('A');
+  });
+
+  describe('accessibility', () => {
+    it('should pass aXe tests', async () => {
+      const { container } = renderWithRouter(<Link to="/">Homepage</Link>);
+
+      expect(await axe(container.innerHTML)).toHaveNoViolations();
+    });
   });
 });

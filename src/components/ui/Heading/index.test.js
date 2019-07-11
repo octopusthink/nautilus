@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
 
-import { render } from 'utils/testing';
+import { axe, render } from 'utils/testing';
 
 import Heading from '.';
 
@@ -78,5 +78,13 @@ describe('Heading', () => {
 
     expect(ref.current).not.toBeNull();
     expect(ref.current.tagName).toEqual('H4');
+  });
+
+  describe('accessibility', () => {
+    it('should pass aXe tests', async () => {
+      const { container } = render(<Heading level={3}>So-so heading</Heading>);
+
+      expect(await axe(container.innerHTML)).toHaveNoViolations();
+    });
   });
 });

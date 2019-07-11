@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
 
-import { fireEvent, render, wait, waitForElement } from 'utils/testing';
+import { axe, fireEvent, render, wait, waitForElement } from 'utils/testing';
 
 import { Paragraph } from 'components';
 import Tabs from '.';
@@ -220,6 +220,12 @@ describe('Tabs', () => {
         expect(getByTestId('secondTabSection')).not.toHaveFocus();
         expect(getByTestId('thirdTabSection')).not.toHaveFocus();
       });
+    });
+
+    it('should pass aXe tests', async () => {
+      const { container } = render(tabSet);
+
+      expect(await axe(container.innerHTML)).toHaveNoViolations();
     });
   });
 });
