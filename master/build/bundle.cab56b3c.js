@@ -52522,7 +52522,7 @@ function ComponentsList(_ref2) {
     return null;
   }
 
-  var windowHash = "".concat(window.location.pathname, "#/").concat(getHash(window.location.hash));
+  var windowHash = window.location.hash.length ? "".concat(window.location.pathname, "#/").concat(getHash(window.location.hash)) : "".concat(window.location.pathname, "#/Introduction");
   return Object(core_browser_esm["d" /* jsx */])("ul", {
     css:
     /*#__PURE__*/
