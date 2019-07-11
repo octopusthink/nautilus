@@ -34,15 +34,16 @@ exports[`SkipLink should contain styles, including focus styles that reveal the 
 }
 
 .emotion-1:focus {
-  color: #3b3f45;
-  margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  font-size: 2.1rem;
-  line-height: 1.5238095238095237;
-  background: #ffffff;
-  border: 0.2rem solid #f5bbda;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
   color: #cd2f83;
+  background: #ffffff;
+  box-sizing: border-box;
+  display: block;
   -webkit-clip: auto;
   clip: auto;
   height: auto;
@@ -50,8 +51,11 @@ exports[`SkipLink should contain styles, including focus styles that reveal the 
   margin: 0;
   padding: 1.2rem;
   overflow: auto;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
   top: 0;
-  width: auto;
+  width: 100%;
+  text-align: center;
   z-index: 100;
 }
 
