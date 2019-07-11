@@ -61,7 +61,7 @@ A **button** completes an action, like deleting an item, submitting a form, or c
 
 A link loses focus and means the user needs to reorient themselves, but a button doesn't.
 
-This is an important different for accessibility needs, but as single page web apps become more common, the difference often starts to blur. In order to keep things flexible, a Button can also act as a link. We add an arrow to the text to indicate that the behaviour won't be exactly the same, and we use an `<a>` tag so screen readers know what to expect as well.
+This is an important distinction for accessibility needs, but as single page web apps become more common, the difference often starts to blur. In order to keep things flexible, a Button can also act as a link. We add an arrow to the text to indicate that the behaviour won't be exactly the same, and we use an `<a>` tag so screen readers know what to expect as well.
 
 ```jsx
 <Button navigation to="https://twitter.com/KittenBreak" useHref>
