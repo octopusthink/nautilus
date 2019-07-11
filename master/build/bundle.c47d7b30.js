@@ -52522,7 +52522,7 @@ function ComponentsList(_ref2) {
     return null;
   }
 
-  var windowHash = window.location.pathname + getHash(window.location.hash);
+  var windowHash = "".concat(window.location.pathname, "#/").concat(getHash(window.location.hash));
   return Object(core_browser_esm["d" /* jsx */])("ul", {
     css:
     /*#__PURE__*/
@@ -52546,8 +52546,17 @@ function ComponentsList(_ref2) {
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(core_browser_esm["c" /* css */])("color:", styleguide_theme["a" /* default */].colors.neutral.grey600, " !important;width:100% !important;padding:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.small), " 0 !important;display:block !important;text-transform:uppercase !important;li li &{color:", styleguide_theme["a" /* default */].colors.neutral.white, " !important;text-transform:none !important;font-weight:400 !important;}li li li &{padding-left:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.medium), " !important;}" + ( true ? "" : undefined)),
+      Object(core_browser_esm["c" /* css */])("color:", styleguide_theme["a" /* default */].colors.neutral.grey600, " !important;width:100% !important;padding:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.small), " 0 !important;display:block !important;text-transform:uppercase !important;li li &{color:", styleguide_theme["a" /* default */].colors.neutral.white, " !important;text-transform:none !important;font-weight:400 !important;}li li li &{padding-left:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.medium), " !important;}&:hover{color:", styleguide_theme["a" /* default */].colors.state.interactive, " !important;}&:focus{color:", styleguide_theme["a" /* default */].colors.state.interactive, " !important;}&:active{color:", styleguide_theme["a" /* default */].colors.state.interactiveText, " !important;outline:none;}", isItemSelected &&
+      /*#__PURE__*/
+
+      /*#__PURE__*/
+      Object(core_browser_esm["c" /* css */])("color:", styleguide_theme["a" /* default */].colors.neutral.white, " !important;position:relative !important;z-index:2;&::before{display:block;position:absolute;top:0;right:-", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.medium), ";bottom:0;left:-", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.medium), ";background:", styleguide_theme["a" /* default */].colors.accent.primaryDark, ";border-left:3px solid ", styleguide_theme["a" /* default */].colors.accent.primaryLight, ";content:'';z-index:-1;}" + ( true ? "" : undefined)),  true ? "" : undefined),
       href: href,
+      onClick: function onClick(event) {
+        // Mimic changing the page when clicked; this doesn't happen
+        // in react-styleguidist because of the hash-based routing.
+        event.currentTarget.blur();
+      },
       target: shouldOpenInNewTab ? '_blank' : undefined
     }, visibleName), content);
   }));
@@ -53154,14 +53163,24 @@ var StyleGuide_StyleGuide = function StyleGuide(_ref3) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])(src_styles["e" /* metadata */].large(styleguide_theme["a" /* default */]), ";display:flex;text-decoration:none;color:", styleguide_theme["a" /* default */].colors.neutral.grey200, ";width:100%;align-items:center;justify-content:space-between;@media (max-width:767px){padding-left:", mobileMenuPadding, ";}@media (min-width:768px){padding-left:", tabletMenuPadding, ";}" + ( true ? "" : undefined)),
+    Object(core_browser_esm["c" /* css */])(src_styles["e" /* metadata */].large(styleguide_theme["a" /* default */]), ";display:flex;text-decoration:none;color:", styleguide_theme["a" /* default */].colors.neutral.grey200, ";width:100%;align-items:start;justify-content:space-between;transition:160ms all ease-in-out;@media (max-width:767px){padding-left:", mobileMenuPadding, ";}@media (min-width:768px){padding-left:", tabletMenuPadding, ";", !showSidebar &&
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+    Object(core_browser_esm["c" /* css */])("background:", styleguide_theme["a" /* default */].colors.neutral.black, ";height:100%;" + ( true ? "" : undefined)), "}&:focus{color:", styleguide_theme["a" /* default */].colors.state.interactive, ";}" + ( true ? "" : undefined)),
     onClick: toggleSidebar
-  }, "Nautilus", Object(core_browser_esm["d" /* jsx */])("div", {
+  }, Object(core_browser_esm["d" /* jsx */])("span", {
     css:
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])(src_styles["e" /* metadata */].small(styleguide_theme["a" /* default */]), ";display:flex;flex-direction:column;font-size:1.2rem;text-decoration:none;height:", Object(src_styles["g" /* toUnits */])(menuToggleHeight), ";width:", Object(src_styles["g" /* toUnits */])(menuToggleWidth), ";align-items:center;justify-content:center;" + ( true ? "" : undefined))
+    Object(core_browser_esm["c" /* css */])("color:", styleguide_theme["a" /* default */].colors.neutral.white, " !important;display:flex;flex-direction:column;height:", Object(src_styles["g" /* toUnits */])(menuToggleHeight), ";align-items:center;justify-content:center;" + ( true ? "" : undefined))
+  }, "Nautilus"), Object(core_browser_esm["d" /* jsx */])("div", {
+    css:
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+    Object(core_browser_esm["c" /* css */])("color:", styleguide_theme["a" /* default */].colors.neutral.white, " !important;display:flex;flex-direction:column;height:", Object(src_styles["g" /* toUnits */])(menuToggleHeight), ";width:", Object(src_styles["g" /* toUnits */])(menuToggleWidth), ";align-items:center;justify-content:center;" + ( true ? "" : undefined))
   }, Object(core_browser_esm["d" /* jsx */])(Icon["Icon"], {
     name: "menu",
     title: "Toggle menu"
