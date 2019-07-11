@@ -113,65 +113,67 @@ export const TextField = forwardRef((props, ref) => {
 
   return (
     <Fragment>
-      <label
-        css={css`
-          ${interfaceUI.medium(theme)};
-          color: ${theme.colors.text.default};
-          display: flex;
-          flex: 1 0 50%;
-          flex-direction: row;
-          flex-wrap: wrap;
-          justify-content: space-between;
-          margin: 0 0 ${toUnits(theme.spacing.padding.extraSmall)};
+      {label && (
+        <label
+          css={css`
+            ${interfaceUI.medium(theme)};
+            color: ${theme.colors.text.default};
+            display: flex;
+            flex: 1 0 50%;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 0 ${toUnits(theme.spacing.padding.extraSmall)};
 
-          ${!disabled &&
-            css`
-              &:active {
-                ${focusStyle.text(theme)};
-              }
-            `}
+            ${!disabled &&
+              css`
+                &:active {
+                  ${focusStyle.text(theme)};
+                }
+              `}
 
-          ${disabled &&
-            css`
-              color: ${theme.colors.state.disabled};
-            `}
+            ${disabled &&
+              css`
+                color: ${theme.colors.state.disabled};
+              `}
 
           &:focus {
-            ${focusStyle.text(theme)};
-          }
-
-          ${focus &&
-            css`
               ${focusStyle.text(theme)};
-            `}
-        `}
-        htmlFor={inputId}
-        id={labelId}
-      >
-        {label}
-        {optional && theme.components.TextField.optionalMessage && (
-          <span
-            css={css`
-              ${smallText({ theme })};
-            `}
-          >
-            {theme.components.TextField.optionalMessage}
-          </span>
-        )}
-        {hint && (
-          <span
-            css={css`
-              ${smallText({ theme })};
+            }
 
-              clear: both;
-              flex: 1 0 100%;
-              flex-grow: 1;
-            `}
-          >
-            {hint}
-          </span>
-        )}
-      </label>
+            ${focus &&
+              css`
+                ${focusStyle.text(theme)};
+              `}
+          `}
+          htmlFor={inputId}
+          id={labelId}
+        >
+          {label}
+          {optional && theme.components.TextField.optionalMessage && (
+            <span
+              css={css`
+                ${smallText({ theme })};
+              `}
+            >
+              {theme.components.TextField.optionalMessage}
+            </span>
+          )}
+          {hint && (
+            <span
+              css={css`
+                ${smallText({ theme })};
+
+                clear: both;
+                flex: 1 0 100%;
+                flex-grow: 1;
+              `}
+            >
+              {hint}
+            </span>
+          )}
+        </label>
+      )}
       <InputComponent
         aria-errormessage={errorId}
         css={css`
@@ -258,7 +260,6 @@ TextField.defaultProps = {
   disabled: false,
   error: undefined,
   hint: undefined,
-  label: undefined,
   labelId: undefined,
   id: undefined,
   placeholder: undefined,
@@ -285,9 +286,6 @@ TextField.propTypes = {
   /** An error message (either a simple string or a component) used to output an error message related to this component's value. If provided, an `aria-errormessage` will be set on the input component that will tell users of assistive technology the error message relates to this input. */
   error: PropTypes.node,
 
-  /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
-  labelId: PropTypes.string,
-
   /** HTML `id` attribute of the input component (either an `input` if `multiline` is `false` or `textarea` if `multiline` is `true`). Used for both the input component `id` attribute and the `<label>` `for` attribute. */
   id: PropTypes.string,
 
@@ -295,7 +293,10 @@ TextField.propTypes = {
   hint: PropTypes.node,
 
   /** Visible text that serves to introduce the input. */
-  label: PropTypes.string,
+  label: PropTypes.node.isRequired,
+
+  /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
+  labelId: PropTypes.string,
 
   /** Set to `true` for a multiline input (a `textarea` element). */
   multiline: PropTypes.bool,

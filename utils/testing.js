@@ -56,6 +56,9 @@ export const muteConsole = ({ times, type } = {}) => {
   });
 };
 
+// Export jest-axe helpers.
+export { axe } from 'jest-axe';
+
 // Re-export everything else as normal.
 export * from '@testing-library/react';
 

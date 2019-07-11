@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
 
-import { render } from 'utils/testing';
+import { axe, render } from 'utils/testing';
 
 import Emphasis from '.';
 
@@ -44,5 +44,13 @@ describe('Emphasis', () => {
 
     expect(ref.current).not.toBeNull();
     expect(ref.current.tagName).toEqual('EM');
+  });
+
+  describe('accessibility', () => {
+    it('should pass aXe tests', async () => {
+      const { container } = render(<Emphasis>hello</Emphasis>);
+
+      expect(await axe(container.innerHTML)).toHaveNoViolations();
+    });
   });
 });

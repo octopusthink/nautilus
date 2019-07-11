@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
 
-import { render } from 'utils/testing';
+import { axe, render } from 'utils/testing';
 
 import PageTitle from '.';
 
@@ -34,5 +34,13 @@ describe('PageTitle', () => {
 
     expect(ref.current).not.toBeNull();
     expect(ref.current.tagName).toEqual('H1');
+  });
+
+  describe('accessibility', () => {
+    it('should pass aXe tests', async () => {
+      const { container } = render(<PageTitle>My Blog Posts</PageTitle>);
+
+      expect(await axe(container.innerHTML)).toHaveNoViolations();
+    });
   });
 });
