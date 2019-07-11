@@ -83,13 +83,13 @@ exports[`TextField should match styles 1`] = `
 <div>
   <label
     class="emotion-0"
-    for="RnV3mVsI30"
+    for="myTextField"
   >
     Hello
   </label>
   <input
     class="emotion-1 emotion-2"
-    id="RnV3mVsI30"
+    id="myTextField"
     required=""
     type="text"
   />

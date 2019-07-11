@@ -135,7 +135,7 @@ describe('TextField', () => {
   });
 
   it('should match styles', () => {
-    const { container } = render(<TextField label="Hello" />);
+    const { container } = render(<TextField label="Hello" id="myTextField" />);
 
     expect(container).toMatchSnapshot();
   });
