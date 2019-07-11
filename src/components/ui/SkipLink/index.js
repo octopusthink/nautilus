@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
 
 import { Link } from 'components';
-import { bodyStyles, toUnits } from 'styles';
+import { interfaceUI, focusStyle, toUnits } from 'styles';
 
 export const SkipLink = forwardRef((props, ref) => {
   const { children, toId, ...otherProps } = props;
@@ -33,19 +33,22 @@ export const styles = (props) => {
     transition: none;
 
     &:focus {
-      ${bodyStyles({ large: true, theme })}
+      ${interfaceUI.medium(theme)};
+      ${focusStyle.outline(theme)};
+      ${focusStyle.text(theme)};
       background: ${theme.colors.neutral.white};
-      border: ${toUnits(theme.spacing.padding.xxs)} solid
-        ${theme.colors.state.focusOutline};
-      color: ${theme.colors.state.focusText};
+      box-sizing: border-box;
+      display: block;
       clip: auto;
       height: auto;
       left: 0;
       margin: 0;
       padding: ${toUnits(theme.spacing.padding.medium)};
       overflow: auto;
+      text-decoration: underline;
       top: 0;
-      width: auto;
+      width: 100%;
+      text-align: center;
       z-index: 100;
     }
   `;
