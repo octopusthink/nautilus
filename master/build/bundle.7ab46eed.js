@@ -16233,7 +16233,7 @@ var TextField = Object(react__WEBPACK_IMPORTED_MODULE_6__["forwardRef"])(functio
     InputComponent = 'textarea';
   }
 
-  return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_4__[/* jsx */ "d"])(react__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_4__[/* jsx */ "d"])("label", {
+  return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_4__[/* jsx */ "d"])(react__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, label && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_4__[/* jsx */ "d"])("label", {
     css:
     /*#__PURE__*/
 
@@ -16317,7 +16317,6 @@ TextField.defaultProps = {
   disabled: false,
   error: undefined,
   hint: undefined,
-  label: undefined,
   labelId: undefined,
   id: undefined,
   placeholder: undefined,
@@ -16345,9 +16344,6 @@ TextField.propTypes = {
   /** An error message (either a simple string or a component) used to output an error message related to this component's value. If provided, an `aria-errormessage` will be set on the input component that will tell users of assistive technology the error message relates to this input. */
   error: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.node,
 
-  /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
-  labelId: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string,
-
   /** HTML `id` attribute of the input component (either an `input` if `multiline` is `false` or `textarea` if `multiline` is `true`). Used for both the input component `id` attribute and the `<label>` `for` attribute. */
   id: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string,
 
@@ -16355,7 +16351,10 @@ TextField.propTypes = {
   hint: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.node,
 
   /** Visible text that serves to introduce the input. */
-  label: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string,
+  label: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.node.isRequired,
+
+  /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
+  labelId: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string,
 
   /** Set to `true` for a multiline input (a `textarea` element). */
   multiline: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.bool,
@@ -51216,6 +51215,13 @@ module.exports = {
     'methods': [],
     'props': [
         {
+            'type': { 'name': 'node' },
+            'required': true,
+            'description': 'Visible text that serves to introduce the input.',
+            'tags': {},
+            'name': 'label'
+        },
+        {
             'type': { 'name': 'bool' },
             'required': false,
             'description': 'Disables this input; this applies a disabled style and disables user input/interaction with this element. This is useful if you have inputs that are conditionally allowed based on other states in your UI.',
@@ -51258,17 +51264,6 @@ module.exports = {
             },
             'tags': {},
             'name': 'id'
-        },
-        {
-            'type': { 'name': 'string' },
-            'required': false,
-            'description': 'Visible text that serves to introduce the input.',
-            'defaultValue': {
-                'value': 'undefined',
-                'computed': true
-            },
-            'tags': {},
-            'name': 'label'
         },
         {
             'type': { 'name': 'string' },
