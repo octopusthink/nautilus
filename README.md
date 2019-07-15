@@ -1,3 +1,7 @@
+[![Build Status](https://dev.azure.com/octopusthink/nautilus/_apis/build/status/Test?branchName=master)](https://dev.azure.com/octopusthink/nautilus/_build/latest?definitionId=3&branchName=master)
+[![dependencies Status](https://david-dm.org/octopusthink/nautilus/status.svg)](https://david-dm.org/octopusthink/nautilus)
+[![npm version](https://badge.fury.io/js/%40octopusthink%2Fnautilus.svg)](https://www.npmjs.com/package/@octopusthink/nautilus)
+
 # Nautilus Design System
 
 Nautilus is an open-source design system and component library to help designers and developers build better digital products together. ❤️
