@@ -28,12 +28,12 @@ export const Button = forwardRef((props, ref) => {
     children,
     danger,
     disabled,
+    href,
+    linkProps,
     minimal,
     navigation,
     primary,
     success,
-    to,
-    useHref,
     warning,
     ...otherProps
   } = props;
@@ -41,13 +41,14 @@ export const Button = forwardRef((props, ref) => {
   qualityControl(props);
 
   let Component = 'button';
+  let linkPropsToUse;
   if (navigation === true) {
     Component = UnstyledLink;
     // Set properties that only a Link component should use.
-    otherProps.to = to;
-    otherProps.useHref = useHref;
+    otherProps.href = href;
     // Unset certain button-specific props.
     otherProps.type = undefined;
+    linkPropsToUse = { ...linkProps };
   }
 
   return (
@@ -55,8 +56,9 @@ export const Button = forwardRef((props, ref) => {
     // eslint-disable-next-line react/button-has-type
     <Component
       disabled={!navigation ? disabled : undefined}
-      ref={ref}
+      {...linkPropsToUse}
       {...otherProps}
+      ref={ref}
     >
       {children}
     </Component>
@@ -184,13 +186,13 @@ Button.defaultProps = {
   children: undefined,
   danger: false,
   disabled: false,
+  href: undefined,
+  linkProps: undefined,
   minimal: false,
   navigation: false,
   primary: false,
   success: false,
-  to: undefined,
   type: 'button',
-  useHref: false,
   warning: false,
 };
 
@@ -216,17 +218,18 @@ Button.propTypes = {
   /** Apply semantic styling to indicate danger or negative intent. */
   danger: PropTypes.bool,
 
+  /** Used to link to a route that will be handled by Nautilus' `Link` component. */
+  href: PropTypes.string,
+
+  /** Props to pass to the underlying Nautilus `Link` component when `useNavigation` is `true`. */
+  // eslint-disable-next-line react/forbid-prop-types
+  linkProps: PropTypes.object,
+
   /** Outputs a `react-router-dom` `<Link>` tag that looks (and largely behaves) like a `<Button>`, but can used as navigation. Setting this to `true` enables `Link` properties; see: https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/Link.md. */
   navigation: PropTypes.bool,
 
-  /** Used to link to a route that will be handled by the app's router or to a plain URL when `useHref` is set. */
-  to: PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func]),
-
   /** HTML `type` attribute for the button. Defaults to `"button"`. */
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
-
-  /** Set to true to disable react-router integration if `navigation` is `true`. */
-  useHref: PropTypes.bool,
 };
 
 Button.displayName = 'Button';

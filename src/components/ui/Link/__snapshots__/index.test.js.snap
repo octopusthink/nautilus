@@ -25,7 +25,7 @@ exports[`Link should output Link styles 1`] = `
 <div>
   <a
     class="emotion-0 emotion-1"
-    href="/https://elsewhere.net/"
+    href="https://elsewhere.net/"
   >
     hello
   </a>

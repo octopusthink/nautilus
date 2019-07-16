@@ -58,6 +58,7 @@
     "@emotion/babel-preset-css-prop": "^10.0.9",
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.11",
+    "@reach/router": "^1.2.1",
     "@testing-library/react": "^8.0.1",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
@@ -83,7 +84,6 @@
     "prettier": "1.17.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1",
     "react-styleguidist": "^9.1.1",
     "shelljs": "^0.8.3",
     "stylelint": "^10.0.1",
@@ -99,9 +99,9 @@
   "peerDependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.11",
+    "@reach/router": "^1.2.1",
     "emotion-theming": "^10.0.10",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1"
+    "react-dom": "^16.8.6"
   }
 }

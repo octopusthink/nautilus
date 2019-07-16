@@ -1,19 +1,19 @@
 import React, { createRef } from 'react';
 
-import { axe, muteConsole, renderWithRouter } from 'utils/testing';
+import { axe, muteConsole, render } from 'utils/testing';
 
 import Link from '.';
 
 describe('Link', () => {
   it('should render an <a> tag', () => {
-    const { container } = renderWithRouter(<Link to="/nowhere/">Hello</Link>);
+    const { container } = render(<Link href="/nowhere/">Hello</Link>);
 
     expect(container.firstChild.tagName).toEqual('A');
   });
 
   it('should output its children', () => {
-    const { getByTestId } = renderWithRouter(
-      <Link to="/nowhere/">
+    const { getByTestId } = render(
+      <Link href="/nowhere/">
         <span data-testid="child" />
       </Link>,
     );
@@ -22,8 +22,8 @@ describe('Link', () => {
   });
 
   it('should accept and pass through other props', () => {
-    const { getByTestId } = renderWithRouter(
-      <Link className="custom-class" data-testid="myText" to="/nowhere/">
+    const { getByTestId } = render(
+      <Link className="custom-class" data-testid="myText" href="/nowhere/">
         hello
       </Link>,
     );
@@ -32,34 +32,14 @@ describe('Link', () => {
   });
 
   it('should output an href prop when the to prop is supplied', () => {
-    const { container } = renderWithRouter(<Link to="/a-url/">Hello</Link>);
+    const { container } = render(<Link href="/a-url/">Hello</Link>);
 
     expect(container.firstChild.getAttribute('href')).toEqual('/a-url/');
   });
 
-  it('should require the `to` prop and ignore `href`', () => {
-    // `to` is a required prop, so mute the console error that would otherwise
-    // appear in the tests.
-    muteConsole({ times: 1, type: 'error' });
-    renderWithRouter(<Link href="/nowhere/">hello</Link>);
-
-    expect(global.console.error.mock.calls[0][0]).toMatch(
-      'Warning: Failed prop type: The prop `to` is marked as required in `Link`, but its value is `undefined`.',
-    );
-  });
-
-  it('should ignore the href prop', () => {
-    // `to` is a required prop, so mute the console error that would otherwise
-    // appear in the tests.
-    muteConsole({ times: 1, type: 'error' });
-    const { container } = renderWithRouter(<Link href="/nowhere/">hello</Link>);
-
-    expect(container.firstChild.getAttribute('href')).toEqual('');
-  });
-
   it('should add an icon when `external` is set', () => {
-    const { container } = renderWithRouter(
-      <Link to="https://elsewhere.net/" external>
+    const { container } = render(
+      <Link href="https://elsewhere.net/" external>
         hello
       </Link>,
     );
@@ -69,8 +49,8 @@ describe('Link', () => {
   });
 
   it('should output Link styles', () => {
-    const { container } = renderWithRouter(
-      <Link to="https://elsewhere.net/">hello</Link>,
+    const { container } = render(
+      <Link href="https://elsewhere.net/">hello</Link>,
     );
 
     expect(container).toMatchSnapshot();
@@ -79,8 +59,8 @@ describe('Link', () => {
   it('should forward refs when using ReactRouterLink', () => {
     const ref = createRef();
 
-    renderWithRouter(
-      <Link to="/" ref={ref}>
+    render(
+      <Link href="/" ref={ref}>
         Homepage
       </Link>,
     );
@@ -92,8 +72,8 @@ describe('Link', () => {
   it('should forward refs when using useHref', () => {
     const ref = createRef();
 
-    renderWithRouter(
-      <Link ref={ref} to="/" useHref>
+    render(
+      <Link ref={ref} href="/" useHref>
         Homepage
       </Link>,
     );
@@ -104,7 +84,7 @@ describe('Link', () => {
 
   describe('accessibility', () => {
     it('should pass aXe tests', async () => {
-      const { container } = renderWithRouter(<Link to="/">Homepage</Link>);
+      const { container } = render(<Link href="/">Homepage</Link>);
 
       expect(await axe(container.innerHTML)).toHaveNoViolations();
     });
