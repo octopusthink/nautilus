@@ -9,6 +9,7 @@ import React, { forwardRef } from 'react';
 import { Link as UnstyledLink } from 'components/ui/Link';
 import { Icon } from 'components/ui/Icon';
 import { interfaceUI, toUnits } from 'styles';
+import { useTheme } from 'themes';
 
 export const qualityControl = (props) => {
   const { minimal, primary, success, warning, danger } = props;
@@ -40,6 +41,7 @@ export const Button = forwardRef((props, ref) => {
   } = props;
 
   qualityControl(props);
+  const theme = useTheme();
 
   let Component = 'button';
   if (navigation === true) {
@@ -51,15 +53,15 @@ export const Button = forwardRef((props, ref) => {
     otherProps.type = undefined;
   }
 
-  let leadingIcon;
+  let iconName;
   if (success === true) {
-    leadingIcon = <Icon name="check-circle" small />;
+    iconName = 'check-circle';
   }
   if (warning === true) {
-    leadingIcon = <Icon name="alert-circle" small />;
+    iconName = 'alert-circle';
   }
   if (danger === true) {
-    leadingIcon = <Icon name="x-circle" small />;
+    iconName = 'x-circle';
   }
 
   return (
@@ -70,8 +72,13 @@ export const Button = forwardRef((props, ref) => {
       ref={ref}
       {...otherProps}
     >
-      {leadingIcon}
-      {'\u00A0'}
+      <Icon
+        name={iconName}
+        small
+        css={css`
+          margin-right: ${toUnits(theme.spacing.padding.extraSmall)};
+        `}
+      />
       {children}
     </Component>
   );
