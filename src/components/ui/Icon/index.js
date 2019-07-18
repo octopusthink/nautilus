@@ -9,15 +9,7 @@ import { toUnits } from 'styles';
 import { useTheme } from 'themes';
 
 const defineIconSizes = (props) => {
-  const {
-    background,
-    border,
-    small,
-    xSmall,
-    large,
-    xLarge,
-    theme,
-  } = props;
+  const { background, border, small, xSmall, large, xLarge, theme } = props;
 
   let iconSize = 'medium';
 
