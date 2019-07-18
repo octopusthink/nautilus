@@ -20,7 +20,7 @@ const smallText = (props) => {
   return css`
     ${interfaceUI.small(theme)};
     color: ${theme.colors.text.light};
-    margin: 0 0 ${toUnits(theme.spacing.padding.extraSmall)};
+    margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
   `;
 };
 
@@ -123,7 +123,7 @@ export const TextField = forwardRef((props, ref) => {
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: space-between;
-            margin: 0 0 ${toUnits(theme.spacing.padding.extraSmall)};
+            margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
 
             ${!disabled &&
               css`

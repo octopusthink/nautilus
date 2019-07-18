@@ -76,7 +76,7 @@ export const Button = forwardRef((props, ref) => {
         name={iconName}
         small
         css={css`
-          margin-right: ${toUnits(theme.spacing.padding.extraSmall)};
+          margin-right: ${toUnits(theme.spacing.padding.xSmall)};
         `}
       />
       {children}
@@ -131,8 +131,8 @@ export const styles = (props) => {
     border-radius: 8px;
     color: ${currentButtonColor};
     display: inline-block;
-    margin: 0 ${toUnits(theme.spacing.margin.xxs)} ${toUnits(
-    theme.spacing.margin.extraSmall,
+    margin: 0 ${toUnits(theme.spacing.margin.xxSmall)} ${toUnits(
+    theme.spacing.margin.xSmall,
   )};
     outline: none;
     padding: ${toUnits(theme.spacing.padding.medium)} ${toUnits(
@@ -189,12 +189,12 @@ export const styles = (props) => {
         &::after {
           content: ' →';
           display: inline;
-          padding-right: ${toUnits(theme.spacing.padding.extraSmall)};
+          padding-right: ${toUnits(theme.spacing.padding.xSmall)};
           transition: all 200ms;
         }
 
         &:hover::after {
-          margin-left: ${toUnits(theme.spacing.padding.extraSmall)};
+          margin-left: ${toUnits(theme.spacing.padding.xSmall)};
           padding-right: 0;
         }
       `}

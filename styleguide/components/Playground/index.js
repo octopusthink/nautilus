@@ -20,7 +20,7 @@ export function Playground({
       css={css`
         border: 2px solid ${theme.colors.neutral.black};
         background: ${theme.colors.neutral.black};
-        margin-bottom: ${toUnits(theme.spacing.margin.extraLarge)};
+        margin-bottom: ${toUnits(theme.spacing.margin.xLarge)};
       `}
     >
       <div
@@ -40,7 +40,7 @@ export function Playground({
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 0 ${toUnits(theme.spacing.padding.extraSmall)};
+          padding: 0 ${toUnits(theme.spacing.padding.xSmall)};
         `}
       >
         <div>{tabButtons}</div>
