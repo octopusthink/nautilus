@@ -4425,23 +4425,23 @@ var themePropTypes = prop_types_default.a.shape({
   spacing: prop_types_default.a.shape({
     margin: prop_types_default.a.shape({
       none: prop_types_default.a.number,
-      xxs: prop_types_default.a.number,
-      extraSmall: prop_types_default.a.number,
+      xxSmall: prop_types_default.a.number,
+      xSmall: prop_types_default.a.number,
       s: prop_types_default.a.number,
       m: prop_types_default.a.number,
       l: prop_types_default.a.number,
-      extraLarge: prop_types_default.a.number,
-      xxl: prop_types_default.a.number
+      xLarge: prop_types_default.a.number,
+      xxLarge: prop_types_default.a.number
     }),
     padding: prop_types_default.a.shape({
       none: prop_types_default.a.number,
-      xxs: prop_types_default.a.number,
-      extraSmall: prop_types_default.a.number,
+      xxSmall: prop_types_default.a.number,
+      xSmall: prop_types_default.a.number,
       s: prop_types_default.a.number,
       m: prop_types_default.a.number,
       l: prop_types_default.a.number,
-      extraLarge: prop_types_default.a.number,
-      xxl: prop_types_default.a.number
+      xLarge: prop_types_default.a.number,
+      xxLarge: prop_types_default.a.number
     })
   })
 });
@@ -5711,20 +5711,20 @@ var defineIconSizes = function defineIconSizes(props) {
   var background = props.background,
       border = props.border,
       small = props.small,
-      extraSmall = props.extraSmall,
+      xSmall = props.xSmall,
       large = props.large,
-      extraLarge = props.extraLarge,
+      xLarge = props.xLarge,
       theme = props.theme;
   var iconSize = 'medium'; // Determine the size of the SVG.
 
-  if (extraSmall) {
-    iconSize = 'extraSmall';
+  if (xSmall) {
+    iconSize = 'xSmall';
   } else if (small) {
     iconSize = 'small';
   } else if (large) {
     iconSize = 'large';
-  } else if (extraLarge) {
-    iconSize = 'extraLarge';
+  } else if (xLarge) {
+    iconSize = 'xLarge';
   }
 
   var _theme$components$Ico = theme.components.Icon.sizes[iconSize],
@@ -5769,14 +5769,14 @@ var Icon = Object(react__WEBPACK_IMPORTED_MODULE_8__["forwardRef"])(function (pr
       id = props.id,
       name = props.name,
       title = props.title,
-      extraSmall = props.extraSmall,
+      xSmall = props.xSmall,
       small = props.small,
       medium = props.medium,
       large = props.large,
-      extraLarge = props.extraLarge,
+      xLarge = props.xLarge,
       strokeColor = props.strokeColor,
       verticalAlign = props.verticalAlign,
-      otherProps = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3___default()(props, ["background", "border", "children", "className", "data-testid", "description", "fillColor", "id", "name", "title", "extraSmall", "small", "medium", "large", "extraLarge", "strokeColor", "verticalAlign"]);
+      otherProps = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3___default()(props, ["background", "border", "children", "className", "data-testid", "description", "fillColor", "id", "name", "title", "xSmall", "small", "medium", "large", "xLarge", "strokeColor", "verticalAlign"]);
 
   var theme = Object(themes__WEBPACK_IMPORTED_MODULE_11__[/* useTheme */ "c"])();
 
@@ -5903,11 +5903,11 @@ Icon.defaultProps = {
   fillColor: undefined,
   strokeColor: undefined,
   title: undefined,
-  extraSmall: false,
+  xSmall: false,
   small: false,
   medium: true,
   large: false,
-  extraLarge: false,
+  xLarge: false,
   border: undefined,
   background: undefined,
   verticalAlign: 'middle'
@@ -5932,10 +5932,10 @@ Icon.propTypes = {
   description: prop_types__WEBPACK_IMPORTED_MODULE_7___default.a.string,
 
   /** Extra-large icon size. */
-  extraLarge: prop_types__WEBPACK_IMPORTED_MODULE_7___default.a.bool,
+  xLarge: prop_types__WEBPACK_IMPORTED_MODULE_7___default.a.bool,
 
   /** Extra-small icon size. */
-  extraSmall: prop_types__WEBPACK_IMPORTED_MODULE_7___default.a.bool,
+  xSmall: prop_types__WEBPACK_IMPORTED_MODULE_7___default.a.bool,
 
   /** Apply colour to the icon fill. */
   fillColor: prop_types__WEBPACK_IMPORTED_MODULE_7___default.a.string,
@@ -14320,7 +14320,7 @@ function Code(_ref) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("background:", theme["a" /* default */].colors.neutral.grey200, ";padding:", Object(styles["g" /* toUnits */])(theme["a" /* default */].spacing.padding.extraSmall), ";font-size:0.8em;font-weight:500;font-family:Menlo,Consolas,\"Andale Mono WT\",\"Andale Mono\",\"Lucida Console\",\"Lucida Sans Typewriter\",\"DejaVu Sans Mono\",\"Bitstream Vera Sans Mono\",\"Liberation Mono\",\"Nimbus Mono L\",Monaco,\"Courier New\",Courier,monospace;" + ( true ? "" : undefined))
+    Object(core_browser_esm["c" /* css */])("background:", theme["a" /* default */].colors.neutral.grey200, ";padding:", Object(styles["g" /* toUnits */])(theme["a" /* default */].spacing.padding.xSmall), ";font-size:0.8em;font-weight:500;font-family:Menlo,Consolas,\"Andale Mono WT\",\"Andale Mono\",\"Lucida Console\",\"Lucida Sans Typewriter\",\"DejaVu Sans Mono\",\"Bitstream Vera Sans Mono\",\"Liberation Mono\",\"Nimbus Mono L\",Monaco,\"Courier New\",Courier,monospace;" + ( true ? "" : undefined))
   }, children);
 }
 Code.propTypes = {
@@ -15841,7 +15841,7 @@ var Button = Object(react__WEBPACK_IMPORTED_MODULE_6__["forwardRef"])(function (
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("margin-right:", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "g"])(theme.spacing.padding.extraSmall), ";" + ( true ? "" : undefined))
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("margin-right:", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "g"])(theme.spacing.padding.xSmall), ";" + ( true ? "" : undefined))
     }), children)
   );
 });
@@ -15892,7 +15892,7 @@ var styles = function styles(props) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])(styles__WEBPACK_IMPORTED_MODULE_9__[/* interfaceUI */ "d"].medium(theme), " background:", theme.colors.buttons.neutral, ";border:2px solid ", currentButtonColor, ";border-radius:8px;color:", currentButtonColor, ";display:inline-block;margin:0 ", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "g"])(theme.spacing.margin.xxs), " ", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "g"])(theme.spacing.margin.extraSmall), ";outline:none;padding:", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "g"])(theme.spacing.padding.medium), " ", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "g"])(theme.spacing.padding.large), ";position:relative;text-align:center;text-decoration:none;top:0;transition:box-shadow 200ms;&::-moz-focus-inner{border:0;}&:active{border-color:", currentButtonColorDark, ";color:", currentButtonColorDark, ";top:2px;}&:focus{box-shadow:0 0 1px 4px ", currentButtonColorLight, ";outline:none;}&:hover{box-shadow:0 2px 0 0 ", currentButtonColorDark, ";}", primary &&
+    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])(styles__WEBPACK_IMPORTED_MODULE_9__[/* interfaceUI */ "d"].medium(theme), " background:", theme.colors.buttons.neutral, ";border:2px solid ", currentButtonColor, ";border-radius:8px;color:", currentButtonColor, ";display:inline-block;margin:0 ", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "g"])(theme.spacing.margin.xxSmall), " ", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "g"])(theme.spacing.margin.xSmall), ";outline:none;padding:", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "g"])(theme.spacing.padding.medium), " ", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "g"])(theme.spacing.padding.large), ";position:relative;text-align:center;text-decoration:none;top:0;transition:box-shadow 200ms;&::-moz-focus-inner{border:0;}&:active{border-color:", currentButtonColorDark, ";color:", currentButtonColorDark, ";top:2px;}&:focus{box-shadow:0 0 1px 4px ", currentButtonColorLight, ";outline:none;}&:hover{box-shadow:0 2px 0 0 ", currentButtonColorDark, ";}", primary &&
     /*#__PURE__*/
 
     /*#__PURE__*/
@@ -15902,7 +15902,7 @@ var styles = function styles(props) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("&::after{content:' \u2192';display:inline;padding-right:", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "g"])(theme.spacing.padding.extraSmall), ";transition:all 200ms;}&:hover::after{margin-left:", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "g"])(theme.spacing.padding.extraSmall), ";padding-right:0;}" + ( true ? "" : undefined)),  true ? "" : undefined)
+    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("&::after{content:' \u2192';display:inline;padding-right:", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "g"])(theme.spacing.padding.xSmall), ";transition:all 200ms;}&:hover::after{margin-left:", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "g"])(theme.spacing.padding.xSmall), ";padding-right:0;}" + ( true ? "" : undefined)),  true ? "" : undefined)
   );
 };
 Button.defaultProps = {
@@ -16181,7 +16181,7 @@ var smallText = function smallText(props) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_4__[/* css */ "c"])(styles__WEBPACK_IMPORTED_MODULE_8__[/* interfaceUI */ "d"].small(theme), ";color:", theme.colors.text.light, ";margin:0 0 ", Object(styles__WEBPACK_IMPORTED_MODULE_8__[/* toUnits */ "g"])(theme.spacing.padding.extraSmall), ";" + ( true ? "" : undefined))
+    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_4__[/* css */ "c"])(styles__WEBPACK_IMPORTED_MODULE_8__[/* interfaceUI */ "d"].small(theme), ";color:", theme.colors.text.light, ";margin:0 0 ", Object(styles__WEBPACK_IMPORTED_MODULE_8__[/* toUnits */ "g"])(theme.spacing.padding.xSmall), ";" + ( true ? "" : undefined))
   );
 };
 
@@ -16271,7 +16271,7 @@ var TextField = Object(react__WEBPACK_IMPORTED_MODULE_6__["forwardRef"])(functio
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_4__[/* css */ "c"])(styles__WEBPACK_IMPORTED_MODULE_8__[/* interfaceUI */ "d"].medium(theme), ";color:", theme.colors.text["default"], ";display:flex;flex:1 0 50%;flex-direction:row;flex-wrap:wrap;justify-content:space-between;margin:0 0 ", Object(styles__WEBPACK_IMPORTED_MODULE_8__[/* toUnits */ "g"])(theme.spacing.padding.extraSmall), ";", !disabled &&
+    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_4__[/* css */ "c"])(styles__WEBPACK_IMPORTED_MODULE_8__[/* interfaceUI */ "d"].medium(theme), ";color:", theme.colors.text["default"], ";display:flex;flex:1 0 50%;flex-direction:row;flex-wrap:wrap;justify-content:space-between;margin:0 0 ", Object(styles__WEBPACK_IMPORTED_MODULE_8__[/* toUnits */ "g"])(theme.spacing.padding.xSmall), ";", !disabled &&
     /*#__PURE__*/
 
     /*#__PURE__*/
@@ -16766,7 +16766,7 @@ var Item_styles = function styles(props) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("position:relative;margin:0 0 ", Object(src_styles["g" /* toUnits */])(theme.spacing.padding.extraSmall), ";&::before{position:absolute;right:101%;}" + ( true ? "" : undefined))
+    Object(core_browser_esm["c" /* css */])("position:relative;margin:0 0 ", Object(src_styles["g" /* toUnits */])(theme.spacing.padding.xSmall), ";&::before{position:absolute;right:101%;}" + ( true ? "" : undefined))
   );
 };
 Item.defaultProps = {
@@ -17454,7 +17454,7 @@ var theme = {
     },
     Icon: {
       sizes: {
-        extraSmall: {
+        xSmall: {
           borderWidth: 1,
           marginSize: '0 0.8rem 0 0',
           padding: 4,
@@ -17482,7 +17482,7 @@ var theme = {
           size: 48,
           strokeWidth: 1.25
         },
-        extraLarge: {
+        xLarge: {
           borderWidth: 3,
           marginSize: '0 0.8rem 0 0',
           padding: 24,
@@ -17527,23 +17527,23 @@ var theme = {
   spacing: {
     margin: {
       none: 0,
-      xxs: 4,
-      extraSmall: 8,
+      xxSmall: 4,
+      xSmall: 8,
       small: 16,
       medium: 32,
       large: 48,
-      extraLarge: 64,
-      xxl: 80
+      xLarge: 64,
+      xxLarge: 80
     },
     padding: {
       none: 0,
-      xxs: 2,
-      extraSmall: 4,
+      xxSmall: 2,
+      xSmall: 4,
       small: 8,
       medium: 12,
       large: 24,
-      extraLarge: 32,
-      xxl: 48
+      xLarge: 32,
+      xxLarge: 48
     }
   }
 };
@@ -50523,28 +50523,6 @@ module.exports = {
             'name': 'description'
         },
         {
-            'type': { 'name': 'bool' },
-            'required': false,
-            'description': 'Extra-large icon size.',
-            'defaultValue': {
-                'value': 'false',
-                'computed': false
-            },
-            'tags': {},
-            'name': 'extraLarge'
-        },
-        {
-            'type': { 'name': 'bool' },
-            'required': false,
-            'description': 'Extra-small icon size.',
-            'defaultValue': {
-                'value': 'false',
-                'computed': false
-            },
-            'tags': {},
-            'name': 'extraSmall'
-        },
-        {
             'type': { 'name': 'string' },
             'required': false,
             'description': 'Apply colour to the icon fill.',
@@ -50620,6 +50598,28 @@ module.exports = {
             },
             'tags': {},
             'name': 'verticalAlign'
+        },
+        {
+            'type': { 'name': 'bool' },
+            'required': false,
+            'description': 'Extra-large icon size.',
+            'defaultValue': {
+                'value': 'false',
+                'computed': false
+            },
+            'tags': {},
+            'name': 'xLarge'
+        },
+        {
+            'type': { 'name': 'bool' },
+            'required': false,
+            'description': 'Extra-small icon size.',
+            'defaultValue': {
+                'value': 'false',
+                'computed': false
+            },
+            'tags': {},
+            'name': 'xSmall'
         }
     ],
     'doclets': {},
@@ -50697,11 +50697,11 @@ module.exports = [
     },
     {
         'type': 'markdown',
-        'content': '### Size\n\nIcons are available in five different sizes: `extraLarge` (`64px`), `large` (`48px`), `medium` (`24px`), `small` (`16px`), and `extraSmall` (`8px`). If you don\'t pass a size value, your icons will use the `medium` size.\n\nThe default icon sizes can be tweaked in your theme. Sizes should be defined in `rem` to ensure the icons adjust to the user\'s font size. (The above sizes are the pixel equivalents of the `rem` sizes provided for reference.)'
+        'content': '### Size\n\nIcons are available in five different sizes: `xLarge` (`64px`), `large` (`48px`), `medium` (`24px`), `small` (`16px`), and `xSmall` (`8px`). If you don\'t pass a size value, your icons will use the `medium` size.\n\nThe default icon sizes can be tweaked in your theme. Sizes should be defined in `rem` to ensure the icons adjust to the user\'s font size. (The above sizes are the pixel equivalents of the `rem` sizes provided for reference.)'
     },
     {
         'type': 'code',
-        'content': '<Icon name="heart" extraSmall />\n<Icon name="heart" small />\n<Icon name="heart" medium />\n<Icon name="heart" large />\n<Icon name="heart" extraLarge />\n\n<Icon name="star" extraSmall />\n<Icon name="star" small />\n<Icon name="star" medium />\n<Icon name="star" large />\n<Icon name="star" extraLarge />\n\n<Icon name="pen-tool" extraSmall />\n<Icon name="pen-tool" small />\n<Icon name="pen-tool" medium />\n<Icon name="pen-tool" large />\n<Icon name="pen-tool" extraLarge />',
+        'content': '<Icon name="heart" xSmall />\n<Icon name="heart" small />\n<Icon name="heart" medium />\n<Icon name="heart" large />\n<Icon name="heart" xLarge />\n\n<Icon name="star" xSmall />\n<Icon name="star" small />\n<Icon name="star" medium />\n<Icon name="star" large />\n<Icon name="star" xLarge />\n\n<Icon name="pen-tool" xSmall />\n<Icon name="pen-tool" small />\n<Icon name="pen-tool" medium />\n<Icon name="pen-tool" large />\n<Icon name="pen-tool" xLarge />',
         'settings': {},
         'evalInContext': evalInContext
     },
@@ -50711,7 +50711,7 @@ module.exports = [
     },
     {
         'type': 'code',
-        'content': '<Icon name="mic" background="#181b1c" color="#cd2f83" />\n<Icon name="mic" border="#cd2f83" color="#cd2f83" />\n<Icon name="mic" background="#cd2f83" border="#181b1c" color="#181b1c" />\n<Icon name="mic" background="#181b1c" color="#fff" />\n<br />\n<Icon name="mic" border="#cd2f83" color="#cd2f83" extraSmall />\n<Icon name="mic" border="#cd2f83" color="#cd2f83" small />\n<Icon name="mic" border="#cd2f83" color="#cd2f83" medium />\n<Icon name="mic" border="#cd2f83" color="#cd2f83" large />\n<Icon name="mic" border="#cd2f83" color="#cd2f83" extraLarge />',
+        'content': '<Icon name="mic" background="#181b1c" color="#cd2f83" />\n<Icon name="mic" border="#cd2f83" color="#cd2f83" />\n<Icon name="mic" background="#cd2f83" border="#181b1c" color="#181b1c" />\n<Icon name="mic" background="#181b1c" color="#fff" />\n<br />\n<Icon name="mic" border="#cd2f83" color="#cd2f83" xSmall />\n<Icon name="mic" border="#cd2f83" color="#cd2f83" small />\n<Icon name="mic" border="#cd2f83" color="#cd2f83" medium />\n<Icon name="mic" border="#cd2f83" color="#cd2f83" large />\n<Icon name="mic" border="#cd2f83" color="#cd2f83" xLarge />',
         'settings': {},
         'evalInContext': evalInContext
     },
@@ -52596,7 +52596,7 @@ function TabButtonRenderer(_ref) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])(src_styles["d" /* interfaceUI */].small(styleguide_theme["a" /* default */]),  true ? "" : undefined,  true ? "" : undefined), ";&::before{display:inline-block;content:'\u2193';margin-right:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.extraSmall), ";}", active &&
+    Object(core_browser_esm["c" /* css */])(src_styles["d" /* interfaceUI */].small(styleguide_theme["a" /* default */]),  true ? "" : undefined,  true ? "" : undefined), ";&::before{display:inline-block;content:'\u2193';margin-right:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.xSmall), ";}", active &&
     /*#__PURE__*/
 
     /*#__PURE__*/
@@ -53156,7 +53156,7 @@ function Footer(_ref) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("margin-top:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.xxl), ";padding-top:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.large), ";text-align:center;p{color:", styleguide_theme["a" /* default */].colors.neutral.grey800, " !important;margin-bottom:0;}a{color:", styleguide_theme["a" /* default */].colors.neutral.grey800, " !important;}" + ( true ? "" : undefined))
+    Object(core_browser_esm["c" /* css */])("margin-top:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.xxLarge), ";padding-top:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.large), ";text-align:center;p{color:", styleguide_theme["a" /* default */].colors.neutral.grey800, " !important;margin-bottom:0;}a{color:", styleguide_theme["a" /* default */].colors.neutral.grey800, " !important;}" + ( true ? "" : undefined))
   }, children);
 }
 Footer.propTypes = {
@@ -53323,7 +53323,7 @@ var StyleGuide_StyleGuide = function StyleGuide(_ref3) {
       version = _ref3.version;
   var mobileBreakpoint = 768;
   var mobileMenuPadding = Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.large);
-  var tabletMenuPadding = Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.extraLarge);
+  var tabletMenuPadding = Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.xLarge);
   var sidebarWidth = 300;
   var menuToggleWidth = 60;
   var menuToggleHeight = 76;
@@ -53373,7 +53373,7 @@ var StyleGuide_StyleGuide = function StyleGuide(_ref3) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("html{box-sizing:border-box;font-size:62.5%;}body{font-size:1.6rem;}img{max-width:100%;}h1{margin:0 0 ", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.large), ";}.markdown-h2{margin-top:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.xxl), " !important;}.markdown-h3{margin-top:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.large), " !important;}.rsg--wrapper-11 > h2{margin:0 !important;padding-top:0;border-top:0;}" + ( true ? "" : undefined))
+    Object(core_browser_esm["c" /* css */])("html{box-sizing:border-box;font-size:62.5%;}body{font-size:1.6rem;}img{max-width:100%;}h1{margin:0 0 ", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.large), ";}.markdown-h2{margin-top:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.xxLarge), " !important;}.markdown-h3{margin-top:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.large), " !important;}.rsg--wrapper-11 > h2{margin:0 !important;padding-top:0;border-top:0;}" + ( true ? "" : undefined))
   }), hasSidebar && Object(core_browser_esm["d" /* jsx */])("div", {
     css:
     /*#__PURE__*/
@@ -53432,7 +53432,7 @@ var StyleGuide_StyleGuide = function StyleGuide(_ref3) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("padding:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.large), ";display:flex;justify-content:center;transition:160ms all ease-in-out;@media (max-width:767px){margin-top:", Object(src_styles["g" /* toUnits */])(menuToggleHeight), ";}@media (min-width:768px){margin-left:", Object(src_styles["g" /* toUnits */])(menuToggleWidth), ";padding:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.medium), ";}@media screen and (min-width:980px){padding-left:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.xxl), ";padding-right:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.xxl), ";}", showSidebar &&
+    Object(core_browser_esm["c" /* css */])("padding:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.large), ";display:flex;justify-content:center;transition:160ms all ease-in-out;@media (max-width:767px){margin-top:", Object(src_styles["g" /* toUnits */])(menuToggleHeight), ";}@media (min-width:768px){margin-left:", Object(src_styles["g" /* toUnits */])(menuToggleWidth), ";padding:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.medium), ";}@media screen and (min-width:980px){padding-left:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.xxLarge), ";padding-right:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.xxLarge), ";}", showSidebar &&
     /*#__PURE__*/
 
     /*#__PURE__*/
@@ -59031,7 +59031,7 @@ function Playground_Playground(_ref) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("border:2px solid ", styleguide_theme["a" /* default */].colors.neutral.black, ";background:", styleguide_theme["a" /* default */].colors.neutral.black, ";margin-bottom:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.extraLarge), ";" + ( true ? "" : undefined))
+    Object(core_browser_esm["c" /* css */])("border:2px solid ", styleguide_theme["a" /* default */].colors.neutral.black, ";background:", styleguide_theme["a" /* default */].colors.neutral.black, ";margin-bottom:", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.margin.xLarge), ";" + ( true ? "" : undefined))
   }, Object(core_browser_esm["d" /* jsx */])("div", extends_default()({}, props, {
     "data-preview": name,
     css:
@@ -59044,7 +59044,7 @@ function Playground_Playground(_ref) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("display:flex;justify-content:space-between;align-items:center;padding:0 ", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.extraSmall), ";" + ( true ? "" : undefined))
+    Object(core_browser_esm["c" /* css */])("display:flex;justify-content:space-between;align-items:center;padding:0 ", Object(src_styles["g" /* toUnits */])(styleguide_theme["a" /* default */].spacing.padding.xSmall), ";" + ( true ? "" : undefined))
   }, Object(core_browser_esm["d" /* jsx */])("div", null, tabButtons)), Object(core_browser_esm["d" /* jsx */])("div", null, tabBody));
 }
 Playground_Playground.propTypes = {
