@@ -7,7 +7,9 @@ import React, { forwardRef } from 'react';
 // Import the non-styled Link so we don't have to overwrite Link styles if
 // the `navigation` prop is used by a button.
 import { Link as UnstyledLink } from 'components/ui/Link';
+import { Icon } from 'components/ui/Icon';
 import { interfaceUI, toUnits } from 'styles';
+import { useTheme } from 'themes';
 
 export const qualityControl = (props) => {
   const { minimal, primary, success, warning, danger } = props;
@@ -39,6 +41,7 @@ export const Button = forwardRef((props, ref) => {
   } = props;
 
   qualityControl(props);
+  const theme = useTheme();
 
   let Component = 'button';
   if (navigation === true) {
@@ -50,6 +53,17 @@ export const Button = forwardRef((props, ref) => {
     otherProps.type = undefined;
   }
 
+  let iconName;
+  if (success === true) {
+    iconName = 'check-circle';
+  }
+  if (warning === true) {
+    iconName = 'alert-circle';
+  }
+  if (danger === true) {
+    iconName = 'x-circle';
+  }
+
   return (
     // See: https://github.com/yannickcr/eslint-plugin-react/issues/1555
     // eslint-disable-next-line react/button-has-type
@@ -58,6 +72,13 @@ export const Button = forwardRef((props, ref) => {
       ref={ref}
       {...otherProps}
     >
+      <Icon
+        name={iconName}
+        small
+        css={css`
+          margin-right: ${toUnits(theme.spacing.padding.extraSmall)};
+        `}
+      />
       {children}
     </Component>
   );
