@@ -225,7 +225,7 @@ Button.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   linkProps: PropTypes.object,
 
-  /** Outputs a `react-router-dom` `<Link>` tag that looks (and largely behaves) like a `<Button>`, but can used as navigation. Setting this to `true` enables `Link` properties; see: https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/api/Link.md. */
+  /** Outputs a Nautilus `<Link>` tag that looks (and largely behaves) like a `<Button>`, but can used as navigation. Setting this to `true` enables `Link` properties. */
   navigation: PropTypes.bool,
 
   /** HTML `type` attribute for the button. Defaults to `"button"`. */

@@ -4,7 +4,7 @@ A `<Link>` provides a way of navigating to other content, either on the same sit
 import { Paragraph } from '@octopusthink/nautilus';
 
 <Paragraph>
-  Fill out the <Link to="/sign-up">sign up form</Link> to create your account.
+  Fill out the <Link href="#sign-up">sign up form</Link> to create your account.
 </Paragraph>
 ```
 
@@ -12,21 +12,36 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 Use a `<Link>` component where you would usually use an `<a>` tag in HTML.
 
-By default, Nautilus will output an `<a>` tag for every `Link` component. If you want to use a custom `Link` component throughout your app you should set this in the `config` prop in your `Nautilus` higher-order component that wraps your components. Here's how you would use `react-router`'s `Link` component:
+By default, Nautilus will output an `<a>` tag for every `Link` component. If you want to use a custom `Link` component throughout your app you can use the `LinkComponent` prop in your `Nautilus` higher-order component. Here's how you would use React Router's `Link` component:
 
 ```jsx
-import Nautilus from '@octopusthink/nautilus';
-import { Link } from 'react-router-dom';
+import Nautilus, { Paragraph } from '@octopusthink/nautilus';
+import { createMemoryHistory } from 'history';
+import { Link as ReactRouterLink, Router } from 'react-router-dom';
 
-<Nautilus config={{ defaultComponents: { Link } }}>
-  {/* Your app here... */}
+<Nautilus LinkComponent={ReactRouterLink}>
+  <Router history={createMemoryHistory()}>
+    <Paragraph>
+      Fill out the <Link to="/sign-up">sign up form</Link> to create your account.
+    </Paragraph>
+  </Router>
 </Nautilus>
 ```
 
 If you want to override a specific `Link` component, you can use the `asComponent` prop:
 
 ```jsx
-<Link asComponent="a">I'm a custom link.</Link>
+import Nautilus, { Paragraph } from '@octopusthink/nautilus';
+import { createMemoryHistory } from 'history';
+import { Link as ReactRouterLink, Router } from 'react-router-dom';
+
+<Nautilus>
+  <Router history={createMemoryHistory()}>
+    <Paragraph>
+      Fill out the <Link asComponent={ReactRouterLink} to="/sign-up">sign up form</Link> to create your account.
+    </Paragraph>
+  </Router>
+</Nautilus>
 ```
 
 This is especially useful if you have set a default `Link` component that you want to use for the majority of links, but occassionally want to output a regular `<a>` tag.
@@ -52,7 +67,7 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 <Paragraph>
   Looking for a new furry friend? Browse our <Link to="/puppies">puppies</Link>{' '}
-  and <Link to="/kittens">kittens</Link> for adoption.
+  and <Link href="#kittens">kittens</Link> for adoption.
 </Paragraph>;
 ```
 
@@ -65,7 +80,7 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 <Paragraph>
   Make sure to read the
-  <Link to="https://tpsreports.com" external useHref>
+  <Link href="https://tpsreports.com" external>
     TPS Reports
   </Link>
   prior to the Monday Mega-Meeting.
