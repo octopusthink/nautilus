@@ -10,7 +10,7 @@ export const SkipLink = forwardRef((props, ref) => {
   const { children, toId, ...otherProps } = props;
 
   return (
-    <Link {...otherProps} component="a" href={`#${toId}`} ref={ref}>
+    <Link {...otherProps} asComponent="a" href={`#${toId}`} ref={ref}>
       {children}
     </Link>
   );

@@ -1,40 +1,21 @@
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { Fragment, forwardRef } from 'react';
+import React, { Fragment, forwardRef, useContext } from 'react';
 
+import { NautilusLinkComponent } from 'components/hoc/Nautilus';
 import { Icon } from 'components/ui/Icon';
 
 const LinkTag = 'a';
 
 export const Link = forwardRef((props, ref) => {
-  const {
-    children,
-    component,
-    componentProps,
-    external,
-    href,
-    ...otherProps
-  } = props;
-  // TODO: Use Nautilus.config.LinkComponent.
-  const LinkComponent = component || LinkTag;
-  const hrefOnly = LinkComponent === LinkTag;
+  const defaultLinkComponent = useContext(NautilusLinkComponent);
 
-  const refProps = {};
-  if (hrefOnly) {
-    refProps.ref = ref;
-  } else {
-    refProps.innerRef = ref;
-  }
+  const { children, asComponent, external, ...otherProps } = props;
+  const LinkComponent = asComponent || defaultLinkComponent || LinkTag;
 
   return (
-    <LinkComponent
-      href={hrefOnly ? href : undefined}
-      to={!hrefOnly ? href : undefined}
-      {...componentProps}
-      {...otherProps}
-      {...refProps}
-    >
+    <LinkComponent ref={ref} {...otherProps}>
       {children}
       {external && (
         <Fragment>
@@ -71,24 +52,17 @@ export const styles = (props) => {
 
 Link.defaultProps = {
   children: undefined,
-  component: null,
-  componentProps: undefined,
+  asComponent: undefined,
   external: false,
-  href: undefined,
 };
 
 Link.propTypes = {
   /** @ignore */
   children: PropTypes.node,
-  /** Component/tag to render the underlying link. Defaults to `Nautilus.config.LinkComponent` if set; an `<a>` tag will be used if `Nautilus.config.LinkComponent` is not set. */
-  component: PropTypes.element,
-  /** Props to pass to the underlying component used to render this `Link`. Useful if you want to customise props or aren't using an `<a>` tag, `react-router` `Link`, or `@reach/router` `Link` component. */
-  // eslint-disable-next-line react/forbid-prop-types
-  componentProps: PropTypes.object,
+  /** Component/tag to render the underlying link. Defaults to `Nautilus.config.defaultComponents.Link` if set; an `<a>` tag will be used if `Nautilus.config.defaultComponents.Link` is not set. */
+  asComponent: PropTypes.elementType,
   /** Use to indicate that a link points to an external resource. */
   external: PropTypes.bool,
-  /** If an `<a>` tag, `react-router` `Link`, or `@reach/router` `Link` component are rendered, this will be the intended target (eg the `to` prop in `react-router`, the `href` prop for an `a` tag). */
-  href: PropTypes.string,
 };
 
 Link.displayName = 'Link';
