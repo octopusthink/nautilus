@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
 
-import { axe, muteConsole, render } from 'utils/testing';
+import { axe, render } from 'utils/testing';
 
 import Link from '.';
 
