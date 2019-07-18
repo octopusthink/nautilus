@@ -20,7 +20,7 @@ export const styles = (props) => {
 
   return css`
     position: relative;
-    margin: 0 0 ${toUnits(theme.spacing.padding.extraSmall)};
+    margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
     &::before {
       position: absolute;
       right: 101%;

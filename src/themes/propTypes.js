@@ -91,24 +91,24 @@ export const themePropTypes = PropTypes.shape({
   spacing: PropTypes.shape({
     margin: PropTypes.shape({
       none: PropTypes.number,
-      xxs: PropTypes.number,
-      extraSmall: PropTypes.number,
+      xxSmall: PropTypes.number,
+      xSmall: PropTypes.number,
       s: PropTypes.number,
       m: PropTypes.number,
       l: PropTypes.number,
-      extraLarge: PropTypes.number,
-      xxl: PropTypes.number,
+      xLarge: PropTypes.number,
+      xxLarge: PropTypes.number,
     }),
 
     padding: PropTypes.shape({
       none: PropTypes.number,
-      xxs: PropTypes.number,
-      extraSmall: PropTypes.number,
+      xxSmall: PropTypes.number,
+      xSmall: PropTypes.number,
       s: PropTypes.number,
       m: PropTypes.number,
       l: PropTypes.number,
-      extraLarge: PropTypes.number,
-      xxl: PropTypes.number,
+      xLarge: PropTypes.number,
+      xxLarge: PropTypes.number,
     }),
   }),
 });

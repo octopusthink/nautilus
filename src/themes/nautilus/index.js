@@ -175,7 +175,7 @@ export const theme = {
 
     Icon: {
       sizes: {
-        extraSmall: {
+        xSmall: {
           borderWidth: 1,
           marginSize: '0 0.8rem 0 0',
           padding: 4,
@@ -203,7 +203,7 @@ export const theme = {
           size: 48,
           strokeWidth: 1.25,
         },
-        extraLarge: {
+        xLarge: {
           borderWidth: 3,
           marginSize: '0 0.8rem 0 0',
           padding: 24,
@@ -254,24 +254,24 @@ export const theme = {
   spacing: {
     margin: {
       none: 0,
-      xxs: 4,
-      extraSmall: 8,
+      xxSmall: 4,
+      xSmall: 8,
       small: 16,
       medium: 32,
       large: 48,
-      extraLarge: 64,
-      xxl: 80,
+      xLarge: 64,
+      xxLarge: 80,
     },
 
     padding: {
       none: 0,
-      xxs: 2,
-      extraSmall: 4,
+      xxSmall: 2,
+      xSmall: 4,
       small: 8,
       medium: 12,
       large: 24,
-      extraLarge: 32,
-      xxl: 48,
+      xLarge: 32,
+      xxLarge: 48,
     },
   },
 };

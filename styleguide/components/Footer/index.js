@@ -10,7 +10,7 @@ export function Footer({ children, title, version }) {
   return (
     <footer
       css={css`
-        margin-top: ${toUnits(theme.spacing.margin.xxl)};
+        margin-top: ${toUnits(theme.spacing.margin.xxLarge)};
         padding-top: ${toUnits(theme.spacing.padding.large)};
         text-align: center;
 

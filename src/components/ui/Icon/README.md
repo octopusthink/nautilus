@@ -65,28 +65,28 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 ### Size
 
-Icons are available in five different sizes: `extraLarge` (`64px`), `large` (`48px`), `medium` (`24px`), `small` (`16px`), and `extraSmall` (`8px`). If you don't pass a size value, your icons will use the `medium` size.
+Icons are available in five different sizes: `xLarge` (`64px`), `large` (`48px`), `medium` (`24px`), `small` (`16px`), and `xSmall` (`8px`). If you don't pass a size value, your icons will use the `medium` size.
 
 The default icon sizes can be tweaked in your theme. Sizes should be defined in `rem` to ensure the icons adjust to the user's font size. (The above sizes are the pixel equivalents of the `rem` sizes provided for reference.)
 
 ```jsx
-<Icon name="heart" extraSmall />
+<Icon name="heart" xSmall />
 <Icon name="heart" small />
 <Icon name="heart" medium />
 <Icon name="heart" large />
-<Icon name="heart" extraLarge />
+<Icon name="heart" xLarge />
 
-<Icon name="star" extraSmall />
+<Icon name="star" xSmall />
 <Icon name="star" small />
 <Icon name="star" medium />
 <Icon name="star" large />
-<Icon name="star" extraLarge />
+<Icon name="star" xLarge />
 
-<Icon name="pen-tool" extraSmall />
+<Icon name="pen-tool" xSmall />
 <Icon name="pen-tool" small />
 <Icon name="pen-tool" medium />
 <Icon name="pen-tool" large />
-<Icon name="pen-tool" extraLarge />
+<Icon name="pen-tool" xLarge />
 ```
 
 Stroke widths scale with the icon size for better legibility. Stroke widths are also customisable via your theme.
@@ -110,11 +110,11 @@ An icon can have a border and a background. These use a circular shape by defaul
 <Icon name="mic" background="#cd2f83" border="#181b1c" color="#181b1c" />
 <Icon name="mic" background="#181b1c" color="#fff" />
 <br />
-<Icon name="mic" border="#cd2f83" color="#cd2f83" extraSmall />
+<Icon name="mic" border="#cd2f83" color="#cd2f83" xSmall />
 <Icon name="mic" border="#cd2f83" color="#cd2f83" small />
 <Icon name="mic" border="#cd2f83" color="#cd2f83" medium />
 <Icon name="mic" border="#cd2f83" color="#cd2f83" large />
-<Icon name="mic" border="#cd2f83" color="#cd2f83" extraLarge />
+<Icon name="mic" border="#cd2f83" color="#cd2f83" xLarge />
 ```
 
 This is generally best when an `Icon` is used inside a `Tab` or a `Button`, since it gives the icon additional emphasis and creates a clear touch target.

@@ -9,27 +9,19 @@ import { toUnits } from 'styles';
 import { useTheme } from 'themes';
 
 const defineIconSizes = (props) => {
-  const {
-    background,
-    border,
-    small,
-    extraSmall,
-    large,
-    extraLarge,
-    theme,
-  } = props;
+  const { background, border, small, xSmall, large, xLarge, theme } = props;
 
   let iconSize = 'medium';
 
   // Determine the size of the SVG.
-  if (extraSmall) {
-    iconSize = 'extraSmall';
+  if (xSmall) {
+    iconSize = 'xSmall';
   } else if (small) {
     iconSize = 'small';
   } else if (large) {
     iconSize = 'large';
-  } else if (extraLarge) {
-    iconSize = 'extraLarge';
+  } else if (xLarge) {
+    iconSize = 'xLarge';
   }
 
   const {
@@ -72,11 +64,11 @@ export const Icon = forwardRef((props, ref) => {
     id,
     name,
     title,
-    extraSmall,
+    xSmall,
     small,
     medium,
     large,
-    extraLarge,
+    xLarge,
     strokeColor,
     verticalAlign,
     ...otherProps
@@ -205,11 +197,11 @@ Icon.defaultProps = {
   fillColor: undefined,
   strokeColor: undefined,
   title: undefined,
-  extraSmall: false,
+  xSmall: false,
   small: false,
   medium: true,
   large: false,
-  extraLarge: false,
+  xLarge: false,
   border: undefined,
   background: undefined,
   verticalAlign: 'middle',
@@ -229,9 +221,9 @@ Icon.propTypes = {
   /** A longer description of this icon, used by assistive technology. */
   description: PropTypes.string,
   /** Extra-large icon size. */
-  extraLarge: PropTypes.bool,
+  xLarge: PropTypes.bool,
   /** Extra-small icon size. */
-  extraSmall: PropTypes.bool,
+  xSmall: PropTypes.bool,
   /** Apply colour to the icon fill. */
   fillColor: PropTypes.string,
   /** @ignore */

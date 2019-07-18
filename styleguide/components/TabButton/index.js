@@ -17,7 +17,7 @@ export function TabButtonRenderer({ name, className, onClick, active, children }
 			&::before {
 				display: inline-block;
 				content: '↓';
-				margin-right: ${toUnits(theme.spacing.padding.extraSmall)};
+				margin-right: ${toUnits(theme.spacing.padding.xSmall)};
 			}
 
 			${active &&

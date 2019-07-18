@@ -25,7 +25,7 @@ export const StyleGuide = ({
 }) => {
   const mobileBreakpoint = 768;
   const mobileMenuPadding = toUnits(theme.spacing.padding.large);
-  const tabletMenuPadding = toUnits(theme.spacing.padding.extraLarge);
+  const tabletMenuPadding = toUnits(theme.spacing.padding.xLarge);
   const sidebarWidth = 300;
   const menuToggleWidth = 60;
   const menuToggleHeight = 76;
@@ -88,7 +88,7 @@ export const StyleGuide = ({
           }
 
           .markdown-h2 {
-            margin-top: ${toUnits(theme.spacing.margin.xxl)} !important;
+            margin-top: ${toUnits(theme.spacing.margin.xxLarge)} !important;
           }
 
           .markdown-h3 {
@@ -243,8 +243,8 @@ export const StyleGuide = ({
           }
 
           @media screen and (min-width: 980px) {
-            padding-left: ${toUnits(theme.spacing.margin.xxl)};
-            padding-right: ${toUnits(theme.spacing.margin.xxl)};
+            padding-left: ${toUnits(theme.spacing.margin.xxLarge)};
+            padding-right: ${toUnits(theme.spacing.margin.xxLarge)};
           }
 
           ${showSidebar && css`
