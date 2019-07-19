@@ -6,13 +6,28 @@ import chroma from 'chroma-js';
 
 import { Icon } from 'components/ui/Icon';
 import { metadata, toUnits } from 'styles';
+import { useTheme } from 'themes';
 
 export const Tag = forwardRef((props, ref) => {
-  const { children, ...otherProps } = props;
+  const theme = useTheme();
+  const { children, dismissable, ...otherProps } = props;
 
   return (
     <span ref={ref} {...otherProps}>
       {children}
+      {dismissable && (
+        <a href="#">
+          <Icon
+            name="x"
+            small
+            css={css`
+              display: inline-block;
+              margin-left: ${toUnits(theme.spacing.padding.small)};
+              margin-top: ${toUnits(theme.spacing.padding.xxSmall)};
+            `}
+          />
+        </a>
+      )}
     </span>
   );
 });
@@ -57,6 +72,7 @@ export const styles = (props) => {
 Tag.defaultProps = {
   children: undefined,
   color: null,
+  dismissable: false,
 };
 
 Tag.propTypes = {
@@ -64,6 +80,8 @@ Tag.propTypes = {
   children: PropTypes.node,
   /** Use colour to differentiate different tags or indicate status. */
   color: PropTypes.string,
+  /** Allow for removing the tag. */
+  dismissable: PropTypes.bool,
 };
 
 export const { defaultProps, propTypes } = Tag;
