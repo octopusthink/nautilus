@@ -16,6 +16,7 @@ import { Heading, Paragraph } from '@octopusthink/nautilus';
 ```jsx
 <React.Fragment>
   <Tag color="hotpink">Hot pink</Tag>
+  <Tag color="#cd2f83">Pink</Tag>
   <Tag color="navy">Navy</Tag>
   <Tag color="aqua">Aqua</Tag>
   <Tag color="#053e6c">Blue</Tag>

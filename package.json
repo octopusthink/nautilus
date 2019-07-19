@@ -40,6 +40,7 @@
   "homepage": "https://github.com/octopusthink/nautilus#readme",
   "dependencies": {
     "@react-hook/window-size": "^1.0.1",
+    "chroma-js": "^2.0.4",
     "feather-icons": "^4.22.1",
     "invariant": "^2.2.4",
     "prop-types": "^15.7.2",
