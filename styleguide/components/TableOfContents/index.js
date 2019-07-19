@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import theme from 'styleguide/theme';
-import { metadata, toUnits } from 'styles';
+import { interfaceUI, toUnits } from 'styles';
 import { Icon } from 'components/ui/Icon';
 
 export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
   return (
     <nav
       css={css`
-        ${metadata.small(theme)};
+        ${interfaceUI.small(theme)};
         box-sizing: border-box;
       `}
     >
