@@ -11,4 +11,5 @@ export { default as List } from './ui/List';
 export { default as PageTitle } from './ui/PageTitle';
 export { default as Paragraph } from './ui/Paragraph';
 export { default as Tabs } from './ui/Tabs';
+export { default as Tag } from './ui/Tag';
 export { default as TextField } from './ui/TextField';

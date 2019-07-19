@@ -137,7 +137,7 @@ const metadataSmall = (theme) => {
     fontWeight: theme.typography.fontWeights.interfaceUIBold,
     ...typeAttributes({
       theme,
-      sizeNumber: -0.5,
+      sizeNumber: -1.5,
       fontType: FONT_TYPES.interfaceUI,
     }),
     ...smallCaps(),
@@ -150,7 +150,7 @@ const metadataLarge = (theme) => {
     fontWeight: theme.typography.fontWeights.interfaceUIBold,
     ...typeAttributes({
       theme,
-      sizeNumber: 1,
+      sizeNumber: 0,
       fontType: FONT_TYPES.interfaceUI,
     }),
     ...smallCaps(),
