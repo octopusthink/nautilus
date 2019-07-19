@@ -17,26 +17,33 @@ export const Tag = forwardRef((props, ref) => {
 });
 
 export const styles = (props) => {
-  const { theme } = props;
+  const { color, theme } = props;
 
   return css`
     ${metadata.small(theme)};
-    background: ${theme.colors.accent.primary};
-    color: ${theme.colors.text.inverse};
     margin: 0 ${toUnits(theme.spacing.padding.xSmall)}
       ${toUnits(theme.spacing.padding.xSmall)} 0;
-    padding: ${toUnits(theme.spacing.padding.xSmall)}
-      ${toUnits(theme.spacing.padding.small)};
+
+    ${color &&
+      css`
+        background: ${color};
+        color: ${theme.colors.text.inverse};
+        padding: ${toUnits(theme.spacing.padding.xSmall)}
+          ${toUnits(theme.spacing.padding.small)};
+      `}
   `;
 };
 
 Tag.defaultProps = {
   children: undefined,
+  color: null,
 };
 
 Tag.propTypes = {
   /** @ignore */
   children: PropTypes.node,
+  /** Use colour to differentiate different tags or indicate status. */
+  color: PropTypes.string,
 };
 
 export const { defaultProps, propTypes } = Tag;
