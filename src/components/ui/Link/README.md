@@ -12,20 +12,33 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 Use a `<Link>` component where you would usually use an `<a>` tag in HTML.
 
-By default, Nautilus will output an `<a>` tag for every `Link` component. If you want to use a custom `Link` component throughout your app you can use the `LinkComponent` prop in your `Nautilus` higher-order component. Here's how you would use React Router's `Link` component:
+By default, Nautilus will output an `<a>` tag for every `Link` component. If you want to use a custom `Link` component throughout your app you can use the `LinkComponent` prop in your `Nautilus` higher-order component. Here's how you would use various link components from popular router libraries:
 
 ```jsx
-import Nautilus, { Paragraph } from '@octopusthink/nautilus';
+import Nautilus, { Paragraph, Tabs } from '@octopusthink/nautilus';
+import { Link as ReachRouterLink } from '@reach/router';
 import { createMemoryHistory } from 'history';
 import { Link as ReactRouterLink, Router } from 'react-router-dom';
 
-<Nautilus LinkComponent={ReactRouterLink}>
-  <Router history={createMemoryHistory()}>
-    <Paragraph>
-      Fill out the <Link to="/sign-up">sign up form</Link> to create your account.
-    </Paragraph>
-  </Router>
-</Nautilus>
+<Tabs>
+  <Tabs.Tab label="Reach Router Link">
+    <Nautilus config={{LinkComponent: ReachRouterLink}}>
+      <Paragraph>
+        This link uses <Link to="#react-router">Reach Router</Link> for links.
+      </Paragraph>
+    </Nautilus>
+  </Tabs.Tab>
+
+  <Tabs.Tab label="React Router Link">
+    <Nautilus config={{LinkComponent: ReactRouterLink}}>
+      <Router history={createMemoryHistory()}>
+        <Paragraph>
+          But this link uses <Link to="#react-router">React Router</Link>.
+        </Paragraph>
+      </Router>
+    </Nautilus>
+  </Tabs.Tab>
+</Tabs>
 ```
 
 If you want to override a specific `Link` component, you can use the `asComponent` prop:
@@ -38,7 +51,9 @@ import { Link as ReactRouterLink, Router } from 'react-router-dom';
 <Nautilus>
   <Router history={createMemoryHistory()}>
     <Paragraph>
-      Fill out the <Link asComponent={ReactRouterLink} to="/sign-up">sign up form</Link> to create your account.
+      Fill out the
+      <Link asComponent={ReactRouterLink} to="/sign-up">sign up form</Link> to
+      create your account.
     </Paragraph>
   </Router>
 </Nautilus>

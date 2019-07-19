@@ -39,9 +39,24 @@ describe('Link', () => {
     expect(container.firstChild.getAttribute('href')).toEqual('/a-url/');
   });
 
+  it('should use an `<a>` tag by default when `external` is set, even if there is a default link component specified in the Nautilus config', () => {
+    const { container } = render(
+      <Nautilus LinkComponent="span">
+        <Link href="https://octopusthink.com/" external>
+          hello
+        </Link>
+      </Nautilus>,
+    );
+
+    expect(container.firstChild.tagName).toEqual('A');
+    expect(container.firstChild.getAttribute('href')).toEqual(
+      'https://octopusthink.com/',
+    );
+  });
+
   it('should add an icon when `external` is set', () => {
     const { container } = render(
-      <Link href="https://elsewhere.net/" external>
+      <Link href="https://octopusthink.com/" external>
         hello
       </Link>,
     );
@@ -52,7 +67,7 @@ describe('Link', () => {
 
   it('should output Link styles', () => {
     const { container } = render(
-      <Link href="https://elsewhere.net/">hello</Link>,
+      <Link href="https://octopusthink.com/">hello</Link>,
     );
 
     expect(container).toMatchSnapshot();
@@ -82,7 +97,7 @@ describe('Link', () => {
   describe('with default Link components', () => {
     it('should output an href prop when the to prop is supplied', () => {
       const { container } = render(
-        <Nautilus LinkComponent={ReachRouterLink}>
+        <Nautilus config={{ LinkComponent: ReachRouterLink }}>
           <Link to="/a-url/">Hello</Link>
         </Nautilus>,
       );

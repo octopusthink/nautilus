@@ -11,11 +11,12 @@ const LinkTag = 'a';
 export const Link = forwardRef((props, ref) => {
   const defaultLinkComponent = useContext(NautilusLinkComponent);
 
-  const { children, asComponent, external, ...otherProps } = props;
-  const LinkComponent = asComponent || defaultLinkComponent || LinkTag;
+  const { children, asComponent, external, href, ...otherProps } = props;
+  const LinkComponent =
+    asComponent || (external && 'a') || defaultLinkComponent || LinkTag;
 
   return (
-    <LinkComponent ref={ref} {...otherProps}>
+    <LinkComponent href={href} ref={ref} {...otherProps}>
       {children}
       {external && (
         <Fragment>
@@ -54,6 +55,7 @@ Link.defaultProps = {
   children: undefined,
   asComponent: undefined,
   external: false,
+  href: undefined,
 };
 
 Link.propTypes = {
@@ -63,6 +65,8 @@ Link.propTypes = {
   asComponent: PropTypes.elementType,
   /** Use to indicate that a link points to an external resource. */
   external: PropTypes.bool,
+  /** The URL to navigate to when this link is activated. */
+  href: PropTypes.string,
 };
 
 Link.displayName = 'Link';

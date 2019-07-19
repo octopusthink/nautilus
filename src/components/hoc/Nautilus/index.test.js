@@ -29,7 +29,7 @@ describe('Nautilus', () => {
 
   it('provide context from config', () => {
     const { getByText } = render(
-      <Nautilus LinkComponent={ReachRouterLink}>
+      <Nautilus config={{ LinkComponent: ReachRouterLink }}>
         <Link to="/somewhere/">I am a custom-config link.</Link>
       </Nautilus>,
     );

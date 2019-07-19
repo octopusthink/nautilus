@@ -8,7 +8,9 @@ import { nautilus as nautilusDefaultTheme, themePropTypes } from 'themes';
 export const NautilusLinkComponent = createContext();
 
 export const Nautilus = (props) => {
-  const { LinkComponent, children, theme } = props;
+  const { children, config, theme } = props;
+
+  const { LinkComponent } = config;
 
   return (
     <NautilusLinkComponent.Provider value={LinkComponent}>
@@ -43,16 +45,18 @@ export const Nautilus = (props) => {
 };
 
 Nautilus.defaultProps = {
-  LinkComponent: undefined,
   children: undefined,
+  config: { LinkComponent: undefined },
   theme: nautilusDefaultTheme,
 };
 
 Nautilus.propTypes = {
   /** @ignore */
   children: PropTypes.node,
-  /** Component used to render all Nautilus `Link` components. */
-  LinkComponent: PropTypes.elementType,
+  /** Config values affect all component rendered underneath this `Nautilus` component. Used to set default `Link` components, etc. */
+  config: PropTypes.shape({
+    LinkComponent: PropTypes.elementType,
+  }),
   /** Theme object used to style this instance of Nautilus and its components. */
   theme: themePropTypes,
 };
