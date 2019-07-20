@@ -29,7 +29,7 @@ import { Link as ReactRouterLink, Router } from 'react-router-dom';
     </Nautilus>
   </Tabs.Tab>
 
-  <Tabs.Tab label="React Router Link">
+  <Tabs.Tab label="React Router">
     <Nautilus config={{LinkComponent: ReactRouterLink}}>
       <Router history={createMemoryHistory()}>
         <Paragraph>
