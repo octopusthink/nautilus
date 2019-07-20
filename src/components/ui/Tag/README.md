@@ -34,8 +34,12 @@ import { Heading } from '@octopusthink/nautilus';
 ```
 
 ```jsx
+const onDismiss = (event) => {
+  window.alert('Goodbye Tag! 👋');
+};
+
 <React.Fragment>
-  <Tag color="hotpink" dismissable>Hot pink</Tag>
+  <Tag color="hotpink" dismissable onDismiss={onDismiss}>Hot pink</Tag>
   <Tag color="#cd2f83">Pink</Tag>
   <Tag color="navy">Navy</Tag>
   <Tag color="aqua">Aqua</Tag>

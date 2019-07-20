@@ -10,13 +10,13 @@ import { useTheme } from 'themes';
 
 export const Tag = forwardRef((props, ref) => {
   const theme = useTheme();
-  const { children, dismissable, ...otherProps } = props;
+  const { children, dismissable, onDismiss, ...otherProps } = props;
 
   return (
     <span ref={ref} {...otherProps}>
       {children}
       {dismissable && (
-        <a href="#">
+        <button type="button" onClick={onDismiss}>
           <Icon
             name="x"
             small
@@ -26,7 +26,7 @@ export const Tag = forwardRef((props, ref) => {
               margin-top: ${toUnits(theme.spacing.padding.xxSmall)};
             `}
           />
-        </a>
+        </button>
       )}
     </span>
   );
@@ -73,6 +73,7 @@ Tag.defaultProps = {
   children: undefined,
   color: null,
   dismissable: false,
+  onDismiss: null,
 };
 
 Tag.propTypes = {
@@ -82,6 +83,8 @@ Tag.propTypes = {
   color: PropTypes.string,
   /** Allow for removing the tag. */
   dismissable: PropTypes.bool,
+  /** Function to call when a Tag is dismissed via the close button. */
+  onDismiss: PropTypes.func,
 };
 
 export const { defaultProps, propTypes } = Tag;
