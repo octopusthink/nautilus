@@ -21,7 +21,7 @@ import { createMemoryHistory } from 'history';
 import { Link as ReactRouterLink, Router } from 'react-router-dom';
 
 <Tabs>
-  <Tabs.Tab label="Reach Router Link">
+  <Tabs.Tab label="Reach Router">
     <Nautilus config={{LinkComponent: ReachRouterLink}}>
       <Paragraph>
         This link uses <Link to="#react-router">Reach Router</Link> for links.
