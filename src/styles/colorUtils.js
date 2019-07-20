@@ -1,10 +1,11 @@
 import chroma from 'chroma-js';
 import invariant from 'invariant';
 
-// Check a given colour for contrast against their theme's black and white
-// values, and return whichever has the most contrast.
-// eslint-disable-next-line consistent-return
+// Check a colour for contrast against the theme's black and white values.
+// Return whichever has the most contrast, and error if neither does.
+
 // We need to throw an error with invariant, but eslint doesn't care for this approach. Let's not write harder to read code just to appease the linter gods.
+// eslint-disable-next-line consistent-return
 export const getContrastingTextColor = ({ color, theme }) => {
   const white = theme.colors.text.inverseLight;
   const black = theme.colors.text.dark;
@@ -16,10 +17,10 @@ export const getContrastingTextColor = ({ color, theme }) => {
     if (contrastAgainstWhite >= 4.5) {
       return white;
     }
-  } else {
-    if (contrastAgainstBlack >= 4.5) {
-      return black;
-    }
+  }
+
+  if (contrastAgainstBlack >= 4.5) {
+    return black;
   }
 
   invariant(
