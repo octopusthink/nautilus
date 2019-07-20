@@ -11,10 +11,8 @@ exports[`Tag should match styles 1`] = `
   -ms-letter-spacing: 0.05em;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  background: #cd2f83;
-  color: #f8f9fa;
+  color: #666c76;
   margin: 0 0.4rem 0.4rem 0;
-  padding: 0.4rem 0.8rem;
 }
 
 <div>
