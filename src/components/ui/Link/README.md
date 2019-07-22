@@ -32,16 +32,38 @@ Links are styled consistently throughout, using a distinct colour and a slightly
 import { Paragraph } from '@octopusthink/nautilus';
 
 <Paragraph>
-  Looking for a new furry friend? Browse our <Link to="/puppies">puppies</Link>{' '}
+  Looking for a new furry friend? Browse our <Link href="#puppies">puppies</Link>{' '}
   and <Link href="#kittens">kittens</Link> for adoption.
 </Paragraph>;
 ```
 
 ## Behaviour
 
-By default, Nautilus will output an `<a>` tag for every `Link` component. You'll likely want to set a config value—`LinkComponent`—to use your router's `Link` component.
+### Links to external resources
 
-If you want to use a custom `Link` component throughout your app you can use the `LinkComponent` prop in your `Nautilus` higher-order component. Here's how you would use various link components from popular router libraries:
+Use the `external` prop to indicate that a link navigates to an off-site, external resource. This helps users know what to expect before they click a link.
+
+```jsx
+import { Paragraph } from '@octopusthink/nautilus';
+
+<Paragraph>
+  Make sure to read the
+  <Link href="https://tpsreports.com" external>
+    TPS Reports
+  </Link>
+  prior to the Monday Mega-Meeting.
+</Paragraph>
+```
+
+### Using a router
+
+By default, Nautilus will output an `<a>` tag for every `Link` component.
+
+If you're using a router (like React Router or Reach Router), you'll probably want to use the router's `Link` component under the hood.
+
+To do this, set a config value for `LinkComponent` in your [`Nautilus`](/#/Function/Higher-order%20components/Nautilus) higher-order component.
+
+Here's how you would use various link components from popular router libraries:
 
 ```jsx
 import Nautilus, { Paragraph, Tabs } from '@octopusthink/nautilus';
@@ -53,7 +75,7 @@ import { Link as ReactRouterLink, Router } from 'react-router-dom';
   <Tabs.Tab label="Reach Router">
     <Nautilus config={{ LinkComponent: ReachRouterLink }}>
       <Paragraph>
-        This link uses <Link to="#react-router">Reach Router</Link> for links.
+        This link uses <Link to="#react-router">Reach Router</Link>.
       </Paragraph>
     </Nautilus>
   </Tabs.Tab>
@@ -70,6 +92,7 @@ import { Link as ReactRouterLink, Router } from 'react-router-dom';
 </Tabs>
 ```
 
+### Overriding individual Link components
 If you want to override a specific `Link` component, you can use the `as` prop:
 
 ```jsx
@@ -89,20 +112,6 @@ import { Link as ReactRouterLink, Router } from 'react-router-dom';
 ```
 
 This is especially useful if you have set a default `Link` component that you want to use for the majority of links, but occassionally want to output a regular `<a>` tag.
-
-Use the `external` prop to indicate that a link navigates to an off-site, external resource. This helps users know what to expect before they click a link.
-
-```jsx
-import { Paragraph } from '@octopusthink/nautilus';
-
-<Paragraph>
-  Make sure to read the
-  <Link href="https://tpsreports.com" external>
-    TPS Reports
-  </Link>
-  prior to the Monday Mega-Meeting.
-</Paragraph>
-```
 
 ## Voice & tone
 
