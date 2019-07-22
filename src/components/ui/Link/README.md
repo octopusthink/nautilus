@@ -92,6 +92,7 @@ import { Link as ReactRouterLink, Router } from 'react-router-dom';
 ```
 
 ### Overriding individual Link components
+
 If you want to override a specific `Link` component, you can use the `as` prop:
 
 ```jsx
