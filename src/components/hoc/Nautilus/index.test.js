@@ -1,6 +1,7 @@
+import { Link as ReachRouterLink } from '@reach/router';
 import React from 'react';
 
-import { Heading, Paragraph } from 'components';
+import { Heading, Link, Paragraph } from 'components';
 import { render } from 'utils/testing';
 
 import Nautilus from '.';
@@ -24,5 +25,18 @@ describe('Nautilus', () => {
     expect(getByText('Here I am, rock you like a paragraph.').tagName).toEqual(
       'P',
     );
+  });
+
+  it('provide context from config', () => {
+    const { getByText } = render(
+      <Nautilus config={{ LinkComponent: ReachRouterLink }}>
+        <Link to="/somewhere/">I am a custom-config link.</Link>
+      </Nautilus>,
+    );
+
+    const link = getByText('I am a custom-config link.');
+
+    expect(link.tagName).toEqual('A');
+    expect(link.getAttribute('href')).toEqual('/somewhere/');
   });
 });

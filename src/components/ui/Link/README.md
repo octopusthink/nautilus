@@ -4,13 +4,13 @@ A `<Link>` provides a way of navigating to other content, either on the same sit
 import { Paragraph } from '@octopusthink/nautilus';
 
 <Paragraph>
-  Fill out the <Link to="/sign-up">sign up form</Link> to create your account.
+  Fill out the <Link href="#sign-up">sign up form</Link> to create your account.
 </Paragraph>
 ```
 
 ## Usage
 
-Use a `<Link>` component where you would usually use an `<a>` tag in HTML. If you use the `href` prop, this link will behave exactly like an `<a>` tag; if you use the `to` prop instead, this component will use `react-router-dom`'s `Link` component to output a link that your app can use to navigate to other routes you have defined.
+Use a `<Link>` component where you would usually use an `<a>` tag in HTML, including for navigation within your application.
 
 ### Use this component for...
 
@@ -32,11 +32,15 @@ Links are styled consistently throughout, using a distinct colour and a slightly
 import { Paragraph } from '@octopusthink/nautilus';
 
 <Paragraph>
-  Looking for a new furry friend? Browse our <Link to="/puppies">puppies</Link> and <Link to="/kittens">kittens</Link> for adoption.
-</Paragraph>
+  Looking for a new furry friend? Browse our
+  <Link href="#puppies">puppies</Link> and
+  <Link href="#kittens">kittens</Link> for adoption.
+</Paragraph>;
 ```
 
 ## Behaviour
+
+### Links to external resources
 
 Use the `external` prop to indicate that a link navigates to an off-site, external resource. This helps users know what to expect before they click a link.
 
@@ -44,9 +48,70 @@ Use the `external` prop to indicate that a link navigates to an off-site, extern
 import { Paragraph } from '@octopusthink/nautilus';
 
 <Paragraph>
-  Make sure to read the <Link to="https://tpsreports.com" external useHref>TPS Reports</Link> prior to the Monday Mega-Meeting.
+  Make sure to read the
+  <Link href="https://tpsreports.com" external>TPS Reports</Link> prior
+  to the Monday Mega-Meeting.
 </Paragraph>
 ```
+
+### Using a router
+
+By default, Nautilus will output an `<a>` tag for every `Link` component.
+
+If you're using a router (like React Router or Reach Router), you'll probably want to use the router's `Link` component under the hood.
+
+To do this, set a config value for `LinkComponent` in your [`Nautilus`](/#/Function/Higher-order%20components/Nautilus) higher-order component.
+
+Here's how you would use various link components from popular router libraries:
+
+```jsx
+import Nautilus, { Paragraph, Tabs } from '@octopusthink/nautilus';
+import { Link as ReachRouterLink } from '@reach/router';
+import { createMemoryHistory } from 'history';
+import { Link as ReactRouterLink, Router } from 'react-router-dom';
+
+<Tabs>
+  <Tabs.Tab label="Reach Router">
+    <Nautilus config={{ LinkComponent: ReachRouterLink }}>
+      <Paragraph>
+        This link uses <Link to="#react-router">Reach Router</Link>.
+      </Paragraph>
+    </Nautilus>
+  </Tabs.Tab>
+
+  <Tabs.Tab label="React Router">
+    <Nautilus config={{ LinkComponent: ReactRouterLink }}>
+      <Router history={createMemoryHistory()}>
+        <Paragraph>
+          But this link uses <Link to="#react-router">React Router</Link>.
+        </Paragraph>
+      </Router>
+    </Nautilus>
+  </Tabs.Tab>
+</Tabs>
+```
+
+### Overriding individual Link components
+
+If you want to override a specific `Link` component, you can use the `as` prop:
+
+```jsx
+import Nautilus, { Paragraph } from '@octopusthink/nautilus';
+import { createMemoryHistory } from 'history';
+import { Link as ReactRouterLink, Router } from 'react-router-dom';
+
+<Nautilus>
+  <Router history={createMemoryHistory()}>
+    <Paragraph>
+      Fill out the
+      <Link as={ReactRouterLink} to="/sign-up">sign up form</Link> to
+      create your account.
+    </Paragraph>
+  </Router>
+</Nautilus>
+```
+
+This is especially useful if you have set a default `Link` component that you want to use for the majority of links, but occassionally want to output a regular `<a>` tag.
 
 ## Voice & tone
 

@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
 
-import { axe, muteConsole, render, renderWithRouter } from 'utils/testing';
+import { axe, muteConsole, render } from 'utils/testing';
 
 import Button from '.';
 
@@ -18,8 +18,8 @@ describe('Button', () => {
   });
 
   it('should not render a disabled attribute when `disabled` prop is set on a navigation button', () => {
-    const { container } = renderWithRouter(
-      <Button disabled navigation to="/some-route/">
+    const { container } = render(
+      <Button disabled navigation href="/some-route/">
         Hello
       </Button>,
     );
@@ -34,7 +34,7 @@ describe('Button', () => {
   });
 
   it('should render an <a> tag when `navigation` is set', () => {
-    const { container } = renderWithRouter(
+    const { container } = render(
       <Button navigation to="/some-page/">
         Follow link
       </Button>,
@@ -124,7 +124,7 @@ describe('Button', () => {
     });
 
     it('should pass aXe tests when navigation is set', async () => {
-      const { container } = renderWithRouter(
+      const { container } = render(
         <Button navigation to="/somewhere">
           hello link
         </Button>,

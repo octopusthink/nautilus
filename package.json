@@ -40,6 +40,7 @@
   "homepage": "https://github.com/octopusthink/nautilus#readme",
   "dependencies": {
     "@react-hook/window-size": "^1.0.1",
+    "emotion-theming": "^10.0.10",
     "feather-icons": "^4.22.1",
     "invariant": "^2.2.4",
     "prop-types": "^15.7.2",
@@ -58,12 +59,12 @@
     "@emotion/babel-preset-css-prop": "^10.0.9",
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.11",
+    "@reach/router": "^1.2.1",
     "@testing-library/react": "^8.0.1",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-emotion": "^10.0.9",
-    "emotion-theming": "^10.0.10",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.3.0",
@@ -99,9 +100,7 @@
   "peerDependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.11",
-    "emotion-theming": "^10.0.10",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-router-dom": "^5.0.1"
+    "react-dom": "^16.8.6"
   }
 }
