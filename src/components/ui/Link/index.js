@@ -11,9 +11,9 @@ const LinkTag = 'a';
 export const Link = forwardRef((props, ref) => {
   const defaultLinkComponent = useContext(NautilusLinkComponent);
 
-  const { children, asComponent, external, href, ...otherProps } = props;
+  const { children, as, external, href, ...otherProps } = props;
   const LinkComponent =
-    asComponent || (external && 'a') || defaultLinkComponent || LinkTag;
+    as || (external && 'a') || defaultLinkComponent || LinkTag;
 
   return (
     <LinkComponent href={href} ref={ref} {...otherProps}>
@@ -52,17 +52,17 @@ export const styles = (props) => {
 };
 
 Link.defaultProps = {
+  as: undefined,
   children: undefined,
-  asComponent: undefined,
   external: false,
   href: undefined,
 };
 
 Link.propTypes = {
+  /** Component/tag to render the underlying link. Defaults to `Nautilus.config.defaultComponents.Link` if set; an `<a>` tag will be used if `Nautilus.config.defaultComponents.Link` is not set. */
+  as: PropTypes.elementType,
   /** @ignore */
   children: PropTypes.node,
-  /** Component/tag to render the underlying link. Defaults to `Nautilus.config.defaultComponents.Link` if set; an `<a>` tag will be used if `Nautilus.config.defaultComponents.Link` is not set. */
-  asComponent: PropTypes.elementType,
   /** Use to indicate that a link points to an external resource. */
   external: PropTypes.bool,
   /** The URL to navigate to when this link is activated. */

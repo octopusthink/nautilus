@@ -109,7 +109,7 @@ describe('Link', () => {
   describe('with custom Link components', () => {
     it('should output an href prop when the to prop is supplied', () => {
       const { container } = render(
-        <Link asComponent={ReachRouterLink} to="/a-url/">
+        <Link as={ReachRouterLink} to="/a-url/">
           Hello
         </Link>,
       );

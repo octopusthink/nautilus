@@ -10,56 +10,7 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 ## Usage
 
-Use a `<Link>` component where you would usually use an `<a>` tag in HTML.
-
-By default, Nautilus will output an `<a>` tag for every `Link` component. If you want to use a custom `Link` component throughout your app you can use the `LinkComponent` prop in your `Nautilus` higher-order component. Here's how you would use various link components from popular router libraries:
-
-```jsx
-import Nautilus, { Paragraph, Tabs } from '@octopusthink/nautilus';
-import { Link as ReachRouterLink } from '@reach/router';
-import { createMemoryHistory } from 'history';
-import { Link as ReactRouterLink, Router } from 'react-router-dom';
-
-<Tabs>
-  <Tabs.Tab label="Reach Router">
-    <Nautilus config={{LinkComponent: ReachRouterLink}}>
-      <Paragraph>
-        This link uses <Link to="#react-router">Reach Router</Link> for links.
-      </Paragraph>
-    </Nautilus>
-  </Tabs.Tab>
-
-  <Tabs.Tab label="React Router">
-    <Nautilus config={{LinkComponent: ReactRouterLink}}>
-      <Router history={createMemoryHistory()}>
-        <Paragraph>
-          But this link uses <Link to="#react-router">React Router</Link>.
-        </Paragraph>
-      </Router>
-    </Nautilus>
-  </Tabs.Tab>
-</Tabs>
-```
-
-If you want to override a specific `Link` component, you can use the `asComponent` prop:
-
-```jsx
-import Nautilus, { Paragraph } from '@octopusthink/nautilus';
-import { createMemoryHistory } from 'history';
-import { Link as ReactRouterLink, Router } from 'react-router-dom';
-
-<Nautilus>
-  <Router history={createMemoryHistory()}>
-    <Paragraph>
-      Fill out the
-      <Link asComponent={ReactRouterLink} to="/sign-up">sign up form</Link> to
-      create your account.
-    </Paragraph>
-  </Router>
-</Nautilus>
-```
-
-This is especially useful if you have set a default `Link` component that you want to use for the majority of links, but occassionally want to output a regular `<a>` tag.
+Use a `<Link>` component where you would usually use an `<a>` tag in HTML, including for navigation within your application.
 
 ### Use this component for...
 
@@ -87,6 +38,57 @@ import { Paragraph } from '@octopusthink/nautilus';
 ```
 
 ## Behaviour
+
+By default, Nautilus will output an `<a>` tag for every `Link` component. You'll likely want to set a config value—`LinkComponent`—to use your router's `Link` component.
+
+If you want to use a custom `Link` component throughout your app you can use the `LinkComponent` prop in your `Nautilus` higher-order component. Here's how you would use various link components from popular router libraries:
+
+```jsx
+import Nautilus, { Paragraph, Tabs } from '@octopusthink/nautilus';
+import { Link as ReachRouterLink } from '@reach/router';
+import { createMemoryHistory } from 'history';
+import { Link as ReactRouterLink, Router } from 'react-router-dom';
+
+<Tabs>
+  <Tabs.Tab label="Reach Router">
+    <Nautilus config={{ LinkComponent: ReachRouterLink }}>
+      <Paragraph>
+        This link uses <Link to="#react-router">Reach Router</Link> for links.
+      </Paragraph>
+    </Nautilus>
+  </Tabs.Tab>
+
+  <Tabs.Tab label="React Router">
+    <Nautilus config={{ LinkComponent: ReactRouterLink }}>
+      <Router history={createMemoryHistory()}>
+        <Paragraph>
+          But this link uses <Link to="#react-router">React Router</Link>.
+        </Paragraph>
+      </Router>
+    </Nautilus>
+  </Tabs.Tab>
+</Tabs>
+```
+
+If you want to override a specific `Link` component, you can use the `as` prop:
+
+```jsx
+import Nautilus, { Paragraph } from '@octopusthink/nautilus';
+import { createMemoryHistory } from 'history';
+import { Link as ReactRouterLink, Router } from 'react-router-dom';
+
+<Nautilus>
+  <Router history={createMemoryHistory()}>
+    <Paragraph>
+      Fill out the
+      <Link as={ReactRouterLink} to="/sign-up">sign up form</Link> to
+      create your account.
+    </Paragraph>
+  </Router>
+</Nautilus>
+```
+
+This is especially useful if you have set a default `Link` component that you want to use for the majority of links, but occassionally want to output a regular `<a>` tag.
 
 Use the `external` prop to indicate that a link navigates to an off-site, external resource. This helps users know what to expect before they click a link.
 
