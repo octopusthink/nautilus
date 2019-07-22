@@ -32,8 +32,9 @@ Links are styled consistently throughout, using a distinct colour and a slightly
 import { Paragraph } from '@octopusthink/nautilus';
 
 <Paragraph>
-  Looking for a new furry friend? Browse our <Link href="#puppies">puppies</Link>{' '}
-  and <Link href="#kittens">kittens</Link> for adoption.
+  Looking for a new furry friend? Browse our
+  <Link href="#puppies">puppies</Link> and
+  <Link href="#kittens">kittens</Link> for adoption.
 </Paragraph>;
 ```
 
@@ -48,10 +49,8 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 <Paragraph>
   Make sure to read the
-  <Link href="https://tpsreports.com" external>
-    TPS Reports
-  </Link>
-  prior to the Monday Mega-Meeting.
+  <Link href="https://tpsreports.com" external>TPS Reports</Link> prior
+  to the Monday Mega-Meeting.
 </Paragraph>
 ```
 
