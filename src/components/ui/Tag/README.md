@@ -70,7 +70,7 @@ A Tag can act as a link or a button, depending on context. Clicking on the tag s
 
 ### A tag can be removed
 
-You may want to use tags to allow users to add and remove attributes from an object. You can do this by passing the `dismissable` prop. When a Tag is removable, it will be indicated with a "dismiss" button (stylised as an `X`/"close" icon).
+You may want to use Tags to allow users to add and remove attributes from an object. You can do this by passing the `dismissable` prop. When a Tag is removable, it will be indicated with a "dismiss" button (stylised as an `X`/"close" icon).
 
 
 ```jsx
@@ -117,15 +117,25 @@ When showing a group or list of tags, use a Group or List component to indicate 
 
 Keep in mind that tags increase the amount of visual noise, especially when using multiple colours, so use them in moderation. Only use tags that provide helpful additional data to users.
 
-### Titles & Labels
+### Label text
 
-Tags that convey information with icons or color should include fallback text. This ensures that users of assistive technology can understand the context of the Tag and that colour isn't the sole indicator of meaning.
+Tags should include a label text to indicate what type of data is being presented. This ensures that users of assistive technology can understand the context of the Tag, even if they may not be able to see the Tag styling.
 
-The easiest way to do this is by including a title attribute on the Tag.
+To do this, include a `label` attribute on the Tag. This label will be read by screen readers, but will be hidden from the visual display.
 
-    <Tag title="Category: Books">Books</Tag>
-    <Tag title="Date: 10 November">10 November</Tag>
+```jsx
+import { Heading } from '@octopusthink/nautilus';
 
-Status Tags automatically include this extra text.
+<React.Fragment>
+  <Tag label="Category">Books</Tag>
+  <Heading>Little Women</Heading>
+  <Tag label="Date">10 November</Tag>
+  <Heading>The day the music died</Heading>
+</React.Fragment>
+```
+
+If no `label` property is passed, the Tag will be prefaced with a "Tag" label. Status Tags automatically include this extra text.
+
+### Aria properties
 
 The button to remove a Tag is given an `aria-label` so that screen reader users can distinguish which Tag will be removed.
