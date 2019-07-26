@@ -56,6 +56,17 @@ Use colour as a cue to differentiate between different types of data. Only pass 
 
 Nautilus will automatically calculate colour contrast for you and change the colour of text to ensure it has sufficient contrast against the background.
 
+### Numbers
+
+If you're showing a count, tally, or other number in a tag, you might want to use slightly different styling. The `numerical` prop will help here. Note that it's best used with numbers of three or fewer digits.
+
+```jsx
+<Tag color="#3b3f45" numerical>42</Tag>
+<Tag color="#053e6c" numerical>1.3</Tag>
+<Tag color="#8a0000" numerical>£9</Tag>
+<Tag color="#eeb600" numerical>130</Tag>
+```
+
 ### Theming
 
 Generally speaking, the styling of Tags should be controlled in your theme. Tags should look the same across your site so that users can immediately recognise their purpose.
