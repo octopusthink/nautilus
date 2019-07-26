@@ -130,6 +130,15 @@ export const theme = {
       danger: colors.red600,
       dangerDark: colors.red800,
       dangerLight: colors.red200,
+      neutral: colors.grey600,
+      neutralDark: colors.grey800,
+      neutralLight: colors.grey200,
+      inProgress: colors.blue600,
+      inProgressDark: colors.blue800,
+      inProgressLight: colors.blue200,
+      new: colors.purple600,
+      newDark: colors.purple800,
+      newLight: colors.purple200,
     },
 
     state: {

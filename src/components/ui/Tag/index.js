@@ -48,11 +48,20 @@ export const Tag = forwardRef((props, ref) => {
 });
 
 export const styles = (props) => {
-  const { color, numerical, theme } = props;
+  const { color, numerical, status, theme } = props;
   let textColor = theme.colors.text.light;
+  let backgroundColor;
 
   if (color) {
-    textColor = getContrastingTextColor({ color, theme });
+    backgroundColor = color;
+  }
+
+  if (status) {
+    backgroundColor = theme.colors.intent[status];
+  }
+
+  if (status || color) {
+    textColor = getContrastingTextColor({ color: backgroundColor, theme });
   }
 
   return css`
@@ -61,9 +70,9 @@ export const styles = (props) => {
     margin: 0 ${toUnits(theme.spacing.padding.xSmall)}
       ${toUnits(theme.spacing.padding.xSmall)} 0;
 
-    ${color &&
+    ${backgroundColor &&
       css`
-        background: ${color};
+        background: ${backgroundColor};
         padding: ${toUnits(theme.spacing.padding.xSmall)}
           ${toUnits(theme.spacing.padding.small)};
       `}
@@ -88,6 +97,7 @@ Tag.defaultProps = {
   label: null,
   numerical: false,
   onDismiss: null,
+  status: undefined,
 };
 
 Tag.propTypes = {
@@ -103,6 +113,15 @@ Tag.propTypes = {
   numerical: PropTypes.bool,
   /** Function to call when a Tag is dismissed via the close button. */
   onDismiss: PropTypes.func,
+  /** Indicate status using a semantic colour set. */
+  status: PropTypes.oneOf([
+    'neutral',
+    'success',
+    'warning',
+    'danger',
+    'inProgress',
+    'new',
+  ]),
 };
 
 export const { defaultProps, propTypes } = Tag;

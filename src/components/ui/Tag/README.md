@@ -67,6 +67,32 @@ If you're showing a count, tally, or other number in a tag, you might want to us
 <Tag color="#eeb600" numerical>130</Tag>
 ```
 
+### Semantic status indicators
+
+Tags are often used as a way of indicating the state or status of a process. To facilitate this usage, Nautilus provides a set of semantic, colour-coded status indicators.
+
+```jsx
+<Tag status="neutral">To-do</Tag>
+<Tag status="new">Beta</Tag>
+
+<Tag status="inProgress">In Progress</Tag>
+<Tag status="success">Done</Tag>
+
+<Tag status="warning">Warning</Tag>
+<Tag status="danger">Failed</Tag>
+```
+
+| Status | Description | Usage |
+|--------|-------------|-------|
+| Neutral | Unspecified or unstarted. | To do, unavailable, minor, not started.|
+| New | New, updated, or beta. | New, trial, information, help, alpha, beta. |
+| InProgress | In progress or current. | In progress, open, modified. |
+| Success | Completed or successful. | Available, done, approved, resolved, added, complete. |
+Danger | Failure or deletion. | Errors, declined, failed, removed, critical. |
+Warning | Attention or hazard. | Busy, blocked, missing, warning, information.
+
+Colour mappings can be customised in your theme.
+
 ### Theming
 
 Generally speaking, the styling of Tags should be controlled in your theme. Tags should look the same across your site so that users can immediately recognise their purpose.
