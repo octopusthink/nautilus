@@ -48,7 +48,7 @@ export const Tag = forwardRef((props, ref) => {
 });
 
 export const styles = (props) => {
-  const { color, numerical, status, theme } = props;
+  const { color, count, status, theme } = props;
   let textColor = theme.colors.text.light;
   let backgroundColor;
 
@@ -77,11 +77,11 @@ export const styles = (props) => {
           ${toUnits(theme.spacing.padding.small)};
       `}
 
-    ${numerical &&
+    ${count &&
       css`
-        border-radius: 50%;
-        width: 3.6rem;
-        height: 3.6rem;
+        border-radius: ${toUnits(theme.spacing.padding.xLarge)};
+        min-width: ${toUnits(theme.spacing.padding.xLarge)};
+        height: ${toUnits(theme.spacing.padding.xLarge)};
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -95,7 +95,7 @@ Tag.defaultProps = {
   color: null,
   dismissable: false,
   label: null,
-  numerical: false,
+  count: false,
   onDismiss: null,
   status: undefined,
 };
@@ -110,7 +110,7 @@ Tag.propTypes = {
   /** Optional label for providing additional context to screen reader users. */
   label: PropTypes.string,
   /** Style numbers in a more badge-y kind of way. */
-  numerical: PropTypes.bool,
+  count: PropTypes.bool,
   /** Function to call when a Tag is dismissed via the close button. */
   onDismiss: PropTypes.func,
   /** Indicate status using a semantic colour set. */
