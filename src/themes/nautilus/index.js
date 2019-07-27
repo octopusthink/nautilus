@@ -227,7 +227,7 @@ export const theme = {
         colourPosition: 'background', // background or border
         borderRadius: 0,
         padding:
-          '${toUnits(theme.spacing.padding.xSmall)} ${toUnits(theme.spacing.padding.small)}',
+          'toUnits(theme.spacing.padding.xSmall) toUnits(theme.spacing.padding.small)',
       },
     },
   },
