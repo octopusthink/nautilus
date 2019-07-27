@@ -58,14 +58,14 @@ Nautilus will automatically calculate colour contrast for you and change the col
 
 ### Numbers
 
-If you're showing a count, tally, or other number in a tag, you might want to use slightly different styling by using the `count` prop. This styling is best used with numbers of three or fewer digits.
+If you're showing a count, tally, or other number in a tag, you might want to use slightly different styling by using the `badge` prop. This styling is best used with numbers of three or fewer digits.
 
 ```jsx
-<Tag color="#3b3f45" count>42</Tag>
-<Tag color="#053e6c" count>1.3</Tag>
-<Tag color="#8a0000" count>£9</Tag>
-<Tag color="#eeb600" count>130</Tag>
-<Tag color="#eeb600" count>1.30%</Tag>
+<Tag color="#3b3f45" badge>42</Tag>
+<Tag color="#053e6c" badge>1.3</Tag>
+<Tag color="#8a0000" badge>£9</Tag>
+<Tag color="#eeb600" badge>130</Tag>
+<Tag color="#eeb600" badge>1.30%</Tag>
 ```
 
 ### Semantic status indicators

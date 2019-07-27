@@ -9,7 +9,15 @@ import { useTheme } from 'themes';
 
 export const Tag = forwardRef((props, ref) => {
   const theme = useTheme();
-  const { children, label, onDismiss, ...otherProps } = props;
+  const {
+    badge,
+    children,
+    color,
+    label,
+    onDismiss,
+    status,
+    ...otherProps
+  } = props;
 
   return (
     <span ref={ref} {...otherProps}>
@@ -67,7 +75,7 @@ export const Tag = forwardRef((props, ref) => {
 });
 
 export const styles = (props) => {
-  const { color, count, status, theme } = props;
+  const { color, badge, status, theme } = props;
   let textColor = theme.colors.text.light;
   let backgroundColor;
 
@@ -96,7 +104,7 @@ export const styles = (props) => {
           ${toUnits(theme.spacing.padding.small)};
       `}
 
-    ${count &&
+    ${badge &&
       css`
         border-radius: ${toUnits(theme.spacing.padding.xLarge)};
         min-width: ${toUnits(theme.spacing.padding.xLarge)};
@@ -113,7 +121,7 @@ Tag.defaultProps = {
   children: undefined,
   color: null,
   label: null,
-  count: false,
+  badge: false,
   onDismiss: null,
   status: undefined,
 };
@@ -126,7 +134,7 @@ Tag.propTypes = {
   /** Optional label for providing additional context to screen reader users. */
   label: PropTypes.string,
   /** Style numbers in a more badge-y kind of way. */
-  count: PropTypes.bool,
+  badge: PropTypes.bool,
   /** Function to call when a Tag is dismissed via the close button. */
   onDismiss: PropTypes.func,
   /** Indicate status using a semantic colour set. */
