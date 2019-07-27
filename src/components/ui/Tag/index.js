@@ -9,7 +9,7 @@ import { useTheme } from 'themes';
 
 export const Tag = forwardRef((props, ref) => {
   const theme = useTheme();
-  const { children, dismissable, label, onDismiss, ...otherProps } = props;
+  const { children, label, onDismiss, ...otherProps } = props;
 
   return (
     <span ref={ref} {...otherProps}>
@@ -30,8 +30,25 @@ export const Tag = forwardRef((props, ref) => {
       )}
 
       {children}
-      {dismissable && (
-        <button type="button" onClick={onDismiss}>
+      {onDismiss && (
+        <button
+          type="button"
+          onClick={onDismiss}
+          css={css`
+            box-shadow: 0;
+            border: 0;
+            background: none;
+            color: currentColor;
+            cursor: pointer;
+            vertical-align: 0.2rem;
+            margin: 0;
+            padding: 0;
+
+            &:hover {
+              opacity: 0.75;
+            }
+          `}
+        >
           <Icon
             name="x"
             small
@@ -39,6 +56,8 @@ export const Tag = forwardRef((props, ref) => {
               display: inline-block;
               margin-left: ${toUnits(theme.spacing.padding.small)};
               margin-top: ${toUnits(theme.spacing.padding.xxSmall)};
+              opacity: 1;
+              vertical-align: middle;
             `}
           />
         </button>
@@ -93,7 +112,6 @@ export const styles = (props) => {
 Tag.defaultProps = {
   children: undefined,
   color: null,
-  dismissable: false,
   label: null,
   count: false,
   onDismiss: null,
@@ -105,8 +123,6 @@ Tag.propTypes = {
   children: PropTypes.node,
   /** Use colour to differentiate different tags or indicate status. */
   color: PropTypes.string,
-  /** Allow for removing the tag. */
-  dismissable: PropTypes.bool,
   /** Optional label for providing additional context to screen reader users. */
   label: PropTypes.string,
   /** Style numbers in a more badge-y kind of way. */

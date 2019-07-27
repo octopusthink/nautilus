@@ -108,8 +108,7 @@ A Tag can act as a link or a button, depending on context. Clicking on the tag s
 
 ### A tag can be removed
 
-You may want to use Tags to allow users to add and remove attributes from an object. You can do this by passing the `dismissable` prop. When a Tag is removable, it will be indicated with a "dismiss" button (stylised as an `X`/"close" icon).
-
+You may want to use Tags to allow users to add and remove attributes from an object. Do this by passing an event function to the Tag's `onDismiss` prop. This event will be called when the Tag's "dismiss" button is activated.
 
 ```jsx
 const onDismiss = (event) => {
@@ -117,17 +116,11 @@ const onDismiss = (event) => {
 };
 
 <React.Fragment>
-  <Tag color="hotpink" dismissable onDismiss={onDismiss}>Hot pink</Tag>
-  <Tag color="#cd2f83">Pink</Tag>
-  <Tag color="navy">Navy</Tag>
-  <Tag color="aqua">Aqua</Tag>
-  <Tag color="#053e6c">Blue</Tag>
-  <Tag color="#8a0000">Red</Tag>
-  <Tag color="#eeb600">Yellow</Tag>
+  <Tag color="#cd2f83" onDismiss={onDismiss}>Dismiss me!</Tag>
 </React.Fragment>
 ```
+When a Tag is removable, it will be indicated with a "dismiss" button (stylised as an `X`/"close" icon).
 
-If a Tag is dismissable, it can be passed an `onDismissed` event that will be called with the tag's "dismiss" button is activated.
 
 ### Placement
 
