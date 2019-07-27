@@ -220,6 +220,15 @@ export const theme = {
           strokeWidth: 1.125,
         },
       },
+
+      // TODO: implement these!
+      Tag: {
+        capitalisation: 'uppercase', // uppercase, lowercase, sentence, title
+        colourPosition: 'background', // background or border
+        borderRadius: 0,
+        padding:
+          '${toUnits(theme.spacing.padding.xSmall)} ${toUnits(theme.spacing.padding.small)}',
+      },
     },
   },
 
