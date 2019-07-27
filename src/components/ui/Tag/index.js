@@ -133,7 +133,7 @@ Tag.propTypes = {
   color: PropTypes.string,
   /** Optional label for providing additional context to screen reader users. */
   label: PropTypes.string,
-  /** Style numbers in a more badge-y kind of way. */
+  /** Style numbers or counts with a badge. */
   badge: PropTypes.bool,
   /** Function to call when a Tag is dismissed via the close button. */
   onDismiss: PropTypes.func,
