@@ -7,7 +7,7 @@ import React, { forwardRef } from 'react';
 // Import the non-styled Link so we don't have to overwrite Link styles if
 // the `navigation` prop is used by a button.
 import { Link as UnstyledLink } from 'components/ui/Link';
-import { Icon } from 'components/ui/Icon';
+import Icon from 'components/ui/Icon';
 import { interfaceUI, toUnits } from 'styles';
 import { useTheme } from 'themes';
 
@@ -74,13 +74,16 @@ export const Button = forwardRef((props, ref) => {
       {...otherProps}
       ref={ref}
     >
-      <Icon
-        name={iconName}
-        small
-        css={css`
-          margin-right: ${toUnits(theme.spacing.padding.xSmall)};
-        `}
-      />
+      {iconName && (
+        <Icon
+          name={iconName}
+          small
+          css={css`
+            margin-bottom: ${toUnits(theme.spacing.padding.xxSmall)};
+            margin-right: ${toUnits(theme.spacing.padding.xSmall)};
+          `}
+        />
+      )}
       {children}
     </Component>
   );

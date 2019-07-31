@@ -34,12 +34,7 @@ const defineIconSizes = (props) => {
 
   const wrapperSize = Math.ceil(size + padding * 2);
 
-  let hasContainer;
-  if (border || background) {
-    hasContainer = true;
-  } else {
-    hasContainer = false;
-  }
+  const hasContainer = !!(border || background);
 
   return {
     borderWidth,
@@ -97,7 +92,7 @@ export const Icon = forwardRef((props, ref) => {
     ...otherFeatherAttrs
   } = Feather.icons[name].attrs;
 
-  const { hasContainer, padding, size, strokeWidth } = defineIconSizes({
+  const { size, strokeWidth } = defineIconSizes({
     ...props,
     theme,
   });
@@ -118,14 +113,10 @@ export const Icon = forwardRef((props, ref) => {
         css={css`
           fill: ${fillColor};
           height: ${toUnits(size)};
+          margin: auto;
           stroke: ${strokeColor};
           stroke-width: ${toUnits(strokeWidth)};
           width: ${toUnits(size)};
-
-          ${hasContainer &&
-            css`
-              margin: ${toUnits(padding)};
-            `}
 
           ${!fillColor &&
             !strokeColor &&
@@ -154,35 +145,23 @@ export const Icon = forwardRef((props, ref) => {
 export const styles = (props) => {
   const { border, background, verticalAlign } = props;
   const { borderWidth, marginSize, wrapperSize } = defineIconSizes(props);
-  let borderBackground;
-  let backgroundCSS;
-  let borderCSS;
-
-  if (border) {
-    borderCSS = css`
-      border: ${toUnits(borderWidth)} solid ${border};
-    `;
-  }
-
-  if (background) {
-    backgroundCSS = css`
-      background: ${background};
-    `;
-  }
-
-  if (border || background) {
-    borderBackground = css`
-      ${backgroundCSS};
-      ${borderCSS};
-      border-radius: 50%;
-      height: ${toUnits(wrapperSize)};
-      width: ${toUnits(wrapperSize)};
-    `;
-  }
 
   return css`
-    ${borderBackground};
-    display: inline-block;
+    ${(background || border) &&
+      css`
+        ${background &&
+          css`
+            background: ${background};
+          `};
+        ${border &&
+          css`
+            border: ${toUnits(borderWidth)} solid ${border};
+          `};
+        border-radius: 50%;
+        height: ${toUnits(wrapperSize)};
+        width: ${toUnits(wrapperSize)};
+      `}
+    display: inline-flex;
     margin: ${marginSize};
     vertical-align: ${verticalAlign};
   `;
