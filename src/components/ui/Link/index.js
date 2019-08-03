@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import React, { Fragment, forwardRef, useContext } from 'react';
 
 import { NautilusLinkComponent } from 'components/hoc/Nautilus';
-import { Icon } from 'components/ui/Icon';
+import Icon from 'components/ui/Icon';
+import { toUnits } from 'styles';
 
 const LinkTag = 'a';
 
@@ -21,7 +22,15 @@ export const Link = forwardRef((props, ref) => {
       {external && (
         <Fragment>
           {' '}
-          <Icon name="external-link" title="External link" small />
+          <Icon
+            name="external-link"
+            title="External link"
+            small
+            css={css`
+              margin: 0;
+              vertical-align: -${toUnits(1)};
+            `}
+          />
         </Fragment>
       )}
     </LinkComponent>
