@@ -79,7 +79,6 @@ export const Button = forwardRef((props, ref) => {
           name={iconName}
           small
           css={css`
-            margin-bottom: ${toUnits(theme.spacing.padding.xxSmall)};
             margin-right: ${toUnits(theme.spacing.padding.xSmall)};
           `}
         />

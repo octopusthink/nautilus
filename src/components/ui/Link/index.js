@@ -28,7 +28,6 @@ export const Link = forwardRef((props, ref) => {
             small
             css={css`
               margin: 0;
-              vertical-align: -${toUnits(1)};
             `}
           />
         </Fragment>

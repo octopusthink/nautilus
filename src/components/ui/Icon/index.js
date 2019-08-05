@@ -34,11 +34,8 @@ const defineIconSizes = (props) => {
 
   const wrapperSize = Math.ceil(size + padding * 2);
 
-  const hasContainer = !!(border || background);
-
   return {
     borderWidth,
-    hasContainer,
     marginSize,
     padding,
     size,
@@ -161,7 +158,7 @@ export const styles = (props) => {
         height: ${toUnits(wrapperSize)};
         width: ${toUnits(wrapperSize)};
       `}
-    display: inline-flex;
+    display: inline-block;
     margin: ${marginSize};
     vertical-align: ${verticalAlign};
   `;
