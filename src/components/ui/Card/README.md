@@ -1,12 +1,26 @@
 A card is used to represent a descrete and self-contained piece of data, typically as part of a feed or series of related datum.
 
 ```jsx
-import { Paragraph, Button, Heading, Tags } from '@octopusthink/nautilus';
+import { Paragraph, Button, Heading, Tags, Icon } from '@octopusthink/nautilus';
 
 <React.Fragment>
   <Card title="Cards can be super simple">
+    <Icon name="star" />
+    <Heading level={1}>Cards should always have a title</Heading>
+    <Paragraph small>The Card can either have a title attribute, or you can pass it a heading. Not sure which is the best approach here.</Paragraph>
+    <Button>Choose this</Button>
+    <Button minimal navigation>Learn more</Button>
+
+  </Card>
+
+  <Card title="Cards can be super simple">
+    <Heading level={2}>Cards should always have a title</Heading>
+    <Paragraph>The Card can either have a title attribute, or you can pass it a heading. Not sure which is the best approach here.</Paragraph>
+  </Card>
+
+  <Card title="Cards can be super simple">
     <Heading level={3}>Cards should always have a title</Heading>
-    <Paragraph size="small">The Card can either have a title attribute, or you can pass it a heading. Not sure which is the best approach here.</Paragraph>
+    <Paragraph large>The Card can either have a title attribute, or you can pass it a heading. Not sure which is the best approach here.</Paragraph>
   </Card>
 
 </React.Fragment>
