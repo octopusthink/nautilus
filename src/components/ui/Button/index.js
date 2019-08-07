@@ -1,8 +1,7 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 import invariant from 'invariant';
 import PropTypes from 'prop-types';
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 // Import the non-styled Link so we don't have to overwrite Link styles if
 // the `navigation` prop is used by a button.
@@ -25,7 +24,7 @@ export const qualityControl = (props) => {
   );
 };
 
-export const Button = forwardRef((props, ref) => {
+export const Button = (props) => {
   const {
     children,
     danger,
@@ -65,39 +64,7 @@ export const Button = forwardRef((props, ref) => {
     iconName = 'x-circle';
   }
 
-  return (
-    // See: https://github.com/yannickcr/eslint-plugin-react/issues/1555
-    // eslint-disable-next-line react/button-has-type
-    <Component
-      disabled={!navigation ? disabled : undefined}
-      {...linkPropsToUse}
-      {...otherProps}
-      ref={ref}
-    >
-      <Icon
-        name={iconName}
-        small
-        css={css`
-          margin-right: ${toUnits(theme.spacing.padding.xSmall)};
-        `}
-      />
-      {children}
-    </Component>
-  );
-});
-
-export const styles = (props) => {
-  const {
-    danger,
-    disabled,
-    minimal,
-    navigation,
-    primary,
-    success,
-    theme,
-    warning,
-  } = props;
-
+  // Set the styles for this button.
   let currentButtonColor = theme.colors.buttons.default;
   let currentButtonColorDark = theme.colors.buttons.defaultDark;
   let currentButtonColorLight = theme.colors.buttons.defaultLight;
@@ -126,81 +93,103 @@ export const styles = (props) => {
     currentButtonColorLight = theme.colors.intent.dangerLight;
   }
 
-  return css`
-    ${interfaceUI.medium(theme)}
-    background: ${theme.colors.buttons.neutral};
-    border: 2px solid ${currentButtonColor};
-    border-radius: 8px;
-    color: ${currentButtonColor};
-    display: inline-block;
-    margin: 0 ${toUnits(theme.spacing.margin.xxSmall)} ${toUnits(
-    theme.spacing.margin.xSmall,
-  )};
-    outline: none;
-    padding: ${toUnits(theme.spacing.padding.medium)} ${toUnits(
-    theme.spacing.padding.large,
-  )};
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    top: 0;
-    transition: box-shadow 200ms;
+  return (
+    // See: https://github.com/yannickcr/eslint-plugin-react/issues/1555
+    // eslint-disable-next-line react/button-has-type
+    <Component
+      css={css`
+        ${interfaceUI.medium(theme)}
 
-    &::-moz-focus-inner {
-      border: 0;
-    }
+        background: ${theme.colors.buttons.neutral};
+        border: 2px solid ${currentButtonColor};
+        border-radius: 8px;
+        color: ${currentButtonColor};
+        display: inline-block;
+        margin: 0 ${toUnits(theme.spacing.margin.xxSmall)} ${toUnits(
+        theme.spacing.margin.xSmall,
+      )};
+        outline: none;
+        padding: ${toUnits(theme.spacing.padding.medium)} ${toUnits(
+        theme.spacing.padding.large,
+      )};
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        top: 0;
+        transition: box-shadow 200ms;
 
-    &:active {
-      border-color: ${currentButtonColorDark};
-      color: ${currentButtonColorDark};
-      top: 2px;
-    }
-
-    &:focus {
-      box-shadow: 0 0 1px 4px ${currentButtonColorLight};
-      outline: none;
-    }
-
-    &:hover {
-      box-shadow: 0 2px 0 0 ${currentButtonColorDark};
-    }
-
-    ${primary &&
-      css`
-        background: ${currentButtonColor};
-        color: ${theme.colors.buttons.neutral};
+        &::-moz-focus-inner {
+          border: 0;
+        }
 
         &:active {
-          background: ${currentButtonColorDark};
-          color: ${theme.colors.buttons.neutral};
-        }
-      `}
-
-    ${minimal &&
-      css`
-        border-left: 0;
-        border-radius: 0;
-        border-right: 0;
-        border-top: 0;
-        padding-left: 0;
-        padding-right: 0;
-      `}
-
-    ${navigation &&
-      css`
-        &::after {
-          content: ' →';
-          display: inline;
-          padding-right: ${toUnits(theme.spacing.padding.xSmall)};
-          transition: all 200ms;
+          border-color: ${currentButtonColorDark};
+          color: ${currentButtonColorDark};
+          top: 2px;
         }
 
-        &:hover::after {
-          margin-left: ${toUnits(theme.spacing.padding.xSmall)};
-          padding-right: 0;
+        &:focus {
+          box-shadow: 0 0 1px 4px ${currentButtonColorLight};
+          outline: none;
         }
+
+        &:hover {
+          box-shadow: 0 2px 0 0 ${currentButtonColorDark};
+        }
+
+        ${primary &&
+          css`
+            background: ${currentButtonColor};
+            color: ${theme.colors.buttons.neutral};
+
+            &:active {
+              background: ${currentButtonColorDark};
+              color: ${theme.colors.buttons.neutral};
+            }
+          `}
+
+        ${minimal &&
+          css`
+            border-left: 0;
+            border-radius: 0;
+            border-right: 0;
+            border-top: 0;
+            padding-left: 0;
+            padding-right: 0;
+          `}
+
+        ${navigation &&
+          css`
+            &::after {
+              content: ' →';
+              display: inline;
+              padding-right: ${toUnits(theme.spacing.padding.xSmall)};
+              transition: all 200ms;
+            }
+
+            &:hover::after {
+              margin-left: ${toUnits(theme.spacing.padding.xSmall)};
+              padding-right: 0;
+            }
+          `}
       `}
-  `;
+      disabled={!navigation ? disabled : undefined}
+      {...linkPropsToUse}
+      {...otherProps}
+    >
+      $
+      {iconName && (
+        <Icon
+          css={css`
+            margin-right: ${toUnits(theme.spacing.padding.xSmall)};
+          `}
+          name={iconName}
+          small
+        />
+      )}
+      {children}
+    </Component>
+  );
 };
 
 Button.defaultProps = {
@@ -257,4 +246,4 @@ Button.displayName = 'Button';
 
 export const { defaultProps, propTypes } = Button;
 
-export default styled(Button)(styles);
+export default Button;

@@ -78,12 +78,12 @@ exports[`Tabs should render styles for Tabs 1`] = `
   outline: 0;
 }
 
-.emotion-9:focus {
+.emotion-6:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-5 {
+.emotion-4 {
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 600;
@@ -91,13 +91,13 @@ exports[`Tabs should render styles for Tabs 1`] = `
   line-height: 1.3333333333333333;
 }
 
-.ecyfaee0 + .emotion-5,
-.emotion-8 + .emotion-5,
-dl + .emotion-5 {
+.Nautilus-List + .emotion-4,
+.Nautilus-Paragraph + .emotion-4,
+dl + .emotion-4 {
   margin-top: 3.2rem;
 }
 
-.emotion-7 {
+.emotion-5 {
   color: #3b3f45;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -106,18 +106,18 @@ dl + .emotion-5 {
   line-height: 1.5555555555555556;
 }
 
-.emotion-15 {
+.emotion-9 {
   display: none;
 }
 
-.emotion-15:focus {
+.emotion-9:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
 <div>
   <ul
-    class="emotion-3 emotion-4"
+    class="emotion-3"
     role="tablist"
   >
     <li
@@ -167,57 +167,57 @@ dl + .emotion-5 {
   </ul>
   <section
     aria-labelledby="myTabSet-tab-0"
-    class="emotion-9 emotion-10"
+    class="emotion-6"
     data-testid="firstTabSection"
     id="myTabSet-section-0"
     role="tabpanel"
     tabindex="-1"
   >
     <h4
-      class="emotion-5 emotion-6"
+      class="emotion-4"
     >
       About
     </h4>
     <p
-      class="emotion-7 emotion-8"
+      class="Nautilus-Paragraph emotion-5"
     >
       Puppies are cute.
     </p>
   </section>
   <section
     aria-labelledby="myTabSet-tab-1"
-    class="emotion-15 emotion-10"
+    class="emotion-9"
     data-testid="secondTabSection"
     id="myTabSet-section-1"
     role="tabpanel"
     tabindex="-1"
   >
     <h4
-      class="emotion-5 emotion-6"
+      class="emotion-4"
     >
       History
     </h4>
     <p
-      class="emotion-7 emotion-8"
+      class="Nautilus-Paragraph emotion-5"
     >
       Puppies have already been cute.
     </p>
   </section>
   <section
     aria-labelledby="myTabSet-tab-2"
-    class="emotion-15 emotion-10"
+    class="emotion-9"
     data-testid="thirdTabSection"
     id="myTabSet-section-2"
     role="tabpanel"
     tabindex="-1"
   >
     <h4
-      class="emotion-5 emotion-6"
+      class="emotion-4"
     >
       Other
     </h4>
     <p
-      class="emotion-7 emotion-8"
+      class="Nautilus-Paragraph emotion-5"
     >
       I have run out of things to say in this test.
     </p>

@@ -13,7 +13,7 @@ exports[`List.Item should render list styles 1`] = `
 
 <div>
   <li
-    class="emotion-0 emotion-1"
+    class="Nautilus-ListItem emotion-0"
     data-testid="listItem"
   >
     hello

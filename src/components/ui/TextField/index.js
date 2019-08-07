@@ -1,5 +1,4 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React, {
   Fragment,
@@ -80,6 +79,7 @@ export const TextField = forwardRef((props, ref) => {
       ? error.props.id
       : `error-${generatedId}`;
   }, [error, generatedId]);
+
   const errorComponent = useMemo(() => {
     if (!error) {
       return undefined;
@@ -247,14 +247,6 @@ export const TextField = forwardRef((props, ref) => {
   );
 });
 
-// We export all components as styled components to allow component targetting
-// in our styles, but because this component renders multiple DOM elements (
-// which are each styled with the `css` prop), we don't have any styles relevant
-// to the whole component.
-export const styles = () => {
-  return css``;
-};
-
 TextField.defaultProps = {
   children: undefined,
   disabled: false,
@@ -336,4 +328,4 @@ TextField.displayName = 'TextField';
 
 export const { defaultProps, propTypes } = TextField;
 
-export default styled(TextField)(styles);
+export default TextField;

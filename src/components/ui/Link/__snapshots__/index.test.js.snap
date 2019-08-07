@@ -24,7 +24,7 @@ exports[`Link should output Link styles 1`] = `
 
 <div>
   <a
-    class="emotion-0 emotion-1"
+    class="emotion-0"
     href="https://octopusthink.com/"
   >
     hello

@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React from 'react';
 
 import { axe, muteConsole, render } from 'utils/testing';
 
@@ -140,31 +140,6 @@ describe('List', () => {
     expect(originalDescriptionId).toEqual(
       getByTestId('firstDescription').getAttribute('id'),
     );
-  });
-
-  it('should forward refs', () => {
-    const ref = createRef();
-    const headingRef = createRef();
-    const itemRef = createRef();
-
-    render(
-      <List ordered ref={ref}>
-        <Heading level={3} ref={headingRef}>
-          My list
-        </Heading>
-        <List.Item ref={itemRef}>One</List.Item>
-        <List.Item>Two</List.Item>
-      </List>,
-    );
-
-    expect(ref.current).not.toBeNull();
-    expect(ref.current.tagName).toEqual('OL');
-
-    expect(headingRef.current).not.toBeNull();
-    expect(headingRef.current.tagName).toEqual('H3');
-
-    expect(itemRef.current).not.toBeNull();
-    expect(itemRef.current.tagName).toEqual('LI');
   });
 
   describe('described by Heading component', () => {

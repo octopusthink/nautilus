@@ -1,41 +1,43 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
 
 import { Heading } from 'components';
 import { focusStyle } from 'styles';
+import { useTheme } from 'themes';
 
 export const Tab = forwardRef((props, ref) => {
   const { isActive, children, label, labelProps, ...otherProps } = props;
+
+  const theme = useTheme();
 
   if (!children) {
     return null;
   }
 
   return (
-    <section role="tabpanel" tabIndex="-1" ref={ref} {...otherProps}>
+    <section
+      css={css`
+        ${!isActive &&
+          css`
+            display: none;
+          `}
+
+        &:focus {
+          ${focusStyle.outline(theme)};
+        }
+      `}
+      ref={ref}
+      role="tabpanel"
+      tabIndex="-1"
+      {...otherProps}
+    >
       <Heading level={4}>{label}</Heading>
 
       {children}
     </section>
   );
 });
-
-export const styles = (props) => {
-  const { isActive, theme } = props;
-
-  return css`
-    ${!isActive &&
-      css`
-        display: none;
-      `}
-
-    &:focus {
-      ${focusStyle.outline(theme)};
-    }
-  `;
-};
 
 Tab.defaultProps = {
   isActive: false,
@@ -59,4 +61,4 @@ Tab.displayName = 'Tabs.Tab';
 
 export const { defaultProps, propTypes } = Tab;
 
-export default styled(Tab)(styles);
+export default Tab;

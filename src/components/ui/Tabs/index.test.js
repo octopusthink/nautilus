@@ -92,29 +92,6 @@ describe('Tabs', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should forward refs', () => {
-    const ref = createRef();
-    const labelRef = createRef();
-    const tabRef = createRef();
-
-    render(
-      <Tabs id="myTabSetWithRefs" ref={ref}>
-        <Tabs.Tab label="About" labelProps={{ ref: labelRef }} ref={tabRef}>
-          <Paragraph>Puppies are cute.</Paragraph>
-        </Tabs.Tab>
-      </Tabs>,
-    );
-
-    expect(ref.current).not.toBeNull();
-    expect(ref.current.tagName).toEqual('UL');
-
-    expect(labelRef.current).not.toBeNull();
-    expect(labelRef.current.tagName).toEqual('A');
-
-    expect(tabRef.current).not.toBeNull();
-    expect(tabRef.current.tagName).toEqual('SECTION');
-  });
-
   describe('accessibility', () => {
     describe('keyboard navigation', () => {
       it('should change the active tab to the next tab when the right arrow key is pressed', async () => {

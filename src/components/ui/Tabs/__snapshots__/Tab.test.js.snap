@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Tabs.Tabs.Tabs.Tab should render styles for a Tabs.Tab 1`] = `
-.emotion-4 {
+exports[`Tabs.Tab should render styles for a Tabs.Tab 1`] = `
+.emotion-2 {
   display: none;
 }
 
-.emotion-4:focus {
+.emotion-2:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
@@ -18,13 +18,13 @@ exports[`Tabs.Tabs.Tabs.Tab should render styles for a Tabs.Tab 1`] = `
   line-height: 1.3333333333333333;
 }
 
-.ecyfaee0 + .emotion-0,
-.emotion-3 + .emotion-0,
+.Nautilus-List + .emotion-0,
+.Nautilus-Paragraph + .emotion-0,
 dl + .emotion-0 {
   margin-top: 3.2rem;
 }
 
-.emotion-2 {
+.emotion-1 {
   color: #3b3f45;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -35,17 +35,17 @@ dl + .emotion-0 {
 
 <div>
   <section
-    class="emotion-4 emotion-5"
+    class="emotion-2"
     role="tabpanel"
     tabindex="-1"
   >
     <h4
-      class="emotion-0 emotion-1"
+      class="emotion-0"
     >
       About
     </h4>
     <p
-      class="emotion-2 emotion-3"
+      class="Nautilus-Paragraph emotion-1"
     >
       Puppies are cute.
     </p>

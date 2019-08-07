@@ -51,7 +51,7 @@ dl + .emotion-0 {
 `;
 
 exports[`List described by Paragraph component should render a paragraph outside the list if one is provided 1`] = `
-.emotion-6 {
+.emotion-3 {
   color: #3b3f45;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -61,22 +61,22 @@ exports[`List described by Paragraph component should render a paragraph outside
   padding: 0;
 }
 
-.emotion-6 > .emotion-3 {
+.emotion-3 > .Nautilus-ListItem {
   list-style: none;
 }
 
-.emotion-6 > .emotion-3::before {
+.emotion-3 > .Nautilus-ListItem::before {
   content: '\\2022';
   font-size: 0.6em;
   line-height: 2.8;
 }
 
-.emotion-2 {
+.emotion-1 {
   position: relative;
   margin: 0 0 0.4rem;
 }
 
-.emotion-2::before {
+.emotion-1::before {
   position: absolute;
   right: 101%;
 }
@@ -92,7 +92,7 @@ exports[`List described by Paragraph component should render a paragraph outside
 
 <div>
   <p
-    class="emotion-0 emotion-1"
+    class="Nautilus-Paragraph emotion-0"
     data-testid="description"
     id="cars"
   >
@@ -100,15 +100,15 @@ exports[`List described by Paragraph component should render a paragraph outside
   </p>
   <ul
     aria-labelledby="cars"
-    class="emotion-6 emotion-7"
+    class="Nautilus-List emotion-3"
   >
     <li
-      class="emotion-2 emotion-3"
+      class="Nautilus-ListItem emotion-1"
     >
       Honda Civic
     </li>
     <li
-      class="emotion-2 emotion-3"
+      class="Nautilus-ListItem emotion-1"
     >
       Ford Prefect
     </li>

@@ -1,44 +1,50 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 import { toUnits } from 'styles';
+import { useTheme } from 'themes';
 
-export const Item = forwardRef((props, ref) => {
-  const { children, ...otherProps } = props;
+export const componentClassName = 'Nautilus-ListItem';
+
+export const Item = (props) => {
+  const { children, className, ...otherProps } = props;
+
+  const theme = useTheme();
 
   return (
-    <li ref={ref} {...otherProps}>
+    <li
+      className={classnames(componentClassName, className)}
+      css={css`
+        position: relative;
+        margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
+        &::before {
+          position: absolute;
+          right: 101%;
+        }
+      `}
+      {...otherProps}
+    >
       {children}
     </li>
   );
-});
-
-export const styles = (props) => {
-  const { theme } = props;
-
-  return css`
-    position: relative;
-    margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
-    &::before {
-      position: absolute;
-      right: 101%;
-    }
-  `;
 };
 
 Item.defaultProps = {
   children: undefined,
+  className: undefined,
 };
 
 Item.propTypes = {
   /** @ignore */
   children: PropTypes.node,
+  /** @ignore */
+  className: PropTypes.string,
 };
 
-Item.displayName = 'List.Item';
+// Item.displayName = 'List.Item';
 
 export const { defaultProps, propTypes } = Item;
 
-export default styled(Item)(styles);
+export default Item;

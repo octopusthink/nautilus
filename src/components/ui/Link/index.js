@@ -1,22 +1,44 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { Fragment, forwardRef, useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 
 import { NautilusLinkComponent } from 'components/hoc/Nautilus';
 import { Icon } from 'components/ui/Icon';
+import { useTheme } from 'themes';
 
 const LinkTag = 'a';
 
-export const Link = forwardRef((props, ref) => {
+export const Link = (props) => {
   const defaultLinkComponent = useContext(NautilusLinkComponent);
+  const theme = useTheme();
 
   const { children, as, external, href, ...otherProps } = props;
   const LinkComponent =
     as || (external && 'a') || defaultLinkComponent || LinkTag;
 
   return (
-    <LinkComponent href={href} ref={ref} {...otherProps}>
+    <LinkComponent
+      css={css`
+        border-bottom: 2px solid ${theme.colors.state.interactive};
+        color: ${theme.colors.state.interactiveText};
+        text-decoration: none;
+        transition: all 200ms ease-in-out;
+
+        &:hover {
+          border-color: ${theme.colors.state.hover};
+          color: ${theme.colors.state.hoverText};
+        }
+
+        &:focus {
+          background: ${theme.colors.state.interactive};
+          border-color: ${theme.colors.state.interactiveText};
+          color: ${theme.colors.text.dark};
+          outline: none;
+        }
+      `}
+      href={href}
+      {...otherProps}
+    >
       {children}
       {external && (
         <Fragment>
@@ -26,29 +48,6 @@ export const Link = forwardRef((props, ref) => {
       )}
     </LinkComponent>
   );
-});
-
-export const styles = (props) => {
-  const { theme } = props;
-
-  return css`
-    border-bottom: 2px solid ${theme.colors.state.interactive};
-    color: ${theme.colors.state.interactiveText};
-    text-decoration: none;
-    transition: all 200ms ease-in-out;
-
-    &:hover {
-      border-color: ${theme.colors.state.hover};
-      color: ${theme.colors.state.hoverText};
-    }
-
-    &:focus {
-      background: ${theme.colors.state.interactive};
-      border-color: ${theme.colors.state.interactiveText};
-      color: ${theme.colors.text.dark};
-      outline: none;
-    }
-  `;
 };
 
 Link.defaultProps = {
@@ -69,8 +68,6 @@ Link.propTypes = {
   href: PropTypes.string,
 };
 
-Link.displayName = 'Link';
-
 export const { defaultProps, propTypes } = Link;
 
-export default styled(Link)(styles);
+export default Link;

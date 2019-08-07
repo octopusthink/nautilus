@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React from 'react';
 
 import { axe, muteConsole, render } from 'utils/testing';
 
@@ -105,15 +105,6 @@ describe('Button', () => {
     );
 
     expect(getByTestId('myButton').classList).toContain('custom-class');
-  });
-
-  it('should forward refs', () => {
-    const ref = createRef();
-
-    render(<Button ref={ref}>Ref button</Button>);
-
-    expect(ref.current).not.toBeNull();
-    expect(ref.current.tagName).toEqual('BUTTON');
   });
 
   describe('accessibility', () => {

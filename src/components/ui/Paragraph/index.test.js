@@ -53,15 +53,6 @@ describe('Paragraph', () => {
     expect(getByTestId('myText').classList).toContain('custom-class');
   });
 
-  it('should forward refs', () => {
-    const ref = createRef();
-
-    render(<Paragraph ref={ref}>Puppies are cute.</Paragraph>);
-
-    expect(ref.current).not.toBeNull();
-    expect(ref.current.tagName).toEqual('P');
-  });
-
   describe('accessibility', () => {
     it('should pass aXe tests', async () => {
       const { container } = render(

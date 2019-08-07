@@ -73,19 +73,6 @@ describe('Link', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should forward refs ', () => {
-    const ref = createRef();
-
-    render(
-      <Link href="/" ref={ref}>
-        Homepage
-      </Link>,
-    );
-
-    expect(ref.current).not.toBeNull();
-    expect(ref.current.tagName).toEqual('A');
-  });
-
   describe('accessibility', () => {
     it('should pass aXe tests', async () => {
       const { container } = render(<Link href="/">Homepage</Link>);

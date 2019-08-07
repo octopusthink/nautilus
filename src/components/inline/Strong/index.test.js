@@ -37,15 +37,6 @@ describe('Strong', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should forward refs', () => {
-    const ref = createRef();
-
-    render(<Strong ref={ref}>Bold text</Strong>);
-
-    expect(ref.current).not.toBeNull();
-    expect(ref.current.tagName).toEqual('STRONG');
-  });
-
   describe('accessibility', () => {
     it('should pass aXe tests', async () => {
       const { container } = render(<Strong>hello</Strong>);

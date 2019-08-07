@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React from 'react';
 
 import { axe, muteConsole, render } from 'utils/testing';
 
@@ -89,14 +89,5 @@ describe('Icon', () => {
 
       expect(await axe(container.innerHTML)).toHaveNoViolations();
     });
-  });
-
-  it('should forward refs', () => {
-    const ref = createRef();
-
-    render(<Icon name="archive" title="Paper filing box" ref={ref} />);
-
-    expect(ref.current).not.toBeNull();
-    expect(ref.current.tagName).toEqual('svg');
   });
 });

@@ -5,7 +5,7 @@ import { muteConsole, render } from 'utils/testing';
 import { Paragraph } from 'components';
 import Tabs from '.';
 
-describe('Tabs.Tabs.Tabs.Tab', () => {
+describe('Tabs.Tab', () => {
   it('should render nothing when no children are provided', () => {
     muteConsole({ times: 1, type: 'error' });
     const { container } = render(<Tabs.Tab />);
