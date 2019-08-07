@@ -74,15 +74,7 @@ export const Button = forwardRef((props, ref) => {
       {...otherProps}
       ref={ref}
     >
-      {iconName && (
-        <Icon
-          name={iconName}
-          small
-          css={css`
-            margin-right: ${toUnits(theme.spacing.padding.xSmall)};
-          `}
-        />
-      )}
+      {iconName && <Icon name={iconName} small />}
       {children}
     </Component>
   );

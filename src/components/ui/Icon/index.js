@@ -30,16 +30,21 @@ const defineIconSizes = (props) => {
     padding,
     borderWidth,
     marginSize,
+    verticalAlign,
   } = theme.components.Icon.sizes[iconSize];
 
   const wrapperSize = Math.ceil(size + padding * 2);
+  const hasContainer = !!(border || background);
+  const paddingSize = padding - strokeWidth;
 
   return {
     borderWidth,
+    hasContainer,
     marginSize,
-    padding,
+    paddingSize,
     size,
     strokeWidth,
+    verticalAlign,
     wrapperSize,
   };
 };
@@ -62,7 +67,6 @@ export const Icon = forwardRef((props, ref) => {
     large,
     xLarge,
     strokeColor,
-    verticalAlign,
     ...otherProps
   } = props;
 
@@ -89,7 +93,7 @@ export const Icon = forwardRef((props, ref) => {
     ...otherFeatherAttrs
   } = Feather.icons[name].attrs;
 
-  const { size, strokeWidth } = defineIconSizes({
+  const { hasContainer, paddingSize, size, strokeWidth } = defineIconSizes({
     ...props,
     theme,
   });
@@ -110,10 +114,17 @@ export const Icon = forwardRef((props, ref) => {
         css={css`
           fill: ${fillColor};
           height: ${toUnits(size)};
-          margin: auto;
+          //margin: auto;
           stroke: ${strokeColor};
           stroke-width: ${toUnits(strokeWidth)};
           width: ${toUnits(size)};
+
+          ${hasContainer &&
+            css`
+              //margin: ${toUnits(paddingSize)};
+            `}
+          }
+
 
           ${!fillColor &&
             !strokeColor &&
@@ -140,8 +151,13 @@ export const Icon = forwardRef((props, ref) => {
 });
 
 export const styles = (props) => {
-  const { border, background, verticalAlign } = props;
-  const { borderWidth, marginSize, wrapperSize } = defineIconSizes(props);
+  const { border, background } = props;
+  const {
+    borderWidth,
+    marginSize,
+    verticalAlign,
+    wrapperSize,
+  } = defineIconSizes(props);
 
   return css`
     ${(background || border) &&
@@ -158,9 +174,13 @@ export const styles = (props) => {
         height: ${toUnits(wrapperSize)};
         width: ${toUnits(wrapperSize)};
       `}
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     margin: ${marginSize};
-    vertical-align: ${verticalAlign};
+    vertical-align: -${toUnits(verticalAlign)};
+    //vertical-align: -${toUnits(1)};
+    //vertical-align: middle;
   `;
 };
 
@@ -180,7 +200,6 @@ Icon.defaultProps = {
   xLarge: false,
   border: undefined,
   background: undefined,
-  verticalAlign: 'middle',
 };
 
 Icon.propTypes = {
@@ -210,8 +229,6 @@ Icon.propTypes = {
   medium: PropTypes.bool,
   /** The name of the icon to use. */
   name: PropTypes.string.isRequired,
-  /** Vertical alignment. */
-  verticalAlign: PropTypes.string,
   /** Small icon size. */
   small: PropTypes.bool,
   /** Apply colour to the icon stroke. */

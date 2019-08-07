@@ -1,6 +1,29 @@
 An `<Icon>` is a graphical representation of a concept, used to illustrate or clarify text, improve wayfinding, and communicate visually.
 
 ```jsx
+import { Paragraph } from '@octopusthink/nautilus';
+
+<React.Fragment>
+  <Paragraph><Icon name="airplay" margin/> HELLO</Paragraph>
+  <Paragraph><Icon name="aperture" title="Camera Aperture" />HELLO</Paragraph>
+  <Paragraph><Icon name="anchor" title="Boat anchor" />HELLO</Paragraph>
+
+  <Paragraph><Icon name="airplay" small/> HELLO</Paragraph>
+  <Paragraph><Icon name="aperture" xSmall title="Camera Aperture" />HELLO</Paragraph>
+  <Paragraph><Icon name="anchor" title="Boat anchor" xLarge/>HELLO</Paragraph>
+  <Paragraph><Icon name="anchor" title="Boat anchor" large/>HELLO</Paragraph>
+
+  <Paragraph><Icon name="star" xSmall/> UR a star!</Paragraph>
+  <Paragraph><Icon name="star" small/> UR a star!</Paragraph>
+  <Paragraph><Icon name="star"/> UR a star!</Paragraph>
+  <Paragraph><Icon name="star" large/> UR a star!</Paragraph>
+  <Paragraph><Icon name="star" xLarge/> UR a star!</Paragraph>
+</React.Fragment>
+```
+
+
+
+```jsx
 <Icon name="airplay" />
 <Icon name="aperture" title="Camera Aperture" />
 <Icon name="anchor" title="Boat anchor" />

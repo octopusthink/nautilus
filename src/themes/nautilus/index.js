@@ -177,24 +177,27 @@ export const theme = {
       sizes: {
         xSmall: {
           borderWidth: 1,
-          marginSize: '0 0.8rem 0 0',
+          marginSize: '0 0.2rem 0 0',
           padding: 4,
           size: 12,
           strokeWidth: 2.125,
+          verticalAlign: 1,
         },
         small: {
           borderWidth: 1.5,
-          marginSize: '0 0.8rem 0 0',
+          marginSize: '0 0.4rem 0 0',
           padding: 6,
           size: 16,
           strokeWidth: 2,
+          verticalAlign: 1,
         },
         medium: {
           borderWidth: 2,
-          marginSize: '0 0.8rem 0 0',
+          marginSize: '0 0.4rem 0 0',
           padding: 8,
           size: 24,
           strokeWidth: 1.75,
+          verticalAlign: 4,
         },
         large: {
           borderWidth: 2.5,
@@ -202,6 +205,7 @@ export const theme = {
           padding: 16,
           size: 48,
           strokeWidth: 1.25,
+          verticalAlign: 8,
         },
         xLarge: {
           borderWidth: 3,
@@ -209,6 +213,7 @@ export const theme = {
           padding: 24,
           size: 64,
           strokeWidth: 1.125,
+          verticalAlign: 16,
         },
       },
     },
