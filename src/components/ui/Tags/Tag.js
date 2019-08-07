@@ -1,13 +1,13 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { forwardRef } from 'react';
+import React, { useState } from 'react';
 
 import { Icon } from 'components/ui/Icon';
 import { getContrastingTextColor, metadata, toUnits } from 'styles';
 import { useTheme } from 'themes';
 
-export const Tag = forwardRef((props, ref) => {
+export const Tag = (props) => {
+  const [isDismissed, setDismissed] = useState(false);
   const theme = useTheme();
   const {
     badge,
@@ -19,8 +19,52 @@ export const Tag = forwardRef((props, ref) => {
     ...otherProps
   } = props;
 
+  if (isDismissed) {
+    return null;
+  }
+
+  let textColor = theme.colors.text.light;
+  let backgroundColor;
+  if (color) {
+    backgroundColor = color;
+  }
+
+  if (status) {
+    backgroundColor = theme.colors.intent[status];
+  }
+
+  if (status || color) {
+    textColor = getContrastingTextColor({ color: backgroundColor, theme });
+  }
+
   return (
-    <span ref={ref} {...otherProps}>
+    <span
+      css={css`
+        ${metadata.small(theme)};
+        color: ${textColor};
+        margin: 0 ${toUnits(theme.spacing.padding.xSmall)}
+          ${toUnits(theme.spacing.padding.xSmall)} 0;
+
+        ${backgroundColor &&
+          css`
+            background: ${backgroundColor};
+            padding: ${toUnits(theme.spacing.padding.xSmall)}
+              ${toUnits(theme.spacing.padding.small)};
+          `}
+
+        ${badge &&
+          css`
+            border-radius: ${toUnits(theme.spacing.padding.xLarge)};
+            min-width: ${toUnits(theme.spacing.padding.xLarge)};
+            height: ${toUnits(theme.spacing.padding.xLarge)};
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+          `}
+      `}
+      {...otherProps}
+    >
       {label && (
         <span // TODO: switch with VisuallyHidden component, once available.
           css={css`
@@ -40,8 +84,6 @@ export const Tag = forwardRef((props, ref) => {
       {children}
       {onDismiss && (
         <button
-          type="button"
-          onClick={onDismiss}
           css={css`
             box-shadow: 0;
             border: 0;
@@ -56,6 +98,16 @@ export const Tag = forwardRef((props, ref) => {
               opacity: 0.75;
             }
           `}
+          onClick={(event) => {
+            event.preventDefault();
+
+            setDismissed(true);
+
+            if (typeof onDismiss === 'function') {
+              onDismiss(event);
+            }
+          }}
+          type="button"
         >
           <Icon
             name="x"
@@ -72,49 +124,6 @@ export const Tag = forwardRef((props, ref) => {
       )}
     </span>
   );
-});
-
-export const styles = (props) => {
-  const { color, badge, status, theme } = props;
-  let textColor = theme.colors.text.light;
-  let backgroundColor;
-
-  if (color) {
-    backgroundColor = color;
-  }
-
-  if (status) {
-    backgroundColor = theme.colors.intent[status];
-  }
-
-  if (status || color) {
-    textColor = getContrastingTextColor({ color: backgroundColor, theme });
-  }
-
-  return css`
-    ${metadata.small(theme)};
-    color: ${textColor};
-    margin: 0 ${toUnits(theme.spacing.padding.xSmall)}
-      ${toUnits(theme.spacing.padding.xSmall)} 0;
-
-    ${backgroundColor &&
-      css`
-        background: ${backgroundColor};
-        padding: ${toUnits(theme.spacing.padding.xSmall)}
-          ${toUnits(theme.spacing.padding.small)};
-      `}
-
-    ${badge &&
-      css`
-        border-radius: ${toUnits(theme.spacing.padding.xLarge)};
-        min-width: ${toUnits(theme.spacing.padding.xLarge)};
-        height: ${toUnits(theme.spacing.padding.xLarge)};
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        box-sizing: border-box;
-      `}
-  `;
 };
 
 Tag.defaultProps = {
@@ -136,7 +145,7 @@ Tag.propTypes = {
   /** Style numbers or counts with a badge. */
   badge: PropTypes.bool,
   /** Function to call when a Tag is dismissed via the close button. */
-  onDismiss: PropTypes.func,
+  onDismiss: PropTypes.oneOf([PropTypes.func, PropTypes.bool]),
   /** Indicate status using a semantic colour set. */
   status: PropTypes.oneOf([
     'neutral',
@@ -150,6 +159,4 @@ Tag.propTypes = {
 
 export const { defaultProps, propTypes } = Tag;
 
-Tag.displayName = 'Tag';
-
-export default styled(Tag)(styles);
+export default Tag;

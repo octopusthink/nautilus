@@ -1,8 +1,8 @@
-import React, { createRef } from 'react';
+import React from 'react';
 
-import { axe, render } from 'utils/testing';
+import { fireEvent, render } from 'utils/testing';
 
-import Tag from '.';
+import Tag from './Tag';
 
 describe('Tag', () => {
   it('should render a <span> tag', () => {
@@ -37,20 +37,23 @@ describe('Tag', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should forward refs', () => {
-    const ref = createRef();
+  it('should dismiss a Tag with `onDismiss` set', () => {
+    const fakeEvent = { preventDefault: jest.fn() };
+    const onDismiss = jest.fn();
+    const { container, getByTestId } = render(
+      <Tag data-testid="myTag" onDismiss={onDismiss}>
+        hello
+      </Tag>,
+    );
 
-    render(<Tag ref={ref}>Bold text</Tag>);
+    expect(getByTestId('myTag')).toBeDefined();
 
-    expect(ref.current).not.toBeNull();
-    expect(ref.current.tagName).toEqual('SPAN');
-  });
+    fireEvent.click(container.querySelector('button'), fakeEvent);
 
-  describe('accessibility', () => {
-    it('should pass aXe tests', async () => {
-      const { container } = render(<Tag>hello</Tag>);
-
-      expect(await axe(container.innerHTML)).toHaveNoViolations();
-    });
+    expect(fakeEvent.preventDefault).toHaveBeenCalled();
+    expect(onDismiss).toHaveBeenCalledWith(fakeEvent);
+    expect(() => {
+      getByTestId('myTag');
+    }).toThrow('Unable to find an element');
   });
 });

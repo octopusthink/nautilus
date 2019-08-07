@@ -6,7 +6,11 @@ import { Heading, Paragraph } from '@octopusthink/nautilus';
 <React.Fragment>
   <Heading>Wonder Women</Heading>
   <Paragraph>Once upon a time there were a whole group of lady-types who lived in a beautiful paradise-land called ... well, I forget but it was really pretty and just chock full of badass ladies.</Paragraph>
-  <Tag color="hotpink">Amazon</Tag><Tag color="hotpink">Superhero</Tag><Tag color="hotpink">Ladies who lunch</Tag>
+  <Tags>
+    <Tags.Tag color="hotpink">Amazon</Tags.Tag>
+    <Tags.Tag color="hotpink">Superhero</Tags.Tag>
+    <Tags.Tag color="hotpink">Ladies who lunch</Tags.Tag>
+  </Tags>
 </React.Fragment>
 ```
 
@@ -35,23 +39,23 @@ By default, tags appear without any colour.
 import { Heading } from '@octopusthink/nautilus';
 
 <React.Fragment>
-  <Tag>12 September 2019</Tag>
-  <Heading>Wonder Women</Heading>
+  <Tags><Tags.Tag>12 September 2019</Tags.Tag></Tags>
+  <Heading>Breaking news: kittens are fluffy</Heading>
 </React.Fragment>
 ```
 
 Use colour as a cue to differentiate between different types of data. Only pass colour to a tag when it provides additional semantic meaning. Select a colour that helps communicate the content of the label, and ensure it’s used consistently.
 
 ```jsx
-<React.Fragment>
-  <Tag color="hotpink">Hot pink</Tag>
-  <Tag color="#cd2f83">Pink</Tag>
-  <Tag color="navy">Navy</Tag>
-  <Tag color="aqua">Aqua</Tag>
-  <Tag color="#053e6c">Blue</Tag>
-  <Tag color="#8a0000">Red</Tag>
-  <Tag color="#eeb600">Yellow</Tag>
-</React.Fragment>
+<Tags>
+  <Tags.Tag color="hotpink">Hot pink</Tags.Tag>
+  <Tags.Tag color="#cd2f83">Pink</Tags.Tag>
+  <Tags.Tag color="navy">Navy</Tags.Tag>
+  <Tags.Tag color="aqua">Aqua</Tags.Tag>
+  <Tags.Tag color="#053e6c">Blue</Tags.Tag>
+  <Tags.Tag color="#8a0000">Red</Tags.Tag>
+  <Tags.Tag color="#eeb600">Yellow</Tags.Tag>
+</Tags>
 ```
 
 Nautilus will automatically calculate colour contrast for you and change the colour of text to ensure it has sufficient contrast against the background.
@@ -61,11 +65,13 @@ Nautilus will automatically calculate colour contrast for you and change the col
 If you're showing a count, tally, or other number in a tag, you might want to use slightly different styling by using the `badge` prop. This styling is best used with numbers of three or fewer digits.
 
 ```jsx
-<Tag color="#3b3f45" badge>42</Tag>
-<Tag color="#053e6c" badge>1.3</Tag>
-<Tag color="#8a0000" badge>£9</Tag>
-<Tag color="#eeb600" badge>130</Tag>
-<Tag color="#eeb600" badge>1.30%</Tag>
+<Tags>
+  <Tags.Tag color="#3b3f45" badge>42</Tags.Tag>
+  <Tags.Tag color="#053e6c" badge>1.3</Tags.Tag>
+  <Tags.Tag color="#8a0000" badge>£9</Tags.Tag>
+  <Tags.Tag color="#eeb600" badge>130</Tags.Tag>
+  <Tags.Tag color="#eeb600" badge>1.30%</Tags.Tag>
+</Tags>
 ```
 
 ### Semantic status indicators
@@ -73,24 +79,30 @@ If you're showing a count, tally, or other number in a tag, you might want to us
 Tags are often used as a way of indicating the state or status of a process. To facilitate this usage, Nautilus provides a set of semantic, colour-coded status indicators.
 
 ```jsx
-<Tag status="neutral">To-do</Tag>
-<Tag status="new">Beta</Tag>
+<Tags>
+  <Tags.Tag status="neutral">To-do</Tags.Tag>
+  <Tags.Tag status="new">Beta</Tags.Tag>
+</Tags>
 
-<Tag status="inProgress">In Progress</Tag>
-<Tag status="success">Done</Tag>
+<Tags>
+  <Tags.Tag status="inProgress">In Progress</Tags.Tag>
+  <Tags.Tag status="success">Done</Tags.Tag>
+</Tags>
 
-<Tag status="warning">Warning</Tag>
-<Tag status="danger">Failed</Tag>
+<Tags>
+  <Tags.Tag status="warning">Warning</Tags.Tag>
+  <Tags.Tag status="danger">Failed</Tags.Tag>
+</Tags>
 ```
 
-| Status | Description | Usage |
-|--------|-------------|-------|
-| Neutral | Unspecified or unstarted. | To do, unavailable, minor, not started.|
-| New | New, updated, or beta. | New, trial, information, help, alpha, beta. |
-| InProgress | In progress or current. | In progress, open, modified. |
-| Success | Completed or successful. | Available, done, approved, resolved, added, complete. |
-Danger | Failure or deletion. | Errors, declined, failed, removed, critical. |
-Warning | Attention or hazard. | Busy, blocked, missing, warning, information.
+| Status       | Description               | Usage                                    |
+|--------------|---------------------------|------------------------------------------|
+| `neutral`    | Unspecified or unstarted. | To-do, unavailable, minor, not started.
+| `new`        | New, updated, or beta.    | New, trial, information, help, alpha, beta.
+| `inProgress` | In progress or current.   | In progress, open, modified.
+| `success`    | Completed or successful.  | Available, done, approved, resolved, added, complete.
+| `danger`     | Failure or deletion.      | Errors, declined, failed, removed, critical.
+| `warning`    | Attention or hazard.      | Busy, blocked, missing, warning, information.
 
 Colour mappings can be customised in your theme.
 
@@ -115,12 +127,11 @@ const onDismiss = (event) => {
   window.alert('Goodbye Tag! 👋');
 };
 
-<React.Fragment>
-  <Tag color="#cd2f83" onDismiss={onDismiss}>Dismiss me!</Tag>
-</React.Fragment>
+<Tags>
+  <Tags.Tag color="#cd2f83" onDismiss={onDismiss}>Dismiss me!</Tags.Tag>
+</Tags>
 ```
 When a Tag is removable, it will be indicated with a "dismiss" button (stylised as an `X`/"close" icon).
-
 
 ### Placement
 
@@ -158,15 +169,15 @@ To do this, include a `label` attribute on the Tag. This label will be read by s
 import { Heading } from '@octopusthink/nautilus';
 
 <React.Fragment>
-  <Tag label="Category">Books</Tag>
+  <Tags><Tags.Tag label="Category">Books</Tags.Tag></Tags>
   <Heading>Little Women</Heading>
-  <Tag label="Date">10 November</Tag>
+  <Tags><Tags.Tag label="Date">10 November</Tags.Tag></Tags>
   <Heading>The day the music died</Heading>
 </React.Fragment>
 ```
 
 If no `label` property is passed, the Tag will be prefaced with a "Tag" label. Status Tags automatically include this extra text.
 
-### Aria properties
+### ARIA properties
 
 The button to remove a Tag is given an `aria-label` so that screen reader users can distinguish which Tag will be removed.

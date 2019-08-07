@@ -17,7 +17,7 @@ exports[`Tag should match styles 1`] = `
 
 <div>
   <span
-    class="emotion-0 emotion-1"
+    class="emotion-0"
   >
     hello
   </span>
