@@ -7,7 +7,7 @@ import React from 'react';
 import { bodyStyles } from 'styles';
 import { useTheme } from 'themes';
 
-export const componentClassName = 'Nautilus-Paragraph';
+export const ComponentClassName = 'Nautilus-Paragraph';
 
 export const qualityControl = (props) => {
   const { dark, large, light, small } = props;
@@ -41,7 +41,7 @@ export const Paragraph = (props) => {
 
   return (
     <p
-      className={classnames(componentClassName, className)}
+      className={classnames(ComponentClassName, className)}
       css={css`
         ${bodyStyles({
           large,

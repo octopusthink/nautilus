@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`List described by Heading component should render a heading outside the list if one is provided 1`] = `
-.emotion-2 {
+.emotion-1 {
   color: #3b3f45;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -11,11 +11,11 @@ exports[`List described by Heading component should render a heading outside the
   padding: 0;
 }
 
-.emotion-2 > .e1hnlpvv0 {
+.emotion-1 > .Nautilus-ListItem {
   list-style: none;
 }
 
-.emotion-2 > .e1hnlpvv0::before {
+.emotion-1 > .Nautilus-ListItem::before {
   content: '\\2022';
   font-size: 0.6em;
   line-height: 2.8;
@@ -29,15 +29,15 @@ exports[`List described by Heading component should render a heading outside the
   line-height: 1.2903225806451613;
 }
 
-.emotion-3 + .emotion-0,
-.e1ad7wa0 + .emotion-0,
+.Nautilus-List + .emotion-0,
+.Nautilus-Paragraph + .emotion-0,
 dl + .emotion-0 {
   margin-top: 3.2rem;
 }
 
 <div>
   <h3
-    class="emotion-0 emotion-1"
+    class="emotion-0"
     data-testid="description"
     id="fruits"
   >
@@ -45,7 +45,7 @@ dl + .emotion-0 {
   </h3>
   <ul
     aria-labelledby="fruits"
-    class="emotion-2 emotion-3"
+    class="Nautilus-List emotion-1"
   />
 </div>
 `;

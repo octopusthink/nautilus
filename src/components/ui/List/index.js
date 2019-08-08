@@ -15,18 +15,15 @@ import Paragraph from 'components/ui/Paragraph';
 import { bodyStyles } from 'styles';
 import { useTheme } from 'themes';
 
-import Item, { componentClassName as ItemClassName } from './Item';
+import Item, { ComponentClassName as ItemClassName } from './Item';
 
-export const ALLOWED_DESCRIPTION_COMPONENTS = [Heading, Paragraph];
-
-export const componentClassName = 'Nautilus-List';
+export const ComponentClassName = 'Nautilus-List';
 
 export const List = (props) => {
   const {
     children,
     className,
     dark,
-    // id,
     inverse,
     large,
     light,
@@ -42,26 +39,23 @@ export const List = (props) => {
 
   const [generatedId] = useState(shortid.generate());
   const description = useMemo(() => {
-    const descriptionComponent = Children.toArray(children)
-      .filter((child) => {
-        return ALLOWED_DESCRIPTION_COMPONENTS.includes(child.type);
-      })
-      // Return the first description component used.
-      .reduce((acc, child) => {
-        if (acc) {
-          return acc;
-        }
+    const validDescriptionComponents = Children.toArray(children).filter(
+      (child) => {
+        return child.type === Heading || child.type === Paragraph;
+      },
+    );
 
-        return child;
-      }, undefined);
-
-    if (!descriptionComponent) {
+    if (validDescriptionComponents.length === 0) {
       return undefined;
     }
 
-    return cloneElement(descriptionComponent, {
-      id: descriptionComponent.props.id || generatedId,
-    });
+    const descriptionComponent = validDescriptionComponents[0];
+
+    if (!descriptionComponent.props.id) {
+      return cloneElement(descriptionComponent, { id: generatedId });
+    }
+
+    return descriptionComponent;
   }, [children, generatedId]);
 
   const items = useMemo(() => {
@@ -107,7 +101,7 @@ export const List = (props) => {
             }
           `}
         `}
-        className={classnames(componentClassName, className)}
+        className={classnames(ComponentClassName, className)}
         {...otherProps}
       >
         {items}

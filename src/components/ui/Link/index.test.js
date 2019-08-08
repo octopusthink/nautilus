@@ -1,5 +1,5 @@
 import { Link as ReachRouterLink } from '@reach/router';
-import React, { createRef } from 'react';
+import React from 'react';
 
 import { axe, render } from 'utils/testing';
 

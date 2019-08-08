@@ -2,7 +2,8 @@ import React from 'react';
 
 import { axe, muteConsole, render } from 'utils/testing';
 
-import { Heading, Paragraph } from 'components';
+import Heading from 'components/ui/Heading';
+import Paragraph from 'components/ui/Paragraph';
 import List from '.';
 
 describe('List', () => {

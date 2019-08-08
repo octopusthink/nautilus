@@ -2,8 +2,8 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { componentClassName as ListClassName } from 'components/ui/List';
-import { componentClassName as ParagraphClassName } from 'components/ui/Paragraph';
+import { ComponentClassName as ListClassName } from 'components/ui/List';
+import { ComponentClassName as ParagraphClassName } from 'components/ui/Paragraph';
 import { heading, toUnits } from 'styles';
 import { useTheme } from 'themes';
 
