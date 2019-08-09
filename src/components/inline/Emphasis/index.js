@@ -1,26 +1,26 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { forwardRef } from 'react';
+import React from 'react';
 
-export const Emphasis = forwardRef((props, ref) => {
+import { useTheme } from 'themes';
+
+export const Emphasis = (props) => {
   const { children, ...otherProps } = props;
 
+  const theme = useTheme();
+
   return (
-    <em ref={ref} {...otherProps}>
+    <em
+      css={css`
+        background: ${theme.colors.text.emphasisBackground};
+        color: ${theme.colors.text.emphasis};
+        font-style: italic;
+      `}
+      {...otherProps}
+    >
       {children}
     </em>
   );
-});
-
-export const styles = (props) => {
-  const { theme } = props;
-
-  return css`
-    background: ${theme.colors.text.emphasisBackground};
-    color: ${theme.colors.text.emphasis};
-    font-style: italic;
-  `;
 };
 
 Emphasis.defaultProps = {
@@ -34,6 +34,4 @@ Emphasis.propTypes = {
 
 export const { defaultProps, propTypes } = Emphasis;
 
-Emphasis.displayName = 'Emphasis';
-
-export default styled(Emphasis)(styles);
+export default Emphasis;

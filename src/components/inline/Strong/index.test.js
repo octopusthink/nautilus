@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React from 'react';
 
 import { axe, render } from 'utils/testing';
 
@@ -35,15 +35,6 @@ describe('Strong', () => {
     const { container } = render(<Strong>hello</Strong>);
 
     expect(container).toMatchSnapshot();
-  });
-
-  it('should forward refs', () => {
-    const ref = createRef();
-
-    render(<Strong ref={ref}>Bold text</Strong>);
-
-    expect(ref.current).not.toBeNull();
-    expect(ref.current.tagName).toEqual('STRONG');
   });
 
   describe('accessibility', () => {

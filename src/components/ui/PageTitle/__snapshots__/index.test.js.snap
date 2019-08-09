@@ -9,7 +9,7 @@ exports[`PageTitle should output pageTitle CSS 1`] = `
 }
 
 <h1
-  class="emotion-0 emotion-1"
+  class="emotion-0"
 >
   My Blog Posts
 </h1>
