@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag should match styles 1`] = `
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.3333333333333333;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #666c76;
+  margin: 0 0.4rem 0.4rem 0;
+}
+
+<div>
+  <span
+    class="emotion-0"
+  >
+    hello
+  </span>
+</div>
+`;
