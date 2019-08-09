@@ -42,7 +42,8 @@ export const Tags = (props) => {
             }
           `}
         >
-          {tagElements.map((tag, index, tags) => {
+          {tagElements.map((tag, index) => {
+            // eslint-disable-next-line react/no-array-index-key
             return <List.Item key={`tag-${index}`}>{tag}</List.Item>;
           })}
         </List>
