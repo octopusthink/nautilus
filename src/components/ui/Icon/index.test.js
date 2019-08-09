@@ -57,6 +57,36 @@ describe('Icon', () => {
     expect(getByTestId('myText').classList).toContain('custom-class');
   });
 
+  it('should match styles', () => {
+    const { container } = render(<Icon name="airplay" id="styling" />);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should match styles when background is supplied', () => {
+    const { container } = render(
+      <Icon name="airplay" background="hotpink" id="styling" />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should match styles when border is supplied', () => {
+    const { container } = render(
+      <Icon name="airplay" border="hotpink" id="styling" />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should match styles when color is supplied', () => {
+    const { container } = render(
+      <Icon name="airplay" color="hotpink" id="styling" />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   describe('accessibility', () => {
     it('should set `aria-hidden` if no `title` exists', () => {
       const { container } = render(<Icon name="archive" />);
