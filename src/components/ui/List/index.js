@@ -1,11 +1,10 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, {
   Children,
   Fragment,
   cloneElement,
-  forwardRef,
   useMemo,
   useState,
 } from 'react';
@@ -14,15 +13,16 @@ import shortid from 'shortid';
 import Heading from 'components/ui/Heading';
 import Paragraph from 'components/ui/Paragraph';
 import { bodyStyles } from 'styles';
-import { CustomPropTypes } from 'utils';
+import { useTheme } from 'themes';
 
-import Item from './Item';
+import Item, { ComponentClassName as ItemClassName } from './Item';
 
-export const ALLOWED_DESCRIPTION_COMPONENTS = [Heading, Paragraph];
+export const ComponentClassName = 'Nautilus-List';
 
-export const List = forwardRef((props, ref) => {
+export const List = (props) => {
   const {
     children,
+    className,
     dark,
     inverse,
     large,
@@ -39,26 +39,23 @@ export const List = forwardRef((props, ref) => {
 
   const [generatedId] = useState(shortid.generate());
   const description = useMemo(() => {
-    const descriptionComponent = Children.toArray(children)
-      .filter((child) => {
-        return ALLOWED_DESCRIPTION_COMPONENTS.includes(child.type);
-      })
-      // Return the first description component used.
-      .reduce((acc, child) => {
-        if (acc) {
-          return acc;
-        }
+    const validDescriptionComponents = Children.toArray(children).filter(
+      (child) => {
+        return child.type === Heading || child.type === Paragraph;
+      },
+    );
 
-        return child;
-      }, undefined);
-
-    if (!descriptionComponent) {
+    if (validDescriptionComponents.length === 0) {
       return undefined;
     }
 
-    return cloneElement(descriptionComponent, {
-      id: descriptionComponent.props.id || generatedId,
-    });
+    const descriptionComponent = validDescriptionComponents[0];
+
+    if (!descriptionComponent.props.id) {
+      return cloneElement(descriptionComponent, { id: generatedId });
+    }
+
+    return descriptionComponent;
   }, [children, generatedId]);
 
   const items = useMemo(() => {
@@ -67,63 +64,55 @@ export const List = forwardRef((props, ref) => {
     });
   }, [children]);
 
+  const theme = useTheme();
+
   return (
     <Fragment>
       {description}
       <ListComponent
         aria-labelledby={description && description.props.id}
-        ref={ref}
+        css={css`
+          ${bodyStyles({ dark, inverse, large, light, small, theme })};
+          padding: 0;
+          ${ordered &&
+            css`
+              counter-reset: list-counter;
+
+              > .${ItemClassName} {
+                list-style: none;
+                counter-increment: list-counter;
+
+                &::before {
+                  content: counter(list-counter) '. ';
+                }
+              }
+            `}
+          ${!ordered &&
+            css`
+              > .${ItemClassName} {
+                list-style: none;
+
+                &::before {
+                  content: '\\2022';
+                  font-size: 0.6em;
+                  line-height: 2.8;
+                }
+              }
+            }
+          `}
+        `}
+        className={classnames(ComponentClassName, className)}
         {...otherProps}
       >
         {items}
       </ListComponent>
     </Fragment>
   );
-});
-
-export const styles = ({
-  dark,
-  inverse,
-  large,
-  light,
-  ordered,
-  small,
-  theme,
-}) => {
-  return css`
-    ${bodyStyles({ dark, inverse, large, light, small, theme })};
-    padding: 0;
-    ${ordered &&
-      css`
-        counter-reset: list-counter;
-
-        > ${Item} {
-          list-style: none;
-          counter-increment: list-counter;
-
-          &::before {
-            content: counter(list-counter) '. ';
-          }
-        }
-      `}
-    ${!ordered &&
-      css`
-        > ${Item} {
-          list-style: none;
-
-          &::before {
-            content: '\\2022';
-            font-size: 0.6em;
-            line-height: 2.8;
-          }
-        }
-      }
-    `}
-  `;
 };
 
 List.defaultProps = {
   children: undefined,
+  className: undefined,
   large: false,
   small: false,
   inverse: false,
@@ -133,11 +122,10 @@ List.defaultProps = {
 };
 
 List.propTypes = {
-  /** @ignore The list items for this list (using the `List.Item` component), as well as the optional list description `Heading` or `Paragraph` component. */
-  children: CustomPropTypes.allowedChildren(
-    ...ALLOWED_DESCRIPTION_COMPONENTS,
-    Item,
-  ),
+  /** @ignore */
+  children: PropTypes.node,
+  /** @ignore */
+  className: PropTypes.string,
   /** Increase the visual prominence of the list. */
   large: PropTypes.bool,
   /** Decrease the visual prominence of the list. */
@@ -152,11 +140,7 @@ List.propTypes = {
   ordered: PropTypes.bool,
 };
 
-List.displayName = 'List';
-
-const StyledList = styled(List)(styles);
-
 // Export Item as `List.Item`.
-StyledList.Item = Item;
+List.Item = Item;
 
-export default StyledList;
+export default List;

@@ -1,5 +1,5 @@
 import { Link as ReachRouterLink } from '@reach/router';
-import React, { createRef } from 'react';
+import React from 'react';
 
 import { axe, render } from 'utils/testing';
 
@@ -73,17 +73,14 @@ describe('Link', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should forward refs ', () => {
-    const ref = createRef();
-
-    render(
-      <Link href="/" ref={ref}>
-        Homepage
+  it('should not output styles when __unstyled is true', () => {
+    const { container } = render(
+      <Link href="https://octopusthink.com/" __unstyled>
+        hello
       </Link>,
     );
 
-    expect(ref.current).not.toBeNull();
-    expect(ref.current.tagName).toEqual('A');
+    expect(container).toMatchSnapshot();
   });
 
   describe('accessibility', () => {

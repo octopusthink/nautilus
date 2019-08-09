@@ -1,8 +1,7 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 import Feather from 'feather-icons';
 import PropTypes from 'prop-types';
-import React, { forwardRef, useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import shortid from 'shortid';
 
 import { toUnits } from 'styles';
@@ -52,7 +51,7 @@ const defineIconSizes = (props) => {
   };
 };
 
-export const Icon = forwardRef((props, ref) => {
+export const Icon = (props) => {
   const {
     background,
     border,
@@ -97,13 +96,53 @@ export const Icon = forwardRef((props, ref) => {
     ...otherFeatherAttrs
   } = Feather.icons[name].attrs;
 
-  const { hasContainer, padding, size, strokeWidth } = defineIconSizes({
-    ...props,
-    theme,
-  });
+  const {
+    borderWidth,
+    hasContainer,
+    marginSize,
+    padding,
+    size,
+    strokeWidth,
+    wrapperSize,
+  } = defineIconSizes({ ...props, theme });
+
+  let borderBackground;
+  let backgroundCSS;
+  let borderCSS;
+
+  if (border) {
+    borderCSS = css`
+      border: ${toUnits(borderWidth)} solid ${border};
+    `;
+  }
+
+  if (background) {
+    backgroundCSS = css`
+      background: ${background};
+    `;
+  }
+
+  if (border || background) {
+    borderBackground = css`
+      ${backgroundCSS};
+      ${borderCSS};
+      border-radius: 50%;
+      height: ${toUnits(wrapperSize)};
+      width: ${toUnits(wrapperSize)};
+    `;
+  }
 
   return (
-    <span className={className} data-testid={dataTestId}>
+    <span
+      className={className}
+      css={css`
+        ${borderBackground};
+        display: inline-block;
+        margin: ${marginSize};
+        vertical-align: ${verticalAlign};
+      `}
+      data-testid={dataTestId}
+    >
       <svg
         {...otherFeatherAttrs}
         // These props are placed above the {...otherProps} spread so
@@ -137,7 +176,6 @@ export const Icon = forwardRef((props, ref) => {
             `}
         `}
         id={svgId}
-        ref={ref}
       >
         {title && <title id={titleId}>{title}</title>}
         {description && <desc id={descriptionId}>{description}</desc>}
@@ -149,43 +187,6 @@ export const Icon = forwardRef((props, ref) => {
       </svg>
     </span>
   );
-});
-
-export const styles = (props) => {
-  const { border, background, verticalAlign } = props;
-  const { borderWidth, marginSize, wrapperSize } = defineIconSizes(props);
-  let borderBackground;
-  let backgroundCSS;
-  let borderCSS;
-
-  if (border) {
-    borderCSS = css`
-      border: ${toUnits(borderWidth)} solid ${border};
-    `;
-  }
-
-  if (background) {
-    backgroundCSS = css`
-      background: ${background};
-    `;
-  }
-
-  if (border || background) {
-    borderBackground = css`
-      ${backgroundCSS};
-      ${borderCSS};
-      border-radius: 50%;
-      height: ${toUnits(wrapperSize)};
-      width: ${toUnits(wrapperSize)};
-    `;
-  }
-
-  return css`
-    ${borderBackground};
-    display: inline-block;
-    margin: ${marginSize};
-    vertical-align: ${verticalAlign};
-  `;
 };
 
 Icon.defaultProps = {
@@ -244,8 +245,6 @@ Icon.propTypes = {
   title: PropTypes.string,
 };
 
-Icon.displayName = 'Icon';
-
 export const { defaultProps, propTypes } = Icon;
 
-export default styled(Icon)(styles);
+export default Icon;

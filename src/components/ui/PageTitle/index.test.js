@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React from 'react';
 
 import { axe, render } from 'utils/testing';
 
@@ -25,15 +25,6 @@ describe('PageTitle', () => {
     const { container } = render(<PageTitle>My Blog Posts</PageTitle>);
 
     expect(container.firstChild).toMatchSnapshot();
-  });
-
-  it('should forward refs', () => {
-    const ref = createRef();
-
-    render(<PageTitle ref={ref}>Puppies are cute.</PageTitle>);
-
-    expect(ref.current).not.toBeNull();
-    expect(ref.current.tagName).toEqual('H1');
   });
 
   describe('accessibility', () => {

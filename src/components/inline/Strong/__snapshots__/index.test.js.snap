@@ -9,7 +9,7 @@ exports[`Strong should match styles 1`] = `
 
 <div>
   <strong
-    class="emotion-0 emotion-1"
+    class="emotion-0"
   >
     hello
   </strong>

@@ -1,11 +1,9 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import React, {
   Children,
   Fragment,
   cloneElement,
-  forwardRef,
   useCallback,
   useEffect,
   useMemo,
@@ -16,11 +14,10 @@ import shortid from 'shortid';
 
 import { focusStyle, bodyStyles, toUnits } from 'styles';
 import { useTheme } from 'themes';
-import { CustomPropTypes } from 'utils';
 
 import Tab from './Tab';
 
-export const Tabs = forwardRef((props, ref) => {
+export const Tabs = (props) => {
   const { children, dark, inverse, light, id, ...otherProps } = props;
   const sectionToFocusRef = useRef();
   const tabToFocusRef = useRef();
@@ -221,25 +218,23 @@ export const Tabs = forwardRef((props, ref) => {
   return (
     <Fragment>
       {labels && !!labels.length && (
-        <ul ref={ref} role="tablist" {...otherProps}>
+        <ul
+          css={css`
+            ${bodyStyles({ dark, inverse, light, theme })};
+            border-bottom: 1px solid ${theme.colors.neutral.grey600};
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+          `}
+          role="tablist"
+          {...otherProps}
+        >
           {labels}
         </ul>
       )}
       {tabPanels}
     </Fragment>
   );
-});
-
-export const styles = (props) => {
-  const { dark, inverse, large, light, small, theme } = props;
-
-  return css`
-    ${bodyStyles({ dark, inverse, large, light, small, theme })};
-    border-bottom: 1px solid ${theme.colors.neutral.grey600};
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-  `;
 };
 
 Tabs.defaultProps = {
@@ -251,8 +246,8 @@ Tabs.defaultProps = {
 };
 
 Tabs.propTypes = {
-  /** @ignore Individual Tabs (using the `Tab` component). */
-  children: CustomPropTypes.allowedChildren(Tab),
+  /** @ignore */
+  children: PropTypes.node,
   /** Inverse text colour. Used for dark backgrounds. */
   inverse: PropTypes.bool,
   /** Darken text colour. */
@@ -263,13 +258,9 @@ Tabs.propTypes = {
   light: PropTypes.bool,
 };
 
-Tabs.displayName = 'Tabs';
-
 export const { defaultProps, propTypes } = Tabs;
 
-const StyledTabs = styled(Tabs)(styles);
-
 // Export Tab as `Tabs.Tab`.
-StyledTabs.Tab = Tab;
+Tabs.Tab = Tab;
 
-export default StyledTabs;
+export default Tabs;

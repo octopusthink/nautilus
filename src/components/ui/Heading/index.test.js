@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React from 'react';
 
 import { axe, render } from 'utils/testing';
 
@@ -65,19 +65,6 @@ describe('Heading', () => {
     );
 
     expect(getByTestId('heading').classList).toContain('custom-class');
-  });
-
-  it('should forward refs', () => {
-    const ref = createRef();
-
-    render(
-      <Heading level={4} ref={ref}>
-        Tiny heading
-      </Heading>,
-    );
-
-    expect(ref.current).not.toBeNull();
-    expect(ref.current.tagName).toEqual('H4');
   });
 
   describe('accessibility', () => {

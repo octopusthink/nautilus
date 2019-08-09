@@ -1,22 +1,49 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { Fragment, forwardRef, useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 
 import { NautilusLinkComponent } from 'components/hoc/Nautilus';
 import { Icon } from 'components/ui/Icon';
+import { useTheme } from 'themes';
 
 const LinkTag = 'a';
 
-export const Link = forwardRef((props, ref) => {
+export const Link = (props) => {
   const defaultLinkComponent = useContext(NautilusLinkComponent);
+  const theme = useTheme();
 
-  const { children, as, external, href, ...otherProps } = props;
+  const { __unstyled, children, as, external, href, ...otherProps } = props;
   const LinkComponent =
     as || (external && 'a') || defaultLinkComponent || LinkTag;
 
   return (
-    <LinkComponent href={href} ref={ref} {...otherProps}>
+    <LinkComponent
+      css={
+        // Don't output styles if the private prop `__unstyled` is set.
+        __unstyled
+          ? undefined
+          : css`
+              border-bottom: 2px solid ${theme.colors.state.interactive};
+              color: ${theme.colors.state.interactiveText};
+              text-decoration: none;
+              transition: all 200ms ease-in-out;
+
+              &:hover {
+                border-color: ${theme.colors.state.hover};
+                color: ${theme.colors.state.hoverText};
+              }
+
+              &:focus {
+                background: ${theme.colors.state.interactive};
+                border-color: ${theme.colors.state.interactiveText};
+                color: ${theme.colors.text.dark};
+                outline: none;
+              }
+            `
+      }
+      href={href}
+      {...otherProps}
+    >
       {children}
       {external && (
         <Fragment>
@@ -26,32 +53,10 @@ export const Link = forwardRef((props, ref) => {
       )}
     </LinkComponent>
   );
-});
-
-export const styles = (props) => {
-  const { theme } = props;
-
-  return css`
-    border-bottom: 2px solid ${theme.colors.state.interactive};
-    color: ${theme.colors.state.interactiveText};
-    text-decoration: none;
-    transition: all 200ms ease-in-out;
-
-    &:hover {
-      border-color: ${theme.colors.state.hover};
-      color: ${theme.colors.state.hoverText};
-    }
-
-    &:focus {
-      background: ${theme.colors.state.interactive};
-      border-color: ${theme.colors.state.interactiveText};
-      color: ${theme.colors.text.dark};
-      outline: none;
-    }
-  `;
 };
 
 Link.defaultProps = {
+  __unstyled: false,
   as: undefined,
   children: undefined,
   external: false,
@@ -59,6 +64,8 @@ Link.defaultProps = {
 };
 
 Link.propTypes = {
+  /* @ignore Don't output any CSS styles; used mainly for Button components. */
+  __unstyled: PropTypes.bool,
   /** Component/tag to render the underlying link. Defaults to `Nautilus.config.defaultComponents.Link` if set; an `<a>` tag will be used if `Nautilus.config.defaultComponents.Link` is not set. */
   as: PropTypes.elementType,
   /** @ignore */
@@ -69,8 +76,6 @@ Link.propTypes = {
   href: PropTypes.string,
 };
 
-Link.displayName = 'Link';
-
 export const { defaultProps, propTypes } = Link;
 
-export default styled(Link)(styles);
+export default Link;

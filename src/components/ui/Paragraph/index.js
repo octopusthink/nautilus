@@ -1,10 +1,13 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
+import classnames from 'classnames';
 import invariant from 'invariant';
 import PropTypes from 'prop-types';
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 import { bodyStyles } from 'styles';
+import { useTheme } from 'themes';
+
+export const ComponentClassName = 'Nautilus-Paragraph';
 
 export const qualityControl = (props) => {
   const { dark, large, light, small } = props;
@@ -20,26 +23,45 @@ export const qualityControl = (props) => {
   );
 };
 
-export const Paragraph = forwardRef((props, ref) => {
-  const { children, large, small, inverse, dark, light, ...otherProps } = props;
+export const Paragraph = (props) => {
+  const {
+    children,
+    className,
+    large,
+    small,
+    inverse,
+    dark,
+    light,
+    ...otherProps
+  } = props;
 
   qualityControl(props);
 
+  const theme = useTheme();
+
   return (
-    <p ref={ref} {...otherProps}>
+    <p
+      className={classnames(ComponentClassName, className)}
+      css={css`
+        ${bodyStyles({
+          large,
+          small,
+          inverse,
+          dark,
+          light,
+          theme,
+        })}
+      `}
+      {...otherProps}
+    >
       {children}
     </p>
   );
-});
-
-export const styles = ({ theme, ...otherProps }) => {
-  return css`
-    ${bodyStyles({ ...otherProps, theme })}
-  `;
 };
 
 Paragraph.defaultProps = {
   children: undefined,
+  className: undefined,
   large: false,
   small: false,
   inverse: false,
@@ -50,6 +72,8 @@ Paragraph.defaultProps = {
 Paragraph.propTypes = {
   /** @ignore */
   children: PropTypes.node,
+  /** @ignore */
+  className: PropTypes.string,
   /** Increase the visual prominence of the paragraph. */
   large: PropTypes.bool,
   /** Decrease the visual prominence of the paragraph. */
@@ -62,8 +86,6 @@ Paragraph.propTypes = {
   light: PropTypes.bool,
 };
 
-Paragraph.displayName = 'Paragraph';
-
 export const { defaultProps, propTypes } = Paragraph;
 
-export default styled(Paragraph)(styles);
+export default Paragraph;

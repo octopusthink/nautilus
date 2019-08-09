@@ -9,14 +9,14 @@ exports[`Heading should output large CSS when the \`level\` prop is 2 1`] = `
   line-height: 1.2222222222222223;
 }
 
-.ecyfaee0 + .emotion-0,
-.e1ad7wa0 + .emotion-0,
+.Nautilus-List + .emotion-0,
+.Nautilus-Paragraph + .emotion-0,
 dl + .emotion-0 {
   margin-top: 3.2rem;
 }
 
 <h2
-  class="emotion-0 emotion-1"
+  class="emotion-0"
 >
   Big heading
 </h2>
@@ -31,14 +31,14 @@ exports[`Heading should output medium CSS when the \`level\` prop is 3 1`] = `
   line-height: 1.2903225806451613;
 }
 
-.ecyfaee0 + .emotion-0,
-.e1ad7wa0 + .emotion-0,
+.Nautilus-List + .emotion-0,
+.Nautilus-Paragraph + .emotion-0,
 dl + .emotion-0 {
   margin-top: 3.2rem;
 }
 
 <h3
-  class="emotion-0 emotion-1"
+  class="emotion-0"
 >
   So-so heading
 </h3>
@@ -53,14 +53,14 @@ exports[`Heading should output small CSS when the \`level\` prop is 4 1`] = `
   line-height: 1.3333333333333333;
 }
 
-.ecyfaee0 + .emotion-0,
-.e1ad7wa0 + .emotion-0,
+.Nautilus-List + .emotion-0,
+.Nautilus-Paragraph + .emotion-0,
 dl + .emotion-0 {
   margin-top: 3.2rem;
 }
 
 <h4
-  class="emotion-0 emotion-1"
+  class="emotion-0"
 >
   Tiny heading
 </h4>

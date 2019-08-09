@@ -9,7 +9,7 @@ exports[`Emphasis should match styles 1`] = `
 
 <div>
   <em
-    class="emotion-0 emotion-1"
+    class="emotion-0"
   >
     hello
   </em>

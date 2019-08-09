@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React from 'react';
 
 import { render } from 'utils/testing';
 
@@ -54,14 +54,5 @@ describe('SkipLink', () => {
     );
 
     expect(getByTestId('myText').classList).toContain('custom-class');
-  });
-
-  it('should forward refs', () => {
-    const ref = createRef();
-
-    render(<SkipLink ref={ref}>Homepage</SkipLink>);
-
-    expect(ref.current).not.toBeNull();
-    expect(ref.current.tagName).toEqual('A');
   });
 });

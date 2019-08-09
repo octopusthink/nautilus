@@ -11,7 +11,7 @@ exports[`Paragraph should output large CSS the \`large\` prop is set 1`] = `
 }
 
 <p
-  class="emotion-0 emotion-1"
+  class="Nautilus-Paragraph emotion-0"
 >
   I'm an important body of text.
 </p>
@@ -28,7 +28,7 @@ exports[`Paragraph should output regular CSS when neither \`large\` nor \`small\
 }
 
 <p
-  class="emotion-0 emotion-1"
+  class="Nautilus-Paragraph emotion-0"
 >
   Lorem ipsum.
 </p>
@@ -45,7 +45,7 @@ exports[`Paragraph should output small CSS the \`small\` prop is set 1`] = `
 }
 
 <p
-  class="emotion-0 emotion-1"
+  class="Nautilus-Paragraph emotion-0"
 >
   I'm a tiny body of text.
 </p>

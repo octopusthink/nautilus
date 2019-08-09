@@ -35,7 +35,7 @@ exports[`TextField should match styles 1`] = `
   color: #cd2f83;
 }
 
-.emotion-2 {
+.emotion-1 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
@@ -54,29 +54,29 @@ exports[`TextField should match styles 1`] = `
   width: 100%;
 }
 
-.emotion-2:required {
+.emotion-1:required {
   box-shadow: none;
 }
 
-.emotion-2:focus {
+.emotion-1:focus {
   color: #181b1c;
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-2::-webkit-input-placeholder {
+.emotion-1::-webkit-input-placeholder {
   color: #666c76;
 }
 
-.emotion-2::-moz-placeholder {
+.emotion-1::-moz-placeholder {
   color: #666c76;
 }
 
-.emotion-2:-ms-input-placeholder {
+.emotion-1:-ms-input-placeholder {
   color: #666c76;
 }
 
-.emotion-2::placeholder {
+.emotion-1::placeholder {
   color: #666c76;
 }
 
@@ -88,7 +88,7 @@ exports[`TextField should match styles 1`] = `
     Hello
   </label>
   <input
-    class="emotion-1 emotion-2"
+    class="emotion-1"
     id="myTextField"
     required=""
     type="text"
@@ -131,7 +131,7 @@ exports[`TextField should not set a \`max-width\` on the input element without a
   color: #cd2f83;
 }
 
-.emotion-2 {
+.emotion-1 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
@@ -150,29 +150,29 @@ exports[`TextField should not set a \`max-width\` on the input element without a
   width: 100%;
 }
 
-.emotion-2:required {
+.emotion-1:required {
   box-shadow: none;
 }
 
-.emotion-2:focus {
+.emotion-1:focus {
   color: #181b1c;
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-2::-webkit-input-placeholder {
+.emotion-1::-webkit-input-placeholder {
   color: #666c76;
 }
 
-.emotion-2::-moz-placeholder {
+.emotion-1::-moz-placeholder {
   color: #666c76;
 }
 
-.emotion-2:-ms-input-placeholder {
+.emotion-1:-ms-input-placeholder {
   color: #666c76;
 }
 
-.emotion-2::placeholder {
+.emotion-1::placeholder {
   color: #666c76;
 }
 
@@ -184,7 +184,7 @@ exports[`TextField should not set a \`max-width\` on the input element without a
     Hello
   </label>
   <input
-    class="emotion-1 emotion-2"
+    class="emotion-1"
     id="testInput"
     required=""
     type="text"
@@ -227,7 +227,7 @@ exports[`TextField should set a \`max-width\` on the input element when \`size\`
   color: #cd2f83;
 }
 
-.emotion-2 {
+.emotion-1 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
@@ -247,29 +247,29 @@ exports[`TextField should set a \`max-width\` on the input element when \`size\`
   max-width: 9em;
 }
 
-.emotion-2:required {
+.emotion-1:required {
   box-shadow: none;
 }
 
-.emotion-2:focus {
+.emotion-1:focus {
   color: #181b1c;
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-2::-webkit-input-placeholder {
+.emotion-1::-webkit-input-placeholder {
   color: #666c76;
 }
 
-.emotion-2::-moz-placeholder {
+.emotion-1::-moz-placeholder {
   color: #666c76;
 }
 
-.emotion-2:-ms-input-placeholder {
+.emotion-1:-ms-input-placeholder {
   color: #666c76;
 }
 
-.emotion-2::placeholder {
+.emotion-1::placeholder {
   color: #666c76;
 }
 
@@ -281,7 +281,7 @@ exports[`TextField should set a \`max-width\` on the input element when \`size\`
     Hello
   </label>
   <input
-    class="emotion-1 emotion-2"
+    class="emotion-1"
     id="testInput"
     maxlength="10"
     required=""
@@ -325,7 +325,7 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
   color: #cd2f83;
 }
 
-.emotion-2 {
+.emotion-1 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
@@ -345,29 +345,29 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
   max-width: 9em;
 }
 
-.emotion-2:required {
+.emotion-1:required {
   box-shadow: none;
 }
 
-.emotion-2:focus {
+.emotion-1:focus {
   color: #181b1c;
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-2::-webkit-input-placeholder {
+.emotion-1::-webkit-input-placeholder {
   color: #666c76;
 }
 
-.emotion-2::-moz-placeholder {
+.emotion-1::-moz-placeholder {
   color: #666c76;
 }
 
-.emotion-2:-ms-input-placeholder {
+.emotion-1:-ms-input-placeholder {
   color: #666c76;
 }
 
-.emotion-2::placeholder {
+.emotion-1::placeholder {
   color: #666c76;
 }
 
@@ -379,7 +379,7 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
     Hello
   </label>
   <textarea
-    class="emotion-1 emotion-2"
+    class="emotion-1"
     id="testInput"
     maxlength="10"
     required=""

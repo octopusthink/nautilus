@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React from 'react';
 
 import { render } from 'utils/testing';
 
@@ -29,14 +29,5 @@ describe('List.Item', () => {
     );
 
     expect(getByTestId('listItem').classList).toContain('foo');
-  });
-
-  it('should forward refs', () => {
-    const ref = createRef();
-
-    render(<List.Item ref={ref}>Puppies are cute.</List.Item>);
-
-    expect(ref.current).not.toBeNull();
-    expect(ref.current.tagName).toEqual('LI');
   });
 });

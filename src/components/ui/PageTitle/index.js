@@ -1,25 +1,25 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 import { pageTitle } from 'styles';
+import { useTheme } from 'themes';
 
-export const PageTitle = forwardRef((props, ref) => {
+export const PageTitle = (props) => {
+  const theme = useTheme();
   const { children, documentTitle, ...otherProps } = props;
   // const documentTitleToUse = documentTitle || children;
 
   return (
-    <h1 ref={ref} {...otherProps}>
+    <h1
+      css={css`
+        ${pageTitle(theme)}
+      `}
+      {...otherProps}
+    >
       {children}
     </h1>
   );
-});
-
-export const styles = ({ theme }) => {
-  return css`
-    ${pageTitle(theme)}
-  `;
 };
 
 PageTitle.defaultProps = {
@@ -34,8 +34,6 @@ PageTitle.propTypes = {
   documentTitle: PropTypes.string,
 };
 
-PageTitle.displayName = 'PageTitle';
-
 export const { defaultProps, propTypes } = PageTitle;
 
-export default styled(PageTitle)(styles);
+export default PageTitle;

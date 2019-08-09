@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import React from 'react';
 
 import { axe, muteConsole, render } from 'utils/testing';
 
@@ -9,6 +9,12 @@ describe('Button', () => {
     const { container } = render(<Button>Hello</Button>);
 
     expect(container.firstChild.tagName).toEqual('BUTTON');
+  });
+
+  it('should match styles', () => {
+    const { container } = render(<Button>Hello</Button>);
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('should not render a disabled <button> when `disabled` prop is false', () => {
@@ -105,15 +111,6 @@ describe('Button', () => {
     );
 
     expect(getByTestId('myButton').classList).toContain('custom-class');
-  });
-
-  it('should forward refs', () => {
-    const ref = createRef();
-
-    render(<Button ref={ref}>Ref button</Button>);
-
-    expect(ref.current).not.toBeNull();
-    expect(ref.current.tagName).toEqual('BUTTON');
   });
 
   describe('accessibility', () => {
