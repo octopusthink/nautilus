@@ -73,6 +73,16 @@ describe('Link', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should not output styles when __unstyled is true', () => {
+    const { container } = render(
+      <Link href="https://octopusthink.com/" __unstyled>
+        hello
+      </Link>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   describe('accessibility', () => {
     it('should pass aXe tests', async () => {
       const { container } = render(<Link href="/">Homepage</Link>);

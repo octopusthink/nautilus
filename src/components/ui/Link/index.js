@@ -12,30 +12,35 @@ export const Link = (props) => {
   const defaultLinkComponent = useContext(NautilusLinkComponent);
   const theme = useTheme();
 
-  const { children, as, external, href, ...otherProps } = props;
+  const { __unstyled, children, as, external, href, ...otherProps } = props;
   const LinkComponent =
     as || (external && 'a') || defaultLinkComponent || LinkTag;
 
   return (
     <LinkComponent
-      css={css`
-        border-bottom: 2px solid ${theme.colors.state.interactive};
-        color: ${theme.colors.state.interactiveText};
-        text-decoration: none;
-        transition: all 200ms ease-in-out;
+      css={
+        // Don't output styles if the private prop `__unstyled` is set.
+        __unstyled
+          ? undefined
+          : css`
+              border-bottom: 2px solid ${theme.colors.state.interactive};
+              color: ${theme.colors.state.interactiveText};
+              text-decoration: none;
+              transition: all 200ms ease-in-out;
 
-        &:hover {
-          border-color: ${theme.colors.state.hover};
-          color: ${theme.colors.state.hoverText};
-        }
+              &:hover {
+                border-color: ${theme.colors.state.hover};
+                color: ${theme.colors.state.hoverText};
+              }
 
-        &:focus {
-          background: ${theme.colors.state.interactive};
-          border-color: ${theme.colors.state.interactiveText};
-          color: ${theme.colors.text.dark};
-          outline: none;
-        }
-      `}
+              &:focus {
+                background: ${theme.colors.state.interactive};
+                border-color: ${theme.colors.state.interactiveText};
+                color: ${theme.colors.text.dark};
+                outline: none;
+              }
+            `
+      }
       href={href}
       {...otherProps}
     >
@@ -51,6 +56,7 @@ export const Link = (props) => {
 };
 
 Link.defaultProps = {
+  __unstyled: false,
   as: undefined,
   children: undefined,
   external: false,
@@ -58,6 +64,8 @@ Link.defaultProps = {
 };
 
 Link.propTypes = {
+  /* @ignore Don't output any CSS styles; used mainly for Button components. */
+  __unstyled: PropTypes.bool,
   /** Component/tag to render the underlying link. Defaults to `Nautilus.config.defaultComponents.Link` if set; an `<a>` tag will be used if `Nautilus.config.defaultComponents.Link` is not set. */
   as: PropTypes.elementType,
   /** @ignore */

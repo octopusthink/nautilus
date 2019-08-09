@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Link should not output styles when __unstyled is true 1`] = `
+<div>
+  <a
+    href="https://octopusthink.com/"
+  >
+    hello
+  </a>
+</div>
+`;
+
 exports[`Link should output Link styles 1`] = `
 .emotion-0 {
   border-bottom: 2px solid #f5bbda;

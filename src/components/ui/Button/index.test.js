@@ -11,6 +11,12 @@ describe('Button', () => {
     expect(container.firstChild.tagName).toEqual('BUTTON');
   });
 
+  it('should match styles', () => {
+    const { container } = render(<Button>Hello</Button>);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   it('should not render a disabled <button> when `disabled` prop is false', () => {
     const { container } = render(<Button disabled={false}>Hello</Button>);
 

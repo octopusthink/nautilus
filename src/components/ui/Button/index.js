@@ -5,8 +5,8 @@ import React from 'react';
 
 // Import the non-styled Link so we don't have to overwrite Link styles if
 // the `navigation` prop is used by a button.
-import { Link as UnstyledLink } from 'components/ui/Link';
-import { Icon } from 'components/ui/Icon';
+import Link from 'components/ui/Link';
+import Icon from 'components/ui/Icon';
 import { interfaceUI, toUnits } from 'styles';
 import { useTheme } from 'themes';
 
@@ -45,8 +45,10 @@ export const Button = (props) => {
   let Component = 'button';
   let linkPropsToUse;
   if (navigation === true) {
-    Component = UnstyledLink;
+    Component = Link;
     // Set properties that only a Link component should use.
+    // eslint-disable-next-line no-underscore-dangle
+    otherProps.__unstyled = true;
     otherProps.href = href;
     // Unset certain button-specific props.
     otherProps.type = undefined;
@@ -104,6 +106,7 @@ export const Button = (props) => {
         border: 2px solid ${currentButtonColor};
         border-radius: 8px;
         color: ${currentButtonColor};
+        cursor: pointer;
         display: inline-block;
         margin: 0 ${toUnits(theme.spacing.margin.xxSmall)} ${toUnits(
         theme.spacing.margin.xSmall,
@@ -177,7 +180,6 @@ export const Button = (props) => {
       {...linkPropsToUse}
       {...otherProps}
     >
-      $
       {iconName && (
         <Icon
           css={css`
