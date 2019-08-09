@@ -45,9 +45,24 @@ describe('Tags', () => {
     expect(container).toMatchSnapshot();
   });
 
-  describe.skip('accessibility', () => {
+  describe('accessibility', () => {
     it('should pass aXe tests', async () => {
-      const { container } = render(<Tags.Tag>hello</Tags.Tag>);
+      const { container } = render(
+        <Tags>
+          <Tags.Tag data-testid="child-one">Hello</Tags.Tag>
+        </Tags>,
+      );
+
+      expect(await axe(container.innerHTML)).toHaveNoViolations();
+    });
+
+    it('should pass aXe tests with a title prop', async () => {
+      const { container } = render(
+        <Tags label="My tags">
+          <Tags.Tag data-testid="child-one">Hello</Tags.Tag>
+          <Tags.Tag data-testid="child-two">Goodbye</Tags.Tag>
+        </Tags>,
+      );
 
       expect(await axe(container.innerHTML)).toHaveNoViolations();
     });

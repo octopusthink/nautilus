@@ -9,15 +9,7 @@ import { useTheme } from 'themes';
 export const Tag = (props) => {
   const [isDismissed, setDismissed] = useState(false);
   const theme = useTheme();
-  const {
-    badge,
-    children,
-    color,
-    label,
-    onDismiss,
-    status,
-    ...otherProps
-  } = props;
+  const { badge, children, color, onDismiss, status, ...otherProps } = props;
 
   if (isDismissed) {
     return null;
@@ -65,22 +57,6 @@ export const Tag = (props) => {
       `}
       {...otherProps}
     >
-      {label && (
-        <span // TODO: switch with VisuallyHidden component, once available.
-          css={css`
-            font-style: bold;
-            position: absolute;
-            left: -10000px;
-            top: auto;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-          `}
-        >
-          {label}:
-        </span>
-      )}
-
       {children}
       {onDismiss && (
         <button
@@ -103,9 +79,7 @@ export const Tag = (props) => {
 
             setDismissed(true);
 
-            if (typeof onDismiss === 'function') {
-              onDismiss(event);
-            }
+            onDismiss(event);
           }}
           type="button"
         >
@@ -129,7 +103,6 @@ export const Tag = (props) => {
 Tag.defaultProps = {
   children: undefined,
   color: null,
-  label: null,
   badge: false,
   onDismiss: null,
   status: undefined,
@@ -140,12 +113,10 @@ Tag.propTypes = {
   children: PropTypes.node,
   /** Use colour to differentiate different tags or indicate status. */
   color: PropTypes.string,
-  /** Optional label for providing additional context to screen reader users. */
-  label: PropTypes.string,
   /** Style numbers or counts with a badge. */
   badge: PropTypes.bool,
   /** Function to call when a Tag is dismissed via the close button. */
-  onDismiss: PropTypes.oneOf([PropTypes.func, PropTypes.bool]),
+  onDismiss: PropTypes.func,
   /** Indicate status using a semantic colour set. */
   status: PropTypes.oneOf([
     'neutral',

@@ -5,7 +5,7 @@ import { Heading, Paragraph } from '@octopusthink/nautilus';
 
 <React.Fragment>
   <Heading>Wonder Women</Heading>
-  <Paragraph>Once upon a time there were a whole group of lady-types who lived in a beautiful paradise-land called ... well, I forget but it was really pretty and just chock full of badass ladies.</Paragraph>
+  <Paragraph>Once upon a time there were a whole group of lady-types who lived in a beautiful paradise-land called... well, I forget but it was really pretty and just chock full of badass ladies.</Paragraph>
   <Tags>
     <Tags.Tag color="hotpink">Amazon</Tags.Tag>
     <Tags.Tag color="hotpink">Superhero</Tags.Tag>
@@ -163,20 +163,18 @@ Keep in mind that tags increase the amount of visual noise, especially when usin
 
 Tags should include a label text to indicate what type of data is being presented. This ensures that users of assistive technology can understand the context of the Tag, even if they may not be able to see the Tag styling.
 
-To do this, include a `label` attribute on the Tag. This label will be read by screen readers, but will be hidden from the visual display.
+To do this, include a `label` attribute on the Tags component. This text will be read by screen readers, but will be hidden from the visual display.
 
 ```jsx
 import { Heading } from '@octopusthink/nautilus';
 
 <React.Fragment>
-  <Tags><Tags.Tag label="Category">Books</Tags.Tag></Tags>
+  <Tags label="Category"><Tags.Tag>Books</Tags.Tag></Tags>
   <Heading>Little Women</Heading>
-  <Tags><Tags.Tag label="Date">10 November</Tags.Tag></Tags>
+  <Tags label="Date"><Tags.Tag>10 November</Tags.Tag></Tags>
   <Heading>The day the music died</Heading>
 </React.Fragment>
 ```
-
-If no `label` property is passed, the Tag will be prefaced with a "Tag" label. Status Tags automatically include this extra text.
 
 ### ARIA properties
 

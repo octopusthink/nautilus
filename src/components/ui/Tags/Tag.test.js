@@ -38,7 +38,6 @@ describe('Tag', () => {
   });
 
   it('should dismiss a Tag with `onDismiss` set', () => {
-    const fakeEvent = { preventDefault: jest.fn() };
     const onDismiss = jest.fn();
     const { container, getByTestId } = render(
       <Tag data-testid="myTag" onDismiss={onDismiss}>
@@ -48,10 +47,9 @@ describe('Tag', () => {
 
     expect(getByTestId('myTag')).toBeDefined();
 
-    fireEvent.click(container.querySelector('button'), fakeEvent);
+    fireEvent.click(container.querySelector('button'));
 
-    expect(fakeEvent.preventDefault).toHaveBeenCalled();
-    expect(onDismiss).toHaveBeenCalledWith(fakeEvent);
+    expect(onDismiss).toHaveBeenCalled();
     expect(() => {
       getByTestId('myTag');
     }).toThrow('Unable to find an element');
