@@ -1,5 +1,5 @@
 ---
-name: Test
+name: Lint
 
 on:
   push:
@@ -24,5 +24,11 @@ jobs:
           node-version: 10
       - name: Install dependencies
         run: npm install
-      - name: Run unit tests and code coverage
-        run: npm run test:all-with-coverage
+      - name: Lint JS
+        run: npm run lint:js
+      # Removed because stylelint isn't playing super-well with emotion.
+      # It helps flag some things but errors on composition when it really
+      # shouldn't. It'd be great to enable this eventually though...
+      # - name: Lint CSS
+      #   run: npm run lint:css
+
