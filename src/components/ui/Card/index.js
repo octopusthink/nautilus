@@ -1,8 +1,8 @@
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
-import React, { forwardRef } from 'react';
+import React from 'react';
 
+import { headingClassNameForLevel } from 'components/ui/Heading';
 import { heading, body, interfaceUI, toUnits } from 'styles';
 import { useTheme } from 'themes';
 
@@ -19,13 +19,12 @@ export const Card = (props) => {
         padding: ${toUnits(theme.spacing.padding.large)};
         margin-bottom: ${toUnits(theme.spacing.margin.medium)};
 
-        /* TODO: All headings inside of cards should use the same styling, regardless of level. Let's do this in a more elegant way. */
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
+        .${headingClassNameForLevel(1)},
+          .${headingClassNameForLevel(2)},
+          .${headingClassNameForLevel(3)},
+          .${headingClassNameForLevel(4)},
+          .${headingClassNameForLevel(5)},
+          .${headingClassNameForLevel(6)} {
           ${heading.small(theme)};
           color: ${theme.colors.neutral.grey800};
         }

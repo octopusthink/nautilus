@@ -16,7 +16,7 @@ dl + .emotion-0 {
 }
 
 <h2
-  class="emotion-0"
+  class="Nautilus-Heading-2 emotion-0"
 >
   Big heading
 </h2>
@@ -38,7 +38,7 @@ dl + .emotion-0 {
 }
 
 <h3
-  class="emotion-0"
+  class="Nautilus-Heading-3 emotion-0"
 >
   So-so heading
 </h3>
@@ -60,7 +60,7 @@ dl + .emotion-0 {
 }
 
 <h4
-  class="emotion-0"
+  class="Nautilus-Heading-4 emotion-0"
 >
   Tiny heading
 </h4>
