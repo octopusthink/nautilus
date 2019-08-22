@@ -1,11 +1,10 @@
 ---
 name: Publish Styleguide
 
-on: push
-
-push:
-  branches:
-    - master
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   styleguide:
