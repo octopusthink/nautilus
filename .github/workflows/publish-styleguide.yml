@@ -24,5 +24,3 @@ jobs:
           GITHUB_OWNER: octopusthink
           GITHUB_REPO: nautilus
           GITHUB_USER: mechanical-octopus
-        with:
-          github_access_token: ${{ secrets.GITHUB_ACCESS_TOKEN }}

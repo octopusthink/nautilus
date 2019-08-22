@@ -22,8 +22,6 @@ jobs:
         run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
         env:
           NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
-        with:
-          npm_access_token: ${{ secrets.NPM_ACCESS_TOKEN }}
       - name: Publish release
         run: npm publish --access=public
   styleguide:
@@ -42,5 +40,3 @@ jobs:
           GITHUB_OWNER: octopusthink
           GITHUB_REPO: nautilus
           GITHUB_USER: mechanical-octopus
-        with:
-          github_access_token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
