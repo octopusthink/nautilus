@@ -1,15 +1,13 @@
 ---
 name: CI
 
-on:
-  push:
-    branches:
-      - master
-    tags:
-      - v*
-  pull_request:
-    branches:
-      - master
+on: [push, pull_request]
+
+push:
+  branches:
+    - master
+  tags:
+    - v*
 
 jobs:
   lint:
