@@ -9,10 +9,7 @@ on:
       - v*
   pull_request:
     branches:
-      exclude:
-      - gh-pages
-      include:
-        - "*"
+      - master
 
 jobs:
   build:
