@@ -4,10 +4,13 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - "*"
+      - !gh-pages
     tags:
       - v*
-  pull_request
+  pull_request:
+    branches:
+      - "*"
 
 jobs:
   lint:
