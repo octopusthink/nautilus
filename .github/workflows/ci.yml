@@ -1,5 +1,5 @@
 ---
-name: Lint
+name: Continuous Integration
 
 on:
   push:
@@ -12,7 +12,7 @@ on:
       - master
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -28,3 +28,14 @@ jobs:
       # shouldn't. It'd be great to enable this eventually though...
       # - name: Lint CSS
       #   run: npm run lint:css
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - name: Install dependencies
+        run: npm install
+      - name: Run unit tests and code coverage
+        run: npm run test:all-with-coverage
