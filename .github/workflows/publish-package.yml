@@ -23,7 +23,7 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
         with:
-          NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+          npm_access_token: ${{ secrets.NPM_ACCESS_TOKEN }}
       - name: Publish release
         run: npm publish --access=public
   styleguide:
@@ -43,4 +43,4 @@ jobs:
           GITHUB_REPO: nautilus
           GITHUB_USER: mechanical-octopus
         with:
-          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+          github_access_token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
