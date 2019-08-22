@@ -19,12 +19,12 @@ jobs:
           node-version: 10
       - name: Install dependencies
         run: npm install
-      - name: Set NPM Auth Token
-        run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
-      - name: Publish release
-        run: npm publish --access=public
+      # - name: Set NPM Auth Token
+      #   run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+      #   env:
+      #     NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+      # - name: Publish release
+      #   run: npm publish --access=public
   styleguide:
     runs-on: ubuntu-latest
     steps:
@@ -34,10 +34,10 @@ jobs:
           node-version: 10
       - name: Install dependencies
         run: npm install
-      - name: Publish to gh-pages
-        run: npm run publish:styleguide-for-version
-        env:
-          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
-          GITHUB_OWNER: octopusthink
-          GITHUB_REPO: nautilus
-          GITHUB_USER: mechanical-octopus
+      # - name: Publish to gh-pages
+      #   run: npm run publish:styleguide-for-version
+      #   env:
+      #     GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+      #     GITHUB_OWNER: octopusthink
+      #     GITHUB_REPO: nautilus
+      #     GITHUB_USER: mechanical-octopus

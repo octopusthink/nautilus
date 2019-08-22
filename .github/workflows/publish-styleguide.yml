@@ -1,10 +1,11 @@
 ---
 name: Publish Styleguide
 
-on:
-  push:
-    branches:
-      - master
+on: push
+
+push:
+  branches:
+    - master
 
 jobs:
   styleguide:
@@ -16,10 +17,10 @@ jobs:
           node-version: 10
       - name: Install dependencies
         run: npm install
-      - name: Publish to gh-pages
-        run: npm run publish:styleguide
-        env:
-          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
-          GITHUB_OWNER: octopusthink
-          GITHUB_REPO: nautilus
-          GITHUB_USER: mechanical-octopus
+      # - name: Publish to gh-pages
+      #   run: npm run publish:styleguide
+      #   env:
+      #     GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+      #     GITHUB_OWNER: octopusthink
+      #     GITHUB_REPO: nautilus
+      #     GITHUB_USER: mechanical-octopus
