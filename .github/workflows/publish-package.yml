@@ -1,0 +1,43 @@
+---
+name: Publish Packages
+
+on:
+  push:
+    tags:
+      - v*
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - name: Install dependencies
+        run: npm install
+      - name: Set NPM Auth Token
+        run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+      - name: Publish release
+        run: npm publish --access=public
+  styleguide:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - name: Install dependencies
+        run: npm install
+      - name: Publish to gh-pages
+        run: npm run publish:styleguide-for-version
+        env:
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+          GITHUB_OWNER: octopusthink
+          GITHUB_REPO: nautilus
+          GITHUB_USER: mechanical-octopus
