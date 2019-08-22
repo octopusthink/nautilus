@@ -12,7 +12,7 @@ on:
       - master
 
 jobs:
-  Lint:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -28,7 +28,7 @@ jobs:
       # shouldn't. It'd be great to enable this eventually though...
       # - name: Lint CSS
       #   run: npm run lint:css
-  Test:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
