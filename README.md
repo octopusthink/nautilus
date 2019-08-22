@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/octopusthink/nautilus/workflows/CI/badge.svg?branch=master)](https://github.com/octopusthink/nautilus/actions)
+[![Build Status](https://github.com/octopusthink/nautilus/workflows/Tests/badge.svg?branch=master)](https://github.com/octopusthink/nautilus/actions)
 [![dependencies Status](https://david-dm.org/octopusthink/nautilus/status.svg)](https://david-dm.org/octopusthink/nautilus)
 [![npm version](https://badge.fury.io/js/%40octopusthink%2Fnautilus.svg)](https://www.npmjs.com/package/@octopusthink/nautilus)
 
