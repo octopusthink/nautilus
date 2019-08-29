@@ -20,7 +20,7 @@ export const VisuallyHiddenRevealStyles = css`
   margin: 0;
   overflow: auto;
   position: static;
-  white-space: nowrap;
+  white-space: normal;
   width: auto;
 `;
 

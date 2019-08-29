@@ -41,7 +41,7 @@ exports[`SkipLink should contain styles, including focus styles that reveal the 
   margin: 0;
   overflow: auto;
   position: static;
-  white-space: nowrap;
+  white-space: normal;
   width: auto;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
