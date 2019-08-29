@@ -2,7 +2,13 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { Link } from 'components';
+import Link, {
+  ComponentClassName as LinkComponentClassName,
+} from 'components/ui/Link';
+import VisuallyHidden, {
+  VisuallyHiddenStyles,
+  VisuallyHiddenRevealStyles,
+} from 'components/ui/VisuallyHidden';
 import { interfaceUI, focusStyle, toUnits } from 'styles';
 import { useTheme } from 'themes';
 
@@ -13,41 +19,33 @@ export const SkipLink = (props) => {
 
   return (
     <Link
+      as="a"
       css={css`
         // We should hide the SkipLink by default, only showing it when its been
         // focused by the user.
-        border: 0;
-        clip: rect(0 0 0 0);
-        height: 0;
-        margin: -1px;
-        overflow: hidden;
-        padding: 0;
-        position: absolute;
-        width: 0;
+        ${VisuallyHiddenStyles}
         transition: none;
 
         &:focus {
+          ${VisuallyHiddenRevealStyles}
           ${interfaceUI.medium(theme)};
           ${focusStyle.outline(theme)};
           ${focusStyle.text(theme)};
           background: ${theme.colors.neutral.white};
+          border: 0;
           box-sizing: border-box;
           display: block;
-          clip: auto;
-          height: auto;
           left: 0;
-          margin: 0;
           padding: ${toUnits(theme.spacing.padding.medium)};
-          overflow: auto;
+          position: absolute;
           text-decoration: underline;
+          text-align: center;
           top: 0;
           width: 100%;
-          text-align: center;
           z-index: 100;
         }
       `}
       {...otherProps}
-      as="a"
       href={`#${toId}`}
     >
       {children}

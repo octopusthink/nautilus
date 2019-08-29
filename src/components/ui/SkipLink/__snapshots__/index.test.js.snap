@@ -9,14 +9,15 @@ exports[`SkipLink should contain styles, including focus styles that reveal the 
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
   border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  height: 0;
+  -webkit-clip-path: rect(0 0 0 0);
+  clip-path: rect(0 0 0 0);
+  height: 1px;
   margin: -1px;
   overflow: hidden;
   padding: 0;
   position: absolute;
-  width: 0;
+  white-space: nowrap;
+  width: 1px;
   -webkit-transition: none;
   transition: none;
 }
@@ -34,6 +35,14 @@ exports[`SkipLink should contain styles, including focus styles that reveal the 
 }
 
 .emotion-0:focus {
+  -webkit-clip-path: none;
+  clip-path: none;
+  height: auto;
+  margin: 0;
+  overflow: auto;
+  position: static;
+  white-space: nowrap;
+  width: auto;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
@@ -42,20 +51,17 @@ exports[`SkipLink should contain styles, including focus styles that reveal the 
   outline: 0;
   color: #cd2f83;
   background: #ffffff;
+  border: 0;
   box-sizing: border-box;
   display: block;
-  -webkit-clip: auto;
-  clip: auto;
-  height: auto;
   left: 0;
-  margin: 0;
   padding: 1.2rem;
-  overflow: auto;
+  position: absolute;
   -webkit-text-decoration: underline;
   text-decoration: underline;
+  text-align: center;
   top: 0;
   width: 100%;
-  text-align: center;
   z-index: 100;
 }
 

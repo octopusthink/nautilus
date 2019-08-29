@@ -2,7 +2,9 @@
 
 exports[`Heading should be hidden with CSS 1`] = `
 .emotion-0 {
-  border: 0,clip:rect(0 0 0 0);
+  border: 0;
+  -webkit-clip-path: rect(0 0 0 0);
+  clip-path: rect(0 0 0 0);
   height: 1px;
   margin: -1px;
   overflow: hidden;
