@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should output card CSS 1`] = `
+.emotion-0 {
+  background: white;
+  border: 1px solid #f8f9fa;
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.125);
+  padding: 2.4rem;
+  margin-bottom: 3.2rem;
+}
+
+.emotion-0 .Nautilus-Heading-1,
+.emotion-0 .Nautilus-Heading-2,
+.emotion-0 .Nautilus-Heading-3,
+.emotion-0 .Nautilus-Heading-4,
+.emotion-0 .Nautilus-Heading-5,
+.emotion-0 .Nautilus-Heading-6 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 600;
+  font-size: 2.7rem;
+  line-height: 1.3333333333333333;
+  color: #666c76;
+}
+
+.emotion-0 p {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-size: 1.7rem;
+  line-height: 1.6470588235294117;
+}
+
+.emotion-0 button {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.7rem;
+  line-height: 1.411764705882353;
+  padding: 0.8rem 1.2rem;
+}
+
+<div
+  class="emotion-0"
+>
+  My Blog Posts
+</div>
+`;

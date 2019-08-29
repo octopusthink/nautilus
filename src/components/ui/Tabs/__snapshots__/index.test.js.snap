@@ -174,7 +174,7 @@ dl + .emotion-4 {
     tabindex="-1"
   >
     <h4
-      class="emotion-4"
+      class="Nautilus-Heading-4 emotion-4"
     >
       About
     </h4>
@@ -193,7 +193,7 @@ dl + .emotion-4 {
     tabindex="-1"
   >
     <h4
-      class="emotion-4"
+      class="Nautilus-Heading-4 emotion-4"
     >
       History
     </h4>
@@ -212,7 +212,7 @@ dl + .emotion-4 {
     tabindex="-1"
   >
     <h4
-      class="emotion-4"
+      class="Nautilus-Heading-4 emotion-4"
     >
       Other
     </h4>
