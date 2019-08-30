@@ -2,10 +2,8 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Link, {
-  ComponentClassName as LinkComponentClassName,
-} from 'components/ui/Link';
-import VisuallyHidden, {
+import Link from 'components/ui/Link';
+import {
   VisuallyHiddenStyles,
   VisuallyHiddenRevealStyles,
 } from 'components/ui/VisuallyHidden';
