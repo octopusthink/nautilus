@@ -8,7 +8,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Markdown from 'rsg-components/Markdown';
 import Header from 'styleguide/components/Header';
 import Footer from 'styleguide/components/Footer';
-import { useWindowWidth } from '@react-hook/window-size'
+import { useWindowWidth } from '@react-hook/window-size';
 
 import { Nautilus } from 'components';
 import { metadata, toUnits } from 'styles';
@@ -43,7 +43,7 @@ export const StyleGuide = ({
     setSidebarState(!showSidebar);
 
     setHasToggledSidebar(true);
-  }
+  };
 
   useEffect(() => {
     if (!hasToggledSidebar && !isMobile && !showSidebar) {
@@ -102,30 +102,31 @@ export const StyleGuide = ({
           }
         `}
       />
-        {hasSidebar && (
-          <div
-            css={css`
-              background: ${theme.colors.neutral.black};
-              box-sizing: border-box;
-              height: 100%;
-              overflow: hidden;
-              position: fixed;
-              top: 0;
-              z-index: 1000;
-              transition: 160ms all ease-in-out;
+      {hasSidebar && (
+        <div
+          css={css`
+            background: ${theme.colors.neutral.black};
+            box-sizing: border-box;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            transition: 160ms all ease-in-out;
 
-              @media (max-width: 767px) {
-                height: ${toUnits(menuToggleHeight)};
-                left: 0;
-                right: 0;
-              }
+            @media (max-width: 767px) {
+              height: ${toUnits(menuToggleHeight)};
+              left: 0;
+              right: 0;
+            }
 
-              @media (min-width: 768px) {
-                left: ${toUnits(menuToggleWidth - sidebarWidth)};
-                width: ${toUnits(sidebarWidth)};
-              }
+            @media (min-width: 768px) {
+              left: ${toUnits(menuToggleWidth - sidebarWidth)};
+              width: ${toUnits(sidebarWidth)};
+            }
 
-              ${showSidebar && css`
+            ${showSidebar &&
+              css`
                 overflow: auto;
 
                 @media (max-width: 767px) {
@@ -136,54 +137,53 @@ export const StyleGuide = ({
                   left: 0;
                 }
               `}
-            `}
+          `}
+          onClick={() => {
+            if (isMobile) {
+              setSidebarState(false);
 
-            onClick={() => {
-              if (isMobile) {
-                setSidebarState(false);
-
-                // Reset the scroll position of this div. If we're on mobile
-                // and we don't do this, the menu will get "stuck" in a weird
-                // position.
-                if (menuRef && menuRef.current) {
-                  menuRef.current.scrollTop = 0;
-                }
+              // Reset the scroll position of this div. If we're on mobile
+              // and we don't do this, the menu will get "stuck" in a weird
+              // position.
+              if (menuRef && menuRef.current) {
+                menuRef.current.scrollTop = 0;
               }
-            }}
-            ref={menuRef}
-          >
-            <a
-              href="#"
-              css={css`
-                ${metadata.large(theme)};
-                display: flex;
-                text-decoration: none;
-                color: ${theme.colors.neutral.grey200};
-                width: 100%;
-                align-items: start;
-                justify-content: space-between;
-                transition: 160ms all ease-in-out;
+            }
+          }}
+          ref={menuRef}
+        >
+          <a
+            href="#"
+            css={css`
+              ${metadata.large(theme)};
+              display: flex;
+              text-decoration: none;
+              color: ${theme.colors.neutral.grey200};
+              width: 100%;
+              align-items: start;
+              justify-content: space-between;
+              transition: 160ms all ease-in-out;
 
-                @media (max-width: 767px) {
-                  padding-left: ${mobileMenuPadding};
-                }
+              @media (max-width: 767px) {
+                padding-left: ${mobileMenuPadding};
+              }
 
-                @media (min-width: 768px) {
-                  padding-left: ${tabletMenuPadding};
+              @media (min-width: 768px) {
+                padding-left: ${tabletMenuPadding};
 
-                  ${!showSidebar && css`
+                ${!showSidebar &&
+                  css`
                     background: ${theme.colors.neutral.black};
                     height: 100%;
                   `}
-                }
+              }
 
-                &:focus {
-                  color: ${theme.colors.state.interactive};
-                }
-
-              `}
-              onClick={toggleSidebar}
-            >
+              &:focus {
+                color: ${theme.colors.state.interactive};
+              }
+            `}
+            onClick={toggleSidebar}
+          >
             <span
               css={css`
                 color: ${theme.colors.neutral.white} !important;
@@ -196,21 +196,22 @@ export const StyleGuide = ({
             >
               Nautilus
             </span>
-              <div
-                css={css`
-                  color: ${theme.colors.neutral.white} !important;
-                  display: flex;
-                  flex-direction: column;
-                  height: ${toUnits(menuToggleHeight)};
-                  width: ${toUnits(menuToggleWidth)};
-                  align-items: center;
-                  justify-content: center;
-                `}
-              >
-                <Icon name="menu" title="Toggle menu"/>
-              </div>
-            </a>
-            <div css={css`
+            <div
+              css={css`
+                color: ${theme.colors.neutral.white} !important;
+                display: flex;
+                flex-direction: column;
+                height: ${toUnits(menuToggleHeight)};
+                width: ${toUnits(menuToggleWidth)};
+                align-items: center;
+                justify-content: center;
+              `}
+            >
+              <Icon name="menu" title="Toggle menu" />
+            </div>
+          </a>
+          <div
+            css={css`
               @media (max-width: 767px) {
                 padding-left: ${mobileMenuPadding};
                 padding-right: ${mobileMenuPadding};
@@ -220,18 +221,19 @@ export const StyleGuide = ({
                 padding-left: ${tabletMenuPadding};
                 padding-right: ${tabletMenuPadding};
               }
-            `}>
+            `}
+          >
             {toc}
           </div>
-          </div>
-        )}
+        </div>
+      )}
 
-        <main css={css`
+      <main
+        css={css`
           padding: ${toUnits(theme.spacing.padding.large)};
           display: flex;
           justify-content: center;
           transition: 160ms all ease-in-out;
-
 
           @media (max-width: 767px) {
             margin-top: ${toUnits(menuToggleHeight)};
@@ -247,25 +249,28 @@ export const StyleGuide = ({
             padding-right: ${toUnits(theme.spacing.margin.xxLarge)};
           }
 
-          ${showSidebar && css`
-            @media (min-width: 768px) {
-              margin-left: ${toUnits(sidebarWidth)};
-            }
+          ${showSidebar &&
+            css`
+              @media (min-width: 768px) {
+                margin-left: ${toUnits(sidebarWidth)};
+              }
+            `}
+        `}
+      >
+        <div
+          css={css`
+            max-width: 800px;
           `}
-        `}>
-        <div css={css`
-          max-width: 800px;
-        `}>
+        >
           {children}
 
           <Footer>
             <Markdown
-              text={`Made with ❤️ by [Octopus Think](https://octopusthink.com/). Say 👋 on [Github](https://github.com/octopusthink/nautilus).`}
+              text={`Made with ❤️ by [Octopus Think](https://octopusthink.com/). Say 👋 on [GitHub](https://github.com/octopusthink/nautilus).`}
             />
           </Footer>
         </div>
       </main>
-
     </Nautilus>
   );
 };
