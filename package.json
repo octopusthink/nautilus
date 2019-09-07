@@ -18,7 +18,6 @@
     "lint:stylelint-fix": "stylelint --fix '**/*.js'",
     "prepare": "npm run build",
     "prepublish:styleguide": "npm run build",
-    "prettier": "prettier --write src/components/**/*.js",
     "publish:styleguide": "node bin/publish-gh-pages.js",
     "prepublish:styleguide-for-version": "npm run build",
     "publish:styleguide-for-version": "PUBLISH_VERSION_FOLDER=true node bin/publish-gh-pages.js",
