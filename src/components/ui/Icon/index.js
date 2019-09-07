@@ -23,13 +23,9 @@ const defineIconSizes = (props) => {
     iconSize = 'xLarge';
   }
 
-  const {
-    size,
-    strokeWidth,
-    padding,
-    borderWidth,
-    marginSize,
-  } = theme.components.Icon.sizes[iconSize];
+  const { size, strokeWidth, padding, borderWidth, marginSize } = theme.components.Icon.sizes[
+    iconSize
+  ];
 
   const wrapperSize = Math.ceil(size + padding * 2);
 

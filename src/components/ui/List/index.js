@@ -1,13 +1,7 @@
 import { css } from '@emotion/core';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import React, {
-  Children,
-  Fragment,
-  cloneElement,
-  useMemo,
-  useState,
-} from 'react';
+import React, { Children, cloneElement, useMemo, useState } from 'react';
 import shortid from 'shortid';
 
 import Heading from 'components/ui/Heading';
@@ -20,17 +14,7 @@ import Item, { ComponentClassName as ItemClassName } from './Item';
 export const ComponentClassName = 'Nautilus-List';
 
 export const List = (props) => {
-  const {
-    children,
-    className,
-    dark,
-    inverse,
-    large,
-    light,
-    ordered,
-    small,
-    ...otherProps
-  } = props;
+  const { children, className, dark, inverse, large, light, ordered, small, ...otherProps } = props;
 
   let ListComponent = 'ul';
   if (ordered === true) {
@@ -39,11 +23,9 @@ export const List = (props) => {
 
   const [generatedId] = useState(shortid.generate());
   const description = useMemo(() => {
-    const validDescriptionComponents = Children.toArray(children).filter(
-      (child) => {
-        return child.type === Heading || child.type === Paragraph;
-      },
-    );
+    const validDescriptionComponents = Children.toArray(children).filter((child) => {
+      return child.type === Heading || child.type === Paragraph;
+    });
 
     if (validDescriptionComponents.length === 0) {
       return undefined;
@@ -67,7 +49,7 @@ export const List = (props) => {
   const theme = useTheme();
 
   return (
-    <Fragment>
+    <>
       {description}
       <ListComponent
         aria-labelledby={description && description.props.id}
@@ -106,7 +88,7 @@ export const List = (props) => {
       >
         {items}
       </ListComponent>
-    </Fragment>
+    </>
   );
 };
 

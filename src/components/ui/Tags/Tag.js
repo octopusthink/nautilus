@@ -34,8 +34,8 @@ export const Tag = (props) => {
       css={css`
         ${metadata.small(theme)};
         color: ${textColor};
-        margin: 0 ${toUnits(theme.spacing.padding.xSmall)}
-          ${toUnits(theme.spacing.padding.xSmall)} 0;
+        margin: 0 ${toUnits(theme.spacing.padding.xSmall)} ${toUnits(theme.spacing.padding.xSmall)}
+          0;
 
         ${backgroundColor &&
           css`
@@ -118,14 +118,7 @@ Tag.propTypes = {
   /** Function to call when a Tag is dismissed via the close button. */
   onDismiss: PropTypes.func,
   /** Indicate status using a semantic colour set. */
-  status: PropTypes.oneOf([
-    'neutral',
-    'success',
-    'warning',
-    'danger',
-    'inProgress',
-    'new',
-  ]),
+  status: PropTypes.oneOf(['neutral', 'success', 'warning', 'danger', 'inProgress', 'new']),
 };
 
 export const { defaultProps, propTypes } = Tag;

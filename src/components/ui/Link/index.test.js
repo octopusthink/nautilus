@@ -49,9 +49,7 @@ describe('Link', () => {
     );
 
     expect(container.firstChild.tagName).toEqual('A');
-    expect(container.firstChild.getAttribute('href')).toEqual(
-      'https://octopusthink.com/',
-    );
+    expect(container.firstChild.getAttribute('href')).toEqual('https://octopusthink.com/');
   });
 
   it('should add an icon when `external` is set', () => {
@@ -66,9 +64,7 @@ describe('Link', () => {
   });
 
   it('should output Link styles', () => {
-    const { container } = render(
-      <Link href="https://octopusthink.com/">hello</Link>,
-    );
+    const { container } = render(<Link href="https://octopusthink.com/">hello</Link>);
 
     expect(container).toMatchSnapshot();
   });

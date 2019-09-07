@@ -124,9 +124,7 @@ describe('List', () => {
       </List>,
     );
 
-    const originalDescriptionId = getByTestId('firstDescription').getAttribute(
-      'id',
-    );
+    const originalDescriptionId = getByTestId('firstDescription').getAttribute('id');
 
     rerender(
       <List>
@@ -138,9 +136,7 @@ describe('List', () => {
       </List>,
     );
 
-    expect(originalDescriptionId).toEqual(
-      getByTestId('firstDescription').getAttribute('id'),
-    );
+    expect(originalDescriptionId).toEqual(getByTestId('firstDescription').getAttribute('id'));
   });
 
   describe('described by Heading component', () => {

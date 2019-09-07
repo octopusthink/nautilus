@@ -22,9 +22,7 @@ describe('Paragraph', () => {
   });
 
   it('should output large CSS the `large` prop is set', () => {
-    const { container } = render(
-      <Paragraph large>I&apos;m an important body of text.</Paragraph>,
-    );
+    const { container } = render(<Paragraph large>I&apos;m an important body of text.</Paragraph>);
 
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -36,9 +34,7 @@ describe('Paragraph', () => {
   });
 
   it('should output small CSS the `small` prop is set', () => {
-    const { container } = render(
-      <Paragraph small>I&apos;m a tiny body of text.</Paragraph>,
-    );
+    const { container } = render(<Paragraph small>I&apos;m a tiny body of text.</Paragraph>);
 
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -55,9 +51,7 @@ describe('Paragraph', () => {
 
   describe('accessibility', () => {
     it('should pass aXe tests', async () => {
-      const { container } = render(
-        <Paragraph>I&apos;m some text in a paragraph.</Paragraph>,
-      );
+      const { container } = render(<Paragraph>I&apos;m some text in a paragraph.</Paragraph>);
 
       expect(await axe(container.innerHTML)).toHaveNoViolations();
     });

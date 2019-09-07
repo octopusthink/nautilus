@@ -57,9 +57,7 @@ describe('Button', () => {
           Important but not
         </Button>,
       );
-    }).toThrow(
-      '<Button> should not be both `minimal` and `primary`, so which is it?',
-    );
+    }).toThrow('<Button> should not be both `minimal` and `primary`, so which is it?');
   });
 
   it('should only allow one of danger/success/warning props', () => {

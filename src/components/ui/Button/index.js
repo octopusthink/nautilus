@@ -108,13 +108,9 @@ export const Button = (props) => {
         color: ${currentButtonColor};
         cursor: pointer;
         display: inline-block;
-        margin: 0 ${toUnits(theme.spacing.margin.xxSmall)} ${toUnits(
-        theme.spacing.margin.xSmall,
-      )};
+        margin: 0 ${toUnits(theme.spacing.margin.xxSmall)} ${toUnits(theme.spacing.margin.xSmall)};
         outline: none;
-        padding: ${toUnits(theme.spacing.padding.medium)} ${toUnits(
-        theme.spacing.padding.large,
-      )};
+        padding: ${toUnits(theme.spacing.padding.medium)} ${toUnits(theme.spacing.padding.large)};
         position: relative;
         text-align: center;
         text-decoration: none;

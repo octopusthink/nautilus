@@ -2,7 +2,6 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React, {
   Children,
-  Fragment,
   cloneElement,
   useCallback,
   useEffect,
@@ -37,11 +36,7 @@ export const Tabs = (props) => {
 
   // This assigns focus to a tab's content when the down arrow key is pressed.
   useEffect(() => {
-    if (
-      focusedSection !== null &&
-      sectionToFocusRef &&
-      sectionToFocusRef.current
-    ) {
+    if (focusedSection !== null && sectionToFocusRef && sectionToFocusRef.current) {
       sectionToFocusRef.current.focus();
       setFocusedSection(null);
     }
@@ -71,11 +66,7 @@ export const Tabs = (props) => {
 
       // If a new tab index was set, prevent the default action, advance to
       // that tab, and then return;
-      if (
-        newTabIndex !== undefined &&
-        newTabIndex >= 0 &&
-        newTabIndex < numberOfTabs
-      ) {
+      if (newTabIndex !== undefined && newTabIndex >= 0 && newTabIndex < numberOfTabs) {
         event.preventDefault();
         setActiveTab(newTabIndex);
         setFocusedTab(newTabIndex);
@@ -189,15 +180,7 @@ export const Tabs = (props) => {
           </li>
         );
       });
-  }, [
-    children,
-    activeTab,
-    focusedTab,
-    tabsId,
-    onKeyDown,
-    tabToFocusRef,
-    theme,
-  ]);
+  }, [children, activeTab, focusedTab, tabsId, onKeyDown, tabToFocusRef, theme]);
 
   const tabPanels = useMemo(() => {
     return Children.toArray(children)
@@ -216,7 +199,7 @@ export const Tabs = (props) => {
   }, [children, activeTab, focusedSection, tabsId, sectionToFocusRef]);
 
   return (
-    <Fragment>
+    <>
       {labels && !!labels.length && (
         <ul
           css={css`
@@ -233,7 +216,7 @@ export const Tabs = (props) => {
         </ul>
       )}
       {tabPanels}
-    </Fragment>
+    </>
   );
 };
 
