@@ -103,7 +103,7 @@ export const TextField = forwardRef((props, ref) => {
   }
 
   return (
-    <>
+    <React.Fragment>
       {label && (
         <label
           css={css`
@@ -234,7 +234,7 @@ export const TextField = forwardRef((props, ref) => {
       />
       {errorComponent}
       {children}
-    </>
+    </React.Fragment>
   );
 });
 

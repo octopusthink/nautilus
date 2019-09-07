@@ -45,10 +45,10 @@ export const Link = (props) => {
     >
       {children}
       {external && (
-        <>
+        <React.Fragment>
           {' '}
           <Icon name="external-link" title="External link" small />
-        </>
+        </React.Fragment>
       )}
     </LinkComponent>
   );

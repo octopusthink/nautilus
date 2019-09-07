@@ -49,7 +49,7 @@ export const List = (props) => {
   const theme = useTheme();
 
   return (
-    <>
+    <React.Fragment>
       {description}
       <ListComponent
         aria-labelledby={description && description.props.id}
@@ -88,7 +88,7 @@ export const List = (props) => {
       >
         {items}
       </ListComponent>
-    </>
+    </React.Fragment>
   );
 };
 

@@ -54,7 +54,7 @@ export const Tags = (props) => {
   const WrapperComponent = items.length > 1 ? List : Fragment;
 
   return (
-    <>
+    <React.Fragment>
       {label && (
         <Paragraph // TODO: switch with VisuallyHidden component, once available.
           css={css`
@@ -72,7 +72,7 @@ export const Tags = (props) => {
         </Paragraph>
       )}
       <WrapperComponent>{items}</WrapperComponent>
-    </>
+    </React.Fragment>
   );
 };
 

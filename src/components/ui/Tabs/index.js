@@ -199,7 +199,7 @@ export const Tabs = (props) => {
   }, [children, activeTab, focusedSection, tabsId, sectionToFocusRef]);
 
   return (
-    <>
+    <React.Fragment>
       {labels && !!labels.length && (
         <ul
           css={css`
@@ -216,7 +216,7 @@ export const Tabs = (props) => {
         </ul>
       )}
       {tabPanels}
-    </>
+    </React.Fragment>
   );
 };
 
