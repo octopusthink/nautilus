@@ -16,7 +16,9 @@ export function ComponentsList({ classes, items }) {
     return null;
   }
 
-  const windowHash = window.location.hash.length ? `${window.location.pathname}#/${getHash(window.location.hash)}` : `${window.location.pathname}#/Introduction`;
+  const windowHash = window.location.hash.length
+    ? `${window.location.pathname}#/${getHash(window.location.hash)}`
+    : `${window.location.pathname}#/Introduction`;
 
   return (
     <ul
@@ -32,50 +34,49 @@ export function ComponentsList({ classes, items }) {
         }
       `}
     >
-      {items.map(
-        ({ heading, visibleName, href, content, shouldOpenInNewTab }) => {
-          const isItemSelected = windowHash === href;
+      {items.map(({ heading, visibleName, href, content, shouldOpenInNewTab }) => {
+        const isItemSelected = windowHash === href;
 
-          return (
-            <li
-              key={href}
+        return (
+          <li
+            key={href}
+            css={css`
+              padding-left: 0px;
+            `}
+          >
+            <Link
               css={css`
-                padding-left: 0px;
-              `}
-            >
-              <Link
-                css={css`
-                  color: ${theme.colors.neutral.grey600} !important;
-                  width: 100% !important;
-                  padding: ${toUnits(theme.spacing.padding.small)} 0 !important;
-                  display: block !important;
-                  text-transform: uppercase !important;
+                color: ${theme.colors.neutral.grey600} !important;
+                width: 100% !important;
+                padding: ${toUnits(theme.spacing.padding.small)} 0 !important;
+                display: block !important;
+                text-transform: uppercase !important;
 
-                  li li & {
-                    color: ${theme.colors.neutral.white} !important;
-                    text-transform: none !important;
-                    font-weight: 400 !important;
-                  }
+                li li & {
+                  color: ${theme.colors.neutral.white} !important;
+                  text-transform: none !important;
+                  font-weight: 400 !important;
+                }
 
-                  li li li & {
-                    padding-left: ${toUnits(theme.spacing.padding.medium)} !important;
+                li li li & {
+                  padding-left: ${toUnits(theme.spacing.padding.medium)} !important;
+                }
 
-                  }
+                &:hover {
+                  color: ${theme.colors.state.interactive} !important;
+                }
 
-                  &:hover {
-                    color: ${theme.colors.state.interactive} !important;
-                  }
+                &:focus {
+                  color: ${theme.colors.state.interactive} !important;
+                }
 
-                  &:focus  {
-                    color: ${theme.colors.state.interactive} !important;
-                  }
+                &:active {
+                  color: ${theme.colors.state.interactiveText} !important;
+                  outline: none;
+                }
 
-                  &:active {
-                    color: ${theme.colors.state.interactiveText} !important;
-                    outline: none;
-                  }
-
-                  ${isItemSelected && css`
+                ${isItemSelected &&
+                  css`
                     color: ${theme.colors.neutral.white} !important;
                     position: relative !important;
                     z-index: 2;
@@ -93,22 +94,21 @@ export function ComponentsList({ classes, items }) {
                       z-index: -1;
                     }
                   `}
-                `}
-                href={href}
-                onClick={(event) => {
-                  // Mimic changing the page when clicked; this doesn't happen
-                  // in react-styleguidist because of the hash-based routing.
-                  event.currentTarget.blur();
-                }}
-                target={shouldOpenInNewTab ? '_blank' : undefined}
-              >
-                {visibleName}
-              </Link>
-              {content}
-            </li>
-          );
-        },
-      )}
+              `}
+              href={href}
+              onClick={(event) => {
+                // Mimic changing the page when clicked; this doesn't happen
+                // in react-styleguidist because of the hash-based routing.
+                event.currentTarget.blur();
+              }}
+              target={shouldOpenInNewTab ? '_blank' : undefined}
+            >
+              {visibleName}
+            </Link>
+            {content}
+          </li>
+        );
+      })}
     </ul>
   );
 }

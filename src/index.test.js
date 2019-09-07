@@ -19,21 +19,15 @@ describe('Package entrypoint', () => {
   });
 
   describe('Component exports', () => {
-    const componentFolders = fs
-      .readdirSync('src/components/')
-      .filter((file) => {
-        return fs.statSync(path.join('src/components/', file)).isDirectory();
-      });
+    const componentFolders = fs.readdirSync('src/components/').filter((file) => {
+      return fs.statSync(path.join('src/components/', file)).isDirectory();
+    });
 
     const components = componentFolders
       .map((componentType) => {
-        return fs
-          .readdirSync(`src/components/${componentType}/`)
-          .filter((file) => {
-            return fs
-              .statSync(path.join('src/components/', componentType, file))
-              .isDirectory();
-          });
+        return fs.readdirSync(`src/components/${componentType}/`).filter((file) => {
+          return fs.statSync(path.join('src/components/', componentType, file)).isDirectory();
+        });
       })
       .reduce((acc, component) => acc.concat(component), []);
 
