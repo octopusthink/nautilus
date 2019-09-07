@@ -12,10 +12,7 @@ function trimHash(hash, prependHash) {
   if (!hash) {
     return '';
   }
-  const regexp = new RegExp(
-    '^' + escapeRegExp(prependHash || defaultPrependHash),
-    'g',
-  );
+  const regexp = new RegExp('^' + escapeRegExp(prependHash || defaultPrependHash), 'g');
   return hash.replace(regexp, '');
 }
 

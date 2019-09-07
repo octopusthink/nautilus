@@ -24,16 +24,7 @@ export const qualityControl = (props) => {
 };
 
 export const Paragraph = (props) => {
-  const {
-    children,
-    className,
-    large,
-    small,
-    inverse,
-    dark,
-    light,
-    ...otherProps
-  } = props;
+  const { children, className, large, small, inverse, dark, light, ...otherProps } = props;
 
   qualityControl(props);
 

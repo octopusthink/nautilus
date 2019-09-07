@@ -57,15 +57,9 @@ describe('Tabs', () => {
   it('should set the first tab to active by default', () => {
     const { getByTestId } = render(tabSet);
 
-    expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual(
-      'true',
-    );
-    expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual(
-      'false',
-    );
-    expect(getByTestId('thirdTab').getAttribute('aria-selected')).toEqual(
-      'false',
-    );
+    expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('true');
+    expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual('false');
+    expect(getByTestId('thirdTab').getAttribute('aria-selected')).toEqual('false');
   });
 
   it('should change the active tab when that tab is clicked', async () => {
@@ -75,15 +69,9 @@ describe('Tabs', () => {
 
     await waitForElement(() => getByTestId('thirdTab'));
 
-    expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual(
-      'false',
-    );
-    expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual(
-      'false',
-    );
-    expect(getByTestId('thirdTab').getAttribute('aria-selected')).toEqual(
-      'true',
-    );
+    expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('false');
+    expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual('false');
+    expect(getByTestId('thirdTab').getAttribute('aria-selected')).toEqual('true');
   });
 
   it('should render styles for Tabs', () => {
@@ -104,16 +92,10 @@ describe('Tabs', () => {
 
         await waitForElement(() => getByTestId('secondTab'));
 
-        expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual(
-          'false',
-        );
-        expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual(
-          'true',
-        );
+        expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('false');
+        expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual('true');
         expect(getByTestId('secondTab')).toHaveFocus();
-        expect(getByTestId('thirdTab').getAttribute('aria-selected')).toEqual(
-          'false',
-        );
+        expect(getByTestId('thirdTab').getAttribute('aria-selected')).toEqual('false');
       });
 
       it('should do nothing when the left arrow key is pressed but there are no previous tabs', async () => {
@@ -126,16 +108,10 @@ describe('Tabs', () => {
 
         await wait();
 
-        expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual(
-          'true',
-        );
+        expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('true');
         expect(getByTestId('firstTab')).toHaveFocus();
-        expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual(
-          'false',
-        );
-        expect(getByTestId('thirdTab').getAttribute('aria-selected')).toEqual(
-          'false',
-        );
+        expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual('false');
+        expect(getByTestId('thirdTab').getAttribute('aria-selected')).toEqual('false');
       });
 
       it('should do nothing when the right arrow key is pressed but there are no more tabs', async () => {
@@ -149,15 +125,9 @@ describe('Tabs', () => {
 
         await wait();
 
-        expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual(
-          'false',
-        );
-        expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual(
-          'false',
-        );
-        expect(getByTestId('thirdTab').getAttribute('aria-selected')).toEqual(
-          'true',
-        );
+        expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('false');
+        expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual('false');
+        expect(getByTestId('thirdTab').getAttribute('aria-selected')).toEqual('true');
         expect(getByTestId('thirdTab')).toHaveFocus();
       });
 
@@ -172,16 +142,10 @@ describe('Tabs', () => {
 
         await waitForElement(() => getByTestId('secondTab'));
 
-        expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual(
-          'false',
-        );
-        expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual(
-          'true',
-        );
+        expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('false');
+        expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual('true');
         expect(getByTestId('secondTab')).toHaveFocus();
-        expect(getByTestId('thirdTab').getAttribute('aria-selected')).toEqual(
-          'false',
-        );
+        expect(getByTestId('thirdTab').getAttribute('aria-selected')).toEqual('false');
       });
 
       it("should focus the active tab's content when the down arrow key is pressed", async () => {

@@ -39,9 +39,7 @@ describe('TextField', () => {
   });
 
   it('should set rows to 4 by default', () => {
-    const { getByTestId } = render(
-      <TextField data-testid="input" label="Hello" multiline />,
-    );
+    const { getByTestId } = render(<TextField data-testid="input" label="Hello" multiline />);
 
     expect(getByTestId('input').getAttribute('rows')).toEqual('4');
   });
@@ -53,17 +51,13 @@ describe('TextField', () => {
   });
 
   it('should set a `max-width` on the input element when `size` is set', () => {
-    const { container } = render(
-      <TextField id="testInput" label="Hello" size={10} />,
-    );
+    const { container } = render(<TextField id="testInput" label="Hello" size={10} />);
 
     expect(container).toMatchSnapshot();
   });
 
   it('should set a `max-width` on the textarea element when `size` is set', () => {
-    const { container } = render(
-      <TextField id="testInput" label="Hello" multiline size={10} />,
-    );
+    const { container } = render(<TextField id="testInput" label="Hello" multiline size={10} />);
 
     expect(container).toMatchSnapshot();
   });
@@ -75,18 +69,14 @@ describe('TextField', () => {
     expect(inputId).toBeDefined();
 
     rerender(<TextField size={4} />);
-    const reRenderedInputId = container
-      .querySelector('input')
-      .getAttribute('id');
+    const reRenderedInputId = container.querySelector('input').getAttribute('id');
 
     expect(reRenderedInputId).toEqual(inputId);
   });
 
   it('should not change a generated error message ID on subsequent renders', () => {
     const error = <div data-testid="errorMessage">Something went wrong!</div>;
-    const { getByTestId, rerender } = render(
-      <TextField error={error} label="Hello" />,
-    );
+    const { getByTestId, rerender } = render(<TextField error={error} label="Hello" />);
 
     const errorId = getByTestId('errorMessage').getAttribute('id');
 
@@ -102,9 +92,7 @@ describe('TextField', () => {
         Something went wrong!
       </div>
     );
-    const { getByTestId } = render(
-      <TextField data-testid="input" error={error} label="Hello" />,
-    );
+    const { getByTestId } = render(<TextField data-testid="input" error={error} label="Hello" />);
 
     const ariaLabel = getByTestId('input').getAttribute('aria-errormessage');
     const errorId = getByTestId('errorMessage').getAttribute('id');
@@ -161,9 +149,7 @@ describe('TextField', () => {
 
     it("should use the error message's ID for `aria-errormessage`", () => {
       const error = <div data-testid="errorMessage">Something went wrong!</div>;
-      const { getByTestId } = render(
-        <TextField data-testid="input" error={error} label="Hello" />,
-      );
+      const { getByTestId } = render(<TextField data-testid="input" error={error} label="Hello" />);
 
       const ariaLabel = getByTestId('input').getAttribute('aria-errormessage');
       const errorId = getByTestId('errorMessage').getAttribute('id');

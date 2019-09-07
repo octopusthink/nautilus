@@ -1,13 +1,6 @@
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import React, {
-  Fragment,
-  cloneElement,
-  forwardRef,
-  useCallback,
-  useMemo,
-  useState,
-} from 'react';
+import React, { cloneElement, forwardRef, useCallback, useMemo, useState } from 'react';
 import shortid from 'shortid';
 
 import { focusStyle, interfaceUI, toUnits } from 'styles';
@@ -75,9 +68,7 @@ export const TextField = forwardRef((props, ref) => {
       return undefined;
     }
 
-    return error.props && error.props.id
-      ? error.props.id
-      : `error-${generatedId}`;
+    return error.props && error.props.id ? error.props.id : `error-${generatedId}`;
   }, [error, generatedId]);
 
   const errorComponent = useMemo(() => {
@@ -112,7 +103,7 @@ export const TextField = forwardRef((props, ref) => {
   }
 
   return (
-    <Fragment>
+    <>
       {label && (
         <label
           css={css`
@@ -243,7 +234,7 @@ export const TextField = forwardRef((props, ref) => {
       />
       {errorComponent}
       {children}
-    </Fragment>
+    </>
   );
 });
 

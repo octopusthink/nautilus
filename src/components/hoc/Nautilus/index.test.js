@@ -22,9 +22,7 @@ describe('Nautilus', () => {
     );
 
     expect(getByText("I'm Important").tagName).toEqual('H2');
-    expect(getByText('Here I am, rock you like a paragraph.').tagName).toEqual(
-      'P',
-    );
+    expect(getByText('Here I am, rock you like a paragraph.').tagName).toEqual('P');
   });
 
   it('provide context from config', () => {

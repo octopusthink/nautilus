@@ -1,12 +1,6 @@
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import React, {
-  Children,
-  cloneElement,
-  Fragment,
-  useMemo,
-  useState,
-} from 'react';
+import React, { Children, cloneElement, Fragment, useMemo, useState } from 'react';
 import shortid from 'shortid';
 
 import List from 'components/ui/List';
@@ -60,7 +54,7 @@ export const Tags = (props) => {
   const WrapperComponent = items.length > 1 ? List : Fragment;
 
   return (
-    <Fragment>
+    <>
       {label && (
         <Paragraph // TODO: switch with VisuallyHidden component, once available.
           css={css`
@@ -78,7 +72,7 @@ export const Tags = (props) => {
         </Paragraph>
       )}
       <WrapperComponent>{items}</WrapperComponent>
-    </Fragment>
+    </>
   );
 };
 

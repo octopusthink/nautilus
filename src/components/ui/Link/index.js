@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 
 import { NautilusLinkComponent } from 'components/hoc/Nautilus';
 import { Icon } from 'components/ui/Icon';
@@ -13,8 +13,7 @@ export const Link = (props) => {
   const theme = useTheme();
 
   const { __unstyled, children, as, external, href, ...otherProps } = props;
-  const LinkComponent =
-    as || (external && 'a') || defaultLinkComponent || LinkTag;
+  const LinkComponent = as || (external && 'a') || defaultLinkComponent || LinkTag;
 
   return (
     <LinkComponent
@@ -46,10 +45,10 @@ export const Link = (props) => {
     >
       {children}
       {external && (
-        <Fragment>
+        <>
           {' '}
           <Icon name="external-link" title="External link" small />
-        </Fragment>
+        </>
       )}
     </LinkComponent>
   );

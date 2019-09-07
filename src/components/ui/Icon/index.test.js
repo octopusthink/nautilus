@@ -9,11 +9,9 @@ describe('Icon', () => {
     muteConsole({ times: 1, type: 'error' });
     render(<Icon />);
 
-    expect(
-      global.console.error.mock.calls[
-        global.console.error.mock.calls.length - 1
-      ][0],
-    ).toMatch('The prop `name` is marked as required in `Icon`');
+    expect(global.console.error.mock.calls[global.console.error.mock.calls.length - 1][0]).toMatch(
+      'The prop `name` is marked as required in `Icon`',
+    );
   });
 
   it('should return `null` when no `name` prop is supplied', () => {
@@ -64,25 +62,19 @@ describe('Icon', () => {
   });
 
   it('should match styles when background is supplied', () => {
-    const { container } = render(
-      <Icon name="airplay" background="hotpink" id="styling" />,
-    );
+    const { container } = render(<Icon name="airplay" background="hotpink" id="styling" />);
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it('should match styles when border is supplied', () => {
-    const { container } = render(
-      <Icon name="airplay" border="hotpink" id="styling" />,
-    );
+    const { container } = render(<Icon name="airplay" border="hotpink" id="styling" />);
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
   it('should match styles when color is supplied', () => {
-    const { container } = render(
-      <Icon name="airplay" color="hotpink" id="styling" />,
-    );
+    const { container } = render(<Icon name="airplay" color="hotpink" id="styling" />);
 
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -91,9 +83,7 @@ describe('Icon', () => {
     it('should set `aria-hidden` if no `title` exists', () => {
       const { container } = render(<Icon name="archive" />);
 
-      expect(
-        container.firstChild.firstChild.getAttribute('aria-hidden'),
-      ).toEqual('true');
+      expect(container.firstChild.firstChild.getAttribute('aria-hidden')).toEqual('true');
     });
 
     it('should pass aXe tests without a title', async () => {
@@ -103,19 +93,13 @@ describe('Icon', () => {
     });
 
     it('should not set `aria-hidden` if a `title` is supplied', () => {
-      const { container } = render(
-        <Icon name="archive" title="Paper filing box" />,
-      );
+      const { container } = render(<Icon name="archive" title="Paper filing box" />);
 
-      expect(
-        container.firstChild.firstChild.getAttribute('aria-hidden'),
-      ).toBeNull();
+      expect(container.firstChild.firstChild.getAttribute('aria-hidden')).toBeNull();
     });
 
     it('should pass aXe tests with a title', async () => {
-      const { container } = render(
-        <Icon name="archive" title="Paper filing box" />,
-      );
+      const { container } = render(<Icon name="archive" title="Paper filing box" />);
 
       expect(await axe(container.innerHTML)).toHaveNoViolations();
     });

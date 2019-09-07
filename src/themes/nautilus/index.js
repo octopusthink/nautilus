@@ -226,8 +226,7 @@ export const theme = {
         capitalization: 'uppercase', // uppercase, lowercase, sentence, title
         colorPosition: 'background', // background or border
         borderRadius: 0,
-        padding:
-          'toUnits(theme.spacing.padding.xSmall) toUnits(theme.spacing.padding.small)',
+        padding: 'toUnits(theme.spacing.padding.xSmall) toUnits(theme.spacing.padding.small)',
       },
     },
   },
