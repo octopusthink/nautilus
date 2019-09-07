@@ -6485,7 +6485,7 @@ var List = function List(props) {
     });
   }, [children]);
   var theme = Object(themes__WEBPACK_IMPORTED_MODULE_11__["useTheme"])();
-  return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])(react__WEBPACK_IMPORTED_MODULE_6__["Fragment"], null, description, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])(ListComponent, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
+  return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, description, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])(ListComponent, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
     "aria-labelledby": description && description.props.id,
     css:
     /*#__PURE__*/
@@ -7966,7 +7966,7 @@ var Link = function Link(props) {
     /*#__PURE__*/
     Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("border-bottom:2px solid ", theme.colors.state.interactive, ";color:", theme.colors.state.interactiveText, ";text-decoration:none;transition:all 200ms ease-in-out;&:hover{border-color:", theme.colors.state.hover, ";color:", theme.colors.state.hoverText, ";}&:focus{background:", theme.colors.state.interactive, ";border-color:", theme.colors.state.interactiveText, ";color:", theme.colors.text.dark, ";outline:none;}" + ( true ? "" : undefined)),
     href: href
-  }, otherProps), children, external && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(react__WEBPACK_IMPORTED_MODULE_4__["Fragment"], null, ' ', Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(components_ui_Icon__WEBPACK_IMPORTED_MODULE_6__["Icon"], {
+  }, otherProps), children, external && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(react__WEBPACK_IMPORTED_MODULE_4___default.a.Fragment, null, ' ', Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(components_ui_Icon__WEBPACK_IMPORTED_MODULE_6__["Icon"], {
     name: "external-link",
     title: "External link",
     small: true
@@ -15725,7 +15725,7 @@ var TextField = Object(react__WEBPACK_IMPORTED_MODULE_5__["forwardRef"])(functio
     InputComponent = 'textarea';
   }
 
-  return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])(react__WEBPACK_IMPORTED_MODULE_5__["Fragment"], null, label && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])("label", {
+  return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])(react__WEBPACK_IMPORTED_MODULE_5___default.a.Fragment, null, label && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])("label", {
     css:
     /*#__PURE__*/
 
@@ -16013,6 +16013,7 @@ var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(2);
+var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
 // EXTERNAL MODULE: ./node_modules/shortid/index.js
 var shortid = __webpack_require__(41);
@@ -16218,7 +16219,7 @@ var Tags_Tags = function Tags(props) {
     return tagElements[0];
   }, [children, generatedId, label]);
   var WrapperComponent = items.length > 1 ? List["default"] : react["Fragment"];
-  return Object(core_browser_esm["d" /* jsx */])(react["Fragment"], null, label && Object(core_browser_esm["d" /* jsx */])(Paragraph["default"] // TODO: switch with VisuallyHidden component, once available.
+  return Object(core_browser_esm["d" /* jsx */])(react_default.a.Fragment, null, label && Object(core_browser_esm["d" /* jsx */])(Paragraph["default"] // TODO: switch with VisuallyHidden component, once available.
   , {
     css:
     /*#__PURE__*/
@@ -16269,6 +16270,7 @@ var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(2);
+var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
 // EXTERNAL MODULE: ./node_modules/shortid/index.js
 var shortid = __webpack_require__(41);
@@ -16526,7 +16528,7 @@ var Tabs_Tabs = function Tabs(props) {
       });
     });
   }, [children, activeTab, focusedSection, tabsId, sectionToFocusRef]);
-  return Object(core_browser_esm["d" /* jsx */])(react["Fragment"], null, labels && !!labels.length && Object(core_browser_esm["d" /* jsx */])("ul", extends_default()({
+  return Object(core_browser_esm["d" /* jsx */])(react_default.a.Fragment, null, labels && !!labels.length && Object(core_browser_esm["d" /* jsx */])("ul", extends_default()({
     css:
     /*#__PURE__*/
 
