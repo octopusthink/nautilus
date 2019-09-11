@@ -14,3 +14,4 @@ export { default as SkipLink } from './ui/SkipLink';
 export { default as Tabs } from './ui/Tabs';
 export { default as Tags } from './ui/Tags';
 export { default as TextField } from './ui/TextField';
+export { default as VisuallyHidden } from './ui/VisuallyHidden';
