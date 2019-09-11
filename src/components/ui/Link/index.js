@@ -47,7 +47,14 @@ export const Link = (props) => {
       {external && (
         <React.Fragment>
           {' '}
-          <Icon name="external-link" title="External link" small />
+          <Icon
+            name="external-link"
+            title="External link"
+            small
+            css={css`
+              margin: 0;
+            `}
+          />
         </React.Fragment>
       )}
     </LinkComponent>
