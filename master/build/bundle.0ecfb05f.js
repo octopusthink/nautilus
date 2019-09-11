@@ -7946,6 +7946,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var LinkTag = 'a';
+
+var _ref =  true ? {
+  name: "1uk1gs8",
+  styles: "margin:0;"
+} : undefined;
+
 var Link = function Link(props) {
   var defaultLinkComponent = Object(react__WEBPACK_IMPORTED_MODULE_4__["useContext"])(components_hoc_Nautilus__WEBPACK_IMPORTED_MODULE_5__["NautilusLinkComponent"]);
   var theme = Object(themes__WEBPACK_IMPORTED_MODULE_7__["useTheme"])();
@@ -7969,7 +7975,10 @@ var Link = function Link(props) {
   }, otherProps), children, external && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(react__WEBPACK_IMPORTED_MODULE_4___default.a.Fragment, null, ' ', Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(components_ui_Icon__WEBPACK_IMPORTED_MODULE_6__["Icon"], {
     name: "external-link",
     title: "External link",
-    small: true
+    small: true,
+    css:
+    /*#__PURE__*/
+    _ref
   })));
 };
 Link.defaultProps = {
