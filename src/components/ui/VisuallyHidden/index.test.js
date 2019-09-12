@@ -39,9 +39,7 @@ describe('Heading', () => {
 
   describe('accessibility', () => {
     it('should pass aXe tests', async () => {
-      const { container } = render(
-        <VisuallyHidden>Hello to assistive technology!</VisuallyHidden>,
-      );
+      const { container } = render(<VisuallyHidden>Hello to assistive technology!</VisuallyHidden>);
 
       expect(await axe(container.innerHTML)).toHaveNoViolations();
     });
