@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const PeerDepsExternalsPlugin = require('peer-deps-externals-webpack-plugin');
+const webpack = require('webpack');
 
 const projectPath = path.resolve(fs.realpathSync(process.cwd()), '.');
 const srcPath = path.resolve(fs.realpathSync(process.cwd()), 'src');
@@ -38,7 +39,12 @@ const config = {
     libraryTarget: 'umd',
     path: path.join(__dirname, 'dist'),
   },
-  plugins: [],
+  plugins: [
+    new webpack.DefinePlugin({
+      ENV: JSON.stringify(process.env.NODE_ENV),
+      USE_ANALYTICS: JSON.stringify(process.env.NODE_ENV === 'production'),
+    }),
+  ],
   resolve: {
     // Add src/ folder for easier includes within the project.
     modules: [srcPath, projectPath, 'node_modules'],
