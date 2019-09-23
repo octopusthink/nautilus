@@ -57263,7 +57263,12 @@ var StyleGuide_StyleGuide = function StyleGuide(_ref3) {
     StyleGuide_ref2
   }, children, Object(core_browser_esm["d" /* jsx */])(components_Footer, null, Object(core_browser_esm["d" /* jsx */])(Markdown["a" /* default */], {
     text: "Made with \u2764\uFE0F by [Octopus Think](https://octopusthink.com/). Say \uD83D\uDC4B on [GitHub](https://github.com/octopusthink/nautilus)."
-  })))));
+  })))),  true && Object(core_browser_esm["d" /* jsx */])("script", {
+    type: "text/javascript",
+    dangerouslySetInnerHTML: {
+      __html: "\n            var _paq = window._paq || [];\n            _paq.push([\"disableCookies\"]);\n            _paq.push(['trackPageView']);\n            _paq.push(['enableLinkTracking']);\n            (function() {\n              var u=\"https://analytics.octopusth.ink/\";\n              _paq.push(['setTrackerUrl', u+'matomo.php']);\n              _paq.push(['setSiteId', '2']);\n              var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];\n              g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);\n            })();"
+    }
+  }));
 };
 StyleGuide_StyleGuide.propTypes = {
   children: prop_types_default.a.node.isRequired,
