@@ -15,14 +15,7 @@ import { metadata, toUnits } from 'styles';
 import theme from 'styleguide/theme';
 import { Icon } from 'components/ui/Icon';
 
-export const StyleGuide = ({
-  children,
-  hasSidebar,
-  homepageUrl,
-  title,
-  toc,
-  version,
-}) => {
+export const StyleGuide = ({ children, hasSidebar, homepageUrl, title, toc, version }) => {
   const mobileBreakpoint = 768;
   const mobileMenuPadding = toUnits(theme.spacing.padding.large);
   const tabletMenuPadding = toUnits(theme.spacing.padding.xLarge);
@@ -271,6 +264,26 @@ export const StyleGuide = ({
           </Footer>
         </div>
       </main>
+
+      {USE_ANALYTICS && (
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+            var _paq = window._paq || [];
+            _paq.push(["disableCookies"]);
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function() {
+              var u="https://analytics.octopusth.ink/";
+              _paq.push(['setTrackerUrl', u+'matomo.php']);
+              _paq.push(['setSiteId', '2']);
+              var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+              g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+            })();`,
+          }}
+        />
+      )}
     </Nautilus>
   );
 };
