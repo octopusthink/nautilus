@@ -4,8 +4,9 @@ name: Tests
 on:
   push:
     branches:
-      - "*"
+      - "!*"
       - "!gh-pages"
+      - "master"
     tags:
       - v*
   pull_request:
