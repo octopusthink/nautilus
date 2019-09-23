@@ -15278,12 +15278,6 @@ var qualityControl = function qualityControl(props) {
     return prop;
   }).length <= 1, '<Button> should only use one of `danger`, `warning`, or `success`. Pick a lane!');
 };
-
-var _ref =  true ? {
-  name: "8107z4",
-  styles: "border-left:0;border-radius:0;border-right:0;border-top:0;padding-left:0;padding-right:0;"
-} : undefined;
-
 var Button = function Button(props) {
   var children = props.children,
       danger = props.danger,
@@ -15363,17 +15357,27 @@ var Button = function Button(props) {
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])(styles__WEBPACK_IMPORTED_MODULE_9__[/* interfaceUI */ "i"].medium(theme), " background:", theme.colors.buttons.neutral, ";border:2px solid ", currentButtonColor, ";border-radius:8px;color:", currentButtonColor, ";cursor:pointer;display:inline-block;margin:0 ", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "n"])(theme.spacing.margin.xxSmall), " ", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "n"])(theme.spacing.margin.xSmall), ";outline:none;padding:", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "n"])(theme.spacing.padding.medium), " ", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "n"])(theme.spacing.padding.large), ";position:relative;text-align:center;text-decoration:none;top:0;transition:box-shadow 200ms;&::-moz-focus-inner{border:0;}&:active{border-color:", currentButtonColorDark, ";color:", currentButtonColorDark, ";top:2px;}&:focus{box-shadow:0 0 1px 4px ", currentButtonColorLight, ";outline:none;}&:hover{box-shadow:0 2px 0 0 ", currentButtonColorDark, ";}", primary &&
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])(styles__WEBPACK_IMPORTED_MODULE_9__[/* interfaceUI */ "i"].medium(theme), " background:", theme.colors.buttons.neutral, ";border:2px solid ", currentButtonColor, ";border-radius:8px;color:", currentButtonColor, ";cursor:pointer;display:inline-block;margin:0 ", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "n"])(theme.spacing.margin.xxSmall), " ", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "n"])(theme.spacing.margin.xSmall), ";outline:none;padding:", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "n"])(theme.spacing.padding.medium), " ", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "n"])(theme.spacing.padding.large), ";position:relative;text-align:center;text-decoration:none;top:0;transition:all 200ms ease-in-out;&::-moz-focus-inner{border:0;}&:active{border-color:", currentButtonColorDark, ";color:", currentButtonColorDark, ";top:2px;}&:focus{box-shadow:0 0 1px 4px ", currentButtonColorLight, ";outline:none;}", primary &&
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("background:", currentButtonColor, ";color:", theme.colors.buttons.neutral, ";&:active{background:", currentButtonColorDark, ";color:", theme.colors.buttons.neutral, ";}" + ( true ? "" : undefined)), " ", minimal &&
-      /*#__PURE__*/
-      _ref, " ", navigation &&
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("background:", currentButtonColor, ";color:", theme.colors.buttons.neutral, ";&:hover{background-color:", currentButtonColorDark, ";}&:active{background:", currentButtonColorDark, ";color:", theme.colors.buttons.neutral, ";}" + ( true ? "" : undefined)), " ", minimal &&
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("&::after{content:' \u2192';display:inline;padding-right:", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "n"])(theme.spacing.padding.xSmall), ";transition:all 200ms;}&:hover::after{margin-left:", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "n"])(theme.spacing.padding.xSmall), ";padding-right:0;}" + ( true ? "" : undefined)),  true ? "" : undefined),
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("background:transparent;border:0;padding-left:0;padding-right:0;position:relative;&::before{content:'';position:absolute;bottom:0;width:0;border-bottom:2px solid ", currentButtonColorDark, ";transition:all 200ms ease-in-out;}&:hover::before{width:100%;}" + ( true ? "" : undefined)), " ", navigation &&
+      /*#__PURE__*/
+
+      /*#__PURE__*/
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("&::after{content:' \u2192';display:inline;padding-right:", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "n"])(theme.spacing.padding.xSmall), ";transition:all 200ms ease-in-out;}&:hover::after{margin-left:", Object(styles__WEBPACK_IMPORTED_MODULE_9__[/* toUnits */ "n"])(theme.spacing.padding.xSmall), ";padding-right:0;}" + ( true ? "" : undefined)), " &:hover{", !minimal &&
+      /*#__PURE__*/
+
+      /*#__PURE__*/
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("border-color:", currentButtonColorDark, ";box-shadow:0 2px 4px rgba(0,0,0,0.25);" + ( true ? "" : undefined)), " ", !primary &&
+      /*#__PURE__*/
+
+      /*#__PURE__*/
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("color:", currentButtonColorDark, ";" + ( true ? "" : undefined)), "}" + ( true ? "" : undefined)),
       disabled: !navigation ? disabled : undefined
     }, linkPropsToUse, otherProps), iconName && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])(components_ui_Icon__WEBPACK_IMPORTED_MODULE_8__["default"], {
       css:
