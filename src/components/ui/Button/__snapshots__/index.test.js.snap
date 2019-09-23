@@ -20,8 +20,8 @@ exports[`Button should match styles 1`] = `
   -webkit-text-decoration: none;
   text-decoration: none;
   top: 0;
-  -webkit-transition: box-shadow 200ms;
-  transition: box-shadow 200ms;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
 .emotion-0::-moz-focus-inner {
@@ -40,7 +40,9 @@ exports[`Button should match styles 1`] = `
 }
 
 .emotion-0:hover {
-  box-shadow: 0 2px 0 0 #94225f;
+  border-color: #94225f;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  color: #94225f;
 }
 
 <button
