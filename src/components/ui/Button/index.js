@@ -164,13 +164,10 @@ export const Button = (props) => {
         // Minimal styles
         ${minimal &&
           css`
-            border-left: 0;
-            border-radius: 0;
-            border-right: 0;
-            border-top: 0;
+            background: transparent;
+            border: 0;
             padding-left: 0;
             padding-right: 0;
-            border: 0;
             position: relative;
 
             &::before {
