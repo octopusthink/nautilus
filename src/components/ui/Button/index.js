@@ -132,19 +132,6 @@ export const Button = (props) => {
           outline: none;
         }
 
-        &:hover {
-          ${!minimal &&
-            css`
-              border-color: ${currentButtonColorDark};
-              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-            `}
-
-          ${!primary &&
-            css`
-              color: ${currentButtonColorDark};
-            `}
-        }
-
         // Primary styles
         ${primary &&
           css`
@@ -198,6 +185,19 @@ export const Button = (props) => {
               padding-right: 0;
             }
           `}
+
+        &:hover {
+          ${!minimal &&
+            css`
+              border-color: ${currentButtonColorDark};
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+            `}
+
+          ${!primary &&
+            css`
+              color: ${currentButtonColorDark};
+            `}
+        }
       `}
       disabled={!navigation ? disabled : undefined}
       {...linkPropsToUse}
