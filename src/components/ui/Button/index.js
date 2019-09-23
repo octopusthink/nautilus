@@ -115,7 +115,7 @@ export const Button = (props) => {
         text-align: center;
         text-decoration: none;
         top: 0;
-        transition: box-shadow 200ms;
+        transition: all 200ms ease-in-out;
 
         &::-moz-focus-inner {
           border: 0;
@@ -132,14 +132,15 @@ export const Button = (props) => {
           outline: none;
         }
 
-        &:hover {
-          box-shadow: 0 2px 0 0 ${currentButtonColorDark};
-        }
-
+        // Primary styles
         ${primary &&
           css`
             background: ${currentButtonColor};
             color: ${theme.colors.buttons.neutral};
+
+            &:hover {
+              background-color: ${currentButtonColorDark};
+            }
 
             &:active {
               background: ${currentButtonColorDark};
@@ -147,14 +148,27 @@ export const Button = (props) => {
             }
           `}
 
+        // Minimal styles
         ${minimal &&
           css`
-            border-left: 0;
-            border-radius: 0;
-            border-right: 0;
-            border-top: 0;
+            background: transparent;
+            border: 0;
             padding-left: 0;
             padding-right: 0;
+            position: relative;
+
+            &::before {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              width: 0;
+              border-bottom: 2px solid ${currentButtonColorDark};
+              transition: all 200ms ease-in-out;
+            }
+
+            &:hover::before {
+              width: 100%;
+            }
           `}
 
         ${navigation &&
@@ -163,7 +177,7 @@ export const Button = (props) => {
               content: ' →';
               display: inline;
               padding-right: ${toUnits(theme.spacing.padding.xSmall)};
-              transition: all 200ms;
+              transition: all 200ms ease-in-out;
             }
 
             &:hover::after {
@@ -171,6 +185,19 @@ export const Button = (props) => {
               padding-right: 0;
             }
           `}
+
+        &:hover {
+          ${!minimal &&
+            css`
+              border-color: ${currentButtonColorDark};
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+            `}
+
+          ${!primary &&
+            css`
+              color: ${currentButtonColorDark};
+            `}
+        }
       `}
       disabled={!navigation ? disabled : undefined}
       {...linkPropsToUse}
