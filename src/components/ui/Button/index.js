@@ -116,6 +116,7 @@ export const Button = (props) => {
         text-decoration: none;
         top: 0;
         transition: all 200ms ease-in-out;
+        transition: top 100ms ease;
 
         &::-moz-focus-inner {
           border: 0;
