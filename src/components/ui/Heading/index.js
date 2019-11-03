@@ -89,6 +89,10 @@ Heading.propTypes = {
   children: PropTypes.node,
   /** Inverse text colour. Used for dark backgrounds. */
   inverse: PropTypes.bool,
+  /** Darken text colour. */
+  dark: PropTypes.bool,
+  /** Lighten text colour. */
+  light: PropTypes.bool,
   /** Semantic hierarchy level of the `<h>` element in the markup (ex: `<h3>`). The more semantically important the level, the larger the heading will appear visually; an `<h2>` will be visually styled as "large" while an `<h4>` will be visually small. */
   level: PropTypes.oneOf(HeadingLevels),
 };
