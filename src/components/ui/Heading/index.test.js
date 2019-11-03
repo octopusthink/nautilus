@@ -57,6 +57,12 @@ describe('Heading', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  it('should invert CSS colour when the `inverse` prop is set', () => {
+    const { container } = render(<Heading inverse>Inverted heading</Heading>);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   it('should accept and pass through other props', () => {
     const { getByTestId } = render(
       <Heading className="custom-class" data-testid="heading" level={3}>
