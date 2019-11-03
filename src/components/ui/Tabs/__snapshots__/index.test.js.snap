@@ -91,9 +91,9 @@ exports[`Tabs should render styles for Tabs 1`] = `
   line-height: 1.3333333333333333;
 }
 
+dl + .emotion-4,
 .Nautilus-List + .emotion-4,
-.Nautilus-Paragraph + .emotion-4,
-dl + .emotion-4 {
+.Nautilus-Paragraph + .emotion-4 {
   margin-top: 3.2rem;
 }
 

@@ -3,6 +3,7 @@
 exports[`Link should not output styles when __unstyled is true 1`] = `
 <div>
   <a
+    class="emotion-0"
     href="https://octopusthink.com/"
   >
     hello

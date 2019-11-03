@@ -22,16 +22,17 @@ export const Heading = (props) => {
     <HeadingElement
       css={css`
         margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
-        .${ListClassName} + &,
-        .${ParagraphClassName} + &,
-        /* TODO: Replace these with actual Nautilus components */
-        dl + & {
-          margin-top: ${toUnits(theme.spacing.margin.medium)};
-        }
 
         ${level === SMALL && heading.small(theme)};
         ${level === MEDIUM && heading.medium(theme)};
         ${level === LARGE && heading.large(theme)};
+
+        /* TODO: Replace dl + & with actual Nautilus components */
+        dl + &,
+        .${ListClassName} + &,
+        .${ParagraphClassName} + & {
+          margin-top: ${toUnits(theme.spacing.margin.medium)};
+        }
       `}
       {...otherProps}
     >

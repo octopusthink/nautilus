@@ -12,5 +12,8 @@
     "stylelint-order",
   ],
   "processors": ["stylelint-processor-styled-components"],
-  "rules": {},
+  "rules": {
+    "custom-property-empty-line-before": null,
+    "declaration-empty-line-before": null
+  },
 }

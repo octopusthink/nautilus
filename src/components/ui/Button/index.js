@@ -133,7 +133,7 @@ export const Button = (props) => {
           outline: none;
         }
 
-        // Primary styles
+        /* Primary styles */
         ${primary &&
           css`
             background: ${currentButtonColor};
@@ -149,7 +149,7 @@ export const Button = (props) => {
             }
           `}
 
-        // Minimal styles
+        /* Minimal styles */
         ${minimal &&
           css`
             background: transparent;
