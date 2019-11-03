@@ -34,7 +34,7 @@ Headings are provided in three different sizes. You should **always use headings
 <Heading level={4}>More at eleven 🕚</Heading>
 ```
 
-Headings are also available in dark and light variants, as well as an inverse. These colours can be set in your theme.
+Headings are also available in dark and light variants, as well as an inversed variant for each. These colours can be set in your theme.
 
 ```jsx
 <Heading level={4} dark>Dark</Heading>
