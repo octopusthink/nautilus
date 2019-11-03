@@ -11,6 +11,7 @@ exports[`Tabs.Tab should render styles for a Tabs.Tab 1`] = `
 }
 
 .emotion-0 {
+  color: #3b3f45;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 600;
