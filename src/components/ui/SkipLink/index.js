@@ -16,8 +16,10 @@ export const SkipLink = (props) => {
     <Link
       as="a"
       css={css`
-        // We should hide the SkipLink by default, only showing it when its been
-        // focused by the user.
+        /*
+          We should hide the SkipLink by default, only showing it when its
+          been focused by the user.
+        */
         ${VisuallyHiddenStyles}
         transition: none;
 

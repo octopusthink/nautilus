@@ -32,9 +32,9 @@ exports[`Heading should output large CSS when the \`level\` prop is 2 1`] = `
   line-height: 1.2222222222222223;
 }
 
+dl + .emotion-0,
 .Nautilus-List + .emotion-0,
-.Nautilus-Paragraph + .emotion-0,
-dl + .emotion-0 {
+.Nautilus-Paragraph + .emotion-0 {
   margin-top: 3.2rem;
 }
 
@@ -54,9 +54,9 @@ exports[`Heading should output medium CSS when the \`level\` prop is 3 1`] = `
   line-height: 1.2903225806451613;
 }
 
+dl + .emotion-0,
 .Nautilus-List + .emotion-0,
-.Nautilus-Paragraph + .emotion-0,
-dl + .emotion-0 {
+.Nautilus-Paragraph + .emotion-0 {
   margin-top: 3.2rem;
 }
 
@@ -76,9 +76,9 @@ exports[`Heading should output small CSS when the \`level\` prop is 4 1`] = `
   line-height: 1.3333333333333333;
 }
 
+dl + .emotion-0,
 .Nautilus-List + .emotion-0,
-.Nautilus-Paragraph + .emotion-0,
-dl + .emotion-0 {
+.Nautilus-Paragraph + .emotion-0 {
   margin-top: 3.2rem;
 }
 

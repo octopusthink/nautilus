@@ -200,9 +200,6 @@ export const TextField = forwardRef((props, ref) => {
               border-color: ${theme.colors.state.errorOutline};
             `}
 
-          &:optional {
-          }
-
           &:required {
             /*
               This might be a React Styleguidist style that we're overriding.

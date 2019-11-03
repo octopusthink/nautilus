@@ -80,8 +80,7 @@ export const List = (props) => {
                   line-height: 2.8;
                 }
               }
-            }
-          `}
+            `}
         `}
         className={classnames(ComponentClassName, className)}
         {...otherProps}

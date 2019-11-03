@@ -4,14 +4,14 @@ name: Tests
 on:
   push:
     branches:
-      - "!*"
-      - "!gh-pages"
-      - "master"
+      - '!*'
+      - '!gh-pages'
+      - 'master'
     tags:
       - v*
   pull_request:
     branches:
-      - "*"
+      - '*'
 
 jobs:
   lint:
@@ -23,8 +23,8 @@ jobs:
           node-version: 10
       - name: Install dependencies
         run: npm install
-      - name: Lint JS
-        run: npm run lint:eslint
+      - name: Lint Code
+        run: npm run lint
       # Removed because stylelint isn't playing super-well with emotion.
       # It helps flag some things but errors on composition when it really
       # shouldn't. It'd be great to enable this eventually though...

@@ -136,7 +136,7 @@ export const Tabs = (props) => {
                 }
 
                 &:hover {
-                  // color: ${theme.colors.accent.primaryDark};
+                  /* color: ${theme.colors.accent.primaryDark}; */
 
                   &::after {
                     border-color: ${theme.colors.neutral.grey400};
