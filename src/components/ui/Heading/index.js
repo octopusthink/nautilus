@@ -29,23 +29,28 @@ export const qualityControl = (props) => {
 };
 
 export const Heading = (props) => {
+  qualityControl(props);
+
   const theme = useTheme();
   const { children, dark, inverse, level, light, ...otherProps } = props;
-  qualityControl(props);
   const HeadingElement = `h${level}`;
 
   return (
     <HeadingElement
       css={css`
         color: ${theme.colors.text.default};
+        margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
+
         ${light &&
           css`
             color: ${theme.colors.text.light};
           `}
+
         ${dark &&
           css`
             color: ${theme.colors.text.dark};
           `}
+
         ${inverse &&
           css`
             color: ${theme.colors.text.inverse};
@@ -58,7 +63,6 @@ export const Heading = (props) => {
                 color: ${theme.colors.text.inverseDark};
               `}
           `}
-        margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
 
         ${level === SMALL && heading.small(theme)};
         ${level === MEDIUM && heading.medium(theme)};

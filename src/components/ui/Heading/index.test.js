@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { axe, render } from 'utils/testing';
+import { axe, muteConsole, render } from 'utils/testing';
 
 import Heading from '.';
 
@@ -61,6 +61,28 @@ describe('Heading', () => {
     const { container } = render(<Heading inverse>Inverted heading</Heading>);
 
     expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should only allow one of dark/light props', () => {
+    expect(() => {
+      muteConsole({ times: 1, type: 'error' });
+      render(
+        <Heading dark light>
+          Black and white
+        </Heading>,
+      );
+    }).toThrow('Heading cannot have both `dark` and `light` props set.');
+  });
+
+  it('should only allow one of large/small props', () => {
+    expect(() => {
+      muteConsole({ times: 1, type: 'error' });
+      render(
+        <Heading large small>
+          Big and little
+        </Heading>,
+      );
+    }).toThrow('Heading cannot have both `large` and `small` props set.');
   });
 
   it('should accept and pass through other props', () => {
