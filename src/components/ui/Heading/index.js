@@ -82,6 +82,8 @@ Heading.defaultProps = {
   children: undefined,
   inverse: false,
   level: 2,
+  dark: false,
+  light: false,
 };
 
 Heading.propTypes = {
