@@ -1,6 +1,7 @@
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
+import invariant from 'invariant';
 
 import { ComponentClassName as ListClassName } from 'components/ui/List';
 import { ComponentClassName as ParagraphClassName } from 'components/ui/Paragraph';
@@ -13,17 +14,49 @@ const SMALL = 4;
 
 const HeadingLevels = [LARGE, MEDIUM, SMALL];
 
+export const qualityControl = (props) => {
+  const { dark, large, light, small } = props;
+
+  invariant(
+    [dark, light].filter((prop) => prop).length <= 1,
+    'Heading cannot have both `dark` and `light` props set.',
+  );
+
+  invariant(
+    [large, small].filter((prop) => prop).length <= 1,
+    'Heading cannot have both `large` and `small` props set.',
+  );
+};
+
 export const Heading = (props) => {
   const theme = useTheme();
-  const { children, inverse, level, ...otherProps } = props;
+  const { children, dark, inverse, level, light, ...otherProps } = props;
+  qualityControl(props);
   const HeadingElement = `h${level}`;
 
   return (
     <HeadingElement
       css={css`
+        color: ${theme.colors.text.default};
+        ${light &&
+          css`
+            color: ${theme.colors.text.light};
+          `}
+        ${dark &&
+          css`
+            color: ${theme.colors.text.dark};
+          `}
         ${inverse &&
           css`
-            color: ${theme.colors.text.inverseLight};
+            color: ${theme.colors.text.inverse};
+            ${light &&
+              css`
+                color: ${theme.colors.text.inverseLight};
+              `}
+            ${dark &&
+              css`
+                color: ${theme.colors.text.inverseDark};
+              `}
           `}
         margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
 

@@ -34,6 +34,17 @@ Headings are provided in three different sizes. You should **always use headings
 <Heading level={4}>More at eleven 🕚</Heading>
 ```
 
+Headings are also available in dark and light variants, as well as an inverse. These colours can be set in your theme.
+
+```jsx
+<Heading level={4} dark>Dark</Heading>
+<Heading level={4}>Default</Heading>
+<Heading level={4} light>Light</Heading>
+<Heading level={4} inverse dark>Inverse Dark</Heading>
+<Heading level={4} inverse>Inverse</Heading>
+<Heading level={4} inverse light>Inverse Light</Heading>
+```
+
 ## Voice & Tone
 
 - Headings should use Sentence case, not Title Case.
