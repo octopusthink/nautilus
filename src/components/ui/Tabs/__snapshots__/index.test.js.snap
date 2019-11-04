@@ -1,5 +1,111 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Tabs should not render styles when unstyled prop is set 1`] = `
+.emotion-1 {
+  color: #3b3f45;
+  margin: 0 0 3.2rem;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.5555555555555556;
+  border-bottom: 1px solid #97a0af;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.emotion-0 {
+  color: #3b3f45;
+  display: inline-block;
+  padding: 0.8rem 2.4rem;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #181b1c;
+}
+
+.emotion-0::after {
+  display: block;
+  border-bottom: 3px solid transparent;
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+}
+
+.emotion-0:hover::after {
+  border-color: #bec4cd;
+}
+
+.emotion-0:focus {
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+}
+
+.emotion-0::after {
+  border-bottom: 3px solid;
+}
+
+.emotion-4:focus {
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+}
+
+.emotion-3 {
+  color: #3b3f45;
+  margin: 0 0 3.2rem;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.5555555555555556;
+}
+
+<div>
+  <ul
+    class="emotion-1"
+    role="tablist"
+  >
+    <li
+      role="presentation"
+    >
+      <a
+        aria-selected="true"
+        class="emotion-0"
+        data-testid="firstTab"
+        href="#myTabSet-section-0"
+        id="myTabSet-tab-0"
+        role="tab"
+      >
+        About
+      </a>
+    </li>
+  </ul>
+  <section
+    aria-labelledby="myTabSet-tab-0"
+    class="emotion-4"
+    data-testid="firstTabSection"
+    id="myTabSet-section-0"
+    role="tabpanel"
+    tabindex="-1"
+  >
+    <h4
+      class="emotion-2"
+    >
+      About
+    </h4>
+    <p
+      class="Nautilus-Paragraph emotion-3"
+    >
+      Puppies are cute.
+    </p>
+  </section>
+</div>
+`;
+
 exports[`Tabs should render styles for Tabs 1`] = `
 .emotion-3 {
   color: #3b3f45;
@@ -81,20 +187,6 @@ exports[`Tabs should render styles for Tabs 1`] = `
 .emotion-6:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
-}
-
-.emotion-4 {
-  margin: 0 0 3.2rem;
-  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 600;
-  font-size: 2.7rem;
-  line-height: 1.3333333333333333;
-}
-
-dl + .emotion-4,
-.Nautilus-List + .emotion-4,
-.Nautilus-Paragraph + .emotion-4 {
-  margin-top: 3.2rem;
 }
 
 .emotion-5 {

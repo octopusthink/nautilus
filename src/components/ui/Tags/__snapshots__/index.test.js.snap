@@ -23,3 +23,13 @@ exports[`Tags should match styles 1`] = `
   </span>
 </div>
 `;
+
+exports[`Tags should not output styles when unstyled is set 1`] = `
+<div>
+  <span
+    class="emotion-0"
+  >
+    hello
+  </span>
+</div>
+`;

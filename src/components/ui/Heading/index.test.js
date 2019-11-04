@@ -67,6 +67,22 @@ describe('Heading', () => {
     expect(getByTestId('heading').classList).toContain('custom-class');
   });
 
+  it('should not output styles when unstyled is set', () => {
+    const { container } = render(<Heading unstyled>hello</Heading>);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should not output styles when unstyled is set, even when style props are set', () => {
+    const { container } = render(
+      <Heading level={4} unstyled>
+        hello
+      </Heading>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   describe('accessibility', () => {
     it('should pass aXe tests', async () => {
       const { container } = render(<Heading level={3}>So-so heading</Heading>);

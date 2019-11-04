@@ -15,25 +15,29 @@ const HeadingLevels = [LARGE, MEDIUM, SMALL];
 
 export const Heading = (props) => {
   const theme = useTheme();
-  const { children, level, ...otherProps } = props;
+  const { children, level, unstyled, ...otherProps } = props;
   const HeadingElement = `h${level}`;
 
   return (
     <HeadingElement
-      css={css`
-        margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
+      css={
+        unstyled
+          ? undefined
+          : css`
+              margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
 
-        ${level === SMALL && heading.small(theme)};
-        ${level === MEDIUM && heading.medium(theme)};
-        ${level === LARGE && heading.large(theme)};
+              ${level === SMALL && heading.small(theme)};
+              ${level === MEDIUM && heading.medium(theme)};
+              ${level === LARGE && heading.large(theme)};
 
-        /* TODO: Replace dl + & with actual Nautilus components */
-        dl + &,
-        .${ListClassName} + &,
-        .${ParagraphClassName} + & {
-          margin-top: ${toUnits(theme.spacing.margin.medium)};
-        }
-      `}
+              /* TODO: Replace dl + & with actual Nautilus components */
+              dl + &,
+              .${ListClassName} + &,
+              .${ParagraphClassName} + & {
+                margin-top: ${toUnits(theme.spacing.margin.medium)};
+              }
+            `
+      }
       {...otherProps}
     >
       {children}
@@ -44,6 +48,7 @@ export const Heading = (props) => {
 Heading.defaultProps = {
   children: undefined,
   level: 2,
+  unstyled: false,
 };
 
 Heading.propTypes = {
@@ -51,6 +56,8 @@ Heading.propTypes = {
   children: PropTypes.node,
   /** Semantic hierarchy level of the `<h>` element in the markup (ex: `<h3>`). The more semantically important the level, the larger the heading will appear visually; an `<h2>` will be visually styled as "large" while an `<h4>` will be visually small. */
   level: PropTypes.oneOf(HeadingLevels),
+  /* @ignore Don't output any CSS styles. */
+  unstyled: PropTypes.bool,
 };
 
 export default Heading;

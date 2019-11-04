@@ -37,6 +37,12 @@ describe('Tag', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should not output styles when unstyled is set', () => {
+    const { container } = render(<Tag unstyled>hello</Tag>);
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should dismiss a Tag with `onDismiss` set', () => {
     const onDismiss = jest.fn();
     const { container, getByTestId } = render(

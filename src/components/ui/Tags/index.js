@@ -79,6 +79,7 @@ export const Tags = (props) => {
 Tags.defaultProps = {
   children: undefined,
   label: undefined,
+  unstyled: false,
 };
 
 Tags.propTypes = {
@@ -86,6 +87,8 @@ Tags.propTypes = {
   children: PropTypes.node,
   /** A description of the group of tags. */
   label: PropTypes.string,
+  /* @ignore Don't output any CSS styles. */
+  unstyled: PropTypes.bool,
 };
 
 // Export Tag as `Tags.Tag`.

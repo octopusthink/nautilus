@@ -17,6 +17,16 @@ describe('Button', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  it('should show danger styles', () => {
+    const { container } = render(
+      <Button danger __iconId="dangerous-button">
+        hello
+      </Button>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should not render a disabled <button> when `disabled` prop is false', () => {
     const { container } = render(<Button disabled={false}>Hello</Button>);
 
@@ -99,6 +109,22 @@ describe('Button', () => {
         </Button>,
       );
     }).toThrow(errorText);
+  });
+
+  it('should not output styles when unstyled is set', () => {
+    const { container } = render(<Button unstyled>hello</Button>);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should not output styles when unstyled is set, even with styling props', () => {
+    const { container } = render(
+      <Button danger unstyled __iconId="unstyled-button">
+        hello
+      </Button>,
+    );
+
+    expect(container).toMatchSnapshot();
   });
 
   it('should accept and pass through other props', () => {

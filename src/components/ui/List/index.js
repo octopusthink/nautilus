@@ -14,7 +14,18 @@ import Item, { ComponentClassName as ItemClassName } from './Item';
 export const ComponentClassName = 'Nautilus-List';
 
 export const List = (props) => {
-  const { children, className, dark, inverse, large, light, ordered, small, ...otherProps } = props;
+  const {
+    children,
+    className,
+    dark,
+    inverse,
+    large,
+    light,
+    ordered,
+    small,
+    unstyled,
+    ...otherProps
+  } = props;
 
   let ListComponent = 'ul';
   if (ordered === true) {
@@ -53,35 +64,39 @@ export const List = (props) => {
       {description}
       <ListComponent
         aria-labelledby={description && description.props.id}
-        css={css`
-          ${bodyStyles({ dark, inverse, large, light, small, theme })};
-          padding: 0;
-          ${ordered &&
-            css`
-              counter-reset: list-counter;
+        css={
+          unstyled
+            ? undefined
+            : css`
+                ${bodyStyles({ dark, inverse, large, light, small, theme })};
+                padding: 0;
+                ${ordered &&
+                  css`
+                    counter-reset: list-counter;
 
-              > .${ItemClassName} {
-                list-style: none;
-                counter-increment: list-counter;
+                    > .${ItemClassName} {
+                      list-style: none;
+                      counter-increment: list-counter;
 
-                &::before {
-                  content: counter(list-counter) '. ';
-                }
-              }
-            `}
-          ${!ordered &&
-            css`
-              > .${ItemClassName} {
-                list-style: none;
+                      &::before {
+                        content: counter(list-counter) '. ';
+                      }
+                    }
+                  `}
+                ${!ordered &&
+                  css`
+                    > .${ItemClassName} {
+                      list-style: none;
 
-                &::before {
-                  content: '\\2022';
-                  font-size: 0.6em;
-                  line-height: 2.8;
-                }
-              }
-            `}
-        `}
+                      &::before {
+                        content: '\\2022';
+                        font-size: 0.6em;
+                        line-height: 2.8;
+                      }
+                    }
+                  `}
+              `
+        }
         className={classnames(ComponentClassName, className)}
         {...otherProps}
       >
@@ -100,6 +115,7 @@ List.defaultProps = {
   dark: false,
   light: false,
   ordered: false,
+  unstyled: false,
 };
 
 List.propTypes = {
@@ -119,6 +135,8 @@ List.propTypes = {
   light: PropTypes.bool,
   /** Use numbers instead of bullets. */
   ordered: PropTypes.bool,
+  /* @ignore Don't output any CSS styles. */
+  unstyled: PropTypes.bool,
 };
 
 // Export Item as `List.Item`.

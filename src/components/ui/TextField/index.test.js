@@ -128,6 +128,12 @@ describe('TextField', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should hide styles when unstyled prop is set', () => {
+    const { container } = render(<TextField label="Hello" id="myTextField" unstyled />);
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should forward refs', () => {
     const ref = createRef();
 

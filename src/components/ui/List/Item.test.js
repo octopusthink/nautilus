@@ -26,4 +26,10 @@ describe('List.Item', () => {
 
     expect(getByTestId('listItem').classList).toContain('foo');
   });
+
+  it('should not output styles when unstyled is set', () => {
+    const { container } = render(<List.Item unstyled>raspberry</List.Item>);
+
+    expect(container).toMatchSnapshot();
+  });
 });

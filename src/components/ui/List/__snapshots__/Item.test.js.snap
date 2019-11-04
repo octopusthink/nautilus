@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`List.Item should not output styles when unstyled is set 1`] = `
+<div>
+  <li
+    class="Nautilus-ListItem emotion-0"
+  >
+    raspberry
+  </li>
+</div>
+`;
+
 exports[`List.Item should render list styles 1`] = `
 .emotion-0 {
   position: relative;

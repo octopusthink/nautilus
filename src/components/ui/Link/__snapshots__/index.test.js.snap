@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Link should not output styles when __unstyled is true 1`] = `
+exports[`Link should not output styles when unstyled is set 1`] = `
 <div>
   <a
     class="emotion-0"

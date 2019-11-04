@@ -1,5 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Heading should not output styles when unstyled is set 1`] = `
+<div>
+  <h2
+    class="emotion-0"
+  >
+    hello
+  </h2>
+</div>
+`;
+
+exports[`Heading should not output styles when unstyled is set, even when style props are set 1`] = `
+<div>
+  <h4
+    class="emotion-0"
+  >
+    hello
+  </h4>
+</div>
+`;
+
 exports[`Heading should output large CSS when the \`level\` prop is 2 1`] = `
 .emotion-0 {
   margin: 0 0 3.2rem;

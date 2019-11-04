@@ -26,6 +26,7 @@ export const qualityControl = (props) => {
 
 export const Button = (props) => {
   const {
+    __iconId,
     children,
     danger,
     disabled,
@@ -35,6 +36,7 @@ export const Button = (props) => {
     navigation,
     primary,
     success,
+    unstyled,
     warning,
     ...otherProps
   } = props;
@@ -47,9 +49,9 @@ export const Button = (props) => {
   if (navigation === true) {
     Component = Link;
     // Set properties that only a Link component should use.
-    // eslint-disable-next-line no-underscore-dangle
-    otherProps.__unstyled = true;
     otherProps.href = href;
+    // Don't include any link styles.
+    otherProps.unstyled = true;
     // Unset certain button-specific props.
     otherProps.type = undefined;
     linkPropsToUse = { ...linkProps };
@@ -99,7 +101,10 @@ export const Button = (props) => {
     // See: https://github.com/yannickcr/eslint-plugin-react/issues/1555
     // eslint-disable-next-line react/button-has-type
     <Component
-      css={css`
+      css={
+        unstyled
+          ? undefined
+          : css`
         ${interfaceUI.medium(theme)}
 
         background: ${theme.colors.buttons.neutral};
@@ -199,7 +204,8 @@ export const Button = (props) => {
               color: ${currentButtonColorDark};
             `}
         }
-      `}
+      `
+      }
       disabled={!navigation ? disabled : undefined}
       {...linkPropsToUse}
       {...otherProps}
@@ -209,6 +215,7 @@ export const Button = (props) => {
           css={css`
             margin-right: ${toUnits(theme.spacing.padding.xSmall)};
           `}
+          id={__iconId}
           name={iconName}
           small
         />
@@ -219,6 +226,7 @@ export const Button = (props) => {
 };
 
 Button.defaultProps = {
+  __iconId: undefined,
   children: undefined,
   danger: false,
   disabled: false,
@@ -229,41 +237,36 @@ Button.defaultProps = {
   primary: false,
   success: false,
   type: 'button',
+  unstyled: false,
   warning: false,
 };
 
 Button.propTypes = {
+  /** @ignore ID prop for the Icon component; only used for testing. */
+  __iconId: PropTypes.string,
   /** @ignore */
   children: PropTypes.node,
-
   /** Disables the button; this applies a disabled style but **does not disable any event handlers for the button**. Your `onClick`, `onTap`, etc. handlers should check for the `disabled` prop to modify their behaviour accordingly. */
   disabled: PropTypes.bool,
-
   /** Increase the visual prominence of this button in the UI. */
   primary: PropTypes.bool,
-
   /** Decrease the visual prominence of this button in the UI. */
   minimal: PropTypes.bool,
-
   /** Apply semantic styling to indicate success or positive intent. */
   success: PropTypes.bool,
-
   /** Apply semantic styling to indicate a warning. */
   warning: PropTypes.bool,
-
   /** Apply semantic styling to indicate danger or negative intent. */
   danger: PropTypes.bool,
-
   /** Used to link to a route that will be handled by Nautilus' `Link` component. */
   href: PropTypes.string,
-
   /** Props to pass to the underlying Nautilus `Link` component when `useNavigation` is `true`. */
   // eslint-disable-next-line react/forbid-prop-types
   linkProps: PropTypes.object,
-
   /** Outputs a Nautilus `<Link>` tag that looks (and largely behaves) like a `<Button>`, but can used as navigation. Setting this to `true` enables `Link` properties. */
   navigation: PropTypes.bool,
-
+  /* @ignore Don't output any CSS styles. */
+  unstyled: PropTypes.bool,
   /** HTML `type` attribute for the button. Defaults to `"button"`. */
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
 };

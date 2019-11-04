@@ -45,6 +45,12 @@ describe('Tags', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should not output styles when unstyled is set', () => {
+    const { container } = render(<Tags.Tag unstyled>hello</Tags.Tag>);
+
+    expect(container).toMatchSnapshot();
+  });
+
   describe('accessibility', () => {
     it('should pass aXe tests', async () => {
       const { container } = render(

@@ -15,3 +15,13 @@ exports[`Emphasis should match styles 1`] = `
   </em>
 </div>
 `;
+
+exports[`Emphasis should not output styles when unstyled is set 1`] = `
+<div>
+  <em
+    class="emotion-0"
+  >
+    hello
+  </em>
+</div>
+`;

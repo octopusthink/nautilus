@@ -115,3 +115,34 @@ exports[`List described by Paragraph component should render a paragraph outside
   </ul>
 </div>
 `;
+
+exports[`List should not output styles when unstyled is set 1`] = `
+.emotion-0 {
+  position: relative;
+  margin: 0 0 0.4rem;
+}
+
+.emotion-0::before {
+  position: absolute;
+  right: 101%;
+}
+
+<div>
+  <ul
+    class="Nautilus-List emotion-2"
+  >
+    <li
+      class="Nautilus-ListItem emotion-0"
+      data-testid="one"
+    >
+      apple
+    </li>
+    <li
+      class="Nautilus-ListItem emotion-0"
+      data-testid="two"
+    >
+      raspberry
+    </li>
+  </ul>
+</div>
+`;

@@ -39,6 +39,12 @@ describe('Paragraph', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  it('should not output styles when unstyled is set', () => {
+    const { container } = render(<Paragraph unstyled>I&apos;m a body of unstyled text.</Paragraph>);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   it('should accept and pass through other props', () => {
     const { getByTestId } = render(
       <Paragraph className="custom-class" data-testid="myText">
