@@ -127,6 +127,15 @@ export const theme = {
       danger: colors.red600,
       dangerDark: colors.red800,
       dangerLight: colors.red200,
+      neutral: colors.grey600,
+      neutralDark: colors.grey800,
+      neutralLight: colors.grey200,
+      inProgress: colors.blue600,
+      inProgressDark: colors.blue800,
+      inProgressLight: colors.blue200,
+      new: colors.purple600,
+      newDark: colors.purple800,
+      newLight: colors.purple200,
     },
 
     state: {
@@ -143,9 +152,13 @@ export const theme = {
       default: colors.grey900,
       dark: colors.black,
       light: colors.grey800,
-      inverse: colors.grey0,
+      inverse: colors.grey100,
       inverseLight: colors.white,
-      inverseDark: colors.grey100,
+      inverseDark: colors.grey300,
+      emphasis: colors.grey800,
+      emphasisBackground: 'transparent',
+      strong: colors.black,
+      strongBackground: colors.yellow100,
     },
 
     buttons: {

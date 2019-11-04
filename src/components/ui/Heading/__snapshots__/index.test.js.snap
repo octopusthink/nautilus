@@ -1,5 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Heading should darken text colour when \`dark\` prop is set 1`] = `
+.emotion-0 {
+  color: #3b3f45;
+  margin: 0 0 3.2rem;
+  color: #181b1c;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 600;
+  font-size: 3.6rem;
+  line-height: 1.2222222222222223;
+}
+
+dl + .emotion-0,
+.Nautilus-List + .emotion-0,
+.Nautilus-Paragraph + .emotion-0 {
+  margin-top: 3.2rem;
+}
+
+<h2
+  class="emotion-0"
+>
+  Inverted heading
+</h2>
+`;
+
 exports[`Heading should invert CSS colour when the \`inverse\` prop is set 1`] = `
 .emotion-0 {
   color: #3b3f45;

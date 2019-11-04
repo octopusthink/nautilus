@@ -84,7 +84,7 @@
     "eslint-plugin-react-hooks": "^2.2.0",
     "history": "^4.10.1",
     "jest": "^24.9.0",
-    "jest-axe": "3.1.0",
+    "jest-axe": "^3.2.0",
     "jest-dom": "^3.5.0",
     "jest-emotion": "^10.0.17",
     "peer-deps-externals-webpack-plugin": "^1.0.4",

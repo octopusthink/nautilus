@@ -1,11 +1,9 @@
-import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React, { Children, cloneElement, Fragment, useMemo, useState } from 'react';
 import shortid from 'shortid';
 
 import List from 'components/ui/List';
-import Paragraph from 'components/ui/Paragraph';
-import { ComponentClassName as ListItemClassName } from 'components/ui/List/Item';
+import VisuallyHidden from 'components/ui/VisuallyHidden';
 
 import Tag from './Tag';
 
@@ -23,22 +21,12 @@ export const Tags = (props) => {
       return (
         // TODO: Export an `UnstyledList` component we can use to prevent
         // override styles like these.
-        <List
-          aria-labelledby={label && generatedId}
-          css={css`
-            display: inline-flex;
-            list-style: none;
-            margin: 0;
-            width: 100%;
-
-            > .${ListItemClassName}::before {
-              content: '';
-            }
-          `}
-        >
+        <List aria-labelledby={label && generatedId} unstyled>
           {tagElements.map((tag, index) => {
-            // eslint-disable-next-line react/no-array-index-key
-            return <List.Item key={`tag-${index}`}>{tag}</List.Item>;
+            return (
+              // eslint-disable-next-line react/no-array-index-key
+              <List.Item key={`tag-${index}`}>{tag}</List.Item>
+            );
           })}
         </List>
       );
@@ -55,22 +43,7 @@ export const Tags = (props) => {
 
   return (
     <React.Fragment>
-      {label && (
-        <Paragraph // TODO: switch with VisuallyHidden component, once available.
-          css={css`
-            font-style: bold;
-            position: absolute;
-            left: -10000px;
-            top: auto;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-          `}
-          id={generatedId}
-        >
-          {label}
-        </Paragraph>
-      )}
+      {label && <VisuallyHidden id={generatedId}>{label}</VisuallyHidden>}
       <WrapperComponent>{items}</WrapperComponent>
     </React.Fragment>
   );
@@ -79,7 +52,6 @@ export const Tags = (props) => {
 Tags.defaultProps = {
   children: undefined,
   label: undefined,
-  unstyled: false,
 };
 
 Tags.propTypes = {
@@ -87,8 +59,6 @@ Tags.propTypes = {
   children: PropTypes.node,
   /** A description of the group of tags. */
   label: PropTypes.string,
-  /* @ignore Don't output any CSS styles. */
-  unstyled: PropTypes.bool,
 };
 
 // Export Tag as `Tags.Tag`.

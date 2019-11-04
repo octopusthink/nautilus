@@ -39,14 +39,19 @@ describe('Tags', () => {
     expect(getByTestId('myText').classList).toContain('custom-class');
   });
 
-  it('should match styles', () => {
-    const { container } = render(<Tags.Tag>hello</Tags.Tag>);
+  it('should match Tags styles', () => {
+    const { container } = render(
+      <Tags>
+        <Tags.Tag data-testid="child-one">Hello</Tags.Tag>
+        <Tags.Tag data-testid="child-two">Goodbye</Tags.Tag>
+      </Tags>,
+    );
 
     expect(container).toMatchSnapshot();
   });
 
-  it('should not output styles when unstyled is set', () => {
-    const { container } = render(<Tags.Tag unstyled>hello</Tags.Tag>);
+  it('should match styles', () => {
+    const { container } = render(<Tags.Tag>hello</Tags.Tag>);
 
     expect(container).toMatchSnapshot();
   });
