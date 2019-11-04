@@ -1,6 +1,7 @@
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
+import invariant from 'invariant';
 
 import { ComponentClassName as ListClassName } from 'components/ui/List';
 import { ComponentClassName as ParagraphClassName } from 'components/ui/Paragraph';
@@ -13,9 +14,25 @@ const SMALL = 4;
 
 const HeadingLevels = [LARGE, MEDIUM, SMALL];
 
+export const qualityControl = (props) => {
+  const { dark, large, light, small } = props;
+
+  invariant(
+    [dark, light].filter((prop) => prop).length <= 1,
+    'Heading cannot have both `dark` and `light` props set.',
+  );
+
+  invariant(
+    [large, small].filter((prop) => prop).length <= 1,
+    'Heading cannot have both `large` and `small` props set.',
+  );
+};
+
 export const Heading = (props) => {
+  qualityControl(props);
+
   const theme = useTheme();
-  const { children, level, unstyled, ...otherProps } = props;
+  const { children, dark, inverse, level, light, unstyled, ...otherProps } = props;
   const HeadingElement = `h${level}`;
 
   return (
@@ -24,19 +41,43 @@ export const Heading = (props) => {
         unstyled
           ? undefined
           : css`
-              margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
+        color: ${theme.colors.text.default};
+        margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
 
-              ${level === SMALL && heading.small(theme)};
-              ${level === MEDIUM && heading.medium(theme)};
-              ${level === LARGE && heading.large(theme)};
+        ${light &&
+          css`
+            color: ${theme.colors.text.light};
+          `}
 
-              /* TODO: Replace dl + & with actual Nautilus components */
-              dl + &,
-              .${ListClassName} + &,
-              .${ParagraphClassName} + & {
-                margin-top: ${toUnits(theme.spacing.margin.medium)};
-              }
-            `
+        ${dark &&
+          css`
+            color: ${theme.colors.text.dark};
+          `}
+
+        ${inverse &&
+          css`
+            color: ${theme.colors.text.inverse};
+            ${light &&
+              css`
+                color: ${theme.colors.text.inverseLight};
+              `}
+            ${dark &&
+              css`
+                color: ${theme.colors.text.inverseDark};
+              `}
+          `}
+
+        ${level === SMALL && heading.small(theme)};
+        ${level === MEDIUM && heading.medium(theme)};
+        ${level === LARGE && heading.large(theme)};
+
+        /* TODO: Replace dl + & with actual Nautilus components */
+        dl + &,
+        .${ListClassName} + &,
+        .${ParagraphClassName} + & {
+          margin-top: ${toUnits(theme.spacing.margin.medium)};
+        }
+      `
       }
       {...otherProps}
     >
@@ -47,13 +88,22 @@ export const Heading = (props) => {
 
 Heading.defaultProps = {
   children: undefined,
+  inverse: false,
   level: 2,
+  dark: false,
+  light: false,
   unstyled: false,
 };
 
 Heading.propTypes = {
   /** @ignore */
   children: PropTypes.node,
+  /** Inverse text colour. Used for dark backgrounds. */
+  inverse: PropTypes.bool,
+  /** Darken text colour. */
+  dark: PropTypes.bool,
+  /** Lighten text colour. */
+  light: PropTypes.bool,
   /** Semantic hierarchy level of the `<h>` element in the markup (ex: `<h3>`). The more semantically important the level, the larger the heading will appear visually; an `<h2>` will be visually styled as "large" while an `<h4>` will be visually small. */
   level: PropTypes.oneOf(HeadingLevels),
   /* @ignore Don't output any CSS styles. */
