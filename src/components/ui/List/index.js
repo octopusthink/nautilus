@@ -42,7 +42,7 @@ export const List = (props) => {
 
   const items = useMemo(() => {
     return Children.toArray(children).filter((child) => {
-      return child.type === Item;
+      return child.type !== Heading && child.type !== Paragraph;
     });
   }, [children]);
 

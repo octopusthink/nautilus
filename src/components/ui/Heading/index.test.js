@@ -65,7 +65,7 @@ describe('Heading', () => {
 
   it('should only allow one of dark/light props', () => {
     expect(() => {
-      muteConsole({ times: 1, type: 'error' });
+      muteConsole({ times: 2, type: 'error' });
       render(
         <Heading dark light>
           Black and white
@@ -76,7 +76,7 @@ describe('Heading', () => {
 
   it('should only allow one of large/small props', () => {
     expect(() => {
-      muteConsole({ times: 1, type: 'error' });
+      muteConsole({ times: 2, type: 'error' });
       render(
         <Heading large small>
           Big and little
