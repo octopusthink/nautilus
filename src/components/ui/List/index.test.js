@@ -29,30 +29,20 @@ describe('List', () => {
     expect(getByTestId('child')).toBeDefined();
   });
 
-  it('should not render non-List components as direct children', () => {
-    muteConsole({ times: 1, type: 'error' });
+  it('should render non-List components', () => {
+    // Previously we filtered out components that were not:
+    // * `<Heading>`
+    // * `<Paragraph>`
+    // * `<List.Item>`
+    // but this lead to weird bugs if the child component's type didn't match.
+    // See: https://github.com/octopusthink/nautilus/issues/157 for context.
     const { getByTestId } = render(
       <List>
         <div data-testid="child">hello</div>
       </List>,
     );
 
-    expect(() => {
-      getByTestId('child');
-    }).toThrow('Unable to find an element');
-  });
-
-  it('should not render regular <li> tags as direct children', () => {
-    muteConsole({ times: 1, type: 'error' });
-    const { getByTestId } = render(
-      <List>
-        <li data-testid="child">hello</li>
-      </List>,
-    );
-
-    expect(() => {
-      getByTestId('child');
-    }).toThrow('Unable to find an element');
+    expect(getByTestId('child')).toBeDefined();
   });
 
   it('should render several list items inside the list', () => {
