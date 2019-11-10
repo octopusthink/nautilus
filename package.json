@@ -54,6 +54,7 @@
     "shx": "^0.3.2"
   },
   "devDependencies": {
+    "acorn": "^6.3.0",
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
