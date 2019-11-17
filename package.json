@@ -44,7 +44,6 @@
   "homepage": "https://github.com/octopusthink/nautilus#readme",
   "dependencies": {
     "@emotion/core": "^10.0.22",
-    "@react-hook/window-size": "^1.0.8",
     "chroma-js": "^2.1.0",
     "classnames": "^2.2.6",
     "emotion-theming": "^10.0.19",
@@ -68,6 +67,7 @@
     "@octopusthink/eslint-config": "^0.5.0",
     "@octopusthink/prettier-config": "^0.5.2",
     "@reach/router": "^1.2.1",
+    "@react-hook/window-size": "^1.0.8",
     "@testing-library/react": "^8.0.9",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
