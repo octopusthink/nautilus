@@ -4,7 +4,7 @@ name: Publish Packages
 on:
   push:
     branches:
-      - "!*"
+      - '!*'
     tags:
       - v*
 
@@ -16,8 +16,15 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 10
+      - uses: actions/cache@v1
+        name: Cache npm modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Set NPM Auth Token
         run: npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
         env:
@@ -31,8 +38,15 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 10
+      - uses: actions/cache@v1
+        name: Cache npm modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Publish to gh-pages
         run: npm run publish:styleguide-for-version
         env:
