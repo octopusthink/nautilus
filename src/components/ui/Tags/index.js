@@ -27,6 +27,7 @@ export const Tags = (props) => {
           aria-labelledby={label && generatedId}
           css={css`
             display: inline-flex;
+            flex-wrap: wrap;
             list-style: none;
             margin: 0;
             width: 100%;
