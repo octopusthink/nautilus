@@ -4,7 +4,7 @@ import React, { Children, cloneElement, Fragment, useMemo, useState } from 'reac
 import shortid from 'shortid';
 
 import List from 'components/ui/List';
-import Paragraph from 'components/ui/Paragraph';
+import VisuallyHidden from 'components/ui/VisuallyHidden';
 import { ComponentClassName as ListItemClassName } from 'components/ui/List/Item';
 
 import Tag from './Tag';
@@ -27,6 +27,7 @@ export const Tags = (props) => {
           aria-labelledby={label && generatedId}
           css={css`
             display: inline-flex;
+            flex-wrap: wrap;
             list-style: none;
             margin: 0;
             width: 100%;
@@ -55,22 +56,7 @@ export const Tags = (props) => {
 
   return (
     <React.Fragment>
-      {label && (
-        <Paragraph // TODO: switch with VisuallyHidden component, once available.
-          css={css`
-            font-style: bold;
-            position: absolute;
-            left: -10000px;
-            top: auto;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-          `}
-          id={generatedId}
-        >
-          {label}
-        </Paragraph>
-      )}
+      {label && <VisuallyHidden id={generatedId}>{label}</VisuallyHidden>}
       <WrapperComponent>{items}</WrapperComponent>
     </React.Fragment>
   );

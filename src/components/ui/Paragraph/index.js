@@ -24,7 +24,17 @@ export const qualityControl = (props) => {
 };
 
 export const Paragraph = (props) => {
-  const { children, className, large, small, inverse, dark, light, ...otherProps } = props;
+  const {
+    children,
+    className,
+    dark,
+    inverse,
+    large,
+    light,
+    small,
+    unstyled,
+    ...otherProps
+  } = props;
 
   qualityControl(props);
 
@@ -33,16 +43,20 @@ export const Paragraph = (props) => {
   return (
     <p
       className={classnames(ComponentClassName, className)}
-      css={css`
-        ${bodyStyles({
-          large,
-          small,
-          inverse,
-          dark,
-          light,
-          theme,
-        })}
-      `}
+      css={
+        unstyled
+          ? undefined
+          : css`
+              ${bodyStyles({
+                large,
+                small,
+                inverse,
+                dark,
+                light,
+                theme,
+              })}
+            `
+      }
       {...otherProps}
     >
       {children}
@@ -58,6 +72,7 @@ Paragraph.defaultProps = {
   inverse: false,
   dark: false,
   light: false,
+  unstyled: false,
 };
 
 Paragraph.propTypes = {
@@ -75,6 +90,8 @@ Paragraph.propTypes = {
   dark: PropTypes.bool,
   /** Lighten text colour. */
   light: PropTypes.bool,
+  /* @ignore Don't output any CSS styles. */
+  unstyled: PropTypes.bool,
 };
 
 export const { defaultProps, propTypes } = Paragraph;
