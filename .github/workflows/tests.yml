@@ -21,15 +21,17 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 10
+      - uses: actions/cache@v1
+        name: Cache npm modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Lint Code
         run: npm run lint
-      # Removed because stylelint isn't playing super-well with emotion.
-      # It helps flag some things but errors on composition when it really
-      # shouldn't. It'd be great to enable this eventually though...
-      # - name: Lint CSS
-      #   run: npm run lint:css
   test:
     runs-on: ubuntu-latest
     steps:
@@ -37,7 +39,14 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 10
+      - uses: actions/cache@v1
+        name: Cache npm modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Run unit tests and code coverage
         run: npm run test:all-with-coverage

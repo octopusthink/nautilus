@@ -19,8 +19,6 @@ export const Tags = (props) => {
 
     if (tagElements.length > 1) {
       return (
-        // TODO: Export an `UnstyledList` component we can use to prevent
-        // override styles like these.
         <List aria-labelledby={label && generatedId} unstyled>
           {tagElements.map((tag, index) => {
             return (
