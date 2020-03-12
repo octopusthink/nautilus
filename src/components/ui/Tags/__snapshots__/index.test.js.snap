@@ -15,14 +15,18 @@ exports[`Tags should match Tags styles 1`] = `
   margin: 0 0.4rem 0.4rem 0;
 }
 
-.emotion-1 {
-  position: relative;
-  margin: 0 0 0.4rem;
-}
-
-.emotion-1::before {
-  position: absolute;
-  right: 101%;
+.emotion-4 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 <div>

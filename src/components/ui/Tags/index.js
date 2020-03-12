@@ -1,3 +1,4 @@
+import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React, { Children, cloneElement, Fragment, useMemo, useState } from 'react';
 import shortid from 'shortid';
@@ -19,11 +20,24 @@ export const Tags = (props) => {
 
     if (tagElements.length > 1) {
       return (
-        <List aria-labelledby={label && generatedId} unstyled>
+        <List
+          aria-labelledby={label && generatedId}
+          unstyled
+          css={css`
+            display: inline-flex;
+            flex-wrap: wrap;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+          `}
+        >
           {tagElements.map((tag, index) => {
             return (
               // eslint-disable-next-line react/no-array-index-key
-              <List.Item key={`tag-${index}`}>{tag}</List.Item>
+              <List.Item key={`tag-${index}`} unstyled>
+                {tag}
+              </List.Item>
             );
           })}
         </List>

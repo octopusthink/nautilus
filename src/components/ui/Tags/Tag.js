@@ -44,6 +44,7 @@ export const Tag = (props) => {
               ${backgroundColor &&
                 css`
                   background: ${backgroundColor};
+                  display: inline-block;
                   padding: ${toUnits(theme.spacing.padding.xSmall)}
                     ${toUnits(theme.spacing.padding.small)};
                 `}
