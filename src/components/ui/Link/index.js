@@ -34,7 +34,7 @@ export const Link = (props) => {
 
               &:focus {
                 border-color: transparent;
-                box-shadow: ${theme.colors.state.interactive} 0px 0px 0px 3px;
+                box-shadow: ${theme.colors.state.interactive} 0 0 0 3px;
                 outline: none;
               }
             `
