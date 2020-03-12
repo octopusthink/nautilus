@@ -7185,7 +7185,7 @@ var Link = function Link(props) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("border-bottom:2px solid ", theme.colors.state.interactive, ";color:", theme.colors.state.interactiveText, ";text-decoration:none;transition:all 200ms ease-in-out;&:hover{border-color:", theme.colors.state.hover, ";color:", theme.colors.state.hoverText, ";}&:focus{background:", theme.colors.state.interactive, ";border-color:", theme.colors.state.interactiveText, ";color:", theme.colors.text.dark, ";outline:none;}" + ( true ? "" : undefined)),
+    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("border-bottom:2px solid ", theme.colors.state.interactive, ";color:", theme.colors.state.interactiveText, ";text-decoration:none;transition:all 200ms ease-in-out;&:hover{border-color:", theme.colors.state.hover, ";color:", theme.colors.state.hoverText, ";}&:focus{border-color:transparent;box-shadow:", theme.colors.state.interactive, " 0 0 0 3px;outline:none;}" + ( true ? "" : undefined)),
     href: href
   }, otherProps), children, external && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(react__WEBPACK_IMPORTED_MODULE_4___default.a.Fragment, null, ' ', Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(components_ui_Icon__WEBPACK_IMPORTED_MODULE_6__["Icon"], {
     name: "external-link",
