@@ -27,9 +27,8 @@ exports[`Link should output Link styles 1`] = `
 }
 
 .emotion-0:focus {
-  background: #f5bbda;
-  border-color: #cd2f83;
-  color: #181b1c;
+  border-color: transparent;
+  box-shadow: #f5bbda 0 0 0 3px;
   outline: none;
 }
 

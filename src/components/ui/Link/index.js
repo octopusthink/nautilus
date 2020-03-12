@@ -33,9 +33,8 @@ export const Link = (props) => {
               }
 
               &:focus {
-                background: ${theme.colors.state.interactive};
-                border-color: ${theme.colors.state.interactiveText};
-                color: ${theme.colors.text.dark};
+                border-color: transparent;
+                box-shadow: ${theme.colors.state.interactive} 0 0 0 3px;
                 outline: none;
               }
             `
