@@ -28,9 +28,8 @@ exports[`SkipLink should contain styles, including focus styles that reveal the 
 }
 
 .emotion-0:focus {
-  background: #f5bbda;
-  border-color: #cd2f83;
-  color: #181b1c;
+  border-color: transparent;
+  box-shadow: #f5bbda 0px 0px 0px 3px;
   outline: none;
 }
 
