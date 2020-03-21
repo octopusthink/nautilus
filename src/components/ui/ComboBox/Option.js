@@ -5,7 +5,6 @@ import React from 'react';
 
 import { toUnits } from 'styles';
 import { useTheme } from 'themes';
-//import Item, { ComponentClassName as ItemClassName } from './Item';
 import ListItem from 'components/ui/List/Item';
 
 export const ComponentClassName = 'Nautilus-ComboBoxOption';
@@ -22,10 +21,15 @@ export const Option = (props) => {
         unstyled
           ? undefined
           : css`
-              width: 100%;
-              line-height: 2.4rem;
               border-bottom: 1px solid ${theme.colors.neutral.grey200};
+              cursor: pointer;
+              line-height: 2.4rem;
               padding: ${toUnits(theme.spacing.padding.medium)};
+              width: 100%;
+
+              &:hover {
+                background: ${theme.colors.neutral.grey200};
+              }
             `
       }
       unstyled
