@@ -5,7 +5,6 @@ import shortid from 'shortid';
 
 import List from 'components/ui/List';
 import VisuallyHidden from 'components/ui/VisuallyHidden';
-import { ComponentClassName as ListItemClassName } from 'components/ui/List/Item';
 
 import Tag from './Tag';
 
@@ -21,25 +20,25 @@ export const Tags = (props) => {
 
     if (tagElements.length > 1) {
       return (
-        // TODO: Export an `UnstyledList` component we can use to prevent
-        // override styles like these.
         <List
           aria-labelledby={label && generatedId}
+          unstyled
           css={css`
             display: inline-flex;
             flex-wrap: wrap;
             list-style: none;
             margin: 0;
+            padding: 0;
             width: 100%;
-
-            > .${ListItemClassName}::before {
-              content: '';
-            }
           `}
         >
           {tagElements.map((tag, index) => {
-            // eslint-disable-next-line react/no-array-index-key
-            return <List.Item key={`tag-${index}`}>{tag}</List.Item>;
+            return (
+              // eslint-disable-next-line react/no-array-index-key
+              <List.Item key={`tag-${index}`} unstyled>
+                {tag}
+              </List.Item>
+            );
           })}
         </List>
       );

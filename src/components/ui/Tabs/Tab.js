@@ -7,7 +7,7 @@ import { focusStyle } from 'styles';
 import { useTheme } from 'themes';
 
 export const Tab = forwardRef((props, ref) => {
-  const { isActive, children, label, labelProps, ...otherProps } = props;
+  const { isActive, children, label, labelProps, unstyled, ...otherProps } = props;
 
   const theme = useTheme();
 
@@ -17,22 +17,28 @@ export const Tab = forwardRef((props, ref) => {
 
   return (
     <section
-      css={css`
-        ${!isActive &&
-          css`
-            display: none;
-          `}
+      css={
+        unstyled
+          ? undefined
+          : css`
+              ${!isActive &&
+                css`
+                  display: none;
+                `}
 
-        &:focus {
-          ${focusStyle.outline(theme)};
-        }
-      `}
+              &:focus {
+                ${focusStyle.outline(theme)};
+              }
+            `
+      }
       ref={ref}
       role="tabpanel"
       tabIndex="-1"
       {...otherProps}
     >
-      <Heading level={4}>{label}</Heading>
+      <Heading level={4} unstyled>
+        {label}
+      </Heading>
 
       {children}
     </section>
@@ -43,6 +49,7 @@ Tab.defaultProps = {
   isActive: false,
   children: undefined,
   labelProps: {},
+  unstyled: false,
 };
 
 Tab.propTypes = {
@@ -55,6 +62,8 @@ Tab.propTypes = {
   /** Props passed to the label component for this tab. */
   // eslint-disable-next-line react/forbid-prop-types
   labelProps: PropTypes.object,
+  /* @ignore Don't output any CSS styles. */
+  unstyled: PropTypes.bool,
 };
 
 Tab.displayName = 'Tabs.Tab';

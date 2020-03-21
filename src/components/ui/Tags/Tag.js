@@ -9,7 +9,8 @@ import { useTheme } from 'themes';
 export const Tag = (props) => {
   const [isDismissed, setDismissed] = useState(false);
   const theme = useTheme();
-  const { badge, children, color, onDismiss, status, ...otherProps } = props;
+
+  const { badge, children, color, onDismiss, status, unstyled, ...otherProps } = props;
 
   if (isDismissed) {
     return null;
@@ -31,30 +32,35 @@ export const Tag = (props) => {
 
   return (
     <span
-      css={css`
-        ${metadata.small(theme)};
-        color: ${textColor};
-        margin: 0 ${toUnits(theme.spacing.padding.xSmall)} ${toUnits(theme.spacing.padding.xSmall)}
-          0;
+      css={
+        unstyled
+          ? undefined
+          : css`
+              ${metadata.small(theme)};
+              color: ${textColor};
+              margin: 0 ${toUnits(theme.spacing.padding.xSmall)}
+                ${toUnits(theme.spacing.padding.xSmall)} 0;
 
-        ${backgroundColor &&
-          css`
-            background: ${backgroundColor};
-            padding: ${toUnits(theme.spacing.padding.xSmall)}
-              ${toUnits(theme.spacing.padding.small)};
-          `}
+              ${backgroundColor &&
+                css`
+                  background: ${backgroundColor};
+                  display: inline-block;
+                  padding: ${toUnits(theme.spacing.padding.xSmall)}
+                    ${toUnits(theme.spacing.padding.small)};
+                `}
 
-        ${badge &&
-          css`
-            border-radius: ${toUnits(theme.spacing.padding.xLarge)};
-            min-width: ${toUnits(theme.spacing.padding.xLarge)};
-            height: ${toUnits(theme.spacing.padding.xLarge)};
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            box-sizing: border-box;
-          `}
-      `}
+              ${badge &&
+                css`
+                  border-radius: ${toUnits(theme.spacing.padding.xLarge)};
+                  min-width: ${toUnits(theme.spacing.padding.xLarge)};
+                  height: ${toUnits(theme.spacing.padding.xLarge)};
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  box-sizing: border-box;
+                `}
+            `
+      }
       {...otherProps}
     >
       {children}
@@ -106,6 +112,7 @@ Tag.defaultProps = {
   badge: false,
   onDismiss: null,
   status: undefined,
+  unstyled: false,
 };
 
 Tag.propTypes = {
@@ -119,6 +126,8 @@ Tag.propTypes = {
   onDismiss: PropTypes.func,
   /** Indicate status using a semantic colour set. */
   status: PropTypes.oneOf(['neutral', 'success', 'warning', 'danger', 'inProgress', 'new']),
+  /* @ignore Don't output any CSS styles. */
+  unstyled: PropTypes.bool,
 };
 
 export const { defaultProps, propTypes } = Tag;

@@ -15,3 +15,13 @@ exports[`Strong should match styles 1`] = `
   </strong>
 </div>
 `;
+
+exports[`Strong should not output styles when unstyled is set 1`] = `
+<div>
+  <strong
+    class="emotion-0"
+  >
+    hello
+  </strong>
+</div>
+`;

@@ -63,6 +63,12 @@ describe('Heading', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  it('should darken text colour when `dark` prop is set', () => {
+    const { container } = render(<Heading dark>Inverted heading</Heading>);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   it('should only allow one of dark/light props', () => {
     expect(() => {
       muteConsole({ times: 2, type: 'error' });
@@ -93,6 +99,22 @@ describe('Heading', () => {
     );
 
     expect(getByTestId('heading').classList).toContain('custom-class');
+  });
+
+  it('should not output styles when unstyled is set', () => {
+    const { container } = render(<Heading unstyled>hello</Heading>);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should not output styles when unstyled is set, even when style props are set', () => {
+    const { container } = render(
+      <Heading level={4} unstyled>
+        hello
+      </Heading>,
+    );
+
+    expect(container).toMatchSnapshot();
   });
 
   describe('accessibility', () => {

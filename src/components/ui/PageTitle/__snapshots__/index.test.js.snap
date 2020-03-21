@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`PageTitle should not output CSS when unstyled prop is set 1`] = `
+<h1
+  class="emotion-0"
+>
+  My Blog Posts
+</h1>
+`;
+
 exports[`PageTitle should output pageTitle CSS 1`] = `
 .emotion-0 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;

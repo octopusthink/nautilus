@@ -17,6 +17,12 @@ describe('SkipLink', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should not render styles when unstyled prop is set', () => {
+    const { container } = render(<SkipLink unstyled />);
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should include default text', () => {
     const { getByText } = render(<SkipLink />);
 

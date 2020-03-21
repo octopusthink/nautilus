@@ -80,6 +80,22 @@ describe('Tabs', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should not render styles when unstyled prop is set', () => {
+    const { container } = render(
+      <Tabs id="myTabSet" unstyled>
+        <Tabs.Tab
+          data-testid="firstTabSection"
+          label="About"
+          labelProps={{ 'data-testid': 'firstTab' }}
+        >
+          <Paragraph>Puppies are cute.</Paragraph>
+        </Tabs.Tab>
+      </Tabs>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   describe('accessibility', () => {
     describe('keyboard navigation', () => {
       it('should change the active tab to the next tab when the right arrow key is pressed', async () => {

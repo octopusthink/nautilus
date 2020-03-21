@@ -17,7 +17,7 @@ import { useTheme } from 'themes';
 import Tab from './Tab';
 
 export const Tabs = (props) => {
-  const { children, dark, inverse, light, id, ...otherProps } = props;
+  const { children, dark, inverse, light, id, unstyled, ...otherProps } = props;
   const sectionToFocusRef = useRef();
   const tabToFocusRef = useRef();
   const [generatedId] = useState(shortid.generate());
@@ -226,6 +226,7 @@ Tabs.defaultProps = {
   id: undefined,
   inverse: false,
   light: false,
+  unstyled: false,
 };
 
 Tabs.propTypes = {
@@ -239,6 +240,8 @@ Tabs.propTypes = {
   id: PropTypes.string,
   /** Lighten text colour. */
   light: PropTypes.bool,
+  /* @ignore Don't output any CSS styles. */
+  unstyled: PropTypes.bool,
 };
 
 export const { defaultProps, propTypes } = Tabs;

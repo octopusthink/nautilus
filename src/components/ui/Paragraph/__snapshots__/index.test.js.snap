@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Paragraph should not output styles when unstyled is set 1`] = `
+<p
+  class="Nautilus-Paragraph emotion-0"
+>
+  I'm a body of unstyled text.
+</p>
+`;
+
 exports[`Paragraph should output large CSS the \`large\` prop is set 1`] = `
 .emotion-0 {
   color: #3b3f45;

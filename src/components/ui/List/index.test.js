@@ -129,6 +129,17 @@ describe('List', () => {
     expect(originalDescriptionId).toEqual(getByTestId('firstDescription').getAttribute('id'));
   });
 
+  it('should not output styles when unstyled is set', () => {
+    const { container } = render(
+      <List unstyled>
+        <List.Item data-testid="one">apple</List.Item>
+        <List.Item data-testid="two">raspberry</List.Item>
+      </List>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   describe('described by Heading component', () => {
     it('should render a heading outside the list if one is provided', () => {
       const { container, getByTestId } = render(

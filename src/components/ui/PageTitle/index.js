@@ -7,14 +7,18 @@ import { useTheme } from 'themes';
 
 export const PageTitle = (props) => {
   const theme = useTheme();
-  const { children, documentTitle, ...otherProps } = props;
+  const { children, documentTitle, unstyled, ...otherProps } = props;
   // const documentTitleToUse = documentTitle || children;
 
   return (
     <h1
-      css={css`
-        ${pageTitle(theme)}
-      `}
+      css={
+        unstyled
+          ? undefined
+          : css`
+              ${pageTitle(theme)}
+            `
+      }
       {...otherProps}
     >
       {children}
@@ -25,6 +29,7 @@ export const PageTitle = (props) => {
 PageTitle.defaultProps = {
   children: undefined,
   documentTitle: undefined,
+  unstyled: false,
 };
 
 PageTitle.propTypes = {
@@ -32,6 +37,8 @@ PageTitle.propTypes = {
   children: PropTypes.node,
   /** String to pass to the `<DocumentTitle />` tag if the children of your `<PageTitle />` are more than just text content. */
   documentTitle: PropTypes.string,
+  /* @ignore Don't output any CSS styles. */
+  unstyled: PropTypes.bool,
 };
 
 export const { defaultProps, propTypes } = PageTitle;

@@ -6,14 +6,7 @@ import PropTypes from 'prop-types';
 import { toUnits } from 'styles';
 import theme from 'styleguide/theme';
 
-export function Playground({
-  name,
-  preview,
-  previewProps,
-  tabButtons,
-  tabBody,
-  toolbar,
-}) {
+export function Playground({ name, preview, previewProps, tabButtons, tabBody }) {
   const { ...props } = previewProps;
   return (
     <div

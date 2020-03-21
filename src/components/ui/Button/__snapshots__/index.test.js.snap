@@ -54,3 +54,190 @@ exports[`Button should match styles 1`] = `
   Hello
 </button>
 `;
+
+exports[`Button should not output styles when unstyled is set 1`] = `
+<div>
+  <button
+    class="emotion-0"
+    type="button"
+  >
+    hello
+  </button>
+</div>
+`;
+
+exports[`Button should not output styles when unstyled is set, even with styling props 1`] = `
+.emotion-1 {
+  display: inline-block;
+  margin: 0 0.8rem 0 0;
+  vertical-align: middle;
+  margin-right: 0.4rem;
+}
+
+.emotion-0 {
+  height: 1.6rem;
+  stroke-width: 0.2rem;
+  width: 1.6rem;
+  stroke: currentColor;
+  opacity: 0.8;
+}
+
+<div>
+  <button
+    class="emotion-2"
+    type="button"
+  >
+    <span
+      class="emotion-1"
+    >
+      <svg
+        aria-hidden="true"
+        class="emotion-0"
+        fill="none"
+        height="24"
+        id="unstyled-button"
+        role="img"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g>
+          <circle
+            cx="12"
+            cy="12"
+            r="10"
+          />
+          <line
+            x1="15"
+            x2="9"
+            y1="9"
+            y2="15"
+          />
+          <line
+            x1="9"
+            x2="15"
+            y1="9"
+            y2="15"
+          />
+        </g>
+      </svg>
+    </span>
+    hello
+  </button>
+</div>
+`;
+
+exports[`Button should show danger styles 1`] = `
+.emotion-2 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  background: #ffffff;
+  border: 2px solid #8a0000;
+  border-radius: 8px;
+  color: #8a0000;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 0.4rem 0.8rem;
+  outline: none;
+  padding: 1.2rem 2.4rem;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  top: 0;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  -webkit-transition: top 0ms ease-out;
+  transition: top 0ms ease-out;
+}
+
+.emotion-2::-moz-focus-inner {
+  border: 0;
+}
+
+.emotion-2:active {
+  border-color: #630000;
+  color: #630000;
+  top: 2px;
+}
+
+.emotion-2:focus {
+  box-shadow: 0 0 1px 4px #e2b6b6;
+  outline: none;
+}
+
+.emotion-2:hover {
+  border-color: #630000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  color: #630000;
+}
+
+.emotion-1 {
+  display: inline-block;
+  margin: 0 0.8rem 0 0;
+  vertical-align: middle;
+  margin-right: 0.4rem;
+}
+
+.emotion-0 {
+  height: 1.6rem;
+  stroke-width: 0.2rem;
+  width: 1.6rem;
+  stroke: currentColor;
+  opacity: 0.8;
+}
+
+<div>
+  <button
+    class="emotion-2"
+    type="button"
+  >
+    <span
+      class="emotion-1"
+    >
+      <svg
+        aria-hidden="true"
+        class="emotion-0"
+        fill="none"
+        height="24"
+        id="dangerous-button"
+        role="img"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g>
+          <circle
+            cx="12"
+            cy="12"
+            r="10"
+          />
+          <line
+            x1="15"
+            x2="9"
+            y1="9"
+            y2="15"
+          />
+          <line
+            x1="9"
+            x2="15"
+            y1="9"
+            y2="15"
+          />
+        </g>
+      </svg>
+    </span>
+    hello
+  </button>
+</div>
+`;

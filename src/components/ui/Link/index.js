@@ -12,14 +12,13 @@ export const Link = (props) => {
   const defaultLinkComponent = useContext(NautilusLinkComponent);
   const theme = useTheme();
 
-  const { __unstyled, children, as, external, href, ...otherProps } = props;
+  const { children, as, external, href, unstyled, ...otherProps } = props;
   const LinkComponent = as || (external && 'a') || defaultLinkComponent || LinkTag;
 
   return (
     <LinkComponent
       css={
-        // Don't output styles if the private prop `__unstyled` is set.
-        __unstyled
+        unstyled
           ? undefined
           : css`
               border-bottom: 2px solid ${theme.colors.state.interactive};
@@ -61,16 +60,14 @@ export const Link = (props) => {
 };
 
 Link.defaultProps = {
-  __unstyled: false,
   as: undefined,
   children: undefined,
   external: false,
   href: undefined,
+  unstyled: false,
 };
 
 Link.propTypes = {
-  /* @ignore Don't output any CSS styles; used mainly for Button components. */
-  __unstyled: PropTypes.bool,
   /** Component/tag to render the underlying link. Defaults to `Nautilus.config.defaultComponents.Link` if set; an `<a>` tag will be used if `Nautilus.config.defaultComponents.Link` is not set. */
   as: PropTypes.elementType,
   /** @ignore */
@@ -79,6 +76,8 @@ Link.propTypes = {
   external: PropTypes.bool,
   /** The URL to navigate to when this link is activated. */
   href: PropTypes.string,
+  /* @ignore Don't output any CSS styles. */
+  unstyled: PropTypes.bool,
 };
 
 export const { defaultProps, propTypes } = Link;

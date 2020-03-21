@@ -5,17 +5,21 @@ import React from 'react';
 import { useTheme } from 'themes';
 
 export const Emphasis = (props) => {
-  const { children, ...otherProps } = props;
+  const { children, unstyled, ...otherProps } = props;
 
   const theme = useTheme();
 
   return (
     <em
-      css={css`
-        background: ${theme.colors.text.emphasisBackground};
-        color: ${theme.colors.text.emphasis};
-        font-style: italic;
-      `}
+      css={
+        unstyled
+          ? undefined
+          : css`
+              background: ${theme.colors.text.emphasisBackground};
+              color: ${theme.colors.text.emphasis};
+              font-style: italic;
+            `
+      }
       {...otherProps}
     >
       {children}
@@ -25,11 +29,14 @@ export const Emphasis = (props) => {
 
 Emphasis.defaultProps = {
   children: undefined,
+  unstyled: false,
 };
 
 Emphasis.propTypes = {
   /** @ignore */
   children: PropTypes.node,
+  /* @ignore Don't output any CSS styles. */
+  unstyled: PropTypes.bool,
 };
 
 export const { defaultProps, propTypes } = Emphasis;

@@ -1,5 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`TextField should hide styles when unstyled prop is set 1`] = `
+<div>
+  <label
+    class="emotion-0"
+    for="myTextField"
+  >
+    Hello
+  </label>
+  <input
+    class="emotion-0"
+    id="myTextField"
+    required=""
+    type="text"
+  />
+</div>
+`;
+
 exports[`TextField should match styles 1`] = `
 .emotion-0 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;

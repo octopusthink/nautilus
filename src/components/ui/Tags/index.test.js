@@ -39,6 +39,17 @@ describe('Tags', () => {
     expect(getByTestId('myText').classList).toContain('custom-class');
   });
 
+  it('should match Tags styles', () => {
+    const { container } = render(
+      <Tags>
+        <Tags.Tag data-testid="child-one">Hello</Tags.Tag>
+        <Tags.Tag data-testid="child-two">Goodbye</Tags.Tag>
+      </Tags>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should match styles', () => {
     const { container } = render(<Tags.Tag>hello</Tags.Tag>);
 

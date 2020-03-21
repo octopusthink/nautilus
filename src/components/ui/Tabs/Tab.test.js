@@ -53,6 +53,16 @@ describe('Tabs.Tab', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should not render styles when unstyled prop is set', () => {
+    const { container } = render(
+      <Tabs.Tab label="About" unstyled>
+        <Paragraph>Puppies are cute.</Paragraph>
+      </Tabs.Tab>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should forward refs', () => {
     const ref = createRef();
 

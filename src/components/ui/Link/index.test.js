@@ -69,9 +69,9 @@ describe('Link', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should not output styles when __unstyled is true', () => {
+  it('should not output styles when unstyled is set', () => {
     const { container } = render(
-      <Link href="https://octopusthink.com/" __unstyled>
+      <Link href="https://octopusthink.com/" unstyled>
         hello
       </Link>,
     );

@@ -27,6 +27,12 @@ describe('PageTitle', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  it('should not output CSS when unstyled prop is set', () => {
+    const { container } = render(<PageTitle unstyled>My Blog Posts</PageTitle>);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   describe('accessibility', () => {
     it('should pass aXe tests', async () => {
       const { container } = render(<PageTitle>My Blog Posts</PageTitle>);

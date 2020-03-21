@@ -9,21 +9,25 @@ import { useTheme } from 'themes';
 export const ComponentClassName = 'Nautilus-ListItem';
 
 export const Item = (props) => {
-  const { children, className, ...otherProps } = props;
+  const { children, className, unstyled, ...otherProps } = props;
 
   const theme = useTheme();
 
   return (
     <li
       className={classnames(ComponentClassName, className)}
-      css={css`
-        position: relative;
-        margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
-        &::before {
-          position: absolute;
-          right: 101%;
-        }
-      `}
+      css={
+        unstyled
+          ? undefined
+          : css`
+              position: relative;
+              margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
+              &::before {
+                position: absolute;
+                right: 101%;
+              }
+            `
+      }
       {...otherProps}
     >
       {children}
@@ -34,6 +38,7 @@ export const Item = (props) => {
 Item.defaultProps = {
   children: undefined,
   className: undefined,
+  unstyled: false,
 };
 
 Item.propTypes = {
@@ -41,6 +46,8 @@ Item.propTypes = {
   children: PropTypes.node,
   /** @ignore */
   className: PropTypes.string,
+  /* @ignore Don't output any CSS styles. */
+  unstyled: PropTypes.bool,
 };
 
 // Item.displayName = 'List.Item';
