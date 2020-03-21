@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import React, { cloneElement, forwardRef, useCallback, useMemo, useState } from 'react';
+import React, { Children, forwardRef, useCallback, useMemo, useState } from 'react';
 
 import { interfaceUI, toUnits } from 'styles';
 import { useTheme } from 'themes';
@@ -48,6 +48,13 @@ export const ComboBox = forwardRef((props) => {
     [onFocus],
   );
 
+  // Create an array of all our options.
+  const options = useMemo(() => {
+    return Children.toArray(children).filter((child) => {
+      return child;
+    });
+  }, [children]);
+
   return (
     <React.Fragment>
       <TextField
@@ -84,10 +91,7 @@ export const ComboBox = forwardRef((props) => {
               `}
           `}
         >
-          <Option>Apples</Option>
-          <Option>Bananas</Option>
-          <Option>Pears</Option>
-          <Option>Tarantulas</Option>
+          {options}
         </List>
       </div>
     </React.Fragment>
@@ -135,7 +139,8 @@ ComboBox.propTypes = {
   unstyled: PropTypes.bool,
 };
 
-ComboBox.displayName = 'ComboBox';
+// Export Option as `ComboBox.Option`.
+ComboBox.Option = Option;
 
 export const { defaultProps, propTypes } = ComboBox;
 
