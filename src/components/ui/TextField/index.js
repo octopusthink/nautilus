@@ -44,7 +44,7 @@ export const TextField = forwardRef((props, ref) => {
   }, [generatedId, id]);
   const theme = useTheme();
 
-  // Memoise our handlers as they don't need to be re-created on every render.
+  // Memorise our handlers as they don't need to be re-created on every render.
   const onBlurHandler = useCallback(
     (...args) => {
       setFocus(false);
