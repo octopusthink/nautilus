@@ -3,7 +3,7 @@ A TextField is an editable input that enables users to enter and interact with f
 ```jsx
 <TextField label="Feed me sentences!" />
 
-<TextField defaultValue="Lorem ipsum..." label="I have a default value." />
+<TextField defaultValue="Lorem ipsum..." label="I have a default value." noMargin />
 ```
 
 ## Usage
@@ -28,13 +28,13 @@ Every `TextField` has a visible **label**, aligned directly above the input they
 **Hint text** is always visible and appears beneath the label. Use a hint when you want to provide more context or additional guidance. Hints can be more verbose than a label and should provide helpful tips or instructions that will be relevant for the majority of users, like how their information will be used, or where to find a reference number.
 
 ```jsx
-<TextField label="Fluffy things" hint="List the fluffiest things you can think of, ideally in alphabetical order." placeholder="e.g.: Kittens, puppies, and ponies." />
+<TextField label="Fluffy things" hint="List the fluffiest things you can think of, ideally in alphabetical order." placeholder="e.g.: Kittens, puppies, and ponies." noMargin />
 ```
 
 A **placeholder** can be used to provide examples of what sort of information to enter. Placeholder text disappears once the user starts typing and should never be used for critical information. Use placeholder text sparingly. Placeholder text should be used to illustrate examples rather than provide instructions.
 
 ```jsx
-<TextField label="Fluffy things" placeholder="e.g.: Kittens, puppies, and ponies." />
+<TextField label="Fluffy things" placeholder="e.g.: Kittens, puppies, and ponies." noMargin />
 ```
 
 ### Size
@@ -46,7 +46,7 @@ The size of a `TextField` should give users a visual cue as to how much text is 
 ```jsx
 <TextField label="Postcode" size={7} />
 
-<TextField label="I am a multiline input, useful for entering a lot of tex." multiline />
+<TextField label="I am a multiline input, useful for entering a lot of tex." multiline noMargin />
 ```
 
 ### Optional fields
@@ -56,7 +56,7 @@ A `TextField` can be marked as optional if it's data that some users need to com
 The text string to mark an optional field is customisable in your theme. **Do not** rely on symbols (asterisks, stars, exclamation marks, etc) or colour alone to communicate the difference between required and non-required fields, since not all users will immediately understand what you're trying to say.
 
 ```jsx
-<TextField label="I am optional" optional />
+<TextField label="I am optional" optional noMargin />
 ```
 
 ## Interaction
@@ -70,7 +70,7 @@ When an input is focussed, it gains additional prominence.
 Use a disabled input to indicate that an input isn't ready yet, or relies on another input elsewhere in the screen.
 
 ```jsx
-<TextField label="Disabled input" size={100} disabled defaultValue="You don't need to worry about me." />
+<TextField label="Disabled input" size={100} disabled defaultValue="You don't need to worry about me." noMargin />
 ```
 
 ### Error handling
@@ -78,7 +78,7 @@ Use a disabled input to indicate that an input isn't ready yet, or relies on ano
 Error validation should happen inline in order to give users immediate feedback. Don't start validation until the user has stopped typing inside the input, to avoid frustration.
 
 ```jsx
-<TextField label="Trouble in paradise" size={14} error="Please fix me!" />
+<TextField label="Trouble in paradise" size={14} error="Please fix me!" noMargin />
 ```
 
 ### Autocomplete

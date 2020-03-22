@@ -21,6 +21,7 @@ export const List = (props) => {
     inverse,
     large,
     light,
+    noMargin,
     ordered,
     small,
     unstyled,
@@ -68,7 +69,7 @@ export const List = (props) => {
           unstyled
             ? undefined
             : css`
-                ${bodyStyles({ dark, inverse, large, light, small, theme })};
+                ${bodyStyles({ dark, inverse, large, light, noMargin, small, theme })};
                 padding: 0;
                 ${ordered &&
                   css`
@@ -109,12 +110,13 @@ export const List = (props) => {
 List.defaultProps = {
   children: undefined,
   className: undefined,
-  large: false,
-  small: false,
-  inverse: false,
   dark: false,
+  inverse: false,
+  large: false,
   light: false,
+  noMargin: false,
   ordered: false,
+  small: false,
   unstyled: false,
 };
 
@@ -133,6 +135,8 @@ List.propTypes = {
   dark: PropTypes.bool,
   /** Lighten text colour. */
   light: PropTypes.bool,
+  /** Remove any outer margins from component. */
+  noMargin: PropTypes.bool,
   /** Use numbers instead of bullets. */
   ordered: PropTypes.bool,
   /* @ignore Don't output any CSS styles. */

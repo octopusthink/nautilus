@@ -1,7 +1,7 @@
 A Page Title is a short line of text that describes the current page or screen. Every page or screen in your site or app should have **one** `<PageTitle>` component: no more, no less.
 
 ```jsx
-<PageTitle>Super-groovy fantastico homepage!</PageTitle>
+<PageTitle noMargin>Super-groovy fantastico homepage!</PageTitle>
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ Use a `<PageTitle>` to introduce the user to the entirety of the content availab
 
  ```jsx inside Markdown
  const title = 'This title is linked';
- <PageTitle documentTitle={title}>
+ <PageTitle noMargin documentTitle={title}>
    <a href="/#/🛠 Function/Components/PageTitle">{title}</a>
  </PageTitle>
  ```

@@ -6,7 +6,7 @@ A `<Paragraph>` is a self-contained unit of one or more coherent sentences relat
   augue gravida hendrerit.
 </Paragraph>
 
-<Paragraph>
+<Paragraph noMargin>
   Vestibulum ornare eget lacus cursus rhoncus. Cras nec
   lectus in sem viverra volutpat.
 </Paragraph>
@@ -33,7 +33,7 @@ Don't use a `<Paragraph>` for:
 Use a **large paragraph** when you want to emphasise an important passage of text.
 
 ```jsx
-<Paragraph large>
+<Paragraph large noMargin>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
   augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
   lectus in sem viverra volutpat.
@@ -43,7 +43,7 @@ Use a **large paragraph** when you want to emphasise an important passage of tex
 Use a **small paragraph** for fine print, or details that are secondary to the main content.
 
 ```jsx
-<Paragraph small>
+<Paragraph noMargin small>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
   augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
   lectus in sem viverra volutpat.
@@ -53,7 +53,7 @@ Use a **small paragraph** for fine print, or details that are secondary to the m
 Use an **inverse paragraph** if you need to put a paragraph on top of a dark background.
 
 ```jsx
-<Paragraph inverse>
+<Paragraph inverse noMargin>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum hendrerit
   augue gravida hendrerit. Vestibulum ornare eget lacus cursus rhoncus. Cras nec
   lectus in sem viverra volutpat.
@@ -83,7 +83,7 @@ For both inverse and default type colours, you can also use a dark and light var
   Inverse
 </Paragraph>
 
-<Paragraph inverse dark>
+<Paragraph inverse dark noMargin>
   Inverse dark
 </Paragraph>
 ```

@@ -9,7 +9,7 @@ import { useTheme } from 'themes';
 export const ComponentClassName = 'Nautilus-ListItem';
 
 export const Item = (props) => {
-  const { children, className, unstyled, ...otherProps } = props;
+  const { children, className, noMargin, unstyled, ...otherProps } = props;
 
   const theme = useTheme();
 
@@ -22,6 +22,12 @@ export const Item = (props) => {
           : css`
               position: relative;
               margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
+
+              ${noMargin &&
+                css`
+                  margin: 0;
+                `}
+
               &::before {
                 position: absolute;
                 right: 101%;
@@ -38,6 +44,7 @@ export const Item = (props) => {
 Item.defaultProps = {
   children: undefined,
   className: undefined,
+  noMargin: false,
   unstyled: false,
 };
 
@@ -46,6 +53,8 @@ Item.propTypes = {
   children: PropTypes.node,
   /** @ignore */
   className: PropTypes.string,
+  /** Remove any outer margins from component. */
+  noMargin: PropTypes.bool,
   /* @ignore Don't output any CSS styles. */
   unstyled: PropTypes.bool,
 };

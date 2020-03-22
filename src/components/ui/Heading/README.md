@@ -3,7 +3,7 @@ Headings are short pieces of text used to organise and structure a page's conten
 They provide both a semantic and a presentational role, guiding users (as well as search engines and other bots) through the page content both visually (through hierarchy) and structurally (through markup). They are especially important for users of assistive technology—heading allow quick navigation throughout a page.
 
 ```jsx
-<Heading>This just in: Scotland is rainy 🏴󠁧󠁢󠁳󠁣󠁴󠁿🌦</Heading>
+<Heading noMargin>This just in: Scotland is rainy 🏴󠁧󠁢󠁳󠁣󠁴󠁿🌦</Heading>
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ Headings are provided in three different sizes. You should **always use headings
 ```jsx
 <Heading level={2}>Breaking news 📰</Heading>
 <Heading level={3}>Kittens are better than dogs 😼</Heading>
-<Heading level={4}>More at eleven 🕚</Heading>
+<Heading level={4} noMargin>More at eleven 🕚</Heading>
 ```
 
 Headings are also available in dark and light variants, as well as an inversed variant for each. These colours can be set in your theme.
@@ -42,7 +42,7 @@ Headings are also available in dark and light variants, as well as an inversed v
 <Heading level={4} light>Light</Heading>
 <Heading level={4} inverse dark>Inverse Dark</Heading>
 <Heading level={4} inverse>Inverse</Heading>
-<Heading level={4} inverse light>Inverse Light</Heading>
+<Heading level={4} inverse light noMargin>Inverse Light</Heading>
 ```
 
 ## Voice & Tone

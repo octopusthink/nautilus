@@ -5,7 +5,7 @@ Use the `<List.Item>` component for each item in your list.
 ```jsx
 import { Heading } from '@octopusthink/nautilus';
 
-<List ordered>
+<List ordered noMargin>
   <Heading>Things to do</Heading>
   <List.Item>Take shower. 🛀</List.Item>
   <List.Item>Brush teeth. 😁</List.Item>
@@ -38,7 +38,7 @@ Don't use a `<List>` for:
 Use a bulleted list when the order of items doesn't matter and to present content of equal status or value. Bulleted lists can be rearranged without losing any meaning.
 
 ```jsx
-<List>
+<List noMargin>
   <List.Item>cats</List.Item>
   <List.Item>dogs</List.Item>
   <List.Item>mice</List.Item>
@@ -57,7 +57,7 @@ Use ordered lists when item order is relevant, or to imply sequence and order. O
 ```jsx
 import { Paragraph } from '@octopusthink/nautilus';
 
-<List ordered>
+<List ordered noMargin>
   <Paragraph>How to file taxes:</Paragraph>
   <List.Item>Obtain wine.</List.Item>
   <List.Item>Crack open wine.</List.Item>
@@ -92,7 +92,7 @@ Here's how you should describe a list with a `<Heading>` component:
 ```jsx
 import { Heading } from '@octopusthink/nautilus';
 
-<List>
+<List noMargin>
   <Heading level={4}>Tasty fruit</Heading>
   <List.Item>apples 🍏</List.Item>
   <List.Item>kiwis 🥝</List.Item>
@@ -105,7 +105,7 @@ Here's how you should describe a list with a `<Paragraph>` component:
 ```jsx
 import { Paragraph } from '@octopusthink/nautilus';
 
-<List ordered>
+<List ordered noMargin>
   <Paragraph>The best motorcycles, in order:</Paragraph>
   <List.Item>Honda CBR 125R</List.Item>
   <List.Item>Honda CB400 Four</List.Item>

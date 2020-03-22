@@ -34,6 +34,7 @@ export const Button = (props) => {
     linkProps,
     minimal,
     navigation,
+    noMargin,
     primary,
     success,
     unstyled,
@@ -138,6 +139,11 @@ export const Button = (props) => {
           outline: none;
         }
 
+        ${noMargin &&
+          css`
+            margin: 0;
+          `}
+
         /* Primary styles */
         ${primary &&
           css`
@@ -234,6 +240,7 @@ Button.defaultProps = {
   linkProps: undefined,
   minimal: false,
   navigation: false,
+  noMargin: false,
   primary: false,
   success: false,
   type: 'button',
@@ -265,6 +272,8 @@ Button.propTypes = {
   linkProps: PropTypes.object,
   /** Outputs a Nautilus `<Link>` tag that looks (and largely behaves) like a `<Button>`, but can used as navigation. Setting this to `true` enables `Link` properties. */
   navigation: PropTypes.bool,
+  /** Remove any outer margins from component. */
+  noMargin: PropTypes.bool,
   /* @ignore Don't output any CSS styles. */
   unstyled: PropTypes.bool,
   /** HTML `type` attribute for the button. Defaults to `"button"`. */
