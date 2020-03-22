@@ -15,13 +15,13 @@ export const ComboBox = forwardRef((props) => {
     children,
     disabled,
     error,
-    label,
+    hint,
     id,
-    placeholder,
+    label,
     onBlur,
     onFocus,
-    hint,
     optional,
+    placeholder,
     unstyled,
     ...otherProps
   } = props;
@@ -58,10 +58,10 @@ export const ComboBox = forwardRef((props) => {
   }, [children]);
 
   // If the number of options is less than seven, calculate the height to fit.
-  const numberOfChildren = options.length;
+  const dropdownNumItems = 7;
   let dropdownHeight = 320;
-  if (numberOfChildren < 7) {
-    dropdownHeight = 24 * numberOfChildren;
+  if (options.length < dropdownNumItems) {
+    dropdownHeight = 48 * options.length;
   }
 
   const searchIcon = <Icon name="search" />;
@@ -72,7 +72,7 @@ export const ComboBox = forwardRef((props) => {
       <TextField
         disabled={disabled}
         error={error}
-        placeholder={numberOfChildren}
+        placeholder={placeholder}
         label={label}
         hint={hint}
         optional={optional}
@@ -98,19 +98,23 @@ export const ComboBox = forwardRef((props) => {
             background: ${theme.colors.buttons.neutral};
             color: ${theme.colors.text.default};
             margin: -${toUnits(theme.spacing.margin.medium)} 0 0 0;
-            padding: 0;
             overflow: hidden;
+            padding: 0;
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
+
+            ${options.length >= dropdownNumItems &&
+              css`
+                overflow-y: scroll;
+              `}
 
             ${focus &&
               css`
                 border: 2px solid ${theme.colors.text.default};
                 border-top: 0;
                 height: ${toUnits(dropdownHeight)};
-                overflow-y: scroll;
               `}
           `}
         >
@@ -126,12 +130,12 @@ ComboBox.defaultProps = {
   disabled: false,
   error: undefined,
   hint: undefined,
-  labelId: undefined,
   id: undefined,
-  placeholder: undefined,
+  labelId: undefined,
   onBlur: undefined,
   onFocus: undefined,
   optional: false,
+  placeholder: undefined,
   unstyled: false,
 };
 
@@ -154,10 +158,10 @@ ComboBox.propTypes = {
   label: PropTypes.node.isRequired,
   /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
   labelId: PropTypes.string,
-  /** Placeholder text, used only for examples. */
-  placeholder: PropTypes.string,
   /** Used to mark this input as optional. Will output text in `theme.components.ComboBox.optionalMessage`, if set. */
   optional: PropTypes.bool,
+  /** Placeholder text, used only for examples. */
+  placeholder: PropTypes.string,
   /* @ignore Don't output any CSS styles. */
   unstyled: PropTypes.bool,
 };
