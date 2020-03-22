@@ -106,7 +106,7 @@ export const TextField = forwardRef((props, ref) => {
     }
 
     return cloneElement(error, { id: errorId });
-  }, [error, errorId, theme, unstyled]);
+  }, [error, errorId, noMargin, theme, unstyled]);
 
   let InputComponent = 'input';
   if (multiline) {
