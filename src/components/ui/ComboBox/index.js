@@ -75,7 +75,12 @@ export const ComboBox = forwardRef((props) => {
         signifierIcon={searchIcon}
         actionIcon={downIcon}
       />
-      <div>
+      <div
+        css={css`
+          position: relative;
+          z-index: 5;
+        `}
+      >
         <List
           unstyled
           css={css`
@@ -88,7 +93,10 @@ export const ComboBox = forwardRef((props) => {
             margin: -${toUnits(theme.spacing.margin.medium)} 0 0 0;
             padding: 0;
             overflow: hidden;
-            position: relative;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
 
             ${focus &&
               css`
