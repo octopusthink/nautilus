@@ -15,15 +15,28 @@ A ComboBox is a selection control that allows a user to choose from a list of op
 ```jsx
 
 <ComboBox label="Select your favourite boy band" placeholder="Search or browse">
-    <ComboBox.Heading>From the 80s</ComboBox.Heading>
-    <ComboBox.Option>Wham!</ComboBox.Option>
-    <ComboBox.Option>New Kids on the Block</ComboBox.Option>
-    <ComboBox.Option>Bell Biv DeVoe</ComboBox.Option>
-    <ComboBox.Heading>From the 90s</ComboBox.Heading>
-    <ComboBox.Option>All 4 One</ComboBox.Option>
-    <ComboBox.Option>NSYNC</ComboBox.Option>
-    <ComboBox.Heading>From the 2000s</ComboBox.Heading>
+
+    <ComboBox.Heading>Girls like boys best</ComboBox.Heading>
+    <ComboBox.Option>Boyz II Men</ComboBox.Option>
+    <ComboBox.Option>The Backstreet Boys</ComboBox.Option>
+    <ComboBox.Option>The Beach Boys</ComboBox.Option>
+    <ComboBox.Option>Boys 4 Now</ComboBox.Option>
+
+    <ComboBox.Heading>Strange punctuation</ComboBox.Heading>
+    <ComboBox.Option>*NSYNC</ComboBox.Option>
+    <ComboBox.Option>O-Town</ComboBox.Option>
+
+    <ComboBox.Heading>By Numbers</ComboBox.Heading>
+    <ComboBox.Option>All-4-One</ComboBox.Option>
     <ComboBox.Option>Boyz 4 Now</ComboBox.Option>
+    <ComboBox.Option>B2K</ComboBox.Option>
+    <ComboBox.Option>5ive</ComboBox.Option>
+    <ComboBox.Option>2gether</ComboBox.Option>
+    <ComboBox.Option>98 Degrees</ComboBox.Option>
+    <ComboBox.Option>Boyz II Men</ComboBox.Option>
+    <ComboBox.Option>One Direction</ComboBox.Option>
+    <ComboBox.Option>The Jackson 5</ComboBox.Option>
+    <ComboBox.Option>112</ComboBox.Option>
     
 </ComboBox>
 ```

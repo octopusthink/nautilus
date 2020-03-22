@@ -21,7 +21,7 @@ export const Option = (props) => {
         unstyled
           ? undefined
           : css`
-              border-bottom: 1px solid ${theme.colors.neutral.grey200};
+              //border-bottom: 1px solid ${theme.colors.neutral.grey200};
               cursor: pointer;
               line-height: 2.4rem;
               padding: ${toUnits(theme.spacing.padding.medium)};

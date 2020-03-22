@@ -4,6 +4,7 @@ import React, { Children, forwardRef, useCallback, useMemo, useState } from 'rea
 
 import { interfaceUI, toUnits } from 'styles';
 import { useTheme } from 'themes';
+import Icon from 'components/ui/Icon';
 import List from 'components/ui/List';
 import TextField from 'components/ui/TextField';
 import Option from './Option';
@@ -56,6 +57,9 @@ export const ComboBox = forwardRef((props) => {
     });
   }, [children]);
 
+  const searchIcon = <Icon name="search" />;
+  const downIcon = <Icon name="chevron-down" />;
+
   return (
     <React.Fragment>
       <TextField
@@ -68,6 +72,8 @@ export const ComboBox = forwardRef((props) => {
         unstyled={unstyled}
         onBlur={onBlurHandler}
         onFocus={onFocusHandler}
+        signifierIcon={searchIcon}
+        actionIcon={downIcon}
       />
       <div>
         <List
@@ -82,6 +88,7 @@ export const ComboBox = forwardRef((props) => {
             margin: -${toUnits(theme.spacing.margin.medium)} 0 0 0;
             padding: 0;
             overflow: hidden;
+            position: relative;
 
             ${focus &&
               css`
