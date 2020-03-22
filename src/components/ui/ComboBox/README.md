@@ -14,7 +14,7 @@ A ComboBox is a selection control that allows a user to choose from a list of op
 
 ```jsx
 
-<ComboBox label="Select your favourite boy band" placeholder="Search or browse">
+<ComboBox label="Select your favourite boy band" placeholder="Search or browse" optionHeight={3}>
 
     <ComboBox.Heading>Girls like boys best</ComboBox.Heading>
     <ComboBox.Option>Boyz II Men</ComboBox.Option>
@@ -46,7 +46,7 @@ basically an HTML `select` on steroids.
 A combo box combines a text field with a pull-down button in a single control. The user can enter a custom value into the field or click the button to choose from a list of predefined values. When the user enters a custom value, it’s not added to the list of choices.
 
 ```jsx
-<ComboBox label="Which house should the hat sort you into? 🧙‍♂️" placeholder="Search or browse">
+<ComboBox noAutocomplete label="Which house should the hat sort you into? 🧙‍♂️" placeholder="Select">
     <ComboBox.Option>Gryffindor</ComboBox.Option>
     <ComboBox.Option>Ravenclaw</ComboBox.Option>
     <ComboBox.Option>Slytherin</ComboBox.Option>

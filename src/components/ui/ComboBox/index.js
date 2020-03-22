@@ -18,6 +18,7 @@ export const ComboBox = forwardRef((props) => {
     hint,
     id,
     label,
+    noAutocomplete,
     onBlur,
     onFocus,
     optional,
@@ -79,7 +80,7 @@ export const ComboBox = forwardRef((props) => {
         unstyled={unstyled}
         onBlur={onBlurHandler}
         onFocus={onFocusHandler}
-        signifierIcon={searchIcon}
+        signifierIcon={!noAutocomplete ? searchIcon : undefined}
         actionIcon={downIcon}
       />
       <div
@@ -132,6 +133,7 @@ ComboBox.defaultProps = {
   hint: undefined,
   id: undefined,
   labelId: undefined,
+  noAutocomplete: false,
   onBlur: undefined,
   onFocus: undefined,
   optional: false,
@@ -158,6 +160,8 @@ ComboBox.propTypes = {
   label: PropTypes.node.isRequired,
   /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
   labelId: PropTypes.string,
+  /** Determines whether the component shows an autocomplete interface or not. When set to true, this component will behave more like a `select` element. */
+  noAutocomplete: PropTypes.bool,
   /** Used to mark this input as optional. Will output text in `theme.components.ComboBox.optionalMessage`, if set. */
   optional: PropTypes.bool,
   /** Placeholder text, used only for examples. */
