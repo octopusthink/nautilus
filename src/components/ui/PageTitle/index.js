@@ -2,8 +2,7 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { pageTitle } from 'styles';
-import { toUnits } from 'styles';
+import { pageTitle, toUnits } from 'styles';
 import { useTheme } from 'themes';
 
 export const PageTitle = (props) => {
