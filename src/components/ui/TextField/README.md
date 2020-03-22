@@ -59,6 +59,29 @@ The text string to mark an optional field is customisable in your theme. **Do no
 <TextField label="I am optional" optional />
 ```
 
+### Icons
+
+You can use icons inside your `TextField` to increase clarity and confidence in your users.
+
+A **signifier icon** appears at the start of the field. Use a signifier icon as a way of indicating the type of input the `TextField` is expecting. For example: a search query, a telephone number, or a link.
+
+A **action icon** appears at the end of the field. Use an action icon to provide an additional control related to the field. You could use this icon to initiate a GPS lookup, to upload a file, or to clear the input and start over.
+
+```jsx
+import { Icon } from '@octopusthink/nautilus';
+const phoneIcon = <Icon name="phone" />;
+const searchIcon = <Icon name="search" />;
+const locateIcon = <Icon name="map-pin" />;
+const clearIcon = <Icon name="x-circle" />;
+
+<React.Fragment>
+  <TextField label="Phone" signifierIcon={phoneIcon} placeholder="A signifier (leading) icon hints at the input required" />
+  <TextField label="Location" actionIcon={locateIcon} placeholder="An action (trailing) icon is used as an additional control" />
+  <TextField label="Search" signifierIcon={searchIcon} actionIcon={clearIcon} />
+</React.Fragment>
+
+```
+
 ## Interaction
 
 ### Focus

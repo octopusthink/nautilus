@@ -18,20 +18,22 @@ const smallText = (props) => {
 
 export const TextField = forwardRef((props, ref) => {
   const {
+    actionIcon,
     children,
     disabled,
     error,
+    hint,
+    id,
     label,
     labelId,
-    id,
-    placeholder,
+    multiline,
     onBlur,
     onFocus,
-    hint,
-    multiline,
-    rows,
-    size,
     optional,
+    placeholder,
+    rows,
+    signifierIcon,
+    size,
     type,
     unstyled,
     ...otherProps
@@ -182,12 +184,17 @@ export const TextField = forwardRef((props, ref) => {
           )}
         </label>
       )}
-      <InputComponent
-        aria-errormessage={errorId}
-        css={
-          unstyled
-            ? undefined
-            : css`
+      <div
+        css={css`
+          position: relative;
+        `}
+      >
+        <InputComponent
+          aria-errormessage={errorId}
+          css={
+            unstyled
+              ? undefined
+              : css`
           ${interfaceUI.medium(theme)};
           background: ${theme.colors.buttons.neutral};
           border-radius: 0;
@@ -197,10 +204,24 @@ export const TextField = forwardRef((props, ref) => {
           display: block;
           margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
           outline: none;
-          padding: ${toUnits(theme.spacing.padding.medium)}
-            ${toUnits(theme.spacing.padding.medium)};
+          padding: ${toUnits(theme.spacing.padding.medium)};
+          position: relative;
           transition: box-shadow 200ms;
           width: 100%;
+
+          ${signifierIcon &&
+            css`
+              padding-left: ${toUnits(
+                theme.components.Icon.sizes.medium.size + theme.spacing.padding.small * 2,
+              )};
+            `}
+
+          ${actionIcon &&
+            css`
+              padding-right: ${toUnits(
+                theme.components.Icon.sizes.medium.size + theme.spacing.padding.small * 2,
+              )};
+            `}
 
           ${size &&
             css`
@@ -236,26 +257,63 @@ export const TextField = forwardRef((props, ref) => {
             color: ${theme.colors.text.light};
           }
         `
-        }
-        disabled={disabled}
-        id={inputId}
-        placeholder={placeholder}
-        required={!optional && 'required'}
-        onBlur={onBlurHandler}
-        onFocus={onFocusHandler}
-        ref={ref}
-        rows={multiline ? rows : undefined}
-        maxLength={size}
-        type={!multiline ? type : undefined}
-        {...otherProps}
-      />
-      {errorComponent}
-      {children}
+          }
+          disabled={disabled}
+          id={inputId}
+          placeholder={placeholder}
+          required={!optional && 'required'}
+          onBlur={onBlurHandler}
+          onFocus={onFocusHandler}
+          ref={ref}
+          rows={multiline ? rows : undefined}
+          maxLength={size}
+          type={!multiline ? type : undefined}
+          {...otherProps}
+        />
+
+        {signifierIcon && (
+          <span
+            css={
+              unstyled
+                ? undefined
+                : css`
+                    opacity: 0.8;
+                    position: absolute;
+                    top: ${toUnits(theme.spacing.padding.medium + 2)};
+                    left: ${toUnits(theme.spacing.padding.medium)};
+                  `
+            }
+          >
+            {signifierIcon}
+          </span>
+        )}
+
+        {actionIcon && (
+          <span
+            css={
+              unstyled
+                ? undefined
+                : css`
+                    opacity: 0.8;
+                    position: absolute;
+                    top: ${toUnits(theme.spacing.padding.medium + 2)};
+                    right: ${toUnits(theme.spacing.padding.small)};
+                  `
+            }
+          >
+            {actionIcon}
+          </span>
+        )}
+
+        {errorComponent}
+        {children}
+      </div>
     </React.Fragment>
   );
 });
 
 TextField.defaultProps = {
+  actionIcon: undefined,
   children: undefined,
   disabled: false,
   error: undefined,
@@ -267,6 +325,7 @@ TextField.defaultProps = {
   onFocus: undefined,
   multiline: false,
   rows: 4,
+  signifierIcon: undefined,
   size: undefined,
   optional: false,
   type: 'text',
@@ -274,6 +333,8 @@ TextField.defaultProps = {
 };
 
 TextField.propTypes = {
+  /** An action icon appears at the end of the input and indicates provides an additional control, like a drop-down or a geolocation. */
+  actionIcon: PropTypes.node,
   /** @ignore */
   children: PropTypes.node,
   /** @ignore */
@@ -296,6 +357,8 @@ TextField.propTypes = {
   multiline: PropTypes.bool,
   /** Number of rows to provide when using a `multiline` input. Ignored when `multiline` is `false`. */
   rows: PropTypes.number,
+  /** A signifier icon appears at the start of the input and indicates what kind of data the field needs. */
+  signifierIcon: PropTypes.node,
   /** Size defines the number of characters the field is intended to support. */
   size: PropTypes.number,
   /** Placeholder text, used only for examples. */
