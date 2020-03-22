@@ -46,6 +46,7 @@ export const SkipLink = (props) => {
               }
             `
       }
+      unstyled={unstyled}
       {...otherProps}
       href={`#${toId}`}
     >
