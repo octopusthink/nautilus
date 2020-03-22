@@ -57,6 +57,13 @@ export const ComboBox = forwardRef((props) => {
     });
   }, [children]);
 
+  // If the number of options is less than seven, calculate the height to fit.
+  const numberOfChildren = options.length;
+  let dropdownHeight = 320;
+  if (numberOfChildren < 7) {
+    dropdownHeight = 24 * numberOfChildren;
+  }
+
   const searchIcon = <Icon name="search" />;
   const downIcon = <Icon name="chevron-down" />;
 
@@ -65,7 +72,7 @@ export const ComboBox = forwardRef((props) => {
       <TextField
         disabled={disabled}
         error={error}
-        placeholder={placeholder}
+        placeholder={numberOfChildren}
         label={label}
         hint={hint}
         optional={optional}
@@ -102,7 +109,7 @@ export const ComboBox = forwardRef((props) => {
               css`
                 border: 2px solid ${theme.colors.text.default};
                 border-top: 0;
-                height: 32rem;
+                height: ${toUnits(dropdownHeight)};
                 overflow-y: scroll;
               `}
           `}
