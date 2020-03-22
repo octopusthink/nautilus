@@ -7,6 +7,7 @@ import { useTheme } from 'themes';
 import List from 'components/ui/List';
 import TextField from 'components/ui/TextField';
 import Option from './Option';
+import Heading from './Heading';
 
 export const ComboBox = forwardRef((props) => {
   const {
@@ -86,7 +87,7 @@ export const ComboBox = forwardRef((props) => {
               css`
                 border: 2px solid ${theme.colors.text.default};
                 border-top: 0;
-                height: 16rem; // This should be # of items * 2.4rem (line-height on Option, up to a max of ... say, three)
+                height: 32rem;
                 overflow-y: scroll;
               `}
           `}
@@ -139,8 +140,9 @@ ComboBox.propTypes = {
   unstyled: PropTypes.bool,
 };
 
-// Export Option as `ComboBox.Option`.
+// Export child components.
 ComboBox.Option = Option;
+ComboBox.Heading = Heading;
 
 export const { defaultProps, propTypes } = ComboBox;
 
