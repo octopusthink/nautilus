@@ -320,8 +320,8 @@ export const TextField = forwardRef((props, ref) => {
         )}
 
         {errorComponent}
-        {children}
       </div>
+      {children}
     </React.Fragment>
   );
 });

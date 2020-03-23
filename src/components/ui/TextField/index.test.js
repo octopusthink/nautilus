@@ -5,21 +5,23 @@ import { axe, fireEvent, muteConsole, render } from 'utils/testing';
 import TextField from '.';
 
 describe('TextField', () => {
-  it('should render a <label> and <input> by default', () => {
+  it('should render a <label> and <div><input></div> by default', () => {
     const { container } = render(<TextField label="Hello" />);
 
     expect(container.children[0].tagName).toEqual('LABEL');
-    expect(container.children[1].tagName).toEqual('INPUT');
+    expect(container.children[1].tagName).toEqual('DIV');
+    expect(container.children[1].children[0].tagName).toEqual('INPUT');
   });
 
   it('should not output an empty <label> if one is not supplied', () => {
     muteConsole({ times: 1, type: 'error' });
     const { container } = render(<TextField />);
 
-    expect(container.children[0].tagName).toEqual('INPUT');
+    expect(container.children[0].tagName).toEqual('DIV');
+    expect(container.children[0].children[0].tagName).toEqual('INPUT');
   });
 
-  it('will render `children` after the <label> and <input> elements', () => {
+  it('will render `children` after the <label> and <div><input></div> elements', () => {
     const { container } = render(
       <TextField label="Hello">
         <span>Why is this even here? I dunno</span>
@@ -27,15 +29,17 @@ describe('TextField', () => {
     );
 
     expect(container.children[0].tagName).toEqual('LABEL');
-    expect(container.children[1].tagName).toEqual('INPUT');
+    expect(container.children[1].tagName).toEqual('DIV');
+    expect(container.children[1].children[0].tagName).toEqual('INPUT');
     expect(container.children[2].tagName).toEqual('SPAN');
   });
 
-  it('should render a <label> and <textarea> when `multiline` is `true`', () => {
+  it('should render a <label> and <div><textarea></div> when `multiline` is `true`', () => {
     const { container } = render(<TextField label="Hello" multiline />);
 
     expect(container.children[0].tagName).toEqual('LABEL');
-    expect(container.children[1].tagName).toEqual('TEXTAREA');
+    expect(container.children[1].tagName).toEqual('DIV');
+    expect(container.children[1].children[0].tagName).toEqual('TEXTAREA');
   });
 
   it('should set rows to 4 by default', () => {
