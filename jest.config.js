@@ -1,7 +1,8 @@
 module.exports = {
+  collectCoverage: false,
   collectCoverageFrom: ['src/**/**.js'],
   coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
-  coverageReporters: ['html', 'text-summary'],
+  coverageReporters: ['lcov', 'html', 'text-summary'],
   moduleNameMapper: {
     '^react-native$': 'react-native-web',
   },
