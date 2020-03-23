@@ -6,7 +6,6 @@ import shortid from 'shortid';
 import Icon from 'components/ui/Icon';
 import { focusStyle, interfaceUI, toUnits } from 'styles';
 import { useTheme } from 'themes';
-import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 
 const smallText = (props) => {
   const { theme } = props;
