@@ -39,6 +39,7 @@ export const Button = (props) => {
     navigation,
     noMargin,
     primary,
+    stackedIcon,
     success,
     trailingIcon,
     unstyled,
@@ -155,10 +156,9 @@ export const Button = (props) => {
             padding-right: ${toUnits(theme.spacing.padding.medium)};
           `}
 
-        ${!noMargin &&
+        ${stackedIcon &&
           css`
-            margin: 0 ${toUnits(theme.spacing.margin.xxSmall)}
-              ${toUnits(theme.spacing.margin.xSmall)};
+            flex-direction: column;
           `}
 
         /* Set external margins */
@@ -259,6 +259,16 @@ export const Button = (props) => {
         />
       )}
 
+      {stackedIcon && (
+        <Icon
+          css={css`
+            margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)} 0;
+          `}
+          name={stackedIcon}
+          medium
+        />
+      )}
+
       {children}
 
       {trailingIcon && (
@@ -285,6 +295,7 @@ Button.defaultProps = {
   navigation: false,
   noMargin: false,
   primary: false,
+  stackedIcon: undefined,
   success: false,
   trailingIcon: undefined,
   type: 'button',
@@ -320,6 +331,8 @@ Button.propTypes = {
   navigation: PropTypes.bool,
   /** Remove any outer margins from component. */
   noMargin: PropTypes.bool,
+  /** Show an icon inside the button, on top of text. Passes a string to Icon's name prop. */
+  stackedIcon: PropTypes.string,
   /** Show an icon inside the button, after the text. Passes a string to Icon's name prop. */
   trailingIcon: PropTypes.string,
   /** HTML `type` attribute for the button. Defaults to `"button"`. */

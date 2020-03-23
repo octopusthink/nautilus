@@ -35,7 +35,6 @@ exports[`Button should match styles 1`] = `
   width: -moz-max-content;
   width: max-content;
   margin: 0 0.4rem 0.8rem;
-  margin: 0 0.4rem 0.8rem;
 }
 
 .emotion-0::-moz-focus-inner {
@@ -180,7 +179,6 @@ exports[`Button should show danger styles 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  margin: 0 0.4rem 0.8rem;
   margin: 0 0.4rem 0.8rem;
 }
 

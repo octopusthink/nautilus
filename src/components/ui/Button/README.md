@@ -214,9 +214,19 @@ import React from 'react';
     </Button>
   </div>
 
-  <Button primary stackedIcon="search">
-    Text underneath
-  </Button>
+  <div style={{display: 'flex', flexWrap: 'wrap'}}>
+    <Button primary stackedIcon="search">
+      Stacked
+    </Button>
+
+    <Button stackedIcon="star">
+      Stacked
+    </Button>
+
+    <Button minimal stackedIcon="search">
+      Stacked
+    </Button>
+  </div>
 
   <Button primary onlyIcon="search">
     No text!
