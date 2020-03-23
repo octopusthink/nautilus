@@ -3,8 +3,9 @@
 exports[`Icon should match styles 1`] = `
 .emotion-1 {
   display: inline-block;
-  margin: 0 0.8rem 0 0;
+  margin: 0;
   vertical-align: middle;
+  margin: 0 0.8rem 0 0;
 }
 
 .emotion-0 {
@@ -52,8 +53,9 @@ exports[`Icon should match styles when background is supplied 1`] = `
   height: 4rem;
   width: 4rem;
   display: inline-block;
-  margin: 0 0.8rem 0 0;
+  margin: 0;
   vertical-align: middle;
+  margin: 0 0.8rem 0 0;
 }
 
 .emotion-0 {
@@ -111,8 +113,9 @@ exports[`Icon should match styles when border is supplied 1`] = `
   height: 4rem;
   width: 4rem;
   display: inline-block;
-  margin: 0 0.8rem 0 0;
+  margin: 0;
   vertical-align: middle;
+  margin: 0 0.8rem 0 0;
 }
 
 <span
@@ -148,8 +151,9 @@ exports[`Icon should match styles when border is supplied 1`] = `
 exports[`Icon should match styles when color is supplied 1`] = `
 .emotion-1 {
   display: inline-block;
-  margin: 0 0.8rem 0 0;
+  margin: 0;
   vertical-align: middle;
+  margin: 0 0.8rem 0 0;
 }
 
 .emotion-0 {
@@ -185,6 +189,48 @@ exports[`Icon should match styles when color is supplied 1`] = `
       />
       <polygon
         points="12 15 17 21 7 21 12 15"
+      />
+    </g>
+  </svg>
+</span>
+`;
+
+exports[`Icon shouldn't have a margin when \`noMargin\` is true 1`] = `
+.emotion-0 {
+  height: 2.4rem;
+  stroke-width: 0.175rem;
+  width: 2.4rem;
+  stroke: currentColor;
+  opacity: 0.8;
+}
+
+.emotion-1 {
+  display: inline-block;
+  margin: 0;
+  vertical-align: middle;
+}
+
+<span
+  class="emotion-1"
+>
+  <svg
+    aria-hidden="true"
+    class="emotion-0"
+    fill="none"
+    height="24"
+    id="styling"
+    role="img"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="1.75"
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g>
+      <polygon
+        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
       />
     </g>
   </svg>

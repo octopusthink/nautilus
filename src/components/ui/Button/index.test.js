@@ -127,6 +127,12 @@ describe('Button', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it("shouldn't have a margin when `noMargin` is true", () => {
+    const { container } = render(<Button noMargin>Hello</Button>);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   it('should accept and pass through other props', () => {
     const { getByTestId } = render(
       <Button className="custom-class" data-testid="myButton">

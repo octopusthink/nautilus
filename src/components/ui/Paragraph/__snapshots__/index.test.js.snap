@@ -11,6 +11,7 @@ exports[`Paragraph should not output styles when unstyled is set 1`] = `
 exports[`Paragraph should output large CSS the \`large\` prop is set 1`] = `
 .emotion-0 {
   color: #3b3f45;
+  margin: 0;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
@@ -28,6 +29,7 @@ exports[`Paragraph should output large CSS the \`large\` prop is set 1`] = `
 exports[`Paragraph should output regular CSS when neither \`large\` nor \`small\` props are set 1`] = `
 .emotion-0 {
   color: #3b3f45;
+  margin: 0;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
@@ -45,6 +47,7 @@ exports[`Paragraph should output regular CSS when neither \`large\` nor \`small\
 exports[`Paragraph should output small CSS the \`small\` prop is set 1`] = `
 .emotion-0 {
   color: #3b3f45;
+  margin: 0;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
@@ -56,5 +59,22 @@ exports[`Paragraph should output small CSS the \`small\` prop is set 1`] = `
   class="Nautilus-Paragraph emotion-0"
 >
   I'm a tiny body of text.
+</p>
+`;
+
+exports[`Paragraph shouldn't have a margin when \`noMargin\` is true 1`] = `
+.emotion-0 {
+  color: #3b3f45;
+  margin: 0;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.5555555555555556;
+}
+
+<p
+  class="Nautilus-Paragraph emotion-0"
+>
+  I'm a paragraph with no margin.
 </p>
 `;

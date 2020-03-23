@@ -134,6 +134,21 @@ describe('TextField', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it("shouldn't have a margin when `noMargin` is true", () => {
+    const { container } = render(<TextField label="Hello" noMargin id="myTextField" />);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it("shouldn't have a margin when `noMargin` is true and error exists", () => {
+    const error = <div id="errorMessage">Something went wrong!</div>;
+    const { container } = render(
+      <TextField label="Hello" error={error} noMargin id="myTextField" />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should forward refs', () => {
     const ref = createRef();
 

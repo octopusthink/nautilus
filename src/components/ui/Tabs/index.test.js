@@ -80,6 +80,22 @@ describe('Tabs', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it("shouldn't have a margin when `noMargin` is true", () => {
+    const { container } = render(
+      <Tabs id="myTabSet" noMargin>
+        <Tabs.Tab
+          data-testid="firstTabSection"
+          label="About"
+          labelProps={{ 'data-testid': 'firstTab' }}
+        >
+          <Paragraph>Puppies are cute.</Paragraph>
+        </Tabs.Tab>
+      </Tabs>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should not render styles when unstyled prop is set', () => {
     const { container } = render(
       <Tabs id="myTabSet" unstyled>

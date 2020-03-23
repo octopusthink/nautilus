@@ -34,6 +34,7 @@ export const Button = (props) => {
     linkProps,
     minimal,
     navigation,
+    noMargin,
     primary,
     success,
     unstyled,
@@ -113,7 +114,7 @@ export const Button = (props) => {
         color: ${currentButtonColor};
         cursor: pointer;
         display: inline-block;
-        margin: 0 ${toUnits(theme.spacing.margin.xxSmall)} ${toUnits(theme.spacing.margin.xSmall)};
+        margin: 0;
         outline: none;
         padding: ${toUnits(theme.spacing.padding.medium)} ${toUnits(theme.spacing.padding.large)};
         position: relative;
@@ -137,6 +138,12 @@ export const Button = (props) => {
           box-shadow: 0 0 1px 4px ${currentButtonColorLight};
           outline: none;
         }
+
+        ${!noMargin &&
+          css`
+            margin: 0 ${toUnits(theme.spacing.margin.xxSmall)}
+              ${toUnits(theme.spacing.margin.xSmall)};
+          `}
 
         /* Primary styles */
         ${primary &&
@@ -234,6 +241,7 @@ Button.defaultProps = {
   linkProps: undefined,
   minimal: false,
   navigation: false,
+  noMargin: false,
   primary: false,
   success: false,
   type: 'button',
@@ -265,6 +273,8 @@ Button.propTypes = {
   linkProps: PropTypes.object,
   /** Outputs a Nautilus `<Link>` tag that looks (and largely behaves) like a `<Button>`, but can used as navigation. Setting this to `true` enables `Link` properties. */
   navigation: PropTypes.bool,
+  /** Remove any outer margins from component. */
+  noMargin: PropTypes.bool,
   /* @ignore Don't output any CSS styles. */
   unstyled: PropTypes.bool,
   /** HTML `type` attribute for the button. Defaults to `"button"`. */

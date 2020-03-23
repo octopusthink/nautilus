@@ -29,6 +29,7 @@ export const TextField = forwardRef((props, ref) => {
     onFocus,
     hint,
     multiline,
+    noMargin,
     rows,
     size,
     optional,
@@ -89,8 +90,12 @@ export const TextField = forwardRef((props, ref) => {
               : css`
                   ${interfaceUI.medium(theme)};
                   color: ${theme.colors.state.errorText};
-                  margin-top: -${toUnits(theme.spacing.padding.large)};
-                  margin-bottom: ${toUnits(theme.spacing.padding.large)};
+                  margin: 0;
+
+                  ${!noMargin &&
+                    css`
+                      margin-bottom: ${toUnits(theme.spacing.padding.large)};
+                    `}
                 `
           }
         >
@@ -100,7 +105,7 @@ export const TextField = forwardRef((props, ref) => {
     }
 
     return cloneElement(error, { id: errorId });
-  }, [error, errorId, theme, unstyled]);
+  }, [error, errorId, noMargin, theme, unstyled]);
 
   let InputComponent = 'input';
   if (multiline) {
@@ -195,12 +200,18 @@ export const TextField = forwardRef((props, ref) => {
           box-sizing: border-box;
           color: ${theme.colors.text.default};
           display: block;
-          margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
+          margin: 0;
           outline: none;
           padding: ${toUnits(theme.spacing.padding.medium)}
             ${toUnits(theme.spacing.padding.medium)};
           transition: box-shadow 200ms;
           width: 100%;
+
+          ${!noMargin &&
+            !error &&
+            css`
+              margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
+            `}
 
           ${size &&
             css`
@@ -260,15 +271,16 @@ TextField.defaultProps = {
   disabled: false,
   error: undefined,
   hint: undefined,
-  labelId: undefined,
   id: undefined,
-  placeholder: undefined,
+  labelId: undefined,
+  multiline: false,
+  noMargin: false,
   onBlur: undefined,
   onFocus: undefined,
-  multiline: false,
+  optional: false,
+  placeholder: undefined,
   rows: 4,
   size: undefined,
-  optional: false,
   type: 'text',
   unstyled: false,
 };
@@ -292,6 +304,8 @@ TextField.propTypes = {
   label: PropTypes.node.isRequired,
   /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
   labelId: PropTypes.string,
+  /** Remove any outer margins from component. */
+  noMargin: PropTypes.bool,
   /** Set to `true` for a multiline input (a `textarea` element). */
   multiline: PropTypes.bool,
   /** Number of rows to provide when using a `multiline` input. Ignored when `multiline` is `false`. */

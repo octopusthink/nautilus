@@ -32,7 +32,7 @@ export const Heading = (props) => {
   qualityControl(props);
 
   const theme = useTheme();
-  const { children, dark, inverse, level, light, unstyled, ...otherProps } = props;
+  const { children, dark, inverse, level, light, noMargin, unstyled, ...otherProps } = props;
   const HeadingElement = `h${level}`;
 
   return (
@@ -42,8 +42,13 @@ export const Heading = (props) => {
           ? undefined
           : css`
         color: ${theme.colors.text.default};
-        margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
+        margin: 0;
 
+        ${!noMargin &&
+          css`
+            margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
+          `}
+          
         ${light &&
           css`
             color: ${theme.colors.text.light};
@@ -88,10 +93,11 @@ export const Heading = (props) => {
 
 Heading.defaultProps = {
   children: undefined,
+  dark: false,
   inverse: false,
   level: 2,
-  dark: false,
   light: false,
+  noMargin: false,
   unstyled: false,
 };
 
@@ -106,6 +112,8 @@ Heading.propTypes = {
   light: PropTypes.bool,
   /** Semantic hierarchy level of the `<h>` element in the markup (ex: `<h3>`). The more semantically important the level, the larger the heading will appear visually; an `<h2>` will be visually styled as "large" while an `<h4>` will be visually small. */
   level: PropTypes.oneOf(HeadingLevels),
+  /** Remove any outer margins from component. */
+  noMargin: PropTypes.bool,
   /* @ignore Don't output any CSS styles. */
   unstyled: PropTypes.bool,
 };

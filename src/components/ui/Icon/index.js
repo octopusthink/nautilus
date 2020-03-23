@@ -64,6 +64,7 @@ export const Icon = (props) => {
     medium,
     large,
     xLarge,
+    noMargin,
     strokeColor,
     verticalAlign,
     ...otherProps
@@ -134,8 +135,13 @@ export const Icon = (props) => {
       css={css`
         ${borderBackground};
         display: inline-block;
-        margin: ${marginSize};
+        margin: 0;
         vertical-align: ${verticalAlign};
+
+        ${!noMargin &&
+          css`
+            margin: ${marginSize};
+          `}
       `}
       data-testid={dataTestId}
     >
@@ -186,22 +192,23 @@ export const Icon = (props) => {
 };
 
 Icon.defaultProps = {
+  'data-testid': undefined,
+  background: undefined,
+  border: undefined,
   children: undefined,
   className: undefined,
-  'data-testid': undefined,
   description: undefined,
-  id: undefined,
   fillColor: undefined,
+  id: undefined,
+  large: false,
+  medium: true,
+  noMargin: false,
+  small: false,
   strokeColor: undefined,
   title: undefined,
-  xSmall: false,
-  small: false,
-  medium: true,
-  large: false,
-  xLarge: false,
-  border: undefined,
-  background: undefined,
   verticalAlign: 'middle',
+  xLarge: false,
+  xSmall: false,
 };
 
 Icon.propTypes = {
@@ -231,6 +238,8 @@ Icon.propTypes = {
   medium: PropTypes.bool,
   /** The name of the icon to use. */
   name: PropTypes.string.isRequired,
+  /** Remove any outer margins from component. */
+  noMargin: PropTypes.bool,
   /** Vertical alignment. */
   verticalAlign: PropTypes.string,
   /** Small icon size. */
