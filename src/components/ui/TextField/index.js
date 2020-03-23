@@ -1,8 +1,9 @@
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import React, { cloneElement, forwardRef, useCallback, useMemo, useState } from 'react';
+import React, { cloneElement, forwardRef, useCallback, useMemo, useRef, useState } from 'react';
 import shortid from 'shortid';
 
+import Icon from 'components/ui/Icon';
 import { focusStyle, interfaceUI, toUnits } from 'styles';
 import { useTheme } from 'themes';
 
@@ -18,7 +19,11 @@ const smallText = (props) => {
 
 export const TextField = forwardRef((props, ref) => {
   const {
+    __actionIconId,
+    __signifierIconId,
     actionIcon,
+    actionIconOnClick,
+    actionIconTitle,
     children,
     disabled,
     error,
@@ -27,12 +32,14 @@ export const TextField = forwardRef((props, ref) => {
     label,
     labelId,
     multiline,
+    noMargin,
     onBlur,
     onFocus,
     optional,
     placeholder,
     rows,
     signifierIcon,
+    signifierIconTitle,
     size,
     type,
     unstyled,
@@ -41,6 +48,7 @@ export const TextField = forwardRef((props, ref) => {
 
   const [focus, setFocus] = useState(otherProps.autofocus);
   const [generatedId] = useState(shortid.generate());
+  const inputRef = useRef();
   const inputId = useMemo(() => {
     return id || generatedId;
   }, [generatedId, id]);
@@ -80,7 +88,8 @@ export const TextField = forwardRef((props, ref) => {
     }
 
     if (typeof error === 'string') {
-      // TODO: Use error styling here, and move margins to TextField component, maybe in a wrapper? Eventually we probably want some kind of
+      // TODO: Use error styling here, and move margins to TextField component,
+      // maybe in a wrapper? Eventually we probably want some kind of
       // <Message> component with an error style.
       return (
         <div
@@ -91,8 +100,12 @@ export const TextField = forwardRef((props, ref) => {
               : css`
                   ${interfaceUI.medium(theme)};
                   color: ${theme.colors.state.errorText};
-                  margin-top: -${toUnits(theme.spacing.padding.large)};
-                  margin-bottom: ${toUnits(theme.spacing.padding.large)};
+                  margin: 0;
+
+                  ${!noMargin &&
+                    css`
+                      margin-bottom: ${toUnits(theme.spacing.padding.large)};
+                    `}
                 `
           }
         >
@@ -102,7 +115,23 @@ export const TextField = forwardRef((props, ref) => {
     }
 
     return cloneElement(error, { id: errorId });
-  }, [error, errorId, theme, unstyled]);
+  }, [error, errorId, noMargin, theme, unstyled]);
+
+  // Handle focus of the label and text input when a signifier icon is used.
+  // This allows clicking on the signifier icon to act exactly like clicking
+  // on the label for this TextField, including the "mouseDown" state users
+  // encounter when clicking down on the label (which applies focus styles to
+  // only the label, and not the TextField).
+  //
+  // Essentially, this makes the `signifierIcon` prop feel like part of the
+  // <label> tag.
+  const onIconClickHandler = useCallback(() => {
+    const refToUse = ref || inputRef;
+
+    if (refToUse && refToUse.current) {
+      refToUse.current.focus();
+    }
+  }, [inputRef, ref]);
 
   let InputComponent = 'input';
   if (multiline) {
@@ -202,12 +231,18 @@ export const TextField = forwardRef((props, ref) => {
           box-sizing: border-box;
           color: ${theme.colors.text.default};
           display: block;
-          margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
+          margin: 0;
           outline: none;
           padding: ${toUnits(theme.spacing.padding.medium)};
           position: relative;
           transition: box-shadow 200ms;
           width: 100%;
+
+          ${!noMargin &&
+            !error &&
+            css`
+              margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
+            `}
 
           ${signifierIcon &&
             css`
@@ -264,7 +299,7 @@ export const TextField = forwardRef((props, ref) => {
           required={!optional && 'required'}
           onBlur={onBlurHandler}
           onFocus={onFocusHandler}
-          ref={ref}
+          ref={ref || inputRef}
           rows={multiline ? rows : undefined}
           maxLength={size}
           type={!multiline ? type : undefined}
@@ -272,7 +307,12 @@ export const TextField = forwardRef((props, ref) => {
         />
 
         {signifierIcon && (
-          <span
+          <Icon
+            data-testid={__signifierIconId}
+            id={__signifierIconId}
+            name={signifierIcon}
+            onClick={onIconClickHandler}
+            title={signifierIconTitle}
             css={
               unstyled
                 ? undefined
@@ -283,13 +323,16 @@ export const TextField = forwardRef((props, ref) => {
                     left: ${toUnits(theme.spacing.padding.medium)};
                   `
             }
-          >
-            {signifierIcon}
-          </span>
+          />
         )}
 
         {actionIcon && (
-          <span
+          <Icon
+            data-testid={__actionIconId}
+            id={__actionIconId}
+            onClick={actionIconOnClick}
+            name={actionIcon}
+            title={actionIconTitle}
             css={
               unstyled
                 ? undefined
@@ -300,41 +343,53 @@ export const TextField = forwardRef((props, ref) => {
                     right: ${toUnits(theme.spacing.padding.small)};
                   `
             }
-          >
-            {actionIcon}
-          </span>
+          />
         )}
 
         {errorComponent}
-        {children}
       </div>
+      {children}
     </React.Fragment>
   );
 });
 
 TextField.defaultProps = {
+  __actionIconId: undefined,
+  __signifierIconId: undefined,
   actionIcon: undefined,
+  actionIconOnClick: undefined,
+  actionIconTitle: undefined,
   children: undefined,
   disabled: false,
   error: undefined,
   hint: undefined,
-  labelId: undefined,
   id: undefined,
-  placeholder: undefined,
+  labelId: undefined,
+  multiline: false,
+  noMargin: false,
   onBlur: undefined,
   onFocus: undefined,
-  multiline: false,
+  optional: false,
+  placeholder: undefined,
   rows: 4,
   signifierIcon: undefined,
+  signifierIconTitle: undefined,
   size: undefined,
-  optional: false,
   type: 'text',
   unstyled: false,
 };
 
 TextField.propTypes = {
-  /** An action icon appears at the end of the input and indicates provides an additional control, like a drop-down or a geolocation. */
-  actionIcon: PropTypes.node,
+  /** @ignore ID prop for the action icon <Icon /> component; only used for testing. */
+  __actionIconId: PropTypes.string,
+  /** @ignore ID prop for the signifier icon <Icon /> component; only used for testing. */
+  __signifierIconId: PropTypes.string,
+  /** An action icon appears at the end of the input and indicates provides an additional control, like a drop-down or a geolocation. String refers to Icon `name` prop. */
+  actionIcon: PropTypes.string,
+  /* Event handler for the action icon */
+  actionIconOnClick: PropTypes.func,
+  /** Accessible title for the action icon. */
+  actionIconTitle: PropTypes.string,
   /** @ignore */
   children: PropTypes.node,
   /** @ignore */
@@ -353,12 +408,16 @@ TextField.propTypes = {
   label: PropTypes.node.isRequired,
   /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
   labelId: PropTypes.string,
+  /** Remove any outer margins from component. */
+  noMargin: PropTypes.bool,
   /** Set to `true` for a multiline input (a `textarea` element). */
   multiline: PropTypes.bool,
   /** Number of rows to provide when using a `multiline` input. Ignored when `multiline` is `false`. */
   rows: PropTypes.number,
-  /** A signifier icon appears at the start of the input and indicates what kind of data the field needs. */
-  signifierIcon: PropTypes.node,
+  /** A signifier icon appears at the start of the input and indicates what kind of data the field needs. String refers to Icon `name` prop. */
+  signifierIcon: PropTypes.string,
+  /** Accessible title for the signifier icon. */
+  signifierIconTitle: PropTypes.string,
   /** Size defines the number of characters the field is intended to support. */
   size: PropTypes.number,
   /** Placeholder text, used only for examples. */

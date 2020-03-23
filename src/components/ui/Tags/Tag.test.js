@@ -43,6 +43,12 @@ describe('Tag', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it("shouldn't have a margin when `noMargin` is true", () => {
+    const { container } = render(<Tag noMargin>Hello</Tag>);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   it('should dismiss a Tag with `onDismiss` set', () => {
     const onDismiss = jest.fn();
     const { container, getByTestId } = render(

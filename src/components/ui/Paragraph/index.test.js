@@ -45,6 +45,14 @@ describe('Paragraph', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  it("shouldn't have a margin when `noMargin` is true", () => {
+    const { container } = render(
+      <Paragraph noMargin>I&apos;m a paragraph with no margin.</Paragraph>,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   it('should accept and pass through other props', () => {
     const { getByTestId } = render(
       <Paragraph className="custom-class" data-testid="myText">

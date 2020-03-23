@@ -136,6 +136,16 @@ describe('List', () => {
         <List.Item data-testid="two">raspberry</List.Item>
       </List>,
     );
+    expect(container).toMatchSnapshot();
+  });
+
+  it("shouldn't have a margin when `noMargin` is true", () => {
+    const { container } = render(
+      <List noMargin>
+        <List.Item data-testid="one">apple</List.Item>
+        <List.Item data-testid="two">raspberry</List.Item>
+      </List>,
+    );
 
     expect(container).toMatchSnapshot();
   });

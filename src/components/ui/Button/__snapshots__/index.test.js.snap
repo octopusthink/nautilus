@@ -12,7 +12,7 @@ exports[`Button should match styles 1`] = `
   color: #cd2f83;
   cursor: pointer;
   display: inline-block;
-  margin: 0 0.4rem 0.8rem;
+  margin: 0;
   outline: none;
   padding: 1.2rem 2.4rem;
   position: relative;
@@ -24,6 +24,7 @@ exports[`Button should match styles 1`] = `
   transition: all 200ms ease-in-out;
   -webkit-transition: top 0ms ease-out;
   transition: top 0ms ease-out;
+  margin: 0 0.4rem 0.8rem;
 }
 
 .emotion-0::-moz-focus-inner {
@@ -69,8 +70,9 @@ exports[`Button should not output styles when unstyled is set 1`] = `
 exports[`Button should not output styles when unstyled is set, even with styling props 1`] = `
 .emotion-1 {
   display: inline-block;
-  margin: 0 0.8rem 0 0;
+  margin: 0;
   vertical-align: middle;
+  margin: 0 0.8rem 0 0;
   margin-right: 0.4rem;
 }
 
@@ -143,7 +145,7 @@ exports[`Button should show danger styles 1`] = `
   color: #8a0000;
   cursor: pointer;
   display: inline-block;
-  margin: 0 0.4rem 0.8rem;
+  margin: 0;
   outline: none;
   padding: 1.2rem 2.4rem;
   position: relative;
@@ -155,6 +157,7 @@ exports[`Button should show danger styles 1`] = `
   transition: all 200ms ease-in-out;
   -webkit-transition: top 0ms ease-out;
   transition: top 0ms ease-out;
+  margin: 0 0.4rem 0.8rem;
 }
 
 .emotion-2::-moz-focus-inner {
@@ -180,8 +183,9 @@ exports[`Button should show danger styles 1`] = `
 
 .emotion-1 {
   display: inline-block;
-  margin: 0 0.8rem 0 0;
+  margin: 0;
   vertical-align: middle;
+  margin: 0 0.8rem 0 0;
   margin-right: 0.4rem;
 }
 
@@ -240,4 +244,59 @@ exports[`Button should show danger styles 1`] = `
     hello
   </button>
 </div>
+`;
+
+exports[`Button shouldn't have a margin when \`noMargin\` is true 1`] = `
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  background: #ffffff;
+  border: 2px solid #cd2f83;
+  border-radius: 8px;
+  color: #cd2f83;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  outline: none;
+  padding: 1.2rem 2.4rem;
+  position: relative;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  top: 0;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  -webkit-transition: top 0ms ease-out;
+  transition: top 0ms ease-out;
+}
+
+.emotion-0::-moz-focus-inner {
+  border: 0;
+}
+
+.emotion-0:active {
+  border-color: #94225f;
+  color: #94225f;
+  top: 2px;
+}
+
+.emotion-0:focus {
+  box-shadow: 0 0 1px 4px #f5bbda;
+  outline: none;
+}
+
+.emotion-0:hover {
+  border-color: #94225f;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
+  color: #94225f;
+}
+
+<button
+  class="emotion-0"
+  type="button"
+>
+  Hello
+</button>
 `;

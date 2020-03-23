@@ -5,21 +5,23 @@ import { axe, fireEvent, muteConsole, render } from 'utils/testing';
 import TextField from '.';
 
 describe('TextField', () => {
-  it('should render a <label> and <input> by default', () => {
+  it('should render a <label> and <div><input></div> by default', () => {
     const { container } = render(<TextField label="Hello" />);
 
     expect(container.children[0].tagName).toEqual('LABEL');
-    expect(container.children[1].tagName).toEqual('INPUT');
+    expect(container.children[1].tagName).toEqual('DIV');
+    expect(container.children[1].children[0].tagName).toEqual('INPUT');
   });
 
   it('should not output an empty <label> if one is not supplied', () => {
     muteConsole({ times: 1, type: 'error' });
     const { container } = render(<TextField />);
 
-    expect(container.children[0].tagName).toEqual('INPUT');
+    expect(container.children[0].tagName).toEqual('DIV');
+    expect(container.children[0].children[0].tagName).toEqual('INPUT');
   });
 
-  it('will render `children` after the <label> and <input> elements', () => {
+  it('will render `children` after the <label> and <div><input></div> elements', () => {
     const { container } = render(
       <TextField label="Hello">
         <span>Why is this even here? I dunno</span>
@@ -27,15 +29,17 @@ describe('TextField', () => {
     );
 
     expect(container.children[0].tagName).toEqual('LABEL');
-    expect(container.children[1].tagName).toEqual('INPUT');
+    expect(container.children[1].tagName).toEqual('DIV');
+    expect(container.children[1].children[0].tagName).toEqual('INPUT');
     expect(container.children[2].tagName).toEqual('SPAN');
   });
 
-  it('should render a <label> and <textarea> when `multiline` is `true`', () => {
+  it('should render a <label> and <div><textarea></div> when `multiline` is `true`', () => {
     const { container } = render(<TextField label="Hello" multiline />);
 
     expect(container.children[0].tagName).toEqual('LABEL');
-    expect(container.children[1].tagName).toEqual('TEXTAREA');
+    expect(container.children[1].tagName).toEqual('DIV');
+    expect(container.children[1].children[0].tagName).toEqual('TEXTAREA');
   });
 
   it('should set rows to 4 by default', () => {
@@ -132,6 +136,97 @@ describe('TextField', () => {
     const { container } = render(<TextField label="Hello" id="myTextField" unstyled />);
 
     expect(container).toMatchSnapshot();
+  });
+
+  it("shouldn't have a margin when `noMargin` is true", () => {
+    const { container } = render(<TextField label="Hello" noMargin id="myTextField" />);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it("shouldn't have a margin when `noMargin` is true and error exists", () => {
+    const error = <div id="errorMessage">Something went wrong!</div>;
+    const { container } = render(
+      <TextField label="Hello" error={error} noMargin id="myTextField" />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should output an <Icon> when the signifierIcon prop is used', () => {
+    const { container, getByTestId } = render(
+      <TextField
+        __signifierIconId="signifierIcon"
+        signifierIcon="phone"
+        data-testid="focusInput"
+        label="Hello"
+        id="myTestId"
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(getByTestId('signifierIcon').tagName).toEqual('SPAN');
+    expect(getByTestId('signifierIcon').firstChild.tagName).toEqual('svg');
+  });
+
+  it('should focus the text field when the signifier icon is clicked', () => {
+    const ref = createRef();
+
+    const { getByTestId } = render(
+      <TextField
+        __signifierIconId="signifierIcon"
+        signifierIcon="phone"
+        data-testid="focusInput"
+        label="Hello"
+        id="myTestId"
+        ref={ref}
+      />,
+    );
+
+    const focusSpy = jest.spyOn(ref.current, 'focus');
+
+    // The onClick event gets attached to the SVG child element, so make sure
+    // that's what we click on.
+    fireEvent.click(getByTestId('signifierIcon').firstChild);
+
+    expect(focusSpy).toHaveBeenCalled();
+  });
+
+  it('should output an <Icon> when the actionIcon prop is used', () => {
+    const { container, getByTestId } = render(
+      <TextField
+        __actionIconId="arnoldIcon"
+        actionIcon="phone"
+        data-testid="focusInput"
+        label="Hello"
+        id="myTestId"
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(getByTestId('arnoldIcon').tagName).toEqual('SPAN');
+    expect(getByTestId('arnoldIcon').firstChild.tagName).toEqual('svg');
+  });
+
+  it('should allow the user to click on the actionIcon', () => {
+    const onClick = jest.fn();
+
+    const { getByTestId } = render(
+      <TextField
+        __actionIconId="arnoldIcon"
+        actionIcon="phone"
+        actionIconOnClick={onClick}
+        data-testid="focusInput"
+        label="Hello"
+        id="myTestId"
+      />,
+    );
+
+    // The onClick event gets attached to the SVG child element, so make sure
+    // that's what we click on.
+    fireEvent.click(getByTestId('arnoldIcon').firstChild);
+
+    expect(onClick).toHaveBeenCalled();
   });
 
   it('should forward refs', () => {

@@ -3,6 +3,7 @@
 exports[`Tabs.Tab should not render styles when unstyled prop is set 1`] = `
 .emotion-1 {
   color: #3b3f45;
+  margin: 0;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
@@ -42,6 +43,7 @@ exports[`Tabs.Tab should render styles for a Tabs.Tab 1`] = `
 
 .emotion-1 {
   color: #3b3f45;
+  margin: 0;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;

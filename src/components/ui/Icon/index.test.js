@@ -79,6 +79,12 @@ describe('Icon', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  it("shouldn't have a margin when `noMargin` is true", () => {
+    const { container } = render(<Icon name="star" noMargin id="styling" />);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   describe('accessibility', () => {
     it('should set `aria-hidden` if no `title` exists', () => {
       const { container } = render(<Icon name="archive" />);

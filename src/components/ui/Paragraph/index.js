@@ -31,6 +31,7 @@ export const Paragraph = (props) => {
     inverse,
     large,
     light,
+    noMargin,
     small,
     unstyled,
     ...otherProps
@@ -48,11 +49,12 @@ export const Paragraph = (props) => {
           ? undefined
           : css`
               ${bodyStyles({
-                large,
-                small,
-                inverse,
                 dark,
+                inverse,
+                large,
                 light,
+                noMargin,
+                small,
                 theme,
               })}
             `
@@ -67,11 +69,12 @@ export const Paragraph = (props) => {
 Paragraph.defaultProps = {
   children: undefined,
   className: undefined,
-  large: false,
-  small: false,
-  inverse: false,
   dark: false,
+  inverse: false,
+  large: false,
   light: false,
+  noMargin: false,
+  small: false,
   unstyled: false,
 };
 
@@ -90,6 +93,8 @@ Paragraph.propTypes = {
   dark: PropTypes.bool,
   /** Lighten text colour. */
   light: PropTypes.bool,
+  /** Remove any outer margins from component. */
+  noMargin: PropTypes.bool,
   /* @ignore Don't output any CSS styles. */
   unstyled: PropTypes.bool,
 };

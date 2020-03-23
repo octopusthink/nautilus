@@ -17,7 +17,7 @@ import { useTheme } from 'themes';
 import Tab from './Tab';
 
 export const Tabs = (props) => {
-  const { children, dark, inverse, light, id, unstyled, ...otherProps } = props;
+  const { children, dark, inverse, light, noMargin, id, unstyled, ...otherProps } = props;
   const sectionToFocusRef = useRef();
   const tabToFocusRef = useRef();
   const [generatedId] = useState(shortid.generate());
@@ -203,7 +203,7 @@ export const Tabs = (props) => {
       {labels && !!labels.length && (
         <ul
           css={css`
-            ${bodyStyles({ dark, inverse, light, theme })};
+            ${bodyStyles({ dark, inverse, light, noMargin, theme })};
             border-bottom: 1px solid ${theme.colors.neutral.grey600};
             display: flex;
             list-style-type: none;
@@ -226,6 +226,7 @@ Tabs.defaultProps = {
   id: undefined,
   inverse: false,
   light: false,
+  noMargin: false,
   unstyled: false,
 };
 
@@ -240,6 +241,8 @@ Tabs.propTypes = {
   id: PropTypes.string,
   /** Lighten text colour. */
   light: PropTypes.bool,
+  /** Remove any outer margins from component. */
+  noMargin: PropTypes.bool,
   /* @ignore Don't output any CSS styles. */
   unstyled: PropTypes.bool,
 };

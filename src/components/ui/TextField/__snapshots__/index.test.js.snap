@@ -75,13 +75,14 @@ exports[`TextField should match styles 1`] = `
   box-sizing: border-box;
   color: #3b3f45;
   display: block;
-  margin: 0 0 3.2rem;
+  margin: 0;
   outline: none;
   padding: 1.2rem;
   position: relative;
   -webkit-transition: box-shadow 200ms;
   transition: box-shadow 200ms;
   width: 100%;
+  margin: 0 0 3.2rem;
 }
 
 .emotion-1:required {
@@ -180,13 +181,14 @@ exports[`TextField should not set a \`max-width\` on the input element without a
   box-sizing: border-box;
   color: #3b3f45;
   display: block;
-  margin: 0 0 3.2rem;
+  margin: 0;
   outline: none;
   padding: 1.2rem;
   position: relative;
   -webkit-transition: box-shadow 200ms;
   transition: box-shadow 200ms;
   width: 100%;
+  margin: 0 0 3.2rem;
 }
 
 .emotion-1:required {
@@ -233,6 +235,92 @@ exports[`TextField should not set a \`max-width\` on the input element without a
     />
   </div>
 </div>
+`;
+
+exports[`TextField should output an <Icon> when the actionIcon prop is used 1`] = `
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  color: #3b3f45;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 50%;
+  -ms-flex: 1 0 50%;
+  flex: 1 0 50%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 0.4rem;
+}
+
+.emotion-0:active {
+  color: #cd2f83;
+}
+
+.emotion-0:focus {
+  color: #cd2f83;
+}
+
+<label
+  class="emotion-0"
+  for="myTestId"
+>
+  Hello
+</label>
+`;
+
+exports[`TextField should output an <Icon> when the signifierIcon prop is used 1`] = `
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  color: #3b3f45;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 50%;
+  -ms-flex: 1 0 50%;
+  flex: 1 0 50%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 0.4rem;
+}
+
+.emotion-0:active {
+  color: #cd2f83;
+}
+
+.emotion-0:focus {
+  color: #cd2f83;
+}
+
+<label
+  class="emotion-0"
+  for="myTestId"
+>
+  Hello
+</label>
 `;
 
 exports[`TextField should set a \`max-width\` on the input element when \`size\` is set 1`] = `
@@ -285,13 +373,14 @@ exports[`TextField should set a \`max-width\` on the input element when \`size\`
   box-sizing: border-box;
   color: #3b3f45;
   display: block;
-  margin: 0 0 3.2rem;
+  margin: 0;
   outline: none;
   padding: 1.2rem;
   position: relative;
   -webkit-transition: box-shadow 200ms;
   transition: box-shadow 200ms;
   width: 100%;
+  margin: 0 0 3.2rem;
   max-width: 9em;
 }
 
@@ -392,13 +481,14 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
   box-sizing: border-box;
   color: #3b3f45;
   display: block;
-  margin: 0 0 3.2rem;
+  margin: 0;
   outline: none;
   padding: 1.2rem;
   position: relative;
   -webkit-transition: box-shadow 200ms;
   transition: box-shadow 200ms;
   width: 100%;
+  margin: 0 0 3.2rem;
   max-width: 9em;
 }
 
@@ -445,6 +535,223 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
       required=""
       rows="4"
     />
+  </div>
+</div>
+`;
+
+exports[`TextField shouldn't have a margin when \`noMargin\` is true 1`] = `
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  color: #3b3f45;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 50%;
+  -ms-flex: 1 0 50%;
+  flex: 1 0 50%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 0.4rem;
+}
+
+.emotion-0:active {
+  color: #cd2f83;
+}
+
+.emotion-0:focus {
+  color: #cd2f83;
+}
+
+.emotion-2 {
+  position: relative;
+}
+
+.emotion-1 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  background: #ffffff;
+  border-radius: 0;
+  border: 2px solid #3b3f45;
+  box-sizing: border-box;
+  color: #3b3f45;
+  display: block;
+  margin: 0;
+  outline: none;
+  padding: 1.2rem;
+  position: relative;
+  -webkit-transition: box-shadow 200ms;
+  transition: box-shadow 200ms;
+  width: 100%;
+}
+
+.emotion-1:required {
+  box-shadow: none;
+}
+
+.emotion-1:focus {
+  color: #181b1c;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+}
+
+.emotion-1::-webkit-input-placeholder {
+  color: #666c76;
+}
+
+.emotion-1::-moz-placeholder {
+  color: #666c76;
+}
+
+.emotion-1:-ms-input-placeholder {
+  color: #666c76;
+}
+
+.emotion-1::placeholder {
+  color: #666c76;
+}
+
+<div>
+  <label
+    class="emotion-0"
+    for="myTextField"
+  >
+    Hello
+  </label>
+  <div
+    class="emotion-2"
+  >
+    <input
+      class="emotion-1"
+      id="myTextField"
+      required=""
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`TextField shouldn't have a margin when \`noMargin\` is true and error exists 1`] = `
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  color: #3b3f45;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 50%;
+  -ms-flex: 1 0 50%;
+  flex: 1 0 50%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 0.4rem;
+}
+
+.emotion-0:active {
+  color: #cd2f83;
+}
+
+.emotion-0:focus {
+  color: #cd2f83;
+}
+
+.emotion-2 {
+  position: relative;
+}
+
+.emotion-1 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  background: #ffffff;
+  border-radius: 0;
+  border: 2px solid #3b3f45;
+  box-sizing: border-box;
+  color: #3b3f45;
+  display: block;
+  margin: 0;
+  outline: none;
+  padding: 1.2rem;
+  position: relative;
+  -webkit-transition: box-shadow 200ms;
+  transition: box-shadow 200ms;
+  width: 100%;
+  border-color: #c26767;
+}
+
+.emotion-1:required {
+  box-shadow: none;
+}
+
+.emotion-1:focus {
+  color: #181b1c;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+}
+
+.emotion-1::-webkit-input-placeholder {
+  color: #666c76;
+}
+
+.emotion-1::-moz-placeholder {
+  color: #666c76;
+}
+
+.emotion-1:-ms-input-placeholder {
+  color: #666c76;
+}
+
+.emotion-1::placeholder {
+  color: #666c76;
+}
+
+<div>
+  <label
+    class="emotion-0"
+    for="myTextField"
+  >
+    Hello
+  </label>
+  <div
+    class="emotion-2"
+  >
+    <input
+      aria-errormessage="errorMessage"
+      class="emotion-1"
+      id="myTextField"
+      required=""
+      type="text"
+    />
+    <div
+      id="errorMessage"
+    >
+      Something went wrong!
+    </div>
   </div>
 </div>
 `;

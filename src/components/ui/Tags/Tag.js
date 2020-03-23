@@ -10,7 +10,7 @@ export const Tag = (props) => {
   const [isDismissed, setDismissed] = useState(false);
   const theme = useTheme();
 
-  const { badge, children, color, onDismiss, status, unstyled, ...otherProps } = props;
+  const { badge, children, color, onDismiss, noMargin, status, unstyled, ...otherProps } = props;
 
   if (isDismissed) {
     return null;
@@ -38,8 +38,13 @@ export const Tag = (props) => {
           : css`
               ${metadata.small(theme)};
               color: ${textColor};
-              margin: 0 ${toUnits(theme.spacing.padding.xSmall)}
-                ${toUnits(theme.spacing.padding.xSmall)} 0;
+              margin: 0;
+              
+              ${!noMargin &&
+                css`
+                  margin: 0 ${toUnits(theme.spacing.padding.xSmall)}
+                    ${toUnits(theme.spacing.padding.xSmall)} 0;
+                `}
 
               ${backgroundColor &&
                 css`
@@ -107,9 +112,10 @@ export const Tag = (props) => {
 };
 
 Tag.defaultProps = {
+  badge: false,
   children: undefined,
   color: null,
-  badge: false,
+  noMargin: false,
   onDismiss: null,
   status: undefined,
   unstyled: false,
@@ -122,6 +128,8 @@ Tag.propTypes = {
   color: PropTypes.string,
   /** Style numbers or counts with a badge. */
   badge: PropTypes.bool,
+  /** Remove any outer margins from component. */
+  noMargin: PropTypes.bool,
   /** Function to call when a Tag is dismissed via the close button. */
   onDismiss: PropTypes.func,
   /** Indicate status using a semantic colour set. */
