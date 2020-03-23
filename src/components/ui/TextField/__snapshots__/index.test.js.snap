@@ -237,6 +237,49 @@ exports[`TextField should not set a \`max-width\` on the input element without a
 </div>
 `;
 
+exports[`TextField should output an <Icon> when the signifierIcon prop is used 1`] = `
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  color: #3b3f45;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 50%;
+  -ms-flex: 1 0 50%;
+  flex: 1 0 50%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 0.4rem;
+}
+
+.emotion-0:active {
+  color: #cd2f83;
+}
+
+.emotion-0:focus {
+  color: #cd2f83;
+}
+
+<label
+  class="emotion-0"
+  for="myTestId"
+>
+  Hello
+</label>
+`;
+
 exports[`TextField should set a \`max-width\` on the input element when \`size\` is set 1`] = `
 .emotion-0 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;

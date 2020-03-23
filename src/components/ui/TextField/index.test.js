@@ -153,6 +153,22 @@ describe('TextField', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should output an <Icon> when the signifierIcon prop is used', () => {
+    const { container, getByTestId } = render(
+      <TextField
+        __signifierIconId="signifierIcon"
+        signifierIcon="phone"
+        data-testid="focusInput"
+        label="Hello"
+        id="myTestId"
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(getByTestId('signifierIcon').tagName).toEqual('SPAN');
+    expect(getByTestId('signifierIcon').firstChild.tagName).toEqual('svg');
+  });
+
   it('should forward refs', () => {
     const ref = createRef();
 
