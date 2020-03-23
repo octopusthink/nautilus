@@ -49,24 +49,24 @@ const defineIconSizes = (props) => {
 
 export const Icon = (props) => {
   const {
+    'data-testid': dataTestId,
     background,
     border,
     children,
     className,
-    'data-testid': dataTestId,
     description,
     fillColor,
     id,
-    name,
-    title,
-    xSmall,
-    small,
-    medium,
     large,
-    xLarge,
+    medium,
+    name,
     noMargin,
+    small,
     strokeColor,
+    title,
     verticalAlign,
+    xLarge,
+    xSmall,
     ...otherProps
   } = props;
 

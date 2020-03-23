@@ -1,6 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextField should hide styles when unstyled prop is set 1`] = `
+.emotion-2 {
+  position: relative;
+}
+
 <div>
   <label
     class="emotion-0"
@@ -8,12 +12,16 @@ exports[`TextField should hide styles when unstyled prop is set 1`] = `
   >
     Hello
   </label>
-  <input
-    class="emotion-0"
-    id="myTextField"
-    required=""
-    type="text"
-  />
+  <div
+    class="emotion-2"
+  >
+    <input
+      class="emotion-0"
+      id="myTextField"
+      required=""
+      type="text"
+    />
+  </div>
 </div>
 `;
 
@@ -52,6 +60,10 @@ exports[`TextField should match styles 1`] = `
   color: #cd2f83;
 }
 
+.emotion-2 {
+  position: relative;
+}
+
 .emotion-1 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
@@ -65,7 +77,8 @@ exports[`TextField should match styles 1`] = `
   display: block;
   margin: 0;
   outline: none;
-  padding: 1.2rem 1.2rem;
+  padding: 1.2rem;
+  position: relative;
   -webkit-transition: box-shadow 200ms;
   transition: box-shadow 200ms;
   width: 100%;
@@ -105,12 +118,16 @@ exports[`TextField should match styles 1`] = `
   >
     Hello
   </label>
-  <input
-    class="emotion-1"
-    id="myTextField"
-    required=""
-    type="text"
-  />
+  <div
+    class="emotion-2"
+  >
+    <input
+      class="emotion-1"
+      id="myTextField"
+      required=""
+      type="text"
+    />
+  </div>
 </div>
 `;
 
@@ -149,6 +166,10 @@ exports[`TextField should not set a \`max-width\` on the input element without a
   color: #cd2f83;
 }
 
+.emotion-2 {
+  position: relative;
+}
+
 .emotion-1 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
@@ -162,7 +183,8 @@ exports[`TextField should not set a \`max-width\` on the input element without a
   display: block;
   margin: 0;
   outline: none;
-  padding: 1.2rem 1.2rem;
+  padding: 1.2rem;
+  position: relative;
   -webkit-transition: box-shadow 200ms;
   transition: box-shadow 200ms;
   width: 100%;
@@ -202,13 +224,103 @@ exports[`TextField should not set a \`max-width\` on the input element without a
   >
     Hello
   </label>
-  <input
-    class="emotion-1"
-    id="testInput"
-    required=""
-    type="text"
-  />
+  <div
+    class="emotion-2"
+  >
+    <input
+      class="emotion-1"
+      id="testInput"
+      required=""
+      type="text"
+    />
+  </div>
 </div>
+`;
+
+exports[`TextField should output an <Icon> when the actionIcon prop is used 1`] = `
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  color: #3b3f45;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 50%;
+  -ms-flex: 1 0 50%;
+  flex: 1 0 50%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 0.4rem;
+}
+
+.emotion-0:active {
+  color: #cd2f83;
+}
+
+.emotion-0:focus {
+  color: #cd2f83;
+}
+
+<label
+  class="emotion-0"
+  for="myTestId"
+>
+  Hello
+</label>
+`;
+
+exports[`TextField should output an <Icon> when the signifierIcon prop is used 1`] = `
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 1.3333333333333333;
+  color: #3b3f45;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 50%;
+  -ms-flex: 1 0 50%;
+  flex: 1 0 50%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0 0 0.4rem;
+}
+
+.emotion-0:active {
+  color: #cd2f83;
+}
+
+.emotion-0:focus {
+  color: #cd2f83;
+}
+
+<label
+  class="emotion-0"
+  for="myTestId"
+>
+  Hello
+</label>
 `;
 
 exports[`TextField should set a \`max-width\` on the input element when \`size\` is set 1`] = `
@@ -246,6 +358,10 @@ exports[`TextField should set a \`max-width\` on the input element when \`size\`
   color: #cd2f83;
 }
 
+.emotion-2 {
+  position: relative;
+}
+
 .emotion-1 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
@@ -259,7 +375,8 @@ exports[`TextField should set a \`max-width\` on the input element when \`size\`
   display: block;
   margin: 0;
   outline: none;
-  padding: 1.2rem 1.2rem;
+  padding: 1.2rem;
+  position: relative;
   -webkit-transition: box-shadow 200ms;
   transition: box-shadow 200ms;
   width: 100%;
@@ -300,13 +417,17 @@ exports[`TextField should set a \`max-width\` on the input element when \`size\`
   >
     Hello
   </label>
-  <input
-    class="emotion-1"
-    id="testInput"
-    maxlength="10"
-    required=""
-    type="text"
-  />
+  <div
+    class="emotion-2"
+  >
+    <input
+      class="emotion-1"
+      id="testInput"
+      maxlength="10"
+      required=""
+      type="text"
+    />
+  </div>
 </div>
 `;
 
@@ -345,6 +466,10 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
   color: #cd2f83;
 }
 
+.emotion-2 {
+  position: relative;
+}
+
 .emotion-1 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
@@ -358,7 +483,8 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
   display: block;
   margin: 0;
   outline: none;
-  padding: 1.2rem 1.2rem;
+  padding: 1.2rem;
+  position: relative;
   -webkit-transition: box-shadow 200ms;
   transition: box-shadow 200ms;
   width: 100%;
@@ -399,13 +525,17 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
   >
     Hello
   </label>
-  <textarea
-    class="emotion-1"
-    id="testInput"
-    maxlength="10"
-    required=""
-    rows="4"
-  />
+  <div
+    class="emotion-2"
+  >
+    <textarea
+      class="emotion-1"
+      id="testInput"
+      maxlength="10"
+      required=""
+      rows="4"
+    />
+  </div>
 </div>
 `;
 
@@ -444,6 +574,10 @@ exports[`TextField shouldn't have a margin when \`noMargin\` is true 1`] = `
   color: #cd2f83;
 }
 
+.emotion-2 {
+  position: relative;
+}
+
 .emotion-1 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
@@ -457,7 +591,8 @@ exports[`TextField shouldn't have a margin when \`noMargin\` is true 1`] = `
   display: block;
   margin: 0;
   outline: none;
-  padding: 1.2rem 1.2rem;
+  padding: 1.2rem;
+  position: relative;
   -webkit-transition: box-shadow 200ms;
   transition: box-shadow 200ms;
   width: 100%;
@@ -496,12 +631,16 @@ exports[`TextField shouldn't have a margin when \`noMargin\` is true 1`] = `
   >
     Hello
   </label>
-  <input
-    class="emotion-1"
-    id="myTextField"
-    required=""
-    type="text"
-  />
+  <div
+    class="emotion-2"
+  >
+    <input
+      class="emotion-1"
+      id="myTextField"
+      required=""
+      type="text"
+    />
+  </div>
 </div>
 `;
 
@@ -540,6 +679,10 @@ exports[`TextField shouldn't have a margin when \`noMargin\` is true and error e
   color: #cd2f83;
 }
 
+.emotion-2 {
+  position: relative;
+}
+
 .emotion-1 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
@@ -553,7 +696,8 @@ exports[`TextField shouldn't have a margin when \`noMargin\` is true and error e
   display: block;
   margin: 0;
   outline: none;
-  padding: 1.2rem 1.2rem;
+  padding: 1.2rem;
+  position: relative;
   -webkit-transition: box-shadow 200ms;
   transition: box-shadow 200ms;
   width: 100%;
@@ -593,17 +737,21 @@ exports[`TextField shouldn't have a margin when \`noMargin\` is true and error e
   >
     Hello
   </label>
-  <input
-    aria-errormessage="errorMessage"
-    class="emotion-1"
-    id="myTextField"
-    required=""
-    type="text"
-  />
   <div
-    id="errorMessage"
+    class="emotion-2"
   >
-    Something went wrong!
+    <input
+      aria-errormessage="errorMessage"
+      class="emotion-1"
+      id="myTextField"
+      required=""
+      type="text"
+    />
+    <div
+      id="errorMessage"
+    >
+      Something went wrong!
+    </div>
   </div>
 </div>
 `;
