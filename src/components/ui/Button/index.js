@@ -10,6 +10,8 @@ import Icon from 'components/ui/Icon';
 import { interfaceUI, toUnits } from 'styles';
 import { useTheme } from 'themes';
 
+export const ComponentClassName = 'Nautilus-Button';
+
 export const qualityControl = (props) => {
   const { minimal, primary, success, warning, danger } = props;
 
@@ -32,11 +34,13 @@ export const Button = (props) => {
     disabled,
     href,
     linkProps,
+    leadingIcon,
     minimal,
     navigation,
     noMargin,
     primary,
     success,
+    trailingIcon,
     unstyled,
     warning,
     ...otherProps
@@ -107,13 +111,13 @@ export const Button = (props) => {
           ? undefined
           : css`
         ${interfaceUI.medium(theme)}
-
+        align-items: center;
         background: ${theme.colors.buttons.neutral};
         border: 2px solid ${currentButtonColor};
         border-radius: 8px;
         color: ${currentButtonColor};
         cursor: pointer;
-        display: inline-block;
+        display: flex;
         margin: 0;
         outline: none;
         padding: ${toUnits(theme.spacing.padding.medium)} ${toUnits(theme.spacing.padding.large)};
@@ -123,6 +127,7 @@ export const Button = (props) => {
         top: 0;
         transition: all 200ms ease-in-out;
         transition: top 0ms ease-out;
+        width: max-content;
 
         &::-moz-focus-inner {
           border: 0;
@@ -139,6 +144,24 @@ export const Button = (props) => {
           outline: none;
         }
 
+        /* Set padding based on whether we have leading or trailing icons. */
+        ${leadingIcon &&
+          css`
+            padding-left: ${toUnits(theme.spacing.padding.medium)};
+          `}
+
+        ${trailingIcon &&
+          css`
+            padding-right: ${toUnits(theme.spacing.padding.medium)};
+          `}
+
+        ${!noMargin &&
+          css`
+            margin: 0 ${toUnits(theme.spacing.margin.xxSmall)}
+              ${toUnits(theme.spacing.margin.xSmall)};
+          `}
+
+        /* Set external margins */
         ${!noMargin &&
           css`
             margin: 0 ${toUnits(theme.spacing.margin.xxSmall)}
@@ -224,10 +247,28 @@ export const Button = (props) => {
           `}
           id={__iconId}
           name={iconName}
-          small
         />
       )}
+
+      {leadingIcon && (
+        <Icon
+          css={css`
+            margin: 0 ${toUnits(theme.spacing.padding.small)} 0 0;
+          `}
+          name={leadingIcon}
+        />
+      )}
+
       {children}
+
+      {trailingIcon && (
+        <Icon
+          css={css`
+            margin: 0 0 0 ${toUnits(theme.spacing.padding.small)};
+          `}
+          name={trailingIcon}
+        />
+      )}
     </Component>
   );
 };
@@ -238,12 +279,14 @@ Button.defaultProps = {
   danger: false,
   disabled: false,
   href: undefined,
+  leadingIcon: undefined,
   linkProps: undefined,
   minimal: false,
   navigation: false,
   noMargin: false,
   primary: false,
   success: false,
+  trailingIcon: undefined,
   type: 'button',
   unstyled: false,
   warning: false,
@@ -268,6 +311,8 @@ Button.propTypes = {
   danger: PropTypes.bool,
   /** Used to link to a route that will be handled by Nautilus' `Link` component. */
   href: PropTypes.string,
+  /** Show an icon inside the button, before the text. Passes a string to Icon's name prop. */
+  leadingIcon: PropTypes.string,
   /** Props to pass to the underlying Nautilus `Link` component when `useNavigation` is `true`. */
   // eslint-disable-next-line react/forbid-prop-types
   linkProps: PropTypes.object,
@@ -275,10 +320,12 @@ Button.propTypes = {
   navigation: PropTypes.bool,
   /** Remove any outer margins from component. */
   noMargin: PropTypes.bool,
-  /* @ignore Don't output any CSS styles. */
-  unstyled: PropTypes.bool,
+  /** Show an icon inside the button, after the text. Passes a string to Icon's name prop. */
+  trailingIcon: PropTypes.string,
   /** HTML `type` attribute for the button. Defaults to `"button"`. */
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
+  /* @ignore Don't output any CSS styles. */
+  unstyled: PropTypes.bool,
 };
 
 Button.displayName = 'Button';

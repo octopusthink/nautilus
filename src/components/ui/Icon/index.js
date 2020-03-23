@@ -135,7 +135,9 @@ export const Icon = (props) => {
       css={css`
         ${borderBackground};
         display: inline-block;
+        line-height: 0;
         margin: 0;
+        padding: 0;
         vertical-align: ${verticalAlign};
 
         ${!noMargin &&
