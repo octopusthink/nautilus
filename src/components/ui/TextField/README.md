@@ -68,18 +68,11 @@ A **signifier icon** appears at the start of the field. Use a signifier icon as 
 A **action icon** appears at the end of the field. Use an action icon to provide an additional control related to the field. You could use this icon to initiate a GPS lookup, to upload a file, or to clear the input and start over.
 
 ```jsx
-import { Icon } from '@octopusthink/nautilus';
-const phoneIcon = <Icon name="phone" />;
-const searchIcon = <Icon name="search" />;
-const locateIcon = <Icon name="map-pin" />;
-const clearIcon = <Icon name="x-circle" />;
-
 <React.Fragment>
-  <TextField label="Phone" signifierIcon={phoneIcon} placeholder="A signifier (leading) icon hints at the input required" />
-  <TextField label="Location" actionIcon={locateIcon} placeholder="An action (trailing) icon is used as an additional control" />
-  <TextField label="Search" signifierIcon={searchIcon} actionIcon={clearIcon} />
+  <TextField label="Phone" signifierIcon="phone" placeholder="A signifier (leading) icon hints at the input required" />
+  <TextField label="Location" actionIcon="map-pin" placeholder="An action (trailing) icon is used as an additional control" />
+  <TextField label="Search" signifierIcon="search" actionIcon="x-circle" />
 </React.Fragment>
-
 ```
 
 ## Interaction

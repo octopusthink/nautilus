@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React, { cloneElement, forwardRef, useCallback, useMemo, useState } from 'react';
 import shortid from 'shortid';
 
+import Icon from 'components/ui/Icon';
 import { focusStyle, interfaceUI, toUnits } from 'styles';
 import { useTheme } from 'themes';
 
@@ -219,7 +220,7 @@ export const TextField = forwardRef((props, ref) => {
             css`
               margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
             `}
-            
+
           ${signifierIcon &&
             css`
               padding-left: ${toUnits(
@@ -283,7 +284,8 @@ export const TextField = forwardRef((props, ref) => {
         />
 
         {signifierIcon && (
-          <span
+          <Icon
+            name={signifierIcon}
             css={
               unstyled
                 ? undefined
@@ -294,13 +296,12 @@ export const TextField = forwardRef((props, ref) => {
                     left: ${toUnits(theme.spacing.padding.medium)};
                   `
             }
-          >
-            {signifierIcon}
-          </span>
+          />
         )}
 
         {actionIcon && (
-          <span
+          <Icon
+            name={actionIcon}
             css={
               unstyled
                 ? undefined
@@ -311,9 +312,7 @@ export const TextField = forwardRef((props, ref) => {
                     right: ${toUnits(theme.spacing.padding.small)};
                   `
             }
-          >
-            {actionIcon}
-          </span>
+          />
         )}
 
         {errorComponent}
@@ -345,8 +344,8 @@ TextField.defaultProps = {
 };
 
 TextField.propTypes = {
-  /** An action icon appears at the end of the input and indicates provides an additional control, like a drop-down or a geolocation. */
-  actionIcon: PropTypes.node,
+  /** An action icon appears at the end of the input and indicates provides an additional control, like a drop-down or a geolocation. String refers to Icon `name` prop. */
+  actionIcon: PropTypes.string,
   /** @ignore */
   children: PropTypes.node,
   /** @ignore */
@@ -371,8 +370,8 @@ TextField.propTypes = {
   multiline: PropTypes.bool,
   /** Number of rows to provide when using a `multiline` input. Ignored when `multiline` is `false`. */
   rows: PropTypes.number,
-  /** A signifier icon appears at the start of the input and indicates what kind of data the field needs. */
-  signifierIcon: PropTypes.node,
+  /** A signifier icon appears at the start of the input and indicates what kind of data the field needs. String refers to Icon `name` prop. */
+  signifierIcon: PropTypes.string,
   /** Size defines the number of characters the field is intended to support. */
   size: PropTypes.number,
   /** Placeholder text, used only for examples. */
