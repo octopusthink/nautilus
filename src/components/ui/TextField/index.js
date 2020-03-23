@@ -19,8 +19,10 @@ const smallText = (props) => {
 
 export const TextField = forwardRef((props, ref) => {
   const {
+    __actionIconId,
     __signifierIconId,
     actionIcon,
+    actionIconOnClick,
     actionIconTitle,
     children,
     disabled,
@@ -326,6 +328,9 @@ export const TextField = forwardRef((props, ref) => {
 
         {actionIcon && (
           <Icon
+            data-testid={__actionIconId}
+            id={__actionIconId}
+            onClick={actionIconOnClick}
             name={actionIcon}
             title={actionIconTitle}
             css={
@@ -349,8 +354,10 @@ export const TextField = forwardRef((props, ref) => {
 });
 
 TextField.defaultProps = {
+  __actionIconId: undefined,
   __signifierIconId: undefined,
   actionIcon: undefined,
+  actionIconOnClick: undefined,
   actionIconTitle: undefined,
   children: undefined,
   disabled: false,
@@ -373,10 +380,14 @@ TextField.defaultProps = {
 };
 
 TextField.propTypes = {
+  /** @ignore ID prop for the action icon <Icon /> component; only used for testing. */
+  __actionIconId: PropTypes.string,
   /** @ignore ID prop for the signifier icon <Icon /> component; only used for testing. */
   __signifierIconId: PropTypes.string,
   /** An action icon appears at the end of the input and indicates provides an additional control, like a drop-down or a geolocation. String refers to Icon `name` prop. */
   actionIcon: PropTypes.string,
+  /* Event handler for the action icon */
+  actionIconOnClick: PropTypes.func,
   /** Accessible title for the action icon. */
   actionIconTitle: PropTypes.string,
   /** @ignore */

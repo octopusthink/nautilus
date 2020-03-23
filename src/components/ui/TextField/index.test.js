@@ -169,6 +169,66 @@ describe('TextField', () => {
     expect(getByTestId('signifierIcon').firstChild.tagName).toEqual('svg');
   });
 
+  it('should focus the text field when the signifier icon is clicked', () => {
+    const ref = createRef();
+
+    const { getByTestId } = render(
+      <TextField
+        __signifierIconId="signifierIcon"
+        signifierIcon="phone"
+        data-testid="focusInput"
+        label="Hello"
+        id="myTestId"
+        ref={ref}
+      />,
+    );
+
+    const focusSpy = jest.spyOn(ref.current, 'focus');
+
+    // The onClick event gets attached to the SVG child element, so make sure
+    // that's what we click on.
+    fireEvent.click(getByTestId('signifierIcon').firstChild);
+
+    expect(focusSpy).toHaveBeenCalled();
+  });
+
+  it('should output an <Icon> when the actionIcon prop is used', () => {
+    const { container, getByTestId } = render(
+      <TextField
+        __actionIconId="arnoldIcon"
+        actionIcon="phone"
+        data-testid="focusInput"
+        label="Hello"
+        id="myTestId"
+      />,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(getByTestId('arnoldIcon').tagName).toEqual('SPAN');
+    expect(getByTestId('arnoldIcon').firstChild.tagName).toEqual('svg');
+  });
+
+  it('should allow the user to click on the actionIcon', () => {
+    const onClick = jest.fn();
+
+    const { getByTestId } = render(
+      <TextField
+        __actionIconId="arnoldIcon"
+        actionIcon="phone"
+        actionIconOnClick={onClick}
+        data-testid="focusInput"
+        label="Hello"
+        id="myTestId"
+      />,
+    );
+
+    // The onClick event gets attached to the SVG child element, so make sure
+    // that's what we click on.
+    fireEvent.click(getByTestId('arnoldIcon').firstChild);
+
+    expect(onClick).toHaveBeenCalled();
+  });
+
   it('should forward refs', () => {
     const ref = createRef();
 
