@@ -7,6 +7,7 @@ import React from 'react';
 // the `navigation` prop is used by a button.
 import Link from 'components/ui/Link';
 import Icon from 'components/ui/Icon';
+import VisuallyHidden from 'components/ui/VisuallyHidden';
 import { interfaceUI, toUnits } from 'styles';
 import { useTheme } from 'themes';
 
@@ -38,6 +39,7 @@ export const Button = (props) => {
     minimal,
     navigation,
     noMargin,
+    onlyIcon,
     primary,
     stackedIcon,
     success,
@@ -103,6 +105,12 @@ export const Button = (props) => {
     currentButtonColorLight = theme.colors.intent.dangerLight;
   }
 
+  // Set the button text—for onlyIcon buttons, we want to visually hide the text.
+  let buttonText = children;
+  if (onlyIcon) {
+    buttonText = <VisuallyHidden>{children}</VisuallyHidden>;
+  }
+
   return (
     // See: https://github.com/yannickcr/eslint-plugin-react/issues/1555
     // eslint-disable-next-line react/button-has-type
@@ -145,29 +153,6 @@ export const Button = (props) => {
           outline: none;
         }
 
-        /* Set padding based on whether we have leading or trailing icons. */
-        ${leadingIcon &&
-          css`
-            padding-left: ${toUnits(theme.spacing.padding.medium)};
-          `}
-
-        ${trailingIcon &&
-          css`
-            padding-right: ${toUnits(theme.spacing.padding.medium)};
-          `}
-
-        ${stackedIcon &&
-          css`
-            flex-direction: column;
-          `}
-
-        /* Set external margins */
-        ${!noMargin &&
-          css`
-            margin: 0 ${toUnits(theme.spacing.margin.xxSmall)}
-              ${toUnits(theme.spacing.margin.xSmall)};
-          `}
-
         /* Primary styles */
         ${primary &&
           css`
@@ -188,7 +173,8 @@ export const Button = (props) => {
         ${minimal &&
           css`
             background: transparent;
-            border: 0;
+            border-color: transparent;
+            border-radius: 0;
             padding-left: 0;
             padding-right: 0;
             position: relative;
@@ -222,6 +208,44 @@ export const Button = (props) => {
             }
           `}
 
+        /* Set padding based on whether we have leading or trailing icons. */
+        ${leadingIcon &&
+          css`
+            padding-left: ${toUnits(theme.spacing.padding.medium)};
+          `}
+
+        ${trailingIcon &&
+          css`
+            padding-right: ${toUnits(theme.spacing.padding.medium)};
+          `}
+
+        ${stackedIcon &&
+          css`
+            flex-direction: column;
+            padding: ${toUnits(theme.spacing.padding.medium)};
+          `}
+        
+        /* Buttons without text should get rounded */
+        ${onlyIcon &&
+          css`
+            border-radius: 100%;
+            padding: ${toUnits(theme.spacing.padding.medium)};
+          `}
+
+          ${onlyIcon &&
+            minimal &&
+            css`
+              padding: ${toUnits(theme.spacing.padding.medium)};
+            `}
+
+        /* Set external margins */
+        ${!noMargin &&
+          css`
+            margin: 0 ${toUnits(theme.spacing.margin.xxSmall)}
+              ${toUnits(theme.spacing.margin.xSmall)};
+          `}
+        
+        /* Hover styling */
         &:hover {
           ${!minimal &&
             css`
@@ -269,7 +293,9 @@ export const Button = (props) => {
         />
       )}
 
-      {children}
+      {onlyIcon && <Icon noMargin name={onlyIcon} medium />}
+
+      {buttonText}
 
       {trailingIcon && (
         <Icon
@@ -294,6 +320,7 @@ Button.defaultProps = {
   minimal: false,
   navigation: false,
   noMargin: false,
+  onlyIcon: undefined,
   primary: false,
   stackedIcon: undefined,
   success: false,
@@ -331,6 +358,8 @@ Button.propTypes = {
   navigation: PropTypes.bool,
   /** Remove any outer margins from component. */
   noMargin: PropTypes.bool,
+  /** Show only an icon—no text. Passes a string to Icon's name prop. */
+  onlyIcon: PropTypes.string,
   /** Show an icon inside the button, on top of text. Passes a string to Icon's name prop. */
   stackedIcon: PropTypes.string,
   /** Show an icon inside the button, after the text. Passes a string to Icon's name prop. */

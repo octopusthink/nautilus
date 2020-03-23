@@ -228,9 +228,19 @@ import React from 'react';
     </Button>
   </div>
 
-  <Button primary onlyIcon="search">
-    No text!
-  </Button>
+  <div style={{display: 'flex', flexWrap: 'wrap'}}>
+    <Button primary onlyIcon="search">
+      No text!
+    </Button>
+
+    <Button onlyIcon="search">
+      No text!
+    </Button>
+
+    <Button minimal onlyIcon="search">
+      No text!
+    </Button>
+  </div>
   
 </React.Fragment>
 ```
