@@ -42,11 +42,11 @@ export const Heading = (props) => {
           ? undefined
           : css`
         color: ${theme.colors.text.default};
-        margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
+        margin: 0;
 
-        ${noMargin &&
+        ${!noMargin &&
           css`
-            margin: 0;
+            margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
           `}
           
         ${light &&

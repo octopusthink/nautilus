@@ -17,11 +17,11 @@ export const PageTitle = (props) => {
           ? undefined
           : css`
               ${pageTitle(theme)}
-              margin: 0 0 ${toUnits(theme.spacing.margin.large)};
+              margin: 0;
 
-              ${noMargin &&
+              ${!noMargin &&
                 css`
-                  margin: 0;
+                  margin: 0 0 ${toUnits(theme.spacing.margin.large)};
                 `}
             `
       }

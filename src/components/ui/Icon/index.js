@@ -135,12 +135,12 @@ export const Icon = (props) => {
       css={css`
         ${borderBackground};
         display: inline-block;
-        margin: ${marginSize};
+        margin: 0;
         vertical-align: ${verticalAlign};
 
-        ${noMargin &&
+        ${!noMargin &&
           css`
-            margin: 0;
+            margin: ${marginSize};
           `}
       `}
       data-testid={dataTestId}

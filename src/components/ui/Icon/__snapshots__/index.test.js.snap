@@ -3,8 +3,9 @@
 exports[`Icon should match styles 1`] = `
 .emotion-1 {
   display: inline-block;
-  margin: 0 0.8rem 0 0;
+  margin: 0;
   vertical-align: middle;
+  margin: 0 0.8rem 0 0;
 }
 
 .emotion-0 {
@@ -52,8 +53,9 @@ exports[`Icon should match styles when background is supplied 1`] = `
   height: 4rem;
   width: 4rem;
   display: inline-block;
-  margin: 0 0.8rem 0 0;
+  margin: 0;
   vertical-align: middle;
+  margin: 0 0.8rem 0 0;
 }
 
 .emotion-0 {
@@ -111,8 +113,9 @@ exports[`Icon should match styles when border is supplied 1`] = `
   height: 4rem;
   width: 4rem;
   display: inline-block;
-  margin: 0 0.8rem 0 0;
+  margin: 0;
   vertical-align: middle;
+  margin: 0 0.8rem 0 0;
 }
 
 <span
@@ -148,8 +151,9 @@ exports[`Icon should match styles when border is supplied 1`] = `
 exports[`Icon should match styles when color is supplied 1`] = `
 .emotion-1 {
   display: inline-block;
-  margin: 0 0.8rem 0 0;
+  margin: 0;
   vertical-align: middle;
+  margin: 0 0.8rem 0 0;
 }
 
 .emotion-0 {

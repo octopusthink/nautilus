@@ -63,12 +63,13 @@ exports[`TextField should match styles 1`] = `
   box-sizing: border-box;
   color: #3b3f45;
   display: block;
-  margin: 0 0 3.2rem;
+  margin: 0;
   outline: none;
   padding: 1.2rem 1.2rem;
   -webkit-transition: box-shadow 200ms;
   transition: box-shadow 200ms;
   width: 100%;
+  margin: 0 0 3.2rem;
 }
 
 .emotion-1:required {
@@ -159,12 +160,13 @@ exports[`TextField should not set a \`max-width\` on the input element without a
   box-sizing: border-box;
   color: #3b3f45;
   display: block;
-  margin: 0 0 3.2rem;
+  margin: 0;
   outline: none;
   padding: 1.2rem 1.2rem;
   -webkit-transition: box-shadow 200ms;
   transition: box-shadow 200ms;
   width: 100%;
+  margin: 0 0 3.2rem;
 }
 
 .emotion-1:required {
@@ -255,12 +257,13 @@ exports[`TextField should set a \`max-width\` on the input element when \`size\`
   box-sizing: border-box;
   color: #3b3f45;
   display: block;
-  margin: 0 0 3.2rem;
+  margin: 0;
   outline: none;
   padding: 1.2rem 1.2rem;
   -webkit-transition: box-shadow 200ms;
   transition: box-shadow 200ms;
   width: 100%;
+  margin: 0 0 3.2rem;
   max-width: 9em;
 }
 
@@ -353,12 +356,13 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
   box-sizing: border-box;
   color: #3b3f45;
   display: block;
-  margin: 0 0 3.2rem;
+  margin: 0;
   outline: none;
   padding: 1.2rem 1.2rem;
   -webkit-transition: box-shadow 200ms;
   transition: box-shadow 200ms;
   width: 100%;
+  margin: 0 0 3.2rem;
   max-width: 9em;
 }
 

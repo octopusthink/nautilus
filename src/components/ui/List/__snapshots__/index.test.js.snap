@@ -3,6 +3,7 @@
 exports[`List described by Heading component should render a heading outside the list if one is provided 1`] = `
 .emotion-1 {
   color: #3b3f45;
+  margin: 0;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
@@ -23,6 +24,7 @@ exports[`List described by Heading component should render a heading outside the
 
 .emotion-0 {
   color: #3b3f45;
+  margin: 0;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 600;
@@ -54,6 +56,7 @@ dl + .emotion-0,
 exports[`List described by Paragraph component should render a paragraph outside the list if one is provided 1`] = `
 .emotion-3 {
   color: #3b3f45;
+  margin: 0;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
@@ -74,6 +77,7 @@ exports[`List described by Paragraph component should render a paragraph outside
 
 .emotion-1 {
   position: relative;
+  margin: 0;
   margin: 0 0 0.4rem;
 }
 
@@ -84,6 +88,7 @@ exports[`List described by Paragraph component should render a paragraph outside
 
 .emotion-0 {
   color: #3b3f45;
+  margin: 0;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
@@ -120,6 +125,7 @@ exports[`List described by Paragraph component should render a paragraph outside
 exports[`List should not output styles when unstyled is set 1`] = `
 .emotion-0 {
   position: relative;
+  margin: 0;
   margin: 0 0 0.4rem;
 }
 

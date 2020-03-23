@@ -6,11 +6,11 @@ import { body } from './typeTokens';
 export const bodyStyles = ({ dark, inverse, large, light, noMargin, small, theme }) => {
   return css`
     color: ${theme.colors.text.default};
-    margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
+    margin: 0;
 
-    ${noMargin &&
+    ${!noMargin &&
       css`
-        margin: 0;
+        margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
       `}
 
     ${small && body.small(theme)};

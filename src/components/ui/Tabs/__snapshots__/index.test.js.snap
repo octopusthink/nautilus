@@ -3,6 +3,7 @@
 exports[`Tabs should not render styles when unstyled prop is set 1`] = `
 .emotion-1 {
   color: #3b3f45;
+  margin: 0;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
@@ -57,6 +58,7 @@ exports[`Tabs should not render styles when unstyled prop is set 1`] = `
 
 .emotion-3 {
   color: #3b3f45;
+  margin: 0;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
@@ -109,6 +111,7 @@ exports[`Tabs should not render styles when unstyled prop is set 1`] = `
 exports[`Tabs should render styles for Tabs 1`] = `
 .emotion-3 {
   color: #3b3f45;
+  margin: 0;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;
@@ -191,6 +194,7 @@ exports[`Tabs should render styles for Tabs 1`] = `
 
 .emotion-5 {
   color: #3b3f45;
+  margin: 0;
   margin: 0 0 3.2rem;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 400;

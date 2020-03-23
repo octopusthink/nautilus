@@ -12,7 +12,7 @@ exports[`Button should match styles 1`] = `
   color: #cd2f83;
   cursor: pointer;
   display: inline-block;
-  margin: 0 0.4rem 0.8rem;
+  margin: 0;
   outline: none;
   padding: 1.2rem 2.4rem;
   position: relative;
@@ -24,6 +24,7 @@ exports[`Button should match styles 1`] = `
   transition: all 200ms ease-in-out;
   -webkit-transition: top 0ms ease-out;
   transition: top 0ms ease-out;
+  margin: 0 0.4rem 0.8rem;
 }
 
 .emotion-0::-moz-focus-inner {
@@ -69,8 +70,9 @@ exports[`Button should not output styles when unstyled is set 1`] = `
 exports[`Button should not output styles when unstyled is set, even with styling props 1`] = `
 .emotion-1 {
   display: inline-block;
-  margin: 0 0.8rem 0 0;
+  margin: 0;
   vertical-align: middle;
+  margin: 0 0.8rem 0 0;
   margin-right: 0.4rem;
 }
 
@@ -143,7 +145,7 @@ exports[`Button should show danger styles 1`] = `
   color: #8a0000;
   cursor: pointer;
   display: inline-block;
-  margin: 0 0.4rem 0.8rem;
+  margin: 0;
   outline: none;
   padding: 1.2rem 2.4rem;
   position: relative;
@@ -155,6 +157,7 @@ exports[`Button should show danger styles 1`] = `
   transition: all 200ms ease-in-out;
   -webkit-transition: top 0ms ease-out;
   transition: top 0ms ease-out;
+  margin: 0 0.4rem 0.8rem;
 }
 
 .emotion-2::-moz-focus-inner {
@@ -180,8 +183,9 @@ exports[`Button should show danger styles 1`] = `
 
 .emotion-1 {
   display: inline-block;
-  margin: 0 0.8rem 0 0;
+  margin: 0;
   vertical-align: middle;
+  margin: 0 0.8rem 0 0;
   margin-right: 0.4rem;
 }
 

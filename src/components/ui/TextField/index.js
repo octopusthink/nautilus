@@ -90,12 +90,11 @@ export const TextField = forwardRef((props, ref) => {
               : css`
                   ${interfaceUI.medium(theme)};
                   color: ${theme.colors.state.errorText};
-                  margin-top: -${toUnits(theme.spacing.padding.large)};
-                  margin-bottom: ${toUnits(theme.spacing.padding.large)};
+                  margin: 0;
 
-                  ${noMargin &&
+                  ${!noMargin &&
                     css`
-                      margin-bottom: 0;
+                      margin-bottom: ${toUnits(theme.spacing.padding.large)};
                     `}
                 `
           }
@@ -201,17 +200,17 @@ export const TextField = forwardRef((props, ref) => {
           box-sizing: border-box;
           color: ${theme.colors.text.default};
           display: block;
-          margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
+          margin: 0;
           outline: none;
           padding: ${toUnits(theme.spacing.padding.medium)}
             ${toUnits(theme.spacing.padding.medium)};
           transition: box-shadow 200ms;
           width: 100%;
 
-          ${noMargin &&
+          ${!noMargin &&
             !error &&
             css`
-              margin: 0;
+              margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
             `}
 
           ${size &&

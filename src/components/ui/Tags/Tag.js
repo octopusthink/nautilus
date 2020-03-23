@@ -38,12 +38,12 @@ export const Tag = (props) => {
           : css`
               ${metadata.small(theme)};
               color: ${textColor};
-              margin: 0 ${toUnits(theme.spacing.padding.xSmall)}
-                ${toUnits(theme.spacing.padding.xSmall)} 0;
+              margin: 0;
               
-              ${noMargin &&
+              ${!noMargin &&
                 css`
-                  margin: 0;
+                  margin: 0 ${toUnits(theme.spacing.padding.xSmall)}
+                    ${toUnits(theme.spacing.padding.xSmall)} 0;
                 `}
 
               ${backgroundColor &&

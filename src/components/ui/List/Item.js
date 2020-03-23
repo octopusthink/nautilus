@@ -21,11 +21,11 @@ export const Item = (props) => {
           ? undefined
           : css`
               position: relative;
-              margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
+              margin: 0;
 
-              ${noMargin &&
+              ${!noMargin &&
                 css`
-                  margin: 0;
+                  margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
                 `}
 
               &::before {
