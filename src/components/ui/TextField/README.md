@@ -61,11 +61,11 @@ The text string to mark an optional field is customisable in your theme. **Do no
 
 ### Icons
 
-You can use icons inside your `TextField` to increase clarity and confidence in your users.
+You can use icons inside your `TextField` to increase clarity and confidence for your users.
 
 A **signifier icon** appears at the start of the field. Use a signifier icon as a way of indicating the type of input the `TextField` is expecting. For example: a search query, a telephone number, or a link.
 
-A **action icon** appears at the end of the field. Use an action icon to provide an additional control related to the field. You could use this icon to initiate a GPS lookup, to upload a file, or to clear the input and start over.
+An **action icon** appears at the end of the field. Use the action icon to provide an additional control related to the field. You could use this icon to initiate a GPS lookup, to upload a file, or to clear/reset the input.
 
 ```jsx
 <React.Fragment>
