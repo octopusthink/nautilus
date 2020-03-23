@@ -30,7 +30,7 @@ export const ComboBox = forwardRef((props) => {
 
   const theme = useTheme();
 
-  // Memorise our handlers as they don't need to be re-created on every render.
+  // Memoise our handlers as they don't need to be re-created on every render.
   const onBlurHandler = useCallback(
     (...args) => {
       setFocus(false);
