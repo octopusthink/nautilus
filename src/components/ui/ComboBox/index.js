@@ -65,9 +65,6 @@ export const ComboBox = forwardRef((props) => {
     dropdownHeight = 48 * options.length;
   }
 
-  const searchIcon = <Icon name="search" />;
-  const downIcon = <Icon name="chevron-down" />;
-
   return (
     <React.Fragment>
       <TextField
@@ -80,8 +77,8 @@ export const ComboBox = forwardRef((props) => {
         unstyled={unstyled}
         onBlur={onBlurHandler}
         onFocus={onFocusHandler}
-        signifierIcon={!noAutocomplete ? searchIcon : undefined}
-        actionIcon={downIcon}
+        signifierIcon={!noAutocomplete ? 'search' : undefined}
+        actionIcon="chevron-down"
       />
       <div
         css={css`
