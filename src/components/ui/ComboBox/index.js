@@ -4,7 +4,6 @@ import React, { Children, forwardRef, useCallback, useMemo, useState } from 'rea
 
 import { interfaceUI, toUnits } from 'styles';
 import { useTheme } from 'themes';
-import Icon from 'components/ui/Icon';
 import List from 'components/ui/List';
 import TextField from 'components/ui/TextField';
 import Option from './Option';
