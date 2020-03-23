@@ -33,6 +33,12 @@ describe('PageTitle', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
+  it("shouldn't have a margin when `noMargin` is true", () => {
+    const { container } = render(<PageTitle noMargin>Hello</PageTitle>);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   describe('accessibility', () => {
     it('should pass aXe tests', async () => {
       const { container } = render(<PageTitle>My Blog Posts</PageTitle>);

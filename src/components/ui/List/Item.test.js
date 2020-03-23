@@ -32,4 +32,10 @@ describe('List.Item', () => {
 
     expect(container).toMatchSnapshot();
   });
+
+  it("shouldn't have a margin when `noMargin` is true", () => {
+    const { container } = render(<List.Item noMargin>Hello</List.Item>);
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
 });

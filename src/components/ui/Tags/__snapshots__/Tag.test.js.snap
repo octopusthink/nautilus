@@ -34,3 +34,25 @@ exports[`Tag should not output styles when unstyled is set 1`] = `
   </span>
 </div>
 `;
+
+exports[`Tag shouldn't have a margin when \`noMargin\` is true 1`] = `
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.3333333333333333;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #666c76;
+  margin: 0;
+}
+
+<span
+  class="emotion-0"
+>
+  Hello
+</span>
+`;

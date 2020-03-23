@@ -20,7 +20,6 @@ describe('Heading', () => {
 
     expect(getByTestId('child')).toBeDefined();
   });
-
   it('should render an <h2> tag when the `level` prop is 2', () => {
     const { container } = render(<Heading level={2}>Big heading</Heading>);
 
@@ -115,6 +114,12 @@ describe('Heading', () => {
     );
 
     expect(container).toMatchSnapshot();
+  });
+
+  it("shouldn't have a margin when `noMargin` is true", () => {
+    const { container } = render(<Heading noMargin>Hello</Heading>);
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   describe('accessibility', () => {

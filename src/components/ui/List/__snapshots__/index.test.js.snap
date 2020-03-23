@@ -153,3 +153,55 @@ exports[`List should not output styles when unstyled is set 1`] = `
   </ul>
 </div>
 `;
+
+exports[`List shouldn't have a margin when \`noMargin\` is true 1`] = `
+.emotion-0 {
+  position: relative;
+  margin: 0;
+  margin: 0 0 0.4rem;
+}
+
+.emotion-0::before {
+  position: absolute;
+  right: 101%;
+}
+
+.emotion-2 {
+  color: #3b3f45;
+  margin: 0;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.5555555555555556;
+  padding: 0;
+}
+
+.emotion-2 > .Nautilus-ListItem {
+  list-style: none;
+}
+
+.emotion-2 > .Nautilus-ListItem::before {
+  content: '\\2022';
+  font-size: 0.6em;
+  line-height: 2.8;
+}
+
+<div>
+  <ul
+    class="Nautilus-List emotion-2"
+  >
+    <li
+      class="Nautilus-ListItem emotion-0"
+      data-testid="one"
+    >
+      apple
+    </li>
+    <li
+      class="Nautilus-ListItem emotion-0"
+      data-testid="two"
+    >
+      raspberry
+    </li>
+  </ul>
+</div>
+`;

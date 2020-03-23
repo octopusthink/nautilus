@@ -31,3 +31,21 @@ exports[`List.Item should render list styles 1`] = `
   </li>
 </div>
 `;
+
+exports[`List.Item shouldn't have a margin when \`noMargin\` is true 1`] = `
+.emotion-0 {
+  position: relative;
+  margin: 0;
+}
+
+.emotion-0::before {
+  position: absolute;
+  right: 101%;
+}
+
+<li
+  class="Nautilus-ListItem emotion-0"
+>
+  Hello
+</li>
+`;
