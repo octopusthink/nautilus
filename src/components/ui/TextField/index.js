@@ -6,6 +6,7 @@ import shortid from 'shortid';
 import Icon from 'components/ui/Icon';
 import { focusStyle, interfaceUI, toUnits } from 'styles';
 import { useTheme } from 'themes';
+import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 
 const smallText = (props) => {
   const { theme } = props;
@@ -20,6 +21,7 @@ const smallText = (props) => {
 export const TextField = forwardRef((props, ref) => {
   const {
     actionIcon,
+    actionIconTitle,
     children,
     disabled,
     error,
@@ -35,6 +37,7 @@ export const TextField = forwardRef((props, ref) => {
     placeholder,
     rows,
     signifierIcon,
+    signifierIconTitle,
     size,
     type,
     unstyled,
@@ -286,6 +289,7 @@ export const TextField = forwardRef((props, ref) => {
         {signifierIcon && (
           <Icon
             name={signifierIcon}
+            title={signifierIconTitle}
             css={
               unstyled
                 ? undefined
@@ -302,6 +306,7 @@ export const TextField = forwardRef((props, ref) => {
         {actionIcon && (
           <Icon
             name={actionIcon}
+            title={actionIconTitle}
             css={
               unstyled
                 ? undefined
@@ -324,6 +329,7 @@ export const TextField = forwardRef((props, ref) => {
 
 TextField.defaultProps = {
   actionIcon: undefined,
+  actionIconTitle: undefined,
   children: undefined,
   disabled: false,
   error: undefined,
@@ -338,6 +344,7 @@ TextField.defaultProps = {
   placeholder: undefined,
   rows: 4,
   signifierIcon: undefined,
+  signifierIconTitle: undefined,
   size: undefined,
   type: 'text',
   unstyled: false,
@@ -346,6 +353,8 @@ TextField.defaultProps = {
 TextField.propTypes = {
   /** An action icon appears at the end of the input and indicates provides an additional control, like a drop-down or a geolocation. String refers to Icon `name` prop. */
   actionIcon: PropTypes.string,
+  /** Accessible title for the action icon. */
+  actionIconTitle: PropTypes.string,
   /** @ignore */
   children: PropTypes.node,
   /** @ignore */
@@ -372,6 +381,8 @@ TextField.propTypes = {
   rows: PropTypes.number,
   /** A signifier icon appears at the start of the input and indicates what kind of data the field needs. String refers to Icon `name` prop. */
   signifierIcon: PropTypes.string,
+  /** Accessible title for the signifier icon. */
+  signifierIconTitle: PropTypes.string,
   /** Size defines the number of characters the field is intended to support. */
   size: PropTypes.number,
   /** Placeholder text, used only for examples. */
