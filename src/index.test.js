@@ -4,7 +4,6 @@ import path from 'path';
 import React from 'react';
 
 import { render } from '../utils/testing';
-
 import * as NautilusExports from '.';
 
 describe('Package entrypoint', () => {
@@ -19,14 +18,14 @@ describe('Package entrypoint', () => {
   });
 
   describe('Component exports', () => {
-    const componentFolders = fs.readdirSync('src/components/').filter((file) => {
-      return fs.statSync(path.join('src/components/', file)).isDirectory();
+    const componentFolders = fs.readdirSync(path.join(__dirname, 'components')).filter((file) => {
+      return fs.statSync(path.join(__dirname, 'components', file)).isDirectory();
     });
 
     const components = componentFolders
       .map((componentType) => {
-        return fs.readdirSync(`src/components/${componentType}/`).filter((file) => {
-          return fs.statSync(path.join('src/components/', componentType, file)).isDirectory();
+        return fs.readdirSync(path.join(__dirname, 'components', componentType)).filter((file) => {
+          return fs.statSync(path.join(__dirname, 'components', componentType, file)).isDirectory();
         });
       })
       .reduce((acc, component) => acc.concat(component), []);
@@ -43,14 +42,14 @@ describe('Package entrypoint', () => {
   });
 
   describe('Style helper exports', () => {
-    const styleFiles = fs.readdirSync('src/styles/').filter((file) => {
-      return fs.statSync(path.join('src/styles/', file)).isFile();
+    const styleFiles = fs.readdirSync(path.join(__dirname, 'styles')).filter((file) => {
+      return fs.statSync(path.join(__dirname, 'styles', file)).isFile();
     });
 
     styleFiles.forEach((file) => {
-      it(`exports helpers in src/styles/${file}`, () => {
+      it(`exports helpers in ./styles/${file}`, () => {
         // eslint-disable-next-line global-require, import/no-dynamic-require
-        const helper = require(`src/styles/${file}`);
+        const helper = require(`./styles/${file}`);
 
         Object.keys(helper).forEach((exportName) => {
           expect(NautilusExports[exportName]).toBeTruthy();
@@ -62,8 +61,8 @@ describe('Package entrypoint', () => {
 
   describe('Theme exports', () => {
     const privateThemes = ['styleguide'];
-    const themes = fs.readdirSync('src/themes/').filter((file) => {
-      return fs.statSync(path.join('src/themes/', file)).isDirectory();
+    const themes = fs.readdirSync(path.join(__dirname, 'themes')).filter((file) => {
+      return fs.statSync(path.join(__dirname, 'themes', file)).isDirectory();
     });
 
     themes.forEach((themeName) => {
@@ -76,9 +75,9 @@ describe('Package entrypoint', () => {
         return;
       }
 
-      it(`exports theme in src/themes/${themeName}`, () => {
+      it(`exports theme in ./themes/${themeName}`, () => {
         // eslint-disable-next-line global-require, import/no-dynamic-require
-        const theme = require(`src/themes/${themeName}/index.js`);
+        const theme = require(`./themes/${themeName}/index.js`);
 
         expect(NautilusExports.themes[themeName]).toBeDefined();
         expect(NautilusExports.themes[themeName]).toEqual(theme.default);
