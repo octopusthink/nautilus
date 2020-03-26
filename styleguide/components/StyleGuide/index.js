@@ -14,7 +14,7 @@ import { metadata, toUnits } from '../../../src/styles';
 import Footer from '../Footer';
 import theme from '../../theme';
 
-export const StyleGuide = ({ children, hasSidebar, homepageUrl, title, toc, version }) => {
+export const StyleGuide = ({ children, hasSidebar, toc }) => {
   const mobileBreakpoint = 768;
   const mobileMenuPadding = toUnits(theme.spacing.padding.large);
   const tabletMenuPadding = toUnits(theme.spacing.padding.xLarge);
@@ -257,9 +257,7 @@ export const StyleGuide = ({ children, hasSidebar, homepageUrl, title, toc, vers
           {children}
 
           <Footer>
-            <Markdown
-              text={`Made with ❤️ by [Octopus Think](https://octopusthink.com/). Say 👋 on [GitHub](https://github.com/octopusthink/nautilus).`}
-            />
+            <Markdown text="Made with ❤️ by [Octopus Think](https://octopusthink.com/). Say 👋 on [GitHub](https://github.com/octopusthink/nautilus)." />
           </Footer>
         </div>
       </main>
@@ -290,10 +288,7 @@ export const StyleGuide = ({ children, hasSidebar, homepageUrl, title, toc, vers
 StyleGuide.propTypes = {
   children: PropTypes.node.isRequired,
   hasSidebar: PropTypes.bool,
-  homepageUrl: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
   toc: PropTypes.node.isRequired,
-  version: PropTypes.string,
 };
 
 export default StyleGuide;

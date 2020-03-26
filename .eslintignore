@@ -2,6 +2,5 @@
 **/build/
 coverage/
 dist/
-styleguide/
 *.md
 webpack.*

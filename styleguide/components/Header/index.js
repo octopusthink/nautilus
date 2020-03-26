@@ -6,7 +6,7 @@ import Version from 'rsg-components/Version';
 import { metadata, toUnits } from '../../../src/styles';
 import theme from '../../theme';
 
-export function Header({ children, title, version }) {
+export function Header({ title, version }) {
   return (
     <header
       css={css`
@@ -27,7 +27,6 @@ export function Header({ children, title, version }) {
 }
 
 Header.propTypes = {
-  children: PropTypes.node,
   title: PropTypes.string.isRequired,
   version: PropTypes.string,
 };

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { interfaceUI, toUnits } from '../../../src/styles';
 import theme from '../../theme';
 
-export function TabButtonRenderer({ name, className, onClick, active, children }) {
+export function TabButtonRenderer({ name, onClick, active, children }) {
   return (
     <button
       css={css`
@@ -42,7 +42,6 @@ export function TabButtonRenderer({ name, className, onClick, active, children }
 
 TabButtonRenderer.propTypes = {
   name: PropTypes.string,
-  className: PropTypes.string,
   onClick: PropTypes.func,
   active: PropTypes.bool,
   children: PropTypes.node,

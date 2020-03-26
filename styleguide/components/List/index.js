@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import List from '../../../src/components/ui/List';
 
-export function ListRenderer({ classes, ordered, children }) {
+export function ListRenderer({ ordered, children }) {
   return (
     <List ordered={ordered}>
       {Children.map(children, (child) => {

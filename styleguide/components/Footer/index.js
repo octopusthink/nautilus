@@ -5,7 +5,7 @@ import React from 'react';
 import { toUnits } from '../../../src/styles';
 import theme from '../../theme';
 
-export function Footer({ children, title, version }) {
+export function Footer({ children }) {
   return (
     <footer
       css={css`

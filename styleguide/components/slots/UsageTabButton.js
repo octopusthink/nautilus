@@ -4,7 +4,8 @@ import TabButton from 'rsg-components/TabButton';
 import isEmpty from 'lodash/isEmpty';
 
 const UsageTabButton = (props) => {
-  const component = props.props;
+  // eslint-disable-next-line react/destructuring-assignment
+  const { component } = props.props;
   const showButton = !isEmpty(component.props) || !isEmpty(component.methods);
   return showButton ? <TabButton {...props}>Props</TabButton> : null;
 };
@@ -15,6 +16,7 @@ UsageTabButton.propTypes = {
   props: PropTypes.shape({
     props: PropTypes.array,
     methods: PropTypes.array,
+    component: PropTypes.node,
   }).isRequired,
   active: PropTypes.bool,
 };

@@ -15,6 +15,16 @@ import Table from 'rsg-components/Table';
 import Paragraph from '../../../src/components/ui/Paragraph';
 import { unquote, getType, showSpaces } from './utils';
 
+const defaultValueBlacklist = ['null', 'undefined'];
+
+function renderComplexType(name, title) {
+  return (
+    <Text size="small" underlined title={title}>
+      <Type>{name}</Type>
+    </Text>
+  );
+}
+
 function renderType(type) {
   if (!type) {
     return 'unknown';
@@ -56,14 +66,6 @@ function renderFlowType(type) {
   }
 }
 
-function renderComplexType(name, title) {
-  return (
-    <Text size="small" underlined title={title}>
-      <Type>{name}</Type>
-    </Text>
-  );
-}
-
 function renderEnum(prop) {
   if (!Array.isArray(getType(prop).value)) {
     return <span>{getType(prop).value}</span>;
@@ -79,29 +81,6 @@ function renderEnum(prop) {
   );
 }
 
-function renderShape(props) {
-  const rows = [];
-  for (const name in props) {
-    const prop = props[name];
-    const defaultValue = renderDefault(prop);
-    const description = prop.description;
-    rows.push(
-      <div key={name}>
-        <Name>{name}</Name>
-        {': '}
-        <Type>{renderType(prop)}</Type>
-        {defaultValue && ' — '}
-        {defaultValue}
-        {description && ' — '}
-        {description && <Markdown text={description} inline />}
-      </div>,
-    );
-  }
-  return rows;
-}
-
-const defaultValueBlacklist = ['null', 'undefined'];
-
 function renderDefault(prop) {
   // Workaround for issue https://github.com/reactjs/react-docgen/issues/221
   // If prop has defaultValue it can not be required
@@ -111,7 +90,8 @@ function renderDefault(prop) {
 
       if (defaultValueBlacklist.indexOf(prop.defaultValue.value) > -1) {
         return <Code>{showSpaces(unquote(prop.defaultValue.value))}</Code>;
-      } else if (propName === 'func' || propName === 'function') {
+      }
+      if (propName === 'func' || propName === 'function') {
         return (
           <Text
             size="small"
@@ -122,7 +102,8 @@ function renderDefault(prop) {
             Function
           </Text>
         );
-      } else if (propName === 'shape' || propName === 'object') {
+      }
+      if (propName === 'shape' || propName === 'object') {
         try {
           // We eval source code to be able to format the defaultProp here. This
           // can be considered safe, as it is the source code that is evaled,
@@ -148,7 +129,8 @@ function renderDefault(prop) {
     }
 
     return <Code>{showSpaces(unquote(prop.defaultValue.value))}</Code>;
-  } else if (prop.required) {
+  }
+  if (prop.required) {
     return (
       <Text size="small" color="light">
         Required
@@ -158,20 +140,40 @@ function renderDefault(prop) {
   return '';
 }
 
-function renderDescription(prop) {
-  const { description, tags = {} } = prop;
-  const extra = renderExtra(prop);
-  const args = [...(tags.arg || []), ...(tags.argument || []), ...(tags.param || [])];
-  const returnDocumentation = (tags.return && tags.return[0]) || (tags.returns && tags.returns[0]);
+function renderShape(props) {
+  const rows = [];
+  // eslint-disable-next-line guard-for-in, no-restricted-syntax
+  for (const name in props) {
+    const prop = props[name];
+    const defaultValue = renderDefault(prop);
+    const { description } = prop;
+    rows.push(
+      <div key={name}>
+        <Name>{name}</Name>:<Type>{renderType(prop)}</Type>
+        {defaultValue && ' — '}
+        {defaultValue}
+        {description && ' — '}
+        {description && <Markdown text={description} inline />}
+      </div>,
+    );
+  }
+  return rows;
+}
 
+function renderUnion(prop) {
+  const type = getType(prop);
+  if (!Array.isArray(type.value)) {
+    return <span>{type.value}</span>;
+  }
+
+  const values = type.value.map((value, index) => (
+    // eslint-disable-next-line react/no-array-index-key
+    <Type key={`${value.name}-${index}`}>{renderType(value)}</Type>
+  ));
   return (
-    <div>
-      {description && <Markdown text={description} />}
-      {extra && <Paragraph small>{extra}</Paragraph>}
-      <JsDoc {...tags} />
-      {args.length > 0 && <Arguments args={args} heading />}
-      {returnDocumentation && <Argument {...returnDocumentation} returns />}
-    </div>
+    <span>
+      One of type: <Group separator=", ">{values}</Group>
+    </span>
   );
 }
 
@@ -202,19 +204,20 @@ function renderExtra(prop) {
   }
 }
 
-function renderUnion(prop) {
-  const type = getType(prop);
-  if (!Array.isArray(type.value)) {
-    return <span>{type.value}</span>;
-  }
+function renderDescription(prop) {
+  const { description, tags = {} } = prop;
+  const extra = renderExtra(prop);
+  const args = [...(tags.arg || []), ...(tags.argument || []), ...(tags.param || [])];
+  const returnDocumentation = (tags.return && tags.return[0]) || (tags.returns && tags.returns[0]);
 
-  const values = type.value.map((value, index) => (
-    <Type key={`${value.name}-${index}`}>{renderType(value)}</Type>
-  ));
   return (
-    <span>
-      One of type: <Group separator=", ">{values}</Group>
-    </span>
+    <div>
+      {description && <Markdown text={description} />}
+      {extra && <Paragraph small>{extra}</Paragraph>}
+      <JsDoc {...tags} />
+      {args.length > 0 && <Arguments args={args} heading />}
+      {returnDocumentation && <Argument {...returnDocumentation} returns />}
+    </div>
   );
 }
 

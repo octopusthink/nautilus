@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -7,10 +8,10 @@ import { toUnits } from '../../../src/styles';
 import theme from '../../theme';
 import { getHash } from './getHash';
 
-export function ComponentsList({ classes, items }) {
-  items = items.filter((item) => item.visibleName);
+export function ComponentsList({ items }) {
+  const componentItems = items.filter((item) => item.visibleName);
 
-  if (!items.length) {
+  if (!componentItems.length) {
     return null;
   }
 
@@ -32,7 +33,7 @@ export function ComponentsList({ classes, items }) {
         }
       `}
     >
-      {items.map(({ heading, visibleName, href, content, shouldOpenInNewTab }) => {
+      {componentItems.map(({ visibleName, href, content, shouldOpenInNewTab }) => {
         const isItemSelected = windowHash === href;
 
         return (
