@@ -138,6 +138,11 @@ const TextField = forwardRef((props, ref) => {
     InputComponent = 'textarea';
   }
 
+  // Padding to use for signifier and action icons.
+  const iconPadding = toUnits(
+    theme.components.Icon.sizes.medium.size + theme.spacing.padding.small * 2,
+  );
+
   return (
     <React.Fragment>
       {label && (
@@ -246,16 +251,12 @@ const TextField = forwardRef((props, ref) => {
 
           ${signifierIcon &&
             css`
-              padding-left: ${toUnits(
-                theme.components.Icon.sizes.medium.size + theme.spacing.padding.small * 2,
-              )};
+              padding-left: ${iconPadding};
             `}
 
           ${actionIcon &&
             css`
-              padding-right: ${toUnits(
-                theme.components.Icon.sizes.medium.size + theme.spacing.padding.small * 2,
-              )};
+              padding-right: ${iconPadding};
             `}
 
           ${size &&
