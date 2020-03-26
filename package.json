@@ -8,7 +8,6 @@
     "build:package": "NODE_ENV=production webpack",
     "build:styleguide": "DISABLE_PEER_DEPS_PLUGIN=true NODE_ENV=production styleguidist build",
     "build": "npm run build:package && npm run build:styleguide",
-    "ci": "npm run lint && npm run test:all",
     "clean": "shx rm -rf coverage/ dist/",
     "lint:eslint:fix": "eslint --fix .",
     "lint:eslint": "eslint .",
@@ -33,6 +32,11 @@
     "test": "npm run test:unit:watch"
   },
   "prettier": "@octopusthink/prettier-config",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/octopusthink/nautilus.git"
@@ -54,7 +58,6 @@
     "shx": "^0.3.2"
   },
   "devDependencies": {
-    "acorn": "^6.3.0",
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
@@ -70,6 +73,7 @@
     "@reach/router": "^1.2.1",
     "@react-hook/window-size": "^1.0.8",
     "@testing-library/react": "^8.0.9",
+    "acorn": "^6.3.0",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
@@ -85,10 +89,12 @@
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.2.0",
     "history": "^4.10.1",
+    "husky": "^4.2.3",
     "jest": "^24.9.0",
     "jest-axe": "^3.2.0",
     "jest-dom": "^3.5.0",
     "jest-emotion": "^10.0.17",
+    "lint-staged": "^10.0.9",
     "peer-deps-externals-webpack-plugin": "^1.0.4",
     "prettier": "1.17.1",
     "react": "^16.11.0",

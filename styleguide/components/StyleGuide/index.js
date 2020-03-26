@@ -265,6 +265,7 @@ export const StyleGuide = ({ children, hasSidebar, toc }) => {
       {USE_ANALYTICS && (
         <script
           type="text/javascript"
+          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: `
             var _paq = window._paq || [];

@@ -27,6 +27,7 @@ export function PreRenderer({ classes, className, children }) {
 
   const isHighlighted = className && className.indexOf('lang-') !== -1;
   if (isHighlighted) {
+    // eslint-disable-next-line react/no-danger
     return <pre className={classNames} dangerouslySetInnerHTML={{ __html: children }} />;
   }
   return <pre className={classNames}>{children}</pre>;
