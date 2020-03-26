@@ -1,7 +1,6 @@
 import React, { createRef } from 'react';
 
-import { muteConsole, render } from 'utils/testing';
-
+import { muteConsole, render } from '../../../../utils/testing';
 import Paragraph from '../Paragraph';
 import Tabs from '.';
 
