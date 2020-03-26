@@ -6,6 +6,12 @@ import React from 'react';
 import { render } from '../utils/testing';
 import * as NautilusExports from '.';
 
+const getFoldersIn = (folderName) => {
+  return fs.readdirSync(folderName).filter((file) => {
+    return fs.statSync(path.join(folderName, file)).isDirectory();
+  });
+};
+
 describe('Package entrypoint', () => {
   it('should export the Nautilus component', () => {
     const Nautilus = NautilusExports.default;
@@ -18,15 +24,10 @@ describe('Package entrypoint', () => {
   });
 
   describe('Component exports', () => {
-    const componentFolders = fs.readdirSync(path.join(__dirname, 'components')).filter((file) => {
-      return fs.statSync(path.join(__dirname, 'components', file)).isDirectory();
-    });
-
-    const components = componentFolders
+    const componentsPath = path.join(__dirname, 'components');
+    const components = getFoldersIn(componentsPath)
       .map((componentType) => {
-        return fs.readdirSync(path.join(__dirname, 'components', componentType)).filter((file) => {
-          return fs.statSync(path.join(__dirname, 'components', componentType, file)).isDirectory();
-        });
+        return getFoldersIn(path.join(componentsPath, componentType));
       })
       .reduce((acc, component) => acc.concat(component), []);
 
@@ -42,11 +43,7 @@ describe('Package entrypoint', () => {
   });
 
   describe('Style helper exports', () => {
-    const styleFiles = fs.readdirSync(path.join(__dirname, 'styles')).filter((file) => {
-      return fs.statSync(path.join(__dirname, 'styles', file)).isFile();
-    });
-
-    styleFiles.forEach((file) => {
+    getFoldersIn(path.join(__dirname, 'styles')).forEach((file) => {
       it(`exports helpers in ./styles/${file}`, () => {
         // eslint-disable-next-line global-require, import/no-dynamic-require
         const helper = require(`./styles/${file}`);
@@ -61,11 +58,8 @@ describe('Package entrypoint', () => {
 
   describe('Theme exports', () => {
     const privateThemes = ['styleguide'];
-    const themes = fs.readdirSync(path.join(__dirname, 'themes')).filter((file) => {
-      return fs.statSync(path.join(__dirname, 'themes', file)).isDirectory();
-    });
 
-    themes.forEach((themeName) => {
+    getFoldersIn(path.join(__dirname, 'themes')).forEach((themeName) => {
       // Don't check for themes we used internally and don't want to export.
       if (privateThemes.includes(themeName)) {
         it(`does not export private theme in src/themes/${themeName}`, () => {
