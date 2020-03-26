@@ -45,3 +45,5 @@ exclude_patterns:
   # This folder is largely mildly-changed components from React Styleguidist;
   # don't include it in our code analysis.
   - 'styleguide/'
+  # Ignore test files; they're full of duplication.
+  - '**/*.test.js'
