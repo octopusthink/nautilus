@@ -3,16 +3,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Heading from 'rsg-components/Heading';
 
-import theme from 'styleguide/theme';
+import theme from '../../theme';
 
-function SectionHeadingRenderer({
-  children,
-  toolbar,
-  id,
-  href,
-  depth,
-  deprecated,
-}) {
+function SectionHeadingRenderer({ children, toolbar, id, href, depth, deprecated }) {
   // const headingLevel = Math.min(6, depth);
   // Overwrite RSG's classification of headings, since we're only using top-level headings here!
   const headingLevel = 1;

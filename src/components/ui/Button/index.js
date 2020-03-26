@@ -3,12 +3,10 @@ import invariant from 'invariant';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-// Import the non-styled Link so we don't have to overwrite Link styles if
-// the `navigation` prop is used by a button.
-import Link from 'components/ui/Link';
-import Icon from 'components/ui/Icon';
-import { interfaceUI, toUnits } from 'styles';
-import { useTheme } from 'themes';
+import Link from '../Link';
+import Icon from '../Icon';
+import { interfaceUI, toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
 
 export const qualityControl = (props) => {
   const { minimal, primary, success, warning, danger } = props;

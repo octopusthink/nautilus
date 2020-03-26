@@ -2,9 +2,9 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 
-import { NautilusLinkComponent } from 'components/hoc/Nautilus';
-import { Icon } from 'components/ui/Icon';
-import { useTheme } from 'themes';
+import { NautilusLinkComponent } from '../../hoc/Nautilus';
+import { Icon } from '../Icon';
+import { useTheme } from '../../../themes';
 
 const LinkTag = 'a';
 

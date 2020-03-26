@@ -3,7 +3,7 @@ import path from 'path';
 
 import React from 'react';
 
-import { render } from 'utils/testing';
+import { render } from '../utils/testing';
 
 import * as NautilusExports from '.';
 

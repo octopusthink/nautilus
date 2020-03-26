@@ -4,14 +4,12 @@ import PropTypes from 'prop-types';
 import React, { Children, cloneElement, useMemo, useState } from 'react';
 import shortid from 'shortid';
 
-import Heading from 'components/ui/Heading';
-import Paragraph from 'components/ui/Paragraph';
-import { bodyStyles } from 'styles';
-import { useTheme } from 'themes';
-
-import Item, { ComponentClassName as ItemClassName } from './Item';
-
-export const ComponentClassName = 'Nautilus-List';
+import Heading from '../Heading';
+import Paragraph from '../Paragraph';
+import { bodyStyles } from '../../../styles';
+import { useTheme } from '../../../themes';
+import { ListClassName, ListItemClassName } from './constants';
+import Item from './Item';
 
 export const List = (props) => {
   const {
@@ -75,7 +73,7 @@ export const List = (props) => {
                   css`
                     counter-reset: list-counter;
 
-                    > .${ItemClassName} {
+                    > .${ListItemClassName} {
                       list-style: none;
                       counter-increment: list-counter;
 
@@ -86,7 +84,7 @@ export const List = (props) => {
                   `}
                 ${!ordered &&
                   css`
-                    > .${ItemClassName} {
+                    > .${ListItemClassName} {
                       list-style: none;
 
                       &::before {
@@ -98,7 +96,7 @@ export const List = (props) => {
                   `}
               `
         }
-        className={classnames(ComponentClassName, className)}
+        className={classnames(ListClassName, className)}
         {...otherProps}
       >
         {items}

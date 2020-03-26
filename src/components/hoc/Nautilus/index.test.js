@@ -1,9 +1,8 @@
 import { Link as ReachRouterLink } from '@reach/router';
 import React from 'react';
 
-import { Heading, Link, Paragraph } from 'components';
-import { render } from 'utils/testing';
-
+import { Heading, Link, Paragraph } from '../../..';
+import { render } from '../../../../utils/testing';
 import Nautilus from '.';
 
 describe('Nautilus', () => {

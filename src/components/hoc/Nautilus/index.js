@@ -3,7 +3,7 @@ import { ThemeProvider } from 'emotion-theming';
 import PropTypes from 'prop-types';
 import React, { createContext } from 'react';
 
-import { nautilus as nautilusDefaultTheme, themePropTypes } from 'themes';
+import { nautilus as nautilusDefaultTheme, themePropTypes } from '../../../themes';
 
 export const NautilusLinkComponent = createContext();
 

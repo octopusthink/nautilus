@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import React, { Children, cloneElement, Fragment, useMemo, useState } from 'react';
 import shortid from 'shortid';
 
-import List from 'components/ui/List';
-import VisuallyHidden from 'components/ui/VisuallyHidden';
-
+import List from '../List';
+import VisuallyHidden from '../VisuallyHidden';
 import Tag from './Tag';
 
 export const Tags = (props) => {

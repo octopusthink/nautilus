@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Version from 'rsg-components/Version';
 
-import theme from 'styleguide/theme';
-import { metadata, toUnits } from 'styles';
+import { metadata, toUnits } from '../../../src/styles';
+import theme from '../../theme';
 
 export function Header({ children, title, version }) {
   return (

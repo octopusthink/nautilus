@@ -11,9 +11,8 @@ import React, {
 } from 'react';
 import shortid from 'shortid';
 
-import { focusStyle, bodyStyles, toUnits } from 'styles';
-import { useTheme } from 'themes';
-
+import { focusStyle, bodyStyles, toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
 import Tab from './Tab';
 
 export const Tabs = (props) => {

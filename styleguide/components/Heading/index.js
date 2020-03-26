@@ -1,7 +1,7 @@
 import React, { Children } from 'react';
-import PropTypes from 'prop-types';
 
-import { Heading, PageTitle } from 'components';
+import Heading from '../../../src/components/ui/Heading';
+import PageTitle from '../../../src/components/ui/PageTitle';
 
 export function HeadingRenderer({ children, level, ...otherProps }) {
   if (level === 1) {

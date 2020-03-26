@@ -2,8 +2,8 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { pageTitle, toUnits } from 'styles';
-import { useTheme } from 'themes';
+import { pageTitle, toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
 
 export const PageTitle = (props) => {
   const theme = useTheme();

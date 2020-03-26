@@ -2,7 +2,7 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { useTheme } from 'themes';
+import { useTheme } from '../../../themes';
 
 export const Strong = (props) => {
   const { children, unstyled, ...otherProps } = props;

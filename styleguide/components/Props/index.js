@@ -12,8 +12,7 @@ import Type from 'rsg-components/Type';
 import Text from 'rsg-components/Text';
 import Table from 'rsg-components/Table';
 
-import { Paragraph } from 'components';
-
+import Paragraph from '../../../src/components/ui/Paragraph';
 import { unquote, getType, showSpaces } from './utils';
 
 function renderType(type) {
@@ -131,12 +130,7 @@ function renderDefault(prop) {
           // eslint-disable-next-line no-eval
           const object = eval(`(${prop.defaultValue.value})`);
           return (
-            <Text
-              size="small"
-              color="light"
-              underlined
-              title={objectToString(object, null, 2)}
-            >
+            <Text size="small" color="light" underlined title={objectToString(object, null, 2)}>
               Shape
             </Text>
           );
@@ -145,12 +139,7 @@ function renderDefault(prop) {
           // local scope. To avoid any breakage we fall back to rendering the
           // prop without any formatting
           return (
-            <Text
-              size="small"
-              color="light"
-              underlined
-              title={prop.defaultValue.value}
-            >
+            <Text size="small" color="light" underlined title={prop.defaultValue.value}>
               Shape
             </Text>
           );
@@ -172,13 +161,8 @@ function renderDefault(prop) {
 function renderDescription(prop) {
   const { description, tags = {} } = prop;
   const extra = renderExtra(prop);
-  const args = [
-    ...(tags.arg || []),
-    ...(tags.argument || []),
-    ...(tags.param || []),
-  ];
-  const returnDocumentation =
-    (tags.return && tags.return[0]) || (tags.returns && tags.returns[0]);
+  const args = [...(tags.arg || []), ...(tags.argument || []), ...(tags.param || [])];
+  const returnDocumentation = (tags.return && tags.return[0]) || (tags.returns && tags.returns[0]);
 
   return (
     <div>

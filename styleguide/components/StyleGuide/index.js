@@ -6,14 +6,13 @@ import { Global, css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import Markdown from 'rsg-components/Markdown';
-import Header from 'styleguide/components/Header';
-import Footer from 'styleguide/components/Footer';
 import { useWindowWidth } from '@react-hook/window-size';
 
-import { Nautilus } from 'components';
-import { metadata, toUnits } from 'styles';
-import theme from 'styleguide/theme';
-import { Icon } from 'components/ui/Icon';
+import Nautilus from '../../../src/components/hoc/Nautilus';
+import Icon from '../../../src/components/ui/Icon';
+import { metadata, toUnits } from '../../../src/styles';
+import Footer from '../Footer';
+import theme from '../../theme';
 
 export const StyleGuide = ({ children, hasSidebar, homepageUrl, title, toc, version }) => {
   const mobileBreakpoint = 768;

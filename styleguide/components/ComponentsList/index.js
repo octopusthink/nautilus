@@ -2,11 +2,9 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Link from 'rsg-components/Link';
-import Styled from 'rsg-components/Styled';
 
-import theme from 'styleguide/theme';
-import { toUnits, focusStyle } from 'styles';
-
+import { toUnits } from '../../../src/styles';
+import theme from '../../theme';
 import { getHash } from './getHash';
 
 export function ComponentsList({ classes, items }) {

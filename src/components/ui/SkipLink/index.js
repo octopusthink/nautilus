@@ -2,10 +2,10 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Link from 'components/ui/Link';
-import { VisuallyHiddenStyles, VisuallyHiddenRevealStyles } from 'components/ui/VisuallyHidden';
-import { interfaceUI, focusStyle, toUnits } from 'styles';
-import { useTheme } from 'themes';
+import Link from '../Link';
+import { VisuallyHiddenStyles, VisuallyHiddenRevealStyles } from '../VisuallyHidden';
+import { interfaceUI, focusStyle, toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
 
 export const SkipLink = (props) => {
   const { children, toId, unstyled, ...otherProps } = props;

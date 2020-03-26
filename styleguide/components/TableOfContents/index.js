@@ -2,9 +2,8 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import theme from 'styleguide/theme';
-import { interfaceUI, toUnits } from 'styles';
-import { Icon } from 'components/ui/Icon';
+import { interfaceUI } from '../../../src/styles';
+import theme from '../../theme';
 
 export function TableOfContents({ children, onSearchTermChange, searchTerm }) {
   return (

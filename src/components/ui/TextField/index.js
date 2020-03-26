@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import React, { cloneElement, forwardRef, useCallback, useMemo, useRef, useState } from 'react';
 import shortid from 'shortid';
 
-import Icon from 'components/ui/Icon';
-import { focusStyle, interfaceUI, toUnits } from 'styles';
-import { useTheme } from 'themes';
+import Icon from '../Icon';
+import { focusStyle, interfaceUI, toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
 
 const smallText = (props) => {
   const { theme } = props;

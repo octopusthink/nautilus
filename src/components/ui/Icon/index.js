@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import React, { useState, useMemo } from 'react';
 import shortid from 'shortid';
 
-import { toUnits } from 'styles';
-import { useTheme } from 'themes';
+import { toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
 
 const defineIconSizes = (props) => {
   const { background, border, small, xSmall, large, xLarge, theme } = props;

@@ -1,10 +1,9 @@
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Version from 'rsg-components/Version';
 
-import theme from 'styleguide/theme';
-import { heading, toUnits } from 'styles';
+import { toUnits } from '../../../src/styles';
+import theme from '../../theme';
 
 export function Footer({ children, title, version }) {
   return (

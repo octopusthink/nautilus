@@ -1,16 +1,16 @@
 import React from 'react';
 
-import { Details, DetailsSummary } from './index';
+import { Details, DetailsSummary } from '.';
 
 describe('Markdown Details', () => {
-	it('should render a Details', () => {
-		const actual = render(
-			<Details>
-				<DetailsSummary>Solution</DetailsSummary>
-				This is a hidden text.
-			</Details>
-		);
+  it('should render a Details', () => {
+    const actual = render(
+      <Details>
+        <DetailsSummary>Solution</DetailsSummary>
+        This is a hidden text.
+      </Details>,
+    );
 
-		expect(actual).toMatchSnapshot();
-	});
+    expect(actual).toMatchSnapshot();
+  });
 });
