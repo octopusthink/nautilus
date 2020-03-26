@@ -1,19 +1,18 @@
 import { Global, css } from '@emotion/core';
 import { ThemeProvider } from 'emotion-theming';
 import PropTypes from 'prop-types';
-import React, { createContext } from 'react';
+import React from 'react';
 
 import { nautilus as nautilusDefaultTheme, themePropTypes } from '../../../themes';
+import { NautilusLinkComponentContext } from './context';
 
-export const NautilusLinkComponent = createContext();
-
-export const Nautilus = (props) => {
+const Nautilus = (props) => {
   const { children, config, theme } = props;
 
   const { LinkComponent } = config;
 
   return (
-    <NautilusLinkComponent.Provider value={LinkComponent}>
+    <NautilusLinkComponentContext.Provider value={LinkComponent}>
       <ThemeProvider theme={theme}>
         <Global
           styles={css`
@@ -40,7 +39,7 @@ export const Nautilus = (props) => {
         />
         {children}
       </ThemeProvider>
-    </NautilusLinkComponent.Provider>
+    </NautilusLinkComponentContext.Provider>
   );
 };
 

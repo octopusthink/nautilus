@@ -22,7 +22,7 @@ export const qualityControl = (props) => {
   );
 };
 
-export const Paragraph = (props) => {
+const Paragraph = (props) => {
   const {
     children,
     className,

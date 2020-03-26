@@ -15,7 +15,7 @@ import { focusStyle, bodyStyles, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 import Tab from './Tab';
 
-export const Tabs = (props) => {
+const Tabs = (props) => {
   const { children, dark, inverse, light, noMargin, id, unstyled, ...otherProps } = props;
   const sectionToFocusRef = useRef();
   const tabToFocusRef = useRef();

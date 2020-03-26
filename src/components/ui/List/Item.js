@@ -7,7 +7,7 @@ import { toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 import { ListItemClassName } from './constants';
 
-export const Item = (props) => {
+const Item = (props) => {
   const { children, className, noMargin, unstyled, ...otherProps } = props;
 
   const theme = useTheme();

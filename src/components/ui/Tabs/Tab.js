@@ -6,7 +6,7 @@ import Heading from '../Heading';
 import { focusStyle } from '../../../styles';
 import { useTheme } from '../../../themes';
 
-export const Tab = forwardRef((props, ref) => {
+const Tab = forwardRef((props, ref) => {
   const { isActive, children, label, labelProps, unstyled, ...otherProps } = props;
 
   const theme = useTheme();

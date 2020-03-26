@@ -17,7 +17,7 @@ const smallText = (props) => {
   `;
 };
 
-export const TextField = forwardRef((props, ref) => {
+const TextField = forwardRef((props, ref) => {
   const {
     __actionIconId,
     __signifierIconId,

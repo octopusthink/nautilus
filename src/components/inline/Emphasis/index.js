@@ -4,7 +4,7 @@ import React from 'react';
 
 import { useTheme } from '../../../themes';
 
-export const Emphasis = (props) => {
+const Emphasis = (props) => {
   const { children, unstyled, ...otherProps } = props;
 
   const theme = useTheme();

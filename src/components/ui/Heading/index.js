@@ -28,7 +28,7 @@ export const qualityControl = (props) => {
   );
 };
 
-export const Heading = (props) => {
+const Heading = (props) => {
   qualityControl(props);
 
   const theme = useTheme();

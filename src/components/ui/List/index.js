@@ -11,7 +11,7 @@ import { useTheme } from '../../../themes';
 import { ListClassName, ListItemClassName } from './constants';
 import Item from './Item';
 
-export const List = (props) => {
+const List = (props) => {
   const {
     children,
     className,

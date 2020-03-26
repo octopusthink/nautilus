@@ -2,11 +2,11 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-import { Icon } from '../Icon';
+import Icon from '../Icon';
 import { getContrastingTextColor, metadata, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
-export const Tag = (props) => {
+const Tag = (props) => {
   const [isDismissed, setDismissed] = useState(false);
   const theme = useTheme();
 

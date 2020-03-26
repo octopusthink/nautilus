@@ -22,7 +22,7 @@ export const qualityControl = (props) => {
   );
 };
 
-export const Button = (props) => {
+const Button = (props) => {
   const {
     __iconId,
     children,

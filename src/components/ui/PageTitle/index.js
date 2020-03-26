@@ -5,7 +5,7 @@ import React from 'react';
 import { pageTitle, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
-export const PageTitle = (props) => {
+const PageTitle = (props) => {
   const theme = useTheme();
   const { children, documentTitle, noMargin, unstyled, ...otherProps } = props;
   // const documentTitleToUse = documentTitle || children;

@@ -7,7 +7,7 @@ import List from '../List';
 import VisuallyHidden from '../VisuallyHidden';
 import Tag from './Tag';
 
-export const Tags = (props) => {
+const Tags = (props) => {
   const { children, label } = props;
 
   const [generatedId] = useState(shortid.generate());

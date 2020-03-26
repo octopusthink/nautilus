@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Link from '../Link';
-import { VisuallyHiddenStyles, VisuallyHiddenRevealStyles } from '../VisuallyHidden';
+import { VisuallyHiddenStyles, VisuallyHiddenRevealStyles } from '../VisuallyHidden/styles';
 import { interfaceUI, focusStyle, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
-export const SkipLink = (props) => {
+const SkipLink = (props) => {
   const { children, toId, unstyled, ...otherProps } = props;
 
   const theme = useTheme();

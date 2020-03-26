@@ -47,7 +47,7 @@ const defineIconSizes = (props) => {
   };
 };
 
-export const Icon = (props) => {
+const Icon = (props) => {
   const {
     'data-testid': dataTestId,
     background,
