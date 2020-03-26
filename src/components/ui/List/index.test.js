@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { axe, render } from 'utils/testing';
-
+import { axe, render } from '../../../../utils/testing';
 import Heading from '../Heading';
 import Paragraph from '../Paragraph';
 import List from '.';
