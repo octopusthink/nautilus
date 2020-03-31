@@ -6,7 +6,6 @@ module.exports = {
   moduleNameMapper: {
     '^react-native$': 'react-native-web',
   },
-  modulePaths: ['<rootDir>/', '<rootDir>/src/'],
   setupFilesAfterEnv: [
     '@testing-library/react/cleanup-after-each',
     '<rootDir>/utils/jest.setup.js',

@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { axe, render } from 'utils/testing';
-
+import { axe, render } from '../../../../utils/testing';
 import Tags from '.';
 
 describe('Tags', () => {

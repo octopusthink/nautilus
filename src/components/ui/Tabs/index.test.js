@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { axe, fireEvent, render, wait, waitForElement } from 'utils/testing';
-
-import { Paragraph } from 'components';
+import { axe, fireEvent, render, wait, waitForElement } from '../../../../utils/testing';
+import Paragraph from '../Paragraph';
 import Tabs from '.';
 
 const tabSet = (

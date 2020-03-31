@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { fireEvent, render } from 'utils/testing';
-
+import { fireEvent, render } from '../../../../utils/testing';
 import Tag from './Tag';
 
 describe('Tag', () => {

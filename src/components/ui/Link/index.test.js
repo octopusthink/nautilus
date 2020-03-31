@@ -1,10 +1,9 @@
 import { Link as ReachRouterLink } from '@reach/router';
 import React from 'react';
 
-import { axe, render } from 'utils/testing';
-
-import Link from '.';
+import { axe, render } from '../../../../utils/testing';
 import Nautilus from '../../hoc/Nautilus';
+import Link from '.';
 
 describe('Link', () => {
   it('should render an <a> tag', () => {

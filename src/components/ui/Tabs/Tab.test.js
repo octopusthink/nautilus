@@ -1,8 +1,7 @@
 import React, { createRef } from 'react';
 
-import { muteConsole, render } from 'utils/testing';
-
-import { Paragraph } from 'components';
+import { muteConsole, render } from '../../../../utils/testing';
+import Paragraph from '../Paragraph';
 import Tabs from '.';
 
 describe('Tabs.Tab', () => {

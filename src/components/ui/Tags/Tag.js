@@ -2,11 +2,11 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-import { Icon } from 'components/ui/Icon';
-import { getContrastingTextColor, metadata, toUnits } from 'styles';
-import { useTheme } from 'themes';
+import Icon from '../Icon';
+import { getContrastingTextColor, metadata, toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
 
-export const Tag = (props) => {
+const Tag = (props) => {
   const [isDismissed, setDismissed] = useState(false);
   const theme = useTheme();
 
@@ -39,7 +39,7 @@ export const Tag = (props) => {
               ${metadata.small(theme)};
               color: ${textColor};
               margin: 0;
-              
+
               ${!noMargin &&
                 css`
                   margin: 0 ${toUnits(theme.spacing.padding.xSmall)}

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export function PathlineRenderer({ classes, children }) {
+export function PathlineRenderer() {
   return null;
 }
 

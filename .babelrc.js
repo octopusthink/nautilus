@@ -1,9 +1,5 @@
 const config = {
-  presets: [
-    '@babel/preset-env',
-    '@babel/preset-react',
-    '@emotion/babel-preset-css-prop',
-  ],
+  presets: ['@babel/preset-env', '@babel/preset-react', '@emotion/babel-preset-css-prop'],
   plugins: [
     '@babel/plugin-proposal-class-properties',
     ['@babel/plugin-proposal-object-rest-spread', { useBuiltIns: true }],

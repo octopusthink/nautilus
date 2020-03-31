@@ -2,14 +2,14 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 
-import { NautilusLinkComponent } from 'components/hoc/Nautilus';
-import { Icon } from 'components/ui/Icon';
-import { useTheme } from 'themes';
+import { NautilusLinkComponentContext } from '../../hoc/Nautilus/context';
+import Icon from '../Icon';
+import { useTheme } from '../../../themes';
 
 const LinkTag = 'a';
 
-export const Link = (props) => {
-  const defaultLinkComponent = useContext(NautilusLinkComponent);
+const Link = (props) => {
+  const defaultLinkComponent = useContext(NautilusLinkComponentContext);
   const theme = useTheme();
 
   const { children, as, external, href, unstyled, ...otherProps } = props;
