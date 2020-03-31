@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 
 const UsageTabButton = (props) => {
   // eslint-disable-next-line react/destructuring-assignment
-  const { component } = props.props;
+  const { props: component } = props;
   const showButton = !isEmpty(component.props) || !isEmpty(component.methods);
   return showButton ? <TabButton {...props}>Props</TabButton> : null;
 };
