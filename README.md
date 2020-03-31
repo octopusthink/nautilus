@@ -33,12 +33,18 @@ Point releases are distributed to `npm` on the 5th of every month. You can see o
 
 ## Usage
 
-Want to use Nautilus in your next web app? Well: don't! It's much too early and it's nowhere near ready for production usage. Check back later. 😅
+Want to use Nautilus in your next web app? **Buyer beware!** It's much too early and it's nowhere near ready for production usage. Check back later. 😅
 
 You can _technically_ install it from NPM, but you can't say we didn't warn you!
 
 ```bash
 npm install @octopusthink/nautilus
+```
+
+To update Nautilus and pull the latest changes, uninstall and reinstall the dependency:
+
+```bash
+npm uninstall nautilus && npm install --save octopusthink/nautilus
 ```
 
 ## Development
