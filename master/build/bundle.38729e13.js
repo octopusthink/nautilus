@@ -8331,11 +8331,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _hoc_Nautilus_context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(130);
 /* harmony import */ var _Icon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(22);
-/* harmony import */ var _themes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(9);
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(4);
+/* harmony import */ var _themes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(9);
 
 
-
-function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
 
 
@@ -8346,14 +8345,9 @@ function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringif
 
 var LinkTag = 'a';
 
-var _ref =  true ? {
-  name: "1uk1gs8",
-  styles: "margin:0;"
-} : undefined;
-
 var Link = function Link(props) {
   var defaultLinkComponent = Object(react__WEBPACK_IMPORTED_MODULE_4__["useContext"])(_hoc_Nautilus_context__WEBPACK_IMPORTED_MODULE_5__[/* NautilusLinkComponentContext */ "a"]);
-  var theme = Object(_themes__WEBPACK_IMPORTED_MODULE_7__["useTheme"])();
+  var theme = Object(_themes__WEBPACK_IMPORTED_MODULE_8__["useTheme"])();
 
   var children = props.children,
       as = props.as,
@@ -8368,15 +8362,19 @@ var Link = function Link(props) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("border-bottom:2px solid ", theme.colors.state.interactive, ";color:", theme.colors.state.interactiveText, ";text-decoration:none;transition:all 200ms ease-in-out;&:hover{border-color:", theme.colors.state.hover, ";color:", theme.colors.state.hoverText, ";}&:focus{border-color:transparent;box-shadow:", theme.colors.state.interactive, " 0 0 0 3px;outline:none;}" + ( true ? "" : undefined)),
+    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("color:", theme.colors.state.interactiveText, ";text-decoration-color:", theme.colors.state.interactive, ";text-decoration-thickness:2px;text-decoration-style:underline;text-underline-offset:0.25em;transition:all 200ms ease-in-out;&:hover{color:", theme.colors.state.hoverText, ";text-decoration-color:", theme.colors.state.hover, ";}&:focus{box-shadow:", theme.colors.state.interactive, " 0 0 0 3px;outline:none;text-decoration:none;}" + ( true ? "" : undefined)),
     href: href
-  }, otherProps), children, external && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(react__WEBPACK_IMPORTED_MODULE_4___default.a.Fragment, null, ' ', Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(_Icon__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  }, otherProps), children, external && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(react__WEBPACK_IMPORTED_MODULE_4___default.a.Fragment, null, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(_Icon__WEBPACK_IMPORTED_MODULE_6__["default"], {
     name: "external-link",
-    title: "External link",
+    noMargin: true,
     small: true,
+    strokeColor: theme.colors.neutral.grey600,
+    title: "External link",
     css:
     /*#__PURE__*/
-    _ref
+
+    /*#__PURE__*/
+    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("margin-left:", Object(_styles__WEBPACK_IMPORTED_MODULE_7__[/* toUnits */ "n"])(theme.spacing.padding.xSmall), ";" + ( true ? "" : undefined))
   })));
 };
 
