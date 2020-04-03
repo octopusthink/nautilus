@@ -24,7 +24,7 @@ const Link = (props) => {
               color: ${theme.colors.state.interactiveText};
               text-decoration-color: ${theme.colors.state.interactive};
               text-decoration-thickness: 2px; 
-              text-decoration: underline;
+              text-decoration-style: underline;
               text-underline-offset: 0.25em;
               transition: all 200ms ease-in-out;
             }

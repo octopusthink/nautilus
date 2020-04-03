@@ -18,8 +18,8 @@ exports[`Link should output Link styles 1`] = `
   text-decoration-color: #f5bbda;
   -webkit-text-decoration-thickness: 2px;
   text-decoration-thickness: 2px;
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
+  -webkit-text-decoration-style: underline;
+  text-decoration-style: underline;
   text-underline-offset: 0.25em;
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
