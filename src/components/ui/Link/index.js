@@ -21,20 +21,23 @@ const Link = (props) => {
         unstyled
           ? undefined
           : css`
-              border-bottom: 2px solid ${theme.colors.state.interactive};
               color: ${theme.colors.state.interactiveText};
-              text-decoration: none;
+              text-decoration-color: ${theme.colors.state.interactive};
+              text-decoration-thickness: 2px; 
+              text-decoration: underline;
+              text-underline-offset: 0.25em; 
               transition: all 200ms ease-in-out;
+            }
 
               &:hover {
-                border-color: ${theme.colors.state.hover};
                 color: ${theme.colors.state.hoverText};
+                text-decoration-color: ${theme.colors.state.hover};
               }
 
               &:focus {
-                border-color: transparent;
                 box-shadow: ${theme.colors.state.interactive} 0 0 0 3px;
                 outline: none;
+                text-decoration: none;
               }
             `
       }
@@ -45,14 +48,7 @@ const Link = (props) => {
       {external && (
         <React.Fragment>
           {' '}
-          <Icon
-            name="external-link"
-            title="External link"
-            small
-            css={css`
-              margin: 0;
-            `}
-          />
+          <Icon name="external-link" title="External link" small noMargin />
         </React.Fragment>
       )}
     </LinkComponent>
