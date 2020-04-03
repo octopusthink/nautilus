@@ -4,6 +4,7 @@ import React, { useContext } from 'react';
 
 import { NautilusLinkComponentContext } from '../../hoc/Nautilus/context';
 import Icon from '../Icon';
+import { toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
 const LinkTag = 'a';
@@ -53,7 +54,7 @@ const Link = (props) => {
             strokeColor={theme.colors.neutral.grey600}
             title="External link"
             css={css`
-              margin-left: 0.4rem;
+              margin-left: ${toUnits(theme.spacing.padding.xSmall)};
             `}
           />
         </React.Fragment>
