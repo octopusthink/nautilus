@@ -25,7 +25,7 @@ const Link = (props) => {
               text-decoration-color: ${theme.colors.state.interactive};
               text-decoration-thickness: 2px; 
               text-decoration: underline;
-              text-underline-offset: 0.25em; 
+              text-underline-offset: 0.25em;
               transition: all 200ms ease-in-out;
             }
 
@@ -48,7 +48,13 @@ const Link = (props) => {
       {external && (
         <React.Fragment>
           {' '}
-          <Icon name="external-link" title="External link" small noMargin />
+          <Icon
+            name="external-link"
+            noMargin
+            small
+            strokeColor={theme.colors.neutral.grey600}
+            title="External link"
+          />
         </React.Fragment>
       )}
     </LinkComponent>
