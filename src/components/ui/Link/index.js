@@ -46,13 +46,15 @@ const Link = (props) => {
       {children}
       {external && (
         <React.Fragment>
-          {' '}
           <Icon
             name="external-link"
             noMargin
             small
             strokeColor={theme.colors.neutral.grey600}
             title="External link"
+            css={css`
+              margin-left: 0.4rem;
+            `}
           />
         </React.Fragment>
       )}
