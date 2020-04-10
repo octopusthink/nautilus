@@ -23,19 +23,17 @@ const Link = (props) => {
           ? undefined
           : css`
               color: ${theme.colors.state.interactiveText};
-              text-decoration-color: ${theme.colors.state.interactive};
-              text-decoration-thickness: 2px;
-              text-decoration-style: underline;
-              text-underline-offset: 0.25em;
+              box-shadow: 0 2px ${theme.colors.state.interactive};
+              text-decoration: none;
               transition: all 200ms ease-in-out;
 
               &:hover {
+                box-shadow: 0 2px ${theme.colors.state.hover};
                 color: ${theme.colors.state.hoverText};
-                text-decoration-color: ${theme.colors.state.hover};
               }
 
               &:focus {
-                box-shadow: ${theme.colors.state.interactive} 0 0 0 3px;
+                box-shadow: 0 0 0 3px ${theme.colors.state.interactive};
                 outline: none;
                 text-decoration: none;
               }

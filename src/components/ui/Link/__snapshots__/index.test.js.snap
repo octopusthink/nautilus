@@ -14,25 +14,20 @@ exports[`Link should not output styles when unstyled is set 1`] = `
 exports[`Link should output Link styles 1`] = `
 .emotion-0 {
   color: #cd2f83;
-  -webkit-text-decoration-color: #f5bbda;
-  text-decoration-color: #f5bbda;
-  -webkit-text-decoration-thickness: 2px;
-  text-decoration-thickness: 2px;
-  -webkit-text-decoration-style: underline;
-  text-decoration-style: underline;
-  text-underline-offset: 0.25em;
+  box-shadow: 0 2px #f5bbda;
+  -webkit-text-decoration: none;
+  text-decoration: none;
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
 
 .emotion-0:hover {
+  box-shadow: 0 2px #a0dee3;
   color: #0097a2;
-  -webkit-text-decoration-color: #a0dee3;
-  text-decoration-color: #a0dee3;
 }
 
 .emotion-0:focus {
-  box-shadow: #f5bbda 0 0 0 3px;
+  box-shadow: 0 0 0 3px #f5bbda;
   outline: none;
   -webkit-text-decoration: none;
   text-decoration: none;
