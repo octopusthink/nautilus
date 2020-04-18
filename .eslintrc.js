@@ -4,6 +4,7 @@ module.exports = {
     USE_ANALYTICS: false,
   },
   rules: {
+    '@typescript-eslint/rule-name': 'error',
     'react/jsx-props-no-spreading': 'off',
   },
   overrides: [
@@ -21,6 +22,8 @@ module.exports = {
       },
     },
   ],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint', '@emotion'],
   settings: {
     'import/ignore': ['utils/testing'],
   },

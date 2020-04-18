@@ -71,7 +71,7 @@ describe('Package entrypoint', () => {
 
       it(`exports theme in ./themes/${themeName}`, () => {
         // eslint-disable-next-line global-require, import/no-dynamic-require
-        const theme = require(`./themes/${themeName}/index.js`);
+        const theme = require(`./themes/${themeName}/index.ts`);
 
         expect(NautilusExports.themes[themeName]).toBeDefined();
         expect(NautilusExports.themes[themeName]).toEqual(theme.default);

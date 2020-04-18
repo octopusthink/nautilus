@@ -5,13 +5,13 @@ const PeerDepsExternalsPlugin = require('peer-deps-externals-webpack-plugin');
 const webpack = require('webpack');
 
 const config = {
-  entry: ['./src/index.js'],
+  entry: ['./src/index.ts'],
   mode: process.env.NODE_ENV,
   module: {
     rules: [
       // Transform ES6 with Babel
       {
-        test: /\.(js|jsx|mjs)$/,
+        test: /\.(ts|tsx|js|jsx|mjs)$/,
         use: [
           {
             loader: require.resolve('babel-loader'),
@@ -41,7 +41,7 @@ const config = {
     }),
   ],
   resolve: {
-    extensions: ['.mjs', '.jsx', '.js', '.json'],
+    extensions: ['tsx', 'ts', '.mjs', '.jsx', '.js', '.json'],
   },
 };
 

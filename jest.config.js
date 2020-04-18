@@ -1,6 +1,6 @@
 module.exports = {
   collectCoverage: false,
-  collectCoverageFrom: ['src/**/**.js'],
+  collectCoverageFrom: ['src/**/**.jsx', 'src/**/**.js', 'src/**/**.ts', 'src/**/**.tsx'],
   coveragePathIgnorePatterns: ['<rootDir>/node_modules/'],
   coverageReporters: ['lcov', 'html', 'text-summary'],
   moduleNameMapper: {
@@ -14,8 +14,8 @@ module.exports = {
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/styleguide/'],
   testURL: 'http://localhost',
   transform: {
-    '^.+\\.(js|jsx)$': 'babel-jest',
+    '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest',
     // Replace other files with their filename.
-    '^(?!.*\\.(js|jsx|json)$)': '<rootDir>/utils/jest.file-transform.js',
+    '^(?!.*\\.(ts|tsx|js|jsx|json)$)': '<rootDir>/utils/jest.file-transform.js',
   },
 };

@@ -1,15 +1,26 @@
-import { Global, css } from '@emotion/core';
-import { ThemeProvider } from 'emotion-theming';
-import PropTypes from 'prop-types';
-import React from 'react';
+import { Global, css, ThemeProvider, Theme } from '@emotion/react';
+import React, { ReactNode } from 'react';
 
-import { nautilus as nautilusDefaultTheme, themePropTypes } from '../../../themes';
+import { nautilusDefaultTheme } from '../../../themes';
 import { NautilusLinkComponentContext } from './context';
 
-const Nautilus = (props) => {
-  const { children, config, theme } = props;
+interface Props {
+  /** @ignore */
+  children?: React.ReactNode;
+  /** Config values affect all component rendered underneath this `Nautilus` component. Used to set default `Link` components, etc. */
+  config: {
+    LinkComponent?: ReactNode;
+  };
+  /** Theme object used to style this instance of Nautilus and its components. */
+  theme: Theme;
+}
 
-  const { LinkComponent } = config;
+const Nautilus = ({
+  children,
+  config = { LinkComponent: undefined },
+  theme = nautilusDefaultTheme,
+}: Props) => {
+  const { LinkComponent } = config || {};
 
   return (
     <NautilusLinkComponentContext.Provider value={LinkComponent}>
@@ -41,23 +52,6 @@ const Nautilus = (props) => {
       </ThemeProvider>
     </NautilusLinkComponentContext.Provider>
   );
-};
-
-Nautilus.defaultProps = {
-  children: undefined,
-  config: { LinkComponent: undefined },
-  theme: nautilusDefaultTheme,
-};
-
-Nautilus.propTypes = {
-  /** @ignore */
-  children: PropTypes.node,
-  /** Config values affect all component rendered underneath this `Nautilus` component. Used to set default `Link` components, etc. */
-  config: PropTypes.shape({
-    LinkComponent: PropTypes.elementType,
-  }),
-  /** Theme object used to style this instance of Nautilus and its components. */
-  theme: themePropTypes,
 };
 
 export default Nautilus;

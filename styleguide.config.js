@@ -1,10 +1,13 @@
 const path = require('path');
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+const typeScriptDocGen = require('react-docgen-typescript');
+
 module.exports = {
   assetsDir: 'styleguide/assets',
-  ignore: ['src/components/index.js', '**/*.test.{js,jsx,ts,tsx}'],
+  ignore: ['src/components/index.ts', '**/*.test.{js,jsx,ts,tsx}'],
   moduleAliases: {
-    '@octopusthink/nautilus': path.resolve(__dirname, 'src/index'),
+    '@octopusthink/nautilus': path.resolve(__dirname, 'src/index.ts'),
   },
   title: 'Nautilus Design System',
   skipComponentsWithoutExample: true,
@@ -37,6 +40,7 @@ module.exports = {
   },
   styleguideDir: 'dist/styleguide',
   pagePerSection: true,
+  propsParser: typeScriptDocGen.withCustomConfig('./tsconfig.json', [{}]).parse,
   sections: [
     {
       name: 'Introduction',
