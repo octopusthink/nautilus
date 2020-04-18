@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { css } from '@emotion/react';
+import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Link from 'rsg-components/Link';

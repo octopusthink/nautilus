@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Nautilus from '../src/components/hoc/Nautilus';
-import { nautilusDefaultTheme, themePropTypes } from '../src/themes';
+import { nautilusDefaultTheme } from '../src/themes';
 
 // Wrap `react-testing-library`'s `render` function with our providers.
 const NautilusProviders = ({ children, theme }) => {
@@ -22,7 +22,7 @@ NautilusProviders.propTypes = {
   /** @ignore */
   children: PropTypes.node,
   /** @ignore */
-  theme: themePropTypes,
+  // theme: themePropTypes,
 };
 
 const customRender = (ui, options) => {

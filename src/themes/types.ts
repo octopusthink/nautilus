@@ -3,7 +3,7 @@ type CSSColor = string;
 type CSSMargin = string;
 type CSSNumber = any;
 
-declare module '@emotion/react' {
+declare module '@emotion/core' {
   export interface Theme {
     // All themeable colour variables go here.
     colors: {

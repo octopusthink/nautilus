@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css } from '@emotion/core';
 import React, { FunctionComponent } from 'react';
 
 import { NautilusComponentProps } from '../../types';

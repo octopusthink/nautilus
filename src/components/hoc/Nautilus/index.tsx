@@ -1,4 +1,5 @@
-import { Global, css, ThemeProvider, Theme } from '@emotion/react';
+import { Global, css } from '@emotion/core';
+import { ThemeProvider } from 'emotion-theming';
 import React, { ReactNode } from 'react';
 
 import { nautilusDefaultTheme } from '../../../themes';
@@ -8,11 +9,11 @@ interface Props {
   /** @ignore */
   children?: React.ReactNode;
   /** Config values affect all component rendered underneath this `Nautilus` component. Used to set default `Link` components, etc. */
-  config: {
+  config?: {
     LinkComponent?: ReactNode;
   };
   /** Theme object used to style this instance of Nautilus and its components. */
-  theme: Theme;
+  theme?: Theme;
 }
 
 const Nautilus = ({

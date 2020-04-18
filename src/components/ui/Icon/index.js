@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css } from '@emotion/core';
 import Feather from 'feather-icons';
 import PropTypes from 'prop-types';
 import React, { useState, useMemo } from 'react';

@@ -7,7 +7,7 @@ module.exports = {
   assetsDir: 'styleguide/assets',
   ignore: ['src/components/index.ts', '**/*.test.{js,jsx,ts,tsx}'],
   moduleAliases: {
-    '@octopusthink/nautilus': path.resolve(__dirname, 'src/index.ts'),
+    '@octopusthink/nautilus': path.resolve(__dirname, 'src/index'),
   },
   title: 'Nautilus Design System',
   skipComponentsWithoutExample: true,
@@ -40,7 +40,15 @@ module.exports = {
   },
   styleguideDir: 'dist/styleguide',
   pagePerSection: true,
-  propsParser: typeScriptDocGen.withCustomConfig('./tsconfig.json', [{}]).parse,
+  propsParser: typeScriptDocGen.withCustomConfig('./tsconfig.json', {
+    propFilter: (prop) => {
+      if (prop.parent) {
+        return !prop.parent.fileName.includes('node_modules');
+      }
+
+      return true;
+    },
+  }).parse,
   sections: [
     {
       name: 'Introduction',

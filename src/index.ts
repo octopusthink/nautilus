@@ -1,6 +1,6 @@
 import Nautilus from './components/hoc/Nautilus';
 
-export * from './components';
+export * from './components/index';
 export * from './styles';
 export { themes, useTheme } from './themes';
 

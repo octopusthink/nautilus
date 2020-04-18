@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css } from '@emotion/core';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Children, cloneElement, useMemo, useState } from 'react';

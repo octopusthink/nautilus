@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css } from '@emotion/core';
 
 import { toUnits } from './toUnits';
 import { body } from './typeTokens';

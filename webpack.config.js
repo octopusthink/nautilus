@@ -5,7 +5,10 @@ const PeerDepsExternalsPlugin = require('peer-deps-externals-webpack-plugin');
 const webpack = require('webpack');
 
 const config = {
-  entry: ['./src/index.ts'],
+  // context: path.resolve(__dirname, 'src'),
+  entry: {
+    main: './src/index',
+  },
   mode: process.env.NODE_ENV,
   module: {
     rules: [

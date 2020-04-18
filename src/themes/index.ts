@@ -1,5 +1,5 @@
-import { ThemeContext, Theme, useTheme } from '@emotion/react';
-import { createContext, useContext } from 'react';
+// import { useTheme } from '@emotion/core';
+import { useTheme } from 'emotion-theming';
 
 import { default as nautilus } from './nautilus';
 import { default as styleguide } from './styleguide';

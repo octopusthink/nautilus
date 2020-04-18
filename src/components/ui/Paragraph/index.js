@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css } from '@emotion/core';
 import classnames from 'classnames';
 import invariant from 'invariant';
 import PropTypes from 'prop-types';
