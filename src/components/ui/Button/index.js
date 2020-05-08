@@ -34,7 +34,7 @@ const Button = (props) => {
     danger,
     disabled,
     href,
-    iconDirection,
+    navigationDirection,
     leadingIcon,
     linkProps,
     minimal,
@@ -60,11 +60,7 @@ const Button = (props) => {
 
   // Set directional icons for navigation buttons.
   if (navigation === true) {
-    if (iconDirection === 'up') {
-      leadingIconName = 'arrow-up';
-    } else if (iconDirection === 'down') {
-      trailingIconName = 'arrow-down';
-    } else if (iconDirection === 'left') {
+    if (navigationDirection === 'backward') {
       leadingIconName = 'arrow-left';
     } else {
       trailingIconName = 'arrow-right';
@@ -318,7 +314,7 @@ Button.defaultProps = {
   children: undefined,
   danger: false,
   disabled: false,
-  iconDirection: undefined,
+  navigationDirection: 'forward',
   href: undefined,
   leadingIcon: undefined,
   linkProps: undefined,
@@ -354,8 +350,8 @@ Button.propTypes = {
   danger: PropTypes.bool,
   /** Used to link to a route that will be handled by Nautilus' `Link` component. */
   href: PropTypes.string,
-  /** For navigation buttons, set the arrow's direction. */
-  iconDirection: PropTypes.string,
+  /** Set the direction of navigation: forward (default) or backward. */
+  navigationDirection: PropTypes.string,
   /** Show an icon inside the button, before the text. Passes a string to Icon's name prop. */
   leadingIcon: PropTypes.string,
   /** Props to pass to the underlying Nautilus `Link` component when `useNavigation` is `true`. */

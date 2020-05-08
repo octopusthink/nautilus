@@ -89,20 +89,16 @@ import { Flex } from 'nautilus-styleguide';
 import { Flex } from 'nautilus-styleguide';
 
 <Flex>
-  <Button navigation iconDirection="right" href="https://twitter.com/KittenBreak">
-    Go right
+  <Button navigation navigationDirection="right" href="https://twitter.com/KittenBreak">
+    Go forward
   </Button>
 
-  <Button navigation iconDirection="left" href="https://twitter.com/KittenBreak">
-    Go left
+  <Button navigation navigationDirection="left" href="https://twitter.com/KittenBreak">
+    Go back
   </Button>
 
-  <Button navigation iconDirection="up" href="https://twitter.com/KittenBreak">
-    Go up
-  </Button>
-
-  <Button navigation iconDirection="down" href="https://twitter.com/KittenBreak">
-    Go down
+  <Button navigation trailingIcon="arrow-up-right" href="https://twitter.com/KittenBreak">
+    Go elsewhere
   </Button>
 </Flex>
 ```
@@ -128,6 +124,9 @@ import { Flex } from 'nautilus-styleguide';
   <Button minimal success>
     Woke up on time
   </Button>
+  <Button success leadingIcon="check">
+    Alt
+  </Button>
 </Flex>
 ```
 
@@ -152,13 +151,13 @@ import { Flex } from 'nautilus-styleguide';
 
 <Flex>
   <Button primary danger>
-    Scorpion in your swimsuit
+    Scorpion in swimsuit
   </Button>
 
-  <Button danger>Snakes on a plane</Button>
+  <Button danger>Snakes on plane</Button>
 
   <Button minimal danger>
-    Spider in the kitchen
+    Spider in kitchen
   </Button>
 </Flex>
 ```
