@@ -83,19 +83,19 @@ This is an important distinction for accessibility needs, but as single page web
 
 ```jsx
 <div style={{display: 'flex', flexWrap: 'wrap'}}>
-  <Button navigation right href="https://twitter.com/KittenBreak">
+  <Button navigation iconDirection="right" href="https://twitter.com/KittenBreak">
     Go right
   </Button>
 
-  <Button navigation left href="https://twitter.com/KittenBreak">
+  <Button navigation iconDirection="left" href="https://twitter.com/KittenBreak">
     Go left
   </Button>
 
-  <Button navigation up href="https://twitter.com/KittenBreak">
+  <Button navigation iconDirection="up" href="https://twitter.com/KittenBreak">
     Go up
   </Button>
 
-    <Button navigation down href="https://twitter.com/KittenBreak">
+    <Button navigation iconDirection="down" href="https://twitter.com/KittenBreak">
       Go down
   </Button>
 </div>

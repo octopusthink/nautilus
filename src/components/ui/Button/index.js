@@ -34,8 +34,9 @@ export const Button = (props) => {
     danger,
     disabled,
     href,
-    linkProps,
+    iconDirection,
     leadingIcon,
+    linkProps,
     minimal,
     navigation,
     noMargin,
@@ -46,10 +47,6 @@ export const Button = (props) => {
     trailingIcon,
     unstyled,
     warning,
-    up,
-    down,
-    left,
-    right,
     ...otherProps
   } = props;
 
@@ -61,19 +58,20 @@ export const Button = (props) => {
   let trailingIconName;
   let leadingIconName;
 
+  // Set directional icons for navigation buttons.
+  if (navigation === true) {
+    if (iconDirection === 'up') {
+      leadingIconName = 'arrow-up';
+    } else if (iconDirection === 'down') {
+      trailingIconName = 'arrow-down';
+    } else if (iconDirection === 'left') {
+      leadingIconName = 'arrow-left';
+    } else {
+      trailingIconName = 'arrow-right';
+    }
+  }
+
   // Set default icons for semantic buttons, to underscore meaning.
-  if (up === true) {
-    leadingIconName = 'arrow-up';
-  }
-  if (right === true) {
-    trailingIconName = 'arrow-right';
-  }
-  if (down === true) {
-    trailingIconName = 'arrow-down';
-  }
-  if (left === true) {
-    leadingIconName = 'arrow-left';
-  }
   if (success === true) {
     leadingIconName = 'check-circle';
   }
@@ -83,6 +81,7 @@ export const Button = (props) => {
   if (danger === true) {
     leadingIconName = 'x-circle';
   }
+
   // If the icon is explicitly set, it should override any defaults.
   if (leadingIcon) {
     leadingIconName = leadingIcon;
@@ -101,10 +100,6 @@ export const Button = (props) => {
     // Unset certain button-specific props.
     otherProps.type = undefined;
     linkPropsToUse = { ...linkProps };
-    // If no direction is specified, use a right-facing arrow.
-    if (!up && !left && !down && !right) {
-      trailingIconName = 'arrow-right';
-    }
   }
 
   // Set the styles for this button.
@@ -320,6 +315,7 @@ Button.defaultProps = {
   children: undefined,
   danger: false,
   disabled: false,
+  iconDirection: undefined,
   href: undefined,
   leadingIcon: undefined,
   linkProps: undefined,
@@ -355,6 +351,8 @@ Button.propTypes = {
   danger: PropTypes.bool,
   /** Used to link to a route that will be handled by Nautilus' `Link` component. */
   href: PropTypes.string,
+  /** For navigation buttons, set the arrow's direction. */
+  iconDirection: PropTypes.string,
   /** Show an icon inside the button, before the text. Passes a string to Icon's name prop. */
   leadingIcon: PropTypes.string,
   /** Props to pass to the underlying Nautilus `Link` component when `useNavigation` is `true`. */
