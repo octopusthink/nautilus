@@ -280,6 +280,7 @@ const Button = (props) => {
           css={css`
             margin: 0 ${toUnits(theme.spacing.padding.small)} 0 0;
           `}
+          id={__iconId}
           name={leadingIconName}
         />
       )}
@@ -289,12 +290,13 @@ const Button = (props) => {
           css={css`
             margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)} 0;
           `}
+          id={__iconId}
           name={stackedIcon}
           medium
         />
       )}
 
-      {onlyIcon && <Icon noMargin name={onlyIcon} medium />}
+      {onlyIcon && <Icon id={__iconId} noMargin name={onlyIcon} medium />}
 
       {buttonText}
 
@@ -303,6 +305,7 @@ const Button = (props) => {
           css={css`
             margin: 0 0 0 ${toUnits(theme.spacing.padding.small)};
           `}
+          id={__iconId}
           name={trailingIconName}
         />
       )}
