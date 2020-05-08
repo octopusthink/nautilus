@@ -85,8 +85,7 @@ exports[`Button should not output styles when unstyled is set, even with styling
   padding: 0;
   vertical-align: middle;
   margin: 0 0.8rem 0 0;
-  margin-right: 0.4rem;
-  border: 2px solid aqua !important;
+  margin: 0 0.8rem 0 0;
 }
 
 .emotion-0 {
@@ -110,7 +109,7 @@ exports[`Button should not output styles when unstyled is set, even with styling
         class="emotion-0"
         fill="none"
         height="24"
-        id="unstyled-button"
+        id="xxPhBlX5oC"
         role="img"
         stroke="currentColor"
         stroke-linecap="round"
@@ -180,6 +179,7 @@ exports[`Button should show danger styles 1`] = `
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
+  padding-left: 1.2rem;
   margin: 0 0.4rem 0.8rem;
 }
 
@@ -211,8 +211,7 @@ exports[`Button should show danger styles 1`] = `
   padding: 0;
   vertical-align: middle;
   margin: 0 0.8rem 0 0;
-  margin-right: 0.4rem;
-  border: 2px solid aqua !important;
+  margin: 0 0.8rem 0 0;
 }
 
 .emotion-0 {
@@ -236,7 +235,7 @@ exports[`Button should show danger styles 1`] = `
         class="emotion-0"
         fill="none"
         height="24"
-        id="dangerous-button"
+        id="nAbf-gGO2"
         role="img"
         stroke="currentColor"
         stroke-linecap="round"

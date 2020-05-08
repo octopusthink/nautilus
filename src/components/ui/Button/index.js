@@ -58,11 +58,10 @@ export const Button = (props) => {
 
   let Component = 'button';
   let linkPropsToUse;
-  let iconName;
   let trailingIconName;
   let leadingIconName;
 
-  // Set the icons for semantic buttons, to underscore meaning.
+  // Set default icons for semantic buttons, to underscore meaning.
   if (up === true) {
     leadingIconName = 'arrow-up';
   }
@@ -76,14 +75,15 @@ export const Button = (props) => {
     leadingIconName = 'arrow-left';
   }
   if (success === true) {
-    iconName = 'check-circle';
+    leadingIconName = 'check-circle';
   }
   if (warning === true) {
-    iconName = 'alert-circle';
+    leadingIconName = 'alert-circle';
   }
   if (danger === true) {
-    iconName = 'x-circle';
+    leadingIconName = 'x-circle';
   }
+  // If the icon is explicitly set, it should override any defaults.
   if (leadingIcon) {
     leadingIconName = leadingIcon;
   }
@@ -103,7 +103,7 @@ export const Button = (props) => {
     linkPropsToUse = { ...linkProps };
     // If no direction is specified, use a right-facing arrow.
     if (!up && !left && !down && !right) {
-      leadingIconName = 'arrow-right';
+      trailingIconName = 'arrow-right';
     }
   }
 
@@ -280,17 +280,6 @@ export const Button = (props) => {
       {...linkPropsToUse}
       {...otherProps}
     >
-      {iconName && (
-        <Icon
-          css={css`
-            margin-right: ${toUnits(theme.spacing.padding.xSmall)};
-            border: 2px solid aqua !important;
-          `}
-          id={__iconId}
-          name={iconName}
-        />
-      )}
-
       {leadingIconName && (
         <Icon
           css={css`
