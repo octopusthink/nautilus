@@ -6,7 +6,7 @@ const Flex = ({ children }) => {
     <div
       css={css`
         display: flex;
-        flex-wrap: 'wrap';
+        flex-wrap: wrap;
       `}
     >
       {children}
