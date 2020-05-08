@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { axe, muteConsole, render } from 'utils/testing';
-
+import { axe, muteConsole, render } from '../../../../utils/testing';
 import Button from '.';
 
 describe('Button', () => {

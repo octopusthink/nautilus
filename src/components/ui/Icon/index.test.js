@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { axe, muteConsole, render } from 'utils/testing';
-
+import { axe, muteConsole, render } from '../../../../utils/testing';
 import Icon from '.';
 
 describe('Icon', () => {

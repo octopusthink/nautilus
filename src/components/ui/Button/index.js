@@ -5,11 +5,11 @@ import React from 'react';
 
 // Import the non-styled Link so we don't have to overwrite Link styles if
 // the `navigation` prop is used by a button.
-import Link from 'components/ui/Link';
-import Icon from 'components/ui/Icon';
-import VisuallyHidden from 'components/ui/VisuallyHidden';
-import { interfaceUI, toUnits } from 'styles';
-import { useTheme } from 'themes';
+import Link from '../Link';
+import Icon from '../Icon';
+import VisuallyHidden from '../VisuallyHidden';
+import { interfaceUI, toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
 
 export const ComponentClassName = 'Nautilus-Button';
 
@@ -27,7 +27,7 @@ export const qualityControl = (props) => {
   );
 };
 
-export const Button = (props) => {
+const Button = (props) => {
   const {
     __iconId,
     children,

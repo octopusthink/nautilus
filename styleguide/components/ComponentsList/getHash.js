@@ -5,14 +5,13 @@ import escapeRegExp from 'lodash/escapeRegExp';
 // You can find more information here:
 // https://github.com/styleguidist/react-styleguidist/pull/993
 const defaultPrependHash = '#/';
-const separator = '/';
 const hashValRegexp = /(.*)\?/;
 
 function trimHash(hash, prependHash) {
   if (!hash) {
     return '';
   }
-  const regexp = new RegExp('^' + escapeRegExp(prependHash || defaultPrependHash), 'g');
+  const regexp = new RegExp(`^${escapeRegExp(prependHash || defaultPrependHash)}`, 'g');
   return hash.replace(regexp, '');
 }
 

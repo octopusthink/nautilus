@@ -6,16 +6,15 @@ import { Global, css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import Markdown from 'rsg-components/Markdown';
-import Header from 'styleguide/components/Header';
-import Footer from 'styleguide/components/Footer';
 import { useWindowWidth } from '@react-hook/window-size';
 
-import { Nautilus } from 'components';
-import { metadata, toUnits } from 'styles';
-import theme from 'styleguide/theme';
-import { Icon } from 'components/ui/Icon';
+import Nautilus from '../../../src/components/hoc/Nautilus';
+import Icon from '../../../src/components/ui/Icon';
+import { metadata, toUnits } from '../../../src/styles';
+import Footer from '../Footer';
+import theme from '../../theme';
 
-export const StyleGuide = ({ children, hasSidebar, homepageUrl, title, toc, version }) => {
+export const StyleGuide = ({ children, hasSidebar, toc }) => {
   const mobileBreakpoint = 768;
   const mobileMenuPadding = toUnits(theme.spacing.padding.large);
   const tabletMenuPadding = toUnits(theme.spacing.padding.xLarge);
@@ -258,9 +257,7 @@ export const StyleGuide = ({ children, hasSidebar, homepageUrl, title, toc, vers
           {children}
 
           <Footer>
-            <Markdown
-              text={`Made with ❤️ by [Octopus Think](https://octopusthink.com/). Say 👋 on [GitHub](https://github.com/octopusthink/nautilus).`}
-            />
+            <Markdown text="Made with ❤️ by [Octopus Think](https://octopusthink.com/). Say 👋 on [GitHub](https://github.com/octopusthink/nautilus)." />
           </Footer>
         </div>
       </main>
@@ -268,6 +265,7 @@ export const StyleGuide = ({ children, hasSidebar, homepageUrl, title, toc, vers
       {USE_ANALYTICS && (
         <script
           type="text/javascript"
+          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: `
             var _paq = window._paq || [];
@@ -291,10 +289,7 @@ export const StyleGuide = ({ children, hasSidebar, homepageUrl, title, toc, vers
 StyleGuide.propTypes = {
   children: PropTypes.node.isRequired,
   hasSidebar: PropTypes.bool,
-  homepageUrl: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
   toc: PropTypes.node.isRequired,
-  version: PropTypes.string,
 };
 
 export default StyleGuide;

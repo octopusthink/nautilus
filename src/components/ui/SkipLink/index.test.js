@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { render } from 'utils/testing';
-
+import { render } from '../../../../utils/testing';
 import SkipLink from '.';
 
 describe('SkipLink', () => {

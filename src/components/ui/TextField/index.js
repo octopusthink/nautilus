@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import React, { cloneElement, forwardRef, useCallback, useMemo, useRef, useState } from 'react';
 import shortid from 'shortid';
 
-import Icon from 'components/ui/Icon';
-import { focusStyle, interfaceUI, toUnits } from 'styles';
-import { useTheme } from 'themes';
+import Icon from '../Icon';
+import { focusStyle, interfaceUI, toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
 
 const smallText = (props) => {
   const { theme } = props;
@@ -17,7 +17,7 @@ const smallText = (props) => {
   `;
 };
 
-export const TextField = forwardRef((props, ref) => {
+const TextField = forwardRef((props, ref) => {
   const {
     __actionIconId,
     __signifierIconId,
@@ -138,6 +138,11 @@ export const TextField = forwardRef((props, ref) => {
     InputComponent = 'textarea';
   }
 
+  // Padding to use for signifier and action icons.
+  const iconPadding = toUnits(
+    theme.components.Icon.sizes.medium.size + theme.spacing.padding.small * 2,
+  );
+
   return (
     <React.Fragment>
       {label && (
@@ -246,16 +251,12 @@ export const TextField = forwardRef((props, ref) => {
 
           ${signifierIcon &&
             css`
-              padding-left: ${toUnits(
-                theme.components.Icon.sizes.medium.size + theme.spacing.padding.small * 2,
-              )};
+              padding-left: ${iconPadding};
             `}
 
           ${actionIcon &&
             css`
-              padding-right: ${toUnits(
-                theme.components.Icon.sizes.medium.size + theme.spacing.padding.small * 2,
-              )};
+              padding-right: ${iconPadding};
             `}
 
           ${size &&

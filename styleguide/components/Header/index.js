@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Version from 'rsg-components/Version';
 
-import theme from 'styleguide/theme';
-import { metadata, toUnits } from 'styles';
+import { metadata, toUnits } from '../../../src/styles';
+import theme from '../../theme';
 
-export function Header({ children, title, version }) {
+export function Header({ title, version }) {
   return (
     <header
       css={css`
@@ -27,7 +27,6 @@ export function Header({ children, title, version }) {
 }
 
 Header.propTypes = {
-  children: PropTypes.node,
   title: PropTypes.string.isRequired,
   version: PropTypes.string,
 };

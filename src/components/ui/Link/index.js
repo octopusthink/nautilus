@@ -2,14 +2,15 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 
-import { NautilusLinkComponent } from 'components/hoc/Nautilus';
-import { Icon } from 'components/ui/Icon';
-import { useTheme } from 'themes';
+import { NautilusLinkComponentContext } from '../../hoc/Nautilus/context';
+import Icon from '../Icon';
+import { toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
 
 const LinkTag = 'a';
 
-export const Link = (props) => {
-  const defaultLinkComponent = useContext(NautilusLinkComponent);
+const Link = (props) => {
+  const defaultLinkComponent = useContext(NautilusLinkComponentContext);
   const theme = useTheme();
 
   const { children, as, external, href, unstyled, ...otherProps } = props;
@@ -21,20 +22,20 @@ export const Link = (props) => {
         unstyled
           ? undefined
           : css`
-              border-bottom: 2px solid ${theme.colors.state.interactive};
               color: ${theme.colors.state.interactiveText};
+              box-shadow: 0 2px ${theme.colors.state.interactive};
               text-decoration: none;
               transition: all 200ms ease-in-out;
 
               &:hover {
-                border-color: ${theme.colors.state.hover};
+                box-shadow: 0 2px ${theme.colors.state.hover};
                 color: ${theme.colors.state.hoverText};
               }
 
               &:focus {
-                border-color: transparent;
-                box-shadow: ${theme.colors.state.interactive} 0 0 0 3px;
+                box-shadow: 0 0 0 3px ${theme.colors.state.interactive};
                 outline: none;
+                text-decoration: none;
               }
             `
       }
@@ -44,13 +45,14 @@ export const Link = (props) => {
       {children}
       {external && (
         <React.Fragment>
-          {' '}
           <Icon
             name="external-link"
-            title="External link"
+            noMargin
             small
+            strokeColor={theme.colors.neutral.grey600}
+            title="External link"
             css={css`
-              margin: 0;
+              margin-left: ${toUnits(theme.spacing.padding.xSmall)};
             `}
           />
         </React.Fragment>

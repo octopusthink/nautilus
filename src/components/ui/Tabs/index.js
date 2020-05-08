@@ -11,12 +11,24 @@ import React, {
 } from 'react';
 import shortid from 'shortid';
 
-import { focusStyle, bodyStyles, toUnits } from 'styles';
-import { useTheme } from 'themes';
-
+import { focusStyle, bodyStyles, toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
 import Tab from './Tab';
 
-export const Tabs = (props) => {
+const isTab = (child) => {
+  return child.type === Tab;
+};
+
+const setFocus = (focusedElement, ref, setStateFunc) => {
+  return () => {
+    if (focusedElement !== null && ref && ref.current) {
+      ref.current.focus();
+      setStateFunc(null);
+    }
+  };
+};
+
+const Tabs = (props) => {
   const { children, dark, inverse, light, noMargin, id, unstyled, ...otherProps } = props;
   const sectionToFocusRef = useRef();
   const tabToFocusRef = useRef();
@@ -26,30 +38,18 @@ export const Tabs = (props) => {
   const [focusedTab, setFocusedTab] = useState(null);
   const theme = useTheme();
 
-  const isTab = (child) => {
-    return child.type === Tab;
-  };
-
   const numberOfTabs = useMemo(() => {
     return Children.toArray(children).filter(isTab).length;
   }, [children]);
 
-  // This assigns focus to a tab's content when the down arrow key is pressed.
-  useEffect(() => {
-    if (focusedSection !== null && sectionToFocusRef && sectionToFocusRef.current) {
-      sectionToFocusRef.current.focus();
-      setFocusedSection(null);
-    }
-  }, [focusedSection, sectionToFocusRef]);
+  // Assigns focus to a tab's content when the down arrow key is pressed.
+  useEffect(setFocus(focusedSection, sectionToFocusRef, setFocusedSection), [
+    focusedSection,
+    sectionToFocusRef,
+  ]);
 
-  // This assigns focus to a tab's label when the tab changes via the left/right
-  // keys.
-  useEffect(() => {
-    if (focusedTab !== null && tabToFocusRef && tabToFocusRef.current) {
-      tabToFocusRef.current.focus();
-      setFocusedTab(null);
-    }
-  }, [focusedTab, tabToFocusRef]);
+  // Assign focus to a tab's label when the tab changes via the left/right keys.
+  useEffect(setFocus(focusedTab, tabToFocusRef, setFocusedTab), [focusedTab, tabToFocusRef]);
 
   const onKeyDown = useCallback(
     (event) => {

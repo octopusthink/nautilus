@@ -1,7 +1,6 @@
 import React, { createRef } from 'react';
 
-import { axe, fireEvent, muteConsole, render } from 'utils/testing';
-
+import { axe, fireEvent, muteConsole, render } from '../../../../utils/testing';
 import TextField from '.';
 
 describe('TextField', () => {

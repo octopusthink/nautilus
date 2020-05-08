@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import invariant from 'invariant';
 
-import { ComponentClassName as ListClassName } from 'components/ui/List';
-import { ComponentClassName as ParagraphClassName } from 'components/ui/Paragraph';
-import { heading, toUnits } from 'styles';
-import { useTheme } from 'themes';
+import { ListClassName } from '../List/constants';
+import { ParagraphClassName } from '../Paragraph/constants';
+import { heading, toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
 
 const LARGE = 2;
 const MEDIUM = 3;
@@ -28,7 +28,7 @@ export const qualityControl = (props) => {
   );
 };
 
-export const Heading = (props) => {
+const Heading = (props) => {
   qualityControl(props);
 
   const theme = useTheme();
@@ -48,7 +48,7 @@ export const Heading = (props) => {
           css`
             margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
           `}
-          
+
         ${light &&
           css`
             color: ${theme.colors.text.light};

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export function Table({ classes, columns, rows, getRowKey }) {
+export function Table({ columns, rows, getRowKey }) {
   return (
     <table>
       <thead>
@@ -15,6 +15,7 @@ export function Table({ classes, columns, rows, getRowKey }) {
         {rows.map((row) => (
           <tr key={getRowKey(row)}>
             {columns.map(({ render }, index) => (
+              // eslint-disable-next-line react/no-array-index-key
               <td key={index}>{render(row)}</td>
             ))}
           </tr>

@@ -2,11 +2,11 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
 
-import { Heading } from 'components';
-import { focusStyle } from 'styles';
-import { useTheme } from 'themes';
+import Heading from '../Heading';
+import { focusStyle } from '../../../styles';
+import { useTheme } from '../../../themes';
 
-export const Tab = forwardRef((props, ref) => {
+const Tab = forwardRef((props, ref) => {
   const { isActive, children, label, labelProps, unstyled, ...otherProps } = props;
 
   const theme = useTheme();
