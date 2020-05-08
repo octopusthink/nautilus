@@ -42,11 +42,13 @@ Use a primary button to draw attention to the most important action on the page.
 Minimal buttons are good when you don't want to draw too much attention to a button. Use them for secondary actions.
 
 ```jsx
-<div style={{display: 'flex', flexWrap: 'wrap'}}>
+import { Flex } from 'nautilus-styleguide';
+
+<Flex>
   <Button primary>Sign up now</Button>
   <Button>Sign up sometime</Button>
   <Button minimal>Sign up eventually</Button>
-</div>
+</Flex>
 ```
 
 ### Behaviour
@@ -66,7 +68,9 @@ A link loses focus and means the user needs to reorient themselves, but a button
 This is an important distinction for accessibility needs, but as single page web apps become more common, the difference often starts to blur. In order to keep things flexible, a Button can also act as a link. We add an arrow to the text to indicate that the behaviour won't be exactly the same, and we use an `<a>` tag so screen readers know what to expect as well.
 
 ```jsx
-<div style={{display: 'flex', flexWrap: 'wrap'}}>
+import { Flex } from 'nautilus-styleguide';
+
+<Flex>
   <Button navigation href="https://twitter.com/KittenBreak">
     Take a break
   </Button>
@@ -78,11 +82,13 @@ This is an important distinction for accessibility needs, but as single page web
   <Button navigation minimal href="https://twitter.com/KittenBreak">
     Take a break
   </Button>
-</div>
+</Flex>
 ```
 
 ```jsx
-<div style={{display: 'flex', flexWrap: 'wrap'}}>
+import { Flex } from 'nautilus-styleguide';
+
+<Flex>
   <Button navigation iconDirection="right" href="https://twitter.com/KittenBreak">
     Go right
   </Button>
@@ -95,10 +101,10 @@ This is an important distinction for accessibility needs, but as single page web
     Go up
   </Button>
 
-    <Button navigation iconDirection="down" href="https://twitter.com/KittenBreak">
-      Go down
+  <Button navigation iconDirection="down" href="https://twitter.com/KittenBreak">
+    Go down
   </Button>
-</div>
+</Flex>
 ```
 
 ### Intent
@@ -112,7 +118,9 @@ Sometimes, you need a button to communicate the choices it's offering up more cl
 Use a danger button any time you have a destructive action, like deleting something.
 
 ```jsx
-<div style={{display: 'flex', flexWrap: 'wrap'}}>
+import { Flex } from 'nautilus-styleguide';
+
+<Flex>
   <Button primary success>
     Nobel Peace Prize
   </Button>
@@ -120,11 +128,13 @@ Use a danger button any time you have a destructive action, like deleting someth
   <Button minimal success>
     Woke up on time
   </Button>
-</div>
+</Flex>
 ```
 
 ```jsx
-<div style={{display: 'flex', flexWrap: 'wrap'}}>
+import { Flex } from 'nautilus-styleguide';
+
+<Flex>
   <Button primary warning>
     Trump 4 prez
   </Button>
@@ -134,11 +144,13 @@ Use a danger button any time you have a destructive action, like deleting someth
   <Button minimal warning>
     Pothole in the road
   </Button>
-</div>
+</Flex>
 ```
 
 ```jsx
-<div style={{display: 'flex', flexWrap: 'wrap'}}>
+import { Flex } from 'nautilus-styleguide';
+
+<Flex>
   <Button primary danger>
     Scorpion in your swimsuit
   </Button>
@@ -148,7 +160,7 @@ Use a danger button any time you have a destructive action, like deleting someth
   <Button minimal danger>
     Spider in the kitchen
   </Button>
-</div>
+</Flex>
 ```
 
 ### State
@@ -158,15 +170,19 @@ Use a danger button any time you have a destructive action, like deleting someth
 **Changes:** styling
 
 ```jsx
-<div style={{display: 'flex', flexWrap: 'wrap'}}>
+import { Flex } from 'nautilus-styleguide';
+
+<Flex>
   <Button primary>Active</Button>
   <Button>Hover</Button>
   <Button minimal>Focus</Button>
-</div>
+</Flex>
 ```
 
 ```jsx
-<div style={{display: 'flex', flexWrap: 'wrap'}}>
+import { Flex } from 'nautilus-styleguide';
+
+<Flex>
   <Button primary disabled>
     Disabled primary
   </Button>
@@ -174,24 +190,25 @@ Use a danger button any time you have a destructive action, like deleting someth
   <Button minimal disabled>
     Minimal disabled
   </Button>
-</div>
+</Flex>
 ```
 
 What's my button up to? State will tell you!
 
 ### Icon
 
-Use icons in buttons to reinforce meaning. 
+Use icons in buttons to reinforce meaning.
 
-minimal = just the icon, no circle/background
-default = icon in a circle shape + default styles
-primary = icon in a circle shape + primary styles
+- `minimal`: just the icon, no circle/background
+- `default`: icon in a circle shape + default styles
+- `primary`: icon in a circle shape + primary styles
 
 ```jsx
+import { Flex } from 'nautilus-styleguide';
 import React from 'react';
 
 <React.Fragment>
-  <div style={{display: 'flex', flexWrap: 'wrap'}}>
+  <Flex>
     <Button primary leadingIcon="star" leadingIcon="star">
       Leading Icon
     </Button>
@@ -203,9 +220,9 @@ import React from 'react';
     <Button primary>
       No Icon
     </Button>
-  </div>
+  </Flex>
 
-  <div style={{display: 'flex', flexWrap: 'wrap'}}>
+  <Flex>
     <Button leadingIcon="chevron-left">
       Leading Icon
     </Button>
@@ -217,10 +234,9 @@ import React from 'react';
     <Button>
       No Icon
     </Button>
-  </div>
+  </Flex>
 
-
-  <div style={{display: 'flex', flexWrap: 'wrap'}}>
+  <Flex>
     <Button minimal leadingIcon="chevron-left">
       Leading Icon
     </Button>
@@ -232,9 +248,9 @@ import React from 'react';
     <Button minimal>
       No Icon
     </Button>
-  </div>
+  </Flex>
 
-  <div style={{display: 'flex', flexWrap: 'wrap'}}>
+  <Flex>
     <Button primary stackedIcon="search">
       Stacked
     </Button>
@@ -246,9 +262,9 @@ import React from 'react';
     <Button minimal stackedIcon="search">
       Stacked
     </Button>
-  </div>
+  </Flex>
 
-  <div style={{display: 'flex', flexWrap: 'wrap'}}>
+  <Flex>
     <Button primary onlyIcon="search">
       No text!
     </Button>
@@ -260,7 +276,6 @@ import React from 'react';
     <Button minimal onlyIcon="search">
       No text!
     </Button>
-  </div>
-  
+  </Flex>
 </React.Fragment>
 ```
