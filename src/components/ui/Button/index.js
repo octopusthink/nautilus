@@ -86,6 +86,14 @@ const Button = (props) => {
     trailingIconName = trailingIcon;
   }
 
+  // If any icon is explicitly set to `null`, don't show an icon at all.
+  if (leadingIcon === null) {
+    leadingIconName = null;
+  }
+  if (trailingIcon === null) {
+    trailingIconName = null;
+  }
+
   // Set props for the navigation button.
   if (navigation === true) {
     Component = Link;

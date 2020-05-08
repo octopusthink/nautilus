@@ -124,7 +124,7 @@ import { Flex } from 'nautilus-styleguide';
   <Button minimal success>
     Woke up on time
   </Button>
-  <Button success leadingIcon="check">
+  <Button success leadingIcon={null}>
     Alt
   </Button>
 </Flex>
