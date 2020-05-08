@@ -72,10 +72,10 @@ const Button = (props) => {
     leadingIconName = 'check-circle';
   }
   if (warning === true) {
-    leadingIconName = 'alert-circle';
+    leadingIconName = 'alert-triangle';
   }
   if (danger === true) {
-    leadingIconName = 'x-circle';
+    leadingIconName = 'x-octagon';
   }
 
   // If the icon is explicitly set, it should override any defaults.

@@ -120,10 +120,8 @@ exports[`Button should not output styles when unstyled is set, even with styling
         xmlns="http://www.w3.org/2000/svg"
       >
         <g>
-          <circle
-            cx="12"
-            cy="12"
-            r="10"
+          <polygon
+            points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"
           />
           <line
             x1="15"
@@ -246,10 +244,8 @@ exports[`Button should show danger styles 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <g>
-          <circle
-            cx="12"
-            cy="12"
-            r="10"
+          <polygon
+            points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"
           />
           <line
             x1="15"
