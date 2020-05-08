@@ -46,6 +46,10 @@ export const Button = (props) => {
     trailingIcon,
     unstyled,
     warning,
+    up,
+    down,
+    left,
+    right,
     ...otherProps
   } = props;
 
@@ -54,6 +58,40 @@ export const Button = (props) => {
 
   let Component = 'button';
   let linkPropsToUse;
+  let iconName;
+  let trailingIconName;
+  let leadingIconName;
+
+  // Set the icons for semantic buttons, to underscore meaning.
+  if (up === true) {
+    leadingIconName = 'arrow-up';
+  }
+  if (right === true) {
+    trailingIconName = 'arrow-right';
+  }
+  if (down === true) {
+    trailingIconName = 'arrow-down';
+  }
+  if (left === true) {
+    leadingIconName = 'arrow-left';
+  }
+  if (success === true) {
+    iconName = 'check-circle';
+  }
+  if (warning === true) {
+    iconName = 'alert-circle';
+  }
+  if (danger === true) {
+    iconName = 'x-circle';
+  }
+  if (leadingIcon) {
+    leadingIconName = leadingIcon;
+  }
+  if (trailingIcon) {
+    trailingIconName = trailingIcon;
+  }
+
+  // Set props for the navigation button.
   if (navigation === true) {
     Component = Link;
     // Set properties that only a Link component should use.
@@ -63,17 +101,10 @@ export const Button = (props) => {
     // Unset certain button-specific props.
     otherProps.type = undefined;
     linkPropsToUse = { ...linkProps };
-  }
-
-  let iconName;
-  if (success === true) {
-    iconName = 'check-circle';
-  }
-  if (warning === true) {
-    iconName = 'alert-circle';
-  }
-  if (danger === true) {
-    iconName = 'x-circle';
+    // If no direction is specified, use a right-facing arrow.
+    if (!up && !left && !down && !right) {
+      leadingIconName = 'arrow-right';
+    }
   }
 
   // Set the styles for this button.
@@ -193,28 +224,13 @@ export const Button = (props) => {
             }
           `}
 
-        ${navigation &&
-          css`
-            &::after {
-              content: ' →';
-              display: inline;
-              padding-right: ${toUnits(theme.spacing.padding.xSmall)};
-              transition: all 200ms ease-in-out;
-            }
-
-            &:hover::after {
-              margin-left: ${toUnits(theme.spacing.padding.xSmall)};
-              padding-right: 0;
-            }
-          `}
-
         /* Set padding based on whether we have leading or trailing icons. */
-        ${leadingIcon &&
+        ${leadingIconName &&
           css`
             padding-left: ${toUnits(theme.spacing.padding.medium)};
           `}
 
-        ${trailingIcon &&
+        ${trailingIconName &&
           css`
             padding-right: ${toUnits(theme.spacing.padding.medium)};
           `}
@@ -268,18 +284,19 @@ export const Button = (props) => {
         <Icon
           css={css`
             margin-right: ${toUnits(theme.spacing.padding.xSmall)};
+            border: 2px solid aqua !important;
           `}
           id={__iconId}
           name={iconName}
         />
       )}
 
-      {leadingIcon && (
+      {leadingIconName && (
         <Icon
           css={css`
             margin: 0 ${toUnits(theme.spacing.padding.small)} 0 0;
           `}
-          name={leadingIcon}
+          name={leadingIconName}
         />
       )}
 
@@ -297,12 +314,12 @@ export const Button = (props) => {
 
       {buttonText}
 
-      {trailingIcon && (
+      {trailingIconName && (
         <Icon
           css={css`
             margin: 0 0 0 ${toUnits(theme.spacing.padding.small)};
           `}
-          name={trailingIcon}
+          name={trailingIconName}
         />
       )}
     </Component>
