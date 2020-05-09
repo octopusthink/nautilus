@@ -1,4 +1,4 @@
-A button indicates that a user can complete an action or make a choice, using a single click or tap. They are used for submitting forms, navigating to new pages, as well as toolbars and utilities.
+A button mimics a physical button to allow users to quickly trigger an action. They are used for submitting forms and navigating to new pages, as well as for toolbars and utilities.
 
 ```jsx
 const onClick = (event) => {
@@ -7,39 +7,117 @@ const onClick = (event) => {
 <Button onClick={onClick}>Sound the alarm!</Button>;
 ```
 
-## Best practises
+## Usage
+
+### Use a `Button` for…
+
+Use a Button whenever you need users to be able to trigger an action or make a choice with a single tap or click.
+
+### Don't use a `Button` for…
+
+- A link that's intended to run inside a block of text. Use a `Link` instead.
+
+## Appearance
 
 ### Labels
 
 - Keep labels as **short** and direct as possible. Omit articles and unnecessary words wherever possible.
 - Use an **active verb + noun** form. (_Reserve table_, _Delete page_, etc.) In some cases, a verb alone may suffice. (_Save_, _Okay_, _Cancel_.)
 - Labels should use **sentence case**, not title case. (_Press me_, not _Press Me_.)
-- **Use icons** to convey additional meaning, when appropriate. For important actions, including both text and an icon is a good way to reinforce meaning.
 
-### Prominence
+### Icons
 
-- Only use a single **primary** button per screen.
-- Use prominence to **highlight the most important action** a user can take.
-- When using two or more buttons together, try to use different prominence levels to guide users to the most likely actions.
+For important actions, including both text and an icon can be a good way to reinforce meaning.
+
+There are several different permutations of icon buttons available:
+
+- Leading Icon: shows an icon before the text.
+- Trailing Icon: shows an icon after the text.
+- Stacked Icon: shows an icon with smaller text underneath. Useful for application toolbars.
+- Only Icon: shows an icon only, in a rounded container. Useful in areas of limited space where the icon's meaning is very clear.
+
+It's best to only use one icon per button.
+
+```jsx
+import { Flex } from 'nautilus-styleguide';
+import React from 'react';
+
+<React.Fragment>
+  <Flex>
+    <Button primary leadingIcon="star">
+      Primary
+    </Button>
+
+    <Button leadingIcon="download">
+      Leading
+    </Button>
+
+    <Button minimal leadingIcon="heart">
+      Minimal
+    </Button>
+  </Flex>
+
+  <Flex>
+    <Button primary trailingIcon="download">
+      Primary
+    </Button>
+
+    <Button trailingIcon="chevron-right">
+      Trailing
+    </Button>
+
+    <Button minimal trailingIcon="arrow-right">
+      Minimal
+    </Button>
+  </Flex>
+
+
+  <Flex>
+    <Button primary stackedIcon="search">
+      Primary
+    </Button>
+
+    <Button stackedIcon="star">
+      Stacked
+    </Button>
+
+    <Button minimal stackedIcon="search">
+      Minimal
+    </Button>
+  </Flex>
+
+  <Flex>
+    <Button primary onlyIcon="search">
+      Primary
+    </Button>
+
+    <Button onlyIcon="search">
+      Only Icon
+    </Button>
+
+    <Button minimal onlyIcon="search">
+      Minimal
+    </Button>
+  </Flex>
+</React.Fragment>
+```
 
 ### Placement
 
 - When buttons are used in a form, they should **always be placed after inputs**, both visually and in the DOM order.
 - When using two or more buttons together, don't stack them unless there isn't enough space to align them side-by-side.
 
-## Properties
-
 ### Prominence
 
-**Options:** primary, default, minimal
+Buttons are available in three levels of prominence: primary, default, and minimal.
 
-**Changes:** styling (border and background)
+Use a primary button to draw attention to the most important action on a screen or container. Don't use more than one primary button in a single container.
 
-Buttons have three levels of prominence. The majority of buttons should use the **default styling**.
+Use a default button to indicate an action secondary to the primary button.
 
-Use a primary button to draw attention to the most important action on the page. Don't use more than one primary button on a page.
+Use minimal buttons for secondary actions, or for pages that feature a lot of buttons that don't require additional emphasis. They work especially well as navigation buttons.
 
-Minimal buttons are good when you don't want to draw too much attention to a button. Use them for secondary actions.
+Default and minimal buttons can be paired with primary buttons to denote secondary actions.
 
 ```jsx
 import { Flex } from 'nautilus-styleguide';
@@ -52,10 +130,6 @@ import { Flex } from 'nautilus-styleguide';
 ```
 
 ### Behaviour
-
-**Options:** navigation, action
-
-**Changes:** Adds an arrow to indicate semantics.
 
 Sometimes, you need a button that's actually a link. (Maybe you want a call-to-action, or a link that's more prominent than a plain-text link.) We got you!
 
@@ -85,15 +159,19 @@ import { Flex } from 'nautilus-styleguide';
 </Flex>
 ```
 
+By default, navigation links point forward (right in LTR languages) to indicate a forward progression. Any links that navigate back in time or space (eg: a back link, previous pagination) should set the `navigationDirection` prop to `backward` to correctly communicate this direction.
+
+If needed, you can pass a leading or trailing icon to the navigation button to override its default arrow icon.
+
 ```jsx
 import { Flex } from 'nautilus-styleguide';
 
 <Flex>
-  <Button navigation navigationDirection="right" href="https://twitter.com/KittenBreak">
+  <Button navigation navigationDirection="forward" href="https://twitter.com/KittenBreak">
     Go forward
   </Button>
 
-  <Button navigation navigationDirection="left" href="https://twitter.com/KittenBreak">
+  <Button navigation navigationDirection="backward" href="https://twitter.com/KittenBreak">
     Go back
   </Button>
 
@@ -105,13 +183,9 @@ import { Flex } from 'nautilus-styleguide';
 
 ### Intent
 
-**Options:** success, warning, danger, none
-
-**Changes:** colour
-
 Sometimes, you need a button to communicate the choices it's offering up more clearly. In these cases, you may want to declare the _intent_ of the button. This uses colour and an icon to indicate the messaging.
 
-Use a danger button any time you have a destructive action, like deleting something.
+A success button is used to indicate a positive action, like confirming a choice.
 
 ```jsx
 import { Flex } from 'nautilus-styleguide';
@@ -124,11 +198,10 @@ import { Flex } from 'nautilus-styleguide';
   <Button minimal success>
     Woke up on time
   </Button>
-  <Button success leadingIcon={null}>
-    Alt
-  </Button>
 </Flex>
 ```
+
+Warning buttons are used to denote actions that aren't destructive, but may have unintended consequences. Use them to encourage users think carefully before they use them.
 
 ```jsx
 import { Flex } from 'nautilus-styleguide';
@@ -145,6 +218,8 @@ import { Flex } from 'nautilus-styleguide';
   </Button>
 </Flex>
 ```
+
+Use a danger button any time you have a destructive action, like deleting something. Rather than requiring a confirmation of a destructive action (which users often ignore), consider surfacing a mechanism for undoing the destructive action after it's been completed.
 
 ```jsx
 import { Flex } from 'nautilus-styleguide';
@@ -164,9 +239,7 @@ import { Flex } from 'nautilus-styleguide';
 
 ### State
 
-**Options:** active, hover, focussed, disabled, default
-
-**Changes:** styling
+Buttons come with states to indicate the current status of the action being performed. This helps to inform users of the application's overall state and increases confidence in actions.
 
 ```jsx
 import { Flex } from 'nautilus-styleguide';
@@ -190,91 +263,4 @@ import { Flex } from 'nautilus-styleguide';
     Minimal disabled
   </Button>
 </Flex>
-```
-
-What's my button up to? State will tell you!
-
-### Icon
-
-Use icons in buttons to reinforce meaning.
-
-- `minimal`: just the icon, no circle/background
-- `default`: icon in a circle shape + default styles
-- `primary`: icon in a circle shape + primary styles
-
-```jsx
-import { Flex } from 'nautilus-styleguide';
-import React from 'react';
-
-<React.Fragment>
-  <Flex>
-    <Button primary leadingIcon="star" leadingIcon="star">
-      Leading Icon
-    </Button>
-
-    <Button primary trailingIcon="download">
-      Trailing Icon
-    </Button>
-
-    <Button primary>
-      No Icon
-    </Button>
-  </Flex>
-
-  <Flex>
-    <Button leadingIcon="chevron-left">
-      Leading Icon
-    </Button>
-
-    <Button trailingIcon="arrow-right">
-      Trailing Icon
-    </Button>
-
-    <Button>
-      No Icon
-    </Button>
-  </Flex>
-
-  <Flex>
-    <Button minimal leadingIcon="chevron-left">
-      Leading Icon
-    </Button>
-
-    <Button minimal trailingIcon="arrow-right">
-      Trailing Icon
-    </Button>
-
-    <Button minimal>
-      No Icon
-    </Button>
-  </Flex>
-
-  <Flex>
-    <Button primary stackedIcon="search">
-      Stacked
-    </Button>
-
-    <Button stackedIcon="star">
-      Stacked
-    </Button>
-
-    <Button minimal stackedIcon="search">
-      Stacked
-    </Button>
-  </Flex>
-
-  <Flex>
-    <Button primary onlyIcon="search">
-      No text!
-    </Button>
-
-    <Button onlyIcon="search">
-      No text!
-    </Button>
-
-    <Button minimal onlyIcon="search">
-      No text!
-    </Button>
-  </Flex>
-</React.Fragment>
 ```

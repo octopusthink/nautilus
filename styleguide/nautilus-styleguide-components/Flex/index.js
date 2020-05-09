@@ -7,6 +7,7 @@ const Flex = ({ children }) => {
       css={css`
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
       `}
     >
       {children}
