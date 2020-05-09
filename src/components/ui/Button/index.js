@@ -207,20 +207,6 @@ const Button = (props) => {
             border-radius: 0;
             padding-left: 0;
             padding-right: 0;
-            position: relative;
-
-            &::before {
-              content: '';
-              position: absolute;
-              bottom: 0;
-              width: 0;
-              border-bottom: 2px solid ${currentButtonColorDark};
-              transition: all 200ms ease-in-out;
-            }
-
-            &:hover::before {
-              width: 100%;
-            }
           `}
 
         /* Set padding based on whether we have leading or trailing icons. */
