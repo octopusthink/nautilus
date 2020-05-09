@@ -54,7 +54,6 @@ exports[`Button should match styles 1`] = `
 
 .emotion-0:hover {
   border-color: #94225f;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
   color: #94225f;
 }
 
@@ -198,7 +197,6 @@ exports[`Button should show danger styles 1`] = `
 
 .emotion-2:hover {
   border-color: #630000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
   color: #630000;
 }
 
@@ -320,7 +318,6 @@ exports[`Button shouldn't have a margin when \`noMargin\` is true 1`] = `
 
 .emotion-0:hover {
   border-color: #94225f;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
   color: #94225f;
 }
 
