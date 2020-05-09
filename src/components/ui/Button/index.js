@@ -212,12 +212,12 @@ const Button = (props) => {
         /* Set padding based on whether we have leading or trailing icons. */
         ${leadingIconName &&
           css`
-            padding-left: ${toUnits(theme.spacing.padding.medium)};
+            padding-left: ${toUnits(theme.spacing.margin.small)};
           `}
 
         ${trailingIconName &&
           css`
-            padding-right: ${toUnits(theme.spacing.padding.medium)};
+            padding-right: ${toUnits(theme.spacing.margin.small)};
           `}
 
         ${stackedIcon &&
@@ -257,6 +257,22 @@ const Button = (props) => {
             css`
               color: ${currentButtonColorDark};
             `}
+          
+          ${navigation &&
+            trailingIconName &&
+            css`
+              .icon {
+                transform: translateX(${toUnits(theme.spacing.padding.xSmall)});
+              }
+            `}
+          
+          ${navigation &&
+            leadingIconName &&
+            css`
+              .icon {
+                transform: translateX(-${toUnits(theme.spacing.padding.xSmall)});
+              }
+            `}
         }
       `
       }
@@ -266,36 +282,42 @@ const Button = (props) => {
     >
       {leadingIconName && (
         <Icon
+          className="icon"
           css={css`
-            margin: 0 ${toUnits(theme.spacing.padding.small)} 0 0;
+            margin-right: ${toUnits(theme.spacing.padding.xSmall)};
           `}
           id={__iconId}
           name={leadingIconName}
+          noMargin
         />
       )}
 
       {stackedIcon && (
         <Icon
+          className="icon"
           css={css`
-            margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)} 0;
+            margin-bottom: ${toUnits(theme.spacing.padding.xSmall)};
           `}
           id={__iconId}
           name={stackedIcon}
+          noMargin
           medium
         />
       )}
 
-      {onlyIcon && <Icon id={__iconId} noMargin name={onlyIcon} medium />}
+      {onlyIcon && <Icon className="icon" id={__iconId} noMargin name={onlyIcon} medium />}
 
       {buttonText}
 
       {trailingIconName && (
         <Icon
+          className="icon"
           css={css`
-            margin: 0 0 0 ${toUnits(theme.spacing.padding.small)};
+            margin-left: ${toUnits(theme.spacing.padding.xSmall)};
           `}
           id={__iconId}
           name={trailingIconName}
+          noMargin
         />
       )}
     </Component>
