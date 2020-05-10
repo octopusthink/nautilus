@@ -1,17 +1,14 @@
 import { css } from '@emotion/core';
+import classnames from 'classnames';
 import invariant from 'invariant';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-// Import the non-styled Link so we don't have to overwrite Link styles if
-// the `navigation` prop is used by a button.
 import Link from '../Link';
 import Icon from '../Icon';
 import VisuallyHidden from '../VisuallyHidden';
 import { interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
-
-export const ComponentClassName = 'Nautilus-Button';
 
 export const qualityControl = (props) => {
   const { minimal, primary, success, warning, danger } = props;
@@ -34,13 +31,13 @@ const Button = (props) => {
     danger,
     disabled,
     href,
-    navigationDirection,
+    iconOnly,
     leadingIcon,
     linkProps,
     minimal,
     navigation,
+    navigationDirection,
     noMargin,
-    onlyIcon,
     primary,
     stackedIcon,
     success,
@@ -135,9 +132,9 @@ const Button = (props) => {
     currentButtonColorLight = theme.colors.intent.dangerLight;
   }
 
-  // Set the button text—for onlyIcon buttons, we want to visually hide the text.
+  // Set the button text—for iconOnly buttons, we want to visually hide the text.
   let buttonText = children;
-  if (onlyIcon) {
+  if (iconOnly) {
     buttonText = <VisuallyHidden>{children}</VisuallyHidden>;
   }
 
@@ -225,15 +222,15 @@ const Button = (props) => {
             flex-direction: column;
             padding: ${toUnits(theme.spacing.padding.medium)};
           `}
-        
+
         /* Buttons without text should get rounded */
-        ${onlyIcon &&
+        ${iconOnly &&
           css`
             border-radius: 100%;
             padding: ${toUnits(theme.spacing.padding.medium)};
           `}
 
-          ${onlyIcon &&
+          ${iconOnly &&
             minimal &&
             css`
               padding: ${toUnits(theme.spacing.padding.medium)};
@@ -245,7 +242,11 @@ const Button = (props) => {
             margin: 0 ${toUnits(theme.spacing.margin.xxSmall)}
               ${toUnits(theme.spacing.margin.xSmall)};
           `}
-        
+
+        .Nautilus-navigationIcon {
+          transition: all 200ms ease-in-out;
+        }
+
         /* Hover styling */
         &:hover {
           ${!minimal &&
@@ -257,20 +258,23 @@ const Button = (props) => {
             css`
               color: ${currentButtonColorDark};
             `}
-          
+
           ${navigation &&
-            trailingIconName &&
             css`
-              .icon {
-                transform: translateX(${toUnits(theme.spacing.padding.xSmall)});
-              }
-            `}
-          
-          ${navigation &&
-            leadingIconName &&
-            css`
-              .icon {
-                transform: translateX(-${toUnits(theme.spacing.padding.xSmall)});
+              .Nautilus-navigationIcon {
+                ${leadingIconName &&
+                  css`
+                    /*
+                      Use a negative transform on a leading icon, to ensure the
+                      icon is always moving away from the text on hover.
+                    */
+                    transform: translateX(-${toUnits(theme.spacing.padding.xSmall)});
+                  `}
+                ${trailingIconName &&
+                  css`
+                    transform: translateX(${toUnits(theme.spacing.padding.xSmall)});
+                  `}
+                transition: all 200ms linear;
               }
             `}
         }
@@ -282,7 +286,9 @@ const Button = (props) => {
     >
       {leadingIconName && (
         <Icon
-          className="icon"
+          className={classnames({
+            'Nautilus-navigationIcon': navigation,
+          })}
           css={css`
             margin-right: ${toUnits(theme.spacing.padding.xSmall)};
           `}
@@ -294,7 +300,6 @@ const Button = (props) => {
 
       {stackedIcon && (
         <Icon
-          className="icon"
           css={css`
             margin-bottom: ${toUnits(theme.spacing.padding.xSmall)};
           `}
@@ -305,13 +310,15 @@ const Button = (props) => {
         />
       )}
 
-      {onlyIcon && <Icon className="icon" id={__iconId} noMargin name={onlyIcon} medium />}
+      {iconOnly && <Icon id={__iconId} noMargin name={iconOnly} medium />}
 
       {buttonText}
 
       {trailingIconName && (
         <Icon
-          className="icon"
+          className={classnames({
+            'Nautilus-navigationIcon': navigation,
+          })}
           css={css`
             margin-left: ${toUnits(theme.spacing.padding.xSmall)};
           `}
@@ -336,7 +343,7 @@ Button.defaultProps = {
   minimal: false,
   navigation: false,
   noMargin: false,
-  onlyIcon: undefined,
+  iconOnly: undefined,
   primary: false,
   stackedIcon: undefined,
   success: false,
@@ -365,6 +372,8 @@ Button.propTypes = {
   danger: PropTypes.bool,
   /** Used to link to a route that will be handled by Nautilus' `Link` component. */
   href: PropTypes.string,
+  /** Show only an icon—no text. Passes a string to Icon's name prop. */
+  iconOnly: PropTypes.string,
   /** Set the direction of navigation: forward (default) or backward. */
   navigationDirection: PropTypes.string,
   /** Show an icon inside the button, before the text. Passes a string to Icon's name prop. */
@@ -376,8 +385,6 @@ Button.propTypes = {
   navigation: PropTypes.bool,
   /** Remove any outer margins from component. */
   noMargin: PropTypes.bool,
-  /** Show only an icon—no text. Passes a string to Icon's name prop. */
-  onlyIcon: PropTypes.string,
   /** Show an icon inside the button, on top of text. Passes a string to Icon's name prop. */
   stackedIcon: PropTypes.string,
   /** Show an icon inside the button, after the text. Passes a string to Icon's name prop. */

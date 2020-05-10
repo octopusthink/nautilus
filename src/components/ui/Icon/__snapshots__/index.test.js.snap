@@ -19,7 +19,7 @@ exports[`Icon should match styles 1`] = `
 }
 
 <span
-  class="emotion-1"
+  class="Nautilus-Icon--airplay emotion-1"
 >
   <svg
     aria-hidden="true"
@@ -72,7 +72,7 @@ exports[`Icon should match styles when background is supplied 1`] = `
 }
 
 <span
-  class="emotion-1"
+  class="Nautilus-Icon--airplay emotion-1"
 >
   <svg
     aria-hidden="true"
@@ -125,7 +125,7 @@ exports[`Icon should match styles when border is supplied 1`] = `
 }
 
 <span
-  class="emotion-1"
+  class="Nautilus-Icon--airplay emotion-1"
 >
   <svg
     aria-hidden="true"
@@ -173,7 +173,7 @@ exports[`Icon should match styles when color is supplied 1`] = `
 }
 
 <span
-  class="emotion-1"
+  class="Nautilus-Icon--airplay emotion-1"
 >
   <svg
     aria-hidden="true"
@@ -221,7 +221,7 @@ exports[`Icon shouldn't have a margin when \`noMargin\` is true 1`] = `
 }
 
 <span
-  class="emotion-1"
+  class="Nautilus-Icon--star emotion-1"
 >
   <svg
     aria-hidden="true"

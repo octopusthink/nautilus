@@ -142,6 +142,115 @@ describe('Button', () => {
     expect(getByTestId('myButton').classList).toContain('custom-class');
   });
 
+  describe('icon buttons', () => {
+    const buttonStyleTypes = ['success', 'danger', 'warning'];
+    it.each(buttonStyleTypes)(
+      'should render a leading Icon when a %s button is used',
+      (buttonStyleProp) => {
+        const props = { [buttonStyleProp]: true };
+        const { container } = render(
+          <Button {...props} __iconId="test-button">
+            hello
+          </Button>,
+        );
+
+        expect(container.firstChild.firstChild.tagName).toEqual('SPAN');
+        expect(container.firstChild.firstChild.firstChild.tagName).toEqual('svg');
+      },
+    );
+
+    it.each(buttonStyleTypes)(
+      'should allow a leading Icon to be replaced for a %s button',
+      (buttonStyleProp) => {
+        const props = { [buttonStyleProp]: true };
+        const { container } = render(
+          <Button {...props} leadingIcon="arrow-right" __iconId="test-button">
+            hello
+          </Button>,
+        );
+        const { container: defaultContainer } = render(
+          <Button {...props} __iconId="test-button-default">
+            hello
+          </Button>,
+        );
+
+        // Make sure these two SVGs are not the same.
+        expect(container.firstChild.firstChild.firstChild.innerHTML).not.toEqual(
+          defaultContainer.firstChild.firstChild.firstChild.innerHTML,
+        );
+      },
+    );
+
+    it.each(buttonStyleTypes)(
+      'should allow a leading Icon to be set to null for a %s button',
+      (buttonStyleProp) => {
+        const props = { [buttonStyleProp]: true };
+        const { container } = render(
+          <Button {...props} leadingIcon={null} __iconId="test-button">
+            hello
+          </Button>,
+        );
+
+        // Make sure the SVG doesn't exist.
+        expect(container.firstChild.firstChild.tagName).not.toEqual('SPAN');
+        expect(container.firstChild.firstChild.textContent).toEqual('hello');
+      },
+    );
+
+    it('should render an arrow icon for a navigation button', () => {
+      const { container } = render(
+        <Button navigation __iconId="test-button">
+          Go forward
+        </Button>,
+      );
+
+      expect(container.firstChild.lastChild.tagName).toEqual('SPAN');
+      expect(container.firstChild.lastChild.classList).toContain('Nautilus-Icon--arrow-right');
+      expect(container.firstChild.lastChild.firstChild.tagName).toEqual('svg');
+    });
+
+    it('should render a backward arrow icon for a navigation button with the "backward" navigationDirection prop set', () => {
+      const { container } = render(
+        <Button navigation navigationDirection="backward" __iconId="test-button">
+          Back
+        </Button>,
+      );
+
+      expect(container.firstChild.firstChild.tagName).toEqual('SPAN');
+      expect(container.firstChild.firstChild.classList).toContain('Nautilus-Icon--arrow-left');
+      expect(container.firstChild.firstChild.firstChild.tagName).toEqual('svg');
+    });
+
+    it('should allow navigation buttons to change their icon', () => {
+      const { container } = render(
+        <Button navigation trailingIcon="arrow-down" __iconId="test-button">
+          Down
+        </Button>,
+      );
+
+      expect(container.firstChild.lastChild.tagName).toEqual('SPAN');
+      expect(container.firstChild.lastChild.classList).toContain('Nautilus-Icon--arrow-down');
+      expect(container.firstChild.lastChild.firstChild.tagName).toEqual('svg');
+
+      const { container: backwardContainer } = render(
+        <Button
+          navigation
+          navigationDirection="backward"
+          leadingIcon="arrow-up"
+          __iconId="test-button"
+        >
+          Up
+        </Button>,
+      );
+
+      expect(backwardContainer.firstChild.firstChild.tagName).toEqual('SPAN');
+      expect(backwardContainer.firstChild.firstChild.classList).toContain(
+        'Nautilus-Icon--arrow-up',
+      );
+      expect(backwardContainer.firstChild.firstChild.firstChild.tagName).toEqual('svg');
+    });
+  });
+
   describe('accessibility', () => {
     it('should pass aXe tests', async () => {
       const { container } = render(<Button>hello</Button>);

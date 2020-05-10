@@ -4,6 +4,7 @@ A button mimics a physical button to allow users to quickly trigger an action. T
 const onClick = (event) => {
   window.alert('🚨 Alarm sounded! 🚨');
 };
+
 <Button onClick={onClick}>Sound the alarm!</Button>;
 ```
 
@@ -31,10 +32,10 @@ For important actions, including both text and an icon can be a good way to rein
 
 There are several different permutations of icon buttons available:
 
-- Leading Icon: shows an icon before the text.
-- Trailing Icon: shows an icon after the text.
-- Stacked Icon: shows an icon with smaller text underneath. Useful for application toolbars.
-- Only Icon: shows an icon only, in a rounded container. Useful in areas of limited space where the icon's meaning is very clear.
+- **Leading Icon**: shows an icon before the text.
+- **Trailing Icon**: shows an icon after the text.
+- **Stacked Icon**: shows an icon with smaller text underneath. Useful for application toolbars.
+- **Icon-only**: shows an icon only, in a rounded container. Useful in areas of limited space where the icon's meaning is very clear.
 
 It's best to only use one icon per button.
 
@@ -87,15 +88,15 @@ import React from 'react';
   </Flex>
 
   <Flex>
-    <Button primary onlyIcon="search">
+    <Button primary iconOnly="search">
       Primary
     </Button>
 
-    <Button onlyIcon="search">
+    <Button iconOnly="search">
       Only Icon
     </Button>
 
-    <Button minimal onlyIcon="search">
+    <Button minimal iconOnly="search">
       Minimal
     </Button>
   </Flex>
@@ -124,7 +125,9 @@ import { Flex } from 'nautilus-styleguide';
 
 <Flex>
   <Button primary>Sign up now</Button>
+
   <Button>Sign up sometime</Button>
+
   <Button minimal>Sign up eventually</Button>
 </Flex>
 ```
@@ -194,7 +197,9 @@ import { Flex } from 'nautilus-styleguide';
   <Button primary success>
     Nobel Peace Prize
   </Button>
+
   <Button success>Got a new job</Button>
+
   <Button minimal success>
     Woke up on time
   </Button>
@@ -246,7 +251,9 @@ import { Flex } from 'nautilus-styleguide';
 
 <Flex>
   <Button primary>Active</Button>
+
   <Button>Hover</Button>
+
   <Button minimal>Focus</Button>
 </Flex>
 ```
@@ -258,7 +265,9 @@ import { Flex } from 'nautilus-styleguide';
   <Button primary disabled>
     Disabled primary
   </Button>
+
   <Button disabled>Disabled</Button>
+
   <Button minimal disabled>
     Minimal disabled
   </Button>
