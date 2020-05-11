@@ -1,11 +1,13 @@
 import { css } from '@emotion/core';
+import classnames from 'classnames';
 import invariant from 'invariant';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import Link from '../Link';
 import Icon from '../Icon';
-import { interfaceUI, toUnits } from '../../../styles';
+import VisuallyHidden from '../VisuallyHidden';
+import { focusStyle, interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
 export const qualityControl = (props) => {
@@ -29,12 +31,17 @@ const Button = (props) => {
     danger,
     disabled,
     href,
+    iconOnly,
+    leadingIcon,
     linkProps,
     minimal,
     navigation,
+    navigationDirection,
     noMargin,
     primary,
+    stackedIcon,
     success,
+    trailingIcon,
     unstyled,
     warning,
     ...otherProps
@@ -45,6 +52,46 @@ const Button = (props) => {
 
   let Component = 'button';
   let linkPropsToUse;
+  let trailingIconName;
+  let leadingIconName;
+
+  // Set directional icons for navigation buttons.
+  if (navigation === true) {
+    if (navigationDirection === 'backward') {
+      leadingIconName = 'arrow-left';
+    } else {
+      trailingIconName = 'arrow-right';
+    }
+  }
+
+  // Set default icons for semantic buttons, to underscore meaning.
+  if (success === true) {
+    leadingIconName = 'check-circle';
+  }
+  if (warning === true) {
+    leadingIconName = 'alert-triangle';
+  }
+  if (danger === true) {
+    leadingIconName = 'x-octagon';
+  }
+
+  // If the icon is explicitly set, it should override any defaults.
+  if (leadingIcon) {
+    leadingIconName = leadingIcon;
+  }
+  if (trailingIcon) {
+    trailingIconName = trailingIcon;
+  }
+
+  // If any icon is explicitly set to `null`, don't show an icon at all.
+  if (leadingIcon === null) {
+    leadingIconName = null;
+  }
+  if (trailingIcon === null) {
+    trailingIconName = null;
+  }
+
+  // Set props for the navigation button.
   if (navigation === true) {
     Component = Link;
     // Set properties that only a Link component should use.
@@ -54,17 +101,6 @@ const Button = (props) => {
     // Unset certain button-specific props.
     otherProps.type = undefined;
     linkPropsToUse = { ...linkProps };
-  }
-
-  let iconName;
-  if (success === true) {
-    iconName = 'check-circle';
-  }
-  if (warning === true) {
-    iconName = 'alert-circle';
-  }
-  if (danger === true) {
-    iconName = 'x-circle';
   }
 
   // Set the styles for this button.
@@ -96,6 +132,12 @@ const Button = (props) => {
     currentButtonColorLight = theme.colors.intent.dangerLight;
   }
 
+  // Set the button text—for iconOnly buttons, we want to visually hide the text.
+  let buttonText = children;
+  if (iconOnly) {
+    buttonText = <VisuallyHidden>{children}</VisuallyHidden>;
+  }
+
   return (
     // See: https://github.com/yannickcr/eslint-plugin-react/issues/1555
     // eslint-disable-next-line react/button-has-type
@@ -105,13 +147,13 @@ const Button = (props) => {
           ? undefined
           : css`
         ${interfaceUI.medium(theme)}
-
+        align-items: center;
         background: ${theme.colors.buttons.neutral};
         border: 2px solid ${currentButtonColor};
         border-radius: 8px;
         color: ${currentButtonColor};
         cursor: pointer;
-        display: inline-block;
+        display: flex;
         margin: 0;
         outline: none;
         padding: ${toUnits(theme.spacing.padding.medium)} ${toUnits(theme.spacing.padding.large)};
@@ -121,6 +163,7 @@ const Button = (props) => {
         top: 0;
         transition: all 200ms ease-in-out;
         transition: top 0ms ease-out;
+        width: max-content;
 
         &::-moz-focus-inner {
           border: 0;
@@ -129,19 +172,14 @@ const Button = (props) => {
         &:active {
           border-color: ${currentButtonColorDark};
           color: ${currentButtonColorDark};
-          top: 2px;
+          top: 0.2rem;
         }
 
+        /* @todo: should use interactive tokens and pass the colour! */
         &:focus {
-          box-shadow: 0 0 1px 4px ${currentButtonColorLight};
-          outline: none;
+          ${focusStyle.outline(theme)};
+          box-shadow: 0 0 0 0.4rem ${currentButtonColorLight};
         }
-
-        ${!noMargin &&
-          css`
-            margin: 0 ${toUnits(theme.spacing.margin.xxSmall)}
-              ${toUnits(theme.spacing.margin.xSmall)};
-          `}
 
         /* Primary styles */
         ${primary &&
@@ -159,54 +197,81 @@ const Button = (props) => {
             }
           `}
 
+        /* Set padding based on whether we have leading or trailing icons. */
+        ${leadingIconName &&
+          css`
+            padding-left: ${toUnits(theme.spacing.margin.small)};
+          `}
+
+        ${trailingIconName &&
+          css`
+            padding-right: ${toUnits(theme.spacing.margin.small)};
+          `}
+        
+
         /* Minimal styles */
         ${minimal &&
           css`
             background: transparent;
-            border: 0;
+            border-color: transparent;
+            border-radius: 0;
             padding-left: 0;
             padding-right: 0;
-            position: relative;
-
-            &::before {
-              content: '';
-              position: absolute;
-              bottom: 0;
-              width: 0;
-              border-bottom: 2px solid ${currentButtonColorDark};
-              transition: all 200ms ease-in-out;
-            }
-
-            &:hover::before {
-              width: 100%;
-            }
           `}
 
-        ${navigation &&
+        ${stackedIcon &&
           css`
-            &::after {
-              content: ' →';
-              display: inline;
-              padding-right: ${toUnits(theme.spacing.padding.xSmall)};
-              transition: all 200ms ease-in-out;
-            }
-
-            &:hover::after {
-              margin-left: ${toUnits(theme.spacing.padding.xSmall)};
-              padding-right: 0;
-            }
+            flex-direction: column;
+            padding: ${toUnits(theme.spacing.padding.medium)};
           `}
 
+        /* Buttons without text should get rounded */
+        ${iconOnly &&
+          css`
+            border-radius: 100%;
+            padding: ${toUnits(theme.spacing.padding.medium)};
+          `}
+        
+        /* Set external margins */
+        ${!noMargin &&
+          css`
+            margin: 0 ${toUnits(theme.spacing.margin.xxSmall)}
+              ${toUnits(theme.spacing.margin.xSmall)};
+          `}
+
+        .Nautilus-navigationIcon {
+          transition: all 200ms ease-in-out;
+        }
+
+        /* Hover styling */
         &:hover {
           ${!minimal &&
             css`
               border-color: ${currentButtonColorDark};
-              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
             `}
 
           ${!primary &&
             css`
               color: ${currentButtonColorDark};
+            `}
+
+          ${navigation &&
+            css`
+              .Nautilus-navigationIcon {
+                ${leadingIconName &&
+                  css`
+                    /*
+                      Use a negative transform on a leading icon, to ensure the
+                      icon is always moving away from the text on hover.
+                    */
+                    transform: translateX(-${toUnits(theme.spacing.padding.xSmall)});
+                  `}
+                ${trailingIconName &&
+                  css`
+                    transform: translateX(${toUnits(theme.spacing.padding.xSmall)});
+                  `}
+                transition: all 200ms linear;
+              }
             `}
         }
       `
@@ -215,17 +280,49 @@ const Button = (props) => {
       {...linkPropsToUse}
       {...otherProps}
     >
-      {iconName && (
+      {leadingIconName && (
         <Icon
+          className={classnames({
+            'Nautilus-navigationIcon': navigation,
+          })}
           css={css`
             margin-right: ${toUnits(theme.spacing.padding.xSmall)};
           `}
           id={__iconId}
-          name={iconName}
-          small
+          name={leadingIconName}
+          noMargin
         />
       )}
-      {children}
+
+      {stackedIcon && (
+        <Icon
+          css={css`
+            margin-bottom: ${toUnits(theme.spacing.padding.xSmall)};
+          `}
+          id={__iconId}
+          name={stackedIcon}
+          noMargin
+          medium
+        />
+      )}
+
+      {iconOnly && <Icon id={__iconId} noMargin name={iconOnly} medium />}
+
+      {buttonText}
+
+      {trailingIconName && (
+        <Icon
+          className={classnames({
+            'Nautilus-navigationIcon': navigation,
+          })}
+          css={css`
+            margin-left: ${toUnits(theme.spacing.padding.xSmall)};
+          `}
+          id={__iconId}
+          name={trailingIconName}
+          noMargin
+        />
+      )}
     </Component>
   );
 };
@@ -235,13 +332,18 @@ Button.defaultProps = {
   children: undefined,
   danger: false,
   disabled: false,
+  navigationDirection: 'forward',
   href: undefined,
+  leadingIcon: undefined,
   linkProps: undefined,
   minimal: false,
   navigation: false,
   noMargin: false,
+  iconOnly: undefined,
   primary: false,
+  stackedIcon: undefined,
   success: false,
+  trailingIcon: undefined,
   type: 'button',
   unstyled: false,
   warning: false,
@@ -266,6 +368,12 @@ Button.propTypes = {
   danger: PropTypes.bool,
   /** Used to link to a route that will be handled by Nautilus' `Link` component. */
   href: PropTypes.string,
+  /** Show only an icon—no text. Passes a string to Icon's name prop. */
+  iconOnly: PropTypes.string,
+  /** Set the direction of navigation: forward (default) or backward. */
+  navigationDirection: PropTypes.string,
+  /** Show an icon inside the button, before the text. Passes a string to Icon's name prop. */
+  leadingIcon: PropTypes.string,
   /** Props to pass to the underlying Nautilus `Link` component when `useNavigation` is `true`. */
   // eslint-disable-next-line react/forbid-prop-types
   linkProps: PropTypes.object,
@@ -273,10 +381,14 @@ Button.propTypes = {
   navigation: PropTypes.bool,
   /** Remove any outer margins from component. */
   noMargin: PropTypes.bool,
-  /* @ignore Don't output any CSS styles. */
-  unstyled: PropTypes.bool,
+  /** Show an icon inside the button, on top of text. Passes a string to Icon's name prop. */
+  stackedIcon: PropTypes.string,
+  /** Show an icon inside the button, after the text. Passes a string to Icon's name prop. */
+  trailingIcon: PropTypes.string,
   /** HTML `type` attribute for the button. Defaults to `"button"`. */
   type: PropTypes.oneOf(['button', 'reset', 'submit']),
+  /* @ignore Don't output any CSS styles. */
+  unstyled: PropTypes.bool,
 };
 
 Button.displayName = 'Button';

@@ -6,12 +6,19 @@ exports[`Button should match styles 1`] = `
   font-weight: 500;
   font-size: 1.8rem;
   line-height: 1.3333333333333333;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   background: #ffffff;
   border: 2px solid #cd2f83;
   border-radius: 8px;
   color: #cd2f83;
   cursor: pointer;
-  display: inline-block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin: 0;
   outline: none;
   padding: 1.2rem 2.4rem;
@@ -24,6 +31,9 @@ exports[`Button should match styles 1`] = `
   transition: all 200ms ease-in-out;
   -webkit-transition: top 0ms ease-out;
   transition: top 0ms ease-out;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   margin: 0 0.4rem 0.8rem;
 }
 
@@ -34,17 +44,22 @@ exports[`Button should match styles 1`] = `
 .emotion-0:active {
   border-color: #94225f;
   color: #94225f;
-  top: 2px;
+  top: 0.2rem;
 }
 
 .emotion-0:focus {
-  box-shadow: 0 0 1px 4px #f5bbda;
-  outline: none;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+}
+
+.emotion-0 .Nautilus-navigationIcon {
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
 .emotion-0:hover {
   border-color: #94225f;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
   color: #94225f;
 }
 
@@ -70,16 +85,17 @@ exports[`Button should not output styles when unstyled is set 1`] = `
 exports[`Button should not output styles when unstyled is set, even with styling props 1`] = `
 .emotion-1 {
   display: inline-block;
+  line-height: 0;
   margin: 0;
+  padding: 0;
   vertical-align: middle;
-  margin: 0 0.8rem 0 0;
   margin-right: 0.4rem;
 }
 
 .emotion-0 {
-  height: 1.6rem;
-  stroke-width: 0.2rem;
-  width: 1.6rem;
+  height: 2.4rem;
+  stroke-width: 0.175rem;
+  width: 2.4rem;
   stroke: currentColor;
   opacity: 0.8;
 }
@@ -90,7 +106,7 @@ exports[`Button should not output styles when unstyled is set, even with styling
     type="button"
   >
     <span
-      class="emotion-1"
+      class=" Nautilus-Icon--x-octagon emotion-1"
     >
       <svg
         aria-hidden="true"
@@ -102,16 +118,14 @@ exports[`Button should not output styles when unstyled is set, even with styling
         stroke="currentColor"
         stroke-linecap="round"
         stroke-linejoin="round"
-        stroke-width="2"
+        stroke-width="1.75"
         viewBox="0 0 24 24"
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
         <g>
-          <circle
-            cx="12"
-            cy="12"
-            r="10"
+          <polygon
+            points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"
           />
           <line
             x1="15"
@@ -139,12 +153,19 @@ exports[`Button should show danger styles 1`] = `
   font-weight: 500;
   font-size: 1.8rem;
   line-height: 1.3333333333333333;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   background: #ffffff;
   border: 2px solid #8a0000;
   border-radius: 8px;
   color: #8a0000;
   cursor: pointer;
-  display: inline-block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin: 0;
   outline: none;
   padding: 1.2rem 2.4rem;
@@ -157,6 +178,10 @@ exports[`Button should show danger styles 1`] = `
   transition: all 200ms ease-in-out;
   -webkit-transition: top 0ms ease-out;
   transition: top 0ms ease-out;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding-left: 1.6rem;
   margin: 0 0.4rem 0.8rem;
 }
 
@@ -167,32 +192,38 @@ exports[`Button should show danger styles 1`] = `
 .emotion-2:active {
   border-color: #630000;
   color: #630000;
-  top: 2px;
+  top: 0.2rem;
 }
 
 .emotion-2:focus {
-  box-shadow: 0 0 1px 4px #e2b6b6;
-  outline: none;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+  box-shadow: 0 0 0 0.4rem #e2b6b6;
+}
+
+.emotion-2 .Nautilus-navigationIcon {
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
 .emotion-2:hover {
   border-color: #630000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
   color: #630000;
 }
 
 .emotion-1 {
   display: inline-block;
+  line-height: 0;
   margin: 0;
+  padding: 0;
   vertical-align: middle;
-  margin: 0 0.8rem 0 0;
   margin-right: 0.4rem;
 }
 
 .emotion-0 {
-  height: 1.6rem;
-  stroke-width: 0.2rem;
-  width: 1.6rem;
+  height: 2.4rem;
+  stroke-width: 0.175rem;
+  width: 2.4rem;
   stroke: currentColor;
   opacity: 0.8;
 }
@@ -203,7 +234,7 @@ exports[`Button should show danger styles 1`] = `
     type="button"
   >
     <span
-      class="emotion-1"
+      class=" Nautilus-Icon--x-octagon emotion-1"
     >
       <svg
         aria-hidden="true"
@@ -215,16 +246,14 @@ exports[`Button should show danger styles 1`] = `
         stroke="currentColor"
         stroke-linecap="round"
         stroke-linejoin="round"
-        stroke-width="2"
+        stroke-width="1.75"
         viewBox="0 0 24 24"
         width="24"
         xmlns="http://www.w3.org/2000/svg"
       >
         <g>
-          <circle
-            cx="12"
-            cy="12"
-            r="10"
+          <polygon
+            points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"
           />
           <line
             x1="15"
@@ -252,12 +281,19 @@ exports[`Button shouldn't have a margin when \`noMargin\` is true 1`] = `
   font-weight: 500;
   font-size: 1.8rem;
   line-height: 1.3333333333333333;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   background: #ffffff;
   border: 2px solid #cd2f83;
   border-radius: 8px;
   color: #cd2f83;
   cursor: pointer;
-  display: inline-block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin: 0;
   outline: none;
   padding: 1.2rem 2.4rem;
@@ -270,6 +306,9 @@ exports[`Button shouldn't have a margin when \`noMargin\` is true 1`] = `
   transition: all 200ms ease-in-out;
   -webkit-transition: top 0ms ease-out;
   transition: top 0ms ease-out;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .emotion-0::-moz-focus-inner {
@@ -279,17 +318,22 @@ exports[`Button shouldn't have a margin when \`noMargin\` is true 1`] = `
 .emotion-0:active {
   border-color: #94225f;
   color: #94225f;
-  top: 2px;
+  top: 0.2rem;
 }
 
 .emotion-0:focus {
-  box-shadow: 0 0 1px 4px #f5bbda;
-  outline: none;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+}
+
+.emotion-0 .Nautilus-navigationIcon {
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 
 .emotion-0:hover {
   border-color: #94225f;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.25);
   color: #94225f;
 }
 

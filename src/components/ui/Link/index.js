@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 
 import { NautilusLinkComponentContext } from '../../hoc/Nautilus/context';
 import Icon from '../Icon';
-import { toUnits } from '../../../styles';
+import { focusStyle, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
 const LinkTag = 'a';
@@ -33,9 +33,8 @@ const Link = (props) => {
               }
 
               &:focus {
-                box-shadow: 0 0 0 3px ${theme.colors.state.interactive};
-                outline: none;
-                text-decoration: none;
+                ${focusStyle.outlineLight(theme)};
+                ${focusStyle.text(theme)};
               }
             `
       }
