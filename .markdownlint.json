@@ -1,5 +1,5 @@
 {
-  "MD013": false,
-  "MD032": false,
-  "MD041": false
+  "line-length": false,
+  "blanks-around-lists": false,
+  "first-line-heading": false
 }
