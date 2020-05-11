@@ -48,8 +48,9 @@ exports[`Button should match styles 1`] = `
 }
 
 .emotion-0:focus {
-  box-shadow: 0 0 1px 4px #f5bbda;
-  outline: none;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
 }
 
 .emotion-0 .Nautilus-navigationIcon {
@@ -195,8 +196,9 @@ exports[`Button should show danger styles 1`] = `
 }
 
 .emotion-2:focus {
-  box-shadow: 0 0 1px 4px #e2b6b6;
-  outline: none;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+  box-shadow: 0 0 0 0.4rem #e2b6b6;
 }
 
 .emotion-2 .Nautilus-navigationIcon {
@@ -320,8 +322,9 @@ exports[`Button shouldn't have a margin when \`noMargin\` is true 1`] = `
 }
 
 .emotion-0:focus {
-  box-shadow: 0 0 1px 4px #f5bbda;
-  outline: none;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+  box-shadow: 0 0 0 0.4rem #f5bbda;
 }
 
 .emotion-0 .Nautilus-navigationIcon {

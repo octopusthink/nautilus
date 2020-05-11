@@ -7,7 +7,7 @@ import React from 'react';
 import Link from '../Link';
 import Icon from '../Icon';
 import VisuallyHidden from '../VisuallyHidden';
-import { interfaceUI, toUnits } from '../../../styles';
+import { focusStyle, interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
 export const qualityControl = (props) => {
@@ -175,9 +175,10 @@ const Button = (props) => {
           top: 2px;
         }
 
+        /* @todo: should use interactive tokens and pass the colour! */
         &:focus {
-          box-shadow: 0 0 1px 4px ${currentButtonColorLight};
-          outline: none;
+          ${focusStyle.outline(theme)};
+          box-shadow: 0 0 0 0.4rem ${currentButtonColorLight};
         }
 
         /* Primary styles */
