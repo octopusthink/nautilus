@@ -12,13 +12,13 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 Use a `<Link>` component where you would usually use an `<a>` tag in HTML, including for navigation within your application.
 
-### Use this component for...
+### Use this component for…
 
 - Navigating to other pages or content, on the same site or another site.
 - Creating an inline link in a paragraph or other span of text.
 - Creating a link to wrap around multiple elements (eg: an image and some text).
 
-### Don't use this component for...
+### Don't use this component for…
 
 - Primary navigation for your site. Use a `<Menu>` instead.
 - Performing an action. Use a `<Button>` instead.

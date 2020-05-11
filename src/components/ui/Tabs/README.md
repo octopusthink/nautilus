@@ -24,14 +24,14 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 A tab should be used to represent content that is related and of equal weight or importance, with the caveat that the first section is the most relevant to most users.
 
-### Use this component for...
+### Use this component for…
 
 Tabs can be a helpful way of letting users quickly switch between related information if:
 
 - Your content can be usefully separated into clearly labelled sections.
 - Users will not need to view all the sections at once.
 
-### Don't use this component for...
+### Don't use this component for…
 
 - Primary navigation for your site. Use a Menu instead.
 - Representing content that is dissimilar. Separate this into different pages, or use Headings to section off your page.

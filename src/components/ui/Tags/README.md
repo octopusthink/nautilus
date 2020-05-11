@@ -5,7 +5,7 @@ import { Heading, Paragraph } from '@octopusthink/nautilus';
 
 <React.Fragment>
   <Heading>Wonder Women</Heading>
-  <Paragraph>Once upon a time there were a whole group of lady-types who lived in a beautiful paradise-land called... well, I forget but it was really pretty and just chock full of badass ladies.</Paragraph>
+  <Paragraph>Once upon a time there were a whole group of lady-types who lived in a beautiful paradise-land called… well, I forget but it was really pretty and just chock full of badass ladies.</Paragraph>
   <Tags>
     <Tags.Tag color="hotpink">Amazon</Tags.Tag>
     <Tags.Tag color="hotpink">Superhero</Tags.Tag>
@@ -18,14 +18,14 @@ import { Heading, Paragraph } from '@octopusthink/nautilus';
 
 Use a Tag to show concise metadata about a given piece of content. Content can have many tags, one tag, or zero tags.
 
-### Use this component for...
+### Use this component for…
 
 - Displaying supplementary data used to categorise a piece of content.
 - Categories, tags, dates, statuses, counts, authors, and any other metadata that describes or classifies your content.
 - Visually differentiating between multiple categories to which content belongs.
 - Filtering, sorting, or organising by categories.
 
-### Don't use this component for...
+### Don't use this component for…
 
 - Creating a standalone link to a new piece of content. Use a `<Button>` instead.
 
@@ -95,14 +95,14 @@ Tags are often used as a way of indicating the state or status of a process. To 
 </Tags>
 ```
 
-| Status       | Description               | Usage                                    |
-|--------------|---------------------------|------------------------------------------|
-| `neutral`    | Unspecified or unstarted. | To-do, unavailable, minor, not started.
-| `new`        | New, updated, or beta.    | New, trial, information, help, alpha, beta.
-| `inProgress` | In progress or current.   | In progress, open, modified.
-| `success`    | Completed or successful.  | Available, done, approved, resolved, added, complete.
-| `danger`     | Failure or deletion.      | Errors, declined, failed, removed, critical.
-| `warning`    | Attention or hazard.      | Busy, blocked, missing, warning, information.
+| Status       | Description               | Usage                                                 |
+| ------------ | ------------------------- | ----------------------------------------------------- |
+| `neutral`    | Unspecified or unstarted. | To-do, unavailable, minor, not started.               |
+| `new`        | New, updated, or beta.    | New, trial, information, help, alpha, beta.           |
+| `inProgress` | In progress or current.   | In progress, open, modified.                          |
+| `success`    | Completed or successful.  | Available, done, approved, resolved, added, complete. |
+| `danger`     | Failure or deletion.      | Errors, declined, failed, removed, critical.          |
+| `warning`    | Attention or hazard.      | Busy, blocked, missing, warning, information.         |
 
 Colour mappings can be customised in your theme.
 
@@ -131,6 +131,7 @@ const onDismiss = (event) => {
   <Tags.Tag color="#cd2f83" onDismiss={onDismiss}>Dismiss me!</Tags.Tag>
 </Tags>
 ```
+
 When a Tag is removable, it will be indicated with a "dismiss" button (stylised as an `X`/"close" icon).
 
 ### Placement
