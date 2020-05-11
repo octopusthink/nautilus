@@ -172,6 +172,7 @@ const Button = (props) => {
         &:active {
           border-color: ${currentButtonColorDark};
           color: ${currentButtonColorDark};
+          top: 0.2rem;
         }
 
         /* @todo: should use interactive tokens and pass the colour! */
