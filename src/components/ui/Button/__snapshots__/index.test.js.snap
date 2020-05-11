@@ -44,7 +44,6 @@ exports[`Button should match styles 1`] = `
 .emotion-0:active {
   border-color: #94225f;
   color: #94225f;
-  top: 2px;
 }
 
 .emotion-0:focus {
@@ -192,7 +191,6 @@ exports[`Button should show danger styles 1`] = `
 .emotion-2:active {
   border-color: #630000;
   color: #630000;
-  top: 2px;
 }
 
 .emotion-2:focus {
@@ -318,7 +316,6 @@ exports[`Button shouldn't have a margin when \`noMargin\` is true 1`] = `
 .emotion-0:active {
   border-color: #94225f;
   color: #94225f;
-  top: 2px;
 }
 
 .emotion-0:focus {

@@ -172,7 +172,6 @@ const Button = (props) => {
         &:active {
           border-color: ${currentButtonColorDark};
           color: ${currentButtonColorDark};
-          top: 2px;
         }
 
         /* @todo: should use interactive tokens and pass the colour! */
@@ -197,16 +196,6 @@ const Button = (props) => {
             }
           `}
 
-        /* Minimal styles */
-        ${minimal &&
-          css`
-            background: transparent;
-            border-color: transparent;
-            border-radius: 0;
-            padding-left: 0;
-            padding-right: 0;
-          `}
-
         /* Set padding based on whether we have leading or trailing icons. */
         ${leadingIconName &&
           css`
@@ -216,6 +205,17 @@ const Button = (props) => {
         ${trailingIconName &&
           css`
             padding-right: ${toUnits(theme.spacing.margin.small)};
+          `}
+        
+
+        /* Minimal styles */
+        ${minimal &&
+          css`
+            background: transparent;
+            border-color: transparent;
+            border-radius: 0;
+            padding-left: 0;
+            padding-right: 0;
           `}
 
         ${stackedIcon &&
@@ -230,13 +230,7 @@ const Button = (props) => {
             border-radius: 100%;
             padding: ${toUnits(theme.spacing.padding.medium)};
           `}
-
-          ${iconOnly &&
-            minimal &&
-            css`
-              padding: ${toUnits(theme.spacing.padding.medium)};
-            `}
-
+        
         /* Set external margins */
         ${!noMargin &&
           css`
