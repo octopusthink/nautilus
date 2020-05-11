@@ -164,7 +164,7 @@ import { Flex } from 'nautilus-styleguide';
 
 By default, navigation links point forward (right in LTR languages) to indicate a forward progression. Any links that navigate back in time or space (eg: a back link, previous pagination) should set the `navigationDirection` prop to `backward` to correctly communicate this direction.
 
-If needed, you can pass a leading or trailing icon to the navigation button to override its default arrow icon.
+If needed, you can pass a leading or trailing icon to the navigation button to override its default arrow icon. (You can also pass `null` as an icon to disable this navigation icon behaviour.)
 
 ```jsx
 import { Flex } from 'nautilus-styleguide';
@@ -206,7 +206,7 @@ import { Flex } from 'nautilus-styleguide';
 </Flex>
 ```
 
-Warning buttons are used to denote actions that aren't destructive, but may have unintended consequences. Use them to encourage users think carefully before they use them.
+Warning buttons are used to denote actions that aren't destructive, but affect many aspects of your app or affect unseen elements in the interface. Use these buttons to encourage users think carefully before they use them.
 
 ```jsx
 import { Flex } from 'nautilus-styleguide';
