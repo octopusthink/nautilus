@@ -35,7 +35,7 @@ There are several different permutations of icon buttons available:
 - **Leading Icon**: shows an icon before the text.
 - **Trailing Icon**: shows an icon after the text.
 - **Stacked Icon**: shows an icon with smaller text underneath. Useful for application toolbars.
-- **Icon-only**: shows an icon only, in a rounded container. Useful in areas of limited space where the icon's meaning is very clear.
+- **Icon Only**: shows an icon only, in a rounded container. Useful in areas of limited space where the icon's meaning is very clear.
 
 It's best to only use one icon per button.
 
