@@ -153,7 +153,7 @@ const Button = (props) => {
         border-radius: 8px;
         color: ${currentButtonColor};
         cursor: pointer;
-        display: flex;
+        display: inline-flex;
         margin: 0;
         outline: none;
         padding: ${toUnits(theme.spacing.padding.medium)} ${toUnits(theme.spacing.padding.large)};
