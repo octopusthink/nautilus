@@ -165,7 +165,7 @@ exports[`Button should not give a manually set leadingIcon a "Nautilus-navigatio
   href="/foo.zip"
 >
   <span
-    class=" Nautilus-Icon--download emotion-1"
+    class="Nautilus-navigationIcon Nautilus-Icon--download emotion-1"
   >
     <svg
       aria-hidden="true"

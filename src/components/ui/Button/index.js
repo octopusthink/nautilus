@@ -282,7 +282,7 @@ const Button = (props) => {
       {leadingIconName && (
         <Icon
           className={classnames({
-            'Nautilus-navigationIcon': navigation && navigationDirection === 'forward',
+            'Nautilus-navigationIcon': navigation && navigationDirection === 'backward',
             'Nautilus-navigationIcon--animated':
               navigation && navigationDirection === 'backward' && !leadingIcon,
           })}
