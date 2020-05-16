@@ -142,6 +142,32 @@ describe('Button', () => {
     expect(getByTestId('myButton').classList).toContain('custom-class');
   });
 
+  it('should not give a manually set leadingIcon a "Nautilus-navigationIcon--animated" class', () => {
+    const { container } = render(
+      <Button
+        href="/foo.zip"
+        navigation
+        navigationDirection="backward"
+        leadingIcon="download"
+        __iconId="test-button"
+      >
+        Download
+      </Button>,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should not give a manually set trailingIcon a "Nautilus-navigationIcon--animated" class', () => {
+    const { container } = render(
+      <Button href="/foo.zip" navigation trailingIcon="download" __iconId="test-button">
+        Download
+      </Button>,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
   describe('icon buttons', () => {
     const buttonStyleTypes = ['success', 'danger', 'warning'];
     it.each(buttonStyleTypes)(

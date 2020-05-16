@@ -38,6 +38,17 @@ describe('Link', () => {
     expect(container.firstChild.getAttribute('href')).toEqual('/a-url/');
   });
 
+  it('should output an <a> tag if the href prop is supplied', () => {
+    const { container } = render(
+      <Nautilus config={{ LinkComponent: ReachRouterLink }}>
+        <Link href="/a-url/">Hello</Link>
+      </Nautilus>,
+    );
+
+    expect(container.firstChild.tagName).toEqual('A');
+    expect(container.firstChild.getAttribute('href')).toEqual('/a-url/');
+  });
+
   it('should use an `<a>` tag by default when `external` is set, even if there is a default link component specified in the Nautilus config', () => {
     const { container } = render(
       <Nautilus LinkComponent="span">
@@ -87,7 +98,7 @@ describe('Link', () => {
   });
 
   describe('with default Link components', () => {
-    it('should output an href prop when the to prop is supplied', () => {
+    it('should output a href prop when the to prop is supplied', () => {
       const { container } = render(
         <Nautilus config={{ LinkComponent: ReachRouterLink }}>
           <Link to="/a-url/">Hello</Link>

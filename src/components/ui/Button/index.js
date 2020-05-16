@@ -207,7 +207,6 @@ const Button = (props) => {
           css`
             padding-right: ${toUnits(theme.spacing.margin.small)};
           `}
-        
 
         /* Minimal styles */
         ${minimal &&
@@ -231,7 +230,7 @@ const Button = (props) => {
             border-radius: 100%;
             padding: ${toUnits(theme.spacing.padding.medium)};
           `}
-        
+
         /* Set external margins */
         ${!noMargin &&
           css`
@@ -239,7 +238,7 @@ const Button = (props) => {
               ${toUnits(theme.spacing.margin.xSmall)};
           `}
 
-        .Nautilus-navigationIcon {
+        .Nautilus-navigationIcon--animated {
           transition: all 200ms ease-in-out;
         }
 
@@ -257,7 +256,7 @@ const Button = (props) => {
 
           ${navigation &&
             css`
-              .Nautilus-navigationIcon {
+              .Nautilus-navigationIcon--animated {
                 ${leadingIconName &&
                   css`
                     /*
@@ -283,7 +282,9 @@ const Button = (props) => {
       {leadingIconName && (
         <Icon
           className={classnames({
-            'Nautilus-navigationIcon': navigation,
+            'Nautilus-navigationIcon': navigation && navigationDirection === 'forward',
+            'Nautilus-navigationIcon--animated':
+              navigation && navigationDirection === 'backward' && !leadingIcon,
           })}
           css={css`
             margin-right: ${toUnits(theme.spacing.padding.xSmall)};
@@ -313,7 +314,9 @@ const Button = (props) => {
       {trailingIconName && (
         <Icon
           className={classnames({
-            'Nautilus-navigationIcon': navigation,
+            'Nautilus-navigationIcon': navigation && navigationDirection === 'forward',
+            'Nautilus-navigationIcon--animated':
+              navigation && navigationDirection === 'forward' && !trailingIcon,
           })}
           css={css`
             margin-left: ${toUnits(theme.spacing.padding.xSmall)};
