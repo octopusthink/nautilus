@@ -1,3 +1,4 @@
+<!-- markdownlint-disable no-emphasis-as-heading -->
 Nautilus is a design system, built for flexibility, efficiency, and beauty.
 
 Nautilus is a perpetual work-in-progress that is currently very much in-progress. If you'd like to use it for something: feel free! If you'd like to fork it and make something new, you can do that too. Nautilus is open-source, open-design, and open to contributions. Feel free to file an issue or open a PR [on GitHub](https://github.com/octopusthink/nautilus) if you notice anything amiss, or if you'd just like to say hi! 👋
@@ -28,7 +29,7 @@ _Example: primary colour, border-radius_
 
 Start here if you're looking to take your app/site and make it your own.
 
-## So how does it all fit together?
+## So how does it all fit together
 
 So the colour ramps would belong in Foundation, whereas accent colours belong to Form. In css structure, this becomes the overriddable stuff, which theoretically makes for a more robustly flexible system.
 

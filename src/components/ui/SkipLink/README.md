@@ -16,12 +16,12 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 Your app/site should have a single `<SkipLink>`, located early in your content so it is easily activated by a keyboard user when they start to tab through content.
 
-### Use this component for...
+### Use this component for…
 
 - Providing an easy way for users to skip to the main content of your page.
 - Any page that includes page navigation. Without a skip link, keyboard users will find it incredibly difficult to navigate your site.
 
-### Don't use this component for...
+### Don't use this component for…
 
 - Providing multiple skip links to different sections of your page. Divide your content up with `<Heading>`s or consider separating your content into separate pages instead.
 

@@ -3,16 +3,16 @@ A TextField is an editable input that enables users to enter and interact with f
 ```jsx
 <TextField label="Feed me sentences!" />
 
-<TextField defaultValue="Lorem ipsum..." label="I have a default value." />
+<TextField defaultValue="Lorem ipsum…" label="I have a default value." />
 ```
 
 ## Usage
 
-### Use a `TextField` for...
+### Use a `TextField` for…
 
 Use a `TextField` when you want users to be able to enter or edit free-form text.
 
-### Don't use a `TextField` for...
+### Don't use a `TextField` for…
 
 - Selecting from a predefined list of options. Use a `DropDownSelect` instead.
 - Choosing a date. Use a `DatePicker` instead.
@@ -79,8 +79,8 @@ Since icons are only accessible to sighted users, it's best to provide a title s
 
 Generally speaking:
 - Provide a title for an action icon that describes the action to be taken.
-- Don't provide a title for a signifier icon unless it provides useful context that doesn't exist elsewhere. 
-- *Don't* provide a title if it just repeats the label text. 
+- Don't provide a title for a signifier icon unless it provides useful context that doesn't exist elsewhere.
+- *Don't* provide a title if it just repeats the label text.
 
 ## Interaction
 

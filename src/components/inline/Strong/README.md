@@ -12,13 +12,13 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 Use a `<Strong>` component where you would usually use a `<strong>` tag in HTML.
 
-### Use this component for...
+### Use this component for…
 
 - Highlighting important information.
 - Helping users who are skimming to pick out key phrases and concepts.
 - A piece of text requiring "global" emphasis (emphasis when scanning the page as a whole).
 
-### Don't use this component for...
+### Don't use this component for…
 
 - A heading or subheading. Use a `<Heading>` or `<Subtitle>` instead.
 - Highlighting a navigational link. Use a `<Link>` instead.

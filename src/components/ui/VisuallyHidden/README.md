@@ -13,12 +13,12 @@ import { Button, VisuallyHidden } from '@octopusthink/nautilus';
 
 Use `VisuallyHidden` to hide an element from sighted users. This element (typically text) should be used to provide extra context to non-visual consumers (eg, screen readers, search engines, bots) of your content.
 
-### Use this component for...
+### Use this component for…
 
 - Title text to contextualise an otherwise repeated link (eg. "Read more" links in an archive listing).
 - Descriptions of content or interface elements that are not used for sighted users. A common use-case for this is text on an icon button like "Settings".
 
-### Don't use this component for...
+### Don't use this component for…
 
 - Content that should not be read out to users of assistive technology.
 - Form element labels. Use the `label` prop on the elements, and refrain from hiding labels.
@@ -49,7 +49,7 @@ import { Paragraph, VisuallyHidden } from '@octopusthink/nautilus';
 
 ## Accessibility
 
-### Hide content sparingly.
+### Hide content sparingly
 
 Avoid hiding text that is useful for sighted users to "visually simplfy" a UI. Oftentimes label text or extra context is helpful to all users. Visually hidden elements should be used sparingly.
 
@@ -57,7 +57,7 @@ Don't use `VisuallyHidden` as an afterthought or a band-aid for a fundamentally 
 
 Don't overload users of assistive technologies with too much visually hidden text, especially in links that will be read out by screenreaders.
 
-### Make sure links have unique labels.
+### Make sure links have unique labels
 
 Screenreaders give users the option to read out only the links in a page, so it's important that each link on a page has a unique label so that users can find what they're looking for quickly.
 
