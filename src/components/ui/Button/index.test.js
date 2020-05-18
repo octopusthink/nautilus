@@ -32,9 +32,9 @@ describe('Button', () => {
     expect(container.firstChild.getAttribute('disabled')).toEqual(null);
   });
 
-  it('should not render a disabled attribute when `disabled` prop is set on a navigation button', () => {
+  it('should not render a disabled attribute when `disabled` prop is set on a link button', () => {
     const { container } = render(
-      <Button disabled navigation href="/some-route/">
+      <Button disabled href="/some-route/">
         Hello
       </Button>,
     );
@@ -48,14 +48,35 @@ describe('Button', () => {
     expect(container.firstChild.getAttribute('disabled')).toEqual('');
   });
 
-  it('should render an <a> tag when `navigation` is set', () => {
+  it('should render a disabled <button> when `disabled` prop is set, even if `navigation` is true', () => {
     const { container } = render(
-      <Button navigation to="/some-page/">
-        Follow link
+      <Button disabled navigation>
+        Hello
       </Button>,
     );
 
+    // The `navigation` prop is just for styling, so this Button should still
+    // behave like a `<button>` tag.
+    expect(container.firstChild.getAttribute('disabled')).toEqual('');
+  });
+
+  it('should render an <a> tag when `href` prop is set', () => {
+    const { container } = render(<Button href="/some-page/">Follow link</Button>);
+
     expect(container.firstChild.tagName).toEqual('A');
+  });
+
+  it('should render an <a> tag when `to` prop is set', () => {
+    const { container } = render(<Button to="/some-page/">Follow link</Button>);
+
+    expect(container.firstChild.tagName).toEqual('A');
+  });
+
+  it('should not render an <a> tag when `navigation` is set, if no `href` or `to` prop exists', () => {
+    const { container } = render(<Button navigation>Follow link</Button>);
+
+    expect(container.firstChild.tagName).not.toEqual('A');
+    expect(container.firstChild.tagName).toEqual('BUTTON');
   });
 
   it('should only allow one of minimal/primary props', () => {
