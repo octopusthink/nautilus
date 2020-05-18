@@ -17525,8 +17525,8 @@ function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringif
 var VisuallyHiddenStyles =
 /*#__PURE__*/
  true ? {
-  name: "m3dqsa",
-  styles: "border:0;clip-path:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap;width:1px;"
+  name: "2gdgt6",
+  styles: "border:0;clip-path:rect(0 0 0 0);clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap;width:1px;"
 } : undefined;
 var VisuallyHiddenRevealStyles =
 /*#__PURE__*/
@@ -19013,7 +19013,6 @@ var SkipLink = function SkipLink(props) {
 
   var theme = Object(_themes__WEBPACK_IMPORTED_MODULE_8__["useTheme"])();
   return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(_Link__WEBPACK_IMPORTED_MODULE_5__["default"], _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
-    as: "a",
     css: unstyled ? undefined :
     /*#__PURE__*/
 
