@@ -13,7 +13,7 @@ Nautilus is an open-source design system and component library to help designers
 
 Nautilus is available both as a Sketch library and an `npm` package for use in React projects.
 
-https://nautilus.octopusthink.com/
+<https://nautilus.octopusthink.com/>
 
 ## Project status
 
@@ -29,7 +29,6 @@ Point releases are distributed to `npm` on the 5th of every month. You can see o
 - Figma library (planned 💡)
 - Brand tokens and theme-ability (planned 💡)
 - Automated theme generation (planned 💡)
-
 
 ## Usage
 
@@ -54,19 +53,19 @@ Want to contribute to Nautilus, or test it locally? Here's how!
 
 Clone the repo:
 
-```
+```bash
 git clone https://github.com/octopusthink/nautilus.git
 ```
 
 Navigate into the directory:
 
-```
+```bash
 cd nautilus
 ```
 
 Install the dependencies:
 
-```
+```bash
 npm install
 ```
 
@@ -74,7 +73,7 @@ And use `npm` to compile files, watch for changes, and build the styleguide:
 
 `npm start`
 
-This will start a server for the styleguide at http://localhost:6060/ and watch for any changes.
+This will start a server for the styleguide at <http://localhost:6060/> and watch for any changes.
 
 You'll need to restart `npm` if you make changes to `styleguide.config.js`, but otherwise you should be good to go!
 
@@ -82,7 +81,7 @@ You'll need to restart `npm` if you make changes to `styleguide.config.js`, but 
 
 We use `jest` to run our unit tests. If you've made changes, `jest` will only run tests on files related to your changes:
 
-```
+```bash
 npm test
 ```
 
@@ -90,15 +89,15 @@ npm test
 
 We lint our code using `eslint` and `prettier`. You can check your changes for linting violations with:
 
-```
+```bash
 npm run lint
 ```
 
 ## Built With
 
-* [React](https://reactjs.org/) - Making JavaScript simultaneously modern and also more like HTML since 1998.
-* [React Styleguidist](https://react-styleguidist.js.org) - Is your styleguide running? You'd better go catch it!
-* [Feather](https://feathericons.com/) - The prettiest open-source icons in town.
+- [React](https://reactjs.org/) - Making JavaScript simultaneously modern and also more like HTML since 1998.
+- [React Styleguidist](https://react-styleguidist.js.org) - Is your styleguide running? You'd better go catch it!
+- [Feather](https://feathericons.com/) - The prettiest open-source icons in town.
 
 ## Contributing
 
@@ -112,8 +111,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **sarah semark** - *CDO (Chief Design Octopus)* - [@sarahmonster](https://github.com/sarahmonster)
-* **Matthew Riley MacPherson** - *CTO (Chief Technical Octopus)* - [@tofumatt](https://github.com/tofumatt)
+- **sarah semark** - *CDO (Chief Design Octopus)* - [@sarahmonster](https://github.com/sarahmonster)
+- **Matthew Riley MacPherson** - *CTO (Chief Technical Octopus)* - [@tofumatt](https://github.com/tofumatt)
 
 See also the list of [contributors](https://github.com/octopusthink/nautilus/contributors) who participated in this project.
 
@@ -124,9 +123,9 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 ## Acknowledgments
 
 Nautilus has been heavily inspired by, and borrows from:
-* [Ether](https://ether.thescenery.co/)
-* [GOV.UK Design System](https://design-system.service.gov.uk/)
-* [Carbon](https://www.carbondesignsystem.com)
-* [Polaris](https://polaris.shopify.com)
-* [Material Design](https://material.io/design/)
-* [Inclusive Components](https://inclusive-components.design/)
+- [Ether](https://ether.thescenery.co/)
+- [GOV.UK Design System](https://design-system.service.gov.uk/)
+- [Carbon](https://www.carbondesignsystem.com)
+- [Polaris](https://polaris.shopify.com)
+- [Material Design](https://material.io/design/)
+- [Inclusive Components](https://inclusive-components.design/)

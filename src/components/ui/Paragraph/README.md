@@ -27,7 +27,6 @@ Don't use a `<Paragraph>` for:
 - Text colour should contrast with the background. (See accessibility section below.)
 - Use the large and small variants sparingly when hierarchy is required. Most `<Paragraph>`s should use the default size.
 
-
 ## Variations
 
 Use a **large paragraph** when you want to emphasise an important passage of text.
@@ -87,7 +86,6 @@ For both inverse and default type colours, you can also use a dark and light var
   Inverse dark
 </Paragraph>
 ```
-
 
 ## Voice & Tone
 

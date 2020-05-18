@@ -6,13 +6,13 @@ Kind of a tall order, no? Let's see how that breaks down.
 
 ## Principles
 
-### Typographic choices aren't arbitrary.
+### Typographic choices aren't arbitrary
 
 Typography isn't just decoration. Typographic styles are used to indicate the semantic intent of the copy. Select Type Tokens from Nautilus' type system that match the purpose of the text you're styling.
 
 This means that, if you're styling a paragraph of body text, it should use the Body Token, and if you're styling a label or interactive element, it should use the Interface Token.
 
-### Typography should legible and accessible.
+### Typography should legible and accessible
 
 - Always aim for a colour contrast ratio of at least 7:1 (WCAG AAA).
 - Ensure line lengths are between 55-80 characters per line for body copy, and 20-40 for headlines.
@@ -23,19 +23,19 @@ This means that, if you're styling a paragraph of body text, it should use the B
 - Line height should be at least a space-and-a-half within paragraphs. (1.5) Spacing between paragraphs should be at least 1.5 times the line height.
 - Font size should be a minimum of 16px. Use relative units to ensure that text can be resized by users.
 
-### Use hierarchy to improve understanding of content.
+### Use hierarchy to improve understanding of content
 
 Remember, nobody reads on the web. When text is very dense, it becomes hard to read and find what you're looking for.
 
 Use a variety of elements for displaying text: headings, lists, and inline emphasis will help guide readers through text.
 
-### Typography should function independent of colour.
+### Typography should function independent of colour
 
 Type colour should be carefully considered, with legibility and accessibility as paramount concerns.
 
 As a rule, most type should be set in a neutral colour that contrasts well with the background. Use colour only for primary actions or to highlight interactivity.
 
-## What does Foundation provide?
+## What does Foundation provide
 
 - A palette of named font families to apply to your theme.
 - A harmonic scale of type sizes.
@@ -51,7 +51,7 @@ Nautilus' type system begins with a spectrum of typographic sizes with a mathema
 
 The **Scale Modifier** ratio determines the incremental change in hierarchy as the system progresses from size to size. This ratio can be anything (rule of thirds, golden ratio, etc)—the closer to 1 the less change will occur between base sizes.
 
-![](diagrams/type-scale.png)
+![Diagram of the Nautilus type scale in action](diagrams/type-scale.png)
 
 Output text sizes are rounded to whole pixel values and sized in `rem` units so that type can scale when zoomed. `10rem` is equivalent to `10px` so that values can be easily used understood and ported to other applications.
 
