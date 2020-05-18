@@ -11,6 +11,8 @@ exports[`SkipLink should contain styles, including focus styles that reveal the 
   border: 0;
   -webkit-clip-path: rect(0 0 0 0);
   clip-path: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
   margin: -1px;
   overflow: hidden;

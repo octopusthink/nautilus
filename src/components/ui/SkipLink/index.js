@@ -14,7 +14,6 @@ const SkipLink = (props) => {
 
   return (
     <Link
-      as="a"
       css={
         unstyled
           ? undefined
