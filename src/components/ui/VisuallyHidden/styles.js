@@ -3,6 +3,7 @@ import { css } from '@emotion/core';
 export const VisuallyHiddenStyles = css`
   border: 0;
   clip-path: rect(0 0 0 0);
+  clip-path: inset(50%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
