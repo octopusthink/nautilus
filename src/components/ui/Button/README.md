@@ -148,19 +148,21 @@ This is an important distinction for accessibility needs, but as single page web
 import { Flex } from 'nautilus-styleguide';
 
 <Flex>
-  <Button navigation href="https://twitter.com/KittenBreak">
+  <Button href="https://twitter.com/KittenBreak">
     Take a break
   </Button>
 
-  <Button navigation primary href="https://twitter.com/KittenBreak">
-    Take a break
+  <Button primary href="https://octopusthink.com/?pk_campaign=nautilus">
+    A cool company
   </Button>
 
-  <Button navigation minimal href="https://twitter.com/KittenBreak">
-    Take a break
+  <Button minimal href="https://getmicdrop.com/?pk_campaign=nautilus">
+    Mute your mic
   </Button>
 </Flex>
 ```
+
+#### Navigation links
 
 By default, navigation links point forward (right in LTR languages) to indicate a forward progression. Any links that navigate back in time or space (eg: a back link, previous pagination) should set the `navigationDirection` prop to `backward` to correctly communicate this direction.
 
@@ -170,7 +172,7 @@ If needed, you can pass a leading or trailing icon to the navigation button to o
 import { Flex } from 'nautilus-styleguide';
 
 <Flex>
-  <Button navigation navigationDirection="forward" href="https://twitter.com/KittenBreak">
+  <Button navigation href="https://twitter.com/KittenBreak">
     Go forward
   </Button>
 

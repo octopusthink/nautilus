@@ -14,7 +14,7 @@ const Link = (props) => {
   const theme = useTheme();
 
   const { children, as, external, href, unstyled, ...otherProps } = props;
-  const LinkComponent = as || (external && 'a') || defaultLinkComponent || LinkTag;
+  const LinkComponent = as || (href && 'a') || (external && 'a') || defaultLinkComponent || LinkTag;
 
   return (
     <LinkComponent

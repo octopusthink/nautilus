@@ -33,7 +33,6 @@ const Button = (props) => {
     href,
     iconOnly,
     leadingIcon,
-    linkProps,
     minimal,
     navigation,
     navigationDirection,
@@ -41,6 +40,7 @@ const Button = (props) => {
     primary,
     stackedIcon,
     success,
+    to,
     trailingIcon,
     unstyled,
     warning,
@@ -51,7 +51,6 @@ const Button = (props) => {
   const theme = useTheme();
 
   let Component = 'button';
-  let linkPropsToUse;
   let trailingIconName;
   let leadingIconName;
 
@@ -91,16 +90,16 @@ const Button = (props) => {
     trailingIconName = null;
   }
 
-  // Set props for the navigation button.
-  if (navigation === true) {
+  // Set props for buttons that should act like links.
+  if (href || to) {
     Component = Link;
     // Set properties that only a Link component should use.
     otherProps.href = href;
+    otherProps.to = to;
     // Don't include any link styles.
     otherProps.unstyled = true;
     // Unset certain button-specific props.
     otherProps.type = undefined;
-    linkPropsToUse = { ...linkProps };
   }
 
   // Set the styles for this button.
@@ -207,7 +206,6 @@ const Button = (props) => {
           css`
             padding-right: ${toUnits(theme.spacing.margin.small)};
           `}
-        
 
         /* Minimal styles */
         ${minimal &&
@@ -231,7 +229,7 @@ const Button = (props) => {
             border-radius: 100%;
             padding: ${toUnits(theme.spacing.padding.medium)};
           `}
-        
+
         /* Set external margins */
         ${!noMargin &&
           css`
@@ -239,7 +237,7 @@ const Button = (props) => {
               ${toUnits(theme.spacing.margin.xSmall)};
           `}
 
-        .Nautilus-navigationIcon {
+        .Nautilus-navigationIcon--animated {
           transition: all 200ms ease-in-out;
         }
 
@@ -257,7 +255,7 @@ const Button = (props) => {
 
           ${navigation &&
             css`
-              .Nautilus-navigationIcon {
+              .Nautilus-navigationIcon--animated {
                 ${leadingIconName &&
                   css`
                     /*
@@ -276,14 +274,15 @@ const Button = (props) => {
         }
       `
       }
-      disabled={!navigation ? disabled : undefined}
-      {...linkPropsToUse}
+      disabled={!(href || to) ? disabled : undefined}
       {...otherProps}
     >
       {leadingIconName && (
         <Icon
           className={classnames({
-            'Nautilus-navigationIcon': navigation,
+            'Nautilus-navigationIcon': navigation && navigationDirection === 'backward',
+            'Nautilus-navigationIcon--animated':
+              navigation && navigationDirection === 'backward' && !leadingIcon,
           })}
           css={css`
             margin-right: ${toUnits(theme.spacing.padding.xSmall)};
@@ -313,7 +312,9 @@ const Button = (props) => {
       {trailingIconName && (
         <Icon
           className={classnames({
-            'Nautilus-navigationIcon': navigation,
+            'Nautilus-navigationIcon': navigation && navigationDirection === 'forward',
+            'Nautilus-navigationIcon--animated':
+              navigation && navigationDirection === 'forward' && !trailingIcon,
           })}
           css={css`
             margin-left: ${toUnits(theme.spacing.padding.xSmall)};
@@ -335,7 +336,6 @@ Button.defaultProps = {
   navigationDirection: 'forward',
   href: undefined,
   leadingIcon: undefined,
-  linkProps: undefined,
   minimal: false,
   navigation: false,
   noMargin: false,
@@ -343,6 +343,7 @@ Button.defaultProps = {
   primary: false,
   stackedIcon: undefined,
   success: false,
+  to: undefined,
   trailingIcon: undefined,
   type: 'button',
   unstyled: false,
@@ -366,23 +367,22 @@ Button.propTypes = {
   warning: PropTypes.bool,
   /** Apply semantic styling to indicate danger or negative intent. */
   danger: PropTypes.bool,
-  /** Used to link to a route that will be handled by Nautilus' `Link` component. */
+  /** Used to link to a URL that will be handled by Nautilus' `Link` component. */
   href: PropTypes.string,
   /** Show only an icon—no text. Passes a string to Icon's name prop. */
   iconOnly: PropTypes.string,
-  /** Set the direction of navigation: forward (default) or backward. */
-  navigationDirection: PropTypes.string,
   /** Show an icon inside the button, before the text. Passes a string to Icon's name prop. */
   leadingIcon: PropTypes.string,
-  /** Props to pass to the underlying Nautilus `Link` component when `useNavigation` is `true`. */
-  // eslint-disable-next-line react/forbid-prop-types
-  linkProps: PropTypes.object,
-  /** Outputs a Nautilus `<Link>` tag that looks (and largely behaves) like a `<Button>`, but can used as navigation. Setting this to `true` enables `Link` properties. */
+  /** Style this button with a navigation arrow pointing forward (default) or backward (see `navigationDirection`). */
   navigation: PropTypes.bool,
+  /** Set the direction of navigation: forward (default) or backward. */
+  navigationDirection: PropTypes.oneOf(['backward', 'forward']),
   /** Remove any outer margins from component. */
   noMargin: PropTypes.bool,
   /** Show an icon inside the button, on top of text. Passes a string to Icon's name prop. */
   stackedIcon: PropTypes.string,
+  /** Used to link to a route that will be handled by Nautilus' `Link` component. */
+  to: PropTypes.string,
   /** Show an icon inside the button, after the text. Passes a string to Icon's name prop. */
   trailingIcon: PropTypes.string,
   /** HTML `type` attribute for the button. Defaults to `"button"`. */
