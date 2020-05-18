@@ -1250,7 +1250,7 @@ if (false) { var throwOnDirectAccess, ReactIs; } else {
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
   } else {}
 })(this);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(82)(module), __webpack_require__(25)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(82)(module), __webpack_require__(24)))
 
 /***/ }),
 /* 2 */
@@ -2936,7 +2936,7 @@ var ClassNames = core_browser_esm_withEmotionCache(function (props, context) {
 "use strict";
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/defineProperty.js
-var defineProperty = __webpack_require__(23);
+var defineProperty = __webpack_require__(30);
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
 // CONCATENATED MODULE: ./src/styles/constants.js
@@ -3745,7 +3745,7 @@ if (DESCRIPTORS && !(NAME in FunctionPrototype)) {
 "use strict";
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/defineProperty.js
-var defineProperty = __webpack_require__(23);
+var defineProperty = __webpack_require__(30);
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
@@ -5112,7 +5112,7 @@ var Heading = __webpack_require__(19);
 var PageTitle = __webpack_require__(51);
 
 // EXTERNAL MODULE: ./src/components/ui/Paragraph/index.js
-var Paragraph = __webpack_require__(30);
+var Paragraph = __webpack_require__(29);
 
 // EXTERNAL MODULE: ./src/components/ui/List/index.js + 1 modules
 var List = __webpack_require__(38);
@@ -5314,7 +5314,7 @@ Markdown_Markdown.propTypes = {
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(26);
+var $ = __webpack_require__(25);
 
 var assign = __webpack_require__(265); // `Object.assign` method
 // https://tc39.github.io/ecma262/#sec-object.assign
@@ -5390,7 +5390,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "propTypes", function() { return propTypes; });
 /* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
 /* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(23);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(30);
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(16);
 /* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_2__);
@@ -5878,7 +5878,7 @@ module.exports = invariant;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return unquote; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getType; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return showSpaces; });
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(23);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(30);
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
 
 
@@ -5941,37 +5941,16 @@ function showSpaces(string) {
 module.exports = // eslint-disable-next-line no-undef
 check(typeof globalThis == 'object' && globalThis) || check(typeof window == 'object' && window) || check(typeof self == 'object' && self) || check(typeof global == 'object' && global) || // eslint-disable-next-line no-new-func
 Function('return this')();
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(25)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(24)))
 
 /***/ }),
 /* 23 */
-/***/ (function(module, exports) {
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-module.exports = _defineProperty;
-
-/***/ }),
-/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var $ = __webpack_require__(26);
+var $ = __webpack_require__(25);
 
 var $map = __webpack_require__(110).map;
 
@@ -5993,7 +5972,7 @@ $({
 });
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports) {
 
 var g; // This works in non-strict mode
@@ -6016,7 +5995,7 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(22);
@@ -6088,7 +6067,7 @@ module.exports = function (options, source) {
 };
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -6096,10 +6075,10 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(27);
+var isObject = __webpack_require__(26);
 
 module.exports = function (it) {
   if (!isObject(it)) {
@@ -6110,7 +6089,7 @@ module.exports = function (it) {
 };
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(22);
@@ -6129,7 +6108,7 @@ module.exports = function (name) {
 };
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6252,6 +6231,27 @@ var defaultProps = Paragraph.defaultProps,
     propTypes = Paragraph.propTypes;
 
 /* harmony default export */ __webpack_exports__["default"] = (Paragraph);
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports) {
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
 
 /***/ }),
 /* 31 */
@@ -7332,7 +7332,7 @@ var DESCRIPTORS = __webpack_require__(36);
 
 var IE8_DOM_DEFINE = __webpack_require__(179);
 
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(27);
 
 var toPrimitive = __webpack_require__(92);
 
@@ -7505,7 +7505,7 @@ var shortid_default = /*#__PURE__*/__webpack_require__.n(shortid);
 var Heading = __webpack_require__(19);
 
 // EXTERNAL MODULE: ./src/components/ui/Paragraph/index.js
-var Paragraph = __webpack_require__(30);
+var Paragraph = __webpack_require__(29);
 
 // EXTERNAL MODULE: ./src/styles/index.js + 7 modules
 var styles = __webpack_require__(4);
@@ -7850,7 +7850,7 @@ var List = __webpack_require__(38);
 var PageTitle = __webpack_require__(51);
 
 // EXTERNAL MODULE: ./src/components/ui/Paragraph/index.js
-var Paragraph = __webpack_require__(30);
+var Paragraph = __webpack_require__(29);
 
 // EXTERNAL MODULE: ./src/components/ui/SkipLink/index.js
 var SkipLink = __webpack_require__(119);
@@ -8127,13 +8127,13 @@ module.exports = warning;
 "use strict";
 
 
-var $ = __webpack_require__(26);
+var $ = __webpack_require__(25);
 
 var fails = __webpack_require__(15);
 
 var isArray = __webpack_require__(150);
 
-var isObject = __webpack_require__(27);
+var isObject = __webpack_require__(26);
 
 var toObject = __webpack_require__(67);
 
@@ -8145,7 +8145,7 @@ var arraySpeciesCreate = __webpack_require__(194);
 
 var arrayMethodHasSpeciesSupport = __webpack_require__(151);
 
-var wellKnownSymbol = __webpack_require__(29);
+var wellKnownSymbol = __webpack_require__(28);
 
 var V8_VERSION = __webpack_require__(195);
 
@@ -8283,7 +8283,7 @@ module.exports = isArrayLike;
 "use strict";
 
 
-var $ = __webpack_require__(26);
+var $ = __webpack_require__(25);
 
 var $filter = __webpack_require__(110).filter;
 
@@ -8423,7 +8423,7 @@ var Link = function Link(props) {
       unstyled = props.unstyled,
       otherProps = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1___default()(props, ["children", "as", "external", "href", "unstyled"]);
 
-  var LinkComponent = as || external && 'a' || defaultLinkComponent || LinkTag;
+  var LinkComponent = as || href && 'a' || external && 'a' || defaultLinkComponent || LinkTag;
   return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(LinkComponent, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
     css: unstyled ? undefined :
     /*#__PURE__*/
@@ -8531,7 +8531,7 @@ __webpack_require__.r(__webpack_exports__);
 var core_browser_esm = __webpack_require__(3);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/defineProperty.js
-var defineProperty = __webpack_require__(23);
+var defineProperty = __webpack_require__(30);
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
@@ -8832,7 +8832,7 @@ module.exports = baseGetTag;
 "use strict";
 
 
-var $ = __webpack_require__(26);
+var $ = __webpack_require__(25);
 
 var global = __webpack_require__(22);
 
@@ -8850,9 +8850,9 @@ var has = __webpack_require__(40);
 
 var isArray = __webpack_require__(150);
 
-var isObject = __webpack_require__(27);
+var isObject = __webpack_require__(26);
 
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(27);
 
 var toObject = __webpack_require__(67);
 
@@ -8890,7 +8890,7 @@ var hiddenKeys = __webpack_require__(78);
 
 var uid = __webpack_require__(93);
 
-var wellKnownSymbol = __webpack_require__(29);
+var wellKnownSymbol = __webpack_require__(28);
 
 var wrappedWellKnownSymbolModule = __webpack_require__(211);
 
@@ -9229,7 +9229,7 @@ hiddenKeys[HIDDEN] = true;
 // https://tc39.github.io/ecma262/#sec-symbol.prototype.description
 
 
-var $ = __webpack_require__(26);
+var $ = __webpack_require__(25);
 
 var DESCRIPTORS = __webpack_require__(36);
 
@@ -9237,7 +9237,7 @@ var global = __webpack_require__(22);
 
 var has = __webpack_require__(40);
 
-var isObject = __webpack_require__(27);
+var isObject = __webpack_require__(26);
 
 var defineProperty = __webpack_require__(33).f;
 
@@ -16172,7 +16172,7 @@ exports['default'] = StyleRule;
 "use strict";
 
 
-var $ = __webpack_require__(26);
+var $ = __webpack_require__(25);
 
 var createHTML = __webpack_require__(152);
 
@@ -16199,7 +16199,7 @@ $({
 
 var fixRegExpWellKnownSymbolLogic = __webpack_require__(99);
 
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(27);
 
 var toObject = __webpack_require__(67);
 
@@ -16615,7 +16615,7 @@ var es_array_filter = __webpack_require__(50);
 var es_array_join = __webpack_require__(84);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
-var es_array_map = __webpack_require__(24);
+var es_array_map = __webpack_require__(23);
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(2);
@@ -17229,7 +17229,7 @@ module.exports = function (module) {
 /* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(26);
+var $ = __webpack_require__(25);
 
 var toObject = __webpack_require__(67);
 
@@ -17259,7 +17259,7 @@ $({
 "use strict";
 
 
-var $ = __webpack_require__(26);
+var $ = __webpack_require__(25);
 
 var IndexedObject = __webpack_require__(91);
 
@@ -17570,7 +17570,7 @@ module.exports = fails(function () {
 /* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(27); // `ToPrimitive` abstract operation
+var isObject = __webpack_require__(26); // `ToPrimitive` abstract operation
 // https://tc39.github.io/ecma262/#sec-toprimitive
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
@@ -17755,7 +17755,7 @@ var redefine = __webpack_require__(65);
 
 var fails = __webpack_require__(15);
 
-var wellKnownSymbol = __webpack_require__(29);
+var wellKnownSymbol = __webpack_require__(28);
 
 var regexpExec = __webpack_require__(148);
 
@@ -18467,7 +18467,7 @@ module.exports = toKey;
 
 var redefine = __webpack_require__(65);
 
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(27);
 
 var fails = __webpack_require__(15);
 
@@ -18623,31 +18623,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "propTypes", function() { return propTypes; });
 /* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
 /* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(23);
-/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(8);
-/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(39);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(20);
-/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(invariant__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(0);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _Link__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(52);
-/* harmony import */ var _Icon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(18);
-/* harmony import */ var _VisuallyHidden__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(53);
-/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(4);
-/* harmony import */ var _themes__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(9);
+/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8);
+/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(39);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(20);
+/* harmony import */ var invariant__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(invariant__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(0);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(2);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _Link__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(52);
+/* harmony import */ var _Icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(18);
+/* harmony import */ var _VisuallyHidden__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(53);
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(4);
+/* harmony import */ var _themes__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(9);
 
 
-
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_1___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
@@ -18668,10 +18661,10 @@ var qualityControl = function qualityControl(props) {
       success = props.success,
       warning = props.warning,
       danger = props.danger;
-  invariant__WEBPACK_IMPORTED_MODULE_5___default()([minimal, primary].filter(function (prop) {
+  invariant__WEBPACK_IMPORTED_MODULE_4___default()([minimal, primary].filter(function (prop) {
     return prop;
   }).length <= 1, '<Button> should not be both `minimal` and `primary`, so which is it?');
-  invariant__WEBPACK_IMPORTED_MODULE_5___default()([danger, success, warning].filter(function (prop) {
+  invariant__WEBPACK_IMPORTED_MODULE_4___default()([danger, success, warning].filter(function (prop) {
     return prop;
   }).length <= 1, '<Button> should only use one of `danger`, `warning`, or `success`. Pick a lane!');
 };
@@ -18689,7 +18682,6 @@ var Button = function Button(props) {
       href = props.href,
       iconOnly = props.iconOnly,
       leadingIcon = props.leadingIcon,
-      linkProps = props.linkProps,
       minimal = props.minimal,
       navigation = props.navigation,
       navigationDirection = props.navigationDirection,
@@ -18697,15 +18689,15 @@ var Button = function Button(props) {
       primary = props.primary,
       stackedIcon = props.stackedIcon,
       success = props.success,
+      to = props.to,
       trailingIcon = props.trailingIcon,
       unstyled = props.unstyled,
       warning = props.warning,
-      otherProps = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_2___default()(props, ["__iconId", "children", "danger", "disabled", "href", "iconOnly", "leadingIcon", "linkProps", "minimal", "navigation", "navigationDirection", "noMargin", "primary", "stackedIcon", "success", "trailingIcon", "unstyled", "warning"]);
+      otherProps = _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_1___default()(props, ["__iconId", "children", "danger", "disabled", "href", "iconOnly", "leadingIcon", "minimal", "navigation", "navigationDirection", "noMargin", "primary", "stackedIcon", "success", "to", "trailingIcon", "unstyled", "warning"]);
 
   qualityControl(props);
-  var theme = Object(_themes__WEBPACK_IMPORTED_MODULE_12__["useTheme"])();
+  var theme = Object(_themes__WEBPACK_IMPORTED_MODULE_11__["useTheme"])();
   var Component = 'button';
-  var linkPropsToUse;
   var trailingIconName;
   var leadingIconName; // Set directional icons for navigation buttons.
 
@@ -18746,18 +18738,18 @@ var Button = function Button(props) {
 
   if (trailingIcon === null) {
     trailingIconName = null;
-  } // Set props for the navigation button.
+  } // Set props for buttons that should act like links.
 
 
-  if (navigation === true) {
-    Component = _Link__WEBPACK_IMPORTED_MODULE_8__["default"]; // Set properties that only a Link component should use.
+  if (href || to) {
+    Component = _Link__WEBPACK_IMPORTED_MODULE_7__["default"]; // Set properties that only a Link component should use.
 
-    otherProps.href = href; // Don't include any link styles.
+    otherProps.href = href;
+    otherProps.to = to; // Don't include any link styles.
 
     otherProps.unstyled = true; // Unset certain button-specific props.
 
     otherProps.type = undefined;
-    linkPropsToUse = _objectSpread({}, linkProps);
   } // Set the styles for this button.
 
 
@@ -18793,100 +18785,102 @@ var Button = function Button(props) {
   var buttonText = children;
 
   if (iconOnly) {
-    buttonText = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])(_VisuallyHidden__WEBPACK_IMPORTED_MODULE_10__["default"], null, children);
+    buttonText = Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(_VisuallyHidden__WEBPACK_IMPORTED_MODULE_9__["default"], null, children);
   }
 
   return (// See: https://github.com/yannickcr/eslint-plugin-react/issues/1555
     // eslint-disable-next-line react/button-has-type
-    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])(Component, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
+    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(Component, _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0___default()({
       css: unstyled ? undefined :
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])(_styles__WEBPACK_IMPORTED_MODULE_11__[/* interfaceUI */ "i"].medium(theme), " align-items:center;background:", theme.colors.buttons.neutral, ";border:2px solid ", currentButtonColor, ";border-radius:8px;color:", currentButtonColor, ";cursor:pointer;display:inline-flex;margin:0;outline:none;padding:", Object(_styles__WEBPACK_IMPORTED_MODULE_11__[/* toUnits */ "n"])(theme.spacing.padding.medium), " ", Object(_styles__WEBPACK_IMPORTED_MODULE_11__[/* toUnits */ "n"])(theme.spacing.padding.large), ";position:relative;text-align:center;text-decoration:none;top:0;transition:all 200ms ease-in-out;transition:top 0ms ease-out;width:max-content;&::-moz-focus-inner{border:0;}&:active{border-color:", currentButtonColorDark, ";color:", currentButtonColorDark, ";top:0.2rem;}/* @todo:should use interactive tokens and pass the colour! */ &:focus{", _styles__WEBPACK_IMPORTED_MODULE_11__[/* focusStyle */ "f"].outline(theme), ";box-shadow:0 0 0 0.4rem ", currentButtonColorLight, ";}", primary &&
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])(_styles__WEBPACK_IMPORTED_MODULE_10__[/* interfaceUI */ "i"].medium(theme), " align-items:center;background:", theme.colors.buttons.neutral, ";border:2px solid ", currentButtonColor, ";border-radius:8px;color:", currentButtonColor, ";cursor:pointer;display:inline-flex;margin:0;outline:none;padding:", Object(_styles__WEBPACK_IMPORTED_MODULE_10__[/* toUnits */ "n"])(theme.spacing.padding.medium), " ", Object(_styles__WEBPACK_IMPORTED_MODULE_10__[/* toUnits */ "n"])(theme.spacing.padding.large), ";position:relative;text-align:center;text-decoration:none;top:0;transition:all 200ms ease-in-out;transition:top 0ms ease-out;width:max-content;&::-moz-focus-inner{border:0;}&:active{border-color:", currentButtonColorDark, ";color:", currentButtonColorDark, ";top:0.2rem;}/* @todo:should use interactive tokens and pass the colour! */ &:focus{", _styles__WEBPACK_IMPORTED_MODULE_10__[/* focusStyle */ "f"].outline(theme), ";box-shadow:0 0 0 0.4rem ", currentButtonColorLight, ";}", primary &&
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("background:", currentButtonColor, ";color:", theme.colors.buttons.neutral, ";&:hover{background-color:", currentButtonColorDark, ";}&:active{background:", currentButtonColorDark, ";color:", theme.colors.buttons.neutral, ";}" + ( true ? "" : undefined)), " ", leadingIconName &&
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("background:", currentButtonColor, ";color:", theme.colors.buttons.neutral, ";&:hover{background-color:", currentButtonColorDark, ";}&:active{background:", currentButtonColorDark, ";color:", theme.colors.buttons.neutral, ";}" + ( true ? "" : undefined)), " ", leadingIconName &&
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("padding-left:", Object(_styles__WEBPACK_IMPORTED_MODULE_11__[/* toUnits */ "n"])(theme.spacing.margin.small), ";" + ( true ? "" : undefined)), " ", trailingIconName &&
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("padding-left:", Object(_styles__WEBPACK_IMPORTED_MODULE_10__[/* toUnits */ "n"])(theme.spacing.margin.small), ";" + ( true ? "" : undefined)), " ", trailingIconName &&
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("padding-right:", Object(_styles__WEBPACK_IMPORTED_MODULE_11__[/* toUnits */ "n"])(theme.spacing.margin.small), ";" + ( true ? "" : undefined)), " ", minimal &&
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("padding-right:", Object(_styles__WEBPACK_IMPORTED_MODULE_10__[/* toUnits */ "n"])(theme.spacing.margin.small), ";" + ( true ? "" : undefined)), " ", minimal &&
       /*#__PURE__*/
       _ref, " ", stackedIcon &&
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("flex-direction:column;padding:", Object(_styles__WEBPACK_IMPORTED_MODULE_11__[/* toUnits */ "n"])(theme.spacing.padding.medium), ";" + ( true ? "" : undefined)), " ", iconOnly &&
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("flex-direction:column;padding:", Object(_styles__WEBPACK_IMPORTED_MODULE_10__[/* toUnits */ "n"])(theme.spacing.padding.medium), ";" + ( true ? "" : undefined)), " ", iconOnly &&
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("border-radius:100%;padding:", Object(_styles__WEBPACK_IMPORTED_MODULE_11__[/* toUnits */ "n"])(theme.spacing.padding.medium), ";" + ( true ? "" : undefined)), " ", !noMargin &&
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("border-radius:100%;padding:", Object(_styles__WEBPACK_IMPORTED_MODULE_10__[/* toUnits */ "n"])(theme.spacing.padding.medium), ";" + ( true ? "" : undefined)), " ", !noMargin &&
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("margin:0 ", Object(_styles__WEBPACK_IMPORTED_MODULE_11__[/* toUnits */ "n"])(theme.spacing.margin.xxSmall), " ", Object(_styles__WEBPACK_IMPORTED_MODULE_11__[/* toUnits */ "n"])(theme.spacing.margin.xSmall), ";" + ( true ? "" : undefined)), " .Nautilus-navigationIcon{transition:all 200ms ease-in-out;}&:hover{", !minimal &&
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("margin:0 ", Object(_styles__WEBPACK_IMPORTED_MODULE_10__[/* toUnits */ "n"])(theme.spacing.margin.xxSmall), " ", Object(_styles__WEBPACK_IMPORTED_MODULE_10__[/* toUnits */ "n"])(theme.spacing.margin.xSmall), ";" + ( true ? "" : undefined)), " .Nautilus-navigationIcon--animated{transition:all 200ms ease-in-out;}&:hover{", !minimal &&
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("border-color:", currentButtonColorDark, ";" + ( true ? "" : undefined)), " ", !primary &&
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("border-color:", currentButtonColorDark, ";" + ( true ? "" : undefined)), " ", !primary &&
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("color:", currentButtonColorDark, ";" + ( true ? "" : undefined)), " ", navigation &&
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("color:", currentButtonColorDark, ";" + ( true ? "" : undefined)), " ", navigation &&
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])(".Nautilus-navigationIcon{", leadingIconName &&
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])(".Nautilus-navigationIcon--animated{", leadingIconName &&
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("transform:translateX(-", Object(_styles__WEBPACK_IMPORTED_MODULE_11__[/* toUnits */ "n"])(theme.spacing.padding.xSmall), ");" + ( true ? "" : undefined)), " ", trailingIconName &&
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("transform:translateX(-", Object(_styles__WEBPACK_IMPORTED_MODULE_10__[/* toUnits */ "n"])(theme.spacing.padding.xSmall), ");" + ( true ? "" : undefined)), " ", trailingIconName &&
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("transform:translateX(", Object(_styles__WEBPACK_IMPORTED_MODULE_11__[/* toUnits */ "n"])(theme.spacing.padding.xSmall), ");" + ( true ? "" : undefined)), " transition:all 200ms linear;}" + ( true ? "" : undefined)), "}" + ( true ? "" : undefined)),
-      disabled: !navigation ? disabled : undefined
-    }, linkPropsToUse, otherProps), leadingIconName && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])(_Icon__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()({
-        'Nautilus-navigationIcon': navigation
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("transform:translateX(", Object(_styles__WEBPACK_IMPORTED_MODULE_10__[/* toUnits */ "n"])(theme.spacing.padding.xSmall), ");" + ( true ? "" : undefined)), " transition:all 200ms linear;}" + ( true ? "" : undefined)), "}" + ( true ? "" : undefined)),
+      disabled: !(href || to) ? disabled : undefined
+    }, otherProps), leadingIconName && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(_Icon__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()({
+        'Nautilus-navigationIcon': navigation && navigationDirection === 'backward',
+        'Nautilus-navigationIcon--animated': navigation && navigationDirection === 'backward' && !leadingIcon
       }),
       css:
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("margin-right:", Object(_styles__WEBPACK_IMPORTED_MODULE_11__[/* toUnits */ "n"])(theme.spacing.padding.xSmall), ";" + ( true ? "" : undefined)),
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("margin-right:", Object(_styles__WEBPACK_IMPORTED_MODULE_10__[/* toUnits */ "n"])(theme.spacing.padding.xSmall), ";" + ( true ? "" : undefined)),
       id: __iconId,
       name: leadingIconName,
       noMargin: true
-    }), stackedIcon && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])(_Icon__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }), stackedIcon && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(_Icon__WEBPACK_IMPORTED_MODULE_8__["default"], {
       css:
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("margin-bottom:", Object(_styles__WEBPACK_IMPORTED_MODULE_11__[/* toUnits */ "n"])(theme.spacing.padding.xSmall), ";" + ( true ? "" : undefined)),
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("margin-bottom:", Object(_styles__WEBPACK_IMPORTED_MODULE_10__[/* toUnits */ "n"])(theme.spacing.padding.xSmall), ";" + ( true ? "" : undefined)),
       id: __iconId,
       name: stackedIcon,
       noMargin: true,
       medium: true
-    }), iconOnly && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])(_Icon__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    }), iconOnly && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(_Icon__WEBPACK_IMPORTED_MODULE_8__["default"], {
       id: __iconId,
       noMargin: true,
       name: iconOnly,
       medium: true
-    }), buttonText, trailingIconName && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])(_Icon__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()({
-        'Nautilus-navigationIcon': navigation
+    }), buttonText, trailingIconName && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* jsx */ "d"])(_Icon__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()({
+        'Nautilus-navigationIcon': navigation && navigationDirection === 'forward',
+        'Nautilus-navigationIcon--animated': navigation && navigationDirection === 'forward' && !trailingIcon
       }),
       css:
       /*#__PURE__*/
 
       /*#__PURE__*/
-      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("margin-left:", Object(_styles__WEBPACK_IMPORTED_MODULE_11__[/* toUnits */ "n"])(theme.spacing.padding.xSmall), ";" + ( true ? "" : undefined)),
+      Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__[/* css */ "c"])("margin-left:", Object(_styles__WEBPACK_IMPORTED_MODULE_10__[/* toUnits */ "n"])(theme.spacing.padding.xSmall), ";" + ( true ? "" : undefined)),
       id: __iconId,
       name: trailingIconName,
       noMargin: true
@@ -18902,7 +18896,6 @@ Button.defaultProps = {
   navigationDirection: 'forward',
   href: undefined,
   leadingIcon: undefined,
-  linkProps: undefined,
   minimal: false,
   navigation: false,
   noMargin: false,
@@ -18910,6 +18903,7 @@ Button.defaultProps = {
   primary: false,
   stackedIcon: undefined,
   success: false,
+  to: undefined,
   trailingIcon: undefined,
   type: 'button',
   unstyled: false,
@@ -18917,62 +18911,61 @@ Button.defaultProps = {
 };
 Button.propTypes = {
   /** @ignore ID prop for the Icon component; only used for testing. */
-  __iconId: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string,
+  __iconId: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string,
 
   /** @ignore */
-  children: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.node,
+  children: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.node,
 
   /** Disables the button; this applies a disabled style but **does not disable any event handlers for the button**. Your `onClick`, `onTap`, etc. handlers should check for the `disabled` prop to modify their behaviour accordingly. */
-  disabled: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool,
+  disabled: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.bool,
 
   /** Increase the visual prominence of this button in the UI. */
-  primary: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool,
+  primary: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.bool,
 
   /** Decrease the visual prominence of this button in the UI. */
-  minimal: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool,
+  minimal: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.bool,
 
   /** Apply semantic styling to indicate success or positive intent. */
-  success: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool,
+  success: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.bool,
 
   /** Apply semantic styling to indicate a warning. */
-  warning: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool,
+  warning: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.bool,
 
   /** Apply semantic styling to indicate danger or negative intent. */
-  danger: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool,
+  danger: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.bool,
 
-  /** Used to link to a route that will be handled by Nautilus' `Link` component. */
-  href: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string,
+  /** Used to link to a URL that will be handled by Nautilus' `Link` component. */
+  href: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string,
 
   /** Show only an icon—no text. Passes a string to Icon's name prop. */
-  iconOnly: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string,
-
-  /** Set the direction of navigation: forward (default) or backward. */
-  navigationDirection: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string,
+  iconOnly: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string,
 
   /** Show an icon inside the button, before the text. Passes a string to Icon's name prop. */
-  leadingIcon: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string,
+  leadingIcon: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string,
 
-  /** Props to pass to the underlying Nautilus `Link` component when `useNavigation` is `true`. */
-  // eslint-disable-next-line react/forbid-prop-types
-  linkProps: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.object,
+  /** Style this button with a navigation arrow pointing forward (default) or backward (see `navigationDirection`). */
+  navigation: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.bool,
 
-  /** Outputs a Nautilus `<Link>` tag that looks (and largely behaves) like a `<Button>`, but can used as navigation. Setting this to `true` enables `Link` properties. */
-  navigation: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool,
+  /** Set the direction of navigation: forward (default) or backward. */
+  navigationDirection: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.oneOf(['backward', 'forward']),
 
   /** Remove any outer margins from component. */
-  noMargin: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool,
+  noMargin: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.bool,
 
   /** Show an icon inside the button, on top of text. Passes a string to Icon's name prop. */
-  stackedIcon: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string,
+  stackedIcon: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string,
+
+  /** Used to link to a route that will be handled by Nautilus' `Link` component. */
+  to: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string,
 
   /** Show an icon inside the button, after the text. Passes a string to Icon's name prop. */
-  trailingIcon: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string,
+  trailingIcon: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.string,
 
   /** HTML `type` attribute for the button. Defaults to `"button"`. */
-  type: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.oneOf(['button', 'reset', 'submit']),
+  type: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.oneOf(['button', 'reset', 'submit']),
 
   /* @ignore Don't output any CSS styles. */
-  unstyled: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool
+  unstyled: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.bool
 };
 Button.displayName = 'Button';
 var defaultProps = Button.defaultProps,
@@ -20742,7 +20735,7 @@ exports.DOCS_THIRDPARTIES = DOCS_THIRDPARTIES;
 "use strict";
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
-var es_array_map = __webpack_require__(24);
+var es_array_map = __webpack_require__(23);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__(12);
@@ -21108,7 +21101,7 @@ module.exports.polyfill = function (object) {
   object.requestAnimationFrame = raf;
   object.cancelAnimationFrame = caf;
 };
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(25)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(24)))
 
 /***/ }),
 /* 139 */,
@@ -21396,7 +21389,7 @@ module.exports = patchedExec;
 "use strict";
 
 
-var anObject = __webpack_require__(28); // `RegExp.prototype.flags` getter implementation
+var anObject = __webpack_require__(27); // `RegExp.prototype.flags` getter implementation
 // https://tc39.github.io/ecma262/#sec-get-regexp.prototype.flags
 
 
@@ -21430,7 +21423,7 @@ module.exports = Array.isArray || function isArray(arg) {
 
 var fails = __webpack_require__(15);
 
-var wellKnownSymbol = __webpack_require__(29);
+var wellKnownSymbol = __webpack_require__(28);
 
 var V8_VERSION = __webpack_require__(195);
 
@@ -21832,7 +21825,7 @@ var fixRegExpWellKnownSymbolLogic = __webpack_require__(99);
 
 var isRegExp = __webpack_require__(224);
 
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(27);
 
 var requireObjectCoercible = __webpack_require__(45);
 
@@ -22214,7 +22207,7 @@ var key = '__global_unique_id__';
 module.exports = function () {
   return global[key] = (global[key] || 0) + 1;
 };
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(25)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(24)))
 
 /***/ }),
 /* 171 */
@@ -22792,7 +22785,7 @@ if ( true && module.exports) {
 if (typeof global !== 'undefined') {
   global.Prism = Prism;
 }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(25)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(24)))
 
 /***/ }),
 /* 173 */
@@ -31005,7 +30998,7 @@ module.exports = !DESCRIPTORS && !fails(function () {
 
 var global = __webpack_require__(22);
 
-var isObject = __webpack_require__(27);
+var isObject = __webpack_require__(26);
 
 var document = global.document; // typeof document.createElement is 'object' in old IE
 
@@ -31037,7 +31030,7 @@ var NATIVE_WEAK_MAP = __webpack_require__(261);
 
 var global = __webpack_require__(22);
 
-var isObject = __webpack_require__(27);
+var isObject = __webpack_require__(26);
 
 var createNonEnumerableProperty = __webpack_require__(57);
 
@@ -31699,11 +31692,11 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 /* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(27);
+var isObject = __webpack_require__(26);
 
 var isArray = __webpack_require__(150);
 
-var wellKnownSymbol = __webpack_require__(29);
+var wellKnownSymbol = __webpack_require__(28);
 
 var SPECIES = wellKnownSymbol('species'); // `ArraySpeciesCreate` abstract operation
 // https://tc39.github.io/ecma262/#sec-arrayspeciescreate
@@ -31757,7 +31750,7 @@ module.exports = version && +version;
 "use strict";
 
 
-var $ = __webpack_require__(26);
+var $ = __webpack_require__(25);
 
 var createHTML = __webpack_require__(152);
 
@@ -31782,7 +31775,7 @@ $({
 /* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
 module.exports = freeGlobal;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(25)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(24)))
 
 /***/ }),
 /* 198 */
@@ -32064,7 +32057,7 @@ module.exports = arrayLikeKeys;
 /* harmony import */ var rsg_components_Type__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(56);
 /* harmony import */ var rsg_components_Text__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(44);
 /* harmony import */ var rsg_components_Table__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(136);
-/* harmony import */ var _src_components_ui_Paragraph__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(30);
+/* harmony import */ var _src_components_ui_Paragraph__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(29);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(21);
 /* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(3);
 
@@ -34216,7 +34209,7 @@ function blitBuffer(src, dst, offset, length) {
 function isnan(val) {
   return val !== val; // eslint-disable-line no-self-compare
 }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(25)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(24)))
 
 /***/ }),
 /* 210 */
@@ -34234,7 +34227,7 @@ module.exports = function (it) {
 /* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.f = __webpack_require__(29);
+exports.f = __webpack_require__(28);
 
 /***/ }),
 /* 212 */
@@ -34677,7 +34670,7 @@ var fails = __webpack_require__(15);
 
 var setSpecies = __webpack_require__(433);
 
-var wellKnownSymbol = __webpack_require__(29);
+var wellKnownSymbol = __webpack_require__(28);
 
 var MATCH = wellKnownSymbol('match');
 var NativeRegExp = global.RegExp;
@@ -34730,11 +34723,11 @@ setSpecies('RegExp');
 /* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(27);
+var isObject = __webpack_require__(26);
 
 var classof = __webpack_require__(76);
 
-var wellKnownSymbol = __webpack_require__(29);
+var wellKnownSymbol = __webpack_require__(28);
 
 var MATCH = wellKnownSymbol('match'); // `IsRegExp` abstract operation
 // https://tc39.github.io/ecma262/#sec-isregexp
@@ -34855,7 +34848,7 @@ if (toString !== ObjectPrototype.toString) {
 
 var fixRegExpWellKnownSymbolLogic = __webpack_require__(99);
 
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(27);
 
 var toLength = __webpack_require__(66);
 
@@ -34905,7 +34898,7 @@ fixRegExpWellKnownSymbolLogic('match', 1, function (MATCH, nativeMatch, maybeCal
 "use strict";
 
 
-var $ = __webpack_require__(26);
+var $ = __webpack_require__(25);
 
 var $trim = __webpack_require__(439).trim;
 
@@ -37499,7 +37492,7 @@ var styles = {
     overflowWrap: 'break-word'
   }
 };
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(25)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(24)))
 
 /***/ }),
 /* 241 */
@@ -42305,7 +42298,7 @@ module.exports = __webpack_require__(259).polyfill();
   Promise$1.Promise = Promise$1;
   return Promise$1;
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(178), __webpack_require__(25)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(178), __webpack_require__(24)))
 
 /***/ }),
 /* 260 */
@@ -42340,7 +42333,7 @@ var getOwnPropertyNamesModule = __webpack_require__(94);
 
 var getOwnPropertySymbolsModule = __webpack_require__(145);
 
-var anObject = __webpack_require__(28); // all object keys, includes non-enumerable and symbols
+var anObject = __webpack_require__(27); // all object keys, includes non-enumerable and symbols
 
 
 module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
@@ -42710,7 +42703,7 @@ if (typeof self !== 'undefined') {
 
 var result = Object(_ponyfill_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(root);
 /* harmony default export */ __webpack_exports__["default"] = (result);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(25), __webpack_require__(270)(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(24), __webpack_require__(270)(module)))
 
 /***/ }),
 /* 270 */
@@ -42767,7 +42760,7 @@ exports['default'] = function (str) {
 
   return CSS.escape(str);
 };
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(25)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(24)))
 
 /***/ }),
 /* 272 */
@@ -42786,7 +42779,7 @@ if (global[ns] == null) global[ns] = 0; // Bundle may contain multiple JSS versi
 // the module.
 
 exports['default'] = global[ns]++;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(25)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(24)))
 
 /***/ }),
 /* 273 */
@@ -53167,7 +53160,7 @@ exports.unstable_Profiling = null;
 
 var fixRegExpWellKnownSymbolLogic = __webpack_require__(99);
 
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(27);
 
 var requireObjectCoercible = __webpack_require__(45);
 
@@ -55881,7 +55874,7 @@ module.exports = function (fn, that, length) {
 /* 373 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(27);
 
 var defineProperties = __webpack_require__(374);
 
@@ -55952,7 +55945,7 @@ var DESCRIPTORS = __webpack_require__(36);
 
 var definePropertyModule = __webpack_require__(33);
 
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(27);
 
 var objectKeys = __webpack_require__(96); // `Object.defineProperties` method
 // https://tc39.github.io/ecma262/#sec-object.defineproperties
@@ -56029,7 +56022,7 @@ var defineProperty = __webpack_require__(33).f;
 
 var has = __webpack_require__(40);
 
-var wellKnownSymbol = __webpack_require__(29);
+var wellKnownSymbol = __webpack_require__(28);
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 
@@ -57662,7 +57655,7 @@ module.exports = createBaseEach;
 "use strict";
 
 
-var $ = __webpack_require__(26);
+var $ = __webpack_require__(25);
 
 var createHTML = __webpack_require__(152);
 
@@ -57684,7 +57677,7 @@ $({
 /* 430 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(27);
+var isObject = __webpack_require__(26);
 
 var setPrototypeOf = __webpack_require__(431); // makes subclassing work correct for wrapped built-ins
 
@@ -57701,7 +57694,7 @@ module.exports = function ($this, dummy, Wrapper) {
 /* 431 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(27);
 
 var aPossiblePrototype = __webpack_require__(432); // `Object.setPrototypeOf` method
 // https://tc39.github.io/ecma262/#sec-object.setprototypeof
@@ -57735,7 +57728,7 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
 /* 432 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(27);
+var isObject = __webpack_require__(26);
 
 module.exports = function (it) {
   if (!isObject(it) && it !== null) {
@@ -57756,7 +57749,7 @@ var getBuiltIn = __webpack_require__(79);
 
 var definePropertyModule = __webpack_require__(33);
 
-var wellKnownSymbol = __webpack_require__(29);
+var wellKnownSymbol = __webpack_require__(28);
 
 var DESCRIPTORS = __webpack_require__(36);
 
@@ -57780,11 +57773,11 @@ module.exports = function (CONSTRUCTOR_NAME) {
 /* 434 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(27);
 
 var aFunction = __webpack_require__(210);
 
-var wellKnownSymbol = __webpack_require__(29);
+var wellKnownSymbol = __webpack_require__(28);
 
 var SPECIES = wellKnownSymbol('species'); // `SpeciesConstructor` abstract operation
 // https://tc39.github.io/ecma262/#sec-speciesconstructor
@@ -57979,7 +57972,7 @@ module.exports = now;
 
 var classof = __webpack_require__(438);
 
-var wellKnownSymbol = __webpack_require__(29);
+var wellKnownSymbol = __webpack_require__(28);
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 var test = {};
@@ -57996,7 +57989,7 @@ module.exports = String(test) !== '[object z]' ? function toString() {
 
 var classofRaw = __webpack_require__(76);
 
-var wellKnownSymbol = __webpack_require__(29);
+var wellKnownSymbol = __webpack_require__(28);
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag'); // ES3 wrong here
 
@@ -58474,7 +58467,7 @@ module.exports = function (METHOD_NAME) {
   } // Check for `exports` after `define` in case a build optimizer adds an `exports` object.
   else {}
 }).call(this);
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(82)(module), __webpack_require__(25)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(82)(module), __webpack_require__(24)))
 
 /***/ }),
 /* 442 */
@@ -64441,13 +64434,13 @@ module.exports = toFinite;
 /* 856 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(26);
+var $ = __webpack_require__(25);
 
 var FREEZING = __webpack_require__(231);
 
 var fails = __webpack_require__(15);
 
-var isObject = __webpack_require__(27);
+var isObject = __webpack_require__(26);
 
 var onFreeze = __webpack_require__(857).onFreeze;
 
@@ -64474,7 +64467,7 @@ $({
 
 var hiddenKeys = __webpack_require__(78);
 
-var isObject = __webpack_require__(27);
+var isObject = __webpack_require__(26);
 
 var has = __webpack_require__(40);
 
@@ -64827,7 +64820,7 @@ module.exports = {
                             'filepath': 'src/components/ui/Paragraph/index.js',
                             'slug': 'paragraph',
                             'pathLine': 'src/components/ui/Paragraph/index.js',
-                            'module': __webpack_require__(30),
+                            'module': __webpack_require__(29),
                             'props': __webpack_require__(890),
                             'hasExamples': true,
                             'metadata': {}
@@ -65621,7 +65614,7 @@ module.exports = {
         {
             'type': { 'name': 'string' },
             'required': false,
-            'description': 'Used to link to a route that will be handled by Nautilus\' `Link` component.',
+            'description': 'Used to link to a URL that will be handled by Nautilus\' `Link` component.',
             'defaultValue': {
                 'value': 'undefined',
                 'computed': true
@@ -65652,17 +65645,6 @@ module.exports = {
             'name': 'leadingIcon'
         },
         {
-            'type': { 'name': 'object' },
-            'required': false,
-            'description': 'Props to pass to the underlying Nautilus `Link` component when `useNavigation` is `true`.',
-            'defaultValue': {
-                'value': 'undefined',
-                'computed': true
-            },
-            'tags': {},
-            'name': 'linkProps'
-        },
-        {
             'type': { 'name': 'bool' },
             'required': false,
             'description': 'Decrease the visual prominence of this button in the UI.',
@@ -65676,7 +65658,7 @@ module.exports = {
         {
             'type': { 'name': 'bool' },
             'required': false,
-            'description': 'Outputs a Nautilus `<Link>` tag that looks (and largely behaves) like a `<Button>`, but can used as navigation. Setting this to `true` enables `Link` properties.',
+            'description': 'Style this button with a navigation arrow pointing forward (default) or backward (see `navigationDirection`).',
             'defaultValue': {
                 'value': 'false',
                 'computed': false
@@ -65685,7 +65667,19 @@ module.exports = {
             'name': 'navigation'
         },
         {
-            'type': { 'name': 'string' },
+            'type': {
+                'name': 'enum',
+                'value': [
+                    {
+                        'value': '\'backward\'',
+                        'computed': false
+                    },
+                    {
+                        'value': '\'forward\'',
+                        'computed': false
+                    }
+                ]
+            },
             'required': false,
             'description': 'Set the direction of navigation: forward (default) or backward.',
             'defaultValue': {
@@ -65738,6 +65732,17 @@ module.exports = {
             },
             'tags': {},
             'name': 'success'
+        },
+        {
+            'type': { 'name': 'string' },
+            'required': false,
+            'description': 'Used to link to a route that will be handled by Nautilus\' `Link` component.',
+            'defaultValue': {
+                'value': 'undefined',
+                'computed': true
+            },
+            'tags': {},
+            'name': 'to'
         },
         {
             'type': { 'name': 'string' },
@@ -65859,17 +65864,17 @@ module.exports = [
     },
     {
         'type': 'code',
-        'content': 'import { Flex } from \'nautilus-styleguide\';\n\n<Flex>\n  <Button navigation href="https://twitter.com/KittenBreak">\n    Take a break\n  </Button>\n\n  <Button navigation primary href="https://twitter.com/KittenBreak">\n    Take a break\n  </Button>\n\n  <Button navigation minimal href="https://twitter.com/KittenBreak">\n    Take a break\n  </Button>\n</Flex>',
+        'content': 'import { Flex } from \'nautilus-styleguide\';\n\n<Flex>\n  <Button href="https://twitter.com/KittenBreak">\n    Take a break\n  </Button>\n\n  <Button primary href="https://octopusthink.com/?pk_campaign=nautilus">\n    A cool company\n  </Button>\n\n  <Button minimal href="https://getmicdrop.com/?pk_campaign=nautilus">\n    Mute your mic\n  </Button>\n</Flex>',
         'settings': {},
         'evalInContext': evalInContext
     },
     {
         'type': 'markdown',
-        'content': 'By default, navigation links point forward (right in LTR languages) to indicate a forward progression. Any links that navigate back in time or space (eg: a back link, previous pagination) should set the `navigationDirection` prop to `backward` to correctly communicate this direction.\n\nIf needed, you can pass a leading or trailing icon to the navigation button to override its default arrow icon. (You can also pass `null` as an icon to disable this navigation icon behaviour.)'
+        'content': '#### Navigation links\n\nBy default, navigation links point forward (right in LTR languages) to indicate a forward progression. Any links that navigate back in time or space (eg: a back link, previous pagination) should set the `navigationDirection` prop to `backward` to correctly communicate this direction.\n\nIf needed, you can pass a leading or trailing icon to the navigation button to override its default arrow icon. (You can also pass `null` as an icon to disable this navigation icon behaviour.)'
     },
     {
         'type': 'code',
-        'content': 'import { Flex } from \'nautilus-styleguide\';\n\n<Flex>\n  <Button navigation navigationDirection="forward" href="https://twitter.com/KittenBreak">\n    Go forward\n  </Button>\n\n  <Button navigation navigationDirection="backward" href="https://twitter.com/KittenBreak">\n    Go back\n  </Button>\n\n  <Button navigation trailingIcon="arrow-up-right" href="https://twitter.com/KittenBreak">\n    Go elsewhere\n  </Button>\n</Flex>',
+        'content': 'import { Flex } from \'nautilus-styleguide\';\n\n<Flex>\n  <Button navigation href="https://twitter.com/KittenBreak">\n    Go forward\n  </Button>\n\n  <Button navigation navigationDirection="backward" href="https://twitter.com/KittenBreak">\n    Go back\n  </Button>\n\n  <Button navigation trailingIcon="arrow-up-right" href="https://twitter.com/KittenBreak">\n    Go elsewhere\n  </Button>\n</Flex>',
         'settings': {},
         'evalInContext': evalInContext
     },
@@ -66892,7 +66897,7 @@ if (false) {}
 
 var requireMap = {
     'react': __webpack_require__(2),
-    './index.js': __webpack_require__(30)
+    './index.js': __webpack_require__(29)
 };
 var requireInRuntimeBase = __webpack_require__(10).default;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
@@ -83350,7 +83355,7 @@ ToolbarButtonRenderer.propTypes = {
 var es_array_join = __webpack_require__(84);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
-var es_array_map = __webpack_require__(24);
+var es_array_map = __webpack_require__(23);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.anchor.js
 var es_string_anchor = __webpack_require__(429);
@@ -89472,7 +89477,7 @@ Preview_defineProperty(Preview_Preview, "contextTypes", {
 // CONCATENATED MODULE: ./node_modules/react-styleguidist/lib/client/rsg-components/Preview/index.js
 
 // EXTERNAL MODULE: ./src/components/ui/Paragraph/index.js
-var Paragraph = __webpack_require__(30);
+var Paragraph = __webpack_require__(29);
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
 var es_object_keys = __webpack_require__(83);
