@@ -1,8 +1,11 @@
 const path = require('path');
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+const typeScriptDocGen = require('react-docgen-typescript');
+
 module.exports = {
   assetsDir: 'styleguide/assets',
-  ignore: ['src/components/index.js', '**/*.test.{js,jsx,ts,tsx}'],
+  ignore: ['src/components/index.ts', '**/*.test.{js,jsx,ts,tsx}'],
   moduleAliases: {
     '@octopusthink/nautilus': path.resolve(__dirname, 'src/index'),
     'nautilus-styleguide': path.resolve(
@@ -41,6 +44,15 @@ module.exports = {
   },
   styleguideDir: 'dist/styleguide',
   pagePerSection: true,
+  propsParser: typeScriptDocGen.withCustomConfig('./tsconfig.json', {
+    propFilter: (prop) => {
+      if (prop.parent) {
+        return !prop.parent.fileName.includes('node_modules');
+      }
+
+      return true;
+    },
+  }).parse,
   sections: [
     {
       name: 'Introduction',

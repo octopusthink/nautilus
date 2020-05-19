@@ -1,12 +1,14 @@
 import { css } from '@emotion/core';
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
+import { NautilusComponentProps } from '../../types';
 import { useTheme } from '../../../themes';
 
-const Emphasis = (props) => {
-  const { children, unstyled, ...otherProps } = props;
+interface Props
+  extends React.PropsWithoutRef<JSX.IntrinsicElements['em']>,
+    NautilusComponentProps {}
 
+const Emphasis: FunctionComponent<Props> = ({ children, unstyled, ...otherProps }: Props) => {
   const theme = useTheme();
 
   return (
@@ -26,19 +28,5 @@ const Emphasis = (props) => {
     </em>
   );
 };
-
-Emphasis.defaultProps = {
-  children: undefined,
-  unstyled: false,
-};
-
-Emphasis.propTypes = {
-  /** @ignore */
-  children: PropTypes.node,
-  /* @ignore Don't output any CSS styles. */
-  unstyled: PropTypes.bool,
-};
-
-export const { defaultProps, propTypes } = Emphasis;
 
 export default Emphasis;

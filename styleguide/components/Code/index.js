@@ -22,8 +22,5 @@ export function Code({ children }) {
     </code>
   );
 }
-Code.propTypes = {
-  children: PropTypes.node.isRequired,
-};
 
 export default Code;

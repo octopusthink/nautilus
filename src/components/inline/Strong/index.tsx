@@ -1,10 +1,12 @@
 import { css } from '@emotion/core';
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
+import { NautilusComponentProps } from '../../types';
 import { useTheme } from '../../../themes';
 
-const Strong = (props) => {
+interface Props extends NautilusComponentProps {}
+
+const Strong: FunctionComponent<Props> = (props: Props) => {
   const { children, unstyled, ...otherProps } = props;
 
   const theme = useTheme();
@@ -26,19 +28,5 @@ const Strong = (props) => {
     </strong>
   );
 };
-
-Strong.defaultProps = {
-  children: undefined,
-  unstyled: false,
-};
-
-Strong.propTypes = {
-  /** @ignore */
-  children: PropTypes.node,
-  /* @ignore Don't output any CSS styles. */
-  unstyled: PropTypes.bool,
-};
-
-export const { defaultProps, propTypes } = Strong;
 
 export default Strong;

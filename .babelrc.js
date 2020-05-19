@@ -1,5 +1,11 @@
 const config = {
-  presets: ['@babel/preset-env', '@babel/preset-react', '@emotion/babel-preset-css-prop'],
+  comments: true,
+  presets: [
+    '@babel/preset-env',
+    ['@babel/typescript', { allExtensions: true, isTSX: true }],
+    '@babel/preset-react',
+    '@emotion/babel-preset-css-prop',
+  ],
   plugins: [
     '@babel/plugin-proposal-class-properties',
     ['@babel/plugin-proposal-object-rest-spread', { useBuiltIns: true }],
