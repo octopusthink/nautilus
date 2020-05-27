@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import React, { Children, forwardRef, useCallback, useMemo, useState } from 'react';
+import React, { Children, Fragment, useCallback, useMemo, useState } from 'react';
 
 import { interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
@@ -9,7 +9,7 @@ import TextField from '../TextField';
 import Option from './Option';
 import Heading from './Heading';
 
-export const ComboBox = forwardRef((props) => {
+export const ComboBox = (props) => {
   const {
     children,
     disabled,
@@ -65,7 +65,7 @@ export const ComboBox = forwardRef((props) => {
   }
 
   return (
-    <React.Fragment>
+    <Fragment>
       <TextField
         disabled={disabled}
         error={error}
@@ -120,9 +120,9 @@ export const ComboBox = forwardRef((props) => {
           {options}
         </List>
       </div>
-    </React.Fragment>
+    </Fragment>
   );
-});
+};
 
 ComboBox.defaultProps = {
   children: undefined,
