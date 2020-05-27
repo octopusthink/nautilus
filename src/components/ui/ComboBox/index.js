@@ -77,7 +77,9 @@ export const ComboBox = forwardRef((props) => {
         onBlur={onBlurHandler}
         onFocus={onFocusHandler}
         signifierIcon={!noAutocomplete ? 'search' : undefined}
-        actionIcon="chevron-down"
+        actionIcon={!focus ? 'chevron-down' : 'chevron-up'}
+        actionIconOnClick={!focus ? onFocusHandler : onBlurHandler}
+        actionIconTitle={!focus ? 'Show options' : 'Hide options'}
       />
       <div
         css={css`
