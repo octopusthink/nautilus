@@ -2,8 +2,8 @@
 
 exports[`SkipLink should contain styles, including focus styles that reveal the link 1`] = `
 .emotion-0 {
-  border-bottom: 2px solid #f5bbda;
   color: #cd2f83;
+  box-shadow: 0 2px #f5bbda;
   -webkit-text-decoration: none;
   text-decoration: none;
   -webkit-transition: all 200ms ease-in-out;
@@ -11,6 +11,8 @@ exports[`SkipLink should contain styles, including focus styles that reveal the 
   border: 0;
   -webkit-clip-path: rect(0 0 0 0);
   clip-path: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
   height: 1px;
   margin: -1px;
   overflow: hidden;
@@ -23,14 +25,14 @@ exports[`SkipLink should contain styles, including focus styles that reveal the 
 }
 
 .emotion-0:hover {
-  border-color: #a0dee3;
+  box-shadow: 0 2px #a0dee3;
   color: #0097a2;
 }
 
 .emotion-0:focus {
-  border-color: transparent;
-  box-shadow: #f5bbda 0 0 0 3px;
-  outline: none;
+  box-shadow: 0 0 0 0.2rem #f5bbda;
+  outline: 0;
+  color: #cd2f83;
 }
 
 .emotion-0:focus {

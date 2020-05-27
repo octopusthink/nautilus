@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { axe, muteConsole, render } from 'utils/testing';
-
+import { axe, muteConsole, render } from '../../../../utils/testing';
 import Button from '.';
 
 describe('Button', () => {
@@ -33,9 +32,9 @@ describe('Button', () => {
     expect(container.firstChild.getAttribute('disabled')).toEqual(null);
   });
 
-  it('should not render a disabled attribute when `disabled` prop is set on a navigation button', () => {
+  it('should not render a disabled attribute when `disabled` prop is set on a link button', () => {
     const { container } = render(
-      <Button disabled navigation href="/some-route/">
+      <Button disabled href="/some-route/">
         Hello
       </Button>,
     );
@@ -49,14 +48,35 @@ describe('Button', () => {
     expect(container.firstChild.getAttribute('disabled')).toEqual('');
   });
 
-  it('should render an <a> tag when `navigation` is set', () => {
+  it('should render a disabled <button> when `disabled` prop is set, even if `navigation` is true', () => {
     const { container } = render(
-      <Button navigation to="/some-page/">
-        Follow link
+      <Button disabled navigation>
+        Hello
       </Button>,
     );
 
+    // The `navigation` prop is just for styling, so this Button should still
+    // behave like a `<button>` tag.
+    expect(container.firstChild.getAttribute('disabled')).toEqual('');
+  });
+
+  it('should render an <a> tag when `href` prop is set', () => {
+    const { container } = render(<Button href="/some-page/">Follow link</Button>);
+
     expect(container.firstChild.tagName).toEqual('A');
+  });
+
+  it('should render an <a> tag when `to` prop is set', () => {
+    const { container } = render(<Button to="/some-page/">Follow link</Button>);
+
+    expect(container.firstChild.tagName).toEqual('A');
+  });
+
+  it('should not render an <a> tag when `navigation` is set, if no `href` or `to` prop exists', () => {
+    const { container } = render(<Button navigation>Follow link</Button>);
+
+    expect(container.firstChild.tagName).not.toEqual('A');
+    expect(container.firstChild.tagName).toEqual('BUTTON');
   });
 
   it('should only allow one of minimal/primary props', () => {
@@ -141,6 +161,141 @@ describe('Button', () => {
     );
 
     expect(getByTestId('myButton').classList).toContain('custom-class');
+  });
+
+  it('should not give a manually set leadingIcon a "Nautilus-navigationIcon--animated" class', () => {
+    const { container } = render(
+      <Button
+        href="/foo.zip"
+        navigation
+        navigationDirection="backward"
+        leadingIcon="download"
+        __iconId="test-button"
+      >
+        Download
+      </Button>,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should not give a manually set trailingIcon a "Nautilus-navigationIcon--animated" class', () => {
+    const { container } = render(
+      <Button href="/foo.zip" navigation trailingIcon="download" __iconId="test-button">
+        Download
+      </Button>,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  describe('icon buttons', () => {
+    const buttonStyleTypes = ['success', 'danger', 'warning'];
+    it.each(buttonStyleTypes)(
+      'should render a leading Icon when a %s button is used',
+      (buttonStyleProp) => {
+        const props = { [buttonStyleProp]: true };
+        const { container } = render(
+          <Button {...props} __iconId="test-button">
+            hello
+          </Button>,
+        );
+
+        expect(container.firstChild.firstChild.tagName).toEqual('SPAN');
+        expect(container.firstChild.firstChild.firstChild.tagName).toEqual('svg');
+      },
+    );
+
+    it.each(buttonStyleTypes)(
+      'should allow a leading Icon to be replaced for a %s button',
+      (buttonStyleProp) => {
+        const props = { [buttonStyleProp]: true };
+        const { container } = render(
+          <Button {...props} leadingIcon="arrow-right" __iconId="test-button">
+            hello
+          </Button>,
+        );
+        const { container: defaultContainer } = render(
+          <Button {...props} __iconId="test-button-default">
+            hello
+          </Button>,
+        );
+
+        // Make sure these two SVGs are not the same.
+        expect(container.firstChild.firstChild.firstChild.innerHTML).not.toEqual(
+          defaultContainer.firstChild.firstChild.firstChild.innerHTML,
+        );
+      },
+    );
+
+    it.each(buttonStyleTypes)(
+      'should allow a leading Icon to be set to null for a %s button',
+      (buttonStyleProp) => {
+        const props = { [buttonStyleProp]: true };
+        const { container } = render(
+          <Button {...props} leadingIcon={null} __iconId="test-button">
+            hello
+          </Button>,
+        );
+
+        // Make sure the SVG doesn't exist.
+        expect(container.firstChild.firstChild.tagName).not.toEqual('SPAN');
+        expect(container.firstChild.firstChild.textContent).toEqual('hello');
+      },
+    );
+
+    it('should render an arrow icon for a navigation button', () => {
+      const { container } = render(
+        <Button navigation __iconId="test-button">
+          Go forward
+        </Button>,
+      );
+
+      expect(container.firstChild.lastChild.tagName).toEqual('SPAN');
+      expect(container.firstChild.lastChild.classList).toContain('Nautilus-Icon--arrow-right');
+      expect(container.firstChild.lastChild.firstChild.tagName).toEqual('svg');
+    });
+
+    it('should render a backward arrow icon for a navigation button with the "backward" navigationDirection prop set', () => {
+      const { container } = render(
+        <Button navigation navigationDirection="backward" __iconId="test-button">
+          Back
+        </Button>,
+      );
+
+      expect(container.firstChild.firstChild.tagName).toEqual('SPAN');
+      expect(container.firstChild.firstChild.classList).toContain('Nautilus-Icon--arrow-left');
+      expect(container.firstChild.firstChild.firstChild.tagName).toEqual('svg');
+    });
+
+    it('should allow navigation buttons to change their icon', () => {
+      const { container } = render(
+        <Button navigation trailingIcon="arrow-down" __iconId="test-button">
+          Down
+        </Button>,
+      );
+
+      expect(container.firstChild.lastChild.tagName).toEqual('SPAN');
+      expect(container.firstChild.lastChild.classList).toContain('Nautilus-Icon--arrow-down');
+      expect(container.firstChild.lastChild.firstChild.tagName).toEqual('svg');
+
+      const { container: backwardContainer } = render(
+        <Button
+          navigation
+          navigationDirection="backward"
+          leadingIcon="arrow-up"
+          __iconId="test-button"
+        >
+          Up
+        </Button>,
+      );
+
+      expect(backwardContainer.firstChild.firstChild.tagName).toEqual('SPAN');
+      expect(backwardContainer.firstChild.firstChild.classList).toContain(
+        'Nautilus-Icon--arrow-up',
+      );
+      expect(backwardContainer.firstChild.firstChild.firstChild.tagName).toEqual('svg');
+    });
   });
 
   describe('accessibility', () => {

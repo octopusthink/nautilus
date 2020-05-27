@@ -13,8 +13,8 @@ exports[`Link should not output styles when unstyled is set 1`] = `
 
 exports[`Link should output Link styles 1`] = `
 .emotion-0 {
-  border-bottom: 2px solid #f5bbda;
   color: #cd2f83;
+  box-shadow: 0 2px #f5bbda;
   -webkit-text-decoration: none;
   text-decoration: none;
   -webkit-transition: all 200ms ease-in-out;
@@ -22,14 +22,14 @@ exports[`Link should output Link styles 1`] = `
 }
 
 .emotion-0:hover {
-  border-color: #a0dee3;
+  box-shadow: 0 2px #a0dee3;
   color: #0097a2;
 }
 
 .emotion-0:focus {
-  border-color: transparent;
-  box-shadow: #f5bbda 0 0 0 3px;
-  outline: none;
+  box-shadow: 0 0 0 0.2rem #f5bbda;
+  outline: 0;
+  color: #cd2f83;
 }
 
 <div>

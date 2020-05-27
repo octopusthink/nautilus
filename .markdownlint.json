@@ -1,0 +1,7 @@
+{
+  "line-length": {
+    "line_length": 100000000
+  },
+  "blanks-around-lists": false,
+  "first-line-heading": false
+}

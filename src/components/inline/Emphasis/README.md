@@ -12,13 +12,13 @@ import { Paragraph } from '@octopusthink/nautilus';
 
 Use an `<Emphasis>` component where you would usually use a `<em>` tag in HTML.
 
-### Use this component for...
+### Use this component for…
 
 - Indicating stress or a shift in intonation in a passage of text.
 - A piece of text requiring "local" emphasis (emphasis when reading the passage).
-- Distinguishing titles of books, articles, and other works. 
+- Distinguishing titles of books, articles, and other works.
 
-### Don't use this component for...
+### Don't use this component for…
 
 - A heading or subheading. Use a `<Heading>` or `<Subtitle>` instead.
 - Highlighting a navigational link. Use a `<Link>` instead.

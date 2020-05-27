@@ -3,19 +3,18 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { toUnits } from 'styles';
-import { useTheme } from 'themes';
+import { toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
+import { ListItemClassName } from './constants';
 
-export const ComponentClassName = 'Nautilus-ListItem';
-
-export const Item = (props) => {
+const Item = (props) => {
   const { children, className, noMargin, unstyled, ...otherProps } = props;
 
   const theme = useTheme();
 
   return (
     <li
-      className={classnames(ComponentClassName, className)}
+      className={classnames(ListItemClassName, className)}
       css={
         unstyled
           ? undefined

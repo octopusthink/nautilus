@@ -1,10 +1,9 @@
 import { Link as ReachRouterLink } from '@reach/router';
 import React from 'react';
 
-import { axe, render } from 'utils/testing';
-
-import Link from '.';
+import { axe, render } from '../../../../utils/testing';
 import Nautilus from '../../hoc/Nautilus';
+import Link from '.';
 
 describe('Link', () => {
   it('should render an <a> tag', () => {
@@ -36,6 +35,17 @@ describe('Link', () => {
   it('should output an href prop', () => {
     const { container } = render(<Link href="/a-url/">Hello</Link>);
 
+    expect(container.firstChild.getAttribute('href')).toEqual('/a-url/');
+  });
+
+  it('should output an <a> tag if the href prop is supplied', () => {
+    const { container } = render(
+      <Nautilus config={{ LinkComponent: ReachRouterLink }}>
+        <Link href="/a-url/">Hello</Link>
+      </Nautilus>,
+    );
+
+    expect(container.firstChild.tagName).toEqual('A');
     expect(container.firstChild.getAttribute('href')).toEqual('/a-url/');
   });
 
@@ -88,7 +98,7 @@ describe('Link', () => {
   });
 
   describe('with default Link components', () => {
-    it('should output an href prop when the to prop is supplied', () => {
+    it('should output a href prop when the to prop is supplied', () => {
       const { container } = render(
         <Nautilus config={{ LinkComponent: ReachRouterLink }}>
           <Link to="/a-url/">Hello</Link>

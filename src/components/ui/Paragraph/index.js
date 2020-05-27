@@ -4,10 +4,9 @@ import invariant from 'invariant';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { bodyStyles } from 'styles';
-import { useTheme } from 'themes';
-
-export const ComponentClassName = 'Nautilus-Paragraph';
+import { bodyStyles } from '../../../styles';
+import { useTheme } from '../../../themes';
+import { ParagraphClassName } from './constants';
 
 export const qualityControl = (props) => {
   const { dark, large, light, small } = props;
@@ -23,7 +22,7 @@ export const qualityControl = (props) => {
   );
 };
 
-export const Paragraph = (props) => {
+const Paragraph = (props) => {
   const {
     children,
     className,
@@ -43,7 +42,7 @@ export const Paragraph = (props) => {
 
   return (
     <p
-      className={classnames(ComponentClassName, className)}
+      className={classnames(ParagraphClassName, className)}
       css={
         unstyled
           ? undefined

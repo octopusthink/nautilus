@@ -8,11 +8,11 @@ An `<Icon>` is a graphical representation of a concept, used to illustrate or cl
 
 ## Usage
 
-### Use an `Icon` for...
+### Use an `Icon` for…
 
 Use an `Icon` when you want to emphasise or clarify an important piece of text. Generally an `Icon` is used with a `Button` or `Tab` to communicate an action or navigation link, but can be used as a standalone element as well. When used as standalone elements, they are often seen in page headers, section titles, in notifications, and inline with text to add clarity.
 
-### Don't use an `Icon` for...
+### Don't use an `Icon` for…
 
 - Displaying a complex image or photo. Use an `Image` instead.
 - Communicating a link, button, or action. Use a `Button` or `Tab` (combined with an `Icon`) instead.
@@ -90,7 +90,6 @@ The default icon sizes can be tweaked in your theme. Sizes should be defined in 
 ```
 
 Stroke widths scale with the icon size for better legibility. Stroke widths are also customisable via your theme.
-
 
 ### Margin & alignment
 

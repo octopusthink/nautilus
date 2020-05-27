@@ -4,10 +4,6 @@ const path = require('path');
 const PeerDepsExternalsPlugin = require('peer-deps-externals-webpack-plugin');
 const webpack = require('webpack');
 
-const projectPath = path.resolve(fs.realpathSync(process.cwd()), '.');
-const srcPath = path.resolve(fs.realpathSync(process.cwd()), 'src');
-const styleguidePath = path.resolve(fs.realpathSync(process.cwd()), 'styleguide');
-
 const config = {
   entry: ['./src/index.js'],
   mode: process.env.NODE_ENV,
@@ -16,7 +12,6 @@ const config = {
       // Transform ES6 with Babel
       {
         test: /\.(js|jsx|mjs)$/,
-        include: [srcPath, styleguidePath],
         use: [
           {
             loader: require.resolve('babel-loader'),
@@ -46,8 +41,6 @@ const config = {
     }),
   ],
   resolve: {
-    // Add src/ folder for easier includes within the project.
-    modules: [srcPath, projectPath, 'node_modules'],
     extensions: ['.mjs', '.jsx', '.js', '.json'],
   },
 };

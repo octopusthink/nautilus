@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { axe, render } from 'utils/testing';
-
-import Heading from 'components/ui/Heading';
-import Paragraph from 'components/ui/Paragraph';
+import { axe, render } from '../../../../utils/testing';
+import Heading from '../Heading';
+import Paragraph from '../Paragraph';
 import List from '.';
 
 describe('List', () => {

@@ -2,7 +2,7 @@ Spacing is an often-overlooked aspect of visual design that help users quickly s
 
 ## Principles
 
-### Use proximity to define meaningful relationships.
+### Use proximity to define meaningful relationships
 
 Empty space has meaning. The space between elements creates relationships and hierarchy.
 
@@ -10,7 +10,7 @@ When elements are closely spaced, we think of them as related. When more space i
 
 Spacing patterns can also be used to create relationships. Elements arranged using the same spacing patterns are seen as having equal weight.
 
-### Use whitespace to create hierarchy and reduce cognitive load.
+### Use whitespace to create hierarchy and reduce cognitive load
 
 Whitespace is critical to creating focus and aiding in information processing.
 
@@ -18,7 +18,7 @@ Use more spacing around important elements to give them more focus. Users will p
 
 Use whitespace to break up sections of content. This gives users' eyes (and brains) a rest, helping content feel uncrowded and calming.
 
-### Ensure all elements have sufficient spacing for accessibility needs.
+### Ensure all elements have sufficient spacing for accessibility needs
 
 Touch targets should be at least `48px x 48px` with at least `8px` of space between them.
 
@@ -38,7 +38,7 @@ When applying padding to an element, consider using a slightly larger increment 
 
 [DIAGRAM OF PADDING INSIDE A BOX]
 
-![](diagrams/padding-spacing-scale.png)
+![Padding diagram](diagrams/padding-spacing-scale.png)
 
 ### Margin spacing
 
@@ -50,7 +50,7 @@ When applying margins, try to apply them only to the **bottom** of elements. Thi
 
 [DIAGRAM OF MARGIN UNDER A BOX]
 
-![](diagrams/margin-spacing-scale.png)
+![Margin spacing scale](diagrams/margin-spacing-scale.png)
 
 ### Spacing applied
 

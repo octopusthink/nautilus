@@ -1,11 +1,12 @@
 import { css } from '@emotion/core';
+import classnames from 'classnames';
 import Feather from 'feather-icons';
 import PropTypes from 'prop-types';
 import React, { useState, useMemo } from 'react';
 import shortid from 'shortid';
 
-import { toUnits } from 'styles';
-import { useTheme } from 'themes';
+import { toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
 
 const defineIconSizes = (props) => {
   const { background, border, small, xSmall, large, xLarge, theme } = props;
@@ -47,7 +48,7 @@ const defineIconSizes = (props) => {
   };
 };
 
-export const Icon = (props) => {
+const Icon = (props) => {
   const {
     'data-testid': dataTestId,
     background,
@@ -131,11 +132,13 @@ export const Icon = (props) => {
 
   return (
     <span
-      className={className}
+      className={classnames(className, `Nautilus-Icon--${name}`)}
       css={css`
         ${borderBackground};
         display: inline-block;
+        line-height: 0;
         margin: 0;
+        padding: 0;
         vertical-align: ${verticalAlign};
 
         ${!noMargin &&

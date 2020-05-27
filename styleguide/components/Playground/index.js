@@ -3,8 +3,8 @@ import { css } from '@emotion/core';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { toUnits } from 'styles';
-import theme from 'styleguide/theme';
+import { toUnits } from '../../../src/styles';
+import theme from '../../theme';
 
 export function Playground({ name, preview, previewProps, tabButtons, tabBody }) {
   const { ...props } = previewProps;
