@@ -2,10 +2,10 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React, { Children, forwardRef, useCallback, useMemo, useState } from 'react';
 
-import { interfaceUI, toUnits } from 'styles';
-import { useTheme } from 'themes';
-import List from 'components/ui/List';
-import TextField from 'components/ui/TextField';
+import { interfaceUI, toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
+import List from '../List';
+import TextField from '../TextField';
 import Option from './Option';
 import Heading from './Heading';
 

@@ -3,9 +3,9 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { toUnits } from 'styles';
-import { useTheme } from 'themes';
-import ListItem from 'components/ui/List/Item';
+import { toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
+import ListItem from '../List/Item';
 
 export const ComponentClassName = 'Nautilus-ComboBoxOption';
 
