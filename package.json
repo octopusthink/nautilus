@@ -51,7 +51,6 @@
   "homepage": "https://github.com/octopusthink/nautilus#readme",
   "dependencies": {
     "@reach/combobox": "^0.10.3",
-    "@react-hook/throttle": "^2.1.4",
     "chroma-js": "^2.1.0",
     "classnames": "^2.2.6",
     "emotion-theming": "^10.0.27",
