@@ -34,8 +34,9 @@ export const ComboBox = (props) => {
   } = props;
 
   const [focus, setFocus] = useState(otherProps.autofocus);
-  const [popoverOver, setPopoverOpen] = useState(otherProps.autofocus);
+  const [popoverOpen, setPopoverOpen] = useState(otherProps.autofocus);
   const popoverRef = useRef();
+  const inputRef = useRef();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -108,10 +109,19 @@ export const ComboBox = (props) => {
           unstyled={unstyled}
           onBlur={onBlurHandler}
           onFocus={onFocusHandler}
+          ref={inputRef}
           signifierIcon={autocomplete ? 'search' : undefined}
-          actionIcon={focus && popoverOver ? 'chevron-up' : 'chevron-down'}
-          actionIconOnClick={focus ? onBlurHandler : onFocusHandler}
-          actionIconTitle={popoverOver ? 'Hide options' : 'Show options'}
+          actionIcon={focus && popoverOpen ? 'chevron-up' : 'chevron-down'}
+          actionIconOnClick={
+            focus && popoverOpen
+              ? () => {
+                  if (popoverRef.current) {
+                    popoverRef.current.hidden = true;
+                  }
+                }
+              : undefined
+          }
+          actionIconTitle={popoverOpen ? 'Hide options' : 'Show options'}
           autocomplete={autocomplete}
         />
         <ReachComboboxPopover ref={popoverRef}>
