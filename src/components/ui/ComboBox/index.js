@@ -1,8 +1,14 @@
 import { css } from '@emotion/core';
+import {
+  Combobox as ReachCombobox,
+  ComboboxInput as ReachComboboxInput,
+  ComboboxPopover as ReachComboboxPopover,
+  ComboboxList as ReachComboboxList,
+} from '@reach/combobox';
 import PropTypes from 'prop-types';
-import React, { Children, Fragment, useCallback, useMemo, useState } from 'react';
+import React, { Children, useCallback, useMemo, useRef, useState, useEffect } from 'react';
 
-import { interfaceUI, toUnits } from '../../../styles';
+import { interfaceUI } from '../../../styles';
 import { useTheme } from '../../../themes';
 import List from '../List';
 import TextField from '../TextField';
@@ -11,15 +17,16 @@ import Heading from './Heading';
 
 export const ComboBox = (props) => {
   const {
+    autocomplete,
     children,
     disabled,
     error,
     hint,
     id,
     label,
-    noAutocomplete,
     onBlur,
     onFocus,
+    openOnFocus,
     optional,
     placeholder,
     unstyled,
@@ -27,6 +34,15 @@ export const ComboBox = (props) => {
   } = props;
 
   const [focus, setFocus] = useState(otherProps.autofocus);
+  const [popoverOver, setPopoverOpen] = useState(otherProps.autofocus);
+  const popoverRef = useRef();
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    if (popoverRef.current) {
+      setPopoverOpen(!popoverRef.current.hidden);
+    }
+  });
 
   const theme = useTheme();
 
@@ -57,81 +73,84 @@ export const ComboBox = (props) => {
     });
   }, [children]);
 
-  // If the number of options is less than seven, calculate the height to fit.
-  const dropdownNumItems = 7;
-  let dropdownHeight = 320;
-  if (options.length < dropdownNumItems) {
-    dropdownHeight = 48 * options.length;
-  }
-
   return (
-    <Fragment>
-      <TextField
-        disabled={disabled}
-        error={error}
-        placeholder={placeholder}
-        label={label}
-        hint={hint}
-        optional={optional}
-        unstyled={unstyled}
-        onBlur={onBlurHandler}
-        onFocus={onFocusHandler}
-        signifierIcon={!noAutocomplete ? 'search' : undefined}
-        actionIcon={!focus ? 'chevron-down' : 'chevron-up'}
-        actionIconOnClick={!focus ? onFocusHandler : onBlurHandler}
-        actionIconTitle={!focus ? 'Show options' : 'Hide options'}
-      />
-      <div
-        css={css`
-          position: relative;
-          z-index: 5;
-        `}
-      >
-        <List
-          unstyled
-          css={css`
-            height: 0;
-            transition: height 200ms;
-            list-style-type: none;
-            ${interfaceUI.medium(theme)};
-            background: ${theme.colors.buttons.neutral};
-            color: ${theme.colors.text.default};
-            margin: -${toUnits(theme.spacing.margin.medium)} 0 0 0;
-            overflow: hidden;
-            padding: 0;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+    <div
+      css={css`
+        :root {
+          --reach-combobox: 1;
+        }
 
-            ${options.length >= dropdownNumItems &&
-              css`
-                overflow-y: scroll;
-              `}
+        [data-reach-combobox-list] {
+          margin: 0;
+          padding: 0;
+          user-select: none;
+        }
 
-            ${focus &&
-              css`
-                border: 2px solid ${theme.colors.text.default};
-                border-top: 0;
-                height: ${toUnits(dropdownHeight)};
-              `}
-          `}
-        >
-          {options}
-        </List>
-      </div>
-    </Fragment>
+        [data-reach-combobox-option] {
+          margin: 0;
+          padding: 0;
+        }
+
+        [data-suggested-value] {
+          font-weight: bold;
+        }
+      `}
+    >
+      <ReachCombobox aria-label="Nautilus Combobox" openOnFocus={openOnFocus}>
+        <ReachComboboxInput
+          as={TextField}
+          disabled={disabled}
+          error={error}
+          placeholder={placeholder}
+          label={label}
+          hint={hint}
+          optional={optional}
+          unstyled={unstyled}
+          onBlur={onBlurHandler}
+          onFocus={onFocusHandler}
+          signifierIcon={autocomplete ? 'search' : undefined}
+          actionIcon={focus && popoverOver ? 'chevron-up' : 'chevron-down'}
+          actionIconOnClick={focus ? onBlurHandler : onFocusHandler}
+          actionIconTitle={popoverOver ? 'Hide options' : 'Show options'}
+          autocomplete={autocomplete}
+        />
+        <ReachComboboxPopover ref={popoverRef}>
+          <ReachComboboxList
+            as={List}
+            // persistSelection={autocomplete}
+            unstyled
+            css={css`
+              transition: height 200ms;
+              list-style-type: none;
+              ${interfaceUI.medium(theme)};
+              background: ${theme.colors.buttons.neutral};
+              color: ${theme.colors.text.default};
+              margin: 0;
+              overflow: hidden;
+              padding: 0;
+              overflow-y: scroll;
+              max-height: 60vh;
+              z-index: 100;
+              border: 2px solid ${theme.colors.text.default};
+            `}
+          >
+            {options}
+          </ReachComboboxList>
+        </ReachComboboxPopover>
+      </ReachCombobox>
+    </div>
   );
 };
 
 ComboBox.defaultProps = {
+  autocomplete: true,
   children: undefined,
   disabled: false,
   error: undefined,
   hint: undefined,
   id: undefined,
   labelId: undefined,
-  noAutocomplete: false,
+  openOnFocus: true,
   onBlur: undefined,
   onFocus: undefined,
   optional: false,
@@ -140,6 +159,9 @@ ComboBox.defaultProps = {
 };
 
 ComboBox.propTypes = {
+  /** A component to place at the bottom of the option list,  */
+  /** Determines whether the component shows an autocomplete interface or not. When set to true, this component will behave more like a `select` element. */
+  autocomplete: PropTypes.bool,
   /** @ignore */
   children: PropTypes.node,
   /** @ignore */
@@ -158,8 +180,8 @@ ComboBox.propTypes = {
   label: PropTypes.node.isRequired,
   /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
   labelId: PropTypes.string,
-  /** Determines whether the component shows an autocomplete interface or not. When set to true, this component will behave more like a `select` element. */
-  noAutocomplete: PropTypes.bool,
+  /** Open this combobox's list of options when it is focused. */
+  openOnFocus: PropTypes.bool,
   /** Used to mark this input as optional. Will output text in `theme.components.ComboBox.optionalMessage`, if set. */
   optional: PropTypes.bool,
   /** Placeholder text, used only for examples. */
