@@ -97,7 +97,7 @@ export const ComboBox = (props) => {
         }
       `}
     >
-      <ReachCombobox aria-label="Nautilus Combobox" openOnFocus={openOnFocus}>
+      <ReachCombobox aria-label={label} openOnFocus={openOnFocus} {...otherProps}>
         <ReachComboboxInput
           as={TextField}
           disabled={disabled}
