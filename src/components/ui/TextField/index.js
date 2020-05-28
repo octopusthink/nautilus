@@ -334,16 +334,22 @@ const TextField = forwardRef((props, ref) => {
             onClick={actionIconOnClick}
             name={actionIcon}
             title={actionIconTitle}
-            css={
-              unstyled
+            css={css`
+              ${unstyled
                 ? undefined
                 : css`
+                    cursor: pointer;
                     opacity: 0.8;
                     position: absolute;
-                    top: ${toUnits(theme.spacing.padding.medium + 2)};
                     right: ${toUnits(theme.spacing.padding.small)};
-                  `
-            }
+                    top: ${toUnits(theme.spacing.padding.medium + 2)};
+                  `}
+
+              ${!actionIconOnClick &&
+                css`
+                  pointer-events: none;
+                `}
+            `}
           />
         )}
 

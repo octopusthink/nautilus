@@ -1,10 +1,8 @@
-// We only use react-testing-library in development, so ignore this linting
-// error.
-// eslint-disable-next-line import/no-extraneous-dependencies
+/* eslint-disable import/no-extraneous-dependencies */
+import { configureAxe } from 'jest-axe';
 import { render } from '@testing-library/react';
 import PropTypes from 'prop-types';
 import React from 'react';
-
 import Nautilus from '../src/components/hoc/Nautilus';
 import { nautilus as nautilusDefaultTheme, themePropTypes } from '../src/themes';
 
@@ -36,7 +34,12 @@ export const muteConsole = ({ times, type } = {}) => {
 };
 
 // Export jest-axe helpers.
-export { axe } from 'jest-axe';
+export const axe = configureAxe({
+  rules: {
+    // Not useful for a component library.
+    region: { enabled: false },
+  },
+});
 
 // Re-export everything else as normal.
 export * from '@testing-library/react';
