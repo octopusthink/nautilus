@@ -19601,6 +19601,10 @@ __webpack_require__.d(__webpack_exports__, "ComboBox", function() { return /* bi
 __webpack_require__.d(__webpack_exports__, "defaultProps", function() { return /* binding */ ComboBox_defaultProps; });
 __webpack_require__.d(__webpack_exports__, "propTypes", function() { return /* binding */ ComboBox_propTypes; });
 
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/extends.js
+var helpers_extends = __webpack_require__(6);
+var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
+
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/slicedToArray.js
 var slicedToArray = __webpack_require__(13);
 var slicedToArray_default = /*#__PURE__*/__webpack_require__.n(slicedToArray);
@@ -22186,10 +22190,6 @@ var List = __webpack_require__(31);
 // EXTERNAL MODULE: ./src/components/ui/TextField/index.js
 var TextField = __webpack_require__(74);
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/extends.js
-var helpers_extends = __webpack_require__(6);
-var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
-
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
 var classnames = __webpack_require__(23);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
@@ -22310,6 +22310,7 @@ var Heading_defaultProps = Heading_Heading.defaultProps,
 
 
 
+
 function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
 
@@ -22387,10 +22388,10 @@ var ComboBox_ComboBox = function ComboBox(props) {
   }, [children]);
   return Object(core_browser_esm["d" /* jsx */])("div", {
     css: ComboBox_ref
-  }, Object(core_browser_esm["d" /* jsx */])(combobox_esm_Combobox, {
-    "aria-label": "Nautilus Combobox",
+  }, Object(core_browser_esm["d" /* jsx */])(combobox_esm_Combobox, extends_default()({
+    "aria-label": label,
     openOnFocus: openOnFocus
-  }, Object(core_browser_esm["d" /* jsx */])(combobox_esm_ComboboxInput, {
+  }, otherProps), Object(core_browser_esm["d" /* jsx */])(combobox_esm_ComboboxInput, {
     as: TextField["default"],
     disabled: disabled,
     error: error,
