@@ -24,6 +24,7 @@ export const ComboBox = (props) => {
     hint,
     id,
     label,
+    labelId,
     noMargin,
     onBlur,
     onFocus,
@@ -105,6 +106,7 @@ export const ComboBox = (props) => {
           error={error}
           placeholder={placeholder}
           label={label}
+          labelId={labelId}
           hint={hint}
           noMargin={noMargin}
           optional={optional}
