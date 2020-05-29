@@ -4,10 +4,10 @@ Think of it as a native HTML `select` element combined with an autocomplete.
 
 ```jsx
 <ComboBox label="Choose your favourite fruit" placeholder="Search or browse">
-    <ComboBox.Option text="Apples" />
-    <ComboBox.Option text="Bananas" />
-    <ComboBox.Option text="Pears" />
-    <ComboBox.Option text="Tarantulas" />
+    <ComboBox.Option>Apples</ComboBox.Option>
+    <ComboBox.Option>Bananas</ComboBox.Option>
+    <ComboBox.Option>Pears</ComboBox.Option>
+    <ComboBox.Option>Tarantulas</ComboBox.Option>
 </ComboBox>
 ```
 
@@ -39,28 +39,30 @@ List items should be ordered in a way that's logical and expected for the type o
 When you have very long lists, it can be helpful to break them up into groups or categories. This helps users who are browsing the list to skip sections that aren't relevant. Avoid potentially confusing groupings (such as continents for a list of countries) where there's a change of causing confusion or exclusion.
 
 ```jsx
-<ComboBox label="Select your favourite boy band" placeholder="Search or browse" optionHeight={3}>
+<ComboBox label="Select your favourite boy band" placeholder="Search or browse" onSelect={(item) => {
+  alert(item);
+}}>
     <ComboBox.Heading>Girls like boys best</ComboBox.Heading>
-    <ComboBox.Option text="Boyz II Men" />
-    <ComboBox.Option text="The Backstreet Boys" />
-    <ComboBox.Option text="The Beach Boys" />
-    <ComboBox.Option text="Boys 4 Now" />
+    <ComboBox.Option>Boyz II Men</ComboBox.Option>
+    <ComboBox.Option>The Backstreet Boys</ComboBox.Option>
+    <ComboBox.Option>The Beach Boys</ComboBox.Option>
+    <ComboBox.Option>Boys 4 Now</ComboBox.Option>
 
     <ComboBox.Heading>Strange punctuation</ComboBox.Heading>
-    <ComboBox.Option text="*NSYNC" />
-    <ComboBox.Option text="O-Town" />
+    <ComboBox.Option>*NSYNC</ComboBox.Option>
+    <ComboBox.Option>O-Town</ComboBox.Option>
 
     <ComboBox.Heading>By Numbers</ComboBox.Heading>
-    <ComboBox.Option text="All-4-One" />
-    <ComboBox.Option text="Boyz 4 Now" />
-    <ComboBox.Option text="B2K" />
-    <ComboBox.Option text="5ive" />
-    <ComboBox.Option text="2gether" />
-    <ComboBox.Option text="98 Degrees" />
-    <ComboBox.Option text="Boyz II Men" />
-    <ComboBox.Option text="One Direction" />
-    <ComboBox.Option text="The Jackson 5" />
-    <ComboBox.Option text="112" />
+    <ComboBox.Option>All-4-One</ComboBox.Option>
+    <ComboBox.Option>Boyz 4 Now</ComboBox.Option>
+    <ComboBox.Option>B2K</ComboBox.Option>
+    <ComboBox.Option>5ive</ComboBox.Option>
+    <ComboBox.Option>2gether</ComboBox.Option>
+    <ComboBox.Option>98 Degrees</ComboBox.Option>
+    <ComboBox.Option>Boyz II Men</ComboBox.Option>
+    <ComboBox.Option>One Direction</ComboBox.Option>
+    <ComboBox.Option>The Jackson 5</ComboBox.Option>
+    <ComboBox.Option>112</ComboBox.Option>
 </ComboBox>
 ```
 
@@ -93,11 +95,11 @@ Follow the `TextField` [guidelines](../TextField) for voice & tone. Additionally
 - Make sure list items aren’t wider than the text field. If an item is too wide, it will span two lines, which looks awkward and can be hard to parse. Keep things succinct.
 
 ```jsx
-<ComboBox noAutocomplete label="Which house should the hat sort you into? 🧙‍♂️" placeholder="Select">
-    <ComboBox.Option text="Gryffindor">🧙🏾‍♂️ Gryffindor</ComboBox.Option>
-    <ComboBox.Option text="Ravenclaw">🦞 Ravenclaw</ComboBox.Option>
-    <ComboBox.Option text="Slytherin">🐍 Slytherin</ComboBox.Option>
-    <ComboBox.Option text="Hufflepuff">💨 Hufflepuff</ComboBox.Option>
+<ComboBox label="Which house should the hat sort you into? 🧙‍♂️" placeholder="Select">
+    <ComboBox.Option prefix="🧙🏾‍♂️ ">Gryffindor</ComboBox.Option>
+    <ComboBox.Option prefix="🦞 ">Ravenclaw</ComboBox.Option>
+    <ComboBox.Option prefix="🐍 ">Slytherin</ComboBox.Option>
+    <ComboBox.Option prefix="💨 ">Hufflepuff</ComboBox.Option>
 </ComboBox>
 ```
 

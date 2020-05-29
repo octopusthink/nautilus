@@ -1,8 +1,5 @@
 import { css } from '@emotion/core';
-import {
-  ComboboxOption as ReachComboboxOption,
-  ComboboxOptionText as ReachComboboxOptionText,
-} from '@reach/combobox';
+import { ComboboxOption as ReachComboboxOption, ComboboxOptionText } from '@reach/combobox';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -14,7 +11,7 @@ import ListItem from '../List/Item';
 export const ComponentClassName = 'Nautilus-ComboBoxOption';
 
 export const Option = (props) => {
-  const { children, className, unstyled, text, ...otherProps } = props;
+  const { children, className, prefix, suffix, unstyled, ...otherProps } = props;
 
   const theme = useTheme();
 
@@ -26,7 +23,8 @@ export const Option = (props) => {
           background: ${theme.colors.neutral.grey200};
         }
       `}
-      value={text}
+      value={children}
+      {...otherProps}
     >
       <ListItem
         className={classnames(ComponentClassName, className, 'Nautilus-ComboBoxOptionListItem')}
@@ -50,30 +48,33 @@ export const Option = (props) => {
               `
         }
         unstyled
-        {...otherProps}
       >
-        {children}
-        {!children && <ReachComboboxOptionText>{text}</ReachComboboxOptionText>}
+        {prefix}
+        <ComboboxOptionText>{children}</ComboboxOptionText>
+        {suffix}
       </ListItem>
     </ReachComboboxOption>
   );
 };
 
 Option.defaultProps = {
-  children: undefined,
   className: undefined,
+  prefix: undefined,
+  suffix: undefined,
   unstyled: false,
 };
 
 Option.propTypes = {
   /** @ignore */
-  children: PropTypes.node,
+  children: PropTypes.string.isRequired,
   /** @ignore */
   className: PropTypes.string,
+  /** Content to be placed before the text. */
+  prefix: PropTypes.node,
+  /** Content to be placed after the text. */
+  suffix: PropTypes.node,
   /* @ignore Don't output any CSS styles. */
   unstyled: PropTypes.bool,
-  /** Plain-text value of this option, used for autocomplete, highlighting, search, etc. */
-  text: PropTypes.string.isRequired,
 };
 
 export const { defaultProps, propTypes } = Option;
