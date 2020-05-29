@@ -16729,7 +16729,7 @@ var TextField = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_5__["forwardR
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("opacity:0.8;position:absolute;top:", Object(_styles__WEBPACK_IMPORTED_MODULE_8__[/* toUnits */ "n"])(theme.spacing.padding.medium + 2), ";left:", Object(_styles__WEBPACK_IMPORTED_MODULE_8__[/* toUnits */ "n"])(theme.spacing.padding.medium), ";" + ( true ? "" : undefined))
+    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("opacity:0.8;position:absolute;left:", Object(_styles__WEBPACK_IMPORTED_MODULE_8__[/* toUnits */ "n"])(theme.spacing.padding.medium), ";top:50%;transform:translateY(-50%);" + ( true ? "" : undefined))
   }), actionIcon && Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* jsx */ "d"])(_Icon__WEBPACK_IMPORTED_MODULE_7__["default"], {
     "data-testid": __actionIconId,
     id: __actionIconId,
@@ -16744,7 +16744,7 @@ var TextField = /*#__PURE__*/Object(react__WEBPACK_IMPORTED_MODULE_5__["forwardR
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("cursor:pointer;opacity:0.8;position:absolute;right:", Object(_styles__WEBPACK_IMPORTED_MODULE_8__[/* toUnits */ "n"])(theme.spacing.padding.small), ";top:", Object(_styles__WEBPACK_IMPORTED_MODULE_8__[/* toUnits */ "n"])(theme.spacing.padding.medium + 2), ";" + ( true ? "" : undefined)), " ", !actionIconOnClick && _ref2,  true ? "" : undefined)
+    Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__[/* css */ "c"])("cursor:pointer;opacity:0.8;position:absolute;right:", Object(_styles__WEBPACK_IMPORTED_MODULE_8__[/* toUnits */ "n"])(theme.spacing.padding.small), ";top:50%;transform:translateY(-50%);" + ( true ? "" : undefined)), " ", !actionIconOnClick && _ref2,  true ? "" : undefined)
   }), errorComponent), children);
 });
 TextField.defaultProps = {
@@ -22232,7 +22232,7 @@ var Option_Option = function Option(props) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("cursor:pointer;line-height:2.4rem;padding:", Object(styles["n" /* toUnits */])(theme.spacing.padding.medium), ";width:100%;&:hover{background:", theme.colors.neutral.grey200, ";}[data-user-value]{background:", theme.colors.state.focusOutline, ";font-weight:bold;}" + ( true ? "" : undefined)),
+    Object(core_browser_esm["c" /* css */])("cursor:pointer;padding:", Object(styles["n" /* toUnits */])(theme.spacing.padding.small), ";width:100%;&:hover{background:", theme.colors.neutral.grey200, ";}[data-user-value]{background:", theme.colors.state.focusOutline, ";font-weight:bold;}" + ( true ? "" : undefined)),
     unstyled: true
   }, otherProps), children, !children && Object(core_browser_esm["d" /* jsx */])(ComboboxOptionText, null, text)));
 };
@@ -22283,7 +22283,7 @@ var Heading_Heading = function Heading(props) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    Object(core_browser_esm["c" /* css */])("background:", theme.colors.text["default"], ";color:", theme.colors.text.inverse, ";line-height:2.4rem;padding:", Object(styles["n" /* toUnits */])(theme.spacing.padding.medium), ";width:100%;" + ( true ? "" : undefined)),
+    Object(core_browser_esm["c" /* css */])("background:", theme.colors.text["default"], ";color:", theme.colors.text.inverse, ";padding:", Object(styles["n" /* toUnits */])(theme.spacing.padding.medium), ";width:100%;" + ( true ? "" : undefined)),
     unstyled: true
   }, otherProps), children);
 };
@@ -22338,13 +22338,14 @@ var ComboBox_ComboBox = function ComboBox(props) {
       hint = props.hint,
       id = props.id,
       label = props.label,
+      noMargin = props.noMargin,
       onBlur = props.onBlur,
       onFocus = props.onFocus,
       openOnFocus = props.openOnFocus,
       optional = props.optional,
       placeholder = props.placeholder,
       unstyled = props.unstyled,
-      otherProps = objectWithoutProperties_default()(props, ["autocomplete", "children", "disabled", "error", "hint", "id", "label", "onBlur", "onFocus", "openOnFocus", "optional", "placeholder", "unstyled"]);
+      otherProps = objectWithoutProperties_default()(props, ["autocomplete", "children", "disabled", "error", "hint", "id", "label", "noMargin", "onBlur", "onFocus", "openOnFocus", "optional", "placeholder", "unstyled"]);
 
   var _useState = Object(react["useState"])(otherProps.autofocus),
       _useState2 = slicedToArray_default()(_useState, 2),
@@ -22398,6 +22399,7 @@ var ComboBox_ComboBox = function ComboBox(props) {
     placeholder: placeholder,
     label: label,
     hint: hint,
+    noMargin: noMargin,
     optional: optional,
     unstyled: unstyled,
     onBlur: onBlurHandler,
@@ -22433,6 +22435,7 @@ ComboBox_ComboBox.defaultProps = {
   hint: undefined,
   id: undefined,
   labelId: undefined,
+  noMargin: false,
   openOnFocus: true,
   onBlur: undefined,
   onFocus: undefined,
@@ -22472,6 +22475,9 @@ ComboBox_ComboBox.propTypes = {
 
   /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
   labelId: prop_types_default.a.string,
+
+  /** Remove any outer margins from component. */
+  noMargin: prop_types_default.a.bool,
 
   /** Open this combobox's list of options when it is focused. */
   openOnFocus: prop_types_default.a.bool,
@@ -69707,6 +69713,17 @@ module.exports = {
             },
             'tags': {},
             'name': 'labelId'
+        },
+        {
+            'type': { 'name': 'bool' },
+            'required': false,
+            'description': 'Remove any outer margins from component.',
+            'defaultValue': {
+                'value': 'false',
+                'computed': false
+            },
+            'tags': {},
+            'name': 'noMargin'
         },
         {
             'type': { 'name': 'bool' },
