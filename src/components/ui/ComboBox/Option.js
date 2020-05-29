@@ -35,8 +35,7 @@ export const Option = (props) => {
             ? undefined
             : css`
                 cursor: pointer;
-                line-height: 2.4rem;
-                padding: ${toUnits(theme.spacing.padding.medium)};
+                padding: ${toUnits(theme.spacing.padding.small)};
                 width: 100%;
 
                 &:hover {

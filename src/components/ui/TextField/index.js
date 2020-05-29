@@ -320,8 +320,9 @@ const TextField = forwardRef((props, ref) => {
                 : css`
                     opacity: 0.8;
                     position: absolute;
-                    top: ${toUnits(theme.spacing.padding.medium + 2)};
                     left: ${toUnits(theme.spacing.padding.medium)};
+                    top: 50%;
+                    transform: translateY(-50%);
                   `
             }
           />
@@ -342,7 +343,8 @@ const TextField = forwardRef((props, ref) => {
                     opacity: 0.8;
                     position: absolute;
                     right: ${toUnits(theme.spacing.padding.small)};
-                    top: ${toUnits(theme.spacing.padding.medium + 2)};
+                    top: 50%;
+                    transform: translateY(-50%);
                   `}
 
               ${!actionIconOnClick &&

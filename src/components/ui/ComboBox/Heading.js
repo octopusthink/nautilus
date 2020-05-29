@@ -23,7 +23,6 @@ export const Heading = (props) => {
           : css`
               background: ${theme.colors.text.default};
               color: ${theme.colors.text.inverse};
-              line-height: 2.4rem;
               padding: ${toUnits(theme.spacing.padding.medium)};
               width: 100%;
             `

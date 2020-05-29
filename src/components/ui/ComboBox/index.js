@@ -24,6 +24,7 @@ export const ComboBox = (props) => {
     hint,
     id,
     label,
+    noMargin,
     onBlur,
     onFocus,
     openOnFocus,
@@ -105,6 +106,7 @@ export const ComboBox = (props) => {
           placeholder={placeholder}
           label={label}
           hint={hint}
+          noMargin={noMargin}
           optional={optional}
           unstyled={unstyled}
           onBlur={onBlurHandler}
@@ -160,6 +162,7 @@ ComboBox.defaultProps = {
   hint: undefined,
   id: undefined,
   labelId: undefined,
+  noMargin: false,
   openOnFocus: true,
   onBlur: undefined,
   onFocus: undefined,
@@ -190,6 +193,8 @@ ComboBox.propTypes = {
   label: PropTypes.node.isRequired,
   /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
   labelId: PropTypes.string,
+  /** Remove any outer margins from component. */
+  noMargin: PropTypes.bool,
   /** Open this combobox's list of options when it is focused. */
   openOnFocus: PropTypes.bool,
   /** Used to mark this input as optional. Will output text in `theme.components.ComboBox.optionalMessage`, if set. */
