@@ -22351,7 +22351,8 @@ var ComboBox_ComboBox = function ComboBox(props) {
       optional = props.optional,
       placeholder = props.placeholder,
       unstyled = props.unstyled,
-      otherProps = objectWithoutProperties_default()(props, ["autocomplete", "children", "disabled", "error", "hint", "id", "label", "labelId", "noMargin", "onBlur", "onFocus", "openOnFocus", "optional", "placeholder", "unstyled"]);
+      value = props.value,
+      otherProps = objectWithoutProperties_default()(props, ["autocomplete", "children", "disabled", "error", "hint", "id", "label", "labelId", "noMargin", "onBlur", "onFocus", "openOnFocus", "optional", "placeholder", "unstyled", "value"]);
 
   var _useState = Object(react["useState"])(otherProps.autofocus),
       _useState2 = slicedToArray_default()(_useState, 2),
@@ -22420,7 +22421,8 @@ var ComboBox_ComboBox = function ComboBox(props) {
       }
     } : undefined,
     actionIconTitle: popoverOpen ? 'Hide options' : 'Show options',
-    autocomplete: autocomplete
+    autocomplete: autocomplete,
+    value: value
   }), Object(core_browser_esm["d" /* jsx */])(combobox_esm_ComboboxPopover, {
     ref: popoverRef
   }, Object(core_browser_esm["d" /* jsx */])(combobox_esm_ComboboxList, {
@@ -22448,7 +22450,8 @@ ComboBox_ComboBox.defaultProps = {
   onFocus: undefined,
   optional: false,
   placeholder: undefined,
-  unstyled: false
+  unstyled: false,
+  value: undefined
 };
 ComboBox_ComboBox.propTypes = {
   /** A component to place at the bottom of the option list,  */
@@ -22496,7 +22499,10 @@ ComboBox_ComboBox.propTypes = {
   placeholder: prop_types_default.a.string,
 
   /* @ignore Don't output any CSS styles. */
-  unstyled: prop_types_default.a.bool
+  unstyled: prop_types_default.a.bool,
+
+  /* If supplied, this will be the selected value of the ComboBox. */
+  value: prop_types_default.a.string
 }; // Export child components.
 
 ComboBox_ComboBox.Option = ComboBox_Option;
@@ -69775,6 +69781,17 @@ module.exports = {
             },
             'tags': {},
             'name': 'unstyled'
+        },
+        {
+            'type': { 'name': 'string' },
+            'required': false,
+            'description': '',
+            'defaultValue': {
+                'value': 'undefined',
+                'computed': true
+            },
+            'tags': {},
+            'name': 'value'
         }
     ],
     'doclets': {},
