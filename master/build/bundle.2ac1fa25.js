@@ -22213,20 +22213,21 @@ var ComponentClassName = 'Nautilus-ComboBoxOption';
 var Option_Option = function Option(props) {
   var children = props.children,
       className = props.className,
+      prefix = props.prefix,
+      suffix = props.suffix,
       unstyled = props.unstyled,
-      text = props.text,
-      otherProps = objectWithoutProperties_default()(props, ["children", "className", "unstyled", "text"]);
+      otherProps = objectWithoutProperties_default()(props, ["children", "className", "prefix", "suffix", "unstyled"]);
 
   var theme = Object(themes["useTheme"])();
-  return Object(core_browser_esm["d" /* jsx */])(combobox_esm_ComboboxOption, {
+  return Object(core_browser_esm["d" /* jsx */])(combobox_esm_ComboboxOption, extends_default()({
     as: "span",
     css:
     /*#__PURE__*/
 
     /*#__PURE__*/
     Object(core_browser_esm["c" /* css */])("&[data-highlighted] .Nautilus-ComboBoxOptionListItem{background:", theme.colors.neutral.grey200, ";}" + ( true ? "" : undefined)),
-    value: text
-  }, Object(core_browser_esm["d" /* jsx */])(Item["a" /* default */], extends_default()({
+    value: children
+  }, otherProps), Object(core_browser_esm["d" /* jsx */])(Item["a" /* default */], {
     className: classnames_default()(ComponentClassName, className, 'Nautilus-ComboBoxOptionListItem'),
     css: unstyled ? undefined :
     /*#__PURE__*/
@@ -22234,25 +22235,29 @@ var Option_Option = function Option(props) {
     /*#__PURE__*/
     Object(core_browser_esm["c" /* css */])("cursor:pointer;padding:", Object(styles["n" /* toUnits */])(theme.spacing.padding.small), ";width:100%;&:hover{background:", theme.colors.neutral.grey200, ";}[data-user-value]{background:", theme.colors.state.focusOutline, ";font-weight:bold;}" + ( true ? "" : undefined)),
     unstyled: true
-  }, otherProps), children, !children && Object(core_browser_esm["d" /* jsx */])(ComboboxOptionText, null, text)));
+  }, prefix, Object(core_browser_esm["d" /* jsx */])(ComboboxOptionText, null, children), suffix));
 };
 Option_Option.defaultProps = {
-  children: undefined,
   className: undefined,
+  prefix: undefined,
+  suffix: undefined,
   unstyled: false
 };
 Option_Option.propTypes = {
   /** @ignore */
-  children: prop_types_default.a.node,
+  children: prop_types_default.a.string.isRequired,
 
   /** @ignore */
   className: prop_types_default.a.string,
 
-  /* @ignore Don't output any CSS styles. */
-  unstyled: prop_types_default.a.bool,
+  /** Content to be placed before the text. */
+  prefix: prop_types_default.a.node,
 
-  /** Plain-text value of this option, used for autocomplete, highlighting, search, etc. */
-  text: prop_types_default.a.string.isRequired
+  /** Content to be placed after the text. */
+  suffix: prop_types_default.a.node,
+
+  /* @ignore Don't output any CSS styles. */
+  unstyled: prop_types_default.a.bool
 };
 var defaultProps = Option_Option.defaultProps,
     propTypes = Option_Option.propTypes;
@@ -22338,6 +22343,7 @@ var ComboBox_ComboBox = function ComboBox(props) {
       hint = props.hint,
       id = props.id,
       label = props.label,
+      labelId = props.labelId,
       noMargin = props.noMargin,
       onBlur = props.onBlur,
       onFocus = props.onFocus,
@@ -22345,7 +22351,7 @@ var ComboBox_ComboBox = function ComboBox(props) {
       optional = props.optional,
       placeholder = props.placeholder,
       unstyled = props.unstyled,
-      otherProps = objectWithoutProperties_default()(props, ["autocomplete", "children", "disabled", "error", "hint", "id", "label", "noMargin", "onBlur", "onFocus", "openOnFocus", "optional", "placeholder", "unstyled"]);
+      otherProps = objectWithoutProperties_default()(props, ["autocomplete", "children", "disabled", "error", "hint", "id", "label", "labelId", "noMargin", "onBlur", "onFocus", "openOnFocus", "optional", "placeholder", "unstyled"]);
 
   var _useState = Object(react["useState"])(otherProps.autofocus),
       _useState2 = slicedToArray_default()(_useState, 2),
@@ -22398,6 +22404,7 @@ var ComboBox_ComboBox = function ComboBox(props) {
     error: error,
     placeholder: placeholder,
     label: label,
+    labelId: labelId,
     hint: hint,
     noMargin: noMargin,
     optional: optional,
@@ -69798,7 +69805,7 @@ module.exports = [
     },
     {
         'type': 'code',
-        'content': '<ComboBox label="Choose your favourite fruit" placeholder="Search or browse">\n    <ComboBox.Option text="Apples" />\n    <ComboBox.Option text="Bananas" />\n    <ComboBox.Option text="Pears" />\n    <ComboBox.Option text="Tarantulas" />\n</ComboBox>',
+        'content': '<ComboBox label="Choose your favourite fruit" placeholder="Search or browse">\n    <ComboBox.Option>Apples</ComboBox.Option>\n    <ComboBox.Option>Bananas</ComboBox.Option>\n    <ComboBox.Option>Pears</ComboBox.Option>\n    <ComboBox.Option>Tarantulas</ComboBox.Option>\n</ComboBox>',
         'settings': {},
         'evalInContext': evalInContext
     },
@@ -69808,7 +69815,7 @@ module.exports = [
     },
     {
         'type': 'code',
-        'content': '<ComboBox label="Select your favourite boy band" placeholder="Search or browse" optionHeight={3}>\n    <ComboBox.Heading>Girls like boys best</ComboBox.Heading>\n    <ComboBox.Option text="Boyz II Men" />\n    <ComboBox.Option text="The Backstreet Boys" />\n    <ComboBox.Option text="The Beach Boys" />\n    <ComboBox.Option text="Boys 4 Now" />\n\n    <ComboBox.Heading>Strange punctuation</ComboBox.Heading>\n    <ComboBox.Option text="*NSYNC" />\n    <ComboBox.Option text="O-Town" />\n\n    <ComboBox.Heading>By Numbers</ComboBox.Heading>\n    <ComboBox.Option text="All-4-One" />\n    <ComboBox.Option text="Boyz 4 Now" />\n    <ComboBox.Option text="B2K" />\n    <ComboBox.Option text="5ive" />\n    <ComboBox.Option text="2gether" />\n    <ComboBox.Option text="98 Degrees" />\n    <ComboBox.Option text="Boyz II Men" />\n    <ComboBox.Option text="One Direction" />\n    <ComboBox.Option text="The Jackson 5" />\n    <ComboBox.Option text="112" />\n</ComboBox>',
+        'content': '<ComboBox label="Select your favourite boy band" placeholder="Search or browse" onSelect={(item) => {\n  alert(item);\n}}>\n    <ComboBox.Heading>Girls like boys best</ComboBox.Heading>\n    <ComboBox.Option>Boyz II Men</ComboBox.Option>\n    <ComboBox.Option>The Backstreet Boys</ComboBox.Option>\n    <ComboBox.Option>The Beach Boys</ComboBox.Option>\n    <ComboBox.Option>Boys 4 Now</ComboBox.Option>\n\n    <ComboBox.Heading>Strange punctuation</ComboBox.Heading>\n    <ComboBox.Option>*NSYNC</ComboBox.Option>\n    <ComboBox.Option>O-Town</ComboBox.Option>\n\n    <ComboBox.Heading>By Numbers</ComboBox.Heading>\n    <ComboBox.Option>All-4-One</ComboBox.Option>\n    <ComboBox.Option>Boyz 4 Now</ComboBox.Option>\n    <ComboBox.Option>B2K</ComboBox.Option>\n    <ComboBox.Option>5ive</ComboBox.Option>\n    <ComboBox.Option>2gether</ComboBox.Option>\n    <ComboBox.Option>98 Degrees</ComboBox.Option>\n    <ComboBox.Option>Boyz II Men</ComboBox.Option>\n    <ComboBox.Option>One Direction</ComboBox.Option>\n    <ComboBox.Option>The Jackson 5</ComboBox.Option>\n    <ComboBox.Option>112</ComboBox.Option>\n</ComboBox>',
         'settings': {},
         'evalInContext': evalInContext
     },
@@ -69818,7 +69825,7 @@ module.exports = [
     },
     {
         'type': 'code',
-        'content': '<ComboBox noAutocomplete label="Which house should the hat sort you into? \uD83E\uDDD9‍\u2642️" placeholder="Select">\n    <ComboBox.Option text="Gryffindor">\uD83E\uDDD9\uD83C\uDFFE‍\u2642️ Gryffindor</ComboBox.Option>\n    <ComboBox.Option text="Ravenclaw">\uD83E\uDD9E Ravenclaw</ComboBox.Option>\n    <ComboBox.Option text="Slytherin">\uD83D\uDC0D Slytherin</ComboBox.Option>\n    <ComboBox.Option text="Hufflepuff">\uD83D\uDCA8 Hufflepuff</ComboBox.Option>\n</ComboBox>',
+        'content': '<ComboBox label="Which house should the hat sort you into? \uD83E\uDDD9‍\u2642️" placeholder="Select">\n    <ComboBox.Option prefix="\uD83E\uDDD9\uD83C\uDFFE‍\u2642️ ">Gryffindor</ComboBox.Option>\n    <ComboBox.Option prefix="\uD83E\uDD9E ">Ravenclaw</ComboBox.Option>\n    <ComboBox.Option prefix="\uD83D\uDC0D ">Slytherin</ComboBox.Option>\n    <ComboBox.Option prefix="\uD83D\uDCA8 ">Hufflepuff</ComboBox.Option>\n</ComboBox>',
         'settings': {},
         'evalInContext': evalInContext
     },
