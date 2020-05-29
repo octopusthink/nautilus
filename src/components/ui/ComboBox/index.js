@@ -32,6 +32,7 @@ export const ComboBox = (props) => {
     optional,
     placeholder,
     unstyled,
+    value,
     ...otherProps
   } = props;
 
@@ -127,6 +128,7 @@ export const ComboBox = (props) => {
           }
           actionIconTitle={popoverOpen ? 'Hide options' : 'Show options'}
           autocomplete={autocomplete}
+          value={value}
         />
         <ReachComboboxPopover ref={popoverRef}>
           <ReachComboboxList
@@ -171,6 +173,7 @@ ComboBox.defaultProps = {
   optional: false,
   placeholder: undefined,
   unstyled: false,
+  value: undefined,
 };
 
 ComboBox.propTypes = {
@@ -205,6 +208,8 @@ ComboBox.propTypes = {
   placeholder: PropTypes.string,
   /* @ignore Don't output any CSS styles. */
   unstyled: PropTypes.bool,
+  /* If supplied, this will be the selected value of the ComboBox. */
+  value: PropTypes.string,
 };
 
 // Export child components.
