@@ -2,6 +2,21 @@
 
 exports[`Tabs.Tab should not render styles when unstyled prop is set 1`] = `
 .emotion-1 {
+  border: 0;
+  -webkit-clip-path: rect(0 0 0 0);
+  clip-path: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.emotion-2 {
   color: #3b3f45;
   margin: 0;
   margin: 0 0 3.2rem;
@@ -13,17 +28,21 @@ exports[`Tabs.Tab should not render styles when unstyled prop is set 1`] = `
 
 <div>
   <section
-    class="emotion-2"
+    class="emotion-3"
     role="tabpanel"
     tabindex="-1"
   >
-    <h4
-      class="emotion-0"
+    <span
+      class="emotion-1"
     >
-      About
-    </h4>
+      <p
+        class="Nautilus-Paragraph emotion-0"
+      >
+        About
+      </p>
+    </span>
     <p
-      class="Nautilus-Paragraph emotion-1"
+      class="Nautilus-Paragraph emotion-2"
     >
       Puppies are cute.
     </p>
@@ -32,16 +51,31 @@ exports[`Tabs.Tab should not render styles when unstyled prop is set 1`] = `
 `;
 
 exports[`Tabs.Tab should render styles for a Tabs.Tab 1`] = `
-.emotion-2 {
+.emotion-3 {
   display: none;
 }
 
-.emotion-2:focus {
+.emotion-3:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
 .emotion-1 {
+  border: 0;
+  -webkit-clip-path: rect(0 0 0 0);
+  clip-path: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.emotion-2 {
   color: #3b3f45;
   margin: 0;
   margin: 0 0 3.2rem;
@@ -53,17 +87,21 @@ exports[`Tabs.Tab should render styles for a Tabs.Tab 1`] = `
 
 <div>
   <section
-    class="emotion-2"
+    class="emotion-3"
     role="tabpanel"
     tabindex="-1"
   >
-    <h4
-      class="emotion-0"
+    <span
+      class="emotion-1"
     >
-      About
-    </h4>
+      <p
+        class="Nautilus-Paragraph emotion-0"
+      >
+        About
+      </p>
+    </span>
     <p
-      class="Nautilus-Paragraph emotion-1"
+      class="Nautilus-Paragraph emotion-2"
     >
       Puppies are cute.
     </p>

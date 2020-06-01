@@ -22,14 +22,14 @@ describe('Tabs.Tab', () => {
     expect(container.firstChild.tagName).toEqual('SECTION');
   });
 
-  it('should render the label inside an h4', () => {
+  it('should render the label inside a <span>', () => {
     const { container } = render(
       <Tabs.Tab label="About">
         <Paragraph>Puppies are cute.</Paragraph>
       </Tabs.Tab>,
     );
 
-    expect(container.firstChild.children[0].tagName).toEqual('H4');
+    expect(container.firstChild.children[0].tagName).toEqual('SPAN');
   });
 
   it('should render the children as-provided', () => {
