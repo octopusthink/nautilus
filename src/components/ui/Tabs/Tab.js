@@ -2,8 +2,6 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import React, { forwardRef } from 'react';
 
-import Paragraph from '../Paragraph';
-import VisuallyHidden from '../VisuallyHidden';
 import { focusStyle } from '../../../styles';
 import { useTheme } from '../../../themes';
 
@@ -37,10 +35,6 @@ const Tab = forwardRef((props, ref) => {
       tabIndex="-1"
       {...otherProps}
     >
-      <VisuallyHidden>
-        <Paragraph unstyled>{label}</Paragraph>
-      </VisuallyHidden>
-
       {children}
     </section>
   );
