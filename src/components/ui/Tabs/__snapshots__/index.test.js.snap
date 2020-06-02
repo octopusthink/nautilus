@@ -51,12 +51,12 @@ exports[`Tabs should not render styles when unstyled prop is set 1`] = `
   border-bottom: 3px solid;
 }
 
-.emotion-4:focus {
+.emotion-3:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-3 {
+.emotion-2 {
   color: #3b3f45;
   margin: 0;
   margin: 0 0 3.2rem;
@@ -88,19 +88,14 @@ exports[`Tabs should not render styles when unstyled prop is set 1`] = `
   </ul>
   <section
     aria-labelledby="myTabSet-tab-0"
-    class="emotion-4"
+    class="emotion-3"
     data-testid="firstTabSection"
     id="myTabSet-section-0"
     role="tabpanel"
     tabindex="-1"
   >
-    <h4
-      class="emotion-2"
-    >
-      About
-    </h4>
     <p
-      class="Nautilus-Paragraph emotion-3"
+      class="Nautilus-Paragraph emotion-2"
     >
       Puppies are cute.
     </p>
@@ -187,12 +182,12 @@ exports[`Tabs should render styles for Tabs 1`] = `
   outline: 0;
 }
 
-.emotion-6:focus {
+.emotion-5:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-5 {
+.emotion-4 {
   color: #3b3f45;
   margin: 0;
   margin: 0 0 3.2rem;
@@ -202,11 +197,11 @@ exports[`Tabs should render styles for Tabs 1`] = `
   line-height: 1.5555555555555556;
 }
 
-.emotion-9 {
+.emotion-7 {
   display: none;
 }
 
-.emotion-9:focus {
+.emotion-7:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
@@ -263,57 +258,42 @@ exports[`Tabs should render styles for Tabs 1`] = `
   </ul>
   <section
     aria-labelledby="myTabSet-tab-0"
-    class="emotion-6"
+    class="emotion-5"
     data-testid="firstTabSection"
     id="myTabSet-section-0"
     role="tabpanel"
     tabindex="-1"
   >
-    <h4
-      class="emotion-4"
-    >
-      About
-    </h4>
     <p
-      class="Nautilus-Paragraph emotion-5"
+      class="Nautilus-Paragraph emotion-4"
     >
       Puppies are cute.
     </p>
   </section>
   <section
     aria-labelledby="myTabSet-tab-1"
-    class="emotion-9"
+    class="emotion-7"
     data-testid="secondTabSection"
     id="myTabSet-section-1"
     role="tabpanel"
     tabindex="-1"
   >
-    <h4
-      class="emotion-4"
-    >
-      History
-    </h4>
     <p
-      class="Nautilus-Paragraph emotion-5"
+      class="Nautilus-Paragraph emotion-4"
     >
       Puppies have already been cute.
     </p>
   </section>
   <section
     aria-labelledby="myTabSet-tab-2"
-    class="emotion-9"
+    class="emotion-7"
     data-testid="thirdTabSection"
     id="myTabSet-section-2"
     role="tabpanel"
     tabindex="-1"
   >
-    <h4
-      class="emotion-4"
-    >
-      Other
-    </h4>
     <p
-      class="Nautilus-Paragraph emotion-5"
+      class="Nautilus-Paragraph emotion-4"
     >
       I have run out of things to say in this test.
     </p>
@@ -355,12 +335,12 @@ exports[`Tabs shouldn't have a margin when \`noMargin\` is true 1`] = `
   border-bottom: 3px solid;
 }
 
-.emotion-4:focus {
+.emotion-3:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-3 {
+.emotion-2 {
   color: #3b3f45;
   margin: 0;
   margin: 0 0 3.2rem;
@@ -408,19 +388,14 @@ exports[`Tabs shouldn't have a margin when \`noMargin\` is true 1`] = `
   </ul>
   <section
     aria-labelledby="myTabSet-tab-0"
-    class="emotion-4"
+    class="emotion-3"
     data-testid="firstTabSection"
     id="myTabSet-section-0"
     role="tabpanel"
     tabindex="-1"
   >
-    <h4
-      class="emotion-2"
-    >
-      About
-    </h4>
     <p
-      class="Nautilus-Paragraph emotion-3"
+      class="Nautilus-Paragraph emotion-2"
     >
       Puppies are cute.
     </p>
