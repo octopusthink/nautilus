@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 import shortid from 'shortid';
 import PropTypes from 'prop-types';
 
-import { interfaceUI, toUnits } from '../../../styles';
+import { focusStyle, interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
 export const Checkbox = forwardRef((props, ref) => {
@@ -53,9 +53,9 @@ export const Checkbox = forwardRef((props, ref) => {
           }
 
           &:focus + label {
-            outline: 0.2rem solid ${theme.colors.accent.primaryLight};
-            outline-offset: 0.4rem;
-            padding-right: 0.8rem;
+            ${focusStyle.outline(theme)};
+            padding-right: ${toUnits(theme.spacing.margin.xxSmall)};
+            padding-bottom: 0.2rem;
           }
         `}
         // eslint-disable-next-line react/jsx-props-no-spreading
