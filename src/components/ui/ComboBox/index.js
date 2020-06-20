@@ -6,15 +6,7 @@ import {
   ComboboxList as ReachComboboxList,
 } from '@reach/combobox';
 import PropTypes from 'prop-types';
-import React, {
-  Children,
-  useCallback,
-  useMemo,
-  useRef,
-  useState,
-  useEffect,
-  forwardRef,
-} from 'react';
+import React, { Children, useCallback, useMemo, useRef, useState, useEffect } from 'react';
 
 import { interfaceUI } from '../../../styles';
 import { useTheme } from '../../../themes';
@@ -23,7 +15,7 @@ import TextField from '../TextField';
 import Option from './Option';
 import Heading from './Heading';
 
-export const ComboBox = forwardRef((ref, props) => {
+export const ComboBox = (props) => {
   const {
     autocomplete,
     children,
@@ -31,6 +23,7 @@ export const ComboBox = forwardRef((ref, props) => {
     error,
     hint,
     id,
+    inputRef,
     label,
     labelId,
     noMargin,
@@ -121,7 +114,7 @@ export const ComboBox = forwardRef((ref, props) => {
           unstyled={unstyled}
           onBlur={onBlurHandler}
           onFocus={onFocusHandler}
-          ref={ref}
+          ref={inputRef}
           signifierIcon={autocomplete ? 'search' : undefined}
           actionIcon={focus && popoverOpen ? 'chevron-up' : 'chevron-down'}
           actionIconOnClick={
@@ -163,7 +156,7 @@ export const ComboBox = forwardRef((ref, props) => {
       </ReachCombobox>
     </div>
   );
-});
+};
 
 ComboBox.defaultProps = {
   autocomplete: true,
@@ -172,6 +165,7 @@ ComboBox.defaultProps = {
   error: undefined,
   hint: undefined,
   id: undefined,
+  inputRef: undefined,
   labelId: undefined,
   noMargin: false,
   openOnFocus: true,
@@ -205,6 +199,8 @@ ComboBox.propTypes = {
   label: PropTypes.node.isRequired,
   /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
   labelId: PropTypes.string,
+  /** ref to be passed to `TextField`. */
+  inputRef: PropTypes.node,
   /** Remove any outer margins from component. */
   noMargin: PropTypes.bool,
   /** Open this combobox's list of options when it is focused. */
