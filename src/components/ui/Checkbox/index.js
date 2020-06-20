@@ -3,11 +3,11 @@ import { css } from '@emotion/core';
 import shortid from 'shortid';
 import PropTypes from 'prop-types';
 
-import { interfaceUI } from '../../../styles';
+import { interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
 export const Checkbox = forwardRef((props, ref) => {
-  const { children, id, ...otherProps } = props;
+  const { children, id, noMargin, ...otherProps } = props;
   const [generatedId] = useState(shortid.generate());
   const inputId = useMemo(() => {
     return id || generatedId;
@@ -17,8 +17,13 @@ export const Checkbox = forwardRef((props, ref) => {
   return (
     <div
       css={css`
-        margin-bottom: 0.8rem;
         position: relative;
+
+        /* Set external margins */
+        ${!noMargin &&
+          css`
+            margin-bottom: ${toUnits(theme.spacing.margin.xxSmall)};
+          `}
       `}
     >
       <input
