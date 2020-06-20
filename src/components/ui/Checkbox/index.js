@@ -7,7 +7,7 @@ import { focusStyle, interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
 export const Checkbox = forwardRef((props, ref) => {
-  const { children, id, noMargin, ...otherProps } = props;
+  const { children, id, noMargin, unstyled, ...otherProps } = props;
   const [generatedId] = useState(shortid.generate());
   const inputId = useMemo(() => {
     return id || generatedId;
@@ -16,89 +16,101 @@ export const Checkbox = forwardRef((props, ref) => {
 
   return (
     <div
-      css={css`
-        position: relative;
+      css={
+        unstyled
+          ? undefined
+          : css`
+              position: relative;
 
-        /* Set external margins */
-        ${!noMargin &&
-          css`
-            margin-bottom: ${toUnits(theme.spacing.margin.xxSmall)};
-          `}
-      `}
+              /* Set external margins */
+              ${!noMargin &&
+                css`
+                  margin-bottom: ${toUnits(theme.spacing.margin.xxSmall)};
+                `}
+            `
+      }
     >
       <input
         id={inputId}
         type="checkbox"
         ref={ref}
-        css={css`
-          position: absolute;
-          z-index: 1;
-          width: 44px;
-          height: 44px;
-          margin: 0;
-          opacity: 0;
+        css={
+          unstyled
+            ? undefined
+            : css`
+                position: absolute;
+                z-index: 1;
+                width: 44px;
+                height: 44px;
+                margin: 0;
+                opacity: 0;
 
-          &:checked + label {
-            color: ${theme.colors.text.dark};
-          }
+                &:checked + label {
+                  color: ${theme.colors.text.dark};
+                }
 
-          /* Hide the checkmark by default. */
-          & + label::after {
-            content: none;
-          }
+                /* Hide the checkmark by default. */
+                & + label::after {
+                  content: none;
+                }
 
-          /*Unhide the checkmark on the checked state*/
-          &:checked + label::after {
-            content: '';
-          }
+                /*Unhide the checkmark on the checked state*/
+                &:checked + label::after {
+                  content: '';
+                }
 
-          &:focus + label {
-            ${focusStyle.outline(theme)};
-            padding-right: ${toUnits(theme.spacing.margin.xxSmall)};
-            padding-bottom: 0.2rem;
-          }
-        `}
+                &:focus + label {
+                  ${focusStyle.outline(theme)};
+                  padding-right: ${toUnits(theme.spacing.margin.xxSmall)};
+                  padding-bottom: 0.2rem;
+                }
+              `
+        }
         // eslint-disable-next-line react/jsx-props-no-spreading
         {...otherProps}
       />
       <label
         htmlFor={inputId}
-        css={css`
-          ${interfaceUI.small(theme)};
-          color: ${theme.colors.text.default};
-          position: relative;
-          padding-left: 3.2rem;
+        css={
+          unstyled
+            ? undefined
+            : css`
+                ${interfaceUI.small(theme)};
+                color: ${theme.colors.text.default};
+                position: relative;
+                padding-left: 3.2rem;
 
-          &::before,
-          &::after {
-            position: absolute;
-          }
+                &::before,
+                &::after {
+                  position: absolute;
+                }
 
-          /*Outer-box*/
-          &::before {
-            border: 2px solid ${theme.colors.neutral.black};
-            background: ${theme.colors.neutral.white};
-            content: '';
-            display: inline-block;
-            height: 2rem;
-            width: 2rem;
-            top: -1px;
-            left: 0;
-          }
+                /*Outer-box*/
+                &::before {
+                  border: 2px solid ${theme.colors.neutral.black};
+                  background: ${theme.colors.neutral.white};
+                  content: '';
+                  display: inline-block;
+                  height: 2rem;
+                  width: 2rem;
+                  top: -1px;
+                  left: 0;
+                }
 
-          /*Checkmark*/
-          &::after {
-            left: 4px;
-            top: 5px;
-            content: '';
-            display: inline-block;
-            height: 6px;
-            width: 14px;
-            border-left: 3px solid ${theme.colors.accent.secondary};
-            border-bottom: 3px solid ${theme.colors.accent.secondary};
-            transform: rotate(-50deg);
-          }
-        `}
+                /*Checkmark*/
+                &::after {
+                  left: 4px;
+                  top: 5px;
+                  content: '';
+                  display: inline-block;
+                  height: 6px;
+                  width: 14px;
+                  border-left: 3px solid ${theme.colors.accent.secondary};
+                  border-bottom: 3px solid ${theme.colors.accent.secondary};
+                  transform: rotate(-50deg);
+                }
+              `
+        }
       >
         {children}
       </label>
