@@ -22342,18 +22342,18 @@ var ComboBox_ComboBox = function ComboBox(props) {
       error = props.error,
       hint = props.hint,
       id = props.id,
-      inputRef = props.inputRef,
       label = props.label,
       labelId = props.labelId,
       noMargin = props.noMargin,
       onBlur = props.onBlur,
+      onChange = props.onChange,
       onFocus = props.onFocus,
       openOnFocus = props.openOnFocus,
       optional = props.optional,
       placeholder = props.placeholder,
       unstyled = props.unstyled,
       value = props.value,
-      otherProps = objectWithoutProperties_default()(props, ["autocomplete", "children", "disabled", "error", "hint", "id", "inputRef", "label", "labelId", "noMargin", "onBlur", "onFocus", "openOnFocus", "optional", "placeholder", "unstyled", "value"]);
+      otherProps = objectWithoutProperties_default()(props, ["autocomplete", "children", "disabled", "error", "hint", "id", "label", "labelId", "noMargin", "onBlur", "onChange", "onFocus", "openOnFocus", "optional", "placeholder", "unstyled", "value"]);
 
   var _useState = Object(react["useState"])(otherProps.autofocus),
       _useState2 = slicedToArray_default()(_useState, 2),
@@ -22365,7 +22365,8 @@ var ComboBox_ComboBox = function ComboBox(props) {
       popoverOpen = _useState4[0],
       setPopoverOpen = _useState4[1];
 
-  var popoverRef = Object(react["useRef"])(); // eslint-disable-next-line react-hooks/exhaustive-deps
+  var popoverRef = Object(react["useRef"])();
+  var inputRef = Object(react["useRef"])(); // eslint-disable-next-line react-hooks/exhaustive-deps
 
   Object(react["useEffect"])(function () {
     if (popoverRef.current) {
@@ -22411,6 +22412,7 @@ var ComboBox_ComboBox = function ComboBox(props) {
     optional: optional,
     unstyled: unstyled,
     onBlur: onBlurHandler,
+    onChange: onChange,
     onFocus: onFocusHandler,
     ref: inputRef,
     signifierIcon: autocomplete ? 'search' : undefined,
@@ -22443,11 +22445,11 @@ ComboBox_ComboBox.defaultProps = {
   error: undefined,
   hint: undefined,
   id: undefined,
-  inputRef: undefined,
   labelId: undefined,
   noMargin: false,
   openOnFocus: true,
   onBlur: undefined,
+  onChange: undefined,
   onFocus: undefined,
   optional: false,
   placeholder: undefined,
@@ -22487,11 +22489,11 @@ ComboBox_ComboBox.propTypes = {
   /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
   labelId: prop_types_default.a.string,
 
-  /** ref to be passed to `TextField`. */
-  inputRef: prop_types_default.a.node,
-
   /** Remove any outer margins from component. */
   noMargin: prop_types_default.a.bool,
+
+  /** `onChange` handler for the `TextField` component. */
+  onChange: prop_types_default.a.func,
 
   /** Open this combobox's list of options when it is focused. */
   openOnFocus: prop_types_default.a.bool,
@@ -69714,17 +69716,6 @@ module.exports = {
             'name': 'id'
         },
         {
-            'type': { 'name': 'node' },
-            'required': false,
-            'description': 'ref to be passed to `TextField`.',
-            'defaultValue': {
-                'value': 'undefined',
-                'computed': true
-            },
-            'tags': {},
-            'name': 'inputRef'
-        },
-        {
             'type': { 'name': 'string' },
             'required': false,
             'description': 'HTML `id` attribute for the `<label>` tag used to label the text input component.',
@@ -69745,6 +69736,17 @@ module.exports = {
             },
             'tags': {},
             'name': 'noMargin'
+        },
+        {
+            'type': { 'name': 'func' },
+            'required': false,
+            'description': '`onChange` handler for the `TextField` component.',
+            'defaultValue': {
+                'value': 'undefined',
+                'computed': true
+            },
+            'tags': {},
+            'name': 'onChange'
         },
         {
             'type': { 'name': 'bool' },
