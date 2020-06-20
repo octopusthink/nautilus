@@ -23,11 +23,11 @@ export const ComboBox = (props) => {
     error,
     hint,
     id,
-    inputRef,
     label,
     labelId,
     noMargin,
     onBlur,
+    onChange,
     onFocus,
     openOnFocus,
     optional,
@@ -40,6 +40,7 @@ export const ComboBox = (props) => {
   const [focus, setFocus] = useState(otherProps.autofocus);
   const [popoverOpen, setPopoverOpen] = useState(otherProps.autofocus);
   const popoverRef = useRef();
+  const inputRef = useRef();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -113,6 +114,7 @@ export const ComboBox = (props) => {
           optional={optional}
           unstyled={unstyled}
           onBlur={onBlurHandler}
+          onChange={onChange}
           onFocus={onFocusHandler}
           ref={inputRef}
           signifierIcon={autocomplete ? 'search' : undefined}
@@ -165,11 +167,11 @@ ComboBox.defaultProps = {
   error: undefined,
   hint: undefined,
   id: undefined,
-  inputRef: undefined,
   labelId: undefined,
   noMargin: false,
   openOnFocus: true,
   onBlur: undefined,
+  onChange: undefined,
   onFocus: undefined,
   optional: false,
   placeholder: undefined,
@@ -199,10 +201,10 @@ ComboBox.propTypes = {
   label: PropTypes.node.isRequired,
   /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
   labelId: PropTypes.string,
-  /** ref to be passed to `TextField`. */
-  inputRef: PropTypes.node,
   /** Remove any outer margins from component. */
   noMargin: PropTypes.bool,
+  /** `onChange` handler for the `TextField` component. */
+  onChange: PropTypes.func,
   /** Open this combobox's list of options when it is focused. */
   openOnFocus: PropTypes.bool,
   /** Used to mark this input as optional. Will output text in `theme.components.ComboBox.optionalMessage`, if set. */
