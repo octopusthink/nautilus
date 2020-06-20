@@ -6,7 +6,15 @@ import {
   ComboboxList as ReachComboboxList,
 } from '@reach/combobox';
 import PropTypes from 'prop-types';
-import React, { Children, useCallback, useMemo, useRef, useState, useEffect } from 'react';
+import React, {
+  Children,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+  useEffect,
+  forwardRef,
+} from 'react';
 
 import { interfaceUI } from '../../../styles';
 import { useTheme } from '../../../themes';
@@ -15,7 +23,7 @@ import TextField from '../TextField';
 import Option from './Option';
 import Heading from './Heading';
 
-export const ComboBox = (props) => {
+export const ComboBox = forwardRef((ref, props) => {
   const {
     autocomplete,
     children,
@@ -39,7 +47,6 @@ export const ComboBox = (props) => {
   const [focus, setFocus] = useState(otherProps.autofocus);
   const [popoverOpen, setPopoverOpen] = useState(otherProps.autofocus);
   const popoverRef = useRef();
-  const inputRef = useRef();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -114,7 +121,7 @@ export const ComboBox = (props) => {
           unstyled={unstyled}
           onBlur={onBlurHandler}
           onFocus={onFocusHandler}
-          ref={inputRef}
+          ref={ref}
           signifierIcon={autocomplete ? 'search' : undefined}
           actionIcon={focus && popoverOpen ? 'chevron-up' : 'chevron-down'}
           actionIconOnClick={
@@ -156,7 +163,7 @@ export const ComboBox = (props) => {
       </ReachCombobox>
     </div>
   );
-};
+});
 
 ComboBox.defaultProps = {
   autocomplete: true,
