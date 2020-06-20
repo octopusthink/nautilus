@@ -19597,7 +19597,7 @@ var defaultProps = SkipLink.defaultProps,
 __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
-__webpack_require__.d(__webpack_exports__, "ComboBox", function() { return /* binding */ ComboBox_ComboBox; });
+__webpack_require__.d(__webpack_exports__, "ComboBox", function() { return /* binding */ ComboBox; });
 __webpack_require__.d(__webpack_exports__, "defaultProps", function() { return /* binding */ ComboBox_defaultProps; });
 __webpack_require__.d(__webpack_exports__, "propTypes", function() { return /* binding */ ComboBox_propTypes; });
 
@@ -22335,7 +22335,7 @@ var ComboBox_ref =  true ? {
   styles: ":root{--reach-combobox:1;}[data-reach-combobox-list]{margin:0;padding:0;user-select:none;}[data-reach-combobox-option]{margin:0;padding:0;}[data-suggested-value]{font-weight:bold;}"
 } : undefined;
 
-var ComboBox_ComboBox = function ComboBox(props) {
+var ComboBox = /*#__PURE__*/Object(react["forwardRef"])(function (ref, props) {
   var autocomplete = props.autocomplete,
       children = props.children,
       disabled = props.disabled,
@@ -22364,8 +22364,7 @@ var ComboBox_ComboBox = function ComboBox(props) {
       popoverOpen = _useState4[0],
       setPopoverOpen = _useState4[1];
 
-  var popoverRef = Object(react["useRef"])();
-  var inputRef = Object(react["useRef"])(); // eslint-disable-next-line react-hooks/exhaustive-deps
+  var popoverRef = Object(react["useRef"])(); // eslint-disable-next-line react-hooks/exhaustive-deps
 
   Object(react["useEffect"])(function () {
     if (popoverRef.current) {
@@ -22412,7 +22411,7 @@ var ComboBox_ComboBox = function ComboBox(props) {
     unstyled: unstyled,
     onBlur: onBlurHandler,
     onFocus: onFocusHandler,
-    ref: inputRef,
+    ref: ref,
     signifierIcon: autocomplete ? 'search' : undefined,
     actionIcon: focus && popoverOpen ? 'chevron-up' : 'chevron-down',
     actionIconOnClick: focus && popoverOpen ? function () {
@@ -22435,8 +22434,8 @@ var ComboBox_ComboBox = function ComboBox(props) {
     /*#__PURE__*/
     Object(core_browser_esm["c" /* css */])("transition:height 200ms;list-style-type:none;", styles["i" /* interfaceUI */].medium(theme), ";background:", theme.colors.buttons.neutral, ";color:", theme.colors.text["default"], ";margin:0;overflow:hidden;padding:0;overflow-y:scroll;max-height:60vh;z-index:100;border:2px solid ", theme.colors.text["default"], ";" + ( true ? "" : undefined))
   }, options))));
-};
-ComboBox_ComboBox.defaultProps = {
+});
+ComboBox.defaultProps = {
   autocomplete: true,
   children: undefined,
   disabled: false,
@@ -22453,7 +22452,7 @@ ComboBox_ComboBox.defaultProps = {
   unstyled: false,
   value: undefined
 };
-ComboBox_ComboBox.propTypes = {
+ComboBox.propTypes = {
   /** A component to place at the bottom of the option list,  */
 
   /** Determines whether the component shows an autocomplete interface or not. When set to true, this component will behave more like a `select` element. */
@@ -22505,12 +22504,12 @@ ComboBox_ComboBox.propTypes = {
   value: prop_types_default.a.string
 }; // Export child components.
 
-ComboBox_ComboBox.Option = ComboBox_Option;
-ComboBox_ComboBox.Heading = ComboBox_Heading;
-var ComboBox_defaultProps = ComboBox_ComboBox.defaultProps,
-    ComboBox_propTypes = ComboBox_ComboBox.propTypes;
+ComboBox.Option = ComboBox_Option;
+ComboBox.Heading = ComboBox_Heading;
+var ComboBox_defaultProps = ComboBox.defaultProps,
+    ComboBox_propTypes = ComboBox.propTypes;
 
-/* harmony default export */ var ui_ComboBox = __webpack_exports__["default"] = (ComboBox_ComboBox);
+/* harmony default export */ var ui_ComboBox = __webpack_exports__["default"] = (ComboBox);
 
 /***/ }),
 /* 124 */
