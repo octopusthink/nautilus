@@ -50,7 +50,7 @@
   },
   "homepage": "https://github.com/octopusthink/nautilus#readme",
   "dependencies": {
-    "@reach/combobox": "^0.10.3",
+    "@reach/combobox": "https://pkg.csb.dev/reach/reach-ui/commit/25b509de/@reach/combobox",
     "chroma-js": "^2.1.0",
     "classnames": "^2.2.6",
     "emotion-theming": "^10.0.27",
