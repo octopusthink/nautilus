@@ -19717,7 +19717,7 @@ function boolOrBoolString(value) {
 }
 
 function canUseDOM() {
-  return typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined";
+  return !!(typeof window !== "undefined" && window.document && window.document.createElement);
 }
 /**
  * Type-safe clone element
@@ -19749,16 +19749,15 @@ function createNamedContext(name, defaultValue) {
  * type song-and-dance every time we want to forward a ref into a component
  * that accepts an `as` prop, we abstract all of that mess to this function for
  * the time time being.
- *
- * TODO: Eventually we should probably just try to get the type defs above
- * working across the board, but ain't nobody got time for that mess!
- *
- * @param Comp
  */
 
 
-function forwardRefWithAs(comp) {
-  return react_default.a.forwardRef(comp);
+function forwardRefWithAs(render) {
+  return react_default.a.forwardRef(render);
+}
+
+function memoWithAs(Component, propsAreEqual) {
+  return react_default.a.memo(Component, propsAreEqual);
 }
 /**
  * Get the size of the working document minus the scrollbar offset.
@@ -20126,7 +20125,7 @@ function useForkedRef() {
         assignRef(ref, node);
       });
     }; // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, refs);
+  }, [].concat(refs));
 }
 /**
  * Returns the previous value of a reference after a component update.
@@ -20274,21 +20273,37 @@ function useDescendant(descendant, context, indexProp) {
   var _useContext = Object(react["useContext"])(context),
       registerDescendant = _useContext.registerDescendant,
       unregisterDescendant = _useContext.unregisterDescendant,
-      descendants = _useContext.descendants; // Prevent any flashing
+      descendants = _useContext.descendants; // This will initially return -1 because we haven't registered the descendant
+  // on the first render. After we register, this will then return the correct
+  // index on the following render and we will re-register descendants
+  // so that everything is up-to-date before the user interacts with a
+  // collection.
 
+
+  var index = indexProp !== null && indexProp !== void 0 ? indexProp : descendants.findIndex(function (item) {
+    return item.element === descendant.element;
+  });
+  var previousDescendants = usePrevious(descendants); // We also need to re-register descendants any time ANY of the other
+  // descendants have changed. My brain was melting when I wrote this and it
+  // feels a little off, but checking in render and using the result in the
+  // effect's dependency array works well enough.
+
+  var someDescendantsHaveChanged = descendants.some(function (descendant, index) {
+    var _previousDescendants$;
+
+    return descendant.element !== (previousDescendants === null || previousDescendants === void 0 ? void 0 : (_previousDescendants$ = previousDescendants[index]) === null || _previousDescendants$ === void 0 ? void 0 : _previousDescendants$.element);
+  }); // Prevent any flashing
 
   useIsomorphicLayoutEffect(function () {
     if (!descendant.element) forceUpdate({});
-    registerDescendant(_extends(_extends({}, descendant), {}, {
-      index: indexProp
+    registerDescendant(_extends({}, descendant, {
+      index: index
     }));
     return function () {
       return unregisterDescendant(descendant.element);
     }; // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [].concat(Object.values(descendant)));
-  return indexProp !== null && indexProp !== void 0 ? indexProp : descendants.findIndex(function (item) {
-    return item.element === descendant.element;
-  });
+  }, [registerDescendant, unregisterDescendant, index, someDescendantsHaveChanged].concat(Object.values(descendant)));
+  return index;
 }
 
 function useDescendantsInit() {
@@ -20317,13 +20332,13 @@ function DescendantProvider(_ref) {
       var newItems;
 
       if (explicitIndex != null) {
-        newItems = [].concat(items, [_extends(_extends({}, rest), {}, {
+        newItems = [].concat(items, [_extends({}, rest, {
           element: element,
           index: explicitIndex
         })]);
       } else if (items.length === 0) {
         // If there are no items, register at index 0 and bail.
-        newItems = [].concat(items, [_extends(_extends({}, rest), {}, {
+        newItems = [].concat(items, [_extends({}, rest, {
           element: element,
           index: 0
         })]);
@@ -20357,7 +20372,7 @@ function DescendantProvider(_ref) {
           return Boolean(item.element.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_PRECEDING);
         });
 
-        var newItem = _extends(_extends({}, rest), {}, {
+        var newItem = _extends({}, rest, {
           element: element,
           index: index
         }); // If an index is not found we will push the element to the end.
@@ -20371,7 +20386,7 @@ function DescendantProvider(_ref) {
       }
 
       return newItems.map(function (item, index) {
-        return _extends(_extends({}, item), {}, {
+        return _extends({}, item, {
           index: index
         });
       });
@@ -20675,7 +20690,7 @@ var react_dom = __webpack_require__(65);
  * hiding content (for popovers, dropdowns, and modals).
  *
  * @see Docs   https://reacttraining.com/reach-ui/portal
- * @see Source https://github.com/reach/reach-ui/tree/master/packages/portal
+ * @see Source https://github.com/reach/reach-ui/tree/main/packages/portal
  * @see React  https://reactjs.org/docs/portals.html
  */
 
@@ -20719,7 +20734,7 @@ if (false) {}
 
 /* harmony default export */ var portal_esm = (portal_esm_Portal);
 // CONCATENATED MODULE: ./node_modules/@reach/observe-rect/dist/observe-rect.esm.js
-var observe_rect_esm_props = ['bottom', 'height', 'left', 'right', 'top', 'width'];
+var observe_rect_esm_props = ["bottom", "height", "left", "right", "top", "width"];
 
 var rectChanged = function rectChanged(a, b) {
   if (a === void 0) {
@@ -20802,7 +20817,7 @@ function observeRect(node, cb) {
  *
  * @see getBoundingClientRect https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
  * @see Docs                  https://reacttraining.com/reach-ui/rect
- * @see Source                https://github.com/reach/reach-ui/tree/master/packages/rect
+ * @see Source                https://github.com/reach/reach-ui/tree/main/packages/rect
  */
 
 /**
@@ -20840,38 +20855,60 @@ function useRect(nodeRef, observe, onChange) {
     observe = true;
   }
 
-  var initialRectSet = Object(react["useRef"])(false);
+  var _useState = Object(react["useState"])(nodeRef.current),
+      element = _useState[0],
+      setElement = _useState[1];
 
-  var _useState = Object(react["useState"])(null),
-      rect = _useState[0],
-      setRect = _useState[1];
+  var initialRectIsSet = Object(react["useRef"])(false);
+  var initialRefIsSet = Object(react["useRef"])(false);
 
-  var observerRef = Object(react["useRef"])(null);
+  var _useState2 = Object(react["useState"])(null),
+      rect = _useState2[0],
+      setRect = _useState2[1];
+
+  var onChangeRef = Object(react["useRef"])();
   useIsomorphicLayoutEffect(function () {
-    var cleanup = function cleanup() {
-      observerRef.current && observerRef.current.unobserve();
-    };
+    onChangeRef.current = onChange;
 
-    if (!nodeRef.current) {
-      console.warn("You need to place the ref");
+    if (nodeRef.current !== element) {
+      setElement(nodeRef.current);
+    }
+  });
+  useIsomorphicLayoutEffect(function () {
+    if (element && !initialRectIsSet.current) {
+      initialRectIsSet.current = true;
+      setRect(element.getBoundingClientRect());
+    }
+  }, [element]);
+  useIsomorphicLayoutEffect(function () {
+    var observer;
+    var elem = element; // State initializes before refs are placed, meaning the element state will
+    // be undefined on the first render. We still want the rect on the first
+    // render, so initially we'll use the nodeRef that was passed instead of
+    // state for our measurements.
+
+    if (!initialRefIsSet.current) {
+      initialRefIsSet.current = true;
+      elem = nodeRef.current;
+    }
+
+    if (!elem) {
+      if (false) {}
+
       return cleanup;
     }
 
-    if (!observerRef.current) {
-      observerRef.current = observe_rect_esm(nodeRef.current, function (rect) {
-        onChange && onChange(rect);
-        setRect(rect);
-      });
-    }
+    observer = observe_rect_esm(elem, function (rect) {
+      onChangeRef.current && onChangeRef.current(rect);
+      setRect(rect);
+    });
+    observe && observer.observe();
+    return cleanup;
 
-    if (!initialRectSet.current) {
-      initialRectSet.current = true;
-      setRect(nodeRef.current.getBoundingClientRect());
+    function cleanup() {
+      observer && observer.unobserve();
     }
-
-    observe && observerRef.current.observe();
-    return cleanup; // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [observe, onChange]);
+  }, [observe, element]);
   return rect;
 }
 
@@ -20957,9 +20994,9 @@ var popover_esm_PopoverImpl = /*#__PURE__*/Object(react["forwardRef"])(function 
     "data-reach-popover": "",
     ref: ref
   }, props, {
-    style: popover_esm_extends(popover_esm_extends({
+    style: popover_esm_extends({
       position: "absolute"
-    }, getStyles.apply(void 0, [position, targetRect, popoverRect].concat(unstable_observableRefs))), props.style)
+    }, getStyles.apply(void 0, [position, targetRect, popoverRect].concat(unstable_observableRefs)), props.style)
   }));
 });
 
@@ -20967,21 +21004,15 @@ if (false) {} //////////////////////////////////////////////////////////////////
 
 
 function getStyles(position, targetRect, popoverRect) {
-  var needToMeasurePopup = !popoverRect;
-
-  if (needToMeasurePopup) {
-    return {
-      visibility: "hidden"
-    };
-  }
-
   for (var _len = arguments.length, unstable_observableRefs = new Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
     unstable_observableRefs[_key - 3] = arguments[_key];
   }
 
-  return position.apply(void 0, [targetRect, popoverRect].concat(unstable_observableRefs.map(function (ref) {
+  return popoverRect ? position.apply(void 0, [targetRect, popoverRect].concat(unstable_observableRefs.map(function (ref) {
     return ref.current;
-  })));
+  }))) : {
+    visibility: "hidden"
+  };
 }
 
 function getTopPosition(targetRect, popoverRect) {
@@ -21104,7 +21135,8 @@ function useSimulateTabNavigationForReactTree(triggerRef, popoverRef) {
   function getElementAfterTrigger() {
     var elements = ownerDocument && tabbable_default()(ownerDocument);
     var targetIndex = elements && triggerRef.current ? elements.indexOf(triggerRef.current) : -1;
-    return elements && elements[targetIndex + 1];
+    var elementAfterTrigger = elements && elements[targetIndex + 1];
+    return popoverRef.current && popoverRef.current.contains(elementAfterTrigger || null) ? false : elementAfterTrigger;
   }
 
   function tabbedFromTriggerToPopover() {
@@ -21305,50 +21337,50 @@ var stateChart = {
 };
 
 var combobox_esm_reducer = function reducer(data, event) {
-  var nextState = combobox_esm_extends(combobox_esm_extends({}, data), {}, {
+  var nextState = combobox_esm_extends({}, data, {
     lastEventType: event.type
   });
 
   switch (event.type) {
     case CHANGE:
     case INITIAL_CHANGE:
-      return combobox_esm_extends(combobox_esm_extends({}, nextState), {}, {
+      return combobox_esm_extends({}, nextState, {
         navigationValue: null,
         value: event.value
       });
 
     case NAVIGATE:
     case OPEN_WITH_BUTTON:
-      return combobox_esm_extends(combobox_esm_extends({}, nextState), {}, {
+      return combobox_esm_extends({}, nextState, {
         navigationValue: findNavigationValue(nextState, event)
       });
 
     case CLEAR:
-      return combobox_esm_extends(combobox_esm_extends({}, nextState), {}, {
+      return combobox_esm_extends({}, nextState, {
         value: "",
         navigationValue: null
       });
 
     case BLUR:
     case ESCAPE:
-      return combobox_esm_extends(combobox_esm_extends({}, nextState), {}, {
+      return combobox_esm_extends({}, nextState, {
         navigationValue: null
       });
 
     case SELECT_WITH_CLICK:
-      return combobox_esm_extends(combobox_esm_extends({}, nextState), {}, {
+      return combobox_esm_extends({}, nextState, {
         value: event.value,
         navigationValue: null
       });
 
     case SELECT_WITH_KEYBOARD:
-      return combobox_esm_extends(combobox_esm_extends({}, nextState), {}, {
+      return combobox_esm_extends({}, nextState, {
         value: data.navigationValue,
         navigationValue: null
       });
 
     case CLOSE_WITH_BUTTON:
-      return combobox_esm_extends(combobox_esm_extends({}, nextState), {}, {
+      return combobox_esm_extends({}, nextState, {
         navigationValue: null
       });
 
@@ -21356,7 +21388,7 @@ var combobox_esm_reducer = function reducer(data, event) {
       return nextState;
 
     case FOCUS:
-      return combobox_esm_extends(combobox_esm_extends({}, nextState), {}, {
+      return combobox_esm_extends({}, nextState, {
         navigationValue: findNavigationValue(nextState, event)
       });
 
@@ -21429,6 +21461,7 @@ var combobox_esm_Combobox = /*#__PURE__*/forwardRefWithAs(function Combobox(_ref
 
   var autocompletePropRef = Object(react["useRef"])();
   var persistSelectionRef = Object(react["useRef"])();
+  var optionDataFunctions = combobox_esm_useOptionDataFactory();
   var defaultData = {
     // The value the user has typed. We derive this also when the developer is
     // controlling the value of ComboboxInput.
@@ -21445,9 +21478,11 @@ var combobox_esm_Combobox = /*#__PURE__*/forwardRefWithAs(function Combobox(_ref
   useFocusManagement(data.lastEventType, inputRef);
   var id = auto_id_esm_useId(props.id);
   var listboxId = id ? makeId("listbox", id) : "listbox";
-  var context = {
+
+  var context = combobox_esm_extends({
     ariaLabel: ariaLabel,
-    ariaLabelledby: ariaLabelledby,
+    ariaLabelledby: ariaLabelledby
+  }, optionDataFunctions, {
     autocompletePropRef: autocompletePropRef,
     buttonRef: buttonRef,
     comboboxId: id,
@@ -21461,7 +21496,8 @@ var combobox_esm_Combobox = /*#__PURE__*/forwardRefWithAs(function Combobox(_ref
     popoverRef: popoverRef,
     state: state,
     transition: transition
-  };
+  });
+
   Object(react["useEffect"])(function () {
     return checkStyles("combobox");
   }, []);
@@ -21480,7 +21516,31 @@ var combobox_esm_Combobox = /*#__PURE__*/forwardRefWithAs(function Combobox(_ref
   }) : children)));
 });
 
-if (false) {} ////////////////////////////////////////////////////////////////////////////////
+if (false) {}
+/**
+ * Uses a ref object which stores the index as a key and custom data as value
+ * for each ComboboxOption. Hides the ref so that we can only mutate it through
+ * the returned functions. 🙈
+ */
+
+
+var combobox_esm_useOptionDataFactory = function useOptionDataFactory() {
+  var optionData = Object(react["useRef"])({});
+  var addOptionData = Object(react["useCallback"])(function (index, data) {
+    return optionData.current[index] = data;
+  }, []);
+  var getOptionData = Object(react["useCallback"])(function (index) {
+    return optionData.current[index];
+  }, []);
+  var removeOptionData = Object(react["useCallback"])(function (index) {
+    return delete optionData.current[index];
+  }, []);
+  return {
+    addOptionData: addOptionData,
+    getOptionData: getOptionData,
+    removeOptionData: removeOptionData
+  };
+}; ////////////////////////////////////////////////////////////////////////////////
 
 /**
  * ComboboxInput
@@ -21638,7 +21698,9 @@ var combobox_esm_ComboboxPopover = /*#__PURE__*/Object(react["forwardRef"])(func
       portal = _ref3$portal === void 0 ? true : _ref3$portal,
       onKeyDown = _ref3.onKeyDown,
       onBlur = _ref3.onBlur,
-      props = combobox_esm_objectWithoutPropertiesLoose(_ref3, ["children", "portal", "onKeyDown", "onBlur"]);
+      _ref3$position = _ref3.position,
+      position = _ref3$position === void 0 ? positionMatchWidth : _ref3$position,
+      props = combobox_esm_objectWithoutPropertiesLoose(_ref3, ["children", "portal", "onKeyDown", "onBlur", "position"]);
 
   var _useContext2 = Object(react["useContext"])(ComboboxContext),
       popoverRef = _useContext2.popoverRef,
@@ -21662,9 +21724,8 @@ var combobox_esm_ComboboxPopover = /*#__PURE__*/Object(react["forwardRef"])(func
     children: children
   };
   return portal ? react_default.a.createElement(popover_esm, Object.assign({}, props, {
-    // @ts-ignore
     ref: ref,
-    position: positionMatchWidth,
+    position: position,
     targetRef: inputRef
   }, sharedProps)) : react_default.a.createElement("div", Object.assign({
     ref: ref
@@ -21723,13 +21784,16 @@ var combobox_esm_ComboboxOption = /*#__PURE__*/forwardRefWithAs(function Combobo
       Comp = _ref5$as === void 0 ? "li" : _ref5$as,
       children = _ref5.children,
       value = _ref5.value,
+      selectData = _ref5.selectData,
       onClick = _ref5.onClick,
-      props = combobox_esm_objectWithoutPropertiesLoose(_ref5, ["as", "children", "value", "onClick"]);
+      props = combobox_esm_objectWithoutPropertiesLoose(_ref5, ["as", "children", "value", "selectData", "onClick"]);
 
   var _useContext4 = Object(react["useContext"])(ComboboxContext),
       onSelect = _useContext4.onSelect,
       navigationValue = _useContext4.data.navigationValue,
-      transition = _useContext4.transition;
+      transition = _useContext4.transition,
+      addOptionData = _useContext4.addOptionData,
+      removeOptionData = _useContext4.removeOptionData;
 
   var ownRef = Object(react["useRef"])(null);
   var ref = useForkedRef(forwardedRef, ownRef);
@@ -21738,9 +21802,15 @@ var combobox_esm_ComboboxOption = /*#__PURE__*/forwardRefWithAs(function Combobo
     value: value
   }, ComboboxDescendantContext);
   var isActive = navigationValue === value;
+  Object(react["useEffect"])(function () {
+    addOptionData(index, selectData);
+    return function () {
+      return removeOptionData(index);
+    };
+  }, [index, selectData, addOptionData, removeOptionData]);
 
   var handleClick = function handleClick() {
-    onSelect && onSelect(value);
+    onSelect && onSelect(value, selectData);
     transition(SELECT_WITH_CLICK, {
       value: value
     });
@@ -21891,7 +21961,8 @@ function useKeyDown() {
       state = _useContext8.state,
       transition = _useContext8.transition,
       autocompletePropRef = _useContext8.autocompletePropRef,
-      persistSelectionRef = _useContext8.persistSelectionRef;
+      persistSelectionRef = _useContext8.persistSelectionRef,
+      getOptionData = _useContext8.getOptionData;
 
   var options = useDescendants(ComboboxDescendantContext);
   return function handleKeyDown(event) {
@@ -22039,9 +22110,10 @@ function useKeyDown() {
 
       case "Enter":
         if (state === NAVIGATING && navigationValue !== null) {
-          // don't want to submit forms
+          var customData = getOptionData(index); // don't want to submit forms
+
           event.preventDefault();
-          onSelect && onSelect(navigationValue);
+          onSelect && onSelect(navigationValue, customData);
           transition(SELECT_WITH_KEYBOARD);
         }
 
@@ -22213,10 +22285,9 @@ var ComponentClassName = 'Nautilus-ComboBoxOption';
 var Option_Option = function Option(props) {
   var children = props.children,
       className = props.className,
-      prefix = props.prefix,
-      suffix = props.suffix,
       unstyled = props.unstyled,
-      otherProps = objectWithoutProperties_default()(props, ["children", "className", "prefix", "suffix", "unstyled"]);
+      value = props.value,
+      otherProps = objectWithoutProperties_default()(props, ["children", "className", "unstyled", "value"]);
 
   var theme = Object(themes["useTheme"])();
   return Object(core_browser_esm["d" /* jsx */])(combobox_esm_ComboboxOption, extends_default()({
@@ -22226,7 +22297,7 @@ var Option_Option = function Option(props) {
 
     /*#__PURE__*/
     Object(core_browser_esm["c" /* css */])("&[data-highlighted] .Nautilus-ComboBoxOptionListItem{background:", theme.colors.neutral.grey200, ";}" + ( true ? "" : undefined)),
-    value: children
+    value: value || children
   }, otherProps), Object(core_browser_esm["d" /* jsx */])(Item["a" /* default */], {
     className: classnames_default()(ComponentClassName, className, 'Nautilus-ComboBoxOptionListItem'),
     css: unstyled ? undefined :
@@ -22235,13 +22306,12 @@ var Option_Option = function Option(props) {
     /*#__PURE__*/
     Object(core_browser_esm["c" /* css */])("cursor:pointer;padding:", Object(styles["n" /* toUnits */])(theme.spacing.padding.small), ";width:100%;&:hover{background:", theme.colors.neutral.grey200, ";}[data-user-value]{background:", theme.colors.state.focusOutline, ";font-weight:bold;}" + ( true ? "" : undefined)),
     unstyled: true
-  }, prefix, Object(core_browser_esm["d" /* jsx */])(ComboboxOptionText, null, children), suffix));
+  }, !value && Object(core_browser_esm["d" /* jsx */])(ComboboxOptionText, null, children), value && children));
 };
 Option_Option.defaultProps = {
   className: undefined,
-  prefix: undefined,
-  suffix: undefined,
-  unstyled: false
+  unstyled: false,
+  value: undefined
 };
 Option_Option.propTypes = {
   /** @ignore */
@@ -22250,14 +22320,11 @@ Option_Option.propTypes = {
   /** @ignore */
   className: prop_types_default.a.string,
 
-  /** Content to be placed before the text. */
-  prefix: prop_types_default.a.node,
-
-  /** Content to be placed after the text. */
-  suffix: prop_types_default.a.node,
-
   /* @ignore Don't output any CSS styles. */
-  unstyled: prop_types_default.a.bool
+  unstyled: prop_types_default.a.bool,
+
+  /* @ignore The value used to match text. */
+  value: prop_types_default.a.string
 };
 var defaultProps = Option_Option.defaultProps,
     propTypes = Option_Option.propTypes;
