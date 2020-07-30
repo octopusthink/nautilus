@@ -1,5 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Tags should be styled by a css prop 1`] = `
+.emotion-0 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.3333333333333333;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #666c76;
+  margin: 0;
+  margin: 0 0.4rem 0.4rem 0;
+}
+
+.emotion-1 {
+  background: hotpink;
+}
+
+<div
+  class="emotion-1"
+>
+  <span
+    class="emotion-0"
+  >
+    Hello
+  </span>
+</div>
+`;
+
 exports[`Tags should match Tags styles 1`] = `
 .emotion-0 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -31,30 +62,32 @@ exports[`Tags should match Tags styles 1`] = `
 }
 
 <div>
-  <ul
-    class="Nautilus-List emotion-4"
-  >
-    <li
-      class="Nautilus-ListItem emotion-1"
+  <div>
+    <ul
+      class="Nautilus-List emotion-4"
     >
-      <span
-        class="emotion-0"
-        data-testid="child-one"
+      <li
+        class="Nautilus-ListItem emotion-1"
       >
-        Hello
-      </span>
-    </li>
-    <li
-      class="Nautilus-ListItem emotion-1"
-    >
-      <span
-        class="emotion-0"
-        data-testid="child-two"
+        <span
+          class="emotion-0"
+          data-testid="child-one"
+        >
+          Hello
+        </span>
+      </li>
+      <li
+        class="Nautilus-ListItem emotion-1"
       >
-        Goodbye
-      </span>
-    </li>
-  </ul>
+        <span
+          class="emotion-0"
+          data-testid="child-two"
+        >
+          Goodbye
+        </span>
+      </li>
+    </ul>
+  </div>
 </div>
 `;
 

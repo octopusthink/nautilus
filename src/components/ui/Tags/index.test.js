@@ -1,3 +1,4 @@
+import { css } from '@emotion/core';
 import React from 'react';
 
 import { axe, render } from '../../../../utils/testing';
@@ -11,7 +12,21 @@ describe('Tags', () => {
       </Tags>,
     );
 
-    expect(container.firstChild.tagName).toEqual('SPAN');
+    expect(container.firstChild.firstChild.tagName).toEqual('SPAN');
+  });
+
+  it('should be styled by a css prop', () => {
+    const { container } = render(
+      <Tags
+        css={css`
+          background: hotpink;
+        `}
+      >
+        <Tags.Tag>Hello</Tags.Tag>
+      </Tags>,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('should output only Tags.Tag children', () => {
