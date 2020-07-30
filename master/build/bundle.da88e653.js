@@ -22939,6 +22939,10 @@ __webpack_require__.r(__webpack_exports__);
 var slicedToArray = __webpack_require__(13);
 var slicedToArray_default = /*#__PURE__*/__webpack_require__.n(slicedToArray);
 
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectWithoutProperties.js
+var objectWithoutProperties = __webpack_require__(8);
+var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
+
 // EXTERNAL MODULE: ./node_modules/@emotion/core/dist/core.browser.esm.js + 9 modules
 var core_browser_esm = __webpack_require__(3);
 
@@ -22963,10 +22967,6 @@ var VisuallyHidden = __webpack_require__(55);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/extends.js
 var helpers_extends = __webpack_require__(6);
 var extends_default = /*#__PURE__*/__webpack_require__.n(helpers_extends);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectWithoutProperties.js
-var objectWithoutProperties = __webpack_require__(8);
-var objectWithoutProperties_default = /*#__PURE__*/__webpack_require__.n(objectWithoutProperties);
 
 // EXTERNAL MODULE: ./src/components/ui/Icon/index.js
 var Icon = __webpack_require__(18);
@@ -23111,6 +23111,7 @@ var defaultProps = Tag_Tag.defaultProps,
 // CONCATENATED MODULE: ./src/components/ui/Tags/index.js
 
 
+
 function Tags_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
 
@@ -23129,7 +23130,8 @@ var Tags_ref =  true ? {
 
 var Tags_Tags = function Tags(props) {
   var children = props.children,
-      label = props.label;
+      label = props.label,
+      otherProps = objectWithoutProperties_default()(props, ["children", "label"]);
 
   var _useState = Object(react["useState"])(shortid_default.a.generate()),
       _useState2 = slicedToArray_default()(_useState, 1),
@@ -23163,10 +23165,10 @@ var Tags_Tags = function Tags(props) {
 
     return tagElements[0];
   }, [children, generatedId, label]);
-  var WrapperComponent = items.length > 1 ? List["default"] : react["Fragment"];
+  var WrapperComponent = items.length > 1 ? List["default"] : 'div';
   return Object(core_browser_esm["d" /* jsx */])(react_default.a.Fragment, null, label && Object(core_browser_esm["d" /* jsx */])(VisuallyHidden["default"], {
     id: generatedId
-  }, label), Object(core_browser_esm["d" /* jsx */])(WrapperComponent, null, items));
+  }, label), Object(core_browser_esm["d" /* jsx */])(WrapperComponent, otherProps, items));
 };
 
 Tags_Tags.defaultProps = {
