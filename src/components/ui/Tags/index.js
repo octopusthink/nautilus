@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
-import React, { Children, cloneElement, Fragment, useMemo, useState } from 'react';
+import React, { Children, cloneElement, useMemo, useState } from 'react';
 import shortid from 'shortid';
 
 import List from '../List';
@@ -8,7 +8,7 @@ import VisuallyHidden from '../VisuallyHidden';
 import Tag from './Tag';
 
 const Tags = (props) => {
-  const { children, label } = props;
+  const { children, label, ...otherProps } = props;
 
   const [generatedId] = useState(shortid.generate());
 
@@ -50,12 +50,12 @@ const Tags = (props) => {
     return tagElements[0];
   }, [children, generatedId, label]);
 
-  const WrapperComponent = items.length > 1 ? List : Fragment;
+  const WrapperComponent = items.length > 1 ? List : 'div';
 
   return (
     <React.Fragment>
       {label && <VisuallyHidden id={generatedId}>{label}</VisuallyHidden>}
-      <WrapperComponent>{items}</WrapperComponent>
+      <WrapperComponent {...otherProps}>{items}</WrapperComponent>
     </React.Fragment>
   );
 };
