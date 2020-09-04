@@ -3881,8 +3881,8 @@ var ATTRIBUTE_TO_JSX_PROP_MAP = {
     CODE_INLINE_R = /^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,
     CONSECUTIVE_NEWLINE_R = /^(?:\n *)*\n/,
     CR_NEWLINE_R = /\r\n?/g,
-    FOOTNOTE_R = /^\[\^(.*)\](:.*)\n/,
-    FOOTNOTE_REFERENCE_R = /^\[\^(.*)\]/,
+    FOOTNOTE_R = /^\[\^([^\]]+)](:.*)\n/,
+    FOOTNOTE_REFERENCE_R = /^\[\^([^\]]+)]/,
     FORMFEED_R = /\f/g,
     GFM_TASK_R = /^\s*?\[(x|\s)\]/,
     HEADING_R = /^ *(#{1,6}) *([^\n]+)\n{0,2}/,
@@ -4084,8 +4084,8 @@ function reactFor(a) {
 
 function sanitizeUrl(a) {
   try {
-    var b = decodeURIComponent(a);
-    if (b.match(/^\s*javascript:/i)) return  false && false, null;
+    var b = decodeURIComponent(a).replace(/[^A-Za-z0-9/:]/g, '');
+    if (b.match(/^\s*(javascript|vbscript|data):/i)) return  false && false, null;
   } catch (b) {
     return  false && false, null;
   }
@@ -4199,7 +4199,7 @@ function compiler(a, b) {
         (HTML_BLOCK_ELEMENT_R.test(i) || HTML_SELF_CLOSING_ELEMENT_R.test(i)) && (a[h] = react_default.a.cloneElement(c(i.trim()), {
           key: d
         }));
-      } else a[ATTRIBUTE_TO_JSX_PROP_MAP[b] || b] = !0;
+      } else b !== 'style' && (a[ATTRIBUTE_TO_JSX_PROP_MAP[b] || b] = !0);
 
       return a;
     }, {}) : void 0;
@@ -4304,10 +4304,10 @@ function compiler(a, b) {
     footnoteReference: {
       match: inlineRegex(FOOTNOTE_REFERENCE_R),
       order: PARSE_PRIORITY_HIGH,
-      parse: function b(a) {
+      parse: function c(a) {
         return {
           content: a[1],
-          target: '#' + a[1]
+          target: '#' + b.slugify(a[1])
         };
       },
       react: function e(a, b, c) {
@@ -4365,30 +4365,6 @@ function compiler(a, b) {
         };
       }
     },
-    htmlBlock: {
-      match: anyScopeRegex(HTML_BLOCK_ELEMENT_R),
-      order: PARSE_PRIORITY_HIGH,
-      parse: function l(a, b, c) {
-        var d = a[3].match(HTML_LEFT_TRIM_AMOUNT_R),
-            f = d[1],
-            g = new RegExp('^' + f, 'gm'),
-            h = a[3].replace(g, ''),
-            i = containsBlockSyntax(h) ? parseBlock : parseInline,
-            j = a[1].toLowerCase(),
-            k = DO_NOT_PROCESS_HTML_ELEMENTS.indexOf(j) !== -1;
-        return {
-          attrs: e(a[2]),
-          content: k ? a[3] : i(b, h, c),
-          noInnerParse: k,
-          tag: k ? j : a[1]
-        };
-      },
-      react: function e(a, b, c) {
-        return d(a.tag, _extends({
-          key: c.key
-        }, a.attrs), a.noInnerParse ? a.content : b(a.content, c));
-      }
-    },
     htmlComment: {
       match: anyScopeRegex(HTML_COMMENT_R),
       order: PARSE_PRIORITY_HIGH,
@@ -4396,21 +4372,6 @@ function compiler(a, b) {
         return {};
       },
       react: renderNothing
-    },
-    htmlSelfClosing: {
-      match: anyScopeRegex(HTML_SELF_CLOSING_ELEMENT_R),
-      order: PARSE_PRIORITY_HIGH,
-      parse: function b(a) {
-        return {
-          attrs: e(a[2] || ''),
-          tag: a[1]
-        };
-      },
-      react: function e(a, b, c) {
-        return d(a.tag, _extends({}, a.attrs, {
-          key: c.key
-        }));
-      }
     },
     image: {
       match: simpleInlineRegex(IMAGE_R),
@@ -4708,15 +4669,55 @@ function compiler(a, b) {
         }, b(a.content, c));
       }
     }
-  },
-      j = parserFor(i),
+  };
+  b.disableParsingRawHTML !== !0 && (i.htmlBlock = {
+    match: anyScopeRegex(HTML_BLOCK_ELEMENT_R),
+    order: PARSE_PRIORITY_HIGH,
+    parse: function l(a, b, c) {
+      var d = a[3].match(HTML_LEFT_TRIM_AMOUNT_R),
+          f = d[1],
+          g = new RegExp('^' + f, 'gm'),
+          h = a[3].replace(g, ''),
+          i = containsBlockSyntax(h) ? parseBlock : parseInline,
+          j = a[1].toLowerCase(),
+          k = DO_NOT_PROCESS_HTML_ELEMENTS.indexOf(j) !== -1;
+      return {
+        attrs: e(a[2]),
+        content: k ? a[3] : i(b, h, c),
+        noInnerParse: k,
+        tag: k ? j : a[1]
+      };
+    },
+    react: function e(a, b, c) {
+      return d(a.tag, _extends({
+        key: c.key
+      }, a.attrs), a.noInnerParse ? a.content : b(a.content, c));
+    }
+  }, i.htmlSelfClosing = {
+    match: anyScopeRegex(HTML_SELF_CLOSING_ELEMENT_R),
+    order: PARSE_PRIORITY_HIGH,
+    parse: function b(a) {
+      return {
+        attrs: e(a[2] || ''),
+        tag: a[1]
+      };
+    },
+    react: function e(a, b, c) {
+      return d(a.tag, _extends({}, a.attrs, {
+        key: c.key
+      }));
+    }
+  });
+  var j = parserFor(i),
       k = reactFor(ruleOutput(i)),
-      l = c(a);
+      l = c(function (a) {
+    return a.replace(/<!--[\s\S]*?(?:-->)/g, '');
+  }(a));
   return g.length && l.props.children.push(d('footer', {
     key: 'footer'
   }, g.map(function (a) {
     return d('div', {
-      id: a.identifier,
+      id: b.slugify(a.identifier),
       key: a.identifier
     }, a.identifier, k(j(a.footnote, {
       inline: !0
