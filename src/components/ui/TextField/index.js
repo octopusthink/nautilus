@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React, { cloneElement, forwardRef, useCallback, useMemo, useRef, useState } from 'react';
 import shortid from 'shortid';
@@ -14,6 +14,81 @@ const smallText = (props) => {
     ${interfaceUI.small(theme)};
     color: ${theme.colors.text.light};
     margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
+  `;
+};
+
+const InputComponentStyles = (props, theme) => {
+  const { actionIcon, disabled, error, noMargin, signifierIcon, size } = props;
+
+  // Padding to use for signifier and action icons.
+  const iconPadding = toUnits(
+    theme.components.Icon.sizes.medium.size + theme.spacing.padding.small * 2,
+  );
+
+  return css`
+    ${interfaceUI.medium(theme)};
+    background: ${theme.colors.buttons.neutral};
+    border-radius: 0;
+    border: 2px solid ${theme.colors.text.default};
+    box-sizing: border-box;
+    color: ${theme.colors.text.default};
+    display: block;
+    margin: 0;
+    outline: none;
+    padding: ${toUnits(theme.spacing.padding.medium)};
+    position: relative;
+    transition: box-shadow 200ms;
+    width: 100%;
+
+    ${!noMargin &&
+      !error &&
+      css`
+        margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
+      `}
+
+    ${signifierIcon &&
+      css`
+        padding-left: ${iconPadding};
+      `}
+
+    ${actionIcon &&
+      css`
+        padding-right: ${iconPadding};
+      `}
+
+    ${size &&
+      css`
+        max-width: ${size - 1}em;
+      `}
+
+    ${disabled &&
+      css`
+        color: ${theme.colors.state.disabled};
+        background-color: ${theme.colors.state.disabledLight};
+        border-color: ${theme.colors.state.disabledLight};
+      `}
+
+    ${error &&
+      css`
+        border-color: ${theme.colors.state.errorOutline};
+      `}
+
+    &:required {
+      /*
+        This might be a React Styleguidist style that we're overriding.
+        TODO: Remove this from the styleguide styles.
+      */
+      box-shadow: none;
+    }
+
+    &:focus {
+      color: ${theme.colors.text.dark};
+      ${focusStyle.outline(theme)};
+    }
+
+    &::placeholder {
+      color: ${theme.colors.text.light};
+    }
   `;
 };
 
@@ -138,11 +213,6 @@ const TextField = forwardRef((props, ref) => {
     InputComponent = 'textarea';
   }
 
-  // Padding to use for signifier and action icons.
-  const iconPadding = toUnits(
-    theme.components.Icon.sizes.medium.size + theme.spacing.padding.small * 2,
-  );
-
   return (
     <React.Fragment>
       {label && (
@@ -225,75 +295,7 @@ const TextField = forwardRef((props, ref) => {
       >
         <InputComponent
           aria-errormessage={errorId}
-          css={
-            unstyled
-              ? undefined
-              : css`
-          ${interfaceUI.medium(theme)};
-          background: ${theme.colors.buttons.neutral};
-          border-radius: 0;
-          border: 2px solid ${theme.colors.text.default};
-          box-sizing: border-box;
-          color: ${theme.colors.text.default};
-          display: block;
-          margin: 0;
-          outline: none;
-          padding: ${toUnits(theme.spacing.padding.medium)};
-          position: relative;
-          transition: box-shadow 200ms;
-          width: 100%;
-
-          ${!noMargin &&
-            !error &&
-            css`
-              margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
-            `}
-
-          ${signifierIcon &&
-            css`
-              padding-left: ${iconPadding};
-            `}
-
-          ${actionIcon &&
-            css`
-              padding-right: ${iconPadding};
-            `}
-
-          ${size &&
-            css`
-              max-width: ${size - 1}em;
-            `}
-
-          ${disabled &&
-            css`
-              color: ${theme.colors.state.disabled};
-              background-color: ${theme.colors.state.disabledLight};
-              border-color: ${theme.colors.state.disabledLight};
-            `}
-
-          ${error &&
-            css`
-              border-color: ${theme.colors.state.errorOutline};
-            `}
-
-          &:required {
-            /*
-              This might be a React Styleguidist style that we're overriding.
-              TODO: Remove this from the styleguide styles.
-            */
-            box-shadow: none;
-          }
-
-          &:focus {
-            color: ${theme.colors.text.dark};
-            ${focusStyle.outline(theme)};
-          }
-
-          &::placeholder {
-            color: ${theme.colors.text.light};
-          }
-        `
-          }
+          css={unstyled ? undefined : InputComponentStyles(props, theme)}
           disabled={disabled}
           id={inputId}
           placeholder={placeholder}
@@ -455,6 +457,7 @@ TextField.propTypes = {
 };
 
 TextField.displayName = 'TextField';
+TextField.InputComponentStyles = InputComponentStyles;
 
 export const { defaultProps, propTypes } = TextField;
 

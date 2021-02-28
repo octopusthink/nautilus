@@ -2,7 +2,7 @@
 // https://github.com/styleguidist/react-styleguidist/blob/0f461ab8f5070d5e91e8911bc2b22d805c07fb98/src/client/rsg-components/StyleGuide/StyleGuide.js,
 // but adds a `<Nautilus>` wrapper so we can use our own components as
 // the output components of React Styleguidist's Markdown.
-import { Global, css } from '@emotion/core';
+import { Global, css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import Markdown from 'rsg-components/Markdown';

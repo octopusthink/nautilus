@@ -72,24 +72,7 @@ exports[`Button should match styles 1`] = `
 `;
 
 exports[`Button should not give a manually set leadingIcon a "Nautilus-navigationIcon--animated" class 1`] = `
-.emotion-1 {
-  display: inline-block;
-  line-height: 0;
-  margin: 0;
-  padding: 0;
-  vertical-align: middle;
-  margin-right: 0.4rem;
-}
-
 .emotion-0 {
-  height: 2.4rem;
-  stroke-width: 0.175rem;
-  width: 2.4rem;
-  stroke: currentColor;
-  opacity: 0.8;
-}
-
-.emotion-2 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
@@ -126,42 +109,60 @@ exports[`Button should not give a manually set leadingIcon a "Nautilus-navigatio
   margin: 0 0.4rem 0.8rem;
 }
 
-.emotion-2::-moz-focus-inner {
+.emotion-0::-moz-focus-inner {
   border: 0;
 }
 
-.emotion-2:active {
+.emotion-0:active {
   border-color: #94225f;
   color: #94225f;
   top: 0.2rem;
 }
 
-.emotion-2:focus {
+.emotion-0:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
   box-shadow: 0 0 0 0.4rem #f5bbda;
 }
 
-.emotion-2 .Nautilus-navigationIcon--animated {
+.emotion-0 .Nautilus-navigationIcon--animated {
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
 
-.emotion-2:hover {
+.emotion-0:hover {
   border-color: #94225f;
   color: #94225f;
 }
 
-.emotion-2:hover .Nautilus-navigationIcon--animated {
+.emotion-0:hover .Nautilus-navigationIcon--animated {
   -webkit-transform: translateX(-0.4rem);
+  -moz-transform: translateX(-0.4rem);
   -ms-transform: translateX(-0.4rem);
   transform: translateX(-0.4rem);
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
 }
 
+.emotion-1 {
+  display: inline-block;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  margin-right: 0.4rem;
+}
+
+.emotion-2 {
+  height: 2.4rem;
+  stroke-width: 0.175rem;
+  width: 2.4rem;
+  stroke: currentColor;
+  opacity: 0.8;
+}
+
 <a
-  class="emotion-2"
+  class="emotion-0"
   href="/foo.zip"
 >
   <span
@@ -169,7 +170,7 @@ exports[`Button should not give a manually set leadingIcon a "Nautilus-navigatio
   >
     <svg
       aria-hidden="true"
-      class="emotion-0"
+      class="emotion-2"
       fill="none"
       height="24"
       id="test-button"
@@ -204,23 +205,6 @@ exports[`Button should not give a manually set leadingIcon a "Nautilus-navigatio
 
 exports[`Button should not give a manually set trailingIcon a "Nautilus-navigationIcon--animated" class 1`] = `
 .emotion-0 {
-  height: 2.4rem;
-  stroke-width: 0.175rem;
-  width: 2.4rem;
-  stroke: currentColor;
-  opacity: 0.8;
-}
-
-.emotion-1 {
-  display: inline-block;
-  line-height: 0;
-  margin: 0;
-  padding: 0;
-  vertical-align: middle;
-  margin-left: 0.4rem;
-}
-
-.emotion-2 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
@@ -257,42 +241,60 @@ exports[`Button should not give a manually set trailingIcon a "Nautilus-navigati
   margin: 0 0.4rem 0.8rem;
 }
 
-.emotion-2::-moz-focus-inner {
+.emotion-0::-moz-focus-inner {
   border: 0;
 }
 
-.emotion-2:active {
+.emotion-0:active {
   border-color: #94225f;
   color: #94225f;
   top: 0.2rem;
 }
 
-.emotion-2:focus {
+.emotion-0:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
   box-shadow: 0 0 0 0.4rem #f5bbda;
 }
 
-.emotion-2 .Nautilus-navigationIcon--animated {
+.emotion-0 .Nautilus-navigationIcon--animated {
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
 
-.emotion-2:hover {
+.emotion-0:hover {
   border-color: #94225f;
   color: #94225f;
 }
 
-.emotion-2:hover .Nautilus-navigationIcon--animated {
+.emotion-0:hover .Nautilus-navigationIcon--animated {
   -webkit-transform: translateX(0.4rem);
+  -moz-transform: translateX(0.4rem);
   -ms-transform: translateX(0.4rem);
   transform: translateX(0.4rem);
   -webkit-transition: all 200ms linear;
   transition: all 200ms linear;
 }
 
+.emotion-1 {
+  display: inline-block;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+  margin-left: 0.4rem;
+}
+
+.emotion-2 {
+  height: 2.4rem;
+  stroke-width: 0.175rem;
+  width: 2.4rem;
+  stroke: currentColor;
+  opacity: 0.8;
+}
+
 <a
-  class="emotion-2"
+  class="emotion-0"
   href="/foo.zip"
 >
   Download
@@ -301,7 +303,7 @@ exports[`Button should not give a manually set trailingIcon a "Nautilus-navigati
   >
     <svg
       aria-hidden="true"
-      class="emotion-0"
+      class="emotion-2"
       fill="none"
       height="24"
       id="test-button"
@@ -354,7 +356,7 @@ exports[`Button should not output styles when unstyled is set, even with styling
   margin-right: 0.4rem;
 }
 
-.emotion-0 {
+.emotion-2 {
   height: 2.4rem;
   stroke-width: 0.175rem;
   width: 2.4rem;
@@ -364,7 +366,7 @@ exports[`Button should not output styles when unstyled is set, even with styling
 
 <div>
   <button
-    class="emotion-2"
+    class="emotion-0"
     type="button"
   >
     <span
@@ -372,7 +374,7 @@ exports[`Button should not output styles when unstyled is set, even with styling
     >
       <svg
         aria-hidden="true"
-        class="emotion-0"
+        class="emotion-2"
         fill="none"
         height="24"
         id="unstyled-button"
@@ -410,7 +412,7 @@ exports[`Button should not output styles when unstyled is set, even with styling
 `;
 
 exports[`Button should show danger styles 1`] = `
-.emotion-2 {
+.emotion-0 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
@@ -447,28 +449,28 @@ exports[`Button should show danger styles 1`] = `
   margin: 0 0.4rem 0.8rem;
 }
 
-.emotion-2::-moz-focus-inner {
+.emotion-0::-moz-focus-inner {
   border: 0;
 }
 
-.emotion-2:active {
+.emotion-0:active {
   border-color: #630000;
   color: #630000;
   top: 0.2rem;
 }
 
-.emotion-2:focus {
+.emotion-0:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
   box-shadow: 0 0 0 0.4rem #e2b6b6;
 }
 
-.emotion-2 .Nautilus-navigationIcon--animated {
+.emotion-0 .Nautilus-navigationIcon--animated {
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
 
-.emotion-2:hover {
+.emotion-0:hover {
   border-color: #630000;
   color: #630000;
 }
@@ -482,7 +484,7 @@ exports[`Button should show danger styles 1`] = `
   margin-right: 0.4rem;
 }
 
-.emotion-0 {
+.emotion-2 {
   height: 2.4rem;
   stroke-width: 0.175rem;
   width: 2.4rem;
@@ -492,7 +494,7 @@ exports[`Button should show danger styles 1`] = `
 
 <div>
   <button
-    class="emotion-2"
+    class="emotion-0"
     type="button"
   >
     <span
@@ -500,7 +502,7 @@ exports[`Button should show danger styles 1`] = `
     >
       <svg
         aria-hidden="true"
-        class="emotion-0"
+        class="emotion-2"
         fill="none"
         height="24"
         id="dangerous-button"

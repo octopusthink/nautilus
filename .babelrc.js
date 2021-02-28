@@ -5,7 +5,7 @@ const config = {
     ['@babel/plugin-proposal-object-rest-spread', { useBuiltIns: true }],
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-transform-runtime',
-    'emotion',
+    '@emotion',
   ],
 };
 

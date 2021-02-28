@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import classnames from 'classnames';
 import Feather from 'feather-icons';
 import PropTypes from 'prop-types';

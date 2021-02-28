@@ -4,7 +4,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'jest-axe/extend-expect';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import 'jest-dom/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
 
 global.window.matchMedia = jest.fn().mockImplementation((query) => {
   return {

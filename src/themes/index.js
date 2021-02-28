@@ -1,4 +1,4 @@
-import { ThemeContext } from '@emotion/core';
+import { ThemeContext } from '@emotion/react';
 import { useContext } from 'react';
 
 export const useTheme = () => useContext(ThemeContext);

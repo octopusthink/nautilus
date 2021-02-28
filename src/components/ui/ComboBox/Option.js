@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { ComboboxOption as ReachComboboxOption, ComboboxOptionText } from '@reach/combobox';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
