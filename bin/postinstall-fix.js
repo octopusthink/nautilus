@@ -1,22 +1,23 @@
-const replace = require('replace-in-file');
+const fs = require('fs');
 
-const fixFormatWebpackMessages = async () => {
-  try {
-    const results = await replace({
-      files: 'node_modules/react-dev-utils/formatWebpackMessages.js',
-      from: `let lines = message.split('\\n');`,
-      to: `let lines = [];
+const problemFile = 'node_modules/react-dev-utils/formatWebpackMessages.js';
+
+fs.readFile(problemFile, 'utf8', function (err, data) {
+  if (err) {
+    return console.log(err);
+  }
+  var result = data.replace(
+    /let lines = message.split\('\\n'\);/g,
+    `let lines = [];
 
   if (typeof message === 'string' || message instanceof String) {
     lines = message.split('\\n');
   } else if ('message' in Object.keys(message)) {
     lines = message['message'].split('\\n');
   }`,
-    });
+  );
 
-  } catch (error) {
-    console.log('error while trying to fix  "formatWebpackMessages.js"', error);
-  }
-};
-
-fixFormatWebpackMessages();
+  fs.writeFile(problemFile, result, 'utf8', function (err) {
+    if (err) return console.log(err);
+  });
+});
