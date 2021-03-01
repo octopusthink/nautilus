@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React, {
   Children,
@@ -15,17 +15,13 @@ import { focusStyle, bodyStyles, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 import Tab from './Tab';
 
-const isTab = (child) => {
-  return child.type === Tab;
-};
+const isTab = (child) => child.type === Tab;
 
 const setFocus = (focusedElement, ref, setStateFunc) => {
-  return () => {
-    if (focusedElement !== null && ref && ref.current) {
-      ref.current.focus();
-      setStateFunc(null);
-    }
-  };
+  if (focusedElement !== null && ref && ref.current) {
+    ref.current.focus();
+    setStateFunc(null);
+  }
 };
 
 const Tabs = (props) => {
@@ -38,18 +34,17 @@ const Tabs = (props) => {
   const [focusedTab, setFocusedTab] = useState(null);
   const theme = useTheme();
 
-  const numberOfTabs = useMemo(() => {
-    return Children.toArray(children).filter(isTab).length;
-  }, [children]);
+  const numberOfTabs = useMemo(() => Children.toArray(children).filter(isTab).length, [children]);
 
   // Assigns focus to a tab's content when the down arrow key is pressed.
-  useEffect(setFocus(focusedSection, sectionToFocusRef, setFocusedSection), [
-    focusedSection,
-    sectionToFocusRef,
-  ]);
+  useEffect(() => {
+    setFocus(focusedSection, sectionToFocusRef, setFocusedSection);
+  }, [focusedSection, sectionToFocusRef]);
 
   // Assign focus to a tab's label when the tab changes via the left/right keys.
-  useEffect(setFocus(focusedTab, tabToFocusRef, setFocusedTab), [focusedTab, tabToFocusRef]);
+  useEffect(() => {
+    setFocus(focusedTab, tabToFocusRef, setFocusedTab);
+  }, [focusedTab, tabToFocusRef]);
 
   const onKeyDown = useCallback(
     (event) => {
@@ -92,62 +87,49 @@ const Tabs = (props) => {
     [activeTab, numberOfTabs],
   );
 
-  const onClickFactory = (index) => {
-    return (event) => {
-      event.preventDefault();
-      setActiveTab(index);
-    };
+  const onClickFactory = (index) => (event) => {
+    event.preventDefault();
+    setActiveTab(index);
   };
 
   const tabsId = id || generatedId;
 
-  const labels = useMemo(() => {
-    return Children.toArray(children)
-      .filter(isTab)
-      .map((child, index) => {
-        const { label, labelProps } = child.props;
-        const {
-          onClick: onClickTab,
-          onKeyDown: onKeyDownTab,
-          ref: refTab,
-          ...otherTabProps
-        } = labelProps;
+  const labels = useMemo(
+    () =>
+      Children.toArray(children)
+        .filter(isTab)
+        .map((child, index) => {
+          const { label, labelProps } = child.props;
+          const {
+            onClick: onClickTab,
+            onKeyDown: onKeyDownTab,
+            ref: refTab,
+            ...otherTabProps
+          } = labelProps;
 
-        return (
-          <li key={`${tabsId}-tab-${label}`} role="presentation">
-            <a
-              aria-selected={index === activeTab}
-              css={css`
-                color: ${theme.colors.text.default};
-                display: inline-block;
-                padding: ${toUnits(theme.spacing.padding.small)}
-                  ${toUnits(theme.spacing.padding.large)};
-                position: relative;
-                text-decoration: none;
-
-                &::after {
-                  display: block;
-                  border-bottom: 3px solid transparent;
-                  content: '';
-                  position: absolute;
-                  bottom: -2px;
-                  left: 0;
-                  right: 0;
-                }
-
-                &:hover {
-                  /* color: ${theme.colors.accent.primaryDark}; */
+          return (
+            <li key={`${tabsId}-tab-${label}`} role="presentation">
+              <a
+                aria-selected={index === activeTab}
+                css={css`
+                  color: ${theme.colors.text.default};
+                  display: inline-block;
+                  padding: ${toUnits(theme.spacing.padding.small)}
+                    ${toUnits(theme.spacing.padding.large)};
+                  position: relative;
+                  text-decoration: none;
 
                   &::after {
-                    border-color: ${theme.colors.neutral.grey400};
+                    display: block;
+                    border-bottom: 3px solid transparent;
+                    content: '';
+                    position: absolute;
+                    bottom: -2px;
+                    left: 0;
+                    right: 0;
                   }
-                }
 
-                &:focus {
-                  ${focusStyle.outline(theme)};
-                }
-
-                ${index === activeTab &&
+                  ${index === activeTab &&
                   css`
                     color: ${theme.colors.text.dark};
 
@@ -155,48 +137,63 @@ const Tabs = (props) => {
                       border-bottom: 3px solid;
                     }
                   `}
-              `}
-              href={`#${tabsId}-section-${index}`}
-              id={`${tabsId}-tab-${index}`}
-              onClick={(event) => {
-                onClickFactory(index)(event);
-                if (onClickTab) {
-                  onClickTab(event);
-                }
-              }}
-              onKeyDown={(event) => {
-                onKeyDown(event);
-                if (onKeyDownTab) {
-                  onKeyDownTab(event);
-                }
-              }}
-              ref={focusedTab === index ? tabToFocusRef : refTab}
-              role="tab"
-              tabIndex={index !== activeTab ? '-1' : undefined}
-              {...otherTabProps}
-            >
-              {label}
-            </a>
-          </li>
-        );
-      });
-  }, [children, activeTab, focusedTab, tabsId, onKeyDown, tabToFocusRef, theme]);
 
-  const tabPanels = useMemo(() => {
-    return Children.toArray(children)
-      .filter(isTab)
-      .map((child, index) => {
-        const { label } = child.props;
+                  &:hover {
+                    /* color: ${theme.colors.accent.primaryDark}; */
 
-        return cloneElement(child, {
-          'aria-labelledby': `${tabsId}-tab-${index}`,
-          isActive: activeTab === index,
-          id: `${tabsId}-section-${index}`,
-          key: `${tabsId}-section-${label}`,
-          ref: focusedSection === index ? sectionToFocusRef : undefined,
-        });
-      });
-  }, [children, activeTab, focusedSection, tabsId, sectionToFocusRef]);
+                    &::after {
+                      border-color: ${theme.colors.neutral.grey400};
+                    }
+                  }
+
+                  &:focus {
+                    ${focusStyle.outline(theme)};
+                  }
+                `}
+                href={`#${tabsId}-section-${index}`}
+                id={`${tabsId}-tab-${index}`}
+                onClick={(event) => {
+                  onClickFactory(index)(event);
+                  if (onClickTab) {
+                    onClickTab(event);
+                  }
+                }}
+                onKeyDown={(event) => {
+                  onKeyDown(event);
+                  if (onKeyDownTab) {
+                    onKeyDownTab(event);
+                  }
+                }}
+                ref={focusedTab === index ? tabToFocusRef : refTab}
+                role="tab"
+                tabIndex={index !== activeTab ? '-1' : undefined}
+                {...otherTabProps}
+              >
+                {label}
+              </a>
+            </li>
+          );
+        }),
+    [children, activeTab, focusedTab, tabsId, onKeyDown, tabToFocusRef, theme],
+  );
+
+  const tabPanels = useMemo(
+    () =>
+      Children.toArray(children)
+        .filter(isTab)
+        .map((child, index) => {
+          const { label } = child.props;
+
+          return cloneElement(child, {
+            'aria-labelledby': `${tabsId}-tab-${index}`,
+            isActive: activeTab === index,
+            id: `${tabsId}-section-${index}`,
+            key: `${tabsId}-section-${label}`,
+            ref: focusedSection === index ? sectionToFocusRef : undefined,
+          });
+        }),
+    [children, activeTab, focusedSection, tabsId, sectionToFocusRef],
+  );
 
   return (
     <React.Fragment>

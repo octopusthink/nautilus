@@ -11,9 +11,11 @@
   "plugins": [
     "stylelint-order",
   ],
-  "processors": ["stylelint-processor-styled-components"],
   "rules": {
     "custom-property-empty-line-before": null,
-    "declaration-empty-line-before": null
+    "declaration-empty-line-before": null,
+    "function-name-case": null,
+    "no-duplicate-selectors": null,
+    "value-keyword-case": null
   },
 }

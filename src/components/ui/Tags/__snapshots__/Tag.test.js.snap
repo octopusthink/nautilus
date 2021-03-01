@@ -6,9 +6,6 @@ exports[`Tag should match styles 1`] = `
   font-weight: 700;
   font-size: 1.5rem;
   line-height: 1.3333333333333333;
-  -webkit-letter-spacing: 0.05em;
-  -moz-letter-spacing: 0.05em;
-  -ms-letter-spacing: 0.05em;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #666c76;
@@ -41,9 +38,6 @@ exports[`Tag shouldn't have a margin when \`noMargin\` is true 1`] = `
   font-weight: 700;
   font-size: 1.5rem;
   line-height: 1.3333333333333333;
-  -webkit-letter-spacing: 0.05em;
-  -moz-letter-spacing: 0.05em;
-  -ms-letter-spacing: 0.05em;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #666c76;

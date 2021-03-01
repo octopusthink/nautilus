@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tabs should not render styles when unstyled prop is set 1`] = `
-.emotion-1 {
+.emotion-0 {
   color: #3b3f45;
   margin: 0;
   margin: 0 0 3.2rem;
@@ -18,142 +18,6 @@ exports[`Tabs should not render styles when unstyled prop is set 1`] = `
   padding: 0;
 }
 
-.emotion-0 {
-  color: #3b3f45;
-  display: inline-block;
-  padding: 0.8rem 2.4rem;
-  position: relative;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  color: #181b1c;
-}
-
-.emotion-0::after {
-  display: block;
-  border-bottom: 3px solid transparent;
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  right: 0;
-}
-
-.emotion-0:hover::after {
-  border-color: #bec4cd;
-}
-
-.emotion-0:focus {
-  box-shadow: 0 0 0 0.4rem #f5bbda;
-  outline: 0;
-}
-
-.emotion-0::after {
-  border-bottom: 3px solid;
-}
-
-.emotion-3:focus {
-  box-shadow: 0 0 0 0.4rem #f5bbda;
-  outline: 0;
-}
-
-.emotion-2 {
-  color: #3b3f45;
-  margin: 0;
-  margin: 0 0 3.2rem;
-  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  font-size: 1.8rem;
-  line-height: 1.5555555555555556;
-}
-
-<div>
-  <ul
-    class="emotion-1"
-    role="tablist"
-  >
-    <li
-      role="presentation"
-    >
-      <a
-        aria-selected="true"
-        class="emotion-0"
-        data-testid="firstTab"
-        href="#myTabSet-section-0"
-        id="myTabSet-tab-0"
-        role="tab"
-      >
-        About
-      </a>
-    </li>
-  </ul>
-  <section
-    aria-labelledby="myTabSet-tab-0"
-    class="emotion-3"
-    data-testid="firstTabSection"
-    id="myTabSet-section-0"
-    role="tabpanel"
-    tabindex="-1"
-  >
-    <p
-      class="Nautilus-Paragraph emotion-2"
-    >
-      Puppies are cute.
-    </p>
-  </section>
-</div>
-`;
-
-exports[`Tabs should render styles for Tabs 1`] = `
-.emotion-3 {
-  color: #3b3f45;
-  margin: 0;
-  margin: 0 0 3.2rem;
-  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  font-size: 1.8rem;
-  line-height: 1.5555555555555556;
-  border-bottom: 1px solid #97a0af;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  list-style-type: none;
-  padding: 0;
-}
-
-.emotion-0 {
-  color: #3b3f45;
-  display: inline-block;
-  padding: 0.8rem 2.4rem;
-  position: relative;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  color: #181b1c;
-}
-
-.emotion-0::after {
-  display: block;
-  border-bottom: 3px solid transparent;
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  right: 0;
-}
-
-.emotion-0:hover::after {
-  border-color: #bec4cd;
-}
-
-.emotion-0:focus {
-  box-shadow: 0 0 0 0.4rem #f5bbda;
-  outline: 0;
-}
-
-.emotion-0::after {
-  border-bottom: 3px solid;
-}
-
 .emotion-1 {
   color: #3b3f45;
   display: inline-block;
@@ -161,6 +25,7 @@ exports[`Tabs should render styles for Tabs 1`] = `
   position: relative;
   -webkit-text-decoration: none;
   text-decoration: none;
+  color: #181b1c;
 }
 
 .emotion-1::after {
@@ -173,6 +38,10 @@ exports[`Tabs should render styles for Tabs 1`] = `
   right: 0;
 }
 
+.emotion-1::after {
+  border-bottom: 3px solid;
+}
+
 .emotion-1:hover::after {
   border-color: #bec4cd;
 }
@@ -182,12 +51,12 @@ exports[`Tabs should render styles for Tabs 1`] = `
   outline: 0;
 }
 
-.emotion-5:focus {
+.emotion-2:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-4 {
+.emotion-3 {
   color: #3b3f45;
   margin: 0;
   margin: 0 0 3.2rem;
@@ -197,18 +66,9 @@ exports[`Tabs should render styles for Tabs 1`] = `
   line-height: 1.5555555555555556;
 }
 
-.emotion-7 {
-  display: none;
-}
-
-.emotion-7:focus {
-  box-shadow: 0 0 0 0.4rem #f5bbda;
-  outline: 0;
-}
-
 <div>
   <ul
-    class="emotion-3"
+    class="emotion-0"
     role="tablist"
   >
     <li
@@ -216,7 +76,147 @@ exports[`Tabs should render styles for Tabs 1`] = `
     >
       <a
         aria-selected="true"
-        class="emotion-0"
+        class="emotion-1"
+        data-testid="firstTab"
+        href="#myTabSet-section-0"
+        id="myTabSet-tab-0"
+        role="tab"
+      >
+        About
+      </a>
+    </li>
+  </ul>
+  <section
+    aria-labelledby="myTabSet-tab-0"
+    class="emotion-2"
+    data-testid="firstTabSection"
+    id="myTabSet-section-0"
+    role="tabpanel"
+    tabindex="-1"
+  >
+    <p
+      class="Nautilus-Paragraph emotion-3"
+    >
+      Puppies are cute.
+    </p>
+  </section>
+</div>
+`;
+
+exports[`Tabs should render styles for Tabs 1`] = `
+.emotion-0 {
+  color: #3b3f45;
+  margin: 0;
+  margin: 0 0 3.2rem;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.5555555555555556;
+  border-bottom: 1px solid #97a0af;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.emotion-1 {
+  color: #3b3f45;
+  display: inline-block;
+  padding: 0.8rem 2.4rem;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #181b1c;
+}
+
+.emotion-1::after {
+  display: block;
+  border-bottom: 3px solid transparent;
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+}
+
+.emotion-1::after {
+  border-bottom: 3px solid;
+}
+
+.emotion-1:hover::after {
+  border-color: #bec4cd;
+}
+
+.emotion-1:focus {
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+}
+
+.emotion-2 {
+  color: #3b3f45;
+  display: inline-block;
+  padding: 0.8rem 2.4rem;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.emotion-2::after {
+  display: block;
+  border-bottom: 3px solid transparent;
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+}
+
+.emotion-2:hover::after {
+  border-color: #bec4cd;
+}
+
+.emotion-2:focus {
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+}
+
+.emotion-4:focus {
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+}
+
+.emotion-5 {
+  color: #3b3f45;
+  margin: 0;
+  margin: 0 0 3.2rem;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.5555555555555556;
+}
+
+.emotion-6 {
+  display: none;
+}
+
+.emotion-6:focus {
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+}
+
+<div>
+  <ul
+    class="emotion-0"
+    role="tablist"
+  >
+    <li
+      role="presentation"
+    >
+      <a
+        aria-selected="true"
+        class="emotion-1"
         data-testid="firstTab"
         href="#myTabSet-section-0"
         id="myTabSet-tab-0"
@@ -230,7 +230,7 @@ exports[`Tabs should render styles for Tabs 1`] = `
     >
       <a
         aria-selected="false"
-        class="emotion-1"
+        class="emotion-2"
         data-testid="secondTab"
         href="#myTabSet-section-1"
         id="myTabSet-tab-1"
@@ -245,7 +245,7 @@ exports[`Tabs should render styles for Tabs 1`] = `
     >
       <a
         aria-selected="false"
-        class="emotion-1"
+        class="emotion-2"
         data-testid="thirdTab"
         href="#myTabSet-section-2"
         id="myTabSet-tab-2"
@@ -258,42 +258,42 @@ exports[`Tabs should render styles for Tabs 1`] = `
   </ul>
   <section
     aria-labelledby="myTabSet-tab-0"
-    class="emotion-5"
+    class="emotion-4"
     data-testid="firstTabSection"
     id="myTabSet-section-0"
     role="tabpanel"
     tabindex="-1"
   >
     <p
-      class="Nautilus-Paragraph emotion-4"
+      class="Nautilus-Paragraph emotion-5"
     >
       Puppies are cute.
     </p>
   </section>
   <section
     aria-labelledby="myTabSet-tab-1"
-    class="emotion-7"
+    class="emotion-6"
     data-testid="secondTabSection"
     id="myTabSet-section-1"
     role="tabpanel"
     tabindex="-1"
   >
     <p
-      class="Nautilus-Paragraph emotion-4"
+      class="Nautilus-Paragraph emotion-5"
     >
       Puppies have already been cute.
     </p>
   </section>
   <section
     aria-labelledby="myTabSet-tab-2"
-    class="emotion-7"
+    class="emotion-6"
     data-testid="thirdTabSection"
     id="myTabSet-section-2"
     role="tabpanel"
     tabindex="-1"
   >
     <p
-      class="Nautilus-Paragraph emotion-4"
+      class="Nautilus-Paragraph emotion-5"
     >
       I have run out of things to say in this test.
     </p>
@@ -303,54 +303,6 @@ exports[`Tabs should render styles for Tabs 1`] = `
 
 exports[`Tabs shouldn't have a margin when \`noMargin\` is true 1`] = `
 .emotion-0 {
-  color: #3b3f45;
-  display: inline-block;
-  padding: 0.8rem 2.4rem;
-  position: relative;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  color: #181b1c;
-}
-
-.emotion-0::after {
-  display: block;
-  border-bottom: 3px solid transparent;
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  right: 0;
-}
-
-.emotion-0:hover::after {
-  border-color: #bec4cd;
-}
-
-.emotion-0:focus {
-  box-shadow: 0 0 0 0.4rem #f5bbda;
-  outline: 0;
-}
-
-.emotion-0::after {
-  border-bottom: 3px solid;
-}
-
-.emotion-3:focus {
-  box-shadow: 0 0 0 0.4rem #f5bbda;
-  outline: 0;
-}
-
-.emotion-2 {
-  color: #3b3f45;
-  margin: 0;
-  margin: 0 0 3.2rem;
-  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  font-size: 1.8rem;
-  line-height: 1.5555555555555556;
-}
-
-.emotion-1 {
   color: #3b3f45;
   margin: 0;
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
@@ -366,9 +318,57 @@ exports[`Tabs shouldn't have a margin when \`noMargin\` is true 1`] = `
   padding: 0;
 }
 
+.emotion-1 {
+  color: #3b3f45;
+  display: inline-block;
+  padding: 0.8rem 2.4rem;
+  position: relative;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #181b1c;
+}
+
+.emotion-1::after {
+  display: block;
+  border-bottom: 3px solid transparent;
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+}
+
+.emotion-1::after {
+  border-bottom: 3px solid;
+}
+
+.emotion-1:hover::after {
+  border-color: #bec4cd;
+}
+
+.emotion-1:focus {
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+}
+
+.emotion-2:focus {
+  box-shadow: 0 0 0 0.4rem #f5bbda;
+  outline: 0;
+}
+
+.emotion-3 {
+  color: #3b3f45;
+  margin: 0;
+  margin: 0 0 3.2rem;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.5555555555555556;
+}
+
 <div>
   <ul
-    class="emotion-1"
+    class="emotion-0"
     role="tablist"
   >
     <li
@@ -376,7 +376,7 @@ exports[`Tabs shouldn't have a margin when \`noMargin\` is true 1`] = `
     >
       <a
         aria-selected="true"
-        class="emotion-0"
+        class="emotion-1"
         data-testid="firstTab"
         href="#myTabSet-section-0"
         id="myTabSet-tab-0"
@@ -388,14 +388,14 @@ exports[`Tabs shouldn't have a margin when \`noMargin\` is true 1`] = `
   </ul>
   <section
     aria-labelledby="myTabSet-tab-0"
-    class="emotion-3"
+    class="emotion-2"
     data-testid="firstTabSection"
     id="myTabSet-section-0"
     role="tabpanel"
     tabindex="-1"
   >
     <p
-      class="Nautilus-Paragraph emotion-2"
+      class="Nautilus-Paragraph emotion-3"
     >
       Puppies are cute.
     </p>

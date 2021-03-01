@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tabs.Tab should not render styles when unstyled prop is set 1`] = `
-.emotion-0 {
+.emotion-1 {
   color: #3b3f45;
   margin: 0;
   margin: 0 0 3.2rem;
@@ -13,12 +13,12 @@ exports[`Tabs.Tab should not render styles when unstyled prop is set 1`] = `
 
 <div>
   <section
-    class="emotion-1"
+    class="emotion-0"
     role="tabpanel"
     tabindex="-1"
   >
     <p
-      class="Nautilus-Paragraph emotion-0"
+      class="Nautilus-Paragraph emotion-1"
     >
       Puppies are cute.
     </p>
@@ -27,16 +27,16 @@ exports[`Tabs.Tab should not render styles when unstyled prop is set 1`] = `
 `;
 
 exports[`Tabs.Tab should render styles for a Tabs.Tab 1`] = `
-.emotion-1 {
+.emotion-0 {
   display: none;
 }
 
-.emotion-1:focus {
+.emotion-0:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-0 {
+.emotion-1 {
   color: #3b3f45;
   margin: 0;
   margin: 0 0 3.2rem;
@@ -48,12 +48,12 @@ exports[`Tabs.Tab should render styles for a Tabs.Tab 1`] = `
 
 <div>
   <section
-    class="emotion-1"
+    class="emotion-0"
     role="tabpanel"
     tabindex="-1"
   >
     <p
-      class="Nautilus-Paragraph emotion-0"
+      class="Nautilus-Paragraph emotion-1"
     >
       Puppies are cute.
     </p>

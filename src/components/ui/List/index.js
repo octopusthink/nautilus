@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Children, cloneElement, useMemo, useState } from 'react';
@@ -33,9 +33,9 @@ const List = (props) => {
 
   const [generatedId] = useState(shortid.generate());
   const description = useMemo(() => {
-    const validDescriptionComponents = Children.toArray(children).filter((child) => {
-      return child.type === Heading || child.type === Paragraph;
-    });
+    const validDescriptionComponents = Children.toArray(children).filter(
+      (child) => child.type === Heading || child.type === Paragraph,
+    );
 
     if (validDescriptionComponents.length === 0) {
       return undefined;
@@ -50,11 +50,13 @@ const List = (props) => {
     return descriptionComponent;
   }, [children, generatedId]);
 
-  const items = useMemo(() => {
-    return Children.toArray(children).filter((child) => {
-      return child.type !== Heading && child.type !== Paragraph;
-    });
-  }, [children]);
+  const items = useMemo(
+    () =>
+      Children.toArray(children).filter(
+        (child) => child.type !== Heading && child.type !== Paragraph,
+      ),
+    [children],
+  );
 
   const theme = useTheme();
 
@@ -70,30 +72,30 @@ const List = (props) => {
                 ${bodyStyles({ dark, inverse, large, light, noMargin, small, theme })};
                 padding: 0;
                 ${ordered &&
-                  css`
-                    counter-reset: list-counter;
+                css`
+                  counter-reset: list-counter;
 
-                    > .${ListItemClassName} {
-                      list-style: none;
-                      counter-increment: list-counter;
+                  > .${ListItemClassName} {
+                    list-style: none;
+                    counter-increment: list-counter;
 
-                      &::before {
-                        content: counter(list-counter) '. ';
-                      }
+                    &::before {
+                      content: counter(list-counter) '. ';
                     }
-                  `}
+                  }
+                `}
                 ${!ordered &&
-                  css`
-                    > .${ListItemClassName} {
-                      list-style: none;
+                css`
+                  > .${ListItemClassName} {
+                    list-style: none;
 
-                      &::before {
-                        content: '\\2022';
-                        font-size: 0.6em;
-                        line-height: 2.8;
-                      }
+                    &::before {
+                      content: '\\2022';
+                      font-size: 0.6em;
+                      line-height: 2.8;
                     }
-                  `}
+                  }
+                `}
               `
         }
         className={classnames(ListClassName, className)}

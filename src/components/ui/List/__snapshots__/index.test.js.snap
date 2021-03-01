@@ -1,6 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`List described by Heading component should render a heading outside the list if one is provided 1`] = `
+.emotion-0 {
+  color: #3b3f45;
+  margin: 0;
+  margin: 0 0 3.2rem;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 600;
+  font-size: 3.1rem;
+  line-height: 1.2903225806451613;
+}
+
+dl+.emotion-0,
+.Nautilus-List+.emotion-0,
+.Nautilus-Paragraph+.emotion-0 {
+  margin-top: 3.2rem;
+}
+
 .emotion-1 {
   color: #3b3f45;
   margin: 0;
@@ -12,30 +28,14 @@ exports[`List described by Heading component should render a heading outside the
   padding: 0;
 }
 
-.emotion-1 > .Nautilus-ListItem {
+.emotion-1>.Nautilus-ListItem {
   list-style: none;
 }
 
-.emotion-1 > .Nautilus-ListItem::before {
+.emotion-1>.Nautilus-ListItem::before {
   content: '\\2022';
   font-size: 0.6em;
   line-height: 2.8;
-}
-
-.emotion-0 {
-  color: #3b3f45;
-  margin: 0;
-  margin: 0 0 3.2rem;
-  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 600;
-  font-size: 3.1rem;
-  line-height: 1.2903225806451613;
-}
-
-dl + .emotion-0,
-.Nautilus-List + .emotion-0,
-.Nautilus-Paragraph + .emotion-0 {
-  margin-top: 3.2rem;
 }
 
 <div>
@@ -54,7 +54,17 @@ dl + .emotion-0,
 `;
 
 exports[`List described by Paragraph component should render a paragraph outside the list if one is provided 1`] = `
-.emotion-3 {
+.emotion-0 {
+  color: #3b3f45;
+  margin: 0;
+  margin: 0 0 3.2rem;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.5555555555555556;
+}
+
+.emotion-1 {
   color: #3b3f45;
   margin: 0;
   margin: 0 0 3.2rem;
@@ -65,11 +75,101 @@ exports[`List described by Paragraph component should render a paragraph outside
   padding: 0;
 }
 
-.emotion-3 > .Nautilus-ListItem {
+.emotion-1>.Nautilus-ListItem {
   list-style: none;
 }
 
-.emotion-3 > .Nautilus-ListItem::before {
+.emotion-1>.Nautilus-ListItem::before {
+  content: '\\2022';
+  font-size: 0.6em;
+  line-height: 2.8;
+}
+
+.emotion-2 {
+  position: relative;
+  margin: 0;
+  margin: 0 0 0.4rem;
+}
+
+.emotion-2::before {
+  position: absolute;
+  right: 101%;
+}
+
+<div>
+  <p
+    class="Nautilus-Paragraph emotion-0"
+    data-testid="description"
+    id="cars"
+  >
+    Here are some cars:
+  </p>
+  <ul
+    aria-labelledby="cars"
+    class="Nautilus-List emotion-1"
+  >
+    <li
+      class="Nautilus-ListItem emotion-2"
+    >
+      Honda Civic
+    </li>
+    <li
+      class="Nautilus-ListItem emotion-2"
+    >
+      Ford Prefect
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`List should not output styles when unstyled is set 1`] = `
+.emotion-1 {
+  position: relative;
+  margin: 0;
+  margin: 0 0 0.4rem;
+}
+
+.emotion-1::before {
+  position: absolute;
+  right: 101%;
+}
+
+<div>
+  <ul
+    class="Nautilus-List emotion-0"
+  >
+    <li
+      class="Nautilus-ListItem emotion-1"
+      data-testid="one"
+    >
+      apple
+    </li>
+    <li
+      class="Nautilus-ListItem emotion-1"
+      data-testid="two"
+    >
+      raspberry
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`List shouldn't have a margin when \`noMargin\` is true 1`] = `
+.emotion-0 {
+  color: #3b3f45;
+  margin: 0;
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 1.5555555555555556;
+  padding: 0;
+}
+
+.emotion-0>.Nautilus-ListItem {
+  list-style: none;
+}
+
+.emotion-0>.Nautilus-ListItem::before {
   content: '\\2022';
   font-size: 0.6em;
   line-height: 2.8;
@@ -86,118 +186,18 @@ exports[`List described by Paragraph component should render a paragraph outside
   right: 101%;
 }
 
-.emotion-0 {
-  color: #3b3f45;
-  margin: 0;
-  margin: 0 0 3.2rem;
-  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  font-size: 1.8rem;
-  line-height: 1.5555555555555556;
-}
-
 <div>
-  <p
-    class="Nautilus-Paragraph emotion-0"
-    data-testid="description"
-    id="cars"
-  >
-    Here are some cars:
-  </p>
   <ul
-    aria-labelledby="cars"
-    class="Nautilus-List emotion-3"
+    class="Nautilus-List emotion-0"
   >
     <li
       class="Nautilus-ListItem emotion-1"
-    >
-      Honda Civic
-    </li>
-    <li
-      class="Nautilus-ListItem emotion-1"
-    >
-      Ford Prefect
-    </li>
-  </ul>
-</div>
-`;
-
-exports[`List should not output styles when unstyled is set 1`] = `
-.emotion-0 {
-  position: relative;
-  margin: 0;
-  margin: 0 0 0.4rem;
-}
-
-.emotion-0::before {
-  position: absolute;
-  right: 101%;
-}
-
-<div>
-  <ul
-    class="Nautilus-List emotion-2"
-  >
-    <li
-      class="Nautilus-ListItem emotion-0"
       data-testid="one"
     >
       apple
     </li>
     <li
-      class="Nautilus-ListItem emotion-0"
-      data-testid="two"
-    >
-      raspberry
-    </li>
-  </ul>
-</div>
-`;
-
-exports[`List shouldn't have a margin when \`noMargin\` is true 1`] = `
-.emotion-0 {
-  position: relative;
-  margin: 0;
-  margin: 0 0 0.4rem;
-}
-
-.emotion-0::before {
-  position: absolute;
-  right: 101%;
-}
-
-.emotion-2 {
-  color: #3b3f45;
-  margin: 0;
-  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 400;
-  font-size: 1.8rem;
-  line-height: 1.5555555555555556;
-  padding: 0;
-}
-
-.emotion-2 > .Nautilus-ListItem {
-  list-style: none;
-}
-
-.emotion-2 > .Nautilus-ListItem::before {
-  content: '\\2022';
-  font-size: 0.6em;
-  line-height: 2.8;
-}
-
-<div>
-  <ul
-    class="Nautilus-List emotion-2"
-  >
-    <li
-      class="Nautilus-ListItem emotion-0"
-      data-testid="one"
-    >
-      apple
-    </li>
-    <li
-      class="Nautilus-ListItem emotion-0"
+      class="Nautilus-ListItem emotion-1"
       data-testid="two"
     >
       raspberry

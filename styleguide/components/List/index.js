@@ -6,9 +6,9 @@ import List from '../../../src/components/ui/List';
 export function ListRenderer({ ordered, children }) {
   return (
     <List ordered={ordered}>
-      {Children.map(children, (child) => {
-        return <List.Item {...child.props} />;
-      })}
+      {Children.map(children, (child) => (
+        <List.Item {...child.props} />
+      ))}
     </List>
   );
 }

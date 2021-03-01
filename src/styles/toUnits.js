@@ -1,3 +1,1 @@
-export const toUnits = (value) => {
-  return `${value / 10}rem`;
-};
+export const toUnits = (value) => `${value / 10}rem`;

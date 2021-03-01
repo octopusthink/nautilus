@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -23,9 +23,9 @@ const Item = (props) => {
               margin: 0;
 
               ${!noMargin &&
-                css`
-                  margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
-                `}
+              css`
+                margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
+              `}
 
               &::before {
                 position: absolute;

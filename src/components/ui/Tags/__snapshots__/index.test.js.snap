@@ -2,13 +2,14 @@
 
 exports[`Tags should be styled by a css prop 1`] = `
 .emotion-0 {
+  background: hotpink;
+}
+
+.emotion-1 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 700;
   font-size: 1.5rem;
   line-height: 1.3333333333333333;
-  -webkit-letter-spacing: 0.05em;
-  -moz-letter-spacing: 0.05em;
-  -ms-letter-spacing: 0.05em;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #666c76;
@@ -16,15 +17,11 @@ exports[`Tags should be styled by a css prop 1`] = `
   margin: 0 0.4rem 0.4rem 0;
 }
 
-.emotion-1 {
-  background: hotpink;
-}
-
 <div
-  class="emotion-1"
+  class="emotion-0"
 >
   <span
-    class="emotion-0"
+    class="emotion-1"
   >
     Hello
   </span>
@@ -33,25 +30,11 @@ exports[`Tags should be styled by a css prop 1`] = `
 
 exports[`Tags should match Tags styles 1`] = `
 .emotion-0 {
-  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
-  font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 1.3333333333333333;
-  -webkit-letter-spacing: 0.05em;
-  -moz-letter-spacing: 0.05em;
-  -ms-letter-spacing: 0.05em;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #666c76;
-  margin: 0;
-  margin: 0 0.4rem 0.4rem 0;
-}
-
-.emotion-4 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-box-flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
@@ -61,16 +44,28 @@ exports[`Tags should match Tags styles 1`] = `
   width: 100%;
 }
 
+.emotion-2 {
+  font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.3333333333333333;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #666c76;
+  margin: 0;
+  margin: 0 0.4rem 0.4rem 0;
+}
+
 <div>
   <div>
     <ul
-      class="Nautilus-List emotion-4"
+      class="Nautilus-List emotion-0"
     >
       <li
         class="Nautilus-ListItem emotion-1"
       >
         <span
-          class="emotion-0"
+          class="emotion-2"
           data-testid="child-one"
         >
           Hello
@@ -80,7 +75,7 @@ exports[`Tags should match Tags styles 1`] = `
         class="Nautilus-ListItem emotion-1"
       >
         <span
-          class="emotion-0"
+          class="emotion-2"
           data-testid="child-two"
         >
           Goodbye
@@ -97,9 +92,6 @@ exports[`Tags should match styles 1`] = `
   font-weight: 700;
   font-size: 1.5rem;
   line-height: 1.3333333333333333;
-  -webkit-letter-spacing: 0.05em;
-  -moz-letter-spacing: 0.05em;
-  -ms-letter-spacing: 0.05em;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #666c76;
