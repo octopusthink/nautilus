@@ -41,37 +41,37 @@ const InputComponentStyles = (props, theme) => {
     width: 100%;
 
     ${!noMargin &&
-      !error &&
-      css`
-        margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
-      `}
+    !error &&
+    css`
+      margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
+    `}
 
     ${signifierIcon &&
-      css`
-        padding-left: ${iconPadding};
-      `}
+    css`
+      padding-left: ${iconPadding};
+    `}
 
     ${actionIcon &&
-      css`
-        padding-right: ${iconPadding};
-      `}
+    css`
+      padding-right: ${iconPadding};
+    `}
 
     ${size &&
-      css`
-        max-width: ${size - 1}em;
-      `}
+    css`
+      max-width: ${size - 1}em;
+    `}
 
     ${disabled &&
-      css`
-        color: ${theme.colors.state.disabled};
-        background-color: ${theme.colors.state.disabledLight};
-        border-color: ${theme.colors.state.disabledLight};
-      `}
+    css`
+      color: ${theme.colors.state.disabled};
+      background-color: ${theme.colors.state.disabledLight};
+      border-color: ${theme.colors.state.disabledLight};
+    `}
 
     ${error &&
-      css`
-        border-color: ${theme.colors.state.errorOutline};
-      `}
+    css`
+      border-color: ${theme.colors.state.errorOutline};
+    `}
 
     &:required {
       /*
@@ -124,9 +124,7 @@ const TextField = forwardRef((props, ref) => {
   const [focus, setFocus] = useState(otherProps.autofocus);
   const [generatedId] = useState(shortid.generate());
   const inputRef = useRef();
-  const inputId = useMemo(() => {
-    return id || generatedId;
-  }, [generatedId, id]);
+  const inputId = useMemo(() => id || generatedId, [generatedId, id]);
   const theme = useTheme();
 
   // Memoise our handlers as they don't need to be re-created on every render.
@@ -178,9 +176,9 @@ const TextField = forwardRef((props, ref) => {
                   margin: 0;
 
                   ${!noMargin &&
-                    css`
-                      margin-bottom: ${toUnits(theme.spacing.padding.large)};
-                    `}
+                  css`
+                    margin-bottom: ${toUnits(theme.spacing.padding.large)};
+                  `}
                 `
           }
         >
@@ -231,25 +229,25 @@ const TextField = forwardRef((props, ref) => {
                   margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
 
                   ${!disabled &&
-                    css`
-                      &:active {
-                        ${focusStyle.text(theme)};
-                      }
-                    `}
+                  css`
+                    &:active {
+                      ${focusStyle.text(theme)};
+                    }
+                  `}
 
                   ${disabled &&
-                    css`
-                      color: ${theme.colors.state.disabled};
-                    `}
+                  css`
+                    color: ${theme.colors.state.disabled};
+                  `}
 
                   &:focus {
                     ${focusStyle.text(theme)};
                   }
 
                   ${focus &&
-                    css`
-                      ${focusStyle.text(theme)};
-                    `}
+                  css`
+                    ${focusStyle.text(theme)};
+                  `}
                 `
           }
           htmlFor={inputId}
@@ -350,9 +348,9 @@ const TextField = forwardRef((props, ref) => {
                   `}
 
               ${!actionIconOnClick &&
-                css`
-                  pointer-events: none;
-                `}
+              css`
+                pointer-events: none;
+              `}
             `}
           />
         )}

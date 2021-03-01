@@ -20,9 +20,9 @@ const PageTitle = (props) => {
               margin: 0;
 
               ${!noMargin &&
-                css`
-                  margin: 0 0 ${toUnits(theme.spacing.margin.large)};
-                `}
+              css`
+                margin: 0 0 ${toUnits(theme.spacing.margin.large)};
+              `}
             `
       }
       {...otherProps}

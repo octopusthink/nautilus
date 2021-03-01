@@ -75,24 +75,24 @@ export function ComponentsList({ items }) {
                 }
 
                 ${isItemSelected &&
-                  css`
-                    color: ${theme.colors.neutral.white} !important;
-                    position: relative !important;
-                    z-index: 2;
+                css`
+                  color: ${theme.colors.neutral.white} !important;
+                  position: relative !important;
+                  z-index: 2;
 
-                    &::before {
-                      display: block;
-                      position: absolute;
-                      top: 0;
-                      right: -${toUnits(theme.spacing.padding.medium)};
-                      bottom: 0;
-                      left: -${toUnits(theme.spacing.padding.medium)};
-                      background: ${theme.colors.accent.primaryDark};
-                      border-left: 3px solid ${theme.colors.accent.primaryLight};
-                      content: '';
-                      z-index: -1;
-                    }
-                  `}
+                  &::before {
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    right: -${toUnits(theme.spacing.padding.medium)};
+                    bottom: 0;
+                    left: -${toUnits(theme.spacing.padding.medium)};
+                    background: ${theme.colors.accent.primaryDark};
+                    border-left: 3px solid ${theme.colors.accent.primaryLight};
+                    content: '';
+                    z-index: -1;
+                  }
+                `}
               `}
               href={href}
               onClick={(event) => {

@@ -145,134 +145,135 @@ const Button = (props) => {
         unstyled
           ? undefined
           : css`
-        ${interfaceUI.medium(theme)}
-        align-items: center;
-        background: ${theme.colors.buttons.neutral};
-        border: 2px solid ${currentButtonColor};
-        border-radius: 8px;
-        color: ${currentButtonColor};
-        cursor: pointer;
-        display: inline-flex;
-        margin: 0;
-        outline: none;
-        padding: ${toUnits(theme.spacing.padding.medium)} ${toUnits(theme.spacing.padding.large)};
-        position: relative;
-        text-align: center;
-        text-decoration: none;
-        top: 0;
-        transition: all 200ms ease-in-out;
-        transition: top 0ms ease-out;
-        width: max-content;
+              ${interfaceUI.medium(theme)}
+              align-items: center;
+              background: ${theme.colors.buttons.neutral};
+              border: 2px solid ${currentButtonColor};
+              border-radius: 8px;
+              color: ${currentButtonColor};
+              cursor: pointer;
+              display: inline-flex;
+              margin: 0;
+              outline: none;
+              padding: ${toUnits(theme.spacing.padding.medium)}
+                ${toUnits(theme.spacing.padding.large)};
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              top: 0;
+              transition: all 200ms ease-in-out;
+              transition: top 0ms ease-out;
+              width: max-content;
 
-        &::-moz-focus-inner {
-          border: 0;
-        }
+              &::-moz-focus-inner {
+                border: 0;
+              }
 
-        &:active {
-          border-color: ${currentButtonColorDark};
-          color: ${currentButtonColorDark};
-          top: 0.2rem;
-        }
+              &:active {
+                border-color: ${currentButtonColorDark};
+                color: ${currentButtonColorDark};
+                top: 0.2rem;
+              }
 
-        /* @todo: should use interactive tokens and pass the colour! */
-        &:focus {
-          ${focusStyle.outline(theme)};
-          box-shadow: 0 0 0 0.4rem ${currentButtonColorLight};
-        }
+              /* @todo: should use interactive tokens and pass the colour! */
+              &:focus {
+                ${focusStyle.outline(theme)};
+                box-shadow: 0 0 0 0.4rem ${currentButtonColorLight};
+              }
 
-        /* Primary styles */
-        ${primary &&
-          css`
-            background: ${currentButtonColor};
-            color: ${theme.colors.buttons.neutral};
+              /* Primary styles */
+              ${primary &&
+              css`
+                background: ${currentButtonColor};
+                color: ${theme.colors.buttons.neutral};
 
-            &:hover {
-              background-color: ${currentButtonColorDark};
-            }
+                &:hover {
+                  background-color: ${currentButtonColorDark};
+                }
 
-            &:active {
-              background: ${currentButtonColorDark};
-              color: ${theme.colors.buttons.neutral};
-            }
-          `}
+                &:active {
+                  background: ${currentButtonColorDark};
+                  color: ${theme.colors.buttons.neutral};
+                }
+              `}
 
-        /* Set padding based on whether we have leading or trailing icons. */
+              /* Set padding based on whether we have leading or trailing icons. */
         ${leadingIconName &&
-          css`
-            padding-left: ${toUnits(theme.spacing.margin.small)};
-          `}
+              css`
+                padding-left: ${toUnits(theme.spacing.margin.small)};
+              `}
 
         ${trailingIconName &&
-          css`
-            padding-right: ${toUnits(theme.spacing.margin.small)};
-          `}
+              css`
+                padding-right: ${toUnits(theme.spacing.margin.small)};
+              `}
 
         /* Minimal styles */
         ${minimal &&
-          css`
-            background: transparent;
-            border-color: transparent;
-            border-radius: 0;
-            padding-left: 0;
-            padding-right: 0;
-          `}
+              css`
+                background: transparent;
+                border-color: transparent;
+                border-radius: 0;
+                padding-left: 0;
+                padding-right: 0;
+              `}
 
         ${stackedIcon &&
-          css`
-            flex-direction: column;
-            padding: ${toUnits(theme.spacing.padding.medium)};
-          `}
+              css`
+                flex-direction: column;
+                padding: ${toUnits(theme.spacing.padding.medium)};
+              `}
 
         /* Buttons without text should get rounded */
         ${iconOnly &&
-          css`
-            border-radius: 100%;
-            padding: ${toUnits(theme.spacing.padding.medium)};
-          `}
+              css`
+                border-radius: 100%;
+                padding: ${toUnits(theme.spacing.padding.medium)};
+              `}
 
         /* Set external margins */
         ${!noMargin &&
-          css`
-            margin: 0 ${toUnits(theme.spacing.margin.xxSmall)}
-              ${toUnits(theme.spacing.margin.xSmall)};
-          `}
+              css`
+                margin: 0 ${toUnits(theme.spacing.margin.xxSmall)}
+                  ${toUnits(theme.spacing.margin.xSmall)};
+              `}
 
         .Nautilus-navigationIcon--animated {
-          transition: all 200ms ease-in-out;
-        }
+                transition: all 200ms ease-in-out;
+              }
 
-        /* Hover styling */
-        &:hover {
-          ${!minimal &&
-            css`
-              border-color: ${currentButtonColorDark};
-            `}
+              /* Hover styling */
+              &:hover {
+                ${!minimal &&
+                css`
+                  border-color: ${currentButtonColorDark};
+                `}
 
-          ${!primary &&
-            css`
-              color: ${currentButtonColorDark};
-            `}
+                ${!primary &&
+                css`
+                  color: ${currentButtonColorDark};
+                `}
 
           ${navigation &&
-            css`
-              .Nautilus-navigationIcon--animated {
-                ${leadingIconName &&
-                  css`
-                    /*
+                css`
+                  .Nautilus-navigationIcon--animated {
+                    ${leadingIconName &&
+                    css`
+                      /*
                       Use a negative transform on a leading icon, to ensure the
                       icon is always moving away from the text on hover.
                     */
-                    transform: translateX(-${toUnits(theme.spacing.padding.xSmall)});
-                  `}
-                ${trailingIconName &&
-                  css`
-                    transform: translateX(${toUnits(theme.spacing.padding.xSmall)});
-                  `}
+                      transform: translateX(-${toUnits(theme.spacing.padding.xSmall)});
+                    `}
+                    ${trailingIconName &&
+                    css`
+                      transform: translateX(${toUnits(theme.spacing.padding.xSmall)});
+                    `}
                 transition: all 200ms linear;
+                  }
+                `}
               }
-            `}
-        }
-      `
+            `
       }
       disabled={!(href || to) ? disabled : undefined}
       {...otherProps}

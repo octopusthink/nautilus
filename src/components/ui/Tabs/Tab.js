@@ -21,9 +21,9 @@ const Tab = forwardRef((props, ref) => {
           ? undefined
           : css`
               ${!isActive &&
-                css`
-                  display: none;
-                `}
+              css`
+                display: none;
+              `}
 
               &:focus {
                 ${focusStyle.outline(theme)};

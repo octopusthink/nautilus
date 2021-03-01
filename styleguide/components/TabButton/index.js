@@ -22,14 +22,14 @@ export function TabButtonRenderer({ name, onClick, active, children }) {
         }
 
         ${active &&
-          css`
-            color: ${theme.colors.text.inverseDark} !important;
-            border-bottom: 2px solid ${theme.colors.text.inverseDark};
+        css`
+          color: ${theme.colors.text.inverseDark} !important;
+          border-bottom: 2px solid ${theme.colors.text.inverseDark};
 
-            &::before {
-              content: '↑';
-            }
-          `}
+          &::before {
+            content: '↑';
+          }
+        `}
       `}
       type="button"
       name={name}

@@ -23,9 +23,9 @@ const Item = (props) => {
               margin: 0;
 
               ${!noMargin &&
-                css`
-                  margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
-                `}
+              css`
+                margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
+              `}
 
               &::before {
                 position: absolute;

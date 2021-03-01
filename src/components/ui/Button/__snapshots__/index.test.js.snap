@@ -157,8 +157,8 @@ exports[`Button should not give a manually set leadingIcon a "Nautilus-navigatio
   height: 2.4rem;
   stroke-width: 0.175rem;
   width: 2.4rem;
-  stroke: currentColor;
   opacity: 0.8;
+  stroke: currentColor;
 }
 
 <a
@@ -289,8 +289,8 @@ exports[`Button should not give a manually set trailingIcon a "Nautilus-navigati
   height: 2.4rem;
   stroke-width: 0.175rem;
   width: 2.4rem;
-  stroke: currentColor;
   opacity: 0.8;
+  stroke: currentColor;
 }
 
 <a
@@ -360,8 +360,8 @@ exports[`Button should not output styles when unstyled is set, even with styling
   height: 2.4rem;
   stroke-width: 0.175rem;
   width: 2.4rem;
-  stroke: currentColor;
   opacity: 0.8;
+  stroke: currentColor;
 }
 
 <div>
@@ -488,8 +488,8 @@ exports[`Button should show danger styles 1`] = `
   height: 2.4rem;
   stroke-width: 0.175rem;
   width: 2.4rem;
-  stroke: currentColor;
   opacity: 0.8;
+  stroke: currentColor;
 }
 
 <div>

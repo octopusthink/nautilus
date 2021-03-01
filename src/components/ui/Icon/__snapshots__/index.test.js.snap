@@ -14,8 +14,8 @@ exports[`Icon should match styles 1`] = `
   height: 2.4rem;
   stroke-width: 0.175rem;
   width: 2.4rem;
-  stroke: currentColor;
   opacity: 0.8;
+  stroke: currentColor;
 }
 
 <span
@@ -67,8 +67,8 @@ exports[`Icon should match styles when background is supplied 1`] = `
   stroke-width: 0.175rem;
   width: 2.4rem;
   margin: 0.8rem;
-  stroke: currentColor;
   opacity: 0.8;
+  stroke: currentColor;
 }
 
 <span
@@ -120,8 +120,8 @@ exports[`Icon should match styles when border is supplied 1`] = `
   stroke-width: 0.175rem;
   width: 2.4rem;
   margin: 0.8rem;
-  stroke: currentColor;
   opacity: 0.8;
+  stroke: currentColor;
 }
 
 <span
@@ -168,8 +168,8 @@ exports[`Icon should match styles when color is supplied 1`] = `
   height: 2.4rem;
   stroke-width: 0.175rem;
   width: 2.4rem;
-  stroke: currentColor;
   opacity: 0.8;
+  stroke: currentColor;
 }
 
 <span
@@ -216,8 +216,8 @@ exports[`Icon shouldn't have a margin when \`noMargin\` is true 1`] = `
   height: 2.4rem;
   stroke-width: 0.175rem;
   width: 2.4rem;
-  stroke: currentColor;
   opacity: 0.8;
+  stroke: currentColor;
 }
 
 <span

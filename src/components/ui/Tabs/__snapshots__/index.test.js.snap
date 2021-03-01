@@ -38,6 +38,10 @@ exports[`Tabs should not render styles when unstyled prop is set 1`] = `
   right: 0;
 }
 
+.emotion-1::after {
+  border-bottom: 3px solid;
+}
+
 .emotion-1:hover::after {
   border-color: #bec4cd;
 }
@@ -45,10 +49,6 @@ exports[`Tabs should not render styles when unstyled prop is set 1`] = `
 .emotion-1:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
-}
-
-.emotion-1::after {
-  border-bottom: 3px solid;
 }
 
 .emotion-2:focus {
@@ -141,6 +141,10 @@ exports[`Tabs should render styles for Tabs 1`] = `
   right: 0;
 }
 
+.emotion-1::after {
+  border-bottom: 3px solid;
+}
+
 .emotion-1:hover::after {
   border-color: #bec4cd;
 }
@@ -148,10 +152,6 @@ exports[`Tabs should render styles for Tabs 1`] = `
 .emotion-1:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
-}
-
-.emotion-1::after {
-  border-bottom: 3px solid;
 }
 
 .emotion-2 {
@@ -338,6 +338,10 @@ exports[`Tabs shouldn't have a margin when \`noMargin\` is true 1`] = `
   right: 0;
 }
 
+.emotion-1::after {
+  border-bottom: 3px solid;
+}
+
 .emotion-1:hover::after {
   border-color: #bec4cd;
 }
@@ -345,10 +349,6 @@ exports[`Tabs shouldn't have a margin when \`noMargin\` is true 1`] = `
 .emotion-1:focus {
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
-}
-
-.emotion-1::after {
-  border-bottom: 3px solid;
 }
 
 .emotion-2:focus {

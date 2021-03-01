@@ -6,15 +6,13 @@ import 'jest-axe/extend-expect';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import '@testing-library/jest-dom/extend-expect';
 
-global.window.matchMedia = jest.fn().mockImplementation((query) => {
-  return {
-    matches: false,
-    media: query,
-    onchange: null,
-    addListener: jest.fn(),
-    removeListener: jest.fn(),
-  };
-});
+global.window.matchMedia = jest.fn().mockImplementation((query) => ({
+  matches: false,
+  media: query,
+  onchange: null,
+  addListener: jest.fn(),
+  removeListener: jest.fn(),
+}));
 
 jest.spyOn(global.console, 'error');
 jest.spyOn(global.console, 'warn');

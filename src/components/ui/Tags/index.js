@@ -13,9 +13,7 @@ const Tags = (props) => {
   const [generatedId] = useState(shortid.generate());
 
   const items = useMemo(() => {
-    const tagElements = Children.toArray(children).filter((child) => {
-      return child.type === Tag;
-    });
+    const tagElements = Children.toArray(children).filter((child) => child.type === Tag);
 
     if (tagElements.length > 1) {
       return (
@@ -31,14 +29,12 @@ const Tags = (props) => {
             width: 100%;
           `}
         >
-          {tagElements.map((tag, index) => {
-            return (
-              // eslint-disable-next-line react/no-array-index-key
-              <List.Item key={`tag-${index}`} unstyled>
-                {tag}
-              </List.Item>
-            );
-          })}
+          {tagElements.map((tag, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <List.Item key={`tag-${index}`} unstyled>
+              {tag}
+            </List.Item>
+          ))}
         </List>
       );
     }

@@ -1,12 +1,13 @@
+/* eslint-disable */
 const fs = require('fs');
 
 const problemFile = 'node_modules/react-dev-utils/formatWebpackMessages.js';
 
-fs.readFile(problemFile, 'utf8', function (err, data) {
+fs.readFile(problemFile, 'utf8', (err, data) => {
   if (err) {
     return console.log(err);
   }
-  var result = data.replace(
+  const result = data.replace(
     /let lines = message.split\('\\n'\);/g,
     `let lines = [];
 
@@ -17,7 +18,7 @@ fs.readFile(problemFile, 'utf8', function (err, data) {
   }`,
   );
 
-  fs.writeFile(problemFile, result, 'utf8', function (err) {
+  fs.writeFile(problemFile, result, 'utf8', (err) => {
     if (err) return console.log(err);
   });
 });

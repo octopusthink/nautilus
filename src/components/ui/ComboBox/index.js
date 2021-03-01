@@ -72,11 +72,7 @@ export const ComboBox = (props) => {
   );
 
   // Create an array of all our options.
-  const options = useMemo(() => {
-    return Children.toArray(children).filter((child) => {
-      return child;
-    });
-  }, [children]);
+  const options = useMemo(() => Children.toArray(children).filter((child) => child), [children]);
 
   return (
     <div
