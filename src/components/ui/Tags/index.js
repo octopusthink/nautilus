@@ -13,7 +13,7 @@ const Tags = (props) => {
   const [generatedId] = useState(shortid.generate());
 
   const items = useMemo(() => {
-    const tagElements = Children.toArray(children).filter((child) => child.type === Tag);
+    const tagElements = Children.toArray(children);
 
     if (tagElements.length > 1) {
       return (

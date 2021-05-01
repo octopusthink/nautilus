@@ -7,7 +7,7 @@ import Icon from '../Icon';
 import { focusStyle, interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
-const smallText = (props) => {
+export const smallText = (props) => {
   const { theme } = props;
 
   return css`
@@ -17,8 +17,8 @@ const smallText = (props) => {
   `;
 };
 
-const InputComponentStyles = (props, theme) => {
-  const { actionIcon, disabled, error, noMargin, signifierIcon, size } = props;
+export const InputComponentStyles = (props, theme) => {
+  const { actionIcon, disabled, error, focus, noMargin, signifierIcon, size } = props;
 
   // Padding to use for signifier and action icons.
   const iconPadding = toUnits(
@@ -85,6 +85,12 @@ const InputComponentStyles = (props, theme) => {
       color: ${theme.colors.text.dark};
       ${focusStyle.outline(theme)};
     }
+
+    ${focus &&
+    css`
+      color: ${theme.colors.text.dark};
+      ${focusStyle.outline(theme)}
+    `}
 
     &::placeholder {
       color: ${theme.colors.text.light};
@@ -371,6 +377,7 @@ TextField.defaultProps = {
   children: undefined,
   disabled: false,
   error: undefined,
+  focus: undefined,
   hint: undefined,
   id: undefined,
   labelId: undefined,
@@ -409,6 +416,8 @@ TextField.propTypes = {
   disabled: PropTypes.bool,
   /** An error message (either a simple string or a component) used to output an error message related to this component's value. If provided, an `aria-errormessage` will be set on the input component that will tell users of assistive technology the error message relates to this input. */
   error: PropTypes.node,
+  /** Set to `true` to force focus styles. */
+  focus: PropTypes.bool,
   /** HTML `id` attribute of the input component (either an `input` if `multiline` is `false` or `textarea` if `multiline` is `true`). Used for both the input component `id` attribute and the `<label>` `for` attribute. */
   id: PropTypes.string,
   /** Additional context to help users understand the purpose of the input. */
@@ -455,7 +464,6 @@ TextField.propTypes = {
 };
 
 TextField.displayName = 'TextField';
-TextField.InputComponentStyles = InputComponentStyles;
 
 export const { defaultProps, propTypes } = TextField;
 

@@ -1,13 +1,13 @@
 A ComboBox allows users to select a single item from a pre-defined list of options. In addition to showing a list of suggestions, it also provides selectable suggestions as the user types into it and optionally allows for adding a new item. This allows users to quickly search and select from a long list of options.
 
-Think of it as a native HTML `select` element combined with an autocomplete.
+Think of it as a native HTML `input` element combined with an autocomplete/a list of suggestions. The ComboBox component _does not replace a Select component_, and is designed for free-form text input and not specific selection of items that have a related ID, etc. If you aren't able to accept text input, use a Select component instead.
 
 ```jsx
 <ComboBox label="Choose your favourite fruit" placeholder="Search or browse">
-    <ComboBox.Option>Apples</ComboBox.Option>
-    <ComboBox.Option>Bananas</ComboBox.Option>
-    <ComboBox.Option>Pears</ComboBox.Option>
-    <ComboBox.Option>Tarantulas</ComboBox.Option>
+  <ComboBox.Option>Apples</ComboBox.Option>
+  <ComboBox.Option>Bananas</ComboBox.Option>
+  <ComboBox.Option>Pears</ComboBox.Option>
+  <ComboBox.Option>Tarantulas</ComboBox.Option>
 </ComboBox>
 ```
 
@@ -39,30 +39,34 @@ List items should be ordered in a way that's logical and expected for the type o
 When you have very long lists, it can be helpful to break them up into groups or categories. This helps users who are browsing the list to skip sections that aren't relevant. Avoid potentially confusing groupings (such as continents for a list of countries) where there's a change of causing confusion or exclusion.
 
 ```jsx
-<ComboBox label="Select your favourite boy band" placeholder="Search or browse" onSelect={(item) => {
-  alert(item);
-}}>
-    <ComboBox.Heading>Girls like boys best</ComboBox.Heading>
-    <ComboBox.Option>Boyz II Men</ComboBox.Option>
-    <ComboBox.Option>The Backstreet Boys</ComboBox.Option>
-    <ComboBox.Option>The Beach Boys</ComboBox.Option>
-    <ComboBox.Option>Boys 4 Now</ComboBox.Option>
+<ComboBox
+  label="Select your favourite boy band"
+  placeholder="Search or browse"
+  onSelect={(item) => {
+    alert(item)
+  }}
+>
+  <ComboBox.Heading>Girls like boys best</ComboBox.Heading>
+  <ComboBox.Option>Boyz II Men</ComboBox.Option>
+  <ComboBox.Option>The Backstreet Boys</ComboBox.Option>
+  <ComboBox.Option>The Beach Boys</ComboBox.Option>
+  <ComboBox.Option>Boys 4 Now</ComboBox.Option>
 
-    <ComboBox.Heading>Strange punctuation</ComboBox.Heading>
-    <ComboBox.Option>*NSYNC</ComboBox.Option>
-    <ComboBox.Option>O-Town</ComboBox.Option>
+  <ComboBox.Heading>Strange punctuation</ComboBox.Heading>
+  <ComboBox.Option>*NSYNC</ComboBox.Option>
+  <ComboBox.Option>O-Town</ComboBox.Option>
 
-    <ComboBox.Heading>By Numbers</ComboBox.Heading>
-    <ComboBox.Option>All-4-One</ComboBox.Option>
-    <ComboBox.Option>Boyz 4 Now</ComboBox.Option>
-    <ComboBox.Option>B2K</ComboBox.Option>
-    <ComboBox.Option>5ive</ComboBox.Option>
-    <ComboBox.Option>2gether</ComboBox.Option>
-    <ComboBox.Option>98 Degrees</ComboBox.Option>
-    <ComboBox.Option>Boyz II Men</ComboBox.Option>
-    <ComboBox.Option>One Direction</ComboBox.Option>
-    <ComboBox.Option>The Jackson 5</ComboBox.Option>
-    <ComboBox.Option>112</ComboBox.Option>
+  <ComboBox.Heading>By Numbers</ComboBox.Heading>
+  <ComboBox.Option>All-4-One</ComboBox.Option>
+  <ComboBox.Option>Boyz 4 Now</ComboBox.Option>
+  <ComboBox.Option>B2K</ComboBox.Option>
+  <ComboBox.Option>5ive</ComboBox.Option>
+  <ComboBox.Option>2gether</ComboBox.Option>
+  <ComboBox.Option>98 Degrees</ComboBox.Option>
+  <ComboBox.Option>Boyz II Men</ComboBox.Option>
+  <ComboBox.Option>One Direction</ComboBox.Option>
+  <ComboBox.Option>The Jackson 5</ComboBox.Option>
+  <ComboBox.Option>112</ComboBox.Option>
 </ComboBox>
 ```
 
@@ -84,7 +88,7 @@ The search functionality returns all results, using fuzzy matching. This ensures
 
 ### Adding new items (in progress)
 
-If a user can't find the result they're looking for, they should be able to add a new item directly from the ComboBox component if the datasource allows for user editing. This option should be the last item in the list and should always be visible. When the user has entered a search string, update the text in the label to refer to the entered text (eg: "Create new *item* "search term").
+If a user can't find the result they're looking for, they should be able to add a new item directly from the ComboBox component if the datasource allows for user editing. This option should be the last item in the list and should always be visible. When the user has entered a search string, update the text in the label to refer to the entered text (eg: "Create new _item_ "search term").
 
 It's best if users can add the new item immediately, with a single action, by selecting the item from the list. If necessary, you can open a secondary interface to collect additional information, but keep in mind that this increases the complexity of your interface. It's best to provide sensible defaults and allow users to edit them as a separate task. Only use a secondary interface when it's absolutely critical to collect this information immediately.
 
@@ -96,10 +100,10 @@ Follow the `TextField` [guidelines](../TextField) for voice & tone. Additionally
 
 ```jsx
 <ComboBox label="Which house should the hat sort you into? 🧙‍♂️" placeholder="Select">
-    <ComboBox.Option prefix="🧙🏾‍♂️ ">Gryffindor</ComboBox.Option>
-    <ComboBox.Option prefix="🦞 ">Ravenclaw</ComboBox.Option>
-    <ComboBox.Option prefix="🐍 ">Slytherin</ComboBox.Option>
-    <ComboBox.Option prefix="💨 ">Hufflepuff</ComboBox.Option>
+  <ComboBox.Option prefix="🧙🏾‍♂️ ">Gryffindor</ComboBox.Option>
+  <ComboBox.Option prefix="🦞 ">Ravenclaw</ComboBox.Option>
+  <ComboBox.Option prefix="🐍 ">Slytherin</ComboBox.Option>
+  <ComboBox.Option prefix="💨 ">Hufflepuff</ComboBox.Option>
 </ComboBox>
 ```
 
@@ -107,6 +111,6 @@ Follow the `TextField` [guidelines](../TextField) for voice & tone. Additionally
 
 The ComboBox component is based on the [ARIA 1.1 Combo Box pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox). It should follow these rules for keyboard interactions:
 
-- Give the autocomplete text input keyboard focus with the `tab` key (or  `shift`+ `return`  when tabbing backwards).
+- Give the autocomplete text input keyboard focus with the `tab` key (or `shift`+ `return` when tabbing backwards).
 - Access the list of options with the up and down arrow keys.
 - Select an option that has focus with the `return` key.
