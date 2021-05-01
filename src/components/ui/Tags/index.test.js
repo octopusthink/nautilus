@@ -29,7 +29,7 @@ describe('Tags', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should output only Tags.Tag children', () => {
+  it('should output all children', () => {
     const { getByTestId } = render(
       <Tags>
         <Tags.Tag data-testid="child-one">Hello</Tags.Tag>
@@ -38,9 +38,7 @@ describe('Tags', () => {
     );
 
     expect(getByTestId('child-one')).toBeDefined();
-    expect(() => {
-      getByTestId('child-two');
-    }).toThrow('Unable to find an element');
+    expect(getByTestId('child-two')).toBeDefined();
   });
 
   it('should accept and pass through other props', () => {

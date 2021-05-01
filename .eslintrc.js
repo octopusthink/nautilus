@@ -4,6 +4,7 @@ module.exports = {
     USE_ANALYTICS: false,
   },
   rules: {
+    'arrow-body-style': 'off',
     'react/jsx-props-no-spreading': 'off',
   },
   overrides: [

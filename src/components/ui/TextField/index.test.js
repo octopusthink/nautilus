@@ -260,8 +260,8 @@ describe('TextField', () => {
       muteConsole({ times: 1, type: 'error' });
       render(<TextField label={null} />);
 
-      expect(global.console.error.mock.calls[0][0]).toMatch(
-        'Warning: Failed prop type: The prop `label` is marked as required in `TextField`, but its value is `null`.',
+      expect(global.console.error.mock.calls[0][2]).toMatch(
+        'The prop `label` is marked as required in `TextField`, but its value is `null`.',
       );
     });
 

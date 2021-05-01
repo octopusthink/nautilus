@@ -134,18 +134,18 @@ export const ComboBox = (props) => {
             // persistSelection={autocomplete}
             unstyled
             css={css`
-              transition: height 200ms;
-              list-style-type: none;
               ${interfaceUI.medium(theme)};
               background: ${theme.colors.buttons.neutral};
+              border: 2px solid ${theme.colors.text.default};
               color: ${theme.colors.text.default};
+              list-style-type: none;
               margin: 0;
+              max-height: 60vh;
+              overflow-y: scroll;
               overflow: hidden;
               padding: 0;
-              overflow-y: scroll;
-              max-height: 60vh;
+              transition: height 200ms;
               z-index: 100;
-              border: 2px solid ${theme.colors.text.default};
             `}
           >
             {options}
