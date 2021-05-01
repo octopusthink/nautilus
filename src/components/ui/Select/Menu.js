@@ -1,12 +1,12 @@
 import { css } from '@emotion/react';
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 import List from '../List';
 
 const Menu = (props) => {
-  const { children, innerProps, ...otherProps } = props;
+  const { children, innerProps } = props;
   const theme = useTheme();
 
   return (
@@ -34,6 +34,19 @@ const Menu = (props) => {
       {children}
     </List>
   );
+};
+
+Menu.defaultProps = {
+  children: undefined,
+  innerProps: {},
+};
+
+Menu.propTypes = {
+  /** @ignore */
+  children: PropTypes.node,
+  /** @ignore */
+  // eslint-disable-next-line react/forbid-prop-types
+  innerProps: PropTypes.object,
 };
 
 export default Menu;
