@@ -99,11 +99,11 @@ Follow the `TextField` [guidelines](../TextField) for voice & tone. Additionally
 - Make sure list items aren’t wider than the text field. If an item is too wide, it will span two lines, which looks awkward and can be hard to parse. Keep things succinct.
 
 ```jsx
-<ComboBox label="Which house should the hat sort you into? 🧙‍♂️" placeholder="Select">
-  <ComboBox.Option prefix="🧙🏾‍♂️ ">Gryffindor</ComboBox.Option>
-  <ComboBox.Option prefix="🦞 ">Ravenclaw</ComboBox.Option>
-  <ComboBox.Option prefix="🐍 ">Slytherin</ComboBox.Option>
-  <ComboBox.Option prefix="💨 ">Hufflepuff</ComboBox.Option>
+<ComboBox label="What do you want to be when you grow up? 🏫" placeholder="Select">
+  <ComboBox.Option prefix="🧑‍🚒 ">Firefighter</ComboBox.Option>
+  <ComboBox.Option prefix="🧑🏾‍🏫 ">Teacher</ComboBox.Option>
+  <ComboBox.Option prefix="🧛🏻 ">Vampire</ComboBox.Option>
+  <ComboBox.Option prefix="🧙🏽 ">Wizard</ComboBox.Option>
 </ComboBox>
 ```
 
