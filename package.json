@@ -23,7 +23,6 @@
     "prepare": "npm run build",
     "prepublish:styleguide-for-version": "npm run build",
     "prepublish:styleguide": "npm run build",
-    "postinstall": "node bin/postinstall-fix.js",
     "publish:styleguide-for-version": "cross-env PUBLISH_VERSION_FOLDER=true node bin/publish-gh-pages.js",
     "publish:styleguide": "node bin/publish-gh-pages.js",
     "start": "styleguidist server",
