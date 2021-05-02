@@ -1,11 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 
-// const PeerDepsExternalsPlugin = require('peer-deps-externals-webpack-plugin');
 const webpack = require('webpack');
 
 const config = {
   entry: ['./src/index.js'],
+  externals: ['@emotion/react', 'react', 'react-dom'],
   mode: process.env.NODE_ENV,
   module: {
     rules: [
@@ -47,9 +47,5 @@ const config = {
     extensions: ['.mjs', '.jsx', '.js', '.json'],
   },
 };
-
-// if (process.env.NODE_ENV === 'production' && !process.env.DISABLE_PEER_DEPS_PLUGIN) {
-//   config.plugins.push(new PeerDepsExternalsPlugin());
-// }
 
 module.exports = config;
