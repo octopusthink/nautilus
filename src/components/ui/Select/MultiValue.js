@@ -7,16 +7,17 @@ import { toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
 const MultiValue = (props) => {
-  const { children } = props;
+  const { children, ...otherProps } = props;
   const theme = useTheme();
 
   return (
     <Tags.Tag
-      color="hotpink"
+      color={theme.colors.buttons.default}
       css={css`
         margin-bottom: -${toUnits(theme.spacing.padding.xSmall)};
         margin-top: -${toUnits(theme.spacing.padding.xSmall * 2)};
       `}
+      {...otherProps}
     >
       {children}
     </Tags.Tag>
@@ -32,6 +33,6 @@ MultiValue.propTypes = {
   children: PropTypes.node,
 };
 
-MultiValue.displayName = 'Select > MultiValue';
+MultiValue.displayName = 'MultiValue';
 
 export default MultiValue;
