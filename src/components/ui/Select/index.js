@@ -12,6 +12,7 @@ import Menu from './Menu';
 import MultiValue from './MultiValue';
 import Placeholder from './Placeholder';
 import SelectContainer from './SelectContainer';
+import ValueContainer from './ValueContainer';
 
 const Select = forwardRef((props, ref) => {
   const {

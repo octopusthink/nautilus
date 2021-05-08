@@ -7,7 +7,7 @@ import { toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
 const MultiValue = (props) => {
-  const { children, ...otherProps } = props;
+  const { children } = props;
   const theme = useTheme();
 
   return (
@@ -17,7 +17,6 @@ const MultiValue = (props) => {
         margin-bottom: -${toUnits(theme.spacing.padding.xSmall)};
         margin-top: -${toUnits(theme.spacing.padding.xSmall * 2)};
       `}
-      {...otherProps}
     >
       {children}
     </Tags.Tag>
