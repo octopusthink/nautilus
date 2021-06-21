@@ -12,10 +12,10 @@ import Menu from './Menu';
 import MultiValue from './MultiValue';
 import Placeholder from './Placeholder';
 import SelectContainer from './SelectContainer';
-import ValueContainer from './ValueContainer';
 
 const Select = forwardRef((props, ref) => {
   const {
+    components,
     disabled,
     hint,
     id,
@@ -24,6 +24,7 @@ const Select = forwardRef((props, ref) => {
     onBlur,
     onFocus,
     optional,
+    styles,
     unstyled,
     ...otherProps
   } = props;
@@ -131,6 +132,7 @@ const Select = forwardRef((props, ref) => {
           Option,
           Placeholder,
           SelectContainer,
+          ...components,
         }}
         disabled={disabled}
         inputId={inputId}
@@ -145,6 +147,7 @@ const Select = forwardRef((props, ref) => {
           input: () => {
             return {};
           },
+          ...styles,
         }}
         {...otherProps}
       />
@@ -153,6 +156,7 @@ const Select = forwardRef((props, ref) => {
 });
 
 Select.defaultProps = {
+  components: {},
   disabled: false,
   hint: undefined,
   id: undefined,
@@ -160,10 +164,13 @@ Select.defaultProps = {
   onBlur: undefined,
   onFocus: undefined,
   optional: false,
+  styles: {},
   unstyled: false,
 };
 
 Select.propTypes = {
+  /** Components used to override default components. See `react-select` for more info. */
+  components: PropTypes.objectOf(PropTypes.elementType),
   /** Disables this select entirely; this applies a disabled style and disables user input/interaction with this element. This is useful if you have elements that are conditionally allowed based on other states in your UI. */
   disabled: PropTypes.bool,
   /** Additional context to help users understand the purpose of the select. */
@@ -180,6 +187,8 @@ Select.propTypes = {
   onFocus: PropTypes.func,
   /** Used to mark this select as optional. Will output text in `theme.components.Select.optionalMessage`, if set. */
   optional: PropTypes.bool,
+  /** Extra styles to apply to a particular component. See `react-select` for more info. */
+  styles: PropTypes.objectOf(PropTypes.object),
   /* @ignore Don't output any CSS styles. */
   unstyled: PropTypes.bool,
 };
