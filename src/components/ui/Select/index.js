@@ -162,6 +162,16 @@ const Select = forwardRef((props, ref) => {
           multiValueRemove: () => {
             return {};
           },
+          valueContainer: (provided, state) => {
+            const { hasValue } = state;
+
+            return {
+              ...provided,
+              padding: 0,
+              marginTop: hasValue ? '-0.2rem' : undefined,
+              marginBottom: hasValue ? '-0.6rem' : undefined,
+            };
+          },
           ...styles,
         }}
         {...otherProps}
