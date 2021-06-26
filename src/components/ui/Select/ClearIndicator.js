@@ -3,8 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../Button';
+import { useTheme } from '../../../themes';
 
 const ClearIndicator = ({ innerProps }) => {
+  const theme = useTheme();
   return (
     <Button
       {...innerProps}
@@ -12,13 +14,13 @@ const ClearIndicator = ({ innerProps }) => {
       iconOnly="x"
       noMargin
       css={css`
-        display: inline;
         padding: 0;
         order: 2;
+        color: ${theme.colors.neutral.grey800};
 
         svg {
-          height: 1.6rem;
-          width: 1.6rem;
+          height: 2rem;
+          width: 2rem;
         }
       `}
     >
