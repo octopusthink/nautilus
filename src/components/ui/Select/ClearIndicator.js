@@ -14,6 +14,7 @@ const ClearIndicator = ({ innerProps }) => {
       css={css`
         display: inline;
         padding: 0;
+        order: 2;
 
         svg {
           height: 1.6rem;

@@ -156,8 +156,18 @@ const Select = forwardRef((props, ref) => {
               display: 'flex',
             };
           },
-          indicatorsContainer: () => {
-            return {};
+          indicatorsContainer: (_provided, state) => {
+            const { selectProps } = state;
+
+            if (!selectProps.isMulti) {
+              return {};
+            }
+
+            return {
+              display: 'flex',
+              flexGrow: 1,
+              justifyContent: 'space-between',
+            };
           },
           input: () => {
             return {};
@@ -172,13 +182,14 @@ const Select = forwardRef((props, ref) => {
             return {};
           },
           valueContainer: (provided, state) => {
-            const { hasValue } = state;
+            const { hasValue, selectProps } = state;
 
             return {
               ...provided,
-              padding: 0,
+              flex: selectProps.isMulti ? undefined : 1,
               marginTop: hasValue ? '-0.2rem' : undefined,
               marginBottom: hasValue ? '-0.6rem' : undefined,
+              padding: 0,
             };
           },
           ...styles,

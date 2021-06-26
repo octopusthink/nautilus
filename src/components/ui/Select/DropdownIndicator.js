@@ -5,6 +5,10 @@ import Icon from '../Icon';
 const DropdownIndicator = (props) => {
   const { selectProps } = props;
 
+  if (selectProps.isMulti) {
+    return <Icon name="plus" />;
+  }
+
   return <Icon name={selectProps.menuIsOpen ? 'chevron-up' : 'chevron-down'} />;
 };
 
