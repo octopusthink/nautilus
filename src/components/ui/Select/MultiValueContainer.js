@@ -14,8 +14,11 @@ const MultiValueContainer = (props) => {
     <Tags.Tag
       color={theme.colors.buttons.default}
       css={css`
-        margin-bottom: -${toUnits(theme.spacing.padding.xSmall)};
-        margin-top: -${toUnits(theme.spacing.padding.xSmall * 2)};
+        //margin-bottom: -${toUnits(theme.spacing.padding.xSmall)};
+        //margin-top: -${toUnits(theme.spacing.padding.xSmall * 2)};
+        padding: ${toUnits(theme.spacing.padding.xSmall)} ${toUnits(theme.spacing.padding.xLarge)}
+          ${toUnits(theme.spacing.padding.xSmall)} ${toUnits(theme.spacing.padding.small)};
+        position: relative;
       `}
     >
       {children}
