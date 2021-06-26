@@ -71,7 +71,9 @@ TBD
 
 ## Appearance
 
-TBD
+A Select comes in two variants: multi-select and single-select. A single-select allows only a single selection from the list (for example, choosing your country of residence or native language) whilst a multi-select allows for selecting more than one option (for example, choosing all countries you've visited or all languages you speak). Multi-selects style the options as tags, whereas single selects are styled as pieces of text. The interaction mechanism is also slightly different between these two options, to better shape user expectations.
+
+Select also uses the generic CSS helper class `Nautilus-DropdownListItem`, also used in Combobox. This helper class is used anywhere where a dropdown list of items is available to choose from in order to allow for more flexible styling.
 
 ### Ordering list items
 
