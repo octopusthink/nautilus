@@ -3,8 +3,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../Button';
+import { toUnits } from '../../../styles';
+import { useTheme } from '../../../themes';
 
 const MultiValueRemove = ({ data, innerProps }) => {
+  const theme = useTheme();
   return (
     <Button
       {...innerProps}
@@ -12,8 +15,12 @@ const MultiValueRemove = ({ data, innerProps }) => {
       iconOnly="x"
       noMargin
       css={css`
-        padding: 0;
-        color: white;
+        padding: 0 ${toUnits(theme.spacing.padding.xSmall)} 0;
+        color: inherit;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
 
         svg {
           height: 1.6rem;
