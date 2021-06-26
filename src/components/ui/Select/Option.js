@@ -16,7 +16,7 @@ export const Option = (props) => {
 
   return (
     <ListItem
-      className={classnames(ComponentClassName, className, 'Nautilus-ComboBoxOptionListItem')}
+      className={classnames(ComponentClassName, className, 'Nautilus-DropdownListItem')}
       css={
         unstyled
           ? undefined
