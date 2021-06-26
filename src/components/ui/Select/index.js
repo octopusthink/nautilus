@@ -7,6 +7,7 @@ import { smallText } from '../TextField';
 import { focusStyle, interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 import Option from './Option';
+import GroupHeading from './GroupHeading';
 import IndicatorsContainer from './IndicatorsContainer';
 import Menu from './Menu';
 import MultiValueContainer from './MultiValueContainer';
@@ -128,6 +129,7 @@ const Select = forwardRef((props, ref) => {
 
       <ReactSelect
         components={{
+          GroupHeading,
           IndicatorsContainer,
           Menu,
           MultiValueContainer,
@@ -173,6 +175,8 @@ Select.defaultProps = {
   disabled: false,
   hint: undefined,
   id: undefined,
+  isClearable: false,
+  isMulti: false,
   labelId: undefined,
   onBlur: undefined,
   onFocus: undefined,
@@ -198,6 +202,10 @@ Select.propTypes = {
   onBlur: PropTypes.func,
   /** @ignore */
   onFocus: PropTypes.func,
+  /** Allow the selection to be entirely clear. Renders a "clear all" button in the UI. */
+  isClearable: PropTypes.bool,
+  /** Allow multiple items to be selected. This alters the UI/UX of the Select component, causing it to behave more like a "tag select". */
+  isMulti: PropTypes.bool,
   /** Used to mark this select as optional. Will output text in `theme.components.Select.optionalMessage`, if set. */
   optional: PropTypes.bool,
   /** Extra styles to apply to a particular component. See `react-select` for more info. */
