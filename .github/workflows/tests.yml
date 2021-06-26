@@ -14,29 +14,6 @@ on:
       - '*'
 
 jobs:
-  coverage:
-    name: Coverage
-    needs: [unit]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@master
-      - uses: actions/cache@v1
-        name: Cache npm modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Install dependencies
-        run: npm ci
-      - name: Generate code coverage
-        uses: paambaati/codeclimate-action@v2.5.5
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageCommand: npm run test:coverage
-          coverageLocations: ./coverage/lcov.info:lcov
   lint:
     name: Lint
     runs-on: ubuntu-latest
