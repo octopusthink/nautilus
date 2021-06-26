@@ -6,7 +6,7 @@ import Tags from '../Tags';
 import { toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
-const MultiValue = (props) => {
+const MultiValueContainer = (props) => {
   const { children } = props;
   const theme = useTheme();
 
@@ -23,15 +23,15 @@ const MultiValue = (props) => {
   );
 };
 
-MultiValue.defaultProps = {
+MultiValueContainer.defaultProps = {
   children: undefined,
 };
 
-MultiValue.propTypes = {
+MultiValueContainer.propTypes = {
   /** @ignore */
   children: PropTypes.node,
 };
 
-MultiValue.displayName = 'MultiValue';
+MultiValueContainer.displayName = 'MultiValueContainer';
 
-export default MultiValue;
+export default MultiValueContainer;

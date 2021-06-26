@@ -4,10 +4,10 @@ import { fireEvent, render } from '../../../../utils/testing';
 import Tag from './Tag';
 
 describe('Tag', () => {
-  it('should render a <span> tag', () => {
+  it('should render a <div> tag', () => {
     const { container } = render(<Tag>Hello</Tag>);
 
-    expect(container.firstChild.tagName).toEqual('SPAN');
+    expect(container.firstChild.tagName).toEqual('DIV');
   });
 
   it('should output its children', () => {

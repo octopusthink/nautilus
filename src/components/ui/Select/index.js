@@ -9,7 +9,9 @@ import { useTheme } from '../../../themes';
 import Option from './Option';
 import IndicatorsContainer from './IndicatorsContainer';
 import Menu from './Menu';
-import MultiValue from './MultiValue';
+import MultiValueContainer from './MultiValueContainer';
+import MultiValueLabel from './MultiValueLabel';
+import MultiValueRemove from './MultiValueRemove';
 import Placeholder from './Placeholder';
 import SelectContainer from './SelectContainer';
 
@@ -128,7 +130,9 @@ const Select = forwardRef((props, ref) => {
         components={{
           IndicatorsContainer,
           Menu,
-          MultiValue,
+          MultiValueContainer,
+          MultiValueLabel,
+          MultiValueRemove,
           Option,
           Placeholder,
           SelectContainer,
@@ -145,6 +149,15 @@ const Select = forwardRef((props, ref) => {
             return {};
           },
           input: () => {
+            return {};
+          },
+          multiValue: () => {
+            return {};
+          },
+          multiValueLabel: () => {
+            return {};
+          },
+          multiValueRemove: () => {
             return {};
           },
           ...styles,

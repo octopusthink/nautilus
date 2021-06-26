@@ -9,26 +9,27 @@ exports[`Tag should match styles 1`] = `
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #666c76;
+  display: inline;
   margin: 0;
   margin: 0 0.4rem 0.4rem 0;
 }
 
 <div>
-  <span
+  <div
     class="emotion-0"
   >
     hello
-  </span>
+  </div>
 </div>
 `;
 
 exports[`Tag should not output styles when unstyled is set 1`] = `
 <div>
-  <span
+  <div
     class="emotion-0"
   >
     hello
-  </span>
+  </div>
 </div>
 `;
 
@@ -41,12 +42,13 @@ exports[`Tag shouldn't have a margin when \`noMargin\` is true 1`] = `
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #666c76;
+  display: inline;
   margin: 0;
 }
 
-<span
+<div
   class="emotion-0"
 >
   Hello
-</span>
+</div>
 `;
