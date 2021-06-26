@@ -6,13 +6,15 @@ import shortid from 'shortid';
 import { smallText } from '../TextField';
 import { focusStyle, interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
-import Option from './Option';
+import ClearIndicator from './ClearIndicator';
 import GroupHeading from './GroupHeading';
-import IndicatorsContainer from './IndicatorsContainer';
+import DropdownIndicator from './DropdownIndicator';
+import IndicatorSeparator from './IndicatorSeparator';
 import Menu from './Menu';
 import MultiValueContainer from './MultiValueContainer';
 import MultiValueLabel from './MultiValueLabel';
 import MultiValueRemove from './MultiValueRemove';
+import Option from './Option';
 import Placeholder from './Placeholder';
 import SelectContainer from './SelectContainer';
 
@@ -129,8 +131,10 @@ const Select = forwardRef((props, ref) => {
 
       <ReactSelect
         components={{
+          ClearIndicator,
+          DropdownIndicator,
           GroupHeading,
-          IndicatorsContainer,
+          IndicatorSeparator,
           Menu,
           MultiValueContainer,
           MultiValueLabel,
@@ -148,6 +152,11 @@ const Select = forwardRef((props, ref) => {
         ref={ref}
         styles={{
           control: () => {
+            return {
+              display: 'flex',
+            };
+          },
+          indicatorsContainer: () => {
             return {};
           },
           input: () => {
@@ -162,6 +171,9 @@ const Select = forwardRef((props, ref) => {
           multiValueRemove: () => {
             return {};
           },
+          // valueContainer: () => {
+          //   return {};
+          // },
           ...styles,
         }}
         {...otherProps}

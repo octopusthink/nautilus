@@ -10,7 +10,6 @@ const tags = [
   {
     label: 'Ducati',
     value: {
-      backend: 'BACKENDS.FreeAgent',
       backendId: 1,
       id: 1,
       tagInfo: { fast: true, fun: true, boring: false },
@@ -20,7 +19,6 @@ const tags = [
   {
     label: 'Honda',
     value: {
-      backend: 'BACKENDS.FreeAgent',
       backendId: 1,
       id: 2,
       tagInfo: { fast: false, fun: true, boring: true },
@@ -30,7 +28,6 @@ const tags = [
   {
     label: 'Yamaha',
     value: {
-      backend: 'BACKENDS.FreeAgent',
       backendId: 1,
       id: 3,
       tagInfo: { fast: true, fun: true, boring: true },
@@ -40,7 +37,6 @@ const tags = [
   {
     label: 'Ural',
     value: {
-      backend: 'BACKENDS.FreeAgent',
       backendId: 1,
       id: 4,
       tagInfo: { fast: false, fun: true, boring: false },
@@ -51,11 +47,21 @@ const tags = [
 
 ;<React.Fragment>
   <Select
+    label="Pick your favourite curry"
+    options={[
+      { label: 'Chicken', value: 1 },
+      { label: 'Lamb', value: 2 },
+      { label: 'Veg', value: 3 }
+    ]}
+    placeholder="All are delicious"
+  />
+
+  <Select
     closeMenuOnSelect={false}
     label="Motorcycle Maker"
     isClearable
     isMulti
-    options={[{ label: 'Select your bike', options: tags }]}
+    options={[{ label: 'Select your bikes', options: tags }]}
     placeholder="Search or browse"
   />
 
