@@ -100,10 +100,10 @@ Follow the `TextField` [guidelines](../TextField) for voice & tone. Additionally
 
 ```jsx
 <ComboBox label="What do you want to be when you grow up? 🏫" placeholder="Select">
-  <ComboBox.Option prefix="🧑‍🚒 ">Firefighter</ComboBox.Option>
-  <ComboBox.Option prefix="🧑🏾‍🏫 ">Teacher</ComboBox.Option>
-  <ComboBox.Option prefix="🧛🏻 ">Vampire</ComboBox.Option>
-  <ComboBox.Option prefix="🧙🏽 ">Wizard</ComboBox.Option>
+  <ComboBox.Option value="Firefighter">Firefighter 🧑‍🚒</ComboBox.Option>
+  <ComboBox.Option value="Teacher">Teacher 🧑🏾‍🏫</ComboBox.Option>
+  <ComboBox.Option value="Vampire">Vampire 🧛🏻</ComboBox.Option>
+  <ComboBox.Option value="Wizard">Wizard 🧙🏽</ComboBox.Option>
 </ComboBox>
 ```
 
