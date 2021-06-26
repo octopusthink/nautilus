@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from '../Icon';
@@ -8,8 +9,20 @@ const DropdownIndicator = (props) => {
   const theme = useTheme();
 
   if (selectProps.isMulti) {
-    return isFocused ? null : (
-      <Icon name="plus" background={theme.colors.neutral.grey0} small noMargin />
+    return isFocused ? (
+      <span />
+    ) : (
+      <Icon
+        name="plus"
+        background={theme.colors.neutral.grey0}
+        css={css`
+          &:hover {
+            cursor: pointer;
+          }
+        `}
+        small
+        noMargin
+      />
     );
   }
 
