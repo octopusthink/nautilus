@@ -7,17 +7,21 @@ import { toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
 const MultiValueContainer = (props) => {
-  const { children } = props;
+  const { children, data } = props;
   const theme = useTheme();
+
+  const defaultTagColor = theme.colors.buttons.default;
+  const customTagColor = data?.color;
 
   return (
     <Tags.Tag
-      color={theme.colors.buttons.default}
+      color={customTagColor || defaultTagColor}
       css={css`
         padding: ${toUnits(theme.spacing.padding.xSmall)} ${toUnits(theme.spacing.padding.xLarge)}
           ${toUnits(theme.spacing.padding.xSmall)} ${toUnits(theme.spacing.padding.small)};
         position: relative;
       `}
+      {...data?.optionProps}
     >
       {children}
     </Tags.Tag>
@@ -26,11 +30,15 @@ const MultiValueContainer = (props) => {
 
 MultiValueContainer.defaultProps = {
   children: undefined,
+  data: {},
 };
 
 MultiValueContainer.propTypes = {
   /** @ignore */
   children: PropTypes.node,
+  /** @ignore */
+  // eslint-disable-next-line react/forbid-prop-types
+  data: PropTypes.object,
 };
 
 MultiValueContainer.displayName = 'MultiValueContainer';

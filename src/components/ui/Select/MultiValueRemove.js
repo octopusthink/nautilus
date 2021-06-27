@@ -8,6 +8,7 @@ import { useTheme } from '../../../themes';
 
 const MultiValueRemove = ({ data, innerProps }) => {
   const theme = useTheme();
+
   return (
     <Button
       {...innerProps}
@@ -21,6 +22,10 @@ const MultiValueRemove = ({ data, innerProps }) => {
         top: 0;
         right: 0;
         bottom: 0;
+
+        &:hover {
+          color: inherit;
+        }
 
         svg {
           height: 1.6rem;

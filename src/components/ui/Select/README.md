@@ -9,6 +9,8 @@ import React from 'react'
 const tags = [
   {
     label: 'Ducati',
+    color: '#b00e0a',
+    focusColor: '#970000',
     value: {
       backendId: 1,
       id: 1,
@@ -18,6 +20,11 @@ const tags = [
   },
   {
     label: 'Honda',
+    color: '#bd162c',
+    focusColor: '#a40013',
+    optionProps: {
+      badge: true
+    },
     value: {
       backendId: 1,
       id: 2,
@@ -27,6 +34,8 @@ const tags = [
   },
   {
     label: 'Yamaha',
+    color: '#000080',
+    focusColor: '#000067',
     value: {
       backendId: 1,
       id: 3,
@@ -36,6 +45,8 @@ const tags = [
   },
   {
     label: 'Ural',
+    color: '#5d705f',
+    focusColor: '#445746',
     value: {
       backendId: 1,
       id: 4,
@@ -61,6 +72,7 @@ const tags = [
     label="Motorcycle Maker"
     isClearable
     isMulti
+    menuIsOpen
     options={[{ label: 'Select your bikes', options: tags }]}
     placeholder="Search or browse"
   />
