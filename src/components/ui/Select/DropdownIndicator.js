@@ -17,19 +17,26 @@ const DropdownIndicator = (props) => {
         name="plus"
         background={theme.colors.neutral.grey0}
         css={css`
-          margin: ${toUnits(theme.spacing.padding.xxSmall)} 0;
+          margin: -${toUnits(theme.spacing.margin.xxSmall)} 0;
 
           &:hover {
             cursor: pointer;
           }
         `}
-        small
         noMargin
+        small
       />
     );
   }
 
-  return <Icon name={selectProps.menuIsOpen ? 'chevron-up' : 'chevron-down'} />;
+  return (
+    <Icon
+      name={selectProps.menuIsOpen ? 'chevron-up' : 'chevron-down'}
+      css={css`
+        margin: 0;
+      `}
+    />
+  );
 };
 
 DropdownIndicator.defaultProps = {

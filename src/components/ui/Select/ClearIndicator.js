@@ -7,6 +7,7 @@ import { useTheme } from '../../../themes';
 
 const ClearIndicator = ({ innerProps }) => {
   const theme = useTheme();
+
   return (
     <Button
       {...innerProps}
@@ -14,9 +15,9 @@ const ClearIndicator = ({ innerProps }) => {
       iconOnly="x"
       noMargin
       css={css`
-        padding: 0;
-        order: 2;
         color: ${theme.colors.neutral.grey800};
+        order: 2;
+        padding: 0;
 
         svg {
           height: 2rem;
