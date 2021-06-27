@@ -57,7 +57,7 @@ export const Option = (props) => {
           {children}
         </Tag>
       ) : (
-        <span {...data?.optionProps}>children</span>
+        <span {...data?.optionProps}>{children}</span>
       )}
     </ListItem>
   );
