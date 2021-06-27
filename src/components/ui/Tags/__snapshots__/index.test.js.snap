@@ -13,6 +13,7 @@ exports[`Tags should be styled by a css prop 1`] = `
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #666c76;
+  display: inline;
   margin: 0;
   margin: 0 0.4rem 0.4rem 0;
 }
@@ -20,11 +21,11 @@ exports[`Tags should be styled by a css prop 1`] = `
 <div
   class="emotion-0"
 >
-  <span
+  <div
     class="emotion-1"
   >
     Hello
-  </span>
+  </div>
 </div>
 `;
 
@@ -52,6 +53,7 @@ exports[`Tags should match Tags styles 1`] = `
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #666c76;
+  display: inline;
   margin: 0;
   margin: 0 0.4rem 0.4rem 0;
 }
@@ -64,22 +66,22 @@ exports[`Tags should match Tags styles 1`] = `
       <li
         class="Nautilus-ListItem emotion-1"
       >
-        <span
+        <div
           class="emotion-2"
           data-testid="child-one"
         >
           Hello
-        </span>
+        </div>
       </li>
       <li
         class="Nautilus-ListItem emotion-1"
       >
-        <span
+        <div
           class="emotion-2"
           data-testid="child-two"
         >
           Goodbye
-        </span>
+        </div>
       </li>
     </ul>
   </div>
@@ -95,15 +97,16 @@ exports[`Tags should match styles 1`] = `
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: #666c76;
+  display: inline;
   margin: 0;
   margin: 0 0.4rem 0.4rem 0;
 }
 
 <div>
-  <span
+  <div
     class="emotion-0"
   >
     hello
-  </span>
+  </div>
 </div>
 `;

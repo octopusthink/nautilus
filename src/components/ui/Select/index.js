@@ -6,10 +6,15 @@ import shortid from 'shortid';
 import { smallText } from '../TextField';
 import { focusStyle, interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
-import Option from './Option';
-import IndicatorsContainer from './IndicatorsContainer';
+import ClearIndicator from './ClearIndicator';
+import GroupHeading from './GroupHeading';
+import DropdownIndicator from './DropdownIndicator';
+import IndicatorSeparator from './IndicatorSeparator';
 import Menu from './Menu';
-import MultiValue from './MultiValue';
+import MultiValueContainer from './MultiValueContainer';
+import MultiValueLabel from './MultiValueLabel';
+import MultiValueRemove from './MultiValueRemove';
+import Option from './Option';
 import Placeholder from './Placeholder';
 import SelectContainer from './SelectContainer';
 
@@ -126,9 +131,14 @@ const Select = forwardRef((props, ref) => {
 
       <ReactSelect
         components={{
-          IndicatorsContainer,
+          ClearIndicator,
+          DropdownIndicator,
+          GroupHeading,
+          IndicatorSeparator,
           Menu,
-          MultiValue,
+          MultiValueContainer,
+          MultiValueLabel,
+          MultiValueRemove,
           Option,
           Placeholder,
           SelectContainer,
@@ -142,10 +152,48 @@ const Select = forwardRef((props, ref) => {
         ref={ref}
         styles={{
           control: () => {
-            return {};
+            return {
+              display: 'flex',
+            };
+          },
+          indicatorsContainer: (_provided, state) => {
+            const { selectProps } = state;
+
+            if (!selectProps.isMulti) {
+              return {};
+            }
+
+            return {
+              display: 'flex',
+              flexGrow: 1,
+              justifyContent: 'space-between',
+            };
           },
           input: () => {
             return {};
+          },
+          menuList: () => {
+            return {
+              padding: 0,
+            };
+          },
+          multiValue: () => {
+            return {};
+          },
+          multiValueLabel: () => {
+            return {};
+          },
+          multiValueRemove: () => {
+            return {};
+          },
+          valueContainer: (provided, state) => {
+            const { selectProps } = state;
+
+            return {
+              ...provided,
+              flex: selectProps.isMulti ? undefined : 1,
+              padding: 0,
+            };
           },
           ...styles,
         }}
@@ -160,6 +208,8 @@ Select.defaultProps = {
   disabled: false,
   hint: undefined,
   id: undefined,
+  isClearable: false,
+  isMulti: false,
   labelId: undefined,
   onBlur: undefined,
   onFocus: undefined,
@@ -185,6 +235,10 @@ Select.propTypes = {
   onBlur: PropTypes.func,
   /** @ignore */
   onFocus: PropTypes.func,
+  /** Allow the selection to be entirely clear. Renders a "clear all" button in the UI. */
+  isClearable: PropTypes.bool,
+  /** Allow multiple items to be selected. This alters the UI/UX of the Select component, causing it to behave more like a "tag select". */
+  isMulti: PropTypes.bool,
   /** Used to mark this select as optional. Will output text in `theme.components.Select.optionalMessage`, if set. */
   optional: PropTypes.bool,
   /** Extra styles to apply to a particular component. See `react-select` for more info. */

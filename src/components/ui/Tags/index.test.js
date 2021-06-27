@@ -5,14 +5,14 @@ import { axe, render } from '../../../../utils/testing';
 import Tags from '.';
 
 describe('Tags', () => {
-  it('should render a <span> tag if only one tag is created with no title prop', () => {
+  it('should render a <div> tag if only one tag is created with no title prop', () => {
     const { container } = render(
       <Tags>
         <Tags.Tag>Hello</Tags.Tag>
       </Tags>,
     );
 
-    expect(container.firstChild.firstChild.tagName).toEqual('SPAN');
+    expect(container.firstChild.firstChild.tagName).toEqual('DIV');
   });
 
   it('should be styled by a css prop', () => {

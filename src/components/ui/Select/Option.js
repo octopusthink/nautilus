@@ -6,34 +6,53 @@ import React from 'react';
 import { toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 import ListItem from '../List/Item';
+import Tag from '../Tags/Tag';
 
 export const ComponentClassName = 'Nautilus-SelectOption';
 
 export const Option = (props) => {
-  const { children, className, innerProps, isFocused, onSelect, unstyled } = props;
+  const { children, className, data, innerProps, isFocused, isMulti, onSelect, unstyled } = props;
 
   const theme = useTheme();
 
+  const defaultTagColor = isFocused
+    ? theme.colors.buttons.defaultDark
+    : theme.colors.buttons.default;
+  const customTagColor = isFocused ? data?.focusColor : data?.color;
+
   return (
     <ListItem
-      className={classnames(ComponentClassName, className, 'Nautilus-ComboBoxOptionListItem')}
+      className={classnames(ComponentClassName, className, {
+        'Nautilus-DropdownListItem': !isMulti,
+      })}
       css={
         unstyled
           ? undefined
           : css`
               cursor: pointer;
-              padding: ${toUnits(theme.spacing.padding.small)};
               width: 100%;
 
-              &:hover {
-                background: ${theme.colors.neutral.grey200};
-              }
-
-              /* Matching segments of text; highlighted. */
-              ${isFocused &&
+              ${isMulti &&
               css`
-                background: ${theme.colors.state.focusOutline};
-                font-weight: bold;
+                padding: ${toUnits(theme.spacing.padding.xxSmall)}
+                  ${toUnits(theme.spacing.padding.small)};
+              `}
+
+              ${!isMulti &&
+              css`
+                padding: ${toUnits(theme.spacing.padding.small)}
+                  ${toUnits(theme.spacing.padding.medium)};
+
+                &:hover {
+                  background: ${theme.colors.neutral.grey200};
+                }
+
+                /* Matching segments of text; highlighted. */
+                ${isFocused &&
+                css`
+                  background: ${theme.colors.state.focusOutline};
+                  font-weight: bold;
+                `}
               `}
             `
       }
@@ -41,14 +60,22 @@ export const Option = (props) => {
       unstyled
       {...innerProps}
     >
-      {children}
+      {isMulti ? (
+        <Tag color={customTagColor || defaultTagColor} {...data?.optionProps}>
+          {children}
+        </Tag>
+      ) : (
+        <span {...data?.optionProps}>{children}</span>
+      )}
     </ListItem>
   );
 };
 
 Option.defaultProps = {
   className: undefined,
+  data: {},
   isFocused: false,
+  isMulti: false,
   onSelect: undefined,
   unstyled: false,
   value: undefined,
@@ -61,9 +88,14 @@ Option.propTypes = {
   className: PropTypes.string,
   /** @ignore */
   // eslint-disable-next-line react/forbid-prop-types
+  data: PropTypes.object,
+  /** @ignore */
+  // eslint-disable-next-line react/forbid-prop-types
   innerProps: PropTypes.object.isRequired,
   /** @ignore */
   isFocused: PropTypes.bool,
+  /** @ignore */
+  isMulti: PropTypes.bool,
   /** Event handler when an item is selected. */
   onSelect: PropTypes.func,
   /* @ignore Don't output any CSS styles. */

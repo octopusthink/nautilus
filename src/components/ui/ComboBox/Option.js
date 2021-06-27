@@ -19,7 +19,7 @@ export const Option = (props) => {
     <ReachComboboxOption
       as="span"
       css={css`
-        &[data-highlighted] .Nautilus-ComboBoxOptionListItem {
+        &[data-highlighted] .Nautilus-DropdownListItem {
           background: ${theme.colors.neutral.grey200};
         }
       `}
@@ -27,7 +27,7 @@ export const Option = (props) => {
       {...otherProps}
     >
       <ListItem
-        className={classnames(ComponentClassName, className, 'Nautilus-ComboBoxOptionListItem')}
+        className={classnames(ComponentClassName, className, 'Nautilus-DropdownListItem')}
         css={
           unstyled
             ? undefined

@@ -9,8 +9,9 @@ import React from 'react'
 const tags = [
   {
     label: 'Ducati',
+    color: '#b00e0a',
+    focusColor: '#970000',
     value: {
-      backend: 'BACKENDS.FreeAgent',
       backendId: 1,
       id: 1,
       tagInfo: { fast: true, fun: true, boring: false },
@@ -19,8 +20,12 @@ const tags = [
   },
   {
     label: 'Honda',
+    color: '#bd162c',
+    focusColor: '#a40013',
+    optionProps: {
+      badge: true
+    },
     value: {
-      backend: 'BACKENDS.FreeAgent',
       backendId: 1,
       id: 2,
       tagInfo: { fast: false, fun: true, boring: true },
@@ -29,8 +34,9 @@ const tags = [
   },
   {
     label: 'Yamaha',
+    color: '#000080',
+    focusColor: '#000067',
     value: {
-      backend: 'BACKENDS.FreeAgent',
       backendId: 1,
       id: 3,
       tagInfo: { fast: true, fun: true, boring: true },
@@ -39,8 +45,9 @@ const tags = [
   },
   {
     label: 'Ural',
+    color: '#5d705f',
+    focusColor: '#445746',
     value: {
-      backend: 'BACKENDS.FreeAgent',
       backendId: 1,
       id: 4,
       tagInfo: { fast: false, fun: true, boring: false },
@@ -51,11 +58,21 @@ const tags = [
 
 ;<React.Fragment>
   <Select
+    label="Pick your favourite curry"
+    options={[
+      { label: 'Chicken', value: 1 },
+      { label: 'Lamb', value: 2 },
+      { label: 'Veg', value: 3 }
+    ]}
+    placeholder="All are delicious"
+  />
+
+  <Select
     closeMenuOnSelect={false}
     label="Motorcycle Maker"
     isClearable
     isMulti
-    options={[{ label: 'Select your bike', options: tags }]}
+    options={[{ label: 'Select your bikes', options: tags }]}
     placeholder="Search or browse"
   />
 
@@ -71,7 +88,9 @@ TBD
 
 ## Appearance
 
-TBD
+A Select comes in two variants: multi-select and single-select. A single-select allows only a single selection from the list (for example, choosing your country of residence or native language) whilst a multi-select allows for selecting more than one option (for example, choosing all countries you've visited or all languages you speak). Multi-selects style the options as tags, whereas single selects are styled as pieces of text. The interaction mechanism is also slightly different between these two options, to better shape user expectations.
+
+Select also uses the generic CSS helper class `Nautilus-DropdownListItem`, also used in Combobox. This helper class is used anywhere where a dropdown list of items is available to choose from in order to allow for more flexible styling.
 
 ### Ordering list items
 

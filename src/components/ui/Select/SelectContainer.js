@@ -25,6 +25,7 @@ const SelectContainer = (props) => {
 
 SelectContainer.defaultProps = {
   children: undefined,
+  clearValue: undefined,
   innerProps: {},
   isFocused: false,
 };
@@ -33,10 +34,17 @@ SelectContainer.propTypes = {
   /** @ignore */
   children: PropTypes.node,
   /** @ignore */
+  clearValue: PropTypes.func,
+  /** @ignore */
+  hasValue: PropTypes.bool.isRequired,
+  /** @ignore */
   // eslint-disable-next-line react/forbid-prop-types
   innerProps: PropTypes.object,
   /** Boolean to enable/disable the focus styles for this input. */
   isFocused: PropTypes.bool,
+  /** @ignore */
+  // eslint-disable-next-line react/forbid-prop-types
+  selectProps: PropTypes.object.isRequired,
 };
 
 export default SelectContainer;

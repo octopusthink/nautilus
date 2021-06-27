@@ -31,13 +31,14 @@ const Tag = (props) => {
   }
 
   return (
-    <span
+    <div
       css={
         unstyled
           ? undefined
           : css`
               ${metadata.small(theme)};
               color: ${textColor};
+              display: inline;
               margin: 0;
 
               ${!noMargin &&
@@ -107,7 +108,7 @@ const Tag = (props) => {
           />
         </button>
       )}
-    </span>
+    </div>
   );
 };
 
