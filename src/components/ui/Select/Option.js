@@ -30,11 +30,18 @@ export const Option = (props) => {
           ? undefined
           : css`
               cursor: pointer;
-              padding: ${toUnits(theme.spacing.padding.small)};
               width: 100%;
+
+              ${isMulti &&
+              css`
+                padding: 0 ${toUnits(theme.spacing.padding.small)};
+              `}
 
               ${!isMulti &&
               css`
+                padding: ${toUnits(theme.spacing.padding.small)}
+                  ${toUnits(theme.spacing.padding.medium)};
+
                 &:hover {
                   background: ${theme.colors.neutral.grey200};
                 }
