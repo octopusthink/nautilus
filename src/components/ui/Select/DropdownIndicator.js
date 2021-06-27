@@ -16,6 +16,7 @@ const DropdownIndicator = (props) => {
         name="plus"
         background={theme.colors.neutral.grey0}
         css={css`
+          margin: -0.2rem 0;
           &:hover {
             cursor: pointer;
           }
