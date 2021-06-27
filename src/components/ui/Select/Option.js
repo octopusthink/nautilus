@@ -34,7 +34,8 @@ export const Option = (props) => {
 
               ${isMulti &&
               css`
-                padding: 0 ${toUnits(theme.spacing.padding.small)};
+                padding: ${toUnits(theme.spacing.padding.xxSmall)}
+                  ${toUnits(theme.spacing.padding.small)};
               `}
 
               ${!isMulti &&
