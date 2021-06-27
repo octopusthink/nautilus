@@ -17,6 +17,7 @@ const MultiValueContainer = (props) => {
     <Tags.Tag
       color={customTagColor || defaultTagColor}
       css={css`
+        margin-bottom: 0;
         padding: ${toUnits(theme.spacing.padding.xSmall)} ${toUnits(theme.spacing.padding.xLarge)}
           ${toUnits(theme.spacing.padding.xSmall)} ${toUnits(theme.spacing.padding.small)};
         position: relative;

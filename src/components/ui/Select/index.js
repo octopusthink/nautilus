@@ -187,13 +187,11 @@ const Select = forwardRef((props, ref) => {
             return {};
           },
           valueContainer: (provided, state) => {
-            const { hasValue, selectProps } = state;
+            const { selectProps } = state;
 
             return {
               ...provided,
               flex: selectProps.isMulti ? undefined : 1,
-              marginTop: hasValue ? '-0.2rem' : undefined,
-              marginBottom: hasValue ? '-0.6rem' : undefined,
               padding: 0,
             };
           },

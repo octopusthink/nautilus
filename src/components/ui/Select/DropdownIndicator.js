@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from '../Icon';
 import { useTheme } from '../../../themes';
+import { toUnits } from '../../../styles';
 
 const DropdownIndicator = (props) => {
   const { isFocused, selectProps } = props;
@@ -16,7 +17,8 @@ const DropdownIndicator = (props) => {
         name="plus"
         background={theme.colors.neutral.grey0}
         css={css`
-          margin: -0.2rem 0;
+          margin: ${toUnits(theme.spacing.padding.xxSmall)} 0;
+
           &:hover {
             cursor: pointer;
           }

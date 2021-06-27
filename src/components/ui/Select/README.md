@@ -72,7 +72,6 @@ const tags = [
     label="Motorcycle Maker"
     isClearable
     isMulti
-    menuIsOpen
     options={[{ label: 'Select your bikes', options: tags }]}
     placeholder="Search or browse"
   />
