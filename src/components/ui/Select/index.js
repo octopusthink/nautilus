@@ -172,6 +172,11 @@ const Select = forwardRef((props, ref) => {
           input: () => {
             return {};
           },
+          menuList: () => {
+            return {
+              padding: 0,
+            };
+          },
           multiValue: () => {
             return {};
           },
@@ -189,6 +194,7 @@ const Select = forwardRef((props, ref) => {
               flex: selectProps.isMulti ? undefined : 1,
               marginTop: hasValue ? '-0.2rem' : undefined,
               marginBottom: hasValue ? '-0.6rem' : undefined,
+              marginLeft: selectProps.isMulti ? '-0.2rem' : '-0.4rem',
               padding: 0,
             };
           },

@@ -8,7 +8,7 @@ import {
 import PropTypes from 'prop-types';
 import React, { Children, useCallback, useMemo, useRef, useState, useEffect } from 'react';
 
-import { interfaceUI } from '../../../styles';
+import { interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 import List from '../List';
 import TextField from '../TextField';
@@ -137,13 +137,16 @@ export const ComboBox = (props) => {
               ${interfaceUI.medium(theme)};
               background: ${theme.colors.buttons.neutral};
               border: 2px solid ${theme.colors.text.default};
+              border-top: 0;
               color: ${theme.colors.text.default};
               list-style-type: none;
               margin: 0;
+              margin-top: -2px;
               max-height: 60vh;
               overflow-y: scroll;
               overflow: hidden;
               padding: 0;
+              padding-top: ${toUnits(theme.spacing.padding.small)};
               transition: height 200ms;
               z-index: 100;
             `}

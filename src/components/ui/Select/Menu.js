@@ -19,12 +19,13 @@ const Menu = (props) => {
         left: -${toUnits(theme.spacing.padding.xxSmall)};
         list-style-type: none;
         margin: 0;
+        border-top: 0;
         max-height: 60vh;
         overflow-y: scroll;
         overflow: hidden;
         position: absolute;
         padding: 0;
-        top: ${toUnits(theme.spacing.padding.xxLarge + theme.spacing.padding.xSmall)};
+        padding-top: ${toUnits(theme.spacing.padding.medium)};
         transition: height 200ms;
         width: calc(100% + ${toUnits(theme.spacing.padding.xSmall)});
         z-index: 1000;
