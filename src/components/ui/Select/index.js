@@ -164,6 +164,7 @@ const Select = forwardRef((props, ref) => {
             }
 
             return {
+              alignItems: 'center',
               display: 'flex',
               flexGrow: 1,
               justifyContent: 'space-between',
