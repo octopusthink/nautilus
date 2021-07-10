@@ -10,7 +10,7 @@ const DropdownIndicator = (props) => {
   const theme = useTheme();
 
   if (selectProps.isMulti) {
-    return isFocused ? (
+    return isFocused || selectProps.hideDropdown ? (
       <span />
     ) : (
       <Icon

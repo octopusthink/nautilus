@@ -206,6 +206,7 @@ const Select = forwardRef((props, ref) => {
 Select.defaultProps = {
   components: {},
   disabled: false,
+  hideDropdown: false,
   hint: undefined,
   id: undefined,
   isClearable: false,
@@ -223,6 +224,8 @@ Select.propTypes = {
   components: PropTypes.objectOf(PropTypes.elementType),
   /** Disables this select entirely; this applies a disabled style and disables user input/interaction with this element. This is useful if you have elements that are conditionally allowed based on other states in your UI. */
   disabled: PropTypes.bool,
+  /** Hide the dropdown indicator. */
+  hideDropdown: PropTypes.bool,
   /** Additional context to help users understand the purpose of the select. */
   hint: PropTypes.node,
   /** HTML `id` attribute of the `select` element. Used for both the select's `id` attribute and the `<label>` `for` attribute. */
