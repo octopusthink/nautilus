@@ -24,6 +24,7 @@ const ClearIndicator = ({ innerProps }) => {
           width: 2rem;
         }
       `}
+      tabIndex="-1"
     >
       Remove selection
     </Button>
