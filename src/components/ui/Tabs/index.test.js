@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { axe, fireEvent, render, wait, waitForElement } from '../../../../utils/testing';
+import { axe, fireEvent, render, waitFor } from '../../../../utils/testing';
 import Paragraph from '../Paragraph';
 import Tabs from '.';
 
@@ -66,7 +66,9 @@ describe('Tabs', () => {
 
     fireEvent.click(getByTestId('thirdTab'));
 
-    await waitForElement(() => getByTestId('thirdTab'));
+    await waitFor(() =>
+      expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('false'),
+    );
 
     expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('false');
     expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual('false');
@@ -121,7 +123,7 @@ describe('Tabs', () => {
         // one.
         fireEvent.keyDown(getByTestId('firstTab'), { keyCode: 39 });
 
-        await waitForElement(() => getByTestId('secondTab'));
+        await waitFor(() => {});
 
         expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('false');
         expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual('true');
@@ -137,7 +139,7 @@ describe('Tabs', () => {
         // tab: nothing should happen.
         fireEvent.keyDown(getByTestId('firstTab'), { keyCode: 37 });
 
-        await wait();
+        await waitFor(() => {});
 
         expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('true');
         expect(getByTestId('firstTab')).toHaveFocus();
@@ -154,7 +156,7 @@ describe('Tabs', () => {
         // tab, but because no more tabs exists nothing happens.
         fireEvent.keyDown(getByTestId('thirdTab'), { keyCode: 39 });
 
-        await wait();
+        await waitFor(() => {});
 
         expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('false');
         expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual('false');
@@ -171,7 +173,7 @@ describe('Tabs', () => {
         // tab, but because no more tabs exists nothing happens.
         fireEvent.keyDown(getByTestId('thirdTab'), { keyCode: 37 });
 
-        await waitForElement(() => getByTestId('secondTab'));
+        await waitFor(() => getByTestId('secondTab'));
 
         expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('false');
         expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual('true');
@@ -186,7 +188,7 @@ describe('Tabs', () => {
         // A keyCode of 40 is a down arrow.
         fireEvent.keyDown(getByTestId('firstTab'), { keyCode: 40 });
 
-        await waitForElement(() => getByTestId('firstTabSection'));
+        await waitFor(() => getByTestId('firstTabSection'));
 
         expect(getByTestId('firstTabSection')).toHaveFocus();
         expect(getByTestId('secondTabSection')).not.toHaveFocus();

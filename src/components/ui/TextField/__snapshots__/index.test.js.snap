@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TextField should hide styles when unstyled prop is set 1`] = `
-.emotion-2 {
+.emotion-1 {
   position: relative;
 }
 
@@ -13,7 +13,7 @@ exports[`TextField should hide styles when unstyled prop is set 1`] = `
     Hello
   </label>
   <div
-    class="emotion-2"
+    class="emotion-1"
   >
     <input
       class="emotion-0"
@@ -42,12 +42,12 @@ exports[`TextField should match styles 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   margin: 0 0 0.4rem;
 }
@@ -60,11 +60,11 @@ exports[`TextField should match styles 1`] = `
   color: #cd2f83;
 }
 
-.emotion-2 {
+.emotion-1 {
   position: relative;
 }
 
-.emotion-1 {
+.emotion-2 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
@@ -85,29 +85,29 @@ exports[`TextField should match styles 1`] = `
   margin: 0 0 3.2rem;
 }
 
-.emotion-1:required {
+.emotion-2:required {
   box-shadow: none;
 }
 
-.emotion-1:focus {
+.emotion-2:focus {
   color: #181b1c;
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-1::-webkit-input-placeholder {
+.emotion-2::-webkit-input-placeholder {
   color: #666c76;
 }
 
-.emotion-1::-moz-placeholder {
+.emotion-2::-moz-placeholder {
   color: #666c76;
 }
 
-.emotion-1:-ms-input-placeholder {
+.emotion-2:-ms-input-placeholder {
   color: #666c76;
 }
 
-.emotion-1::placeholder {
+.emotion-2::placeholder {
   color: #666c76;
 }
 
@@ -119,10 +119,10 @@ exports[`TextField should match styles 1`] = `
     Hello
   </label>
   <div
-    class="emotion-2"
+    class="emotion-1"
   >
     <input
-      class="emotion-1"
+      class="emotion-2"
       id="myTextField"
       required=""
       type="text"
@@ -148,12 +148,12 @@ exports[`TextField should not set a \`max-width\` on the input element without a
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   margin: 0 0 0.4rem;
 }
@@ -166,11 +166,11 @@ exports[`TextField should not set a \`max-width\` on the input element without a
   color: #cd2f83;
 }
 
-.emotion-2 {
+.emotion-1 {
   position: relative;
 }
 
-.emotion-1 {
+.emotion-2 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
@@ -191,29 +191,29 @@ exports[`TextField should not set a \`max-width\` on the input element without a
   margin: 0 0 3.2rem;
 }
 
-.emotion-1:required {
+.emotion-2:required {
   box-shadow: none;
 }
 
-.emotion-1:focus {
+.emotion-2:focus {
   color: #181b1c;
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-1::-webkit-input-placeholder {
+.emotion-2::-webkit-input-placeholder {
   color: #666c76;
 }
 
-.emotion-1::-moz-placeholder {
+.emotion-2::-moz-placeholder {
   color: #666c76;
 }
 
-.emotion-1:-ms-input-placeholder {
+.emotion-2:-ms-input-placeholder {
   color: #666c76;
 }
 
-.emotion-1::placeholder {
+.emotion-2::placeholder {
   color: #666c76;
 }
 
@@ -225,10 +225,10 @@ exports[`TextField should not set a \`max-width\` on the input element without a
     Hello
   </label>
   <div
-    class="emotion-2"
+    class="emotion-1"
   >
     <input
-      class="emotion-1"
+      class="emotion-2"
       id="testInput"
       required=""
       type="text"
@@ -254,12 +254,12 @@ exports[`TextField should output an <Icon> when the actionIcon prop is used 1`] 
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   margin: 0 0 0.4rem;
 }
@@ -297,12 +297,12 @@ exports[`TextField should output an <Icon> when the signifierIcon prop is used 1
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   margin: 0 0 0.4rem;
 }
@@ -340,12 +340,12 @@ exports[`TextField should set a \`max-width\` on the input element when \`size\`
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   margin: 0 0 0.4rem;
 }
@@ -358,11 +358,11 @@ exports[`TextField should set a \`max-width\` on the input element when \`size\`
   color: #cd2f83;
 }
 
-.emotion-2 {
+.emotion-1 {
   position: relative;
 }
 
-.emotion-1 {
+.emotion-2 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
@@ -384,29 +384,29 @@ exports[`TextField should set a \`max-width\` on the input element when \`size\`
   max-width: 9em;
 }
 
-.emotion-1:required {
+.emotion-2:required {
   box-shadow: none;
 }
 
-.emotion-1:focus {
+.emotion-2:focus {
   color: #181b1c;
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-1::-webkit-input-placeholder {
+.emotion-2::-webkit-input-placeholder {
   color: #666c76;
 }
 
-.emotion-1::-moz-placeholder {
+.emotion-2::-moz-placeholder {
   color: #666c76;
 }
 
-.emotion-1:-ms-input-placeholder {
+.emotion-2:-ms-input-placeholder {
   color: #666c76;
 }
 
-.emotion-1::placeholder {
+.emotion-2::placeholder {
   color: #666c76;
 }
 
@@ -418,10 +418,10 @@ exports[`TextField should set a \`max-width\` on the input element when \`size\`
     Hello
   </label>
   <div
-    class="emotion-2"
+    class="emotion-1"
   >
     <input
-      class="emotion-1"
+      class="emotion-2"
       id="testInput"
       maxlength="10"
       required=""
@@ -448,12 +448,12 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   margin: 0 0 0.4rem;
 }
@@ -466,11 +466,11 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
   color: #cd2f83;
 }
 
-.emotion-2 {
+.emotion-1 {
   position: relative;
 }
 
-.emotion-1 {
+.emotion-2 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
@@ -492,29 +492,29 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
   max-width: 9em;
 }
 
-.emotion-1:required {
+.emotion-2:required {
   box-shadow: none;
 }
 
-.emotion-1:focus {
+.emotion-2:focus {
   color: #181b1c;
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-1::-webkit-input-placeholder {
+.emotion-2::-webkit-input-placeholder {
   color: #666c76;
 }
 
-.emotion-1::-moz-placeholder {
+.emotion-2::-moz-placeholder {
   color: #666c76;
 }
 
-.emotion-1:-ms-input-placeholder {
+.emotion-2:-ms-input-placeholder {
   color: #666c76;
 }
 
-.emotion-1::placeholder {
+.emotion-2::placeholder {
   color: #666c76;
 }
 
@@ -526,10 +526,10 @@ exports[`TextField should set a \`max-width\` on the textarea element when \`siz
     Hello
   </label>
   <div
-    class="emotion-2"
+    class="emotion-1"
   >
     <textarea
-      class="emotion-1"
+      class="emotion-2"
       id="testInput"
       maxlength="10"
       required=""
@@ -556,12 +556,12 @@ exports[`TextField shouldn't have a margin when \`noMargin\` is true 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   margin: 0 0 0.4rem;
 }
@@ -574,11 +574,11 @@ exports[`TextField shouldn't have a margin when \`noMargin\` is true 1`] = `
   color: #cd2f83;
 }
 
-.emotion-2 {
+.emotion-1 {
   position: relative;
 }
 
-.emotion-1 {
+.emotion-2 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
@@ -598,29 +598,29 @@ exports[`TextField shouldn't have a margin when \`noMargin\` is true 1`] = `
   width: 100%;
 }
 
-.emotion-1:required {
+.emotion-2:required {
   box-shadow: none;
 }
 
-.emotion-1:focus {
+.emotion-2:focus {
   color: #181b1c;
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-1::-webkit-input-placeholder {
+.emotion-2::-webkit-input-placeholder {
   color: #666c76;
 }
 
-.emotion-1::-moz-placeholder {
+.emotion-2::-moz-placeholder {
   color: #666c76;
 }
 
-.emotion-1:-ms-input-placeholder {
+.emotion-2:-ms-input-placeholder {
   color: #666c76;
 }
 
-.emotion-1::placeholder {
+.emotion-2::placeholder {
   color: #666c76;
 }
 
@@ -632,10 +632,10 @@ exports[`TextField shouldn't have a margin when \`noMargin\` is true 1`] = `
     Hello
   </label>
   <div
-    class="emotion-2"
+    class="emotion-1"
   >
     <input
-      class="emotion-1"
+      class="emotion-2"
       id="myTextField"
       required=""
       type="text"
@@ -661,12 +661,12 @@ exports[`TextField shouldn't have a margin when \`noMargin\` is true and error e
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   margin: 0 0 0.4rem;
 }
@@ -679,11 +679,11 @@ exports[`TextField shouldn't have a margin when \`noMargin\` is true and error e
   color: #cd2f83;
 }
 
-.emotion-2 {
+.emotion-1 {
   position: relative;
 }
 
-.emotion-1 {
+.emotion-2 {
   font-family: -apple-system,BlinkMacSystemFont,San Francisco,Roboto,Segoe UI,Helvetica Neue,sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
@@ -704,29 +704,29 @@ exports[`TextField shouldn't have a margin when \`noMargin\` is true and error e
   border-color: #c26767;
 }
 
-.emotion-1:required {
+.emotion-2:required {
   box-shadow: none;
 }
 
-.emotion-1:focus {
+.emotion-2:focus {
   color: #181b1c;
   box-shadow: 0 0 0 0.4rem #f5bbda;
   outline: 0;
 }
 
-.emotion-1::-webkit-input-placeholder {
+.emotion-2::-webkit-input-placeholder {
   color: #666c76;
 }
 
-.emotion-1::-moz-placeholder {
+.emotion-2::-moz-placeholder {
   color: #666c76;
 }
 
-.emotion-1:-ms-input-placeholder {
+.emotion-2:-ms-input-placeholder {
   color: #666c76;
 }
 
-.emotion-1::placeholder {
+.emotion-2::placeholder {
   color: #666c76;
 }
 
@@ -738,11 +738,11 @@ exports[`TextField shouldn't have a margin when \`noMargin\` is true and error e
     Hello
   </label>
   <div
-    class="emotion-2"
+    class="emotion-1"
   >
     <input
       aria-errormessage="errorMessage"
-      class="emotion-1"
+      class="emotion-2"
       id="myTextField"
       required=""
       type="text"

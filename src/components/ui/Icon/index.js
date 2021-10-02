@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import classnames from 'classnames';
 import Feather from 'feather-icons';
 import PropTypes from 'prop-types';
@@ -73,9 +73,7 @@ const Icon = (props) => {
 
   const theme = useTheme();
   const [generatedId] = useState(shortid.generate());
-  const svgId = useMemo(() => {
-    return id || generatedId;
-  }, [generatedId, id]);
+  const svgId = useMemo(() => id || generatedId, [generatedId, id]);
   const descriptionId = `${svgId}-description`;
   const titleId = `${svgId}-title`;
 
@@ -142,9 +140,9 @@ const Icon = (props) => {
         vertical-align: ${verticalAlign};
 
         ${!noMargin &&
-          css`
-            margin: ${marginSize};
-          `}
+        css`
+          margin: ${marginSize};
+        `}
       `}
       data-testid={dataTestId}
     >
@@ -167,18 +165,20 @@ const Icon = (props) => {
           width: ${toUnits(size)};
 
           ${hasContainer &&
-            css`
-              margin: ${toUnits(padding)};
-            `}
+          css`
+            margin: ${toUnits(padding)};
+          `}
 
+          /*
+            If no explicit colour was specified, we drop the opacity to
+            simulate lowering the intensity of the icon's colour.
+          */
           ${!fillColor &&
-            !strokeColor &&
-            // If no explicit colour was specified, we drop the opacity to
-            // simulate lowering the intensity of the icon's colour.
-            css`
-              stroke: currentColor;
-              opacity: 0.8;
-            `}
+          !strokeColor &&
+          css`
+            opacity: 0.8;
+            stroke: currentColor;
+          `}
         `}
         id={svgId}
       >

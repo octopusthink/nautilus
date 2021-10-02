@@ -1,6 +1,6 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
-import React, { Children, cloneElement, Fragment, useMemo, useState } from 'react';
+import React, { Children, cloneElement, useMemo, useState } from 'react';
 import shortid from 'shortid';
 
 import List from '../List';
@@ -8,14 +8,12 @@ import VisuallyHidden from '../VisuallyHidden';
 import Tag from './Tag';
 
 const Tags = (props) => {
-  const { children, label } = props;
+  const { children, label, ...otherProps } = props;
 
   const [generatedId] = useState(shortid.generate());
 
   const items = useMemo(() => {
-    const tagElements = Children.toArray(children).filter((child) => {
-      return child.type === Tag;
-    });
+    const tagElements = Children.toArray(children);
 
     if (tagElements.length > 1) {
       return (
@@ -31,14 +29,12 @@ const Tags = (props) => {
             width: 100%;
           `}
         >
-          {tagElements.map((tag, index) => {
-            return (
-              // eslint-disable-next-line react/no-array-index-key
-              <List.Item key={`tag-${index}`} unstyled>
-                {tag}
-              </List.Item>
-            );
-          })}
+          {tagElements.map((tag, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <List.Item key={`tag-${index}`} unstyled>
+              {tag}
+            </List.Item>
+          ))}
         </List>
       );
     }
@@ -50,12 +46,12 @@ const Tags = (props) => {
     return tagElements[0];
   }, [children, generatedId, label]);
 
-  const WrapperComponent = items.length > 1 ? List : Fragment;
+  const WrapperComponent = items.length > 1 ? List : 'div';
 
   return (
     <React.Fragment>
       {label && <VisuallyHidden id={generatedId}>{label}</VisuallyHidden>}
-      <WrapperComponent>{items}</WrapperComponent>
+      <WrapperComponent {...otherProps}>{items}</WrapperComponent>
     </React.Fragment>
   );
 };

@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React from 'react';
 import invariant from 'invariant';
@@ -41,48 +41,48 @@ const Heading = (props) => {
         unstyled
           ? undefined
           : css`
-        color: ${theme.colors.text.default};
-        margin: 0;
+              color: ${theme.colors.text.default};
+              margin: 0;
 
-        ${!noMargin &&
-          css`
-            margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
-          `}
-
-        ${light &&
-          css`
-            color: ${theme.colors.text.light};
-          `}
-
-        ${dark &&
-          css`
-            color: ${theme.colors.text.dark};
-          `}
-
-        ${inverse &&
-          css`
-            color: ${theme.colors.text.inverse};
-            ${light &&
+              ${!noMargin &&
               css`
-                color: ${theme.colors.text.inverseLight};
+                margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
               `}
-            ${dark &&
+
+              ${light &&
               css`
-                color: ${theme.colors.text.inverseDark};
+                color: ${theme.colors.text.light};
               `}
-          `}
 
-        ${level === SMALL && heading.small(theme)};
-        ${level === MEDIUM && heading.medium(theme)};
-        ${level === LARGE && heading.large(theme)};
+              ${dark &&
+              css`
+                color: ${theme.colors.text.dark};
+              `}
 
-        /* TODO: Replace dl + & with actual Nautilus components */
-        dl + &,
-        .${ListClassName} + &,
-        .${ParagraphClassName} + & {
-          margin-top: ${toUnits(theme.spacing.margin.medium)};
-        }
-      `
+              ${inverse &&
+              css`
+                color: ${theme.colors.text.inverse};
+                ${light &&
+                css`
+                  color: ${theme.colors.text.inverseLight};
+                `}
+                ${dark &&
+                css`
+                  color: ${theme.colors.text.inverseDark};
+                `}
+              `}
+
+              ${level === SMALL && heading.small(theme)};
+              ${level === MEDIUM && heading.medium(theme)};
+              ${level === LARGE && heading.large(theme)};
+
+              /* TODO: Replace dl + & with actual Nautilus components */
+              dl + &,
+              .${ListClassName} + &,
+              .${ParagraphClassName} + & {
+                margin-top: ${toUnits(theme.spacing.margin.medium)};
+              }
+            `
       }
       {...otherProps}
     >

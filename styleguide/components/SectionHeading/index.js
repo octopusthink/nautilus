@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import React from 'react';
 import PropTypes from 'prop-types';
 import Heading from 'rsg-components/Heading';
@@ -28,7 +28,7 @@ function SectionHeadingRenderer({ children, id, href }) {
 SectionHeadingRenderer.propTypes = {
   children: PropTypes.node,
   id: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired,
+  // href: PropTypes.string.isRequired,
 };
 
 export default SectionHeadingRenderer;

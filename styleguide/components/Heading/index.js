@@ -6,12 +6,8 @@ import PageTitle from '../../../src/components/ui/PageTitle';
 export function HeadingRenderer({ children, level, ...otherProps }) {
   if (level === 1) {
     const documentTitle = Children.toArray(children)
-      .map((child) => {
-        return child.props.children;
-      })
-      .reduce((acc, child) => {
-        return `${acc}${child}`;
-      }, '');
+      .map((child) => child.props.children)
+      .reduce((acc, child) => `${acc}${child}`, '');
 
     return (
       <PageTitle documentTitle={documentTitle} {...otherProps}>

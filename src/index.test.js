@@ -6,11 +6,10 @@ import React from 'react';
 import { render } from '../utils/testing';
 import * as NautilusExports from '.';
 
-const getFoldersIn = (folderName) => {
-  return fs.readdirSync(folderName).filter((file) => {
-    return fs.statSync(path.join(folderName, file)).isDirectory();
-  });
-};
+const getFoldersIn = (folderName) =>
+  fs
+    .readdirSync(folderName)
+    .filter((file) => fs.statSync(path.join(folderName, file)).isDirectory());
 
 describe('Package entrypoint', () => {
   it('should export the Nautilus component', () => {
@@ -26,9 +25,7 @@ describe('Package entrypoint', () => {
   describe('Component exports', () => {
     const componentsPath = path.join(__dirname, 'components');
     const components = getFoldersIn(componentsPath)
-      .map((componentType) => {
-        return getFoldersIn(path.join(componentsPath, componentType));
-      })
+      .map((componentType) => getFoldersIn(path.join(componentsPath, componentType)))
       .reduce((acc, component) => acc.concat(component), []);
 
     it('exports components', () => {

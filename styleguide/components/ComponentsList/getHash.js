@@ -27,6 +27,5 @@ const trimParams = (hash) => {
  * @param {string} prependHash
  * @return {string}
  */
-export const getHash = (hash, prependHash) => {
-  return decodeURIComponent(trimParams(trimHash(hash, prependHash)));
-};
+export const getHash = (hash, prependHash) =>
+  decodeURIComponent(trimParams(trimHash(hash, prependHash)));

@@ -1,20 +1,35 @@
+import { css } from '@emotion/react';
 import React from 'react';
 
 import { axe, render } from '../../../../utils/testing';
 import Tags from '.';
 
 describe('Tags', () => {
-  it('should render a <span> tag if only one tag is created with no title prop', () => {
+  it('should render a <div> tag if only one tag is created with no title prop', () => {
     const { container } = render(
       <Tags>
         <Tags.Tag>Hello</Tags.Tag>
       </Tags>,
     );
 
-    expect(container.firstChild.tagName).toEqual('SPAN');
+    expect(container.firstChild.firstChild.tagName).toEqual('DIV');
   });
 
-  it('should output only Tags.Tag children', () => {
+  it('should be styled by a css prop', () => {
+    const { container } = render(
+      <Tags
+        css={css`
+          background: hotpink;
+        `}
+      >
+        <Tags.Tag>Hello</Tags.Tag>
+      </Tags>,
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('should output all children', () => {
     const { getByTestId } = render(
       <Tags>
         <Tags.Tag data-testid="child-one">Hello</Tags.Tag>
@@ -23,9 +38,7 @@ describe('Tags', () => {
     );
 
     expect(getByTestId('child-one')).toBeDefined();
-    expect(() => {
-      getByTestId('child-two');
-    }).toThrow('Unable to find an element');
+    expect(getByTestId('child-two')).toBeDefined();
   });
 
   it('should accept and pass through other props', () => {

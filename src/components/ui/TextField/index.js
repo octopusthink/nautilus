@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React, { cloneElement, forwardRef, useCallback, useMemo, useRef, useState } from 'react';
 import shortid from 'shortid';
@@ -7,13 +7,94 @@ import Icon from '../Icon';
 import { focusStyle, interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
-const smallText = (props) => {
+export const smallText = (props) => {
   const { theme } = props;
 
   return css`
     ${interfaceUI.small(theme)};
     color: ${theme.colors.text.light};
     margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
+  `;
+};
+
+export const InputComponentStyles = (props, theme) => {
+  const { actionIcon, disabled, error, focus, noMargin, signifierIcon, size } = props;
+
+  // Padding to use for signifier and action icons.
+  const iconPadding = toUnits(
+    theme.components.Icon.sizes.medium.size + theme.spacing.padding.small * 2,
+  );
+
+  return css`
+    ${interfaceUI.medium(theme)};
+    background: ${theme.colors.buttons.neutral};
+    border-radius: 0;
+    border: 2px solid ${theme.colors.text.default};
+    box-sizing: border-box;
+    color: ${theme.colors.text.default};
+    display: block;
+    margin: 0;
+    outline: none;
+    padding: ${toUnits(theme.spacing.padding.medium)};
+    position: relative;
+    transition: box-shadow 200ms;
+    width: 100%;
+
+    ${!noMargin &&
+    !error &&
+    css`
+      margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
+    `}
+
+    ${signifierIcon &&
+    css`
+      padding-left: ${iconPadding};
+    `}
+
+    ${actionIcon &&
+    css`
+      padding-right: ${iconPadding};
+    `}
+
+    ${size &&
+    css`
+      max-width: ${size - 1}em;
+    `}
+
+    ${disabled &&
+    css`
+      color: ${theme.colors.state.disabled};
+      background-color: ${theme.colors.state.disabledLight};
+      border-color: ${theme.colors.state.disabledLight};
+    `}
+
+    ${error &&
+    css`
+      border-color: ${theme.colors.state.errorOutline};
+    `}
+
+    &:required {
+      /*
+        This might be a React Styleguidist style that we're overriding.
+        TODO: Remove this from the styleguide styles.
+      */
+      box-shadow: none;
+    }
+
+    &:focus {
+      color: ${theme.colors.text.dark};
+      ${focusStyle.outline(theme)};
+    }
+
+    ${focus &&
+    css`
+      color: ${theme.colors.text.dark};
+      ${focusStyle.outline(theme)}
+    `}
+
+    &::placeholder {
+      color: ${theme.colors.text.light};
+    }
   `;
 };
 
@@ -49,9 +130,7 @@ const TextField = forwardRef((props, ref) => {
   const [focus, setFocus] = useState(otherProps.autofocus);
   const [generatedId] = useState(shortid.generate());
   const inputRef = useRef();
-  const inputId = useMemo(() => {
-    return id || generatedId;
-  }, [generatedId, id]);
+  const inputId = useMemo(() => id || generatedId, [generatedId, id]);
   const theme = useTheme();
 
   // Memoise our handlers as they don't need to be re-created on every render.
@@ -103,9 +182,9 @@ const TextField = forwardRef((props, ref) => {
                   margin: 0;
 
                   ${!noMargin &&
-                    css`
-                      margin-bottom: ${toUnits(theme.spacing.padding.large)};
-                    `}
+                  css`
+                    margin-bottom: ${toUnits(theme.spacing.padding.large)};
+                  `}
                 `
           }
         >
@@ -138,11 +217,6 @@ const TextField = forwardRef((props, ref) => {
     InputComponent = 'textarea';
   }
 
-  // Padding to use for signifier and action icons.
-  const iconPadding = toUnits(
-    theme.components.Icon.sizes.medium.size + theme.spacing.padding.small * 2,
-  );
-
   return (
     <React.Fragment>
       {label && (
@@ -161,25 +235,25 @@ const TextField = forwardRef((props, ref) => {
                   margin: 0 0 ${toUnits(theme.spacing.padding.xSmall)};
 
                   ${!disabled &&
-                    css`
-                      &:active {
-                        ${focusStyle.text(theme)};
-                      }
-                    `}
+                  css`
+                    &:active {
+                      ${focusStyle.text(theme)};
+                    }
+                  `}
 
                   ${disabled &&
-                    css`
-                      color: ${theme.colors.state.disabled};
-                    `}
+                  css`
+                    color: ${theme.colors.state.disabled};
+                  `}
 
                   &:focus {
                     ${focusStyle.text(theme)};
                   }
 
                   ${focus &&
-                    css`
-                      ${focusStyle.text(theme)};
-                    `}
+                  css`
+                    ${focusStyle.text(theme)};
+                  `}
                 `
           }
           htmlFor={inputId}
@@ -225,75 +299,7 @@ const TextField = forwardRef((props, ref) => {
       >
         <InputComponent
           aria-errormessage={errorId}
-          css={
-            unstyled
-              ? undefined
-              : css`
-          ${interfaceUI.medium(theme)};
-          background: ${theme.colors.buttons.neutral};
-          border-radius: 0;
-          border: 2px solid ${theme.colors.text.default};
-          box-sizing: border-box;
-          color: ${theme.colors.text.default};
-          display: block;
-          margin: 0;
-          outline: none;
-          padding: ${toUnits(theme.spacing.padding.medium)};
-          position: relative;
-          transition: box-shadow 200ms;
-          width: 100%;
-
-          ${!noMargin &&
-            !error &&
-            css`
-              margin: 0 0 ${toUnits(theme.spacing.margin.medium)};
-            `}
-
-          ${signifierIcon &&
-            css`
-              padding-left: ${iconPadding};
-            `}
-
-          ${actionIcon &&
-            css`
-              padding-right: ${iconPadding};
-            `}
-
-          ${size &&
-            css`
-              max-width: ${size - 1}em;
-            `}
-
-          ${disabled &&
-            css`
-              color: ${theme.colors.state.disabled};
-              background-color: ${theme.colors.state.disabledLight};
-              border-color: ${theme.colors.state.disabledLight};
-            `}
-
-          ${error &&
-            css`
-              border-color: ${theme.colors.state.errorOutline};
-            `}
-
-          &:required {
-            /*
-              This might be a React Styleguidist style that we're overriding.
-              TODO: Remove this from the styleguide styles.
-            */
-            box-shadow: none;
-          }
-
-          &:focus {
-            color: ${theme.colors.text.dark};
-            ${focusStyle.outline(theme)};
-          }
-
-          &::placeholder {
-            color: ${theme.colors.text.light};
-          }
-        `
-          }
+          css={unstyled ? undefined : InputComponentStyles(props, theme)}
           disabled={disabled}
           id={inputId}
           placeholder={placeholder}
@@ -348,9 +354,9 @@ const TextField = forwardRef((props, ref) => {
                   `}
 
               ${!actionIconOnClick &&
-                css`
-                  pointer-events: none;
-                `}
+              css`
+                pointer-events: none;
+              `}
             `}
           />
         )}
@@ -371,6 +377,7 @@ TextField.defaultProps = {
   children: undefined,
   disabled: false,
   error: undefined,
+  focus: undefined,
   hint: undefined,
   id: undefined,
   labelId: undefined,
@@ -409,6 +416,8 @@ TextField.propTypes = {
   disabled: PropTypes.bool,
   /** An error message (either a simple string or a component) used to output an error message related to this component's value. If provided, an `aria-errormessage` will be set on the input component that will tell users of assistive technology the error message relates to this input. */
   error: PropTypes.node,
+  /** Set to `true` to force focus styles. */
+  focus: PropTypes.bool,
   /** HTML `id` attribute of the input component (either an `input` if `multiline` is `false` or `textarea` if `multiline` is `true`). Used for both the input component `id` attribute and the `<label>` `for` attribute. */
   id: PropTypes.string,
   /** Additional context to help users understand the purpose of the input. */

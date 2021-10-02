@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Icon should match styles 1`] = `
-.emotion-1 {
+.emotion-0 {
   display: inline-block;
   line-height: 0;
   margin: 0;
@@ -10,20 +10,20 @@ exports[`Icon should match styles 1`] = `
   margin: 0 0.8rem 0 0;
 }
 
-.emotion-0 {
+.emotion-1 {
   height: 2.4rem;
   stroke-width: 0.175rem;
   width: 2.4rem;
-  stroke: currentColor;
   opacity: 0.8;
+  stroke: currentColor;
 }
 
 <span
-  class="Nautilus-Icon--airplay emotion-1"
+  class="Nautilus-Icon--airplay emotion-0"
 >
   <svg
     aria-hidden="true"
-    class="emotion-0"
+    class="emotion-1"
     fill="none"
     height="24"
     id="styling"
@@ -49,7 +49,7 @@ exports[`Icon should match styles 1`] = `
 `;
 
 exports[`Icon should match styles when background is supplied 1`] = `
-.emotion-1 {
+.emotion-0 {
   background: hotpink;
   border-radius: 50%;
   height: 4rem;
@@ -62,21 +62,21 @@ exports[`Icon should match styles when background is supplied 1`] = `
   margin: 0 0.8rem 0 0;
 }
 
-.emotion-0 {
+.emotion-1 {
   height: 2.4rem;
   stroke-width: 0.175rem;
   width: 2.4rem;
   margin: 0.8rem;
-  stroke: currentColor;
   opacity: 0.8;
+  stroke: currentColor;
 }
 
 <span
-  class="Nautilus-Icon--airplay emotion-1"
+  class="Nautilus-Icon--airplay emotion-0"
 >
   <svg
     aria-hidden="true"
-    class="emotion-0"
+    class="emotion-1"
     fill="none"
     height="24"
     id="styling"
@@ -103,15 +103,6 @@ exports[`Icon should match styles when background is supplied 1`] = `
 
 exports[`Icon should match styles when border is supplied 1`] = `
 .emotion-0 {
-  height: 2.4rem;
-  stroke-width: 0.175rem;
-  width: 2.4rem;
-  margin: 0.8rem;
-  stroke: currentColor;
-  opacity: 0.8;
-}
-
-.emotion-1 {
   border: 0.2rem solid hotpink;
   border-radius: 50%;
   height: 4rem;
@@ -124,12 +115,21 @@ exports[`Icon should match styles when border is supplied 1`] = `
   margin: 0 0.8rem 0 0;
 }
 
+.emotion-1 {
+  height: 2.4rem;
+  stroke-width: 0.175rem;
+  width: 2.4rem;
+  margin: 0.8rem;
+  opacity: 0.8;
+  stroke: currentColor;
+}
+
 <span
-  class="Nautilus-Icon--airplay emotion-1"
+  class="Nautilus-Icon--airplay emotion-0"
 >
   <svg
     aria-hidden="true"
-    class="emotion-0"
+    class="emotion-1"
     fill="none"
     height="24"
     id="styling"
@@ -155,7 +155,7 @@ exports[`Icon should match styles when border is supplied 1`] = `
 `;
 
 exports[`Icon should match styles when color is supplied 1`] = `
-.emotion-1 {
+.emotion-0 {
   display: inline-block;
   line-height: 0;
   margin: 0;
@@ -164,20 +164,20 @@ exports[`Icon should match styles when color is supplied 1`] = `
   margin: 0 0.8rem 0 0;
 }
 
-.emotion-0 {
+.emotion-1 {
   height: 2.4rem;
   stroke-width: 0.175rem;
   width: 2.4rem;
-  stroke: currentColor;
   opacity: 0.8;
+  stroke: currentColor;
 }
 
 <span
-  class="Nautilus-Icon--airplay emotion-1"
+  class="Nautilus-Icon--airplay emotion-0"
 >
   <svg
     aria-hidden="true"
-    class="emotion-0"
+    class="emotion-1"
     color="hotpink"
     fill="none"
     height="24"
@@ -205,14 +205,6 @@ exports[`Icon should match styles when color is supplied 1`] = `
 
 exports[`Icon shouldn't have a margin when \`noMargin\` is true 1`] = `
 .emotion-0 {
-  height: 2.4rem;
-  stroke-width: 0.175rem;
-  width: 2.4rem;
-  stroke: currentColor;
-  opacity: 0.8;
-}
-
-.emotion-1 {
   display: inline-block;
   line-height: 0;
   margin: 0;
@@ -220,12 +212,20 @@ exports[`Icon shouldn't have a margin when \`noMargin\` is true 1`] = `
   vertical-align: middle;
 }
 
+.emotion-1 {
+  height: 2.4rem;
+  stroke-width: 0.175rem;
+  width: 2.4rem;
+  opacity: 0.8;
+  stroke: currentColor;
+}
+
 <span
-  class="Nautilus-Icon--star emotion-1"
+  class="Nautilus-Icon--star emotion-0"
 >
   <svg
     aria-hidden="true"
-    class="emotion-0"
+    class="emotion-1"
     fill="none"
     height="24"
     id="styling"

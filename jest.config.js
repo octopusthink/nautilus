@@ -6,11 +6,8 @@ module.exports = {
   moduleNameMapper: {
     '^react-native$': 'react-native-web',
   },
-  setupFilesAfterEnv: [
-    '@testing-library/react/cleanup-after-each',
-    '<rootDir>/utils/jest.setup.js',
-  ],
-  snapshotSerializers: ['jest-emotion'],
+  setupFilesAfterEnv: ['<rootDir>/utils/jest.setup.js'],
+  snapshotSerializers: ['@emotion/jest/serializer'],
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/styleguide/'],
   testURL: 'http://localhost',
   transform: {

@@ -1,8 +1,9 @@
+/* eslint-disable */
 // This file is largely the same as
 // https://github.com/styleguidist/react-styleguidist/blob/0f461ab8f5070d5e91e8911bc2b22d805c07fb98/src/client/rsg-components/StyleGuide/StyleGuide.js,
 // but adds a `<Nautilus>` wrapper so we can use our own components as
 // the output components of React Styleguidist's Markdown.
-import { Global, css } from '@emotion/core';
+import { Global, css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import Markdown from 'rsg-components/Markdown';
@@ -118,17 +119,17 @@ export const StyleGuide = ({ children, hasSidebar, toc }) => {
             }
 
             ${showSidebar &&
-              css`
-                overflow: auto;
+            css`
+              overflow: auto;
 
-                @media (max-width: 767px) {
-                  height: 100%;
-                }
+              @media (max-width: 767px) {
+                height: 100%;
+              }
 
-                @media (min-width: 768px) {
-                  left: 0;
-                }
-              `}
+              @media (min-width: 768px) {
+                left: 0;
+              }
+            `}
           `}
           onClick={() => {
             if (isMobile) {
@@ -164,10 +165,10 @@ export const StyleGuide = ({ children, hasSidebar, toc }) => {
                 padding-left: ${tabletMenuPadding};
 
                 ${!showSidebar &&
-                  css`
-                    background: ${theme.colors.neutral.black};
-                    height: 100%;
-                  `}
+                css`
+                  background: ${theme.colors.neutral.black};
+                  height: 100%;
+                `}
               }
 
               &:focus {
@@ -242,11 +243,11 @@ export const StyleGuide = ({ children, hasSidebar, toc }) => {
           }
 
           ${showSidebar &&
-            css`
-              @media (min-width: 768px) {
-                margin-left: ${toUnits(sidebarWidth)};
-              }
-            `}
+          css`
+            @media (min-width: 768px) {
+              margin-left: ${toUnits(sidebarWidth)};
+            }
+          `}
         `}
       >
         <div

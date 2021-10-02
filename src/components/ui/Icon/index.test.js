@@ -9,7 +9,7 @@ describe('Icon', () => {
     render(<Icon />);
 
     expect(global.console.error.mock.calls[global.console.error.mock.calls.length - 1][0]).toMatch(
-      'The prop `name` is marked as required in `Icon`',
+      /^Warning:/,
     );
   });
 

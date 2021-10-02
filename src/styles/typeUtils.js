@@ -28,12 +28,10 @@ export const calculateLineHeight = ({ fontSize, targetLineHeight }) => {
 };
 
 // Convert regular case to small-caps.
-export const smallCaps = () => {
-  return {
-    letterSpacing: '0.05em',
-    textTransform: 'uppercase',
-  };
-};
+export const smallCaps = () => ({
+  letterSpacing: '0.05em',
+  textTransform: 'uppercase',
+});
 
 // Output typographic styling to apply to elements.
 export const typeAttributes = ({ theme, sizeNumber, fontType }) => {

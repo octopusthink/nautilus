@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { ComboboxOption as ReachComboboxOption, ComboboxOptionText } from '@reach/combobox';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
@@ -11,7 +11,7 @@ import ListItem from '../List/Item';
 export const ComponentClassName = 'Nautilus-ComboBoxOption';
 
 export const Option = (props) => {
-  const { children, className, prefix, suffix, unstyled, ...otherProps } = props;
+  const { children, className, unstyled, value, ...otherProps } = props;
 
   const theme = useTheme();
 
@@ -19,15 +19,15 @@ export const Option = (props) => {
     <ReachComboboxOption
       as="span"
       css={css`
-        &[data-highlighted] .Nautilus-ComboBoxOptionListItem {
+        &[data-highlighted] .Nautilus-DropdownListItem {
           background: ${theme.colors.neutral.grey200};
         }
       `}
-      value={children}
+      value={value || children}
       {...otherProps}
     >
       <ListItem
-        className={classnames(ComponentClassName, className, 'Nautilus-ComboBoxOptionListItem')}
+        className={classnames(ComponentClassName, className, 'Nautilus-DropdownListItem')}
         css={
           unstyled
             ? undefined
@@ -49,9 +49,8 @@ export const Option = (props) => {
         }
         unstyled
       >
-        {prefix}
-        <ComboboxOptionText>{children}</ComboboxOptionText>
-        {suffix}
+        {!value && <ComboboxOptionText>{children}</ComboboxOptionText>}
+        {value && children}
       </ListItem>
     </ReachComboboxOption>
   );
@@ -59,9 +58,8 @@ export const Option = (props) => {
 
 Option.defaultProps = {
   className: undefined,
-  prefix: undefined,
-  suffix: undefined,
   unstyled: false,
+  value: undefined,
 };
 
 Option.propTypes = {
@@ -69,12 +67,10 @@ Option.propTypes = {
   children: PropTypes.string.isRequired,
   /** @ignore */
   className: PropTypes.string,
-  /** Content to be placed before the text. */
-  prefix: PropTypes.node,
-  /** Content to be placed after the text. */
-  suffix: PropTypes.node,
   /* @ignore Don't output any CSS styles. */
   unstyled: PropTypes.bool,
+  /* @ignore The value used to match text. */
+  value: PropTypes.string,
 };
 
 export const { defaultProps, propTypes } = Option;

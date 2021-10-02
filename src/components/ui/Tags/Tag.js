@@ -1,4 +1,4 @@
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
@@ -31,39 +31,40 @@ const Tag = (props) => {
   }
 
   return (
-    <span
+    <div
       css={
         unstyled
           ? undefined
           : css`
               ${metadata.small(theme)};
               color: ${textColor};
+              display: inline;
               margin: 0;
 
               ${!noMargin &&
-                css`
-                  margin: 0 ${toUnits(theme.spacing.padding.xSmall)}
-                    ${toUnits(theme.spacing.padding.xSmall)} 0;
-                `}
+              css`
+                margin: 0 ${toUnits(theme.spacing.padding.xSmall)}
+                  ${toUnits(theme.spacing.padding.xSmall)} 0;
+              `}
 
               ${backgroundColor &&
-                css`
-                  background: ${backgroundColor};
-                  display: inline-block;
-                  padding: ${toUnits(theme.spacing.padding.xSmall)}
-                    ${toUnits(theme.spacing.padding.small)};
-                `}
+              css`
+                background: ${backgroundColor};
+                display: inline-block;
+                padding: ${toUnits(theme.spacing.padding.xSmall)}
+                  ${toUnits(theme.spacing.padding.small)};
+              `}
 
               ${badge &&
-                css`
-                  border-radius: ${toUnits(theme.spacing.padding.xLarge)};
-                  min-width: ${toUnits(theme.spacing.padding.xLarge)};
-                  height: ${toUnits(theme.spacing.padding.xLarge)};
-                  display: inline-flex;
-                  align-items: center;
-                  justify-content: center;
-                  box-sizing: border-box;
-                `}
+              css`
+                border-radius: ${toUnits(theme.spacing.padding.xLarge)};
+                min-width: ${toUnits(theme.spacing.padding.xLarge)};
+                height: ${toUnits(theme.spacing.padding.xLarge)};
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+              `}
             `
       }
       {...otherProps}
@@ -107,7 +108,7 @@ const Tag = (props) => {
           />
         </button>
       )}
-    </span>
+    </div>
   );
 };
 

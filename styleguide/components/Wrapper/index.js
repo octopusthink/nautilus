@@ -5,9 +5,7 @@ import Nautilus from '../../../src/components/hoc/Nautilus';
 
 // This component wraps example content in code blocks (eg wrapped in ``` in
 // Markdown).
-export const Wrapper = ({ children }) => {
-  return <Nautilus>{children}</Nautilus>;
-};
+export const Wrapper = ({ children }) => <Nautilus>{children}</Nautilus>;
 
 Wrapper.defaultProps = {
   children: undefined,

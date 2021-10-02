@@ -1,0 +1,6 @@
+{
+    "jest.jestCommandLine": "npm run test:unit --",
+    "search.exclude": {
+        "**/__snapshots__": true
+    }
+}

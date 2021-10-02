@@ -7,9 +7,7 @@ import Nautilus from '../src/components/hoc/Nautilus';
 import { nautilus as nautilusDefaultTheme, themePropTypes } from '../src/themes';
 
 // Wrap `react-testing-library`'s `render` function with our providers.
-const NautilusProviders = ({ children, theme }) => {
-  return <Nautilus theme={theme}>{children}</Nautilus>;
-};
+const NautilusProviders = ({ children, theme }) => <Nautilus theme={theme}>{children}</Nautilus>;
 
 NautilusProviders.defaultProps = {
   children: undefined,
@@ -23,9 +21,7 @@ NautilusProviders.propTypes = {
   theme: themePropTypes,
 };
 
-const customRender = (ui, options) => {
-  return render(ui, { wrapper: NautilusProviders, ...options });
-};
+const customRender = (ui, options) => render(ui, { wrapper: NautilusProviders, ...options });
 
 export const muteConsole = ({ times, type } = {}) => {
   Array.from({ length: times }).forEach(() => {
