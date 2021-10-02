@@ -20,6 +20,7 @@
     "lint:stylelint": "stylelint '**/*.js'",
     "lint": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint && npm run lint:markdown",
     "prebuild": "npm run clean",
+    "preinstall": "npx npm-force-resolutions",
     "prepare": "npm run build",
     "prepublish:styleguide-for-version": "npm run build && npm run build:styleguide",
     "prepublish:styleguide": "npm run build && npm run build:styleguide",
@@ -122,5 +123,8 @@
     "@emotion/react": "^11.1.5",
     "react": ">=17.0.1",
     "react-dom": ">=17.0.1"
+  },
+  "resolutions": {
+    "react-dev-utils": "^12.0.0-next.37"
   }
 }
