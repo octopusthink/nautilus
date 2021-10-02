@@ -301,915 +301,19 @@ function _unsupportedIterableToArray(o, minLen) {
 
 /***/ }),
 
-/***/ 55046:
+/***/ 31296:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "Z": () => (/* binding */ emotion_cache_browser_esm)
-});
-
-// EXTERNAL MODULE: ./node_modules/@emotion/sheet/dist/emotion-sheet.browser.esm.js
-var emotion_sheet_browser_esm = __webpack_require__(30985);
-;// CONCATENATED MODULE: ./node_modules/stylis/src/Utility.js
-/**
- * @param {number}
- * @return {number}
- */
-var abs = Math.abs;
-/**
- * @param {number}
- * @return {string}
- */
-
-var Utility_from = String.fromCharCode;
-/**
- * @param {string} value
- * @param {number} length
- * @return {number}
- */
-
-function hash(value, length) {
-  return (((length << 2 ^ Utility_charat(value, 0)) << 2 ^ Utility_charat(value, 1)) << 2 ^ Utility_charat(value, 2)) << 2 ^ Utility_charat(value, 3);
-}
-/**
- * @param {string} value
- * @return {string}
- */
-
-function trim(value) {
-  return value.trim();
-}
-/**
- * @param {string} value
- * @param {RegExp} pattern
- * @return {string?}
- */
-
-function match(value, pattern) {
-  return (value = pattern.exec(value)) ? value[0] : value;
-}
-/**
- * @param {string} value
- * @param {(string|RegExp)} pattern
- * @param {string} replacement
- * @return {string}
- */
-
-function replace(value, pattern, replacement) {
-  return value.replace(pattern, replacement);
-}
-/**
- * @param {string} value
- * @param {string} value
- * @return {number}
- */
-
-function indexof(value, search) {
-  return value.indexOf(search);
-}
-/**
- * @param {string} value
- * @param {number} index
- * @return {number}
- */
-
-function Utility_charat(value, index) {
-  return value.charCodeAt(index) | 0;
-}
-/**
- * @param {string} value
- * @param {number} begin
- * @param {number} end
- * @return {string}
- */
-
-function Utility_substr(value, begin, end) {
-  return value.slice(begin, end);
-}
-/**
- * @param {string} value
- * @return {number}
- */
-
-function Utility_strlen(value) {
-  return value.length;
-}
-/**
- * @param {any[]} value
- * @return {number}
- */
-
-function Utility_sizeof(value) {
-  return value.length;
-}
-/**
- * @param {any} value
- * @param {any[]} array
- * @return {any}
- */
-
-function Utility_append(value, array) {
-  return array.push(value), value;
-}
-/**
- * @param {string[]} array
- * @param {function} callback
- * @return {string}
- */
-
-function Utility_combine(array, callback) {
-  return array.map(callback).join('');
-}
-;// CONCATENATED MODULE: ./node_modules/stylis/src/Tokenizer.js
-
-var line = 1;
-var column = 1;
-var Tokenizer_length = 0;
-var position = 0;
-var character = 0;
-var characters = '';
-/**
- * @param {string} value
- * @param {object} root
- * @param {object?} parent
- * @param {string} type
- * @param {string[]} props
- * @param {object[]} children
- * @param {number} length
- */
-
-function node(value, root, parent, type, props, children, length) {
-  return {
-    value: value,
-    root: root,
-    parent: parent,
-    type: type,
-    props: props,
-    children: children,
-    line: line,
-    column: column,
-    length: length,
-    return: ''
-  };
-}
-/**
- * @param {string} value
- * @param {object} root
- * @param {string} type
- */
-
-function copy(value, root, type) {
-  return node(value, root.root, root.parent, type, root.props, root.children, 0);
-}
-/**
- * @return {number}
- */
-
-function Tokenizer_char() {
-  return character;
-}
-/**
- * @return {number}
- */
-
-function next() {
-  character = position < Tokenizer_length ? Utility_charat(characters, position++) : 0;
-  if (column++, character === 10) column = 1, line++;
-  return character;
-}
-/**
- * @return {number}
- */
-
-function peek() {
-  return Utility_charat(characters, position);
-}
-/**
- * @return {number}
- */
-
-function caret() {
-  return position;
-}
-/**
- * @param {number} begin
- * @param {number} end
- * @return {string}
- */
-
-function slice(begin, end) {
-  return Utility_substr(characters, begin, end);
-}
-/**
- * @param {number} type
- * @return {number}
- */
-
-function token(type) {
-  switch (type) {
-    // \0 \t \n \r \s whitespace token
-    case 0:
-    case 9:
-    case 10:
-    case 13:
-    case 32:
-      return 5;
-    // ! + , / > @ ~ isolate token
-
-    case 33:
-    case 43:
-    case 44:
-    case 47:
-    case 62:
-    case 64:
-    case 126: // ; { } / breakpoint token
-
-    case 59:
-    case 123:
-    case 125:
-      return 4;
-    // : accompanied token
-
-    case 58:
-      return 3;
-    // " ' ( [ opening delimit token
-
-    case 34:
-    case 39:
-    case 40:
-    case 91:
-      return 2;
-    // ) ] closing delimit token
-
-    case 41:
-    case 93:
-      return 1;
-  }
-
-  return 0;
-}
-/**
- * @param {string} value
- * @return {any[]}
- */
-
-function alloc(value) {
-  return line = column = 1, Tokenizer_length = Utility_strlen(characters = value), position = 0, [];
-}
-/**
- * @param {any} value
- * @return {any}
- */
-
-function dealloc(value) {
-  return characters = '', value;
-}
-/**
- * @param {number} type
- * @return {string}
- */
-
-function delimit(type) {
-  return trim(slice(position - 1, delimiter(type === 91 ? type + 2 : type === 40 ? type + 1 : type)));
-}
-/**
- * @param {string} value
- * @return {string[]}
- */
-
-function Tokenizer_tokenize(value) {
-  return dealloc(tokenizer(alloc(value)));
-}
-/**
- * @param {number} type
- * @return {string}
- */
-
-function whitespace(type) {
-  while (character = peek()) if (character < 33) next();else break;
-
-  return token(type) > 2 || token(character) > 3 ? '' : ' ';
-}
-/**
- * @param {string[]} children
- * @return {string[]}
- */
-
-function tokenizer(children) {
-  while (next()) switch (token(character)) {
-    case 0:
-      append(identifier(position - 1), children);
-      break;
-
-    case 2:
-      append(delimit(character), children);
-      break;
-
-    default:
-      append(from(character), children);
-  }
-
-  return children;
-}
-/**
- * @param {number} type
- * @return {number}
- */
-
-function delimiter(type) {
-  while (next()) switch (character) {
-    // ] ) " '
-    case type:
-      return position;
-    // " '
-
-    case 34:
-    case 39:
-      return delimiter(type === 34 || type === 39 ? type : character);
-    // (
-
-    case 40:
-      if (type === 41) delimiter(type);
-      break;
-    // \
-
-    case 92:
-      next();
-      break;
-  }
-
-  return position;
-}
-/**
- * @param {number} type
- * @param {number} index
- * @return {number}
- */
-
-function commenter(type, index) {
-  while (next()) // //
-  if (type + character === 47 + 10) break; // /*
-  else if (type + character === 42 + 42 && peek() === 47) break;
-
-  return '/*' + slice(index, position - 1) + '*' + Utility_from(type === 47 ? type : next());
-}
-/**
- * @param {number} index
- * @return {string}
- */
-
-function identifier(index) {
-  while (!token(peek())) next();
-
-  return slice(index, position);
-}
-;// CONCATENATED MODULE: ./node_modules/stylis/src/Enum.js
-var MS = '-ms-';
-var MOZ = '-moz-';
-var WEBKIT = '-webkit-';
-var COMMENT = 'comm';
-var Enum_RULESET = 'rule';
-var DECLARATION = 'decl';
-var PAGE = '@page';
-var MEDIA = '@media';
-var IMPORT = '@import';
-var CHARSET = '@charset';
-var VIEWPORT = '@viewport';
-var SUPPORTS = '@supports';
-var DOCUMENT = '@document';
-var NAMESPACE = '@namespace';
-var KEYFRAMES = '@keyframes';
-var FONT_FACE = '@font-face';
-var COUNTER_STYLE = '@counter-style';
-var FONT_FEATURE_VALUES = '@font-feature-values';
-;// CONCATENATED MODULE: ./node_modules/stylis/src/Serializer.js
-
-
-/**
- * @param {object[]} children
- * @param {function} callback
- * @return {string}
- */
-
-function serialize(children, callback) {
-  var output = '';
-  var length = Utility_sizeof(children);
-
-  for (var i = 0; i < length; i++) output += callback(children[i], i, children, callback) || '';
-
-  return output;
-}
-/**
- * @param {object} element
- * @param {number} index
- * @param {object[]} children
- * @param {function} callback
- * @return {string}
- */
-
-function stringify(element, index, children, callback) {
-  switch (element.type) {
-    case IMPORT:
-    case DECLARATION:
-      return element.return = element.return || element.value;
-
-    case COMMENT:
-      return '';
-
-    case Enum_RULESET:
-      element.value = element.props.join(',');
-  }
-
-  return Utility_strlen(children = serialize(element.children, callback)) ? element.return = element.value + '{' + children + '}' : '';
-}
-;// CONCATENATED MODULE: ./node_modules/stylis/src/Prefixer.js
-
-
-/**
- * @param {string} value
- * @param {number} length
- * @return {string}
- */
-
-function prefix(value, length) {
-  switch (hash(value, length)) {
-    // animation, animation-(delay|direction|duration|fill-mode|iteration-count|name|play-state|timing-function)
-    case 5737:
-    case 4201:
-    case 3177:
-    case 3433:
-    case 1641:
-    case 4457:
-    case 2921: // text-decoration, filter, clip-path, backface-visibility, column, box-decoration-break
-
-    case 5572:
-    case 6356:
-    case 5844:
-    case 3191:
-    case 6645:
-    case 3005: // mask, mask-image, mask-(mode|clip|size), mask-(repeat|origin), mask-position, mask-composite,
-
-    case 6391:
-    case 5879:
-    case 5623:
-    case 6135:
-    case 4599:
-    case 4855: // background-clip, columns, column-(count|fill|gap|rule|rule-color|rule-style|rule-width|span|width)
-
-    case 4215:
-    case 6389:
-    case 5109:
-    case 5365:
-    case 5621:
-    case 3829:
-      return WEBKIT + value + value;
-    // appearance, user-select, transform, hyphens, text-size-adjust
-
-    case 5349:
-    case 4246:
-    case 4810:
-    case 6968:
-    case 2756:
-      return WEBKIT + value + MOZ + value + MS + value + value;
-    // flex, flex-direction
-
-    case 6828:
-    case 4268:
-      return WEBKIT + value + MS + value + value;
-    // order
-
-    case 6165:
-      return WEBKIT + value + MS + 'flex-' + value + value;
-    // align-items
-
-    case 5187:
-      return WEBKIT + value + replace(value, /(\w+).+(:[^]+)/, WEBKIT + 'box-$1$2' + MS + 'flex-$1$2') + value;
-    // align-self
-
-    case 5443:
-      return WEBKIT + value + MS + 'flex-item-' + replace(value, /flex-|-self/, '') + value;
-    // align-content
-
-    case 4675:
-      return WEBKIT + value + MS + 'flex-line-pack' + replace(value, /align-content|flex-|-self/, '') + value;
-    // flex-shrink
-
-    case 5548:
-      return WEBKIT + value + MS + replace(value, 'shrink', 'negative') + value;
-    // flex-basis
-
-    case 5292:
-      return WEBKIT + value + MS + replace(value, 'basis', 'preferred-size') + value;
-    // flex-grow
-
-    case 6060:
-      return WEBKIT + 'box-' + replace(value, '-grow', '') + WEBKIT + value + MS + replace(value, 'grow', 'positive') + value;
-    // transition
-
-    case 4554:
-      return WEBKIT + replace(value, /([^-])(transform)/g, '$1' + WEBKIT + '$2') + value;
-    // cursor
-
-    case 6187:
-      return replace(replace(replace(value, /(zoom-|grab)/, WEBKIT + '$1'), /(image-set)/, WEBKIT + '$1'), value, '') + value;
-    // background, background-image
-
-    case 5495:
-    case 3959:
-      return replace(value, /(image-set\([^]*)/, WEBKIT + '$1' + '$`$1');
-    // justify-content
-
-    case 4968:
-      return replace(replace(value, /(.+:)(flex-)?(.*)/, WEBKIT + 'box-pack:$3' + MS + 'flex-pack:$3'), /s.+-b[^;]+/, 'justify') + WEBKIT + value + value;
-    // (margin|padding)-inline-(start|end)
-
-    case 4095:
-    case 3583:
-    case 4068:
-    case 2532:
-      return replace(value, /(.+)-inline(.+)/, WEBKIT + '$1$2') + value;
-    // (min|max)?(width|height|inline-size|block-size)
-
-    case 8116:
-    case 7059:
-    case 5753:
-    case 5535:
-    case 5445:
-    case 5701:
-    case 4933:
-    case 4677:
-    case 5533:
-    case 5789:
-    case 5021:
-    case 4765:
-      // stretch, max-content, min-content, fill-available
-      if (Utility_strlen(value) - 1 - length > 6) switch (Utility_charat(value, length + 1)) {
-        // (f)ill-available, (f)it-content
-        case 102:
-          length = Utility_charat(value, length + 3);
-        // (m)ax-content, (m)in-content
-
-        case 109:
-          return replace(value, /(.+:)(.+)-([^]+)/, '$1' + WEBKIT + '$2-$3' + '$1' + MOZ + (length == 108 ? '$3' : '$2-$3')) + value;
-        // (s)tretch
-
-        case 115:
-          return ~indexof(value, 'stretch') ? prefix(replace(value, 'stretch', 'fill-available'), length) + value : value;
-      }
-      break;
-    // position: sticky
-
-    case 4949:
-      // (s)ticky?
-      if (Utility_charat(value, length + 1) !== 115) break;
-    // display: (flex|inline-flex|inline-box)
-
-    case 6444:
-      switch (Utility_charat(value, Utility_strlen(value) - 3 - (~indexof(value, '!important') && 10))) {
-        // stic(k)y, inline-b(o)x
-        case 107:
-        case 111:
-          return replace(value, value, WEBKIT + value) + value;
-        // (inline-)?fl(e)x
-
-        case 101:
-          return replace(value, /(.+:)([^;!]+)(;|!.+)?/, '$1' + WEBKIT + (Utility_charat(value, 14) === 45 ? 'inline-' : '') + 'box$3' + '$1' + WEBKIT + '$2$3' + '$1' + MS + '$2box$3') + value;
-      }
-
-      break;
-    // writing-mode
-
-    case 5936:
-      switch (Utility_charat(value, length + 11)) {
-        // vertical-l(r)
-        case 114:
-          return WEBKIT + value + MS + replace(value, /[svh]\w+-[tblr]{2}/, 'tb') + value;
-        // vertical-r(l)
-
-        case 108:
-          return WEBKIT + value + MS + replace(value, /[svh]\w+-[tblr]{2}/, 'tb-rl') + value;
-        // horizontal(-)tb
-
-        case 45:
-          return WEBKIT + value + MS + replace(value, /[svh]\w+-[tblr]{2}/, 'lr') + value;
-      }
-
-      return WEBKIT + value + MS + value + value;
-  }
-
-  return value;
-}
-;// CONCATENATED MODULE: ./node_modules/stylis/src/Middleware.js
-
-
-
-
-
-/**
- * @param {function[]} collection
- * @return {function}
- */
-
-function middleware(collection) {
-  var length = Utility_sizeof(collection);
-  return function (element, index, children, callback) {
-    var output = '';
-
-    for (var i = 0; i < length; i++) output += collection[i](element, index, children, callback) || '';
-
-    return output;
-  };
-}
-/**
- * @param {function} callback
- * @return {function}
- */
-
-function rulesheet(callback) {
-  return function (element) {
-    if (!element.root) if (element = element.return) callback(element);
-  };
-}
-/**
- * @param {object} element
- * @param {number} index
- * @param {object[]} children
- * @param {function} callback
- */
-
-function prefixer(element, index, children, callback) {
-  if (!element.return) switch (element.type) {
-    case DECLARATION:
-      element.return = prefix(element.value, element.length);
-      break;
-
-    case KEYFRAMES:
-      return serialize([copy(replace(element.value, '@', '@' + WEBKIT), element, '')], callback);
-
-    case Enum_RULESET:
-      if (element.length) return Utility_combine(element.props, function (value) {
-        switch (match(value, /(::plac\w+|:read-\w+)/)) {
-          // :read-(only|write)
-          case ':read-only':
-          case ':read-write':
-            return serialize([copy(replace(value, /:(read-\w+)/, ':' + MOZ + '$1'), element, '')], callback);
-          // :placeholder
-
-          case '::placeholder':
-            return serialize([copy(replace(value, /:(plac\w+)/, ':' + WEBKIT + 'input-$1'), element, ''), copy(replace(value, /:(plac\w+)/, ':' + MOZ + '$1'), element, ''), copy(replace(value, /:(plac\w+)/, MS + 'input-$1'), element, '')], callback);
-        }
-
-        return '';
-      });
-  }
-}
-/**
- * @param {object} element
- * @param {number} index
- * @param {object[]} children
- */
-
-function namespace(element) {
-  switch (element.type) {
-    case RULESET:
-      element.props = element.props.map(function (value) {
-        return combine(tokenize(value), function (value, index, children) {
-          switch (charat(value, 0)) {
-            // \f
-            case 12:
-              return substr(value, 1, strlen(value));
-            // \0 ( + > ~
-
-            case 0:
-            case 40:
-            case 43:
-            case 62:
-            case 126:
-              return value;
-            // :
-
-            case 58:
-              if (children[index + 1] === 'global') children[index + 1] = '', children[index + 2] = '\f' + substr(children[index + 2], index = 1, -1);
-            // \s
-
-            case 32:
-              return index === 1 ? '' : value;
-
-            default:
-              switch (index) {
-                case 0:
-                  element = value;
-                  return sizeof(children) > 1 ? '' : value;
-
-                case index = sizeof(children) - 1:
-                case 2:
-                  return index === 2 ? value + element + element : value + element;
-
-                default:
-                  return value;
-              }
-
-          }
-        });
-      });
-  }
-}
-;// CONCATENATED MODULE: ./node_modules/stylis/src/Parser.js
-
-
-
-/**
- * @param {string} value
- * @return {object[]}
- */
-
-function compile(value) {
-  return dealloc(parse('', null, null, null, [''], value = alloc(value), 0, [0], value));
-}
-/**
- * @param {string} value
- * @param {object} root
- * @param {object?} parent
- * @param {string[]} rule
- * @param {string[]} rules
- * @param {string[]} rulesets
- * @param {number[]} pseudo
- * @param {number[]} points
- * @param {string[]} declarations
- * @return {object}
- */
-
-function parse(value, root, parent, rule, rules, rulesets, pseudo, points, declarations) {
-  var index = 0;
-  var offset = 0;
-  var length = pseudo;
-  var atrule = 0;
-  var property = 0;
-  var previous = 0;
-  var variable = 1;
-  var scanning = 1;
-  var ampersand = 1;
-  var character = 0;
-  var type = '';
-  var props = rules;
-  var children = rulesets;
-  var reference = rule;
-  var characters = type;
-
-  while (scanning) switch (previous = character, character = next()) {
-    // " ' [ (
-    case 34:
-    case 39:
-    case 91:
-    case 40:
-      characters += delimit(character);
-      break;
-    // \t \n \r \s
-
-    case 9:
-    case 10:
-    case 13:
-    case 32:
-      characters += whitespace(previous);
-      break;
-    // /
-
-    case 47:
-      switch (peek()) {
-        case 42:
-        case 47:
-          Utility_append(comment(commenter(next(), caret()), root, parent), declarations);
-          break;
-
-        default:
-          characters += '/';
-      }
-
-      break;
-    // {
-
-    case 123 * variable:
-      points[index++] = Utility_strlen(characters) * ampersand;
-    // } ; \0
-
-    case 125 * variable:
-    case 59:
-    case 0:
-      switch (character) {
-        // \0 }
-        case 0:
-        case 125:
-          scanning = 0;
-        // ;
-
-        case 59 + offset:
-          if (property > 0 && Utility_strlen(characters) - length) Utility_append(property > 32 ? declaration(characters + ';', rule, parent, length - 1) : declaration(replace(characters, ' ', '') + ';', rule, parent, length - 2), declarations);
-          break;
-        // @ ;
-
-        case 59:
-          characters += ';';
-        // { rule/at-rule
-
-        default:
-          Utility_append(reference = ruleset(characters, root, parent, index, offset, rules, points, type, props = [], children = [], length), rulesets);
-          if (character === 123) if (offset === 0) parse(characters, root, reference, reference, props, rulesets, length, points, children);else switch (atrule) {
-            // d m s
-            case 100:
-            case 109:
-            case 115:
-              parse(value, reference, reference, rule && Utility_append(ruleset(value, reference, reference, 0, 0, rules, points, type, rules, props = [], length), children), rules, children, length, points, rule ? props : children);
-              break;
-
-            default:
-              parse(characters, reference, reference, reference, [''], children, length, points, children);
-          }
-      }
-
-      index = offset = property = 0, variable = ampersand = 1, type = characters = '', length = pseudo;
-      break;
-    // :
-
-    case 58:
-      length = 1 + Utility_strlen(characters), property = previous;
-
-    default:
-      switch (characters += Utility_from(character), character * variable) {
-        // &
-        case 38:
-          ampersand = offset > 0 ? 1 : (characters += '\f', -1);
-          break;
-        // ,
-
-        case 44:
-          points[index++] = (Utility_strlen(characters) - 1) * ampersand, ampersand = 1;
-          break;
-        // @
-
-        case 64:
-          // -
-          if (peek() === 45) characters += delimit(next());
-          atrule = peek(), offset = Utility_strlen(type = characters += identifier(caret())), character++;
-          break;
-        // -
-
-        case 45:
-          if (previous === 45 && Utility_strlen(characters) == 2) variable = 0;
-      }
-
-  }
-
-  return rulesets;
-}
-/**
- * @param {string} value
- * @param {object} root
- * @param {object?} parent
- * @param {number} index
- * @param {number} offset
- * @param {string[]} rules
- * @param {number[]} points
- * @param {string} type
- * @param {string[]} props
- * @param {string[]} children
- * @param {number} length
- * @return {object}
- */
-
-function ruleset(value, root, parent, index, offset, rules, points, type, props, children, length) {
-  var post = offset - 1;
-  var rule = offset === 0 ? rules : [''];
-  var size = Utility_sizeof(rule);
-
-  for (var i = 0, j = 0, k = 0; i < index; ++i) for (var x = 0, y = Utility_substr(value, post + 1, post = abs(j = points[i])), z = value; x < size; ++x) if (z = trim(j > 0 ? rule[x] + ' ' + y : replace(y, /&\f/g, rule[x]))) props[k++] = z;
-
-  return node(value, root, parent, offset === 0 ? Enum_RULESET : type, props, children, length);
-}
-/**
- * @param {number} value
- * @param {object} root
- * @param {object?} parent
- * @return {object}
- */
-
-function comment(value, root, parent) {
-  return node(value, root, parent, COMMENT, Utility_from(Tokenizer_char()), Utility_substr(value, 2, -2), 0);
-}
-/**
- * @param {string} value
- * @param {object} root
- * @param {object?} parent
- * @param {number} length
- * @return {object}
- */
-
-function declaration(value, root, parent, length) {
-  return node(value, root, parent, DECLARATION, Utility_substr(value, 0, length), Utility_substr(value, length + 1, -1), length);
-}
-;// CONCATENATED MODULE: ./node_modules/@emotion/cache/dist/emotion-cache.browser.esm.js
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _emotion_sheet__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(30985);
+/* harmony import */ var stylis__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(79942);
+/* harmony import */ var stylis__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(26447);
+/* harmony import */ var stylis__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(59154);
+/* harmony import */ var stylis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(37364);
+/* harmony import */ var stylis__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(66375);
 
 
 
@@ -1225,10 +329,10 @@ var toRules = function toRules(parsed, points) {
   var character = 44;
 
   do {
-    switch (token(character)) {
+    switch ((0,stylis__WEBPACK_IMPORTED_MODULE_0__/* .token */ .r)(character)) {
       case 0:
         // &\f
-        if (character === 38 && peek() === 12) {
+        if (character === 38 && (0,stylis__WEBPACK_IMPORTED_MODULE_0__/* .peek */ .fj)() === 12) {
           // this is not 100% correct, we don't account for literal sequences here - like for example quoted strings
           // stylis inserts \f after & to know when & where it should replace this sequence with the context selector
           // and when it should just concatenate the outer and inner selectors
@@ -1236,18 +340,18 @@ var toRules = function toRules(parsed, points) {
           points[index] = 1;
         }
 
-        parsed[index] += identifier(position - 1);
+        parsed[index] += (0,stylis__WEBPACK_IMPORTED_MODULE_0__/* .identifier */ .QU)(stylis__WEBPACK_IMPORTED_MODULE_0__/* .position */ .FK - 1);
         break;
 
       case 2:
-        parsed[index] += delimit(character);
+        parsed[index] += (0,stylis__WEBPACK_IMPORTED_MODULE_0__/* .delimit */ .iF)(character);
         break;
 
       case 4:
         // comma
         if (character === 44) {
           // colon
-          parsed[++index] = peek() === 58 ? '&\f' : '';
+          parsed[++index] = (0,stylis__WEBPACK_IMPORTED_MODULE_0__/* .peek */ .fj)() === 58 ? '&\f' : '';
           points[index] = parsed[index].length;
           break;
         }
@@ -1255,15 +359,15 @@ var toRules = function toRules(parsed, points) {
       // fallthrough
 
       default:
-        parsed[index] += Utility_from(character);
+        parsed[index] += (0,stylis__WEBPACK_IMPORTED_MODULE_1__/* .from */ .Dp)(character);
     }
-  } while (character = next());
+  } while (character = (0,stylis__WEBPACK_IMPORTED_MODULE_0__/* .next */ .lp)());
 
   return parsed;
 };
 
 var getRules = function getRules(value, points) {
-  return dealloc(toRules(alloc(value), points));
+  return (0,stylis__WEBPACK_IMPORTED_MODULE_0__/* .dealloc */ .cE)(toRules((0,stylis__WEBPACK_IMPORTED_MODULE_0__/* .alloc */ .un)(value), points));
 }; // WeakSet would be more appropriate, but only WeakMap is supported in IE11
 
 
@@ -1387,7 +491,7 @@ var incorrectImportAlarm = function incorrectImportAlarm(element, index, childre
   }
 };
 
-var defaultStylisPlugins = [prefixer];
+var defaultStylisPlugins = [stylis__WEBPACK_IMPORTED_MODULE_2__/* .prefixer */ .Ji];
 
 var createCache = function createCache(options) {
   var key = options.key;
@@ -1438,13 +542,13 @@ var createCache = function createCache(options) {
 
   {
     var currentSheet;
-    var finalizingPlugins = [stringify,  false ? 0 : rulesheet(function (rule) {
+    var finalizingPlugins = [stylis__WEBPACK_IMPORTED_MODULE_3__/* .stringify */ .P,  false ? 0 : (0,stylis__WEBPACK_IMPORTED_MODULE_2__/* .rulesheet */ .cD)(function (rule) {
       currentSheet.insert(rule);
     })];
-    var serializer = middleware(omnipresentPlugins.concat(stylisPlugins, finalizingPlugins));
+    var serializer = (0,stylis__WEBPACK_IMPORTED_MODULE_2__/* .middleware */ .qR)(omnipresentPlugins.concat(stylisPlugins, finalizingPlugins));
 
     var stylis = function stylis(styles) {
-      return serialize(compile(styles), serializer);
+      return (0,stylis__WEBPACK_IMPORTED_MODULE_3__/* .serialize */ .q)((0,stylis__WEBPACK_IMPORTED_MODULE_4__/* .compile */ .MY)(styles), serializer);
     };
 
     _insert = function insert(selector, serialized, sheet, shouldCache) {
@@ -1461,7 +565,7 @@ var createCache = function createCache(options) {
   }
   var cache = {
     key: key,
-    sheet: new emotion_sheet_browser_esm/* StyleSheet */.m({
+    sheet: new _emotion_sheet__WEBPACK_IMPORTED_MODULE_5__/* .StyleSheet */ .m({
       key: key,
       container: container,
       nonce: options.nonce,
@@ -1477,7 +581,7 @@ var createCache = function createCache(options) {
   return cache;
 };
 
-/* harmony default export */ const emotion_cache_browser_esm = (createCache);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (createCache);
 
 /***/ }),
 
@@ -1501,8 +605,8 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: ./node_modules/react/index.js
 var react = __webpack_require__(87401);
-// EXTERNAL MODULE: ./node_modules/@emotion/cache/dist/emotion-cache.browser.esm.js + 7 modules
-var emotion_cache_browser_esm = __webpack_require__(55046);
+// EXTERNAL MODULE: ./node_modules/@emotion/cache/dist/emotion-cache.browser.esm.js
+var emotion_cache_browser_esm = __webpack_require__(31296);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/extends/_index.mjs
 var _index = __webpack_require__(94527);
 ;// CONCATENATED MODULE: ./node_modules/@emotion/weak-memoize/dist/weak-memoize.browser.esm.js
@@ -1694,7 +798,7 @@ if (false) {}
 /* harmony export */ });
 /* unused harmony export createElement */
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(87401);
-/* harmony import */ var _emotion_cache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(55046);
+/* harmony import */ var _emotion_cache__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(31296);
 /* harmony import */ var _emotion_element_4fbd89c5_browser_esm_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(69779);
 /* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(30121);
 /* harmony import */ var hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(hoist_non_react_statics__WEBPACK_IMPORTED_MODULE_2__);
@@ -29164,346 +28268,6 @@ module.exports = sum;
 
 /***/ }),
 
-/***/ 83279:
-/***/ ((module) => {
-
-module.exports =
-/******/
-function (modules) {
-  // webpackBootstrap
-
-  /******/
-  // The module cache
-
-  /******/
-  var installedModules = {};
-  /******/
-
-  /******/
-  // The require function
-
-  /******/
-
-  function __nested_webpack_require_208__(moduleId) {
-    /******/
-
-    /******/
-    // Check if module is in cache
-
-    /******/
-    if (installedModules[moduleId])
-      /******/
-      return installedModules[moduleId].exports;
-    /******/
-
-    /******/
-    // Create a new module (and put it into the cache)
-
-    /******/
-
-    var module = installedModules[moduleId] = {
-      /******/
-      exports: {},
-
-      /******/
-      id: moduleId,
-
-      /******/
-      loaded: false
-      /******/
-
-    };
-    /******/
-
-    /******/
-    // Execute the module function
-
-    /******/
-
-    modules[moduleId].call(module.exports, module, module.exports, __nested_webpack_require_208__);
-    /******/
-
-    /******/
-    // Flag the module as loaded
-
-    /******/
-
-    module.loaded = true;
-    /******/
-
-    /******/
-    // Return the exports of the module
-
-    /******/
-
-    return module.exports;
-    /******/
-  }
-  /******/
-
-  /******/
-
-  /******/
-  // expose the modules object (__webpack_modules__)
-
-  /******/
-
-
-  __nested_webpack_require_208__.m = modules;
-  /******/
-
-  /******/
-  // expose the module cache
-
-  /******/
-
-  __nested_webpack_require_208__.c = installedModules;
-  /******/
-
-  /******/
-  // __webpack_public_path__
-
-  /******/
-
-  __nested_webpack_require_208__.p = "";
-  /******/
-
-  /******/
-  // Load entry module and return exports
-
-  /******/
-
-  return __nested_webpack_require_208__(0);
-  /******/
-}(
-/************************************************************************/
-
-/******/
-[
-/* 0 */
-
-/***/
-function (module, exports, __nested_webpack_require_1687__) {
-  module.exports = __nested_webpack_require_1687__(1);
-  /***/
-},
-/* 1 */
-
-/***/
-function (module, exports, __nested_webpack_require_1806__) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  var _utils = __nested_webpack_require_1806__(2);
-
-  Object.defineProperty(exports, 'combineChunks', {
-    enumerable: true,
-    get: function get() {
-      return _utils.combineChunks;
-    }
-  });
-  Object.defineProperty(exports, 'fillInChunks', {
-    enumerable: true,
-    get: function get() {
-      return _utils.fillInChunks;
-    }
-  });
-  Object.defineProperty(exports, 'findAll', {
-    enumerable: true,
-    get: function get() {
-      return _utils.findAll;
-    }
-  });
-  Object.defineProperty(exports, 'findChunks', {
-    enumerable: true,
-    get: function get() {
-      return _utils.findChunks;
-    }
-  });
-  /***/
-},
-/* 2 */
-
-/***/
-function (module, exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  /**
-   * Creates an array of chunk objects representing both higlightable and non highlightable pieces of text that match each search word.
-   * @return Array of "chunks" (where a Chunk is { start:number, end:number, highlight:boolean })
-   */
-
-  var findAll = exports.findAll = function findAll(_ref) {
-    var autoEscape = _ref.autoEscape,
-        _ref$caseSensitive = _ref.caseSensitive,
-        caseSensitive = _ref$caseSensitive === undefined ? false : _ref$caseSensitive,
-        _ref$findChunks = _ref.findChunks,
-        findChunks = _ref$findChunks === undefined ? defaultFindChunks : _ref$findChunks,
-        sanitize = _ref.sanitize,
-        searchWords = _ref.searchWords,
-        textToHighlight = _ref.textToHighlight;
-    return fillInChunks({
-      chunksToHighlight: combineChunks({
-        chunks: findChunks({
-          autoEscape: autoEscape,
-          caseSensitive: caseSensitive,
-          sanitize: sanitize,
-          searchWords: searchWords,
-          textToHighlight: textToHighlight
-        })
-      }),
-      totalLength: textToHighlight ? textToHighlight.length : 0
-    });
-  };
-  /**
-   * Takes an array of {start:number, end:number} objects and combines chunks that overlap into single chunks.
-   * @return {start:number, end:number}[]
-   */
-
-
-  var combineChunks = exports.combineChunks = function combineChunks(_ref2) {
-    var chunks = _ref2.chunks;
-    chunks = chunks.sort(function (first, second) {
-      return first.start - second.start;
-    }).reduce(function (processedChunks, nextChunk) {
-      // First chunk just goes straight in the array...
-      if (processedChunks.length === 0) {
-        return [nextChunk];
-      } else {
-        // ... subsequent chunks get checked to see if they overlap...
-        var prevChunk = processedChunks.pop();
-
-        if (nextChunk.start <= prevChunk.end) {
-          // It may be the case that prevChunk completely surrounds nextChunk, so take the
-          // largest of the end indeces.
-          var endIndex = Math.max(prevChunk.end, nextChunk.end);
-          processedChunks.push({
-            highlight: false,
-            start: prevChunk.start,
-            end: endIndex
-          });
-        } else {
-          processedChunks.push(prevChunk, nextChunk);
-        }
-
-        return processedChunks;
-      }
-    }, []);
-    return chunks;
-  };
-  /**
-   * Examine text for any matches.
-   * If we find matches, add them to the returned array as a "chunk" object ({start:number, end:number}).
-   * @return {start:number, end:number}[]
-   */
-
-
-  var defaultFindChunks = function defaultFindChunks(_ref3) {
-    var autoEscape = _ref3.autoEscape,
-        caseSensitive = _ref3.caseSensitive,
-        _ref3$sanitize = _ref3.sanitize,
-        sanitize = _ref3$sanitize === undefined ? defaultSanitize : _ref3$sanitize,
-        searchWords = _ref3.searchWords,
-        textToHighlight = _ref3.textToHighlight;
-    textToHighlight = sanitize(textToHighlight);
-    return searchWords.filter(function (searchWord) {
-      return searchWord;
-    }) // Remove empty words
-    .reduce(function (chunks, searchWord) {
-      searchWord = sanitize(searchWord);
-
-      if (autoEscape) {
-        searchWord = escapeRegExpFn(searchWord);
-      }
-
-      var regex = new RegExp(searchWord, caseSensitive ? 'g' : 'gi');
-      var match = void 0;
-
-      while (match = regex.exec(textToHighlight)) {
-        var _start = match.index;
-        var _end = regex.lastIndex; // We do not return zero-length matches
-
-        if (_end > _start) {
-          chunks.push({
-            highlight: false,
-            start: _start,
-            end: _end
-          });
-        } // Prevent browsers like Firefox from getting stuck in an infinite loop
-        // See http://www.regexguru.com/2008/04/watch-out-for-zero-length-matches/
-
-
-        if (match.index === regex.lastIndex) {
-          regex.lastIndex++;
-        }
-      }
-
-      return chunks;
-    }, []);
-  }; // Allow the findChunks to be overridden in findAll,
-  // but for backwards compatibility we export as the old name
-
-
-  exports.findChunks = defaultFindChunks;
-  /**
-   * Given a set of chunks to highlight, create an additional set of chunks
-   * to represent the bits of text between the highlighted text.
-   * @param chunksToHighlight {start:number, end:number}[]
-   * @param totalLength number
-   * @return {start:number, end:number, highlight:boolean}[]
-   */
-
-  var fillInChunks = exports.fillInChunks = function fillInChunks(_ref4) {
-    var chunksToHighlight = _ref4.chunksToHighlight,
-        totalLength = _ref4.totalLength;
-    var allChunks = [];
-
-    var append = function append(start, end, highlight) {
-      if (end - start > 0) {
-        allChunks.push({
-          start: start,
-          end: end,
-          highlight: highlight
-        });
-      }
-    };
-
-    if (chunksToHighlight.length === 0) {
-      append(0, totalLength, false);
-    } else {
-      var lastIndex = 0;
-      chunksToHighlight.forEach(function (chunk) {
-        append(lastIndex, chunk.start, false);
-        append(chunk.start, chunk.end, true);
-        lastIndex = chunk.end;
-      });
-      append(lastIndex, totalLength, false);
-    }
-
-    return allChunks;
-  };
-
-  function defaultSanitize(string) {
-    return string;
-  }
-
-  function escapeRegExpFn(string) {
-    return string.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
-  }
-  /***/
-
-}
-/******/
-]);
-
-/***/ }),
-
 /***/ 78717:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -30203,11 +28967,12 @@ module.exports = invariant;
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
+exports.arrayToString = void 0;
 /**
  * Stringify an array of values.
  */
 
-exports.arrayToString = (array, space, next) => {
+const arrayToString = (array, space, next) => {
   // Map array values to their stringified values with correct indentation.
   const values = array.map(function (value, index) {
     const result = next(value, index);
@@ -30217,6 +28982,8 @@ exports.arrayToString = (array, space, next) => {
   const eol = space && values ? "\n" : "";
   return `[${eol}${values}${eol}]`;
 };
+
+exports.arrayToString = arrayToString;
 
 /***/ }),
 
@@ -30229,6 +28996,7 @@ exports.arrayToString = (array, space, next) => {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
+exports.FunctionParser = exports.dedentFunction = exports.functionToString = exports.USED_METHOD_KEY = void 0;
 
 const quote_1 = __webpack_require__(22965);
 /**
@@ -30266,16 +29034,17 @@ exports.USED_METHOD_KEY = new WeakSet();
  * Stringify a function.
  */
 
-exports.functionToString = (fn, space, next, key) => {
+const functionToString = (fn, space, next, key) => {
   const name = typeof key === "string" ? key : undefined; // Track in function parser for object stringify to avoid duplicate output.
 
   if (name !== undefined) exports.USED_METHOD_KEY.add(fn);
   return new FunctionParser(fn, space, next, name).stringify();
 };
+
+exports.functionToString = functionToString;
 /**
  * Rewrite a stringified function to remove initial indentation.
  */
-
 
 function dedentFunction(fnString) {
   let found;
@@ -30358,15 +29127,12 @@ class FunctionParser {
             offset = this.pos;
           }
 
-        // tslint:disable-next-line no-switch-case-fall-through
-
         case "()":
           if (this.fnString.substr(this.pos, 2) === "=>") {
             return this.keyPrefix + this.fnString;
           }
 
           this.pos = offset;
-        // tslint:disable-next-line no-switch-case-fall-through
 
         case '"':
         case "'":
@@ -30412,8 +29178,6 @@ class FunctionParser {
    * Attempt to advance the parser past the keywords expected to be at the
    * start of this function's definition. This method sets `this.hadKeyword`
    * based on whether or not a `function` keyword is consumed.
-   *
-   * @return {boolean}
    */
 
 
@@ -30425,7 +29189,6 @@ class FunctionParser {
       case "AsyncFunction":
         if (this.consumeSyntax() !== "async") return false;
         posPrev = this.pos;
-      // tslint:disable-next-line no-switch-case-fall-through
 
       case "Function":
         if (this.consumeSyntax() === "function") {
@@ -30438,7 +29201,6 @@ class FunctionParser {
 
       case "AsyncGeneratorFunction":
         if (this.consumeSyntax() !== "async") return false;
-      // tslint:disable-next-line no-switch-case-fall-through
 
       case "GeneratorFunction":
         let token = this.consumeSyntax();
@@ -30460,9 +29222,9 @@ class FunctionParser {
    *
    * (This isn't a full parser, so the token scanning logic used here is as
    * simple as it can be. As a consequence, some things that are one token in
-   * JavaScript, like decimal number literals or most multicharacter operators
+   * JavaScript, like decimal number literals or most multi-character operators
    * like '&&', are split into more than one token here. However, awareness of
-   * some multicharacter sequences like '=>' is necessary, so we match the few
+   * some multi-character sequences like '=>' is necessary, so we match the few
    * of them that we care about.)
    */
 
@@ -30581,6 +29343,7 @@ var __webpack_unused_export__;
 __webpack_unused_export__ = ({
   value: true
 });
+__webpack_unused_export__ = void 0;
 
 const stringify_1 = __webpack_require__(76465);
 
@@ -30627,8 +29390,9 @@ function stringify(value, replacer, indent, options = {}) {
     if (value !== null && (typeof value === "object" || typeof value === "function" || typeof value === "symbol")) {
       // Track nodes to restore later.
       if (tracking.has(value)) {
-        unpack.set(path.slice(1), tracking.get(value));
-        return; // Avoid serializing referenced nodes on an expression.
+        unpack.set(path.slice(1), tracking.get(value)); // Use `undefined` as temporaray stand-in for referenced nodes
+
+        return valueToString(undefined, space, onNext, key);
       } // Track encountered nodes.
 
 
@@ -30686,6 +29450,7 @@ function replacerToString(replacer) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
+exports.objectToString = void 0;
 
 const quote_1 = __webpack_require__(22965);
 
@@ -30697,21 +29462,28 @@ const array_1 = __webpack_require__(76238);
  */
 
 
-exports.objectToString = (value, space, next, key) => {
+const objectToString = (value, space, next, key) => {
+  // Support buffer in all environments.
   if (typeof Buffer === "function" && Buffer.isBuffer(value)) {
-    return `new Buffer(${next(value.toString())})`;
+    return `Buffer.from(${next(value.toString("base64"))}, 'base64')`;
+  } // Support `global` under test environments that don't print `[object global]`.
+
+
+  if (typeof __webpack_require__.g === "object" && value === __webpack_require__.g) {
+    return globalToString(value, space, next, key);
   } // Use the internal object string to select stringify method.
 
 
   const toString = OBJECT_TYPES[Object.prototype.toString.call(value)];
   return toString ? toString(value, space, next, key) : undefined;
 };
+
+exports.objectToString = objectToString;
 /**
  * Stringify an object of keys and values.
  */
 
-
-const rawObjectToString = (obj, indent, next) => {
+const rawObjectToString = (obj, indent, next, key) => {
   const eol = indent ? "\n" : "";
   const space = indent ? " " : ""; // Iterate over object keys and concat string together.
 
@@ -30788,6 +29560,7 @@ const OBJECT_TYPES = {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
+exports.stringifyPath = exports.quoteKey = exports.isValidVariableName = exports.IS_VALID_IDENTIFIER = exports.quoteString = void 0;
 /**
  * Match all characters that need to be escaped in a string. Modified from
  * source to match single quotes instead of double.
@@ -30880,6 +29653,7 @@ exports.stringifyPath = stringifyPath;
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
+exports.toString = void 0;
 
 const quote_1 = __webpack_require__(22965);
 
@@ -30912,10 +29686,12 @@ const PRIMITIVE_TYPES = {
  * Stringify a value recursively.
  */
 
-exports.toString = (value, space, next, key) => {
+const toString = (value, space, next, key) => {
   if (value === null) return "null";
   return PRIMITIVE_TYPES[typeof value](value, space, next, key);
 };
+
+exports.toString = toString;
 
 /***/ }),
 
@@ -37471,7 +36247,7 @@ Prism.languages.clike = {
   },
   'keyword': /\b(?:if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,
   'boolean': /\b(?:true|false)\b/,
-  'function': /\w+(?=\()/,
+  'function': /\b\w+(?=\()/,
   'number': /\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?/i,
   'operator': /[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/,
   'punctuation': /[{}[\];(),.:]/
@@ -37488,10 +36264,10 @@ Prism.languages.javascript = Prism.languages.extend('clike', {
     lookbehind: true
   }],
   'keyword': [{
-    pattern: /((?:^|})\s*)(?:catch|finally)\b/,
+    pattern: /((?:^|\})\s*)catch\b/,
     lookbehind: true
   }, {
-    pattern: /(^|[^.]|\.\.\.\s*)\b(?:as|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|for|from|function|(?:get|set)(?=\s*[\[$\w\xA0-\uFFFF])|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,
+    pattern: /(^|[^.]|\.\.\.\s*)\b(?:as|assert(?=\s*\{)|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\s*(?:\{|$))|for|from(?=\s*(?:['"]|$))|function|(?:get|set)(?=\s*(?:[#\[$\w\xA0-\uFFFF]|$))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,
     lookbehind: true
   }],
   // Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
@@ -37502,7 +36278,8 @@ Prism.languages.javascript = Prism.languages.extend('clike', {
 Prism.languages.javascript['class-name'][0].pattern = /(\b(?:class|interface|extends|implements|instanceof|new)\s+)[\w.\\]+/;
 Prism.languages.insertBefore('javascript', 'keyword', {
   'regex': {
-    pattern: /((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)\/(?:\[(?:[^\]\\\r\n]|\\.)*]|\\.|[^/\\\[\r\n])+\/[gimyus]{0,6}(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/,
+    // eslint-disable-next-line regexp/no-dupe-characters-character-class
+    pattern: /((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)\/(?:\[(?:[^\]\\\r\n]|\\.)*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/,
     lookbehind: true,
     greedy: true,
     inside: {
@@ -37512,8 +36289,8 @@ Prism.languages.insertBefore('javascript', 'keyword', {
         alias: 'language-regex',
         inside: Prism.languages.regex
       },
-      'regex-flags': /[a-z]+$/,
-      'regex-delimiter': /^\/|\/$/
+      'regex-delimiter': /^\/|\/$/,
+      'regex-flags': /^[a-z]+$/
     }
   },
   // This must be declared before keyword because we use "function" inside the look-forward
@@ -37526,7 +36303,8 @@ Prism.languages.insertBefore('javascript', 'keyword', {
     lookbehind: true,
     inside: Prism.languages.javascript
   }, {
-    pattern: /(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i,
+    pattern: /(^|[^$\w\xA0-\uFFFF])(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i,
+    lookbehind: true,
     inside: Prism.languages.javascript
   }, {
     pattern: /(\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*=>)/,
@@ -37540,8 +36318,13 @@ Prism.languages.insertBefore('javascript', 'keyword', {
   'constant': /\b[A-Z](?:[A-Z_]|\dx?)*\b/
 });
 Prism.languages.insertBefore('javascript', 'string', {
+  'hashbang': {
+    pattern: /^#!.*/,
+    greedy: true,
+    alias: 'comment'
+  },
   'template-string': {
-    pattern: /`(?:\\[\s\S]|\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}|(?!\${)[^\\`])*`/,
+    pattern: /`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/,
     greedy: true,
     inside: {
       'template-punctuation': {
@@ -37549,11 +36332,11 @@ Prism.languages.insertBefore('javascript', 'string', {
         alias: 'string'
       },
       'interpolation': {
-        pattern: /((?:^|[^\\])(?:\\{2})*)\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}/,
+        pattern: /((?:^|[^\\])(?:\\{2})*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
         lookbehind: true,
         inside: {
           'interpolation-punctuation': {
-            pattern: /^\${|}$/,
+            pattern: /^\$\{|\}$/,
             alias: 'punctuation'
           },
           rest: Prism.languages.javascript
@@ -37565,7 +36348,10 @@ Prism.languages.insertBefore('javascript', 'string', {
 });
 
 if (Prism.languages.markup) {
-  Prism.languages.markup.tag.addInlined('script', 'javascript');
+  Prism.languages.markup.tag.addInlined('script', 'javascript'); // add attribute support for all DOM events.
+  // https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events
+
+  Prism.languages.markup.tag.addAttribute(/on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)/.source, 'javascript');
 }
 
 Prism.languages.js = Prism.languages.javascript;
@@ -37577,27 +36363,45 @@ Prism.languages.js = Prism.languages.javascript;
 
 (function (Prism) {
   var javascript = Prism.util.clone(Prism.languages.javascript);
+  var space = /(?:\s|\/\/.*(?!.)|\/\*(?:[^*]|\*(?!\/))\*\/)/.source;
+  var braces = /(?:\{(?:\{(?:\{[^{}]*\}|[^{}])*\}|[^{}])*\})/.source;
+  var spread = /(?:\{<S>*\.{3}(?:[^{}]|<BRACES>)*\})/.source;
+  /**
+   * @param {string} source
+   * @param {string} [flags]
+   */
+
+  function re(source, flags) {
+    source = source.replace(/<S>/g, function () {
+      return space;
+    }).replace(/<BRACES>/g, function () {
+      return braces;
+    }).replace(/<SPREAD>/g, function () {
+      return spread;
+    });
+    return RegExp(source, flags);
+  }
+
+  spread = re(spread).source;
   Prism.languages.jsx = Prism.languages.extend('markup', javascript);
-  Prism.languages.jsx.tag.pattern = /<\/?(?:[\w.:-]+(?:\s+(?:[\w.:$-]+(?:=(?:"(?:\\[^]|[^\\"])*"|'(?:\\[^]|[^\\'])*'|[^\s{'">=]+|\{(?:\{(?:\{[^{}]*\}|[^{}])*\}|[^{}])+\}))?|\{\s*\.{3}\s*[a-z_$][\w$]*(?:\.[a-z_$][\w$]*)*\s*\}))*\s*\/?)?>/i;
+  Prism.languages.jsx.tag.pattern = re(/<\/?(?:[\w.:-]+(?:<S>+(?:[\w.:$-]+(?:=(?:"(?:\\[\s\S]|[^\\"])*"|'(?:\\[\s\S]|[^\\'])*'|[^\s{'"/>=]+|<BRACES>))?|<SPREAD>))*<S>*\/?)?>/.source);
   Prism.languages.jsx.tag.inside['tag'].pattern = /^<\/?[^\s>\/]*/i;
-  Prism.languages.jsx.tag.inside['attr-value'].pattern = /=(?!\{)(?:"(?:\\[^]|[^\\"])*"|'(?:\\[^]|[^\\'])*'|[^\s'">]+)/i;
+  Prism.languages.jsx.tag.inside['attr-value'].pattern = /=(?!\{)(?:"(?:\\[\s\S]|[^\\"])*"|'(?:\\[\s\S]|[^\\'])*'|[^\s'">]+)/i;
   Prism.languages.jsx.tag.inside['tag'].inside['class-name'] = /^[A-Z]\w*(?:\.[A-Z]\w*)*$/;
+  Prism.languages.jsx.tag.inside['comment'] = javascript['comment'];
   Prism.languages.insertBefore('inside', 'attr-name', {
     'spread': {
-      pattern: /\{\s*\.{3}\s*[a-z_$][\w$]*(?:\.[a-z_$][\w$]*)*\s*\}/,
-      inside: {
-        'punctuation': /\.{3}|[{}.]/,
-        'attr-value': /\w+/
-      }
+      pattern: re(/<SPREAD>/.source),
+      inside: Prism.languages.jsx
     }
   }, Prism.languages.jsx.tag);
-  Prism.languages.insertBefore('inside', 'attr-value', {
+  Prism.languages.insertBefore('inside', 'special-attr', {
     'script': {
       // Allow for two levels of nesting
-      pattern: /=(?:\{(?:\{(?:\{[^{}]*\}|[^{}])*\}|[^{}])+\})/i,
+      pattern: re(/=<BRACES>/.source),
       inside: {
         'script-punctuation': {
-          pattern: /^=(?={)/,
+          pattern: /^=(?=\{)/,
           alias: 'punctuation'
         },
         rest: Prism.languages.jsx
@@ -37709,7 +36513,7 @@ Prism.languages.markup = {
     greedy: true,
     inside: {
       'internal-subset': {
-        pattern: /(\[)[\s\S]+(?=\]>$)/,
+        pattern: /(^[^\[]*\[)[\s\S]+(?=\]>$)/,
         lookbehind: true,
         greedy: true,
         inside: null // see below
@@ -37724,7 +36528,7 @@ Prism.languages.markup = {
       'name': /[^\s<>'"]+/
     }
   },
-  'cdata': /<!\[CDATA\[[\s\S]*?]]>/i,
+  'cdata': /<!\[CDATA\[[\s\S]*?\]\]>/i,
   'tag': {
     pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/,
     greedy: true,
@@ -37736,6 +36540,7 @@ Prism.languages.markup = {
           'namespace': /^[^\s>\/:]+:/
         }
       },
+      'special-attr': [],
       'attr-value': {
         pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,
         inside: {
@@ -37809,6 +36614,43 @@ Object.defineProperty(Prism.languages.markup.tag, 'addInlined', {
     Prism.languages.insertBefore('markup', 'cdata', def);
   }
 });
+Object.defineProperty(Prism.languages.markup.tag, 'addAttribute', {
+  /**
+   * Adds an pattern to highlight languages embedded in HTML attributes.
+   *
+   * An example of an inlined language is CSS with `style` attributes.
+   *
+   * @param {string} attrName The name of the tag that contains the inlined language. This name will be treated as
+   * case insensitive.
+   * @param {string} lang The language key.
+   * @example
+   * addAttribute('style', 'css');
+   */
+  value: function (attrName, lang) {
+    Prism.languages.markup.tag.inside['special-attr'].push({
+      pattern: RegExp(/(^|["'\s])/.source + '(?:' + attrName + ')' + /\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))/.source, 'i'),
+      lookbehind: true,
+      inside: {
+        'attr-name': /^[^\s=]+/,
+        'attr-value': {
+          pattern: /=[\s\S]+/,
+          inside: {
+            'value': {
+              pattern: /(^=\s*(["']|(?!["'])))\S[\s\S]*(?=\2$)/,
+              lookbehind: true,
+              alias: [lang, 'language-' + lang],
+              inside: Prism.languages[lang]
+            },
+            'punctuation': [{
+              pattern: /^=/,
+              alias: 'attr-equals'
+            }, /"|'/]
+          }
+        }
+      }
+    });
+  }
+});
 Prism.languages.html = Prism.languages.markup;
 Prism.languages.mathml = Prism.languages.markup;
 Prism.languages.svg = Prism.languages.markup;
@@ -37843,7 +36685,9 @@ var _self = typeof window !== 'undefined' ? window // if in browser
 var Prism = function (_self) {
   // Private helper vars
   var lang = /\blang(?:uage)?-([\w-]+)\b/i;
-  var uniqueId = 0;
+  var uniqueId = 0; // The grammar object for plaintext
+
+  var plainTextGrammar = {};
   var _ = {
     /**
      * By default, Prism will attempt to highlight all code elements (by calling {@link Prism.highlightAll}) on the
@@ -37937,7 +36781,8 @@ var Prism = function (_self) {
        */
       clone: function deepClone(o, visited) {
         visited = visited || {};
-        var clone, id;
+        var clone;
+        var id;
 
         switch (_.util.type(o)) {
           case 'Object':
@@ -38107,6 +36952,14 @@ var Prism = function (_self) {
      */
     languages: {
       /**
+       * The grammar for plain, unformatted text.
+       */
+      plain: plainTextGrammar,
+      plaintext: plainTextGrammar,
+      text: plainTextGrammar,
+      txt: plainTextGrammar,
+
+      /**
        * Creates a deep copy of the language with the given id and appends the given tokens.
        *
        * If a token in `redef` also appears in the copied language, then the existing token in the copied language
@@ -38264,9 +37117,9 @@ var Prism = function (_self) {
         for (var i in o) {
           if (o.hasOwnProperty(i)) {
             callback.call(o, i, o[i], type || i);
+            var property = o[i];
 
-            var property = o[i],
-                propertyType = _.util.type(property);
+            var propertyType = _.util.type(property);
 
             if (propertyType === 'Object' && !visited[objId(property)]) {
               visited[objId(property)] = true;
@@ -38394,7 +37247,14 @@ var Prism = function (_self) {
         callback && callback.call(env.element);
       }
 
-      _.hooks.run('before-sanity-check', env);
+      _.hooks.run('before-sanity-check', env); // plugins may change/add the parent/element
+
+
+      parent = env.element.parentElement;
+
+      if (parent && parent.nodeName.toLowerCase() === 'pre' && !parent.hasAttribute('tabindex')) {
+        parent.setAttribute('tabindex', '0');
+      }
 
       if (!env.code) {
         _.hooks.run('complete', env);
@@ -38726,11 +37586,11 @@ var Prism = function (_self) {
           return;
         }
 
-        var patternObj = patterns[j],
-            inside = patternObj.inside,
-            lookbehind = !!patternObj.lookbehind,
-            greedy = !!patternObj.greedy,
-            alias = patternObj.alias;
+        var patternObj = patterns[j];
+        var inside = patternObj.inside;
+        var lookbehind = !!patternObj.lookbehind;
+        var greedy = !!patternObj.greedy;
+        var alias = patternObj.alias;
 
         if (greedy && !patternObj.pattern.global) {
           // Without the global flag, lastIndex won't work
@@ -38805,12 +37665,13 @@ var Prism = function (_self) {
             if (!match) {
               continue;
             }
-          }
+          } // eslint-disable-next-line no-redeclare
 
-          var from = match.index,
-              matchStr = match[0],
-              before = str.slice(0, from),
-              after = str.slice(from + matchStr.length);
+
+          var from = match.index;
+          var matchStr = match[0];
+          var before = str.slice(0, from);
+          var after = str.slice(from + matchStr.length);
           var reach = pos + str.length;
 
           if (rematch && reach > rematch.reach) {
@@ -38835,10 +37696,17 @@ var Prism = function (_self) {
           if (removeCount > 1) {
             // at least one Token object was removed, so we have to do some rematching
             // this can only happen if the current pattern is greedy
-            matchGrammar(text, tokenList, grammar, currentNode.prev, pos, {
+
+            /** @type {RematchOptions} */
+            var nestedRematch = {
               cause: token + ',' + j,
               reach: reach
-            });
+            };
+            matchGrammar(text, tokenList, grammar, currentNode.prev, pos, nestedRematch); // the reach might have been extended because of the rematching
+
+            if (rematch && nestedRematch.reach > rematch.reach) {
+              rematch.reach = nestedRematch.reach;
+            }
           }
         }
       }
@@ -38884,6 +37752,7 @@ var Prism = function (_self) {
   }
   /**
    * Adds a new node with the given value to the list.
+   *
    * @param {LinkedList<T>} list
    * @param {LinkedListNode<T>} node
    * @param {T} value
@@ -38907,6 +37776,7 @@ var Prism = function (_self) {
   }
   /**
    * Removes `count` nodes after the given node. The given node will not be removed.
+   *
    * @param {LinkedList<T>} list
    * @param {LinkedListNode<T>} node
    * @param {number} count
@@ -38953,10 +37823,10 @@ var Prism = function (_self) {
     if (!_.disableWorkerMessageHandler) {
       // In worker
       _self.addEventListener('message', function (evt) {
-        var message = JSON.parse(evt.data),
-            lang = message.language,
-            code = message.code,
-            immediateClose = message.immediateClose;
+        var message = JSON.parse(evt.data);
+        var lang = message.language;
+        var code = message.code;
+        var immediateClose = message.immediateClose;
 
         _self.postMessage(_.highlight(code, _.languages[lang], lang));
 
@@ -39037,7 +37907,7 @@ if (typeof __webpack_require__.g !== 'undefined') {
  * each another.
  * @global
  * @public
-*/
+ */
 
 /**
  * @typedef Grammar
@@ -39055,7 +37925,7 @@ if (typeof __webpack_require__.g !== 'undefined') {
  * @returns {void}
  * @global
  * @public
-*/
+ */
 
 /**
  * @callback HookCallback
@@ -39079,7 +37949,7 @@ Prism.languages.markup = {
     greedy: true,
     inside: {
       'internal-subset': {
-        pattern: /(\[)[\s\S]+(?=\]>$)/,
+        pattern: /(^[^\[]*\[)[\s\S]+(?=\]>$)/,
         lookbehind: true,
         greedy: true,
         inside: null // see below
@@ -39094,7 +37964,7 @@ Prism.languages.markup = {
       'name': /[^\s<>'"]+/
     }
   },
-  'cdata': /<!\[CDATA\[[\s\S]*?]]>/i,
+  'cdata': /<!\[CDATA\[[\s\S]*?\]\]>/i,
   'tag': {
     pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/,
     greedy: true,
@@ -39106,6 +37976,7 @@ Prism.languages.markup = {
           'namespace': /^[^\s>\/:]+:/
         }
       },
+      'special-attr': [],
       'attr-value': {
         pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,
         inside: {
@@ -39179,6 +38050,43 @@ Object.defineProperty(Prism.languages.markup.tag, 'addInlined', {
     Prism.languages.insertBefore('markup', 'cdata', def);
   }
 });
+Object.defineProperty(Prism.languages.markup.tag, 'addAttribute', {
+  /**
+   * Adds an pattern to highlight languages embedded in HTML attributes.
+   *
+   * An example of an inlined language is CSS with `style` attributes.
+   *
+   * @param {string} attrName The name of the tag that contains the inlined language. This name will be treated as
+   * case insensitive.
+   * @param {string} lang The language key.
+   * @example
+   * addAttribute('style', 'css');
+   */
+  value: function (attrName, lang) {
+    Prism.languages.markup.tag.inside['special-attr'].push({
+      pattern: RegExp(/(^|["'\s])/.source + '(?:' + attrName + ')' + /\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))/.source, 'i'),
+      lookbehind: true,
+      inside: {
+        'attr-name': /^[^\s=]+/,
+        'attr-value': {
+          pattern: /=[\s\S]+/,
+          inside: {
+            'value': {
+              pattern: /(^=\s*(["']|(?!["'])))\S[\s\S]*(?=\2$)/,
+              lookbehind: true,
+              alias: [lang, 'language-' + lang],
+              inside: Prism.languages[lang]
+            },
+            'punctuation': [{
+              pattern: /^=/,
+              alias: 'attr-equals'
+            }, /"|'/]
+          }
+        }
+      }
+    });
+  }
+});
 Prism.languages.html = Prism.languages.markup;
 Prism.languages.mathml = Prism.languages.markup;
 Prism.languages.svg = Prism.languages.markup;
@@ -39191,7 +38099,7 @@ Prism.languages.rss = Prism.languages.xml;
 ********************************************** */
 
 (function (Prism) {
-  var string = /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/;
+  var string = /(?:"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n])*')/;
   Prism.languages.css = {
     'comment': /\/\*[\s\S]*?\*\//,
     'atrule': {
@@ -39223,14 +38131,23 @@ Prism.languages.rss = Prism.languages.xml;
         }
       }
     },
-    'selector': RegExp('[^{}\\s](?:[^{};"\'\\s]|\\s+(?![\\s{])|' + string.source + ')*(?=\\s*\\{)'),
+    'selector': {
+      pattern: RegExp('(^|[{}\\s])[^{}\\s](?:[^{};"\'\\s]|\\s+(?![\\s{])|' + string.source + ')*(?=\\s*\\{)'),
+      lookbehind: true
+    },
     'string': {
       pattern: string,
       greedy: true
     },
-    'property': /(?!\s)[-_a-z\xA0-\uFFFF](?:(?!\s)[-\w\xA0-\uFFFF])*(?=\s*:)/i,
+    'property': {
+      pattern: /(^|[^-\w\xA0-\uFFFF])(?!\s)[-_a-z\xA0-\uFFFF](?:(?!\s)[-\w\xA0-\uFFFF])*(?=\s*:)/i,
+      lookbehind: true
+    },
     'important': /!important\b/i,
-    'function': /[-a-z0-9]+(?=\()/i,
+    'function': {
+      pattern: /(^|[^-a-z0-9])[-a-z0-9]+(?=\()/i,
+      lookbehind: true
+    },
     'punctuation': /[(){};:,]/
   };
   Prism.languages.css['atrule'].inside.rest = Prism.languages.css;
@@ -39238,30 +38155,7 @@ Prism.languages.rss = Prism.languages.xml;
 
   if (markup) {
     markup.tag.addInlined('style', 'css');
-    Prism.languages.insertBefore('inside', 'attr-value', {
-      'style-attr': {
-        pattern: /(^|["'\s])style\s*=\s*(?:"[^"]*"|'[^']*')/i,
-        lookbehind: true,
-        inside: {
-          'attr-value': {
-            pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,
-            inside: {
-              'style': {
-                pattern: /(["'])[\s\S]+(?=["']$)/,
-                lookbehind: true,
-                alias: 'language-css',
-                inside: Prism.languages.css
-              },
-              'punctuation': [{
-                pattern: /^=/,
-                alias: 'attr-equals'
-              }, /"|'/]
-            }
-          },
-          'attr-name': /^style/i
-        }
-      }
-    }, markup.tag);
+    markup.tag.addAttribute('style', 'css');
   }
 })(Prism);
 /* **********************************************
@@ -39292,7 +38186,7 @@ Prism.languages.clike = {
   },
   'keyword': /\b(?:if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,
   'boolean': /\b(?:true|false)\b/,
-  'function': /\w+(?=\()/,
+  'function': /\b\w+(?=\()/,
   'number': /\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?/i,
   'operator': /[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/,
   'punctuation': /[{}[\];(),.:]/
@@ -39307,10 +38201,10 @@ Prism.languages.javascript = Prism.languages.extend('clike', {
     lookbehind: true
   }],
   'keyword': [{
-    pattern: /((?:^|})\s*)(?:catch|finally)\b/,
+    pattern: /((?:^|\})\s*)catch\b/,
     lookbehind: true
   }, {
-    pattern: /(^|[^.]|\.\.\.\s*)\b(?:as|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|for|from|function|(?:get|set)(?=\s*[\[$\w\xA0-\uFFFF])|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,
+    pattern: /(^|[^.]|\.\.\.\s*)\b(?:as|assert(?=\s*\{)|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\s*(?:\{|$))|for|from(?=\s*(?:['"]|$))|function|(?:get|set)(?=\s*(?:[#\[$\w\xA0-\uFFFF]|$))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,
     lookbehind: true
   }],
   // Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
@@ -39321,7 +38215,8 @@ Prism.languages.javascript = Prism.languages.extend('clike', {
 Prism.languages.javascript['class-name'][0].pattern = /(\b(?:class|interface|extends|implements|instanceof|new)\s+)[\w.\\]+/;
 Prism.languages.insertBefore('javascript', 'keyword', {
   'regex': {
-    pattern: /((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)\/(?:\[(?:[^\]\\\r\n]|\\.)*]|\\.|[^/\\\[\r\n])+\/[gimyus]{0,6}(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/,
+    // eslint-disable-next-line regexp/no-dupe-characters-character-class
+    pattern: /((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)\/(?:\[(?:[^\]\\\r\n]|\\.)*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/,
     lookbehind: true,
     greedy: true,
     inside: {
@@ -39331,8 +38226,8 @@ Prism.languages.insertBefore('javascript', 'keyword', {
         alias: 'language-regex',
         inside: Prism.languages.regex
       },
-      'regex-flags': /[a-z]+$/,
-      'regex-delimiter': /^\/|\/$/
+      'regex-delimiter': /^\/|\/$/,
+      'regex-flags': /^[a-z]+$/
     }
   },
   // This must be declared before keyword because we use "function" inside the look-forward
@@ -39345,7 +38240,8 @@ Prism.languages.insertBefore('javascript', 'keyword', {
     lookbehind: true,
     inside: Prism.languages.javascript
   }, {
-    pattern: /(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i,
+    pattern: /(^|[^$\w\xA0-\uFFFF])(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i,
+    lookbehind: true,
     inside: Prism.languages.javascript
   }, {
     pattern: /(\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*=>)/,
@@ -39359,8 +38255,13 @@ Prism.languages.insertBefore('javascript', 'keyword', {
   'constant': /\b[A-Z](?:[A-Z_]|\dx?)*\b/
 });
 Prism.languages.insertBefore('javascript', 'string', {
+  'hashbang': {
+    pattern: /^#!.*/,
+    greedy: true,
+    alias: 'comment'
+  },
   'template-string': {
-    pattern: /`(?:\\[\s\S]|\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}|(?!\${)[^\\`])*`/,
+    pattern: /`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/,
     greedy: true,
     inside: {
       'template-punctuation': {
@@ -39368,11 +38269,11 @@ Prism.languages.insertBefore('javascript', 'string', {
         alias: 'string'
       },
       'interpolation': {
-        pattern: /((?:^|[^\\])(?:\\{2})*)\${(?:[^{}]|{(?:[^{}]|{[^}]*})*})+}/,
+        pattern: /((?:^|[^\\])(?:\\{2})*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
         lookbehind: true,
         inside: {
           'interpolation-punctuation': {
-            pattern: /^\${|}$/,
+            pattern: /^\$\{|\}$/,
             alias: 'punctuation'
           },
           rest: Prism.languages.javascript
@@ -39384,7 +38285,10 @@ Prism.languages.insertBefore('javascript', 'string', {
 });
 
 if (Prism.languages.markup) {
-  Prism.languages.markup.tag.addInlined('script', 'javascript');
+  Prism.languages.markup.tag.addInlined('script', 'javascript'); // add attribute support for all DOM events.
+  // https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events
+
+  Prism.languages.markup.tag.addAttribute(/on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)/.source, 'javascript');
 }
 
 Prism.languages.js = Prism.languages.javascript;
@@ -39393,7 +38297,7 @@ Prism.languages.js = Prism.languages.javascript;
 ********************************************** */
 
 (function () {
-  if (typeof self === 'undefined' || !self.Prism || !self.document) {
+  if (typeof Prism === 'undefined' || typeof document === 'undefined') {
     return;
   } // https://developer.mozilla.org/en-US/docs/Web/API/Element/matches#Polyfill
 
@@ -39402,7 +38306,6 @@ Prism.languages.js = Prism.languages.javascript;
     Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
   }
 
-  var Prism = window.Prism;
   var LOADING_MESSAGE = 'Loading…';
 
   var FAILURE_MESSAGE = function (status, message) {
@@ -52942,7 +51845,7 @@ function toCss(selector, style, options) {
 
           if (value != null) {
             if (result) result += '\n';
-            result += "" + indentStr(prop + ": " + toCssValue(value) + ";", indent);
+            result += indentStr(prop + ": " + toCssValue(value) + ";", indent);
           }
         }
       }
@@ -52953,7 +51856,7 @@ function toCss(selector, style, options) {
 
         if (_value != null) {
           if (result) result += '\n';
-          result += "" + indentStr(_prop + ": " + toCssValue(_value) + ";", indent);
+          result += indentStr(_prop + ": " + toCssValue(_value) + ";", indent);
         }
       }
     }
@@ -52964,7 +51867,7 @@ function toCss(selector, style, options) {
 
     if (_value2 != null && _prop2 !== 'fallbacks') {
       if (result) result += '\n';
-      result += "" + indentStr(_prop2 + ": " + toCssValue(_value2) + ";", indent);
+      result += indentStr(_prop2 + ": " + toCssValue(_value2) + ";", indent);
     }
   } // Allow empty style in this case, because properties will be added dynamically.
 
@@ -54275,7 +53178,8 @@ var createGenerateId = function createGenerateId(options) {
   }
 
   var ruleCounter = 0;
-  return function (rule, sheet) {
+
+  var generateId = function generateId(rule, sheet) {
     ruleCounter += 1;
 
     if (ruleCounter > maxRules) {
@@ -54302,6 +53206,8 @@ var createGenerateId = function createGenerateId(options) {
 
     return prefix + rule.key + "-" + moduleId + (jssId ? "-" + jssId : '') + "-" + ruleCounter;
   };
+
+  return generateId;
 };
 /**
  * Cache the value from the first time a function is called.
@@ -54773,7 +53679,7 @@ var instanceCounter = 0;
 var Jss = /*#__PURE__*/function () {
   function Jss(options) {
     this.id = instanceCounter++;
-    this.version = "10.6.0";
+    this.version = "10.7.0";
     this.plugins = new PluginsRegistry();
     this.options = {
       id: {
@@ -64649,6 +63555,1014 @@ module.exports = function stripHtmlComments(html) {
 
 /***/ }),
 
+/***/ 86637:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MS": () => (/* binding */ MS),
+/* harmony export */   "uj": () => (/* binding */ MOZ),
+/* harmony export */   "G$": () => (/* binding */ WEBKIT),
+/* harmony export */   "Ab": () => (/* binding */ COMMENT),
+/* harmony export */   "Fr": () => (/* binding */ RULESET),
+/* harmony export */   "h5": () => (/* binding */ DECLARATION),
+/* harmony export */   "K$": () => (/* binding */ IMPORT),
+/* harmony export */   "lK": () => (/* binding */ KEYFRAMES)
+/* harmony export */ });
+/* unused harmony exports PAGE, MEDIA, CHARSET, VIEWPORT, SUPPORTS, DOCUMENT, NAMESPACE, FONT_FACE, COUNTER_STYLE, FONT_FEATURE_VALUES */
+var MS = '-ms-';
+var MOZ = '-moz-';
+var WEBKIT = '-webkit-';
+var COMMENT = 'comm';
+var RULESET = 'rule';
+var DECLARATION = 'decl';
+var PAGE = '@page';
+var MEDIA = '@media';
+var IMPORT = '@import';
+var CHARSET = '@charset';
+var VIEWPORT = '@viewport';
+var SUPPORTS = '@supports';
+var DOCUMENT = '@document';
+var NAMESPACE = '@namespace';
+var KEYFRAMES = '@keyframes';
+var FONT_FACE = '@font-face';
+var COUNTER_STYLE = '@counter-style';
+var FONT_FEATURE_VALUES = '@font-feature-values';
+
+/***/ }),
+
+/***/ 59154:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "qR": () => (/* binding */ middleware),
+  "Ji": () => (/* binding */ prefixer),
+  "cD": () => (/* binding */ rulesheet)
+});
+
+// UNUSED EXPORTS: namespace
+
+// EXTERNAL MODULE: ./node_modules/stylis/src/Enum.js
+var Enum = __webpack_require__(86637);
+// EXTERNAL MODULE: ./node_modules/stylis/src/Utility.js
+var Utility = __webpack_require__(26447);
+// EXTERNAL MODULE: ./node_modules/stylis/src/Tokenizer.js
+var Tokenizer = __webpack_require__(79942);
+// EXTERNAL MODULE: ./node_modules/stylis/src/Serializer.js
+var Serializer = __webpack_require__(37364);
+;// CONCATENATED MODULE: ./node_modules/stylis/src/Prefixer.js
+
+
+/**
+ * @param {string} value
+ * @param {number} length
+ * @return {string}
+ */
+
+function prefix(value, length) {
+  switch ((0,Utility/* hash */.vp)(value, length)) {
+    // animation, animation-(delay|direction|duration|fill-mode|iteration-count|name|play-state|timing-function)
+    case 5737:
+    case 4201:
+    case 3177:
+    case 3433:
+    case 1641:
+    case 4457:
+    case 2921: // text-decoration, filter, clip-path, backface-visibility, column, box-decoration-break
+
+    case 5572:
+    case 6356:
+    case 5844:
+    case 3191:
+    case 6645:
+    case 3005: // mask, mask-image, mask-(mode|clip|size), mask-(repeat|origin), mask-position, mask-composite,
+
+    case 6391:
+    case 5879:
+    case 5623:
+    case 6135:
+    case 4599:
+    case 4855: // background-clip, columns, column-(count|fill|gap|rule|rule-color|rule-style|rule-width|span|width)
+
+    case 4215:
+    case 6389:
+    case 5109:
+    case 5365:
+    case 5621:
+    case 3829:
+      return Enum/* WEBKIT */.G$ + value + value;
+    // appearance, user-select, transform, hyphens, text-size-adjust
+
+    case 5349:
+    case 4246:
+    case 4810:
+    case 6968:
+    case 2756:
+      return Enum/* WEBKIT */.G$ + value + Enum/* MOZ */.uj + value + Enum.MS + value + value;
+    // flex, flex-direction
+
+    case 6828:
+    case 4268:
+      return Enum/* WEBKIT */.G$ + value + Enum.MS + value + value;
+    // order
+
+    case 6165:
+      return Enum/* WEBKIT */.G$ + value + Enum.MS + 'flex-' + value + value;
+    // align-items
+
+    case 5187:
+      return Enum/* WEBKIT */.G$ + value + (0,Utility/* replace */.gx)(value, /(\w+).+(:[^]+)/, Enum/* WEBKIT */.G$ + 'box-$1$2' + Enum.MS + 'flex-$1$2') + value;
+    // align-self
+
+    case 5443:
+      return Enum/* WEBKIT */.G$ + value + Enum.MS + 'flex-item-' + (0,Utility/* replace */.gx)(value, /flex-|-self/, '') + value;
+    // align-content
+
+    case 4675:
+      return Enum/* WEBKIT */.G$ + value + Enum.MS + 'flex-line-pack' + (0,Utility/* replace */.gx)(value, /align-content|flex-|-self/, '') + value;
+    // flex-shrink
+
+    case 5548:
+      return Enum/* WEBKIT */.G$ + value + Enum.MS + (0,Utility/* replace */.gx)(value, 'shrink', 'negative') + value;
+    // flex-basis
+
+    case 5292:
+      return Enum/* WEBKIT */.G$ + value + Enum.MS + (0,Utility/* replace */.gx)(value, 'basis', 'preferred-size') + value;
+    // flex-grow
+
+    case 6060:
+      return Enum/* WEBKIT */.G$ + 'box-' + (0,Utility/* replace */.gx)(value, '-grow', '') + Enum/* WEBKIT */.G$ + value + Enum.MS + (0,Utility/* replace */.gx)(value, 'grow', 'positive') + value;
+    // transition
+
+    case 4554:
+      return Enum/* WEBKIT */.G$ + (0,Utility/* replace */.gx)(value, /([^-])(transform)/g, '$1' + Enum/* WEBKIT */.G$ + '$2') + value;
+    // cursor
+
+    case 6187:
+      return (0,Utility/* replace */.gx)((0,Utility/* replace */.gx)((0,Utility/* replace */.gx)(value, /(zoom-|grab)/, Enum/* WEBKIT */.G$ + '$1'), /(image-set)/, Enum/* WEBKIT */.G$ + '$1'), value, '') + value;
+    // background, background-image
+
+    case 5495:
+    case 3959:
+      return (0,Utility/* replace */.gx)(value, /(image-set\([^]*)/, Enum/* WEBKIT */.G$ + '$1' + '$`$1');
+    // justify-content
+
+    case 4968:
+      return (0,Utility/* replace */.gx)((0,Utility/* replace */.gx)(value, /(.+:)(flex-)?(.*)/, Enum/* WEBKIT */.G$ + 'box-pack:$3' + Enum.MS + 'flex-pack:$3'), /s.+-b[^;]+/, 'justify') + Enum/* WEBKIT */.G$ + value + value;
+    // (margin|padding)-inline-(start|end)
+
+    case 4095:
+    case 3583:
+    case 4068:
+    case 2532:
+      return (0,Utility/* replace */.gx)(value, /(.+)-inline(.+)/, Enum/* WEBKIT */.G$ + '$1$2') + value;
+    // (min|max)?(width|height|inline-size|block-size)
+
+    case 8116:
+    case 7059:
+    case 5753:
+    case 5535:
+    case 5445:
+    case 5701:
+    case 4933:
+    case 4677:
+    case 5533:
+    case 5789:
+    case 5021:
+    case 4765:
+      // stretch, max-content, min-content, fill-available
+      if ((0,Utility/* strlen */.to)(value) - 1 - length > 6) switch ((0,Utility/* charat */.uO)(value, length + 1)) {
+        // (f)ill-available, (f)it-content
+        case 102:
+          length = (0,Utility/* charat */.uO)(value, length + 3);
+        // (m)ax-content, (m)in-content
+
+        case 109:
+          return (0,Utility/* replace */.gx)(value, /(.+:)(.+)-([^]+)/, '$1' + Enum/* WEBKIT */.G$ + '$2-$3' + '$1' + Enum/* MOZ */.uj + (length == 108 ? '$3' : '$2-$3')) + value;
+        // (s)tretch
+
+        case 115:
+          return ~(0,Utility/* indexof */.Cw)(value, 'stretch') ? prefix((0,Utility/* replace */.gx)(value, 'stretch', 'fill-available'), length) + value : value;
+      }
+      break;
+    // position: sticky
+
+    case 4949:
+      // (s)ticky?
+      if ((0,Utility/* charat */.uO)(value, length + 1) !== 115) break;
+    // display: (flex|inline-flex|inline-box)
+
+    case 6444:
+      switch ((0,Utility/* charat */.uO)(value, (0,Utility/* strlen */.to)(value) - 3 - (~(0,Utility/* indexof */.Cw)(value, '!important') && 10))) {
+        // stic(k)y, inline-b(o)x
+        case 107:
+        case 111:
+          return (0,Utility/* replace */.gx)(value, value, Enum/* WEBKIT */.G$ + value) + value;
+        // (inline-)?fl(e)x
+
+        case 101:
+          return (0,Utility/* replace */.gx)(value, /(.+:)([^;!]+)(;|!.+)?/, '$1' + Enum/* WEBKIT */.G$ + ((0,Utility/* charat */.uO)(value, 14) === 45 ? 'inline-' : '') + 'box$3' + '$1' + Enum/* WEBKIT */.G$ + '$2$3' + '$1' + Enum.MS + '$2box$3') + value;
+      }
+
+      break;
+    // writing-mode
+
+    case 5936:
+      switch ((0,Utility/* charat */.uO)(value, length + 11)) {
+        // vertical-l(r)
+        case 114:
+          return Enum/* WEBKIT */.G$ + value + Enum.MS + (0,Utility/* replace */.gx)(value, /[svh]\w+-[tblr]{2}/, 'tb') + value;
+        // vertical-r(l)
+
+        case 108:
+          return Enum/* WEBKIT */.G$ + value + Enum.MS + (0,Utility/* replace */.gx)(value, /[svh]\w+-[tblr]{2}/, 'tb-rl') + value;
+        // horizontal(-)tb
+
+        case 45:
+          return Enum/* WEBKIT */.G$ + value + Enum.MS + (0,Utility/* replace */.gx)(value, /[svh]\w+-[tblr]{2}/, 'lr') + value;
+      }
+
+      return Enum/* WEBKIT */.G$ + value + Enum.MS + value + value;
+  }
+
+  return value;
+}
+;// CONCATENATED MODULE: ./node_modules/stylis/src/Middleware.js
+
+
+
+
+
+/**
+ * @param {function[]} collection
+ * @return {function}
+ */
+
+function middleware(collection) {
+  var length = (0,Utility/* sizeof */.Ei)(collection);
+  return function (element, index, children, callback) {
+    var output = '';
+
+    for (var i = 0; i < length; i++) output += collection[i](element, index, children, callback) || '';
+
+    return output;
+  };
+}
+/**
+ * @param {function} callback
+ * @return {function}
+ */
+
+function rulesheet(callback) {
+  return function (element) {
+    if (!element.root) if (element = element.return) callback(element);
+  };
+}
+/**
+ * @param {object} element
+ * @param {number} index
+ * @param {object[]} children
+ * @param {function} callback
+ */
+
+function prefixer(element, index, children, callback) {
+  if (!element.return) switch (element.type) {
+    case Enum/* DECLARATION */.h5:
+      element.return = prefix(element.value, element.length);
+      break;
+
+    case Enum/* KEYFRAMES */.lK:
+      return (0,Serializer/* serialize */.q)([(0,Tokenizer/* copy */.JG)((0,Utility/* replace */.gx)(element.value, '@', '@' + Enum/* WEBKIT */.G$), element, '')], callback);
+
+    case Enum/* RULESET */.Fr:
+      if (element.length) return (0,Utility/* combine */.$e)(element.props, function (value) {
+        switch ((0,Utility/* match */.EQ)(value, /(::plac\w+|:read-\w+)/)) {
+          // :read-(only|write)
+          case ':read-only':
+          case ':read-write':
+            return (0,Serializer/* serialize */.q)([(0,Tokenizer/* copy */.JG)((0,Utility/* replace */.gx)(value, /:(read-\w+)/, ':' + Enum/* MOZ */.uj + '$1'), element, '')], callback);
+          // :placeholder
+
+          case '::placeholder':
+            return (0,Serializer/* serialize */.q)([(0,Tokenizer/* copy */.JG)((0,Utility/* replace */.gx)(value, /:(plac\w+)/, ':' + Enum/* WEBKIT */.G$ + 'input-$1'), element, ''), (0,Tokenizer/* copy */.JG)((0,Utility/* replace */.gx)(value, /:(plac\w+)/, ':' + Enum/* MOZ */.uj + '$1'), element, ''), (0,Tokenizer/* copy */.JG)((0,Utility/* replace */.gx)(value, /:(plac\w+)/, Enum.MS + 'input-$1'), element, '')], callback);
+        }
+
+        return '';
+      });
+  }
+}
+/**
+ * @param {object} element
+ * @param {number} index
+ * @param {object[]} children
+ */
+
+function namespace(element) {
+  switch (element.type) {
+    case RULESET:
+      element.props = element.props.map(function (value) {
+        return combine(tokenize(value), function (value, index, children) {
+          switch (charat(value, 0)) {
+            // \f
+            case 12:
+              return substr(value, 1, strlen(value));
+            // \0 ( + > ~
+
+            case 0:
+            case 40:
+            case 43:
+            case 62:
+            case 126:
+              return value;
+            // :
+
+            case 58:
+              if (children[index + 1] === 'global') children[index + 1] = '', children[index + 2] = '\f' + substr(children[index + 2], index = 1, -1);
+            // \s
+
+            case 32:
+              return index === 1 ? '' : value;
+
+            default:
+              switch (index) {
+                case 0:
+                  element = value;
+                  return sizeof(children) > 1 ? '' : value;
+
+                case index = sizeof(children) - 1:
+                case 2:
+                  return index === 2 ? value + element + element : value + element;
+
+                default:
+                  return value;
+              }
+
+          }
+        });
+      });
+  }
+}
+
+/***/ }),
+
+/***/ 66375:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "MY": () => (/* binding */ compile)
+/* harmony export */ });
+/* unused harmony exports parse, ruleset, comment, declaration */
+/* harmony import */ var _Enum_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(86637);
+/* harmony import */ var _Utility_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(26447);
+/* harmony import */ var _Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(79942);
+
+
+
+/**
+ * @param {string} value
+ * @return {object[]}
+ */
+
+function compile(value) {
+  return (0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .dealloc */ .cE)(parse('', null, null, null, [''], value = (0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .alloc */ .un)(value), 0, [0], value));
+}
+/**
+ * @param {string} value
+ * @param {object} root
+ * @param {object?} parent
+ * @param {string[]} rule
+ * @param {string[]} rules
+ * @param {string[]} rulesets
+ * @param {number[]} pseudo
+ * @param {number[]} points
+ * @param {string[]} declarations
+ * @return {object}
+ */
+
+function parse(value, root, parent, rule, rules, rulesets, pseudo, points, declarations) {
+  var index = 0;
+  var offset = 0;
+  var length = pseudo;
+  var atrule = 0;
+  var property = 0;
+  var previous = 0;
+  var variable = 1;
+  var scanning = 1;
+  var ampersand = 1;
+  var character = 0;
+  var type = '';
+  var props = rules;
+  var children = rulesets;
+  var reference = rule;
+  var characters = type;
+
+  while (scanning) switch (previous = character, character = (0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .next */ .lp)()) {
+    // " ' [ (
+    case 34:
+    case 39:
+    case 91:
+    case 40:
+      characters += (0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .delimit */ .iF)(character);
+      break;
+    // \t \n \r \s
+
+    case 9:
+    case 10:
+    case 13:
+    case 32:
+      characters += (0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .whitespace */ .Qb)(previous);
+      break;
+    // /
+
+    case 47:
+      switch ((0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .peek */ .fj)()) {
+        case 42:
+        case 47:
+          (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .append */ .R3)(comment((0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .commenter */ .q6)((0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .next */ .lp)(), (0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .caret */ .Ud)()), root, parent), declarations);
+          break;
+
+        default:
+          characters += '/';
+      }
+
+      break;
+    // {
+
+    case 123 * variable:
+      points[index++] = (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .strlen */ .to)(characters) * ampersand;
+    // } ; \0
+
+    case 125 * variable:
+    case 59:
+    case 0:
+      switch (character) {
+        // \0 }
+        case 0:
+        case 125:
+          scanning = 0;
+        // ;
+
+        case 59 + offset:
+          if (property > 0 && (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .strlen */ .to)(characters) - length) (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .append */ .R3)(property > 32 ? declaration(characters + ';', rule, parent, length - 1) : declaration((0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .replace */ .gx)(characters, ' ', '') + ';', rule, parent, length - 2), declarations);
+          break;
+        // @ ;
+
+        case 59:
+          characters += ';';
+        // { rule/at-rule
+
+        default:
+          (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .append */ .R3)(reference = ruleset(characters, root, parent, index, offset, rules, points, type, props = [], children = [], length), rulesets);
+          if (character === 123) if (offset === 0) parse(characters, root, reference, reference, props, rulesets, length, points, children);else switch (atrule) {
+            // d m s
+            case 100:
+            case 109:
+            case 115:
+              parse(value, reference, reference, rule && (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .append */ .R3)(ruleset(value, reference, reference, 0, 0, rules, points, type, rules, props = [], length), children), rules, children, length, points, rule ? props : children);
+              break;
+
+            default:
+              parse(characters, reference, reference, reference, [''], children, length, points, children);
+          }
+      }
+
+      index = offset = property = 0, variable = ampersand = 1, type = characters = '', length = pseudo;
+      break;
+    // :
+
+    case 58:
+      length = 1 + (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .strlen */ .to)(characters), property = previous;
+
+    default:
+      switch (characters += (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .from */ .Dp)(character), character * variable) {
+        // &
+        case 38:
+          ampersand = offset > 0 ? 1 : (characters += '\f', -1);
+          break;
+        // ,
+
+        case 44:
+          points[index++] = ((0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .strlen */ .to)(characters) - 1) * ampersand, ampersand = 1;
+          break;
+        // @
+
+        case 64:
+          // -
+          if ((0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .peek */ .fj)() === 45) characters += (0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .delimit */ .iF)((0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .next */ .lp)());
+          atrule = (0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .peek */ .fj)(), offset = (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .strlen */ .to)(type = characters += (0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .identifier */ .QU)((0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .caret */ .Ud)())), character++;
+          break;
+        // -
+
+        case 45:
+          if (previous === 45 && (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .strlen */ .to)(characters) == 2) variable = 0;
+      }
+
+  }
+
+  return rulesets;
+}
+/**
+ * @param {string} value
+ * @param {object} root
+ * @param {object?} parent
+ * @param {number} index
+ * @param {number} offset
+ * @param {string[]} rules
+ * @param {number[]} points
+ * @param {string} type
+ * @param {string[]} props
+ * @param {string[]} children
+ * @param {number} length
+ * @return {object}
+ */
+
+function ruleset(value, root, parent, index, offset, rules, points, type, props, children, length) {
+  var post = offset - 1;
+  var rule = offset === 0 ? rules : [''];
+  var size = (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .sizeof */ .Ei)(rule);
+
+  for (var i = 0, j = 0, k = 0; i < index; ++i) for (var x = 0, y = (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .substr */ .tb)(value, post + 1, post = (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .abs */ .Wn)(j = points[i])), z = value; x < size; ++x) if (z = (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .trim */ .fy)(j > 0 ? rule[x] + ' ' + y : (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .replace */ .gx)(y, /&\f/g, rule[x]))) props[k++] = z;
+
+  return (0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .node */ .dH)(value, root, parent, offset === 0 ? _Enum_js__WEBPACK_IMPORTED_MODULE_2__/* .RULESET */ .Fr : type, props, children, length);
+}
+/**
+ * @param {number} value
+ * @param {object} root
+ * @param {object?} parent
+ * @return {object}
+ */
+
+function comment(value, root, parent) {
+  return (0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .node */ .dH)(value, root, parent, _Enum_js__WEBPACK_IMPORTED_MODULE_2__/* .COMMENT */ .Ab, (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .from */ .Dp)((0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .char */ .Tb)()), (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .substr */ .tb)(value, 2, -2), 0);
+}
+/**
+ * @param {string} value
+ * @param {object} root
+ * @param {object?} parent
+ * @param {number} length
+ * @return {object}
+ */
+
+function declaration(value, root, parent, length) {
+  return (0,_Tokenizer_js__WEBPACK_IMPORTED_MODULE_0__/* .node */ .dH)(value, root, parent, _Enum_js__WEBPACK_IMPORTED_MODULE_2__/* .DECLARATION */ .h5, (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .substr */ .tb)(value, 0, length), (0,_Utility_js__WEBPACK_IMPORTED_MODULE_1__/* .substr */ .tb)(value, length + 1, -1), length);
+}
+
+/***/ }),
+
+/***/ 37364:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "q": () => (/* binding */ serialize),
+/* harmony export */   "P": () => (/* binding */ stringify)
+/* harmony export */ });
+/* harmony import */ var _Enum_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(86637);
+/* harmony import */ var _Utility_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26447);
+
+
+/**
+ * @param {object[]} children
+ * @param {function} callback
+ * @return {string}
+ */
+
+function serialize(children, callback) {
+  var output = '';
+  var length = (0,_Utility_js__WEBPACK_IMPORTED_MODULE_0__/* .sizeof */ .Ei)(children);
+
+  for (var i = 0; i < length; i++) output += callback(children[i], i, children, callback) || '';
+
+  return output;
+}
+/**
+ * @param {object} element
+ * @param {number} index
+ * @param {object[]} children
+ * @param {function} callback
+ * @return {string}
+ */
+
+function stringify(element, index, children, callback) {
+  switch (element.type) {
+    case _Enum_js__WEBPACK_IMPORTED_MODULE_1__/* .IMPORT */ .K$:
+    case _Enum_js__WEBPACK_IMPORTED_MODULE_1__/* .DECLARATION */ .h5:
+      return element.return = element.return || element.value;
+
+    case _Enum_js__WEBPACK_IMPORTED_MODULE_1__/* .COMMENT */ .Ab:
+      return '';
+
+    case _Enum_js__WEBPACK_IMPORTED_MODULE_1__/* .RULESET */ .Fr:
+      element.value = element.props.join(',');
+  }
+
+  return (0,_Utility_js__WEBPACK_IMPORTED_MODULE_0__/* .strlen */ .to)(children = serialize(element.children, callback)) ? element.return = element.value + '{' + children + '}' : '';
+}
+
+/***/ }),
+
+/***/ 79942:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "FK": () => (/* binding */ position),
+/* harmony export */   "dH": () => (/* binding */ node),
+/* harmony export */   "JG": () => (/* binding */ copy),
+/* harmony export */   "Tb": () => (/* binding */ char),
+/* harmony export */   "lp": () => (/* binding */ next),
+/* harmony export */   "fj": () => (/* binding */ peek),
+/* harmony export */   "Ud": () => (/* binding */ caret),
+/* harmony export */   "r": () => (/* binding */ token),
+/* harmony export */   "un": () => (/* binding */ alloc),
+/* harmony export */   "cE": () => (/* binding */ dealloc),
+/* harmony export */   "iF": () => (/* binding */ delimit),
+/* harmony export */   "Qb": () => (/* binding */ whitespace),
+/* harmony export */   "q6": () => (/* binding */ commenter),
+/* harmony export */   "QU": () => (/* binding */ identifier)
+/* harmony export */ });
+/* unused harmony exports line, column, length, character, characters, slice, tokenize, tokenizer, delimiter */
+/* harmony import */ var _Utility_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26447);
+
+var line = 1;
+var column = 1;
+var length = 0;
+var position = 0;
+var character = 0;
+var characters = '';
+/**
+ * @param {string} value
+ * @param {object} root
+ * @param {object?} parent
+ * @param {string} type
+ * @param {string[]} props
+ * @param {object[]} children
+ * @param {number} length
+ */
+
+function node(value, root, parent, type, props, children, length) {
+  return {
+    value: value,
+    root: root,
+    parent: parent,
+    type: type,
+    props: props,
+    children: children,
+    line: line,
+    column: column,
+    length: length,
+    return: ''
+  };
+}
+/**
+ * @param {string} value
+ * @param {object} root
+ * @param {string} type
+ */
+
+function copy(value, root, type) {
+  return node(value, root.root, root.parent, type, root.props, root.children, 0);
+}
+/**
+ * @return {number}
+ */
+
+function char() {
+  return character;
+}
+/**
+ * @return {number}
+ */
+
+function next() {
+  character = position < length ? (0,_Utility_js__WEBPACK_IMPORTED_MODULE_0__/* .charat */ .uO)(characters, position++) : 0;
+  if (column++, character === 10) column = 1, line++;
+  return character;
+}
+/**
+ * @return {number}
+ */
+
+function peek() {
+  return (0,_Utility_js__WEBPACK_IMPORTED_MODULE_0__/* .charat */ .uO)(characters, position);
+}
+/**
+ * @return {number}
+ */
+
+function caret() {
+  return position;
+}
+/**
+ * @param {number} begin
+ * @param {number} end
+ * @return {string}
+ */
+
+function slice(begin, end) {
+  return (0,_Utility_js__WEBPACK_IMPORTED_MODULE_0__/* .substr */ .tb)(characters, begin, end);
+}
+/**
+ * @param {number} type
+ * @return {number}
+ */
+
+function token(type) {
+  switch (type) {
+    // \0 \t \n \r \s whitespace token
+    case 0:
+    case 9:
+    case 10:
+    case 13:
+    case 32:
+      return 5;
+    // ! + , / > @ ~ isolate token
+
+    case 33:
+    case 43:
+    case 44:
+    case 47:
+    case 62:
+    case 64:
+    case 126: // ; { } / breakpoint token
+
+    case 59:
+    case 123:
+    case 125:
+      return 4;
+    // : accompanied token
+
+    case 58:
+      return 3;
+    // " ' ( [ opening delimit token
+
+    case 34:
+    case 39:
+    case 40:
+    case 91:
+      return 2;
+    // ) ] closing delimit token
+
+    case 41:
+    case 93:
+      return 1;
+  }
+
+  return 0;
+}
+/**
+ * @param {string} value
+ * @return {any[]}
+ */
+
+function alloc(value) {
+  return line = column = 1, length = (0,_Utility_js__WEBPACK_IMPORTED_MODULE_0__/* .strlen */ .to)(characters = value), position = 0, [];
+}
+/**
+ * @param {any} value
+ * @return {any}
+ */
+
+function dealloc(value) {
+  return characters = '', value;
+}
+/**
+ * @param {number} type
+ * @return {string}
+ */
+
+function delimit(type) {
+  return (0,_Utility_js__WEBPACK_IMPORTED_MODULE_0__/* .trim */ .fy)(slice(position - 1, delimiter(type === 91 ? type + 2 : type === 40 ? type + 1 : type)));
+}
+/**
+ * @param {string} value
+ * @return {string[]}
+ */
+
+function tokenize(value) {
+  return dealloc(tokenizer(alloc(value)));
+}
+/**
+ * @param {number} type
+ * @return {string}
+ */
+
+function whitespace(type) {
+  while (character = peek()) if (character < 33) next();else break;
+
+  return token(type) > 2 || token(character) > 3 ? '' : ' ';
+}
+/**
+ * @param {string[]} children
+ * @return {string[]}
+ */
+
+function tokenizer(children) {
+  while (next()) switch (token(character)) {
+    case 0:
+      append(identifier(position - 1), children);
+      break;
+
+    case 2:
+      append(delimit(character), children);
+      break;
+
+    default:
+      append(from(character), children);
+  }
+
+  return children;
+}
+/**
+ * @param {number} type
+ * @return {number}
+ */
+
+function delimiter(type) {
+  while (next()) switch (character) {
+    // ] ) " '
+    case type:
+      return position;
+    // " '
+
+    case 34:
+    case 39:
+      return delimiter(type === 34 || type === 39 ? type : character);
+    // (
+
+    case 40:
+      if (type === 41) delimiter(type);
+      break;
+    // \
+
+    case 92:
+      next();
+      break;
+  }
+
+  return position;
+}
+/**
+ * @param {number} type
+ * @param {number} index
+ * @return {number}
+ */
+
+function commenter(type, index) {
+  while (next()) // //
+  if (type + character === 47 + 10) break; // /*
+  else if (type + character === 42 + 42 && peek() === 47) break;
+
+  return '/*' + slice(index, position - 1) + '*' + (0,_Utility_js__WEBPACK_IMPORTED_MODULE_0__/* .from */ .Dp)(type === 47 ? type : next());
+}
+/**
+ * @param {number} index
+ * @return {string}
+ */
+
+function identifier(index) {
+  while (!token(peek())) next();
+
+  return slice(index, position);
+}
+
+/***/ }),
+
+/***/ 26447:
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Wn": () => (/* binding */ abs),
+/* harmony export */   "Dp": () => (/* binding */ from),
+/* harmony export */   "vp": () => (/* binding */ hash),
+/* harmony export */   "fy": () => (/* binding */ trim),
+/* harmony export */   "EQ": () => (/* binding */ match),
+/* harmony export */   "gx": () => (/* binding */ replace),
+/* harmony export */   "Cw": () => (/* binding */ indexof),
+/* harmony export */   "uO": () => (/* binding */ charat),
+/* harmony export */   "tb": () => (/* binding */ substr),
+/* harmony export */   "to": () => (/* binding */ strlen),
+/* harmony export */   "Ei": () => (/* binding */ sizeof),
+/* harmony export */   "R3": () => (/* binding */ append),
+/* harmony export */   "$e": () => (/* binding */ combine)
+/* harmony export */ });
+/**
+ * @param {number}
+ * @return {number}
+ */
+var abs = Math.abs;
+/**
+ * @param {number}
+ * @return {string}
+ */
+
+var from = String.fromCharCode;
+/**
+ * @param {string} value
+ * @param {number} length
+ * @return {number}
+ */
+
+function hash(value, length) {
+  return (((length << 2 ^ charat(value, 0)) << 2 ^ charat(value, 1)) << 2 ^ charat(value, 2)) << 2 ^ charat(value, 3);
+}
+/**
+ * @param {string} value
+ * @return {string}
+ */
+
+function trim(value) {
+  return value.trim();
+}
+/**
+ * @param {string} value
+ * @param {RegExp} pattern
+ * @return {string?}
+ */
+
+function match(value, pattern) {
+  return (value = pattern.exec(value)) ? value[0] : value;
+}
+/**
+ * @param {string} value
+ * @param {(string|RegExp)} pattern
+ * @param {string} replacement
+ * @return {string}
+ */
+
+function replace(value, pattern, replacement) {
+  return value.replace(pattern, replacement);
+}
+/**
+ * @param {string} value
+ * @param {string} value
+ * @return {number}
+ */
+
+function indexof(value, search) {
+  return value.indexOf(search);
+}
+/**
+ * @param {string} value
+ * @param {number} index
+ * @return {number}
+ */
+
+function charat(value, index) {
+  return value.charCodeAt(index) | 0;
+}
+/**
+ * @param {string} value
+ * @param {number} begin
+ * @param {number} end
+ * @return {string}
+ */
+
+function substr(value, begin, end) {
+  return value.slice(begin, end);
+}
+/**
+ * @param {string} value
+ * @return {number}
+ */
+
+function strlen(value) {
+  return value.length;
+}
+/**
+ * @param {any[]} value
+ * @return {number}
+ */
+
+function sizeof(value) {
+  return value.length;
+}
+/**
+ * @param {any} value
+ * @param {any[]} array
+ * @return {any}
+ */
+
+function append(value, array) {
+  return array.push(value), value;
+}
+/**
+ * @param {string[]} array
+ * @param {function} callback
+ * @return {string}
+ */
+
+function combine(array, callback) {
+  return array.map(callback).join('');
+}
+
+/***/ }),
+
 /***/ 26492:
 /***/ ((module) => {
 
@@ -66148,7 +66062,7 @@ var defaultProps = Button.defaultProps,
 
 /***/ }),
 
-/***/ 36810:
+/***/ 21214:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -66176,16 +66090,18 @@ var react = __webpack_require__(87401);
 // EXTERNAL MODULE: ./node_modules/prop-types/index.js
 var prop_types = __webpack_require__(23398);
 var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
-// EXTERNAL MODULE: ./node_modules/warning/warning.js
-var warning = __webpack_require__(98939);
-;// CONCATENATED MODULE: ./node_modules/@reach/utils/dist/utils.esm.js
+;// CONCATENATED MODULE: ./node_modules/@reach/utils/can-use-dom/dist/reach-utils-can-use-dom.esm.js
+function canUseDOM() {
+  return !!(typeof window !== "undefined" && window.document && window.document.createElement);
+}
 
 
-/* eslint-disable no-restricted-globals, eqeqeq  */
+;// CONCATENATED MODULE: ./node_modules/@reach/utils/use-isomorphic-layout-effect/dist/reach-utils-use-isomorphic-layout-effect.esm.js
+
 
 /**
- * React currently throws a warning when using useLayoutEffect on the server.
- * To get around it, we can conditionally useEffect on the server (no-op) and
+ * React currently throws a warning when using useLayoutEffect on the server. To
+ * get around it, we can conditionally useEffect on the server (no-op) and
  * useLayoutEffect in the browser. We occasionally need useLayoutEffect to
  * ensure we don't get a render flash for certain operations, but we may also
  * need affected components to render on the server. One example is when setting
@@ -66201,10 +66117,6 @@ var warning = __webpack_require__(98939);
  * all, so a better approach would be to lazily render those in a parent
  * component after client-side hydration.
  *
- * TODO: We are calling useLayoutEffect in a couple of places that will likely
- * cause some issues for SSR users, whether the warning shows or not. Audit and
- * fix these.
- *
  * https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
  * https://github.com/reduxjs/react-redux/blob/master/src/utils/useIsomorphicLayoutEffect.js
  *
@@ -66213,35 +66125,193 @@ var warning = __webpack_require__(98939);
  */
 
 var useIsomorphicLayoutEffect = /*#__PURE__*/canUseDOM() ? react.useLayoutEffect : react.useEffect;
+
+;// CONCATENATED MODULE: ./node_modules/@reach/utils/context/dist/reach-utils-context.esm.js
+
+
+function createNamedContext(name, defaultValue) {
+  var Ctx = /*#__PURE__*/(0,react.createContext)(defaultValue);
+
+  if (false) {}
+
+  return Ctx;
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@reach/utils/type-check/dist/reach-utils-type-check.esm.js
+/**
+ * Checks whether or not a value is a boolean.
+ *
+ * @param value
+ */
+function isBoolean(value) {
+  return typeof value === "boolean";
+}
+/**
+ * Checks whether or not a value is a function.
+ *
+ * @param value
+ */
+
+
+function isFunction(value) {
+  // eslint-disable-next-line eqeqeq
+  return !!(value && {}.toString.call(value) == "[object Function]");
+}
+/**
+ * Checks whether or not a value is a number.
+ *
+ * @param value
+ */
+
+
+function isNumber(value) {
+  return typeof value === "number" && !isNaN(value);
+}
+/**
+ * Checks whether or not a value is a string.
+ *
+ * @param value
+ */
+
+
+function isString(value) {
+  return typeof value === "string";
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@reach/utils/make-id/dist/reach-utils-make-id.esm.js
+/**
+ * Joins strings to format IDs for compound components.
+ *
+ * @param args
+ */
+function makeId() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return args.filter(function (val) {
+    return val != null;
+  }).join("--");
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@reach/utils/noop/dist/reach-utils-noop.esm.js
+function noop() {}
+
+
+;// CONCATENATED MODULE: ./node_modules/@reach/utils/dev-utils/dist/reach-utils-dev-utils.esm.js
+
+/* eslint-disable react-hooks/rules-of-hooks */
+
 var checkedPkgs = {};
 /**
- * When in dev mode, checks that styles for a given @reach package are loaded.
+ * Just a lil state logger
+ *
+ * @param state
+ * @param DEBUG
+ */
+
+function useStateLogger(state, DEBUG) {
+  if (DEBUG === void 0) {
+    DEBUG = false;
+  }
+
+  if (false) { var debugRef; }
+}
+/**
+ * When in dev mode, checks that styles for a given `@reach` package are loaded.
  *
  * @param packageName Name of the package to check.
  * @example checkStyles("dialog") will check for styles for @reach/dialog
  */
-// @ts-ignore
 
-var checkStyles = noop;
 
-if (false) { var _ref, env; }
+function checkStyles(packageName) {
+  if (false) { var _ref, environment; }
+}
 /**
- * Ponyfill for the global object in some environments.
+ * When in dev mode, checks that styles for a given `@reach` package are loaded.
  *
- * @link https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+ * @param packageName Name of the package to check.
+ * @example useCheckStyles("dialog") will check for styles for @reach/dialog
  */
 
 
-var ponyfillGlobal = typeof window != "undefined" && window.Math == Math ? window : typeof self != "undefined" && self.Math == Math ? self :
-/*#__PURE__*/
-// eslint-disable-next-line no-new-func
-Function("return this")();
+function useCheckStyles(packageName) {
+  if (false) { var name; }
+}
+/**
+ * Logs a warning in dev mode when a component switches from controlled to
+ * uncontrolled, or vice versa
+ *
+ * A single prop should typically be used to determine whether or not a
+ * component is controlled or not.
+ *
+ * @param controlledValue
+ * @param controlledPropName
+ * @param componentName
+ */
+
+
+function useControlledSwitchWarning(controlledValue, controlledPropName, componentName) {
+  if (false) { var nameCache, controlledRef; }
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@reach/utils/compose-refs/dist/reach-utils-compose-refs.esm.js
+
+
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+  return arr2;
+}
+
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+}
+
+function _createForOfIteratorHelperLoose(o, allowArrayLike) {
+  var it;
+
+  if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
+    if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") {
+      if (it) o = it;
+      var i = 0;
+      return function () {
+        if (i >= o.length) return {
+          done: true
+        };
+        return {
+          done: false,
+          value: o[i++]
+        };
+      };
+    }
+
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+
+  it = o[Symbol.iterator]();
+  return it.next.bind(it);
+}
 /**
  * Passes or assigns an arbitrary value to a ref function or object.
  *
  * @param ref
  * @param value
  */
+
 
 function assignRef(ref, value) {
   if (ref == null) return;
@@ -66257,400 +66327,6 @@ function assignRef(ref, value) {
   }
 }
 /**
- * Checks true|"true" vs false|"false"
- *
- * @param value
- */
-
-
-function boolOrBoolString(value) {
-  return value === "true" ? true : isBoolean(value) ? value : false;
-}
-
-function canUseDOM() {
-  return !!(typeof window !== "undefined" && window.document && window.document.createElement);
-}
-/**
- * Type-safe clone element
- *
- * @param element
- * @param props
- * @param children
- */
-
-
-function cloneValidElement(element, props) {
-  for (var _len = arguments.length, children = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    children[_key - 2] = arguments[_key];
-  }
-
-  return isValidElement(element) ? cloneElement.apply(void 0, [element, props].concat(children)) : element;
-}
-
-function createNamedContext(name, defaultValue) {
-  var Ctx = (0,react.createContext)(defaultValue);
-  Ctx.displayName = name;
-  return Ctx;
-}
-/**
- * This is a hack for sure. The thing is, getting a component to intelligently
- * infer props based on a component or JSX string passed into an `as` prop is
- * kind of a huge pain. Getting it to work and satisfy the constraints of
- * `forwardRef` seems dang near impossible. To avoid needing to do this awkward
- * type song-and-dance every time we want to forward a ref into a component
- * that accepts an `as` prop, we abstract all of that mess to this function for
- * the time time being.
- */
-
-
-function utils_esm_forwardRefWithAs(render) {
-  return react.forwardRef(render);
-}
-
-function memoWithAs(Component, propsAreEqual) {
-  return React.memo(Component, propsAreEqual);
-}
-/**
- * Get the size of the working document minus the scrollbar offset.
- *
- * @param element
- */
-
-
-function getDocumentDimensions(element) {
-  if (!canUseDOM()) return {
-    width: 0,
-    height: 0
-  };
-  var doc = element ? getOwnerDocument(element) : document;
-  var win = element ? getOwnerWindow(element) : window;
-  return {
-    width: doc.documentElement.clientWidth || win.innerWidth,
-    height: doc.documentElement.clientHeight || win.innerHeight
-  };
-}
-/**
- * Get the scoll position of the global window object relative to a given node.
- *
- * @param element
- */
-
-
-function getScrollPosition(element) {
-  if (!canUseDOM()) return {
-    scrollX: 0,
-    scrollY: 0
-  };
-  var win = element ? getOwnerWindow(element) : window;
-  return {
-    scrollX: win.scrollX,
-    scrollY: win.scrollY
-  };
-}
-/**
- * Get a computed style value by property, backwards compatible with IE
- * @param element
- * @param styleProp
- */
-
-
-function getElementComputedStyle(element, styleProp) {
-  var y = null;
-  var doc = getOwnerDocument(element);
-
-  if (element.currentStyle) {
-    y = element.currentStyle[styleProp];
-  } else if (doc && doc.defaultView && isFunction(doc.defaultView.getComputedStyle)) {
-    y = doc.defaultView.getComputedStyle(element, null).getPropertyValue(styleProp);
-  }
-
-  return y;
-}
-/**
- * Get an element's owner document. Useful when components are used in iframes
- * or other environments like dev tools.
- *
- * @param element
- */
-
-
-function getOwnerDocument(element) {
-  return element && element.ownerDocument ? element.ownerDocument : canUseDOM() ? document : null;
-}
-
-function getOwnerWindow(element) {
-  var doc = element ? getOwnerDocument(element) : null;
-  return doc ? doc.defaultView || window : null;
-}
-/**
- * Get the scrollbar offset distance.
- *
- * TODO: Remove in 1.0 (we used this in public examples)
- */
-
-
-function getScrollbarOffset() {
-  try {
-    if (window.innerWidth > document.documentElement.clientWidth) {
-      return window.innerWidth - document.documentElement.clientWidth;
-    }
-  } catch (err) {}
-
-  return 0;
-}
-/**
- * Checks whether or not a value is a boolean.
- *
- * @param value
- */
-
-
-function isBoolean(value) {
-  return typeof value === "boolean";
-}
-/**
- * Checks whether or not a value is a function.
- *
- * @param value
- */
-
-
-function isFunction(value) {
-  return !!(value && {}.toString.call(value) == "[object Function]");
-}
-/**
- * Checks whether or not a value is a number.
- *
- * @param value
- */
-
-
-function isNumber(value) {
-  return typeof value === "number";
-}
-/**
- * Detects right clicks
- *
- * @param nativeEvent
- */
-
-
-function isRightClick(nativeEvent) {
-  return nativeEvent.which === 3 || nativeEvent.button === 2;
-}
-/**
- * Checks whether or not a value is a string.
- *
- * @param value
- */
-
-
-function isString(value) {
-  return typeof value === "string";
-}
-/**
- * Joins strings to format IDs for compound components.
- *
- * @param args
- */
-
-
-function makeId() {
-  for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-    args[_key2] = arguments[_key2];
-  }
-
-  return args.filter(function (val) {
-    return val != null;
-  }).join("--");
-}
-/**
- * No-op function.
- */
-
-
-function noop() {}
-/**
- * Convert our state strings for HTML data attributes.
- * No need for a fancy kebab-caser here, we know what our state strings are!
- *
- * @param state
- */
-
-
-function stateToAttributeString(state) {
-  return String(state).replace(/([\s_]+)/g, "-").toLowerCase();
-}
-/**
- * Check if a component is controlled or uncontrolled and return the correct
- * state value and setter accordingly. If the component state is controlled by
- * the app, the setter is a noop.
- *
- * @param controlledValue
- * @param defaultValue
- */
-
-
-function useControlledState(controlledValue, defaultValue) {
-  var controlledRef = useRef(controlledValue != null);
-
-  var _useState = useState(defaultValue),
-      valueState = _useState[0],
-      setValue = _useState[1];
-
-  var set = useCallback(function (n) {
-    if (!controlledRef.current) {
-      setValue(n);
-    }
-  }, []);
-  return [controlledRef.current ? controlledValue : valueState, set];
-}
-/**
- * Logs a warning in dev mode when a component switches from controlled to
- * uncontrolled, or vice versa
- *
- * A single prop should typically be used to determine whether or not a
- * component is controlled or not.
- *
- * @param controlledValue
- * @param controlledPropName
- * @param componentName
- */
-
-
-var useControlledSwitchWarning = (/* unused pure expression or super */ null && (noop));
-
-if (false) {}
-
-var useCheckStyles = (/* unused pure expression or super */ null && (noop));
-
-if (false) {}
-/**
- * React hook for creating a value exactly once.
- * @see https://github.com/Andarist/use-constant
- */
-
-
-function useConstant(fn) {
-  var ref = React.useRef();
-
-  if (!ref.current) {
-    ref.current = {
-      v: fn()
-    };
-  }
-
-  return ref.current.v;
-}
-/**
- * @param callback
- */
-
-
-function useEventCallback(callback) {
-  var ref = useRef(callback);
-  useIsomorphicLayoutEffect(function () {
-    ref.current = callback;
-  });
-  return useCallback(function (event) {
-    for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-      args[_key3 - 1] = arguments[_key3];
-    }
-
-    return ref.current.apply(ref, [event].concat(args));
-  }, []);
-}
-/**
- * @param callback
- */
-
-
-function useCallbackProp(callback) {
-  var ref = useRef(callback);
-  useEffect(function () {
-    ref.current = callback;
-  });
-  return useCallback(function () {
-    return ref.current && ref.current.apply(ref, arguments);
-  }, []);
-}
-/**
- * Adds a DOM event listener
- *
- * @param eventName
- * @param listener
- * @param element
- */
-
-
-function useEventListener(eventName, listener, element) {
-  if (element === void 0) {
-    element = window;
-  }
-
-  var savedHandler = useRef(listener);
-  useEffect(function () {
-    savedHandler.current = listener;
-  }, [listener]);
-  useEffect(function () {
-    var isSupported = element && element.addEventListener;
-
-    if (!isSupported) {
-      if (false) {}
-
-      return;
-    }
-
-    function eventListener(event) {
-      savedHandler.current(event);
-    }
-
-    element.addEventListener(eventName, eventListener);
-    return function () {
-      element.removeEventListener(eventName, eventListener);
-    };
-  }, [eventName, element]);
-}
-/**
- * Detect when focus changes in our document.
- *
- * @param handleChange
- * @param when
- * @param ownerDocument
- */
-
-
-function useFocusChange(handleChange, when, ownerDocument) {
-  if (handleChange === void 0) {
-    handleChange = console.log;
-  }
-
-  if (when === void 0) {
-    when = "focus";
-  }
-
-  if (ownerDocument === void 0) {
-    ownerDocument = document;
-  }
-
-  var lastActiveElement = useRef(ownerDocument.activeElement);
-  useEffect(function () {
-    lastActiveElement.current = ownerDocument.activeElement;
-
-    function onChange(event) {
-      if (lastActiveElement.current !== ownerDocument.activeElement) {
-        handleChange(ownerDocument.activeElement, lastActiveElement.current, event);
-        lastActiveElement.current = ownerDocument.activeElement;
-      }
-    }
-
-    ownerDocument.addEventListener(when, onChange, true);
-    return function () {
-      ownerDocument.removeEventListener(when, onChange);
-    };
-  }, [when, handleChange, ownerDocument]);
-}
-/**
  * Passes or assigns a value to multiple refs (typically a DOM node). Useful for
  * dealing with components that need an explicit ref for DOM calculations but
  * also forwards refs assigned by an app.
@@ -66659,46 +66335,29 @@ function useFocusChange(handleChange, when, ownerDocument) {
  */
 
 
-function utils_esm_useForkedRef() {
-  for (var _len4 = arguments.length, refs = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-    refs[_key4] = arguments[_key4];
+function reach_utils_compose_refs_esm_useComposedRefs() {
+  for (var _len = arguments.length, refs = new Array(_len), _key = 0; _key < _len; _key++) {
+    refs[_key] = arguments[_key];
   }
 
-  return (0,react.useMemo)(function () {
-    if (refs.every(function (ref) {
-      return ref == null;
-    })) {
-      return null;
-    }
+  return (0,react.useCallback)(function (node) {
+    for (var _iterator = _createForOfIteratorHelperLoose(refs), _step; !(_step = _iterator()).done;) {
+      var ref = _step.value;
+      assignRef(ref, node);
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
 
-    return function (node) {
-      refs.forEach(function (ref) {
-        assignRef(ref, node);
-      });
-    }; // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [].concat(refs));
+  }, refs);
 }
-/**
- * Returns the previous value of a reference after a component update.
- *
- * @param value
- */
 
 
-function usePrevious(value) {
-  var ref = (0,react.useRef)(null);
-  (0,react.useEffect)(function () {
-    ref.current = value;
-  }, [value]);
-  return ref.current;
-}
+;// CONCATENATED MODULE: ./node_modules/@reach/utils/use-update-effect/dist/reach-utils-use-update-effect.esm.js
+
 /**
  * Call an effect after a component update, skipping the initial mount.
  *
  * @param effect Effect to call
  * @param deps Effect dependency list
  */
-
 
 function useUpdateEffect(effect, deps) {
   var mounted = (0,react.useRef)(false);
@@ -66711,17 +66370,25 @@ function useUpdateEffect(effect, deps) {
 
   }, deps);
 }
-/**
- * Just a lil state logger
- *
- * @param state
- * @param DEBUG
- */
 
 
-var useStateLogger = (/* unused pure expression or super */ null && (noop));
+;// CONCATENATED MODULE: ./node_modules/@reach/utils/use-stateful-ref-value/dist/reach-utils-use-stateful-ref-value.esm.js
 
-if (false) {}
+
+function useStatefulRefValue(ref, initialState) {
+  var _useState = (0,react.useState)(initialState),
+      state = _useState[0],
+      setState = _useState[1];
+
+  var callbackRef = (0,react.useCallback)(function (refValue) {
+    ref.current = refValue;
+    setState(refValue); // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return [state, callbackRef];
+}
+
+
+;// CONCATENATED MODULE: ./node_modules/@reach/utils/compose-event-handlers/dist/reach-utils-compose-event-handlers.esm.js
 /**
  * Wraps a lib-defined event handler and a user-defined event handler, returning
  * a single handler that allows a user to prevent lib-defined handlers from
@@ -66730,9 +66397,7 @@ if (false) {}
  * @param theirHandler User-supplied event handler
  * @param ourHandler Library-supplied event handler
  */
-
-
-function utils_esm_wrapEvent(theirHandler, ourHandler) {
+function reach_utils_compose_event_handlers_esm_composeEventHandlers(theirHandler, ourHandler) {
   return function (event) {
     theirHandler && theirHandler(event);
 
@@ -66743,9 +66408,43 @@ function utils_esm_wrapEvent(theirHandler, ourHandler) {
 }
 
 
-;// CONCATENATED MODULE: ./node_modules/@reach/descendants/dist/descendants.esm.js
+;// CONCATENATED MODULE: ./node_modules/@reach/utils/use-force-update/dist/reach-utils-use-force-update.esm.js
+
+/**
+ * Forces a re-render, similar to `forceUpdate` in class components.
+ */
+
+function useForceUpdate() {
+  var _useState = (0,react.useState)(Object.create(null)),
+      dispatch = _useState[1];
+
+  return (0,react.useCallback)(function () {
+    dispatch(Object.create(null));
+  }, []);
+}
 
 
+;// CONCATENATED MODULE: ./node_modules/@reach/descendants/dist/reach-descendants.esm.js
+
+
+
+
+
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  return target;
+}
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -66765,20 +66464,7 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  return target;
-}
+var _excluded = ["element", "index"];
 
 function createDescendantContext(name, initialValue) {
   if (initialValue === void 0) {
@@ -66810,7 +66496,7 @@ function createDescendantContext(name, initialValue) {
  *   5) index always up-to-date with the tree despite changes
  *   6) works with memoization of any component in the tree (hopefully)
  *
- * * As for SSR, the good news is that we don't actually need the index on the
+ * As for SSR, the good news is that we don't actually need the index on the
  * server for most use-cases, as we are only using it to determine the order of
  * composed descendants for keyboard navigation. However, in the few cases where
  * this is not the case, we can require an explicit index from the app.
@@ -66818,42 +66504,30 @@ function createDescendantContext(name, initialValue) {
 
 
 function useDescendant(descendant, context, indexProp) {
-  var _useState = (0,react.useState)(),
-      forceUpdate = _useState[1];
+  var forceUpdate = useForceUpdate();
 
-  var _useContext = (0,react.useContext)(context),
-      registerDescendant = _useContext.registerDescendant,
-      unregisterDescendant = _useContext.unregisterDescendant,
-      descendants = _useContext.descendants; // This will initially return -1 because we haven't registered the descendant
+  var _React$useContext = (0,react.useContext)(context),
+      registerDescendant = _React$useContext.registerDescendant,
+      unregisterDescendant = _React$useContext.unregisterDescendant,
+      descendants = _React$useContext.descendants; // This will initially return -1 because we haven't registered the descendant
   // on the first render. After we register, this will then return the correct
-  // index on the following render and we will re-register descendants
-  // so that everything is up-to-date before the user interacts with a
-  // collection.
+  // index on the following render and we will re-register descendants so that
+  // everything is up-to-date before the user interacts with a collection.
 
 
-  var index = indexProp !== null && indexProp !== void 0 ? indexProp : descendants.findIndex(function (item) {
+  var index = indexProp != null ? indexProp : descendants.findIndex(function (item) {
     return item.element === descendant.element;
-  });
-  var previousDescendants = usePrevious(descendants); // We also need to re-register descendants any time ANY of the other
-  // descendants have changed. My brain was melting when I wrote this and it
-  // feels a little off, but checking in render and using the result in the
-  // effect's dependency array works well enough.
-
-  var someDescendantsHaveChanged = descendants.some(function (descendant, index) {
-    var _previousDescendants$;
-
-    return descendant.element !== (previousDescendants === null || previousDescendants === void 0 ? void 0 : (_previousDescendants$ = previousDescendants[index]) === null || _previousDescendants$ === void 0 ? void 0 : _previousDescendants$.element);
   }); // Prevent any flashing
 
   useIsomorphicLayoutEffect(function () {
-    if (!descendant.element) forceUpdate({});
+    if (!descendant.element) forceUpdate();
     registerDescendant(_extends({}, descendant, {
       index: index
     }));
     return function () {
-      return unregisterDescendant(descendant.element);
-    }; // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [registerDescendant, unregisterDescendant, index, someDescendantsHaveChanged].concat(Object.values(descendant)));
+      unregisterDescendant(descendant.element);
+    };
+  }, [descendant, forceUpdate, index, registerDescendant, unregisterDescendant].concat(Object.values(descendant)));
   return index;
 }
 
@@ -66873,7 +66547,7 @@ function DescendantProvider(_ref) {
   var registerDescendant = (0,react.useCallback)(function (_ref2) {
     var element = _ref2.element,
         explicitIndex = _ref2.index,
-        rest = _objectWithoutPropertiesLoose(_ref2, ["element", "index"]);
+        rest = _objectWithoutPropertiesLoose(_ref2, _excluded);
 
     if (!element) {
       return;
@@ -66883,16 +66557,18 @@ function DescendantProvider(_ref) {
       var newItems;
 
       if (explicitIndex != null) {
-        newItems = [].concat(items, [_extends({}, rest, {
+        return [].concat(items, [_extends({}, rest, {
           element: element,
           index: explicitIndex
-        })]);
+        })]).sort(function (a, b) {
+          return a.index - b.index;
+        });
       } else if (items.length === 0) {
         // If there are no items, register at index 0 and bail.
-        newItems = [].concat(items, [_extends({}, rest, {
+        newItems = [_extends({}, rest, {
           element: element,
           index: 0
-        })]);
+        })];
       } else if (items.find(function (item) {
         return item.element === element;
       })) {
@@ -66942,7 +66618,7 @@ function DescendantProvider(_ref) {
         });
       });
     });
-  }, // set is a state setter initialized by the useDescendants hook.
+  }, // set is a state setter initialized by the useDescendantsInit hook.
   // We can safely ignore the lint warning here because it will not change
   // between renders.
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -66957,12 +66633,12 @@ function DescendantProvider(_ref) {
         return element !== item.element;
       });
     });
-  }, // set is a state setter initialized by the useDescendants hook.
+  }, // set is a state setter initialized by the useDescendantsInit hook.
   // We can safely ignore the lint warning here because it will not change
   // between renders.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   []);
-  return react.createElement(Ctx.Provider, {
+  return /*#__PURE__*/(0,react.createElement)(Ctx.Provider, {
     value: (0,react.useMemo)(function () {
       return {
         descendants: items,
@@ -66988,8 +66664,8 @@ function DescendantProvider(_ref) {
 
 
 function useDescendantKeyDown(context, options) {
-  var _useContext2 = useContext(context),
-      descendants = _useContext2.descendants;
+  var _React$useContext2 = useContext(context),
+      descendants = _React$useContext2.descendants;
 
   var callback = options.callback,
       currentIndex = options.currentIndex,
@@ -67002,36 +66678,32 @@ function useDescendantKeyDown(context, options) {
       rotate = _options$rotate === void 0 ? true : _options$rotate,
       _options$rtl = options.rtl,
       rtl = _options$rtl === void 0 ? false : _options$rtl;
-  var index = currentIndex !== null && currentIndex !== void 0 ? currentIndex : -1;
   return function handleKeyDown(event) {
     if (!["ArrowDown", "ArrowUp", "ArrowLeft", "ArrowRight", "PageUp", "PageDown", "Home", "End"].includes(event.key)) {
       return;
-    } // If we use a filter function, we need to re-index our descendants array
+    }
+
+    var index = currentIndex != null ? currentIndex : -1; // If we use a filter function, we need to re-index our descendants array
     // so that filtered descendent elements aren't selected.
 
-
-    var selectableDescendants = filter ? descendants.filter(filter) : descendants; // Current index should map to the updated array vs. the original
-    // descendants array.
-
-    if (filter) {
-      index = selectableDescendants.findIndex(function (descendant) {
-        return descendant.index === currentIndex;
-      });
-    } // We need some options for any of this to work!
-
+    var selectableDescendants = filter ? descendants.filter(filter) : descendants; // We need some options for any of this to work!
 
     if (!selectableDescendants.length) {
       return;
     }
 
+    var selectableIndex = selectableDescendants.findIndex(function (descendant) {
+      return descendant.index === currentIndex;
+    });
+
     function getNextOption() {
-      var atBottom = index === selectableDescendants.length - 1;
-      return atBottom ? rotate ? getFirstOption() : selectableDescendants[index] : selectableDescendants[(index + 1) % selectableDescendants.length];
+      var atBottom = index === getLastOption().index;
+      return atBottom ? rotate ? getFirstOption() : selectableDescendants[selectableIndex] : selectableDescendants[(selectableIndex + 1) % selectableDescendants.length];
     }
 
     function getPreviousOption() {
-      var atTop = index === 0;
-      return atTop ? rotate ? getLastOption() : selectableDescendants[index] : selectableDescendants[(index - 1 + selectableDescendants.length) % selectableDescendants.length];
+      var atTop = index === getFirstOption().index;
+      return atTop ? rotate ? getLastOption() : selectableDescendants[selectableIndex] : selectableDescendants[(selectableIndex - 1 + selectableDescendants.length) % selectableDescendants.length];
     }
 
     function getFirstOption() {
@@ -67104,12 +66776,11 @@ function useDescendantKeyDown(context, options) {
         break;
     }
   };
-}
+} ////////////////////////////////////////////////////////////////////////////////
 
 
-// EXTERNAL MODULE: ./node_modules/highlight-words-core/dist/index.js
-var dist = __webpack_require__(83279);
-;// CONCATENATED MODULE: ./node_modules/@reach/auto-id/dist/auto-id.esm.js
+
+;// CONCATENATED MODULE: ./node_modules/@reach/auto-id/dist/reach-auto-id.esm.js
 
 
 /*
@@ -67119,7 +66790,7 @@ var dist = __webpack_require__(83279);
  * implementation.
  *
  * Some background:
- *   1. Accessibiliy APIs rely heavily on element IDs
+ *   1. Accessibility APIs rely heavily on element IDs
  *   2. Requiring developers to put IDs on every element in Reach UI is both
  *      cumbersome and error-prone
  *   3. With a component model, we can generate IDs for them!
@@ -67183,20 +66854,20 @@ var genId = function genId() {
  * component mounts. Users may need to supply their own ID if they need
  * consistent values for SSR.
  *
- * @see Docs https://reacttraining.com/reach-ui/auto-id
+ * @see Docs https://reach.tech/auto-id
  */
 
 
-var useId = function useId(idFromProps) {
+function useId(idFromProps) {
   /*
    * If this instance isn't part of the initial render, we don't have to do the
    * double render/patch-up dance. We can just generate the ID and return it.
    */
   var initialId = idFromProps || (serverHandoffComplete ? genId() : null);
 
-  var _useState = (0,react.useState)(initialId),
-      id = _useState[0],
-      setId = _useState[1];
+  var _React$useState = (0,react.useState)(initialId),
+      id = _React$useState[0],
+      setId = _React$useState[1];
 
   useIsomorphicLayoutEffect(function () {
     if (id === null) {
@@ -67221,12 +66892,13 @@ var useId = function useId(idFromProps) {
     }
   }, []);
   return id != null ? String(id) : undefined;
-};
+}
 
 
 // EXTERNAL MODULE: ./node_modules/react-dom/index.js
 var react_dom = __webpack_require__(12674);
-;// CONCATENATED MODULE: ./node_modules/@reach/portal/dist/portal.esm.js
+;// CONCATENATED MODULE: ./node_modules/@reach/portal/dist/reach-portal.esm.js
+
 
 
 
@@ -67238,7 +66910,7 @@ var react_dom = __webpack_require__(12674);
  * with a different DOM hierarchy to prevent parent styles from clipping or
  * hiding content (for popovers, dropdowns, and modals).
  *
- * @see Docs   https://reacttraining.com/reach-ui/portal
+ * @see Docs   https://reach.tech/portal
  * @see Source https://github.com/reach/reach-ui/tree/main/packages/portal
  * @see React  https://reactjs.org/docs/portals.html
  */
@@ -67246,7 +66918,7 @@ var react_dom = __webpack_require__(12674);
 /**
  * Portal
  *
- * @see Docs https://reacttraining.com/reach-ui/portal#portal
+ * @see Docs https://reach.tech/portal#portal
  */
 
 var Portal = function Portal(_ref) {
@@ -67255,33 +66927,36 @@ var Portal = function Portal(_ref) {
       type = _ref$type === void 0 ? "reach-portal" : _ref$type;
   var mountNode = (0,react.useRef)(null);
   var portalNode = (0,react.useRef)(null);
-
-  var _useState = (0,react.useState)(),
-      forceUpdate = _useState[1];
-
+  var forceUpdate = useForceUpdate();
   useIsomorphicLayoutEffect(function () {
     // This ref may be null when a hot-loader replaces components on the page
     if (!mountNode.current) return; // It's possible that the content of the portal has, itself, been portaled.
     // In that case, it's important to append to the correct document element.
 
     var ownerDocument = mountNode.current.ownerDocument;
-    portalNode.current = ownerDocument === null || ownerDocument === void 0 ? void 0 : ownerDocument.createElement(type);
+    portalNode.current = ownerDocument == null ? void 0 : ownerDocument.createElement(type);
     ownerDocument.body.appendChild(portalNode.current);
-    forceUpdate({});
+    forceUpdate();
     return function () {
       if (portalNode.current && portalNode.current.ownerDocument) {
         portalNode.current.ownerDocument.body.removeChild(portalNode.current);
       }
     };
-  }, [type]);
-  return portalNode.current ? (0,react_dom.createPortal)(children, portalNode.current) : react.createElement("span", {
+  }, [type, forceUpdate]);
+  return portalNode.current ? /*#__PURE__*/(0,react_dom.createPortal)(children, portalNode.current) : /*#__PURE__*/(0,react.createElement)("span", {
     ref: mountNode
   });
 };
+/**
+ * @see Docs https://reach.tech/portal#portal-props
+ */
 
-if (false) {}
 
-/* harmony default export */ const portal_esm = (Portal);
+if (false) {} ////////////////////////////////////////////////////////////////////////////////
+
+
+/* harmony default export */ const reach_portal_esm = ((/* unused pure expression or super */ null && (Portal)));
+
 ;// CONCATENATED MODULE: ./node_modules/@reach/observe-rect/dist/observe-rect.esm.js
 var props = ["bottom", "height", "left", "right", "top", "width"];
 
@@ -67354,7 +67029,9 @@ function observeRect(node, cb) {
 }
 
 /* harmony default export */ const observe_rect_esm = (observeRect);
-;// CONCATENATED MODULE: ./node_modules/@reach/rect/dist/rect.esm.js
+;// CONCATENATED MODULE: ./node_modules/@reach/rect/dist/reach-rect.esm.js
+
+
 
 
 
@@ -67365,7 +67042,7 @@ function observeRect(node, cb) {
  * Measures DOM elements (aka. bounding client rect).
  *
  * @see getBoundingClientRect https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
- * @see Docs                  https://reacttraining.com/reach-ui/rect
+ * @see Docs                  https://reach.tech/rect
  * @see Source                https://github.com/reach/reach-ui/tree/main/packages/rect
  */
 
@@ -67381,12 +67058,19 @@ var Rect = function Rect(_ref) {
       observe = _ref$observe === void 0 ? true : _ref$observe,
       children = _ref.children;
   var ref = useRef(null);
-  var rect = useRect(ref, observe, onChange);
+  var rect = useRect(ref, {
+    observe: observe,
+    onChange: onChange
+  });
   return children({
     ref: ref,
     rect: rect
   });
 };
+/**
+ * @see Docs https://reach.tech/rect#rect-props
+ */
+
 
 if (false) {} ////////////////////////////////////////////////////////////////////////////////
 
@@ -67399,23 +67083,38 @@ if (false) {} //////////////////////////////////////////////////////////////////
  */
 
 
-function useRect(nodeRef, observe, onChange) {
-  if (observe === void 0) {
-    observe = true;
+function useRect(nodeRef, observeOrOptions, deprecated_onChange) {
+  var observe;
+  var onChange;
+
+  if (isBoolean(observeOrOptions)) {
+    observe = observeOrOptions;
+  } else {
+    var _observeOrOptions$obs;
+
+    observe = (_observeOrOptions$obs = observeOrOptions == null ? void 0 : observeOrOptions.observe) != null ? _observeOrOptions$obs : true;
+    onChange = observeOrOptions == null ? void 0 : observeOrOptions.onChange;
   }
 
-  var _useState = (0,react.useState)(nodeRef.current),
-      element = _useState[0],
-      setElement = _useState[1];
+  if (isFunction(deprecated_onChange)) {
+    onChange = deprecated_onChange;
+  }
+
+  if (false) {}
+
+  var _React$useState = (0,react.useState)(nodeRef.current),
+      element = _React$useState[0],
+      setElement = _React$useState[1];
 
   var initialRectIsSet = (0,react.useRef)(false);
   var initialRefIsSet = (0,react.useRef)(false);
 
-  var _useState2 = (0,react.useState)(null),
-      rect = _useState2[0],
-      setRect = _useState2[1];
+  var _React$useState2 = (0,react.useState)(null),
+      rect = _React$useState2[0],
+      setRect = _React$useState2[1];
 
-  var onChangeRef = (0,react.useRef)();
+  var onChangeRef = (0,react.useRef)(onChange); // eslint-disable-next-line react-hooks/exhaustive-deps
+
   useIsomorphicLayoutEffect(function () {
     onChangeRef.current = onChange;
 
@@ -67430,7 +67129,10 @@ function useRect(nodeRef, observe, onChange) {
     }
   }, [element]);
   useIsomorphicLayoutEffect(function () {
-    var observer;
+    if (!observe) {
+      return;
+    }
+
     var elem = element; // State initializes before refs are placed, meaning the element state will
     // be undefined on the first render. We still want the rect on the first
     // render, so initially we'll use the nodeRef that was passed instead of
@@ -67444,54 +67146,58 @@ function useRect(nodeRef, observe, onChange) {
     if (!elem) {
       if (false) {}
 
-      return cleanup;
+      return;
     }
 
-    observer = observe_rect_esm(elem, function (rect) {
-      onChangeRef.current && onChangeRef.current(rect);
+    var observer = observe_rect_esm(elem, function (rect) {
+      onChangeRef.current == null ? void 0 : onChangeRef.current(rect);
       setRect(rect);
     });
-    observe && observer.observe();
-    return cleanup;
-
-    function cleanup() {
-      observer && observer.unobserve();
-    }
-  }, [observe, element]);
+    observer.observe();
+    return function () {
+      observer.unobserve();
+    };
+  }, [observe, element, nodeRef]);
   return rect;
 }
 
-/* harmony default export */ const rect_esm = ((/* unused pure expression or super */ null && (Rect)));
+/* harmony default export */ const reach_rect_esm = ((/* unused pure expression or super */ null && (Rect)));
+
+;// CONCATENATED MODULE: ./node_modules/@reach/utils/owner-document/dist/reach-utils-owner-document.esm.js
+
+/**
+ * Get an element's owner document. Useful when components are used in iframes
+ * or other environments like dev tools.
+ *
+ * @param element
+ */
+
+function getOwnerDocument(element) {
+  return canUseDOM() ? element ? element.ownerDocument : document : null;
+}
+/**
+ * TODO: Remove in 1.0
+ */
+
+
+function getOwnerWindow(element) {
+  var ownerDocument = getOwnerDocument(element);
+  return ownerDocument ? ownerDocument.defaultView || window : null;
+}
+
 
 // EXTERNAL MODULE: ./node_modules/tabbable/index.js
 var tabbable = __webpack_require__(26492);
 var tabbable_default = /*#__PURE__*/__webpack_require__.n(tabbable);
-;// CONCATENATED MODULE: ./node_modules/@reach/popover/dist/popover.esm.js
+;// CONCATENATED MODULE: ./node_modules/@reach/popover/dist/reach-popover.esm.js
 
 
 
 
 
 
-function popover_esm_extends() {
-  popover_esm_extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return popover_esm_extends.apply(this, arguments);
-}
-
-function popover_esm_objectWithoutPropertiesLoose(source, excluded) {
+function reach_popover_esm_objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
   var target = {};
   var sourceKeys = Object.keys(source);
@@ -67505,18 +67211,39 @@ function popover_esm_objectWithoutPropertiesLoose(source, excluded) {
 
   return target;
 }
+
+function reach_popover_esm_extends() {
+  reach_popover_esm_extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return reach_popover_esm_extends.apply(this, arguments);
+}
+
+var reach_popover_esm_excluded = ["as", "targetRef", "position", "unstable_observableRefs"]; ////////////////////////////////////////////////////////////////////////////////
+
 /**
  * Popover
  */
 
-
 var Popover = /*#__PURE__*/(0,react.forwardRef)(function Popover(props, ref) {
-  return react.createElement(portal_esm, null, react.createElement(PopoverImpl, Object.assign({
+  return /*#__PURE__*/(0,react.createElement)(Portal, null, /*#__PURE__*/(0,react.createElement)(PopoverImpl, reach_popover_esm_extends({
     ref: ref
   }, props)));
 });
 
-if (false) {}
+if (false) {} ////////////////////////////////////////////////////////////////////////////////
+
 /**
  * PopoverImpl
  *
@@ -67526,23 +67253,29 @@ if (false) {}
 
 
 var PopoverImpl = /*#__PURE__*/(0,react.forwardRef)(function PopoverImpl(_ref, forwardedRef) {
-  var targetRef = _ref.targetRef,
+  var _ref$as = _ref.as,
+      Comp = _ref$as === void 0 ? "div" : _ref$as,
+      targetRef = _ref.targetRef,
       _ref$position = _ref.position,
       position = _ref$position === void 0 ? positionDefault : _ref$position,
       _ref$unstable_observa = _ref.unstable_observableRefs,
       unstable_observableRefs = _ref$unstable_observa === void 0 ? [] : _ref$unstable_observa,
-      props = popover_esm_objectWithoutPropertiesLoose(_ref, ["targetRef", "position", "unstable_observableRefs"]);
+      props = reach_popover_esm_objectWithoutPropertiesLoose(_ref, reach_popover_esm_excluded);
 
   var popoverRef = (0,react.useRef)(null);
-  var popoverRect = useRect(popoverRef);
-  var targetRect = useRect(targetRef);
-  var ref = utils_esm_useForkedRef(popoverRef, forwardedRef);
+  var popoverRect = useRect(popoverRef, {
+    observe: !props.hidden
+  });
+  var targetRect = useRect(targetRef, {
+    observe: !props.hidden
+  });
+  var ref = reach_utils_compose_refs_esm_useComposedRefs(popoverRef, forwardedRef);
   useSimulateTabNavigationForReactTree(targetRef, popoverRef);
-  return react.createElement("div", Object.assign({
+  return /*#__PURE__*/(0,react.createElement)(Comp, reach_popover_esm_extends({
     "data-reach-popover": "",
     ref: ref
   }, props, {
-    style: popover_esm_extends({
+    style: reach_popover_esm_extends({
       position: "absolute"
     }, getStyles.apply(void 0, [position, targetRect, popoverRect].concat(unstable_observableRefs)), props.style)
   }));
@@ -67563,12 +67296,9 @@ function getStyles(position, targetRect, popoverRect) {
   };
 }
 
-function getTopPosition(targetRect, popoverRect) {
-  var _getCollisions = getCollisions(targetRect, popoverRect),
-      directionUp = _getCollisions.directionUp;
-
+function getTopPosition(targetRect, popoverRect, isDirectionUp) {
   return {
-    top: directionUp ? targetRect.top - popoverRect.height + window.pageYOffset + "px" : targetRect.top + targetRect.height + window.pageYOffset + "px"
+    top: isDirectionUp ? targetRect.top - popoverRect.height + window.pageYOffset + "px" : targetRect.top + targetRect.height + window.pageYOffset + "px"
   };
 }
 
@@ -67577,12 +67307,13 @@ var positionDefault = function positionDefault(targetRect, popoverRect) {
     return {};
   }
 
-  var _getCollisions2 = getCollisions(targetRect, popoverRect),
-      directionRight = _getCollisions2.directionRight;
+  var _getCollisions = getCollisions(targetRect, popoverRect),
+      directionRight = _getCollisions.directionRight,
+      directionUp = _getCollisions.directionUp;
 
-  return popover_esm_extends({
+  return reach_popover_esm_extends({
     left: directionRight ? targetRect.right - popoverRect.width + window.pageXOffset + "px" : targetRect.left + window.pageXOffset + "px"
-  }, getTopPosition(targetRect, popoverRect));
+  }, getTopPosition(targetRect, popoverRect, directionUp));
 };
 
 var positionRight = function positionRight(targetRect, popoverRect) {
@@ -67590,12 +67321,13 @@ var positionRight = function positionRight(targetRect, popoverRect) {
     return {};
   }
 
-  var _getCollisions3 = getCollisions(targetRect, popoverRect),
-      directionLeft = _getCollisions3.directionLeft;
+  var _getCollisions2 = getCollisions(targetRect, popoverRect),
+      directionLeft = _getCollisions2.directionLeft,
+      directionUp = _getCollisions2.directionUp;
 
-  return popover_esm_extends({
+  return reach_popover_esm_extends({
     left: directionLeft ? targetRect.left + window.pageXOffset + "px" : targetRect.right - popoverRect.width + window.pageXOffset + "px"
-  }, getTopPosition(targetRect, popoverRect));
+  }, getTopPosition(targetRect, popoverRect, directionUp));
 };
 
 var positionMatchWidth = function positionMatchWidth(targetRect, popoverRect) {
@@ -67603,10 +67335,13 @@ var positionMatchWidth = function positionMatchWidth(targetRect, popoverRect) {
     return {};
   }
 
-  return popover_esm_extends({
+  var _getCollisions3 = getCollisions(targetRect, popoverRect),
+      directionUp = _getCollisions3.directionUp;
+
+  return reach_popover_esm_extends({
     width: targetRect.width,
     left: targetRect.left
-  }, getTopPosition(targetRect, popoverRect));
+  }, getTopPosition(targetRect, popoverRect, directionUp));
 };
 
 function getCollisions(targetRect, popoverRect, offsetLeft, offsetBottom) {
@@ -67670,25 +67405,21 @@ function useSimulateTabNavigationForReactTree(triggerRef, popoverRef) {
   }
 
   (0,react.useEffect)(function () {
-    if (ownerDocument) {
-      ownerDocument.addEventListener("keydown", handleKeyDown);
-      return function () {
-        ownerDocument.removeEventListener("keydown", handleKeyDown);
-      };
-    }
-
-    return; // eslint-disable-next-line react-hooks/exhaustive-deps
+    ownerDocument.addEventListener("keydown", handleKeyDown);
+    return function () {
+      ownerDocument.removeEventListener("keydown", handleKeyDown);
+    }; // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function getElementAfterTrigger() {
-    var elements = ownerDocument && tabbable_default()(ownerDocument);
+    var elements = tabbable_default()(ownerDocument);
     var targetIndex = elements && triggerRef.current ? elements.indexOf(triggerRef.current) : -1;
     var elementAfterTrigger = elements && elements[targetIndex + 1];
     return popoverRef.current && popoverRef.current.contains(elementAfterTrigger || null) ? false : elementAfterTrigger;
   }
 
   function tabbedFromTriggerToPopover() {
-    return triggerRef.current && ownerDocument ? triggerRef.current === ownerDocument.activeElement : false;
+    return triggerRef.current ? triggerRef.current === ownerDocument.activeElement : false;
   }
 
   function focusFirstPopoverTabbable(event) {
@@ -67701,11 +67432,11 @@ function useSimulateTabNavigationForReactTree(triggerRef, popoverRef) {
   }
 
   function tabbedOutOfPopover() {
-    var inPopover = popoverRef.current && ownerDocument ? popoverRef.current.contains(ownerDocument.activeElement || null) : false;
+    var inPopover = popoverRef.current ? popoverRef.current.contains(ownerDocument.activeElement || null) : false;
 
     if (inPopover) {
       var elements = popoverRef.current && tabbable_default()(popoverRef.current);
-      return Boolean(elements && ownerDocument && elements[elements.length - 1] === ownerDocument.activeElement);
+      return Boolean(elements && elements[elements.length - 1] === ownerDocument.activeElement);
     }
 
     return false;
@@ -67750,11 +67481,11 @@ function useSimulateTabNavigationForReactTree(triggerRef, popoverRef) {
     var _triggerRef$current;
 
     event.preventDefault();
-    (_triggerRef$current = triggerRef.current) === null || _triggerRef$current === void 0 ? void 0 : _triggerRef$current.focus();
+    (_triggerRef$current = triggerRef.current) == null ? void 0 : _triggerRef$current.focus();
   }
 
   function tabbedToBrowserChrome(event) {
-    var elements = ownerDocument && popoverRef.current ? tabbable_default()(ownerDocument).filter(function (element) {
+    var elements = popoverRef.current ? tabbable_default()(ownerDocument).filter(function (element) {
       return !popoverRef.current.contains(element);
     }) : null;
     return elements ? event.target === elements[elements.length - 1] : false;
@@ -67763,7 +67494,7 @@ function useSimulateTabNavigationForReactTree(triggerRef, popoverRef) {
   function shiftTabbedToBrowserChrome(event) {
     // we're assuming the popover will never contain the first tabbable
     // element, and it better not, because the trigger needs to be tabbable!
-    return ownerDocument ? event.target === tabbable_default()(ownerDocument)[0] : false;
+    return event.target === tabbable_default()(ownerDocument)[0];
   }
 
   var restoreTabIndexTuplés = [];
@@ -67776,50 +67507,41 @@ function useSimulateTabNavigationForReactTree(triggerRef, popoverRef) {
         restoreTabIndexTuplés.push([element, element.tabIndex]);
         element.tabIndex = -1;
       });
-      ownerDocument && ownerDocument.addEventListener("focusin", enableTabbablesInPopover);
+      ownerDocument.addEventListener("focusin", enableTabbablesInPopover);
     }
   }
 
   function enableTabbablesInPopover() {
-    ownerDocument && ownerDocument.removeEventListener("focusin", enableTabbablesInPopover);
+    ownerDocument.removeEventListener("focusin", enableTabbablesInPopover);
     restoreTabIndexTuplés.forEach(function (_ref2) {
       var element = _ref2[0],
           tabIndex = _ref2[1];
       element.tabIndex = tabIndex;
     });
   }
-}
-
-/* harmony default export */ const popover_esm = (Popover);
-
-;// CONCATENATED MODULE: ./node_modules/@reach/combobox/dist/combobox.esm.js
+} ////////////////////////////////////////////////////////////////////////////////
 
 
+/* harmony default export */ const reach_popover_esm = ((/* unused pure expression or super */ null && (Popover)));
 
+;// CONCATENATED MODULE: ./node_modules/@reach/combobox/dist/reach-combobox.esm.js
 
 
 
 
 
-function combobox_esm_extends() {
-  combobox_esm_extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
 
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
 
-    return target;
-  };
 
-  return combobox_esm_extends.apply(this, arguments);
-}
 
-function combobox_esm_objectWithoutPropertiesLoose(source, excluded) {
+
+
+
+
+
+
+
+function reach_combobox_esm_objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
   var target = {};
   var sourceKeys = Object.keys(source);
@@ -67834,7 +67556,203 @@ function combobox_esm_objectWithoutPropertiesLoose(source, excluded) {
   return target;
 }
 
-var _on, _on2, _on3, _on4, _states; // States
+function reach_combobox_esm_extends() {
+  reach_combobox_esm_extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return reach_combobox_esm_extends.apply(this, arguments);
+} // Forked from https://github.com/bvaughn/highlight-words-core
+
+/**
+ * Creates an array of chunk objects representing both higlightable and non
+ * highlightable pieces of text that match each search word.
+ *
+ * @return Array of "chunk" objects
+ */
+
+
+function findAll(_ref) {
+  var autoEscape = _ref.autoEscape,
+      _ref$caseSensitive = _ref.caseSensitive,
+      caseSensitive = _ref$caseSensitive === void 0 ? false : _ref$caseSensitive,
+      _ref$findChunks = _ref.findChunks,
+      findChunks = _ref$findChunks === void 0 ? defaultFindChunks : _ref$findChunks,
+      sanitize = _ref.sanitize,
+      searchWords = _ref.searchWords,
+      textToHighlight = _ref.textToHighlight;
+  return fillInChunks({
+    chunksToHighlight: combineChunks({
+      chunks: findChunks({
+        autoEscape: autoEscape,
+        caseSensitive: caseSensitive,
+        sanitize: sanitize,
+        searchWords: searchWords,
+        textToHighlight: textToHighlight
+      })
+    }),
+    totalLength: textToHighlight ? textToHighlight.length : 0
+  });
+}
+/**
+ * Takes an array of "chunk" objects and combines chunks that overlap into
+ * single chunks.
+ *
+ * @return Array of "chunk" objects
+ */
+
+
+function combineChunks(_ref2) {
+  var chunks = _ref2.chunks;
+  return chunks.sort(function (first, second) {
+    return first.start - second.start;
+  }).reduce(function (processedChunks, nextChunk) {
+    // First chunk just goes straight in the array...
+    if (processedChunks.length === 0) {
+      return [nextChunk];
+    } else {
+      // ... subsequent chunks get checked to see if they overlap...
+      var prevChunk = processedChunks.pop();
+
+      if (nextChunk.start <= prevChunk.end) {
+        // It may be the case that prevChunk completely surrounds nextChunk, so take the
+        // largest of the end indeces.
+        var endIndex = Math.max(prevChunk.end, nextChunk.end);
+        processedChunks.push({
+          highlight: false,
+          start: prevChunk.start,
+          end: endIndex
+        });
+      } else {
+        processedChunks.push(prevChunk, nextChunk);
+      }
+
+      return processedChunks;
+    }
+  }, []);
+}
+/**
+ * Examine text for any matches. If we find matches, add them to the returned
+ * array as a "chunk" object.
+ *
+ * @return Array of "chunk" objects
+ */
+
+
+function defaultFindChunks(_ref3) {
+  var autoEscape = _ref3.autoEscape,
+      caseSensitive = _ref3.caseSensitive,
+      _ref3$sanitize = _ref3.sanitize,
+      sanitize = _ref3$sanitize === void 0 ? defaultSanitize : _ref3$sanitize,
+      searchWords = _ref3.searchWords,
+      textToHighlight = _ref3.textToHighlight;
+  textToHighlight = sanitize(textToHighlight || "");
+  return searchWords.filter(function (searchWord) {
+    return searchWord;
+  }) // Remove empty words
+  .reduce(function (chunks, searchWord) {
+    searchWord = sanitize(searchWord);
+
+    if (autoEscape) {
+      searchWord = escapeRegExpFn(searchWord);
+    }
+
+    var regex = new RegExp(searchWord, caseSensitive ? "g" : "gi");
+    var match;
+
+    while (match = regex.exec(textToHighlight || "")) {
+      var start = match.index;
+      var end = regex.lastIndex; // We do not return zero-length matches
+
+      if (end > start) {
+        chunks.push({
+          highlight: false,
+          start: start,
+          end: end
+        });
+      } // Prevent browsers like Firefox from getting stuck in an infinite loop
+      // See http://www.regexguru.com/2008/04/watch-out-for-zero-length-matches/
+
+
+      if (match.index === regex.lastIndex) {
+        regex.lastIndex++;
+      }
+    }
+
+    return chunks;
+  }, []);
+}
+/**
+ * Given a set of chunks to highlight, create an additional set of chunks
+ * to represent the bits of text between the highlighted text.
+ *
+ * @return Array of "chunk" objects
+ */
+
+
+function fillInChunks(_ref4) {
+  var chunksToHighlight = _ref4.chunksToHighlight,
+      totalLength = _ref4.totalLength;
+  var allChunks = [];
+
+  if (chunksToHighlight.length === 0) {
+    append(0, totalLength, false);
+  } else {
+    var lastIndex = 0;
+    chunksToHighlight.forEach(function (chunk) {
+      append(lastIndex, chunk.start, false);
+      append(chunk.start, chunk.end, true);
+      lastIndex = chunk.end;
+    });
+    append(lastIndex, totalLength, false);
+  }
+
+  return allChunks;
+
+  function append(start, end, highlight) {
+    if (end - start > 0) {
+      allChunks.push({
+        start: start,
+        end: end,
+        highlight: highlight
+      });
+    }
+  }
+}
+
+function defaultSanitize(string) {
+  return string;
+}
+
+function escapeRegExpFn(string) {
+  return string.replace(/[-[\]/{}()*+?.\\^$|]/g, "\\$&");
+}
+
+var HighlightWords = {
+  combineChunks: combineChunks,
+  fillInChunks: fillInChunks,
+  findAll: findAll,
+  findChunks: defaultFindChunks
+};
+var reach_combobox_esm_excluded = ["onSelect", "openOnFocus", "children", "as", "aria-label", "aria-labelledby"],
+    _excluded2 = ["as", "selectOnClick", "autocomplete", "onClick", "onChange", "onKeyDown", "onBlur", "onFocus", "value"],
+    _excluded3 = ["as", "children", "portal", "onKeyDown", "onBlur", "position"],
+    _excluded4 = ["persistSelection", "as"],
+    _excluded5 = ["as", "children", "index", "value", "onClick"],
+    _excluded6 = (/* unused pure expression or super */ null && (["as", "onClick", "onKeyDown"]));
+
+var _on, _on2, _on3, _on4, _states; ////////////////////////////////////////////////////////////////////////////////
+// States
 // Nothing going on, waiting for the user to type or use the arrow keys
 
 
@@ -67869,12 +67787,13 @@ var BLUR = "BLUR"; // The user left the input to interact with arbitrary element
 var INTERACT = "INTERACT";
 var FOCUS = "FOCUS";
 var OPEN_WITH_BUTTON = "OPEN_WITH_BUTTON";
+var OPEN_WITH_INPUT_CLICK = "OPEN_WITH_INPUT_CLICK";
 var CLOSE_WITH_BUTTON = "CLOSE_WITH_BUTTON"; ////////////////////////////////////////////////////////////////////////////////
 
 var stateChart = {
   initial: IDLE,
   states: (_states = {}, _states[IDLE] = {
-    on: (_on = {}, _on[BLUR] = IDLE, _on[CLEAR] = IDLE, _on[CHANGE] = SUGGESTING, _on[INITIAL_CHANGE] = IDLE, _on[FOCUS] = SUGGESTING, _on[NAVIGATE] = NAVIGATING, _on[OPEN_WITH_BUTTON] = SUGGESTING, _on)
+    on: (_on = {}, _on[BLUR] = IDLE, _on[CLEAR] = IDLE, _on[CHANGE] = SUGGESTING, _on[INITIAL_CHANGE] = IDLE, _on[FOCUS] = SUGGESTING, _on[NAVIGATE] = NAVIGATING, _on[OPEN_WITH_BUTTON] = SUGGESTING, _on[OPEN_WITH_INPUT_CLICK] = SUGGESTING, _on)
   }, _states[SUGGESTING] = {
     on: (_on2 = {}, _on2[CHANGE] = SUGGESTING, _on2[FOCUS] = SUGGESTING, _on2[NAVIGATE] = NAVIGATING, _on2[CLEAR] = IDLE, _on2[ESCAPE] = IDLE, _on2[BLUR] = IDLE, _on2[SELECT_WITH_CLICK] = IDLE, _on2[INTERACT] = INTERACTING, _on2[CLOSE_WITH_BUTTON] = IDLE, _on2)
   }, _states[NAVIGATING] = {
@@ -67885,50 +67804,51 @@ var stateChart = {
 };
 
 var reducer = function reducer(data, event) {
-  var nextState = combobox_esm_extends({}, data, {
+  var nextState = reach_combobox_esm_extends({}, data, {
     lastEventType: event.type
   });
 
   switch (event.type) {
     case CHANGE:
     case INITIAL_CHANGE:
-      return combobox_esm_extends({}, nextState, {
+      return reach_combobox_esm_extends({}, nextState, {
         navigationValue: null,
         value: event.value
       });
 
     case NAVIGATE:
     case OPEN_WITH_BUTTON:
-      return combobox_esm_extends({}, nextState, {
+    case OPEN_WITH_INPUT_CLICK:
+      return reach_combobox_esm_extends({}, nextState, {
         navigationValue: findNavigationValue(nextState, event)
       });
 
     case CLEAR:
-      return combobox_esm_extends({}, nextState, {
+      return reach_combobox_esm_extends({}, nextState, {
         value: "",
         navigationValue: null
       });
 
     case BLUR:
     case ESCAPE:
-      return combobox_esm_extends({}, nextState, {
+      return reach_combobox_esm_extends({}, nextState, {
         navigationValue: null
       });
 
     case SELECT_WITH_CLICK:
-      return combobox_esm_extends({}, nextState, {
+      return reach_combobox_esm_extends({}, nextState, {
         value: event.value,
         navigationValue: null
       });
 
     case SELECT_WITH_KEYBOARD:
-      return combobox_esm_extends({}, nextState, {
+      return reach_combobox_esm_extends({}, nextState, {
         value: data.navigationValue,
         navigationValue: null
       });
 
     case CLOSE_WITH_BUTTON:
-      return combobox_esm_extends({}, nextState, {
+      return reach_combobox_esm_extends({}, nextState, {
         navigationValue: null
       });
 
@@ -67936,7 +67856,7 @@ var reducer = function reducer(data, event) {
       return nextState;
 
     case FOCUS:
-      return combobox_esm_extends({}, nextState, {
+      return reach_combobox_esm_extends({}, nextState, {
         navigationValue: findNavigationValue(nextState, event)
       });
 
@@ -67979,10 +67899,12 @@ var OptionContext = /*#__PURE__*/createNamedContext("OptionContext", {}); //////
 /**
  * Combobox
  *
- * @see Docs https://reacttraining.com/reach-ui/combobox#combobox
+ * @see Docs https://reach.tech/combobox#combobox
  */
 
-var Combobox = /*#__PURE__*/utils_esm_forwardRefWithAs(function Combobox(_ref, forwardedRef) {
+var Combobox = /*#__PURE__*/(0,react.forwardRef)(function Combobox(_ref, forwardedRef) {
+  var _data$navigationValue;
+
   var onSelect = _ref.onSelect,
       _ref$openOnFocus = _ref.openOnFocus,
       openOnFocus = _ref$openOnFocus === void 0 ? false : _ref$openOnFocus,
@@ -67991,7 +67913,7 @@ var Combobox = /*#__PURE__*/utils_esm_forwardRefWithAs(function Combobox(_ref, f
       Comp = _ref$as === void 0 ? "div" : _ref$as,
       ariaLabel = _ref["aria-label"],
       ariaLabelledby = _ref["aria-labelledby"],
-      props = combobox_esm_objectWithoutPropertiesLoose(_ref, ["onSelect", "openOnFocus", "children", "as", "aria-label", "aria-labelledby"]);
+      props = reach_combobox_esm_objectWithoutPropertiesLoose(_ref, reach_combobox_esm_excluded);
 
   var _useDescendantsInit = useDescendantsInit(),
       options = _useDescendantsInit[0],
@@ -68007,9 +67929,8 @@ var Combobox = /*#__PURE__*/utils_esm_forwardRefWithAs(function Combobox(_ref, f
   // can use it anywhere else 😛. Another new trick for me and I'm excited
   // about this one too!
 
-  var autocompletePropRef = (0,react.useRef)();
-  var persistSelectionRef = (0,react.useRef)();
-  var optionDataFunctions = useOptionDataFactory();
+  var autocompletePropRef = (0,react.useRef)(false);
+  var persistSelectionRef = (0,react.useRef)(false);
   var defaultData = {
     // The value the user has typed. We derive this also when the developer is
     // controlling the value of ComboboxInput.
@@ -68026,11 +67947,9 @@ var Combobox = /*#__PURE__*/utils_esm_forwardRefWithAs(function Combobox(_ref, f
   useFocusManagement(data.lastEventType, inputRef);
   var id = useId(props.id);
   var listboxId = id ? makeId("listbox", id) : "listbox";
-
-  var context = combobox_esm_extends({
+  var context = {
     ariaLabel: ariaLabel,
-    ariaLabelledby: ariaLabelledby
-  }, optionDataFunctions, {
+    ariaLabelledby: ariaLabelledby,
     autocompletePropRef: autocompletePropRef,
     buttonRef: buttonRef,
     comboboxId: id,
@@ -68044,62 +67963,41 @@ var Combobox = /*#__PURE__*/utils_esm_forwardRefWithAs(function Combobox(_ref, f
     popoverRef: popoverRef,
     state: state,
     transition: transition
-  });
-
-  (0,react.useEffect)(function () {
-    return checkStyles("combobox");
-  }, []);
-  return react.createElement(DescendantProvider, {
+  };
+  useCheckStyles("combobox");
+  return /*#__PURE__*/(0,react.createElement)(DescendantProvider, {
     context: ComboboxDescendantContext,
     items: options,
     set: setOptions
-  }, react.createElement(ComboboxContext.Provider, {
+  }, /*#__PURE__*/(0,react.createElement)(ComboboxContext.Provider, {
     value: context
-  }, react.createElement(Comp, Object.assign({}, props, {
+  }, /*#__PURE__*/(0,react.createElement)(Comp, reach_combobox_esm_extends({}, props, {
     "data-reach-combobox": "",
+    "data-state": getDataState(state),
     ref: forwardedRef
   }), isFunction(children) ? children({
     id: id,
-    isExpanded: popoverIsExpanded(state)
+    isExpanded: popoverIsExpanded(state),
+    navigationValue: (_data$navigationValue = data.navigationValue) != null ? _data$navigationValue : null,
+    state: state
   }) : children)));
 });
-
-if (false) {}
 /**
- * Uses a ref object which stores the index as a key and custom data as value
- * for each ComboboxOption. Hides the ref so that we can only mutate it through
- * the returned functions. 🙈
+ * @see Docs https://reach.tech/combobox#combobox-props
  */
 
-
-var useOptionDataFactory = function useOptionDataFactory() {
-  var optionData = (0,react.useRef)({});
-  var addOptionData = (0,react.useCallback)(function (index, data) {
-    return optionData.current[index] = data;
-  }, []);
-  var getOptionData = (0,react.useCallback)(function (index) {
-    return optionData.current[index];
-  }, []);
-  var removeOptionData = (0,react.useCallback)(function (index) {
-    return delete optionData.current[index];
-  }, []);
-  return {
-    addOptionData: addOptionData,
-    getOptionData: getOptionData,
-    removeOptionData: removeOptionData
-  };
-}; ////////////////////////////////////////////////////////////////////////////////
+if (false) {} ////////////////////////////////////////////////////////////////////////////////
 
 /**
  * ComboboxInput
  *
  * Wraps an `<input/>` with a couple extra props that work with the combobox.
  *
- * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxinput
+ * @see Docs https://reach.tech/combobox#comboboxinput
  */
 
 
-var ComboboxInput = /*#__PURE__*/utils_esm_forwardRefWithAs(function ComboboxInput(_ref2, forwardedRef) {
+var ComboboxInput = /*#__PURE__*/(0,react.forwardRef)(function ComboboxInput(_ref2, forwardedRef) {
   var _ref2$as = _ref2.as,
       Comp = _ref2$as === void 0 ? "input" : _ref2$as,
       _ref2$selectOnClick = _ref2.selectOnClick,
@@ -68112,33 +68010,34 @@ var ComboboxInput = /*#__PURE__*/utils_esm_forwardRefWithAs(function ComboboxInp
       onBlur = _ref2.onBlur,
       onFocus = _ref2.onFocus,
       controlledValue = _ref2.value,
-      props = combobox_esm_objectWithoutPropertiesLoose(_ref2, ["as", "selectOnClick", "autocomplete", "onClick", "onChange", "onKeyDown", "onBlur", "onFocus", "value"]); // https://github.com/reach/reach-ui/issues/464
+      props = reach_combobox_esm_objectWithoutPropertiesLoose(_ref2, _excluded2); // https://github.com/reach/reach-ui/issues/464
 
 
-  var _useRef = (0,react.useRef)(controlledValue),
-      initialControlledValue = _useRef.current;
+  var _React$useRef = (0,react.useRef)(controlledValue),
+      initialControlledValue = _React$useRef.current;
 
   var controlledValueChangedRef = (0,react.useRef)(false);
   useUpdateEffect(function () {
     controlledValueChangedRef.current = true;
   }, [controlledValue]);
 
-  var _useContext = (0,react.useContext)(ComboboxContext),
-      _useContext$data = _useContext.data,
-      navigationValue = _useContext$data.navigationValue,
-      value = _useContext$data.value,
-      lastEventType = _useContext$data.lastEventType,
-      inputRef = _useContext.inputRef,
-      state = _useContext.state,
-      transition = _useContext.transition,
-      listboxId = _useContext.listboxId,
-      autocompletePropRef = _useContext.autocompletePropRef,
-      openOnFocus = _useContext.openOnFocus,
-      isExpanded = _useContext.isExpanded,
-      ariaLabel = _useContext.ariaLabel,
-      ariaLabelledby = _useContext.ariaLabelledby;
+  var _React$useContext = (0,react.useContext)(ComboboxContext),
+      _React$useContext$dat = _React$useContext.data,
+      navigationValue = _React$useContext$dat.navigationValue,
+      value = _React$useContext$dat.value,
+      lastEventType = _React$useContext$dat.lastEventType,
+      inputRef = _React$useContext.inputRef,
+      state = _React$useContext.state,
+      transition = _React$useContext.transition,
+      listboxId = _React$useContext.listboxId,
+      autocompletePropRef = _React$useContext.autocompletePropRef,
+      openOnFocus = _React$useContext.openOnFocus,
+      isExpanded = _React$useContext.isExpanded,
+      ariaLabel = _React$useContext.ariaLabel,
+      ariaLabelledby = _React$useContext.ariaLabelledby,
+      persistSelectionRef = _React$useContext.persistSelectionRef;
 
-  var ref = utils_esm_useForkedRef(inputRef, forwardedRef); // Because we close the List on blur, we need to track if the blur is
+  var ref = reach_utils_compose_refs_esm_useComposedRefs(inputRef, forwardedRef); // Because we close the List on blur, we need to track if the blur is
   // caused by clicking inside the list, and if so, don't close the List.
 
   var selectOnClickRef = (0,react.useRef)(false);
@@ -68193,20 +68092,28 @@ var ComboboxInput = /*#__PURE__*/utils_esm_forwardRefWithAs(function ComboboxInp
 
 
     if (openOnFocus && lastEventType !== SELECT_WITH_CLICK) {
-      transition(FOCUS);
+      transition(FOCUS, {
+        persistSelection: persistSelectionRef.current
+      });
     }
   }
 
   function handleClick() {
     if (selectOnClickRef.current) {
+      var _inputRef$current;
+
       selectOnClickRef.current = false;
-      inputRef.current.select();
+      (_inputRef$current = inputRef.current) == null ? void 0 : _inputRef$current.select();
+    }
+
+    if (openOnFocus && state === IDLE) {
+      transition(OPEN_WITH_INPUT_CLICK);
     }
   }
 
   var inputValue = autocomplete && (state === NAVIGATING || state === INTERACTING) ? // When idle, we don't have a navigationValue on ArrowUp/Down
   navigationValue || controlledValue || value : controlledValue || value;
-  return react.createElement(Comp, Object.assign({
+  return /*#__PURE__*/(0,react.createElement)(Comp, reach_combobox_esm_extends({
     "aria-activedescendant": navigationValue ? String(makeHash(navigationValue)) : undefined,
     "aria-autocomplete": "both",
     "aria-controls": listboxId,
@@ -68217,15 +68124,19 @@ var ComboboxInput = /*#__PURE__*/utils_esm_forwardRefWithAs(function ComboboxInp
     role: "combobox"
   }, props, {
     "data-reach-combobox-input": "",
+    "data-state": getDataState(state),
     ref: ref,
-    onBlur: utils_esm_wrapEvent(onBlur, handleBlur),
-    onChange: utils_esm_wrapEvent(onChange, handleChange),
-    onClick: utils_esm_wrapEvent(onClick, handleClick),
-    onFocus: utils_esm_wrapEvent(onFocus, handleFocus),
-    onKeyDown: utils_esm_wrapEvent(onKeyDown, handleKeyDown),
+    onBlur: reach_utils_compose_event_handlers_esm_composeEventHandlers(onBlur, handleBlur),
+    onChange: reach_utils_compose_event_handlers_esm_composeEventHandlers(onChange, handleChange),
+    onClick: reach_utils_compose_event_handlers_esm_composeEventHandlers(onClick, handleClick),
+    onFocus: reach_utils_compose_event_handlers_esm_composeEventHandlers(onFocus, handleFocus),
+    onKeyDown: reach_utils_compose_event_handlers_esm_composeEventHandlers(onKeyDown, handleKeyDown),
     value: inputValue || ""
   }));
 });
+/**
+ * @see Docs https://reach.tech/combobox#comboboxinput-props
+ */
 
 if (false) {} ////////////////////////////////////////////////////////////////////////////////
 
@@ -68236,32 +68147,36 @@ if (false) {} //////////////////////////////////////////////////////////////////
  * more than the list in the popup, you need to render one of these around the
  * list. For example, maybe you want to render the number of results suggested.
  *
- * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxpopover
+ * @see Docs https://reach.tech/combobox#comboboxpopover
  */
 
 
 var ComboboxPopover = /*#__PURE__*/(0,react.forwardRef)(function ComboboxPopover(_ref3, forwardedRef) {
-  var children = _ref3.children,
+  var _ref3$as = _ref3.as,
+      Comp = _ref3$as === void 0 ? "div" : _ref3$as,
+      children = _ref3.children,
       _ref3$portal = _ref3.portal,
       portal = _ref3$portal === void 0 ? true : _ref3$portal,
       onKeyDown = _ref3.onKeyDown,
       onBlur = _ref3.onBlur,
       _ref3$position = _ref3.position,
       position = _ref3$position === void 0 ? positionMatchWidth : _ref3$position,
-      props = combobox_esm_objectWithoutPropertiesLoose(_ref3, ["children", "portal", "onKeyDown", "onBlur", "position"]);
+      props = reach_combobox_esm_objectWithoutPropertiesLoose(_ref3, _excluded3);
 
-  var _useContext2 = (0,react.useContext)(ComboboxContext),
-      popoverRef = _useContext2.popoverRef,
-      inputRef = _useContext2.inputRef,
-      isExpanded = _useContext2.isExpanded;
+  var _React$useContext2 = (0,react.useContext)(ComboboxContext),
+      popoverRef = _React$useContext2.popoverRef,
+      inputRef = _React$useContext2.inputRef,
+      isExpanded = _React$useContext2.isExpanded,
+      state = _React$useContext2.state;
 
-  var ref = utils_esm_useForkedRef(popoverRef, forwardedRef);
+  var ref = reach_utils_compose_refs_esm_useComposedRefs(popoverRef, forwardedRef);
   var handleKeyDown = useKeyDown();
   var handleBlur = useBlur();
   var sharedProps = {
     "data-reach-combobox-popover": "",
-    onKeyDown: utils_esm_wrapEvent(onKeyDown, handleKeyDown),
-    onBlur: utils_esm_wrapEvent(onBlur, handleBlur),
+    "data-state": getDataState(state),
+    onKeyDown: reach_utils_compose_event_handlers_esm_composeEventHandlers(onKeyDown, handleKeyDown),
+    onBlur: reach_utils_compose_event_handlers_esm_composeEventHandlers(onBlur, handleBlur),
     // Instead of conditionally rendering the popover we use the `hidden` prop
     // because we don't want to unmount on close (from escape or onSelect).
     // However, the developer can conditionally render the ComboboxPopover if
@@ -68271,16 +68186,22 @@ var ComboboxPopover = /*#__PURE__*/(0,react.forwardRef)(function ComboboxPopover
     tabIndex: -1,
     children: children
   };
-  return portal ? react.createElement(popover_esm, Object.assign({}, props, {
+  return portal ? /*#__PURE__*/(0,react.createElement)(Popover, reach_combobox_esm_extends({
+    as: Comp
+  }, props, {
     ref: ref,
     position: position,
     targetRef: inputRef
-  }, sharedProps)) : react.createElement("div", Object.assign({
+  }, sharedProps)) : /*#__PURE__*/(0,react.createElement)(Comp, reach_combobox_esm_extends({
     ref: ref
   }, props, sharedProps));
 });
 
-if (false) {} ////////////////////////////////////////////////////////////////////////////////
+if (false) {}
+/**
+ * @see Docs https://reach.tech/combobox#comboboxpopover-props
+ */
+////////////////////////////////////////////////////////////////////////////////
 
 /**
  * ComboboxList
@@ -68288,26 +68209,26 @@ if (false) {} //////////////////////////////////////////////////////////////////
  * Contains the `ComboboxOption` elements and sets up the proper aria attributes
  * for the list.
  *
- * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxlist
+ * @see Docs https://reach.tech/combobox#comboboxlist
  */
 
 
-var ComboboxList = /*#__PURE__*/utils_esm_forwardRefWithAs(function ComboboxList(_ref4, forwardedRef) {
+var ComboboxList = /*#__PURE__*/(0,react.forwardRef)(function ComboboxList(_ref4, forwardedRef) {
   var _ref4$persistSelectio = _ref4.persistSelection,
       persistSelection = _ref4$persistSelectio === void 0 ? false : _ref4$persistSelectio,
       _ref4$as = _ref4.as,
       Comp = _ref4$as === void 0 ? "ul" : _ref4$as,
-      props = combobox_esm_objectWithoutPropertiesLoose(_ref4, ["persistSelection", "as"]);
+      props = reach_combobox_esm_objectWithoutPropertiesLoose(_ref4, _excluded4);
 
-  var _useContext3 = (0,react.useContext)(ComboboxContext),
-      persistSelectionRef = _useContext3.persistSelectionRef,
-      listboxId = _useContext3.listboxId;
+  var _React$useContext3 = (0,react.useContext)(ComboboxContext),
+      persistSelectionRef = _React$useContext3.persistSelectionRef,
+      listboxId = _React$useContext3.listboxId;
 
   if (persistSelection) {
     persistSelectionRef.current = true;
   }
 
-  return react.createElement(Comp, Object.assign({
+  return /*#__PURE__*/(0,react.createElement)(Comp, reach_combobox_esm_extends({
     role: "listbox"
   }, props, {
     ref: forwardedRef,
@@ -68315,6 +68236,9 @@ var ComboboxList = /*#__PURE__*/utils_esm_forwardRefWithAs(function ComboboxList
     id: listboxId
   }));
 });
+/**
+ * @see Docs https://reach.tech/combobox#comboboxlist-props
+ */
 
 if (false) {} ////////////////////////////////////////////////////////////////////////////////
 
@@ -68323,68 +68247,73 @@ if (false) {} //////////////////////////////////////////////////////////////////
  *
  * An option that is suggested to the user as they interact with the combobox.
  *
- * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxoption
+ * @see Docs https://reach.tech/combobox#comboboxoption
  */
 
 
-var ComboboxOption = /*#__PURE__*/utils_esm_forwardRefWithAs(function ComboboxOption(_ref5, forwardedRef) {
+var ComboboxOption = /*#__PURE__*/(0,react.forwardRef)(function ComboboxOption(_ref5, forwardedRef) {
   var _ref5$as = _ref5.as,
       Comp = _ref5$as === void 0 ? "li" : _ref5$as,
       children = _ref5.children,
+      indexProp = _ref5.index,
       value = _ref5.value,
-      selectData = _ref5.selectData,
       onClick = _ref5.onClick,
-      props = combobox_esm_objectWithoutPropertiesLoose(_ref5, ["as", "children", "value", "selectData", "onClick"]);
+      props = reach_combobox_esm_objectWithoutPropertiesLoose(_ref5, _excluded5);
 
-  var _useContext4 = (0,react.useContext)(ComboboxContext),
-      onSelect = _useContext4.onSelect,
-      navigationValue = _useContext4.data.navigationValue,
-      transition = _useContext4.transition,
-      addOptionData = _useContext4.addOptionData,
-      removeOptionData = _useContext4.removeOptionData;
+  var _React$useContext4 = (0,react.useContext)(ComboboxContext),
+      onSelect = _React$useContext4.onSelect,
+      navigationValue = _React$useContext4.data.navigationValue,
+      transition = _React$useContext4.transition;
 
   var ownRef = (0,react.useRef)(null);
-  var ref = utils_esm_useForkedRef(forwardedRef, ownRef);
-  var index = useDescendant({
-    element: ownRef.current,
-    value: value
-  }, ComboboxDescendantContext);
-  var isActive = navigationValue === value;
-  (0,react.useEffect)(function () {
-    addOptionData(index, selectData);
-    return function () {
-      return removeOptionData(index);
+
+  var _useStatefulRefValue = useStatefulRefValue(ownRef, null),
+      element = _useStatefulRefValue[0],
+      handleRefSet = _useStatefulRefValue[1];
+
+  var descendant = (0,react.useMemo)(function () {
+    return {
+      element: element,
+      value: value
     };
-  }, [index, selectData, addOptionData, removeOptionData]);
+  }, [value, element]);
+  var index = useDescendant(descendant, ComboboxDescendantContext, indexProp);
+  var ref = reach_utils_compose_refs_esm_useComposedRefs(forwardedRef, handleRefSet);
+  var isActive = navigationValue === value;
 
   var handleClick = function handleClick() {
-    onSelect && onSelect(value, selectData);
+    onSelect && onSelect(value);
     transition(SELECT_WITH_CLICK, {
       value: value
     });
   };
 
-  return react.createElement(OptionContext.Provider, {
+  return /*#__PURE__*/(0,react.createElement)(OptionContext.Provider, {
     value: {
       value: value,
       index: index
     }
-  }, react.createElement(Comp, Object.assign({
+  }, /*#__PURE__*/(0,react.createElement)(Comp, reach_combobox_esm_extends({
     "aria-selected": isActive,
     role: "option"
   }, props, {
     "data-reach-combobox-option": "",
     ref: ref,
     id: String(makeHash(value)),
-    "data-highlighted": isActive ? "" : undefined,
-    // Without this the menu will close from `onBlur`, but with it the
+    "data-highlighted": isActive ? "" : undefined // Without this the menu will close from `onBlur`, but with it the
     // element can be `document.activeElement` and then our focus checks in
     // onBlur will work as intended
+    ,
     tabIndex: -1,
-    onClick: utils_esm_wrapEvent(onClick, handleClick),
-    children: children || react.createElement(ComboboxOptionText, null)
-  })));
+    onClick: reach_utils_compose_event_handlers_esm_composeEventHandlers(onClick, handleClick)
+  }), children ? isFunction(children) ? children({
+    value: value,
+    index: index
+  }) : children : /*#__PURE__*/(0,react.createElement)(ComboboxOptionText, null)));
 });
+/**
+ * @see Docs https://reach.tech/combobox#comboboxoption-props
+ */
 
 if (false) {} ////////////////////////////////////////////////////////////////////////////////
 
@@ -68402,27 +68331,28 @@ if (false) {} //////////////////////////////////////////////////////////////////
  *     🌧 <ComboboxOptionText />
  *   </ComboboxOption>
  *
- * @see Docs https://reacttraining.com/reach-ui/combobox#comboboxoptiontext
+ * @see Docs https://reach.tech/combobox#comboboxoptiontext
  */
 
 
 function ComboboxOptionText() {
-  var _useContext5 = (0,react.useContext)(OptionContext),
-      value = _useContext5.value;
+  var _React$useContext5 = (0,react.useContext)(OptionContext),
+      value = _React$useContext5.value;
 
-  var _useContext6 = (0,react.useContext)(ComboboxContext),
-      contextValue = _useContext6.data.value;
+  var _React$useContext6 = (0,react.useContext)(ComboboxContext),
+      contextValue = _React$useContext6.data.value;
 
   var results = (0,react.useMemo)(function () {
-    return (0,dist.findAll)({
+    return HighlightWords.findAll({
       searchWords: escapeRegexp(contextValue || "").split(/\s+/),
       textToHighlight: value
     });
   }, [contextValue, value]);
-  return react.createElement(react.Fragment, null, results.length ? results.map(function (result, index) {
+  return /*#__PURE__*/(0,react.createElement)(react.Fragment, null, results.length ? results.map(function (result, index) {
     var str = value.slice(result.start, result.end);
-    return react.createElement("span", {
+    return /*#__PURE__*/(0,react.createElement)("span", {
       key: index,
+      "data-reach-combobox-option-text": "",
       "data-user-value": result.highlight ? true : undefined,
       "data-suggested-value": result.highlight ? undefined : true
     }, str);
@@ -68436,21 +68366,21 @@ if (false) {} //////////////////////////////////////////////////////////////////
  */
 
 
-var ComboboxButton = /*#__PURE__*/(/* unused pure expression or super */ null && (forwardRefWithAs(function ComboboxButton(_ref6, forwardedRef) {
+var ComboboxButton = /*#__PURE__*/(/* unused pure expression or super */ null && (forwardRef(function ComboboxButton(_ref6, forwardedRef) {
   var _ref6$as = _ref6.as,
       Comp = _ref6$as === void 0 ? "button" : _ref6$as,
       onClick = _ref6.onClick,
       onKeyDown = _ref6.onKeyDown,
-      props = combobox_esm_objectWithoutPropertiesLoose(_ref6, ["as", "onClick", "onKeyDown"]);
+      props = reach_combobox_esm_objectWithoutPropertiesLoose(_ref6, _excluded6);
 
-  var _useContext7 = useContext(ComboboxContext),
-      transition = _useContext7.transition,
-      state = _useContext7.state,
-      buttonRef = _useContext7.buttonRef,
-      listboxId = _useContext7.listboxId,
-      isExpanded = _useContext7.isExpanded;
+  var _React$useContext7 = useContext(ComboboxContext),
+      transition = _React$useContext7.transition,
+      state = _React$useContext7.state,
+      buttonRef = _React$useContext7.buttonRef,
+      listboxId = _React$useContext7.listboxId,
+      isExpanded = _React$useContext7.isExpanded;
 
-  var ref = useForkedRef(buttonRef, forwardedRef);
+  var ref = useComposedRefs(buttonRef, forwardedRef);
   var handleKeyDown = useKeyDown();
 
   var handleClick = function handleClick() {
@@ -68461,15 +68391,15 @@ var ComboboxButton = /*#__PURE__*/(/* unused pure expression or super */ null &&
     }
   };
 
-  return React.createElement(Comp, Object.assign({
+  return /*#__PURE__*/createElement(Comp, reach_combobox_esm_extends({
     "aria-controls": listboxId,
     "aria-haspopup": "listbox",
     "aria-expanded": isExpanded
   }, props, {
     "data-reach-combobox-button": "",
     ref: ref,
-    onClick: wrapEvent(onClick, handleClick),
-    onKeyDown: wrapEvent(onKeyDown, handleKeyDown)
+    onClick: composeEventHandlers(onClick, handleClick),
+    onKeyDown: composeEventHandlers(onKeyDown, handleKeyDown)
   }));
 })));
 
@@ -68492,7 +68422,9 @@ function useFocusManagement(lastEventType, inputRef) {
   // Should be safe to use here since we're just focusing an input.
   useIsomorphicLayoutEffect(function () {
     if (lastEventType === NAVIGATE || lastEventType === ESCAPE || lastEventType === SELECT_WITH_CLICK || lastEventType === OPEN_WITH_BUTTON) {
-      inputRef.current.focus();
+      var _inputRef$current2;
+
+      (_inputRef$current2 = inputRef.current) == null ? void 0 : _inputRef$current2.focus();
     }
   }, [inputRef, lastEventType]);
 }
@@ -68503,14 +68435,13 @@ function useFocusManagement(lastEventType, inputRef) {
 
 
 function useKeyDown() {
-  var _useContext8 = (0,react.useContext)(ComboboxContext),
-      navigationValue = _useContext8.data.navigationValue,
-      onSelect = _useContext8.onSelect,
-      state = _useContext8.state,
-      transition = _useContext8.transition,
-      autocompletePropRef = _useContext8.autocompletePropRef,
-      persistSelectionRef = _useContext8.persistSelectionRef,
-      getOptionData = _useContext8.getOptionData;
+  var _React$useContext8 = (0,react.useContext)(ComboboxContext),
+      navigationValue = _React$useContext8.data.navigationValue,
+      onSelect = _React$useContext8.onSelect,
+      state = _React$useContext8.state,
+      transition = _React$useContext8.transition,
+      autocompletePropRef = _React$useContext8.autocompletePropRef,
+      persistSelectionRef = _React$useContext8.persistSelectionRef;
 
   var options = useDescendants(ComboboxDescendantContext);
   return function handleKeyDown(event) {
@@ -68658,10 +68589,9 @@ function useKeyDown() {
 
       case "Enter":
         if (state === NAVIGATING && navigationValue !== null) {
-          var customData = getOptionData(index); // don't want to submit forms
-
+          // don't want to submit forms
           event.preventDefault();
-          onSelect && onSelect(navigationValue, customData);
+          onSelect && onSelect(navigationValue);
           transition(SELECT_WITH_KEYBOARD);
         }
 
@@ -68671,29 +68601,30 @@ function useKeyDown() {
 }
 
 function useBlur() {
-  var _useContext9 = (0,react.useContext)(ComboboxContext),
-      state = _useContext9.state,
-      transition = _useContext9.transition,
-      popoverRef = _useContext9.popoverRef,
-      inputRef = _useContext9.inputRef,
-      buttonRef = _useContext9.buttonRef;
+  var _React$useContext9 = (0,react.useContext)(ComboboxContext),
+      state = _React$useContext9.state,
+      transition = _React$useContext9.transition,
+      popoverRef = _React$useContext9.popoverRef,
+      inputRef = _React$useContext9.inputRef,
+      buttonRef = _React$useContext9.buttonRef;
 
-  return function handleBlur() {
-    var ownerDocument = getOwnerDocument(inputRef.current) || document;
-    requestAnimationFrame(function () {
-      // we on want to close only if focus propss outside the combobox
-      if (ownerDocument.activeElement !== inputRef.current && ownerDocument.activeElement !== buttonRef.current && popoverRef.current) {
-        if (popoverRef.current.contains(ownerDocument.activeElement)) {
-          // focus landed inside the combobox, keep it open
-          if (state !== INTERACTING) {
-            transition(INTERACT);
-          }
-        } else {
-          // focus landed outside the combobox, close it.
-          transition(BLUR);
+  return function handleBlur(event) {
+    var popover = popoverRef.current;
+    var input = inputRef.current;
+    var button = buttonRef.current;
+    var activeElement = event.relatedTarget; // we on want to close only if focus propss outside the combobox
+
+    if (activeElement !== input && activeElement !== button && popover) {
+      if (popover.contains(activeElement)) {
+        // focus landed inside the combobox, keep it open
+        if (state !== INTERACTING) {
+          transition(INTERACT);
         }
+      } else {
+        // focus landed outside the combobox, close it.
+        transition(BLUR);
       }
-    });
+    }
   };
 }
 /**
@@ -68707,13 +68638,13 @@ function useBlur() {
 
 
 function useReducerMachine(chart, reducer, initialData) {
-  var _useState = (0,react.useState)(chart.initial),
-      state = _useState[0],
-      setState = _useState[1];
+  var _React$useState = (0,react.useState)(chart.initial),
+      state = _React$useState[0],
+      setState = _React$useState[1];
 
-  var _useReducer = (0,react.useReducer)(reducer, initialData),
-      data = _useReducer[0],
-      dispatch = _useReducer[1];
+  var _React$useReducer = (0,react.useReducer)(reducer, initialData),
+      data = _React$useReducer[0],
+      dispatch = _React$useReducer[1];
 
   var transition = function transition(event, payload) {
     if (payload === void 0) {
@@ -68724,7 +68655,7 @@ function useReducerMachine(chart, reducer, initialData) {
     var nextState = currentState && currentState.on[event];
 
     if (nextState) {
-      dispatch(combobox_esm_extends({
+      dispatch(reach_combobox_esm_extends({
         type: event,
         state: state,
         nextState: state
@@ -68749,7 +68680,7 @@ function useReducerMachine(chart, reducer, initialData) {
  */
 
 
-var makeHash = function makeHash(str) {
+function makeHash(str) {
   var hash = 0;
 
   if (str.length === 0) {
@@ -68764,7 +68695,23 @@ var makeHash = function makeHash(str) {
   }
 
   return hash;
-};
+} // function getActiveElement(node: Element | null | undefined) {
+//   let activeElement: Element | null = null;
+//   try {
+//     // If Element.getRootNode is supported, we'll retrieve either the root
+//     // Document or shadow root depending on where the component is rendered.
+//     // https://github.com/reach/reach-ui/issues/787
+//     activeElement = (node?.getRootNode() as ShadowRoot | Document)
+//       .activeElement;
+//   } finally {
+//     return activeElement || (node?.ownerDocument || document).activeElement;
+//   }
+// }
+
+
+function getDataState(state) {
+  return state.toLowerCase();
+}
 /**
  * Escape regexp special characters in `str`
  *
@@ -68775,27 +68722,57 @@ var makeHash = function makeHash(str) {
 
 function escapeRegexp(str) {
   return String(str).replace(/([.*+?=^!:${}()|[\]/\\])/g, "\\$1");
-} ////////////////////////////////////////////////////////////////////////////////
+} //////////////////////////
+//////////////////////////////////////////////////////
 
 /**
  * A hook that exposes data for a given `Combobox` component to its descendants.
  *
- * @see Docs https://reacttraining.com/reach-ui/combobox#usecomboboxcontext
+ * @see Docs https://reach.tech/combobox#usecomboboxcontext
  */
 
 
 function useComboboxContext() {
-  var _useContext10 = useContext(ComboboxContext),
-      isExpanded = _useContext10.isExpanded,
-      comboboxId = _useContext10.comboboxId;
+  var _React$useContext10 = useContext(ComboboxContext),
+      isExpanded = _React$useContext10.isExpanded,
+      comboboxId = _React$useContext10.comboboxId,
+      data = _React$useContext10.data,
+      state = _React$useContext10.state;
 
+  var navigationValue = data.navigationValue;
   return useMemo(function () {
     return {
       id: comboboxId,
-      isExpanded: isExpanded
+      isExpanded: isExpanded,
+      navigationValue: navigationValue != null ? navigationValue : null,
+      state: state
     };
-  }, [comboboxId, isExpanded]);
+  }, [comboboxId, isExpanded, navigationValue, state]);
 }
+/**
+ * A hook that exposes data for a given `ComboboxOption` component to its descendants.
+ *
+ * @see Docs https://reach.tech/combobox#usecomboboxcontext
+ */
+
+
+function useComboboxOptionContext() {
+  var _React$useContext11 = useContext(OptionContext),
+      value = _React$useContext11.value,
+      index = _React$useContext11.index;
+
+  return useMemo(function () {
+    return {
+      value: value,
+      index: index
+    };
+  }, [value, index]);
+} ////////////////////////////////////////////////////////////////////////////////
+// Well alright, you made it all the way here to like 1100 lines of code (geez,
+// what the heck?). Have a great day :D
+////////////////////////////////////////////////////////////////////////////////
+// Types
+
 
 
 // EXTERNAL MODULE: ./src/styles/index.js + 7 modules
@@ -68838,10 +68815,10 @@ var Option = function Option(props) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    (0,emotion_react_browser_esm/* css */.iv)("&[data-highlighted] .Nautilus-ComboBoxOptionListItem{background:", theme.colors.neutral.grey200, ";}" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0),
+    (0,emotion_react_browser_esm/* css */.iv)("&[data-highlighted] .Nautilus-DropdownListItem{background:", theme.colors.neutral.grey200, ";}" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0),
     value: value || children
   }, otherProps), (0,emotion_react_browser_esm/* jsx */.tZ)(Item/* default */.ZP, {
-    className: classnames_default()(ComponentClassName, className, 'Nautilus-ComboBoxOptionListItem'),
+    className: classnames_default()(ComponentClassName, className, 'Nautilus-DropdownListItem'),
     css: unstyled ? undefined :
     /*#__PURE__*/
 
@@ -68939,7 +68916,7 @@ function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringif
 
 
 
-var ComboBox_ref =  true ? {
+var _ref =  true ? {
   name: "1j6a571",
   styles: ":root{--reach-combobox:1;}[data-reach-combobox-list]{margin:0;padding:0;user-select:none;}[data-reach-combobox-option]{margin:0;padding:0;}[data-suggested-value]{font-weight:bold;}"
 } : 0;
@@ -69005,7 +68982,7 @@ var ComboBox = function ComboBox(props) {
     });
   }, [children]);
   return (0,emotion_react_browser_esm/* jsx */.tZ)("div", {
-    css: ComboBox_ref
+    css: _ref
   }, (0,emotion_react_browser_esm/* jsx */.tZ)(Combobox, (0,_index/* default */.Z)({
     "aria-label": label,
     openOnFocus: openOnFocus
@@ -69044,7 +69021,7 @@ var ComboBox = function ComboBox(props) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    (0,emotion_react_browser_esm/* css */.iv)(styles/* interfaceUI.medium */.Hj.medium(theme), ";background:", theme.colors.buttons.neutral, ";border:2px solid ", theme.colors.text["default"], ";color:", theme.colors.text["default"], ";list-style-type:none;margin:0;max-height:60vh;overflow-y:scroll;overflow:hidden;padding:0;transition:height 200ms;z-index:100;" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0)
+    (0,emotion_react_browser_esm/* css */.iv)(styles/* interfaceUI.medium */.Hj.medium(theme), ";background:", theme.colors.buttons.neutral, ";border:2px solid ", theme.colors.text["default"], ";border-top:0;color:", theme.colors.text["default"], ";list-style-type:none;margin:0;margin-top:-2px;max-height:60vh;overflow-y:scroll;overflow:hidden;padding:0;padding-top:", (0,styles/* toUnits */.xk)(theme.spacing.padding.small), ";transition:height 200ms;z-index:100;" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0)
   }, options))));
 };
 ComboBox.defaultProps = {
@@ -70132,7 +70109,7 @@ var defaultProps = Paragraph.defaultProps,
 
 /***/ }),
 
-/***/ 40721:
+/***/ 37813:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -70148,6 +70125,8 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/extends/_index.mjs
 var _index = __webpack_require__(94527);
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/defineProperty/_index.mjs
+var defineProperty_index = __webpack_require__(66690);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/slicedToArray/_index.mjs + 3 modules
 var slicedToArray_index = __webpack_require__(96912);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectWithoutProperties/_index.mjs
@@ -70170,6 +70149,22 @@ function _taggedTemplateLiteral(strings, raw) {
       value: Object.freeze(raw)
     }
   }));
+}
+;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/typeof/_index.mjs
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function _typeof(obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function _typeof(obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
 }
 // EXTERNAL MODULE: ./node_modules/react-input-autosize/lib/AutosizeInput.js
 var AutosizeInput = __webpack_require__(41443);
@@ -70199,27 +70194,9 @@ function _inherits(subClass, superClass) {
   });
   if (superClass) (0,setPrototypeOf_index/* default */.Z)(subClass, superClass);
 }
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/defineProperty/_index.mjs
-var defineProperty_index = __webpack_require__(66690);
 // EXTERNAL MODULE: ./node_modules/react-dom/index.js
 var react_dom = __webpack_require__(12674);
-;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/typeof/_index.mjs
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-  } else {
-    _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-
-  return _typeof(obj);
-}
-;// CONCATENATED MODULE: ./node_modules/react-select/dist/index-b19cc27c.browser.esm.js
+;// CONCATENATED MODULE: ./node_modules/react-select/dist/index-4bd03571.esm.js
 
 
 
@@ -70262,7 +70239,7 @@ function ownKeys(object, enumerableOnly) {
   return keys;
 }
 
-function index_b19cc27c_browser_esm_objectSpread2(target) {
+function index_4bd03571_esm_objectSpread2(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
 
@@ -70389,6 +70366,30 @@ var cleanValue = function cleanValue(value) {
   if (Array.isArray(value)) return value.filter(Boolean);
   if (_typeof(value) === 'object' && value !== null) return [value];
   return [];
+}; // ==============================
+// Clean Common Props
+// ==============================
+
+
+var cleanCommonProps = function cleanCommonProps(props) {
+  //className
+  props.className;
+  props.clearValue;
+  props.cx;
+  props.getStyles;
+  props.getValue;
+  props.hasValue;
+  props.isMulti;
+  props.isRtl;
+  props.options;
+  props.selectOption;
+  props.selectProps;
+  props.setValue;
+  props.theme;
+
+  var innerProps = (0,objectWithoutProperties_index/* default */.Z)(props, ["className", "clearValue", "cx", "getStyles", "getValue", "hasValue", "isMulti", "isRtl", "options", "selectOption", "selectProps", "setValue", "theme"]);
+
+  return index_4bd03571_esm_objectSpread2({}, innerProps);
 }; // ==============================
 // Handle Input Change
 // ==============================
@@ -70541,7 +70542,28 @@ function isMobileDevice() {
   } catch (e) {
     return false;
   }
+} // ==============================
+// Passive Event Detector
+// ==============================
+// https://github.com/rafgraph/detect-it/blob/main/src/index.ts#L19-L36
+
+
+var passiveOptionAccessed = false;
+var options = {
+  get passive() {
+    return passiveOptionAccessed = true;
+  }
+
+}; // check for SSR
+
+var w = typeof window !== 'undefined' ? window : {};
+
+if (w.addEventListener && w.removeEventListener) {
+  w.addEventListener('p', noop, options);
+  w.removeEventListener('p', noop, false);
 }
+
+var supportsPassiveEvents = passiveOptionAccessed;
 
 function getMenuPlacement(_ref) {
   var maxHeight = _ref.maxHeight,
@@ -70641,7 +70663,10 @@ function getMenuPlacement(_ref) {
 
 
       if (placement === 'bottom') {
-        scrollTo(scrollParent, scrollDown);
+        if (shouldScroll) {
+          scrollTo(scrollParent, scrollDown);
+        }
+
         return {
           placement: 'bottom',
           maxHeight: maxHeight
@@ -70787,7 +70812,7 @@ var MenuPlacer = /*#__PURE__*/function (_Component) {
     _this.getUpdatedProps = function () {
       var menuPlacement = _this.props.menuPlacement;
       var placement = _this.state.placement || coercePlacement(menuPlacement);
-      return index_b19cc27c_browser_esm_objectSpread2(index_b19cc27c_browser_esm_objectSpread2({}, _this.props), {}, {
+      return index_4bd03571_esm_objectSpread2(index_4bd03571_esm_objectSpread2({}, _this.props), {}, {
         placement: placement,
         maxHeight: _this.state.maxHeight
       });
@@ -71402,22 +71427,22 @@ var groupHeadingCSS = function groupHeadingCSS(_ref2) {
 };
 
 var GroupHeading = function GroupHeading(props) {
-  var className = props.className,
+  var getStyles = props.getStyles,
       cx = props.cx,
-      getStyles = props.getStyles,
-      theme = props.theme;
-  props.selectProps;
+      className = props.className;
 
-  var cleanProps = (0,objectWithoutProperties_index/* default */.Z)(props, ["className", "cx", "getStyles", "theme", "selectProps"]);
+  var _cleanCommonProps = cleanCommonProps(props);
+
+  _cleanCommonProps.data;
+
+  var innerProps = (0,objectWithoutProperties_index/* default */.Z)(_cleanCommonProps, ["data"]);
 
   return (0,emotion_react_browser_esm/* jsx */.tZ)("div", (0,_index/* default */.Z)({
-    css: getStyles('groupHeading', index_b19cc27c_browser_esm_objectSpread2({
-      theme: theme
-    }, cleanProps)),
+    css: getStyles('groupHeading', props),
     className: cx({
       'group-heading': true
     }, className)
-  }, cleanProps));
+  }, innerProps));
 };
 
 var inputCSS = function inputCSS(_ref) {
@@ -71447,22 +71472,19 @@ var inputStyle = function inputStyle(isHidden) {
   };
 };
 
-var Input = function Input(_ref2) {
-  var className = _ref2.className,
-      cx = _ref2.cx,
-      getStyles = _ref2.getStyles,
-      innerRef = _ref2.innerRef,
-      isHidden = _ref2.isHidden,
-      isDisabled = _ref2.isDisabled,
-      theme = _ref2.theme;
-  _ref2.selectProps;
+var Input = function Input(props) {
+  var className = props.className,
+      cx = props.cx,
+      getStyles = props.getStyles;
 
-  var props = (0,objectWithoutProperties_index/* default */.Z)(_ref2, ["className", "cx", "getStyles", "innerRef", "isHidden", "isDisabled", "theme", "selectProps"]);
+  var _cleanCommonProps = cleanCommonProps(props),
+      innerRef = _cleanCommonProps.innerRef,
+      isDisabled = _cleanCommonProps.isDisabled,
+      isHidden = _cleanCommonProps.isHidden,
+      innerProps = (0,objectWithoutProperties_index/* default */.Z)(_cleanCommonProps, ["innerRef", "isDisabled", "isHidden"]);
 
   return (0,emotion_react_browser_esm/* jsx */.tZ)("div", {
-    css: getStyles('input', index_b19cc27c_browser_esm_objectSpread2({
-      theme: theme
-    }, props))
+    css: getStyles('input', props)
   }, (0,emotion_react_browser_esm/* jsx */.tZ)(AutosizeInput/* default */.Z, (0,_index/* default */.Z)({
     className: cx({
       input: true
@@ -71470,7 +71492,7 @@ var Input = function Input(_ref2) {
     inputRef: innerRef,
     inputStyle: inputStyle(isHidden),
     disabled: isDisabled
-  }, props)));
+  }, innerProps)));
 };
 
 var multiValueCSS = function multiValueCSS(_ref) {
@@ -71562,7 +71584,7 @@ var MultiValue = function MultiValue(props) {
         emotionCx = _ref6.cx;
     return (0,emotion_react_browser_esm/* jsx */.tZ)(Container, {
       data: data,
-      innerProps: index_b19cc27c_browser_esm_objectSpread2({
+      innerProps: index_4bd03571_esm_objectSpread2({
         className: emotionCx(css(getStyles('multiValue', props)), cx({
           'multi-value': true,
           'multi-value--is-disabled': isDisabled
@@ -71579,7 +71601,7 @@ var MultiValue = function MultiValue(props) {
       selectProps: selectProps
     }, children), (0,emotion_react_browser_esm/* jsx */.tZ)(Remove, {
       data: data,
-      innerProps: index_b19cc27c_browser_esm_objectSpread2({
+      innerProps: index_4bd03571_esm_objectSpread2({
         className: emotionCx(css(getStyles('multiValueRemove', props)), cx({
           'multi-value__remove': true
         }, className))
@@ -71734,13 +71756,76 @@ var components = {
 };
 
 var defaultComponents = function defaultComponents(props) {
-  return index_b19cc27c_browser_esm_objectSpread2(index_b19cc27c_browser_esm_objectSpread2({}, components), props.components);
+  return index_4bd03571_esm_objectSpread2(index_4bd03571_esm_objectSpread2({}, components), props.components);
 };
 
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/toConsumableArray/_index.mjs + 3 modules
 var toConsumableArray_index = __webpack_require__(26183);
-;// CONCATENATED MODULE: ./node_modules/react-select/dist/Select-0b2b7701.browser.esm.js
+;// CONCATENATED MODULE: ./node_modules/memoize-one/dist/memoize-one.esm.js
+var safeIsNaN = Number.isNaN || function ponyfill(value) {
+  return typeof value === 'number' && value !== value;
+};
+
+function isEqual(first, second) {
+  if (first === second) {
+    return true;
+  }
+
+  if (safeIsNaN(first) && safeIsNaN(second)) {
+    return true;
+  }
+
+  return false;
+}
+
+function areInputsEqual(newInputs, lastInputs) {
+  if (newInputs.length !== lastInputs.length) {
+    return false;
+  }
+
+  for (var i = 0; i < newInputs.length; i++) {
+    if (!isEqual(newInputs[i], lastInputs[i])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function memoizeOne(resultFn, isEqual) {
+  if (isEqual === void 0) {
+    isEqual = areInputsEqual;
+  }
+
+  var lastThis;
+  var lastArgs = [];
+  var lastResult;
+  var calledOnce = false;
+
+  function memoized() {
+    var newArgs = [];
+
+    for (var _i = 0; _i < arguments.length; _i++) {
+      newArgs[_i] = arguments[_i];
+    }
+
+    if (calledOnce && lastThis === this && isEqual(newArgs, lastArgs)) {
+      return lastResult;
+    }
+
+    lastResult = resultFn.apply(this, newArgs);
+    calledOnce = true;
+    lastThis = this;
+    lastArgs = newArgs;
+    return lastResult;
+  }
+
+  return memoized;
+}
+
+/* harmony default export */ const memoize_one_esm = (memoizeOne);
+;// CONCATENATED MODULE: ./node_modules/react-select/dist/Select-dbb12e54.esm.js
 
 
 
@@ -71749,6 +71834,211 @@ var toConsumableArray_index = __webpack_require__(26183);
 
 
 
+
+
+
+function Select_dbb12e54_esm_EMOTION_STRINGIFIED_CSS_ERROR_() {
+  return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop).";
+}
+
+var _ref =  true ? {
+  name: "7pg0cj-a11yText",
+  styles: "label:a11yText;z-index:9999;border:0;clip:rect(1px, 1px, 1px, 1px);height:1px;width:1px;position:absolute;overflow:hidden;padding:0;white-space:nowrap"
+} : 0;
+
+var A11yText = function A11yText(props) {
+  return (0,emotion_react_browser_esm/* jsx */.tZ)("span", (0,_index/* default */.Z)({
+    css: _ref
+  }, props));
+};
+
+var defaultAriaLiveMessages = {
+  guidance: function guidance(props) {
+    var isSearchable = props.isSearchable,
+        isMulti = props.isMulti,
+        isDisabled = props.isDisabled,
+        tabSelectsValue = props.tabSelectsValue,
+        context = props.context;
+
+    switch (context) {
+      case 'menu':
+        return "Use Up and Down to choose options".concat(isDisabled ? '' : ', press Enter to select the currently focused option', ", press Escape to exit the menu").concat(tabSelectsValue ? ', press Tab to select the option and exit the menu' : '', ".");
+
+      case 'input':
+        return "".concat(props['aria-label'] || 'Select', " is focused ").concat(isSearchable ? ',type to refine list' : '', ", press Down to open the menu, ").concat(isMulti ? ' press left to focus selected values' : '');
+
+      case 'value':
+        return 'Use left and right to toggle between focused values, press Backspace to remove the currently focused value';
+
+      default:
+        return '';
+    }
+  },
+  onChange: function onChange(props) {
+    var action = props.action,
+        _props$label = props.label,
+        label = _props$label === void 0 ? '' : _props$label,
+        isDisabled = props.isDisabled;
+
+    switch (action) {
+      case 'deselect-option':
+      case 'pop-value':
+      case 'remove-value':
+        return "option ".concat(label, ", deselected.");
+
+      case 'select-option':
+        return isDisabled ? "option ".concat(label, " is disabled. Select another option.") : "option ".concat(label, ", selected.");
+
+      default:
+        return '';
+    }
+  },
+  onFocus: function onFocus(props) {
+    var context = props.context,
+        _props$focused = props.focused,
+        focused = _props$focused === void 0 ? {} : _props$focused,
+        options = props.options,
+        _props$label2 = props.label,
+        label = _props$label2 === void 0 ? '' : _props$label2,
+        selectValue = props.selectValue,
+        isDisabled = props.isDisabled,
+        isSelected = props.isSelected;
+
+    var getArrayIndex = function getArrayIndex(arr, item) {
+      return arr && arr.length ? "".concat(arr.indexOf(item) + 1, " of ").concat(arr.length) : '';
+    };
+
+    if (context === 'value' && selectValue) {
+      return "value ".concat(label, " focused, ").concat(getArrayIndex(selectValue, focused), ".");
+    }
+
+    if (context === 'menu') {
+      var disabled = isDisabled ? ' disabled' : '';
+      var status = "".concat(isSelected ? 'selected' : 'focused').concat(disabled);
+      return "option ".concat(label, " ").concat(status, ", ").concat(getArrayIndex(options, focused), ".");
+    }
+
+    return '';
+  },
+  onFilter: function onFilter(props) {
+    var inputValue = props.inputValue,
+        resultsMessage = props.resultsMessage;
+    return "".concat(resultsMessage).concat(inputValue ? ' for search term ' + inputValue : '', ".");
+  }
+};
+
+var LiveRegion = function LiveRegion(props) {
+  var ariaSelection = props.ariaSelection,
+      focusedOption = props.focusedOption,
+      focusedValue = props.focusedValue,
+      focusableOptions = props.focusableOptions,
+      isFocused = props.isFocused,
+      selectValue = props.selectValue,
+      selectProps = props.selectProps;
+  var ariaLiveMessages = selectProps.ariaLiveMessages,
+      getOptionLabel = selectProps.getOptionLabel,
+      inputValue = selectProps.inputValue,
+      isMulti = selectProps.isMulti,
+      isOptionDisabled = selectProps.isOptionDisabled,
+      isSearchable = selectProps.isSearchable,
+      menuIsOpen = selectProps.menuIsOpen,
+      options = selectProps.options,
+      screenReaderStatus = selectProps.screenReaderStatus,
+      tabSelectsValue = selectProps.tabSelectsValue;
+  var ariaLabel = selectProps['aria-label'];
+  var ariaLive = selectProps['aria-live']; // Update aria live message configuration when prop changes
+
+  var messages = (0,react.useMemo)(function () {
+    return index_4bd03571_esm_objectSpread2(index_4bd03571_esm_objectSpread2({}, defaultAriaLiveMessages), ariaLiveMessages || {});
+  }, [ariaLiveMessages]); // Update aria live selected option when prop changes
+
+  var ariaSelected = (0,react.useMemo)(function () {
+    var message = '';
+
+    if (ariaSelection && messages.onChange) {
+      var option = ariaSelection.option,
+          removedValue = ariaSelection.removedValue,
+          value = ariaSelection.value; // select-option when !isMulti does not return option so we assume selected option is value
+
+      var asOption = function asOption(val) {
+        return !Array.isArray(val) ? val : null;
+      };
+
+      var selected = removedValue || option || asOption(value);
+
+      var onChangeProps = index_4bd03571_esm_objectSpread2({
+        isDisabled: selected && isOptionDisabled(selected),
+        label: selected ? getOptionLabel(selected) : ''
+      }, ariaSelection);
+
+      message = messages.onChange(onChangeProps);
+    }
+
+    return message;
+  }, [ariaSelection, isOptionDisabled, getOptionLabel, messages]);
+  var ariaFocused = (0,react.useMemo)(function () {
+    var focusMsg = '';
+    var focused = focusedOption || focusedValue;
+    var isSelected = !!(focusedOption && selectValue && selectValue.includes(focusedOption));
+
+    if (focused && messages.onFocus) {
+      var onFocusProps = {
+        focused: focused,
+        label: getOptionLabel(focused),
+        isDisabled: isOptionDisabled(focused),
+        isSelected: isSelected,
+        options: options,
+        context: focused === focusedOption ? 'menu' : 'value',
+        selectValue: selectValue
+      };
+      focusMsg = messages.onFocus(onFocusProps);
+    }
+
+    return focusMsg;
+  }, [focusedOption, focusedValue, getOptionLabel, isOptionDisabled, messages, options, selectValue]);
+  var ariaResults = (0,react.useMemo)(function () {
+    var resultsMsg = '';
+
+    if (menuIsOpen && options.length && messages.onFilter) {
+      var resultsMessage = screenReaderStatus({
+        count: focusableOptions.length
+      });
+      resultsMsg = messages.onFilter({
+        inputValue: inputValue,
+        resultsMessage: resultsMessage
+      });
+    }
+
+    return resultsMsg;
+  }, [focusableOptions, inputValue, menuIsOpen, messages, options, screenReaderStatus]);
+  var ariaGuidance = (0,react.useMemo)(function () {
+    var guidanceMsg = '';
+
+    if (messages.guidance) {
+      var context = focusedValue ? 'value' : menuIsOpen ? 'menu' : 'input';
+      guidanceMsg = messages.guidance({
+        'aria-label': ariaLabel,
+        context: context,
+        isDisabled: focusedOption && isOptionDisabled(focusedOption),
+        isMulti: isMulti,
+        isSearchable: isSearchable,
+        tabSelectsValue: tabSelectsValue
+      });
+    }
+
+    return guidanceMsg;
+  }, [ariaLabel, focusedOption, focusedValue, isMulti, isOptionDisabled, isSearchable, menuIsOpen, messages, tabSelectsValue]);
+  var ariaContext = "".concat(ariaFocused, " ").concat(ariaResults, " ").concat(ariaGuidance);
+  return (0,emotion_react_browser_esm/* jsx */.tZ)(A11yText, {
+    "aria-live": ariaLive,
+    "aria-atomic": "false",
+    "aria-relevant": "additions text"
+  }, isFocused && (0,emotion_react_browser_esm/* jsx */.tZ)(react.Fragment, null, (0,emotion_react_browser_esm/* jsx */.tZ)("span", {
+    id: "aria-selection"
+  }, ariaSelected), (0,emotion_react_browser_esm/* jsx */.tZ)("span", {
+    id: "aria-context"
+  }, ariaContext)));
+};
 
 var diacritics = [{
   base: 'A',
@@ -72022,6 +72312,8 @@ var stripDiacritics = function stripDiacritics(str) {
   });
 };
 
+var memoizedStripDiacriticsForInput = memoize_one_esm(stripDiacritics);
+
 var trimString = function trimString(str) {
   return str.replace(/^\s+|\s+$/g, '');
 };
@@ -72032,7 +72324,7 @@ var defaultStringify = function defaultStringify(option) {
 
 var createFilter = function createFilter(config) {
   return function (option, rawInput) {
-    var _ignoreCase$ignoreAcc = index_b19cc27c_browser_esm_objectSpread2({
+    var _ignoreCase$ignoreAcc = index_4bd03571_esm_objectSpread2({
       ignoreCase: true,
       ignoreAccents: true,
       stringify: defaultStringify,
@@ -72054,27 +72346,12 @@ var createFilter = function createFilter(config) {
     }
 
     if (ignoreAccents) {
-      input = stripDiacritics(input);
+      input = memoizedStripDiacriticsForInput(input);
       candidate = stripDiacritics(candidate);
     }
 
     return matchFrom === 'start' ? candidate.substr(0, input.length) === input : candidate.indexOf(input) > -1;
   };
-};
-
-function Select_0b2b7701_browser_esm_EMOTION_STRINGIFIED_CSS_ERROR_() {
-  return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop).";
-}
-
-var _ref =  true ? {
-  name: "7pg0cj-a11yText",
-  styles: "label:a11yText;z-index:9999;border:0;clip:rect(1px, 1px, 1px, 1px);height:1px;width:1px;position:absolute;overflow:hidden;padding:0;white-space:nowrap"
-} : 0;
-
-var A11yText = function A11yText(props) {
-  return (0,emotion_react_browser_esm/* jsx */.tZ)("span", (0,_index/* default */.Z)({
-    css: _ref
-  }, props));
 };
 
 function DummyInput(_ref) {
@@ -72187,18 +72464,21 @@ function useScrollCapture(_ref) {
   }, [handleEventDelta]);
   var startListening = (0,react.useCallback)(function (el) {
     // bail early if no element is available to attach to
-    if (!el) return; // all the if statements are to appease Flow 😢
+    if (!el) return;
+    var notPassive = supportsPassiveEvents ? {
+      passive: false
+    } : false; // all the if statements are to appease Flow 😢
 
     if (typeof el.addEventListener === 'function') {
-      el.addEventListener('wheel', onWheel, false);
+      el.addEventListener('wheel', onWheel, notPassive);
     }
 
     if (typeof el.addEventListener === 'function') {
-      el.addEventListener('touchstart', onTouchStart, false);
+      el.addEventListener('touchstart', onTouchStart, notPassive);
     }
 
     if (typeof el.addEventListener === 'function') {
-      el.addEventListener('touchmove', onTouchMove, false);
+      el.addEventListener('touchmove', onTouchMove, notPassive);
     }
   }, [onTouchMove, onTouchStart, onWheel]);
   var stopListening = (0,react.useCallback)(function (el) {
@@ -72265,7 +72545,7 @@ function isTouchDevice() {
   return 'ontouchstart' in window || navigator.maxTouchPoints;
 }
 
-var canUseDOM = !!(window.document && window.document.createElement);
+var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
 var activeScrollLocks = 0;
 var listenerOptions = {
   capture: false,
@@ -72371,7 +72651,7 @@ var blurSelectInput = function blurSelectInput() {
   return document.activeElement && document.activeElement.blur();
 };
 
-var Select_0b2b7701_browser_esm_ref2 =  true ? {
+var Select_dbb12e54_esm_ref2 =  true ? {
   name: "1kfdb0e",
   styles: "position:fixed;left:0;bottom:0;right:0;top:0"
 } : 0;
@@ -72403,65 +72683,9 @@ function ScrollManager(_ref) {
 
   return (0,emotion_react_browser_esm/* jsx */.tZ)(react.Fragment, null, lockEnabled && (0,emotion_react_browser_esm/* jsx */.tZ)("div", {
     onClick: blurSelectInput,
-    css: Select_0b2b7701_browser_esm_ref2
+    css: Select_dbb12e54_esm_ref2
   }), children(targetRef));
 }
-
-var instructionsAriaMessage = function instructionsAriaMessage(event) {
-  var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var isSearchable = context.isSearchable,
-      isMulti = context.isMulti,
-      label = context.label,
-      isDisabled = context.isDisabled,
-      tabSelectsValue = context.tabSelectsValue;
-
-  switch (event) {
-    case 'menu':
-      return "Use Up and Down to choose options".concat(isDisabled ? '' : ', press Enter to select the currently focused option', ", press Escape to exit the menu").concat(tabSelectsValue ? ', press Tab to select the option and exit the menu' : '', ".");
-
-    case 'input':
-      return "".concat(label ? label : 'Select', " is focused ").concat(isSearchable ? ',type to refine list' : '', ", press Down to open the menu, ").concat(isMulti ? ' press left to focus selected values' : '');
-
-    case 'value':
-      return 'Use left and right to toggle between focused values, press Backspace to remove the currently focused value';
-  }
-};
-
-var valueEventAriaMessage = function valueEventAriaMessage(event, context) {
-  var value = context.value,
-      isDisabled = context.isDisabled;
-  if (!value) return;
-
-  switch (event) {
-    case 'deselect-option':
-    case 'pop-value':
-    case 'remove-value':
-      return "option ".concat(value, ", deselected.");
-
-    case 'select-option':
-      return isDisabled ? "option ".concat(value, " is disabled. Select another option.") : "option ".concat(value, ", selected.");
-  }
-};
-
-var valueFocusAriaMessage = function valueFocusAriaMessage(_ref) {
-  var focusedValue = _ref.focusedValue,
-      getOptionLabel = _ref.getOptionLabel,
-      selectValue = _ref.selectValue;
-  return "value ".concat(getOptionLabel(focusedValue), " focused, ").concat(selectValue.indexOf(focusedValue) + 1, " of ").concat(selectValue.length, ".");
-};
-
-var optionFocusAriaMessage = function optionFocusAriaMessage(_ref2) {
-  var focusedOption = _ref2.focusedOption,
-      getOptionLabel = _ref2.getOptionLabel,
-      options = _ref2.options;
-  return "option ".concat(getOptionLabel(focusedOption), " focused").concat(focusedOption.isDisabled ? ' disabled' : '', ", ").concat(options.indexOf(focusedOption) + 1, " of ").concat(options.length, ".");
-};
-
-var resultsAriaMessage = function resultsAriaMessage(_ref3) {
-  var inputValue = _ref3.inputValue,
-      screenReaderMessage = _ref3.screenReaderMessage;
-  return "".concat(screenReaderMessage).concat(inputValue ? ' for search term ' + inputValue : '', ".");
-};
 
 var formatGroupLabel = function formatGroupLabel(group) {
   return group.label;
@@ -72560,6 +72784,7 @@ var defaultTheme = {
   spacing: spacing
 };
 var defaultProps = {
+  'aria-live': 'polite',
   backspaceRemovesValue: true,
   blurInputOnSelect: isTouchCapable(),
   captureMenuScroll: !isTouchCapable(),
@@ -72762,8 +72987,7 @@ var Select = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, _props);
     _this.state = {
-      ariaLiveSelection: '',
-      ariaLiveContext: '',
+      ariaSelection: null,
       focusedOption: null,
       focusedValue: null,
       inputIsHidden: false,
@@ -72813,9 +73037,11 @@ var Select = /*#__PURE__*/function (_Component) {
       var _this$props = _this.props,
           onChange = _this$props.onChange,
           name = _this$props.name;
-      onChange(newValue, index_b19cc27c_browser_esm_objectSpread2(index_b19cc27c_browser_esm_objectSpread2({}, actionMeta), {}, {
-        name: name
-      }));
+      actionMeta.name = name;
+
+      _this.ariaOnChange(newValue, actionMeta);
+
+      onChange(newValue, actionMeta);
     };
 
     _this.setValue = function (newValue) {
@@ -72851,64 +73077,34 @@ var Select = /*#__PURE__*/function (_Component) {
     _this.selectOption = function (newValue) {
       var _this$props3 = _this.props,
           blurInputOnSelect = _this$props3.blurInputOnSelect,
-          isMulti = _this$props3.isMulti;
+          isMulti = _this$props3.isMulti,
+          name = _this$props3.name;
       var selectValue = _this.state.selectValue;
 
-      if (isMulti) {
-        if (_this.isOptionSelected(newValue, selectValue)) {
-          var candidate = _this.getOptionValue(newValue);
+      var deselected = isMulti && _this.isOptionSelected(newValue, selectValue);
 
-          _this.setValue(selectValue.filter(function (i) {
-            return _this.getOptionValue(i) !== candidate;
-          }), 'deselect-option', newValue);
+      var isDisabled = _this.isOptionDisabled(newValue, selectValue);
 
-          _this.announceAriaLiveSelection({
-            event: 'deselect-option',
-            context: {
-              value: _this.getOptionLabel(newValue)
-            }
-          });
+      if (deselected) {
+        var candidate = _this.getOptionValue(newValue);
+
+        _this.setValue(selectValue.filter(function (i) {
+          return _this.getOptionValue(i) !== candidate;
+        }), 'deselect-option', newValue);
+      } else if (!isDisabled) {
+        // Select option if option is not disabled
+        if (isMulti) {
+          _this.setValue([].concat((0,toConsumableArray_index/* default */.Z)(selectValue), [newValue]), 'select-option', newValue);
         } else {
-          if (!_this.isOptionDisabled(newValue, selectValue)) {
-            _this.setValue([].concat((0,toConsumableArray_index/* default */.Z)(selectValue), [newValue]), 'select-option', newValue);
-
-            _this.announceAriaLiveSelection({
-              event: 'select-option',
-              context: {
-                value: _this.getOptionLabel(newValue)
-              }
-            });
-          } else {
-            // announce that option is disabled
-            _this.announceAriaLiveSelection({
-              event: 'select-option',
-              context: {
-                value: _this.getOptionLabel(newValue),
-                isDisabled: true
-              }
-            });
-          }
+          _this.setValue(newValue, 'select-option');
         }
       } else {
-        if (!_this.isOptionDisabled(newValue, selectValue)) {
-          _this.setValue(newValue, 'select-option');
+        _this.ariaOnChange(newValue, {
+          action: 'select-option',
+          name: name
+        });
 
-          _this.announceAriaLiveSelection({
-            event: 'select-option',
-            context: {
-              value: _this.getOptionLabel(newValue)
-            }
-          });
-        } else {
-          // announce that option is disabled
-          _this.announceAriaLiveSelection({
-            event: 'select-option',
-            context: {
-              value: _this.getOptionLabel(newValue),
-              isDisabled: true
-            }
-          });
-        }
+        return;
       }
 
       if (blurInputOnSelect) {
@@ -72925,18 +73121,11 @@ var Select = /*#__PURE__*/function (_Component) {
       var newValueArray = selectValue.filter(function (i) {
         return _this.getOptionValue(i) !== candidate;
       });
-      var newValue = isMulti ? newValueArray : newValueArray.length > 0 ? newValueArray[0] : null;
+      var newValue = isMulti ? newValueArray : newValueArray[0] || null;
 
       _this.onChange(newValue, {
         action: 'remove-value',
         removedValue: removedValue
-      });
-
-      _this.announceAriaLiveSelection({
-        event: 'remove-value',
-        context: {
-          value: removedValue ? _this.getOptionLabel(removedValue) : ''
-        }
       });
 
       _this.focusInput();
@@ -72956,14 +73145,7 @@ var Select = /*#__PURE__*/function (_Component) {
       var selectValue = _this.state.selectValue;
       var lastSelectedValue = selectValue[selectValue.length - 1];
       var newValueArray = selectValue.slice(0, selectValue.length - 1);
-      var newValue = isMulti ? newValueArray : newValueArray.length > 0 ? newValueArray[0] : null;
-
-      _this.announceAriaLiveSelection({
-        event: 'pop-value',
-        context: {
-          value: lastSelectedValue ? _this.getOptionLabel(lastSelectedValue) : ''
-        }
-      });
+      var newValue = isMulti ? newValueArray : newValueArray[0] || null;
 
       _this.onChange(newValue, {
         action: 'pop-value',
@@ -73022,23 +73204,11 @@ var Select = /*#__PURE__*/function (_Component) {
       return _this.props.menuIsOpen ? _this.buildFocusableOptions() : [];
     };
 
-    _this.announceAriaLiveSelection = function (_ref2) {
-      var event = _ref2.event,
-          context = _ref2.context;
-
+    _this.ariaOnChange = function (value, actionMeta) {
       _this.setState({
-        ariaLiveSelection: valueEventAriaMessage(event, context)
-      });
-    };
-
-    _this.announceAriaLiveContext = function (_ref3) {
-      var event = _ref3.event,
-          context = _ref3.context;
-
-      _this.setState({
-        ariaLiveContext: instructionsAriaMessage(event, index_b19cc27c_browser_esm_objectSpread2(index_b19cc27c_browser_esm_objectSpread2({}, context), {}, {
-          label: _this.props['aria-label']
-        }))
+        ariaSelection: index_4bd03571_esm_objectSpread2({
+          value: value
+        }, actionMeta)
       });
     };
 
@@ -73150,8 +73320,8 @@ var Select = /*#__PURE__*/function (_Component) {
       _this.isComposing = false;
     };
 
-    _this.onTouchStart = function (_ref4) {
-      var touches = _ref4.touches;
+    _this.onTouchStart = function (_ref2) {
+      var touches = _ref2.touches;
       var touch = touches && touches.item(0);
 
       if (!touch) {
@@ -73163,8 +73333,8 @@ var Select = /*#__PURE__*/function (_Component) {
       _this.userIsDragging = false;
     };
 
-    _this.onTouchMove = function (_ref5) {
-      var touches = _ref5.touches;
+    _this.onTouchMove = function (_ref3) {
+      var touches = _ref3.touches;
       var touch = touches && touches.item(0);
 
       if (!touch) {
@@ -73226,27 +73396,12 @@ var Select = /*#__PURE__*/function (_Component) {
     };
 
     _this.onInputFocus = function (event) {
-      var _this$props5 = _this.props,
-          isSearchable = _this$props5.isSearchable,
-          isMulti = _this$props5.isMulti;
-
       if (_this.props.onFocus) {
         _this.props.onFocus(event);
       }
 
       _this.setState({
-        inputIsHiddenAfterUpdate: false
-      });
-
-      _this.announceAriaLiveContext({
-        event: 'input',
-        context: {
-          isSearchable: isSearchable,
-          isMulti: isMulti
-        }
-      });
-
-      _this.setState({
+        inputIsHiddenAfterUpdate: false,
         isFocused: true
       });
 
@@ -73295,17 +73450,17 @@ var Select = /*#__PURE__*/function (_Component) {
     };
 
     _this.onKeyDown = function (event) {
-      var _this$props6 = _this.props,
-          isMulti = _this$props6.isMulti,
-          backspaceRemovesValue = _this$props6.backspaceRemovesValue,
-          escapeClearsValue = _this$props6.escapeClearsValue,
-          inputValue = _this$props6.inputValue,
-          isClearable = _this$props6.isClearable,
-          isDisabled = _this$props6.isDisabled,
-          menuIsOpen = _this$props6.menuIsOpen,
-          onKeyDown = _this$props6.onKeyDown,
-          tabSelectsValue = _this$props6.tabSelectsValue,
-          openMenuOnFocus = _this$props6.openMenuOnFocus;
+      var _this$props5 = _this.props,
+          isMulti = _this$props5.isMulti,
+          backspaceRemovesValue = _this$props5.backspaceRemovesValue,
+          escapeClearsValue = _this$props5.escapeClearsValue,
+          inputValue = _this$props5.inputValue,
+          isClearable = _this$props5.isClearable,
+          isDisabled = _this$props5.isDisabled,
+          menuIsOpen = _this$props5.menuIsOpen,
+          onKeyDown = _this$props5.onKeyDown,
+          tabSelectsValue = _this$props5.tabSelectsValue,
+          openMenuOnFocus = _this$props5.openMenuOnFocus;
       var _this$state = _this.state,
           focusedOption = _this$state.focusedOption,
           focusedValue = _this$state.focusedValue,
@@ -73498,9 +73653,9 @@ var Select = /*#__PURE__*/function (_Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      var _this$props7 = this.props,
-          isDisabled = _this$props7.isDisabled,
-          menuIsOpen = _this$props7.menuIsOpen;
+      var _this$props6 = this.props,
+          isDisabled = _this$props6.isDisabled,
+          menuIsOpen = _this$props6.menuIsOpen;
       var isFocused = this.state.isFocused;
 
       if ( // ensure focus is restored correctly when the control becomes enabled
@@ -73540,16 +73695,6 @@ var Select = /*#__PURE__*/function (_Component) {
   }, {
     key: "onMenuClose",
     value: function onMenuClose() {
-      var _this$props8 = this.props,
-          isSearchable = _this$props8.isSearchable,
-          isMulti = _this$props8.isMulti;
-      this.announceAriaLiveContext({
-        event: 'input',
-        context: {
-          isSearchable: isSearchable,
-          isMulti: isMulti
-        }
-      });
       this.onInputChange('', {
         action: 'menu-close'
       });
@@ -73585,12 +73730,9 @@ var Select = /*#__PURE__*/function (_Component) {
           selectValue = _this$state2.selectValue,
           isFocused = _this$state2.isFocused;
       var focusableOptions = this.buildFocusableOptions();
-      var _this$props9 = this.props,
-          isMulti = _this$props9.isMulti,
-          tabSelectsValue = _this$props9.tabSelectsValue;
       var openAtIndex = focusOption === 'first' ? 0 : focusableOptions.length - 1;
 
-      if (!isMulti) {
+      if (!this.props.isMulti) {
         var selectedIndex = focusableOptions.indexOf(selectValue[0]);
 
         if (selectedIndex > -1) {
@@ -73605,27 +73747,17 @@ var Select = /*#__PURE__*/function (_Component) {
         focusedValue: null,
         focusedOption: focusableOptions[openAtIndex]
       }, function () {
-        _this2.onMenuOpen();
-
-        _this2.announceAriaLiveContext({
-          event: 'menu',
-          context: {
-            tabSelectsValue: tabSelectsValue
-          }
-        });
+        return _this2.onMenuOpen();
       });
     }
   }, {
     key: "focusValue",
     value: function focusValue(direction) {
-      var _this$props10 = this.props,
-          isMulti = _this$props10.isMulti,
-          isSearchable = _this$props10.isSearchable;
       var _this$state3 = this.state,
           selectValue = _this$state3.selectValue,
           focusedValue = _this$state3.focusedValue; // Only multiselects support value focusing
 
-      if (!isMulti) return;
+      if (!this.props.isMulti) return;
       this.setState({
         focusedOption: null
       });
@@ -73633,9 +73765,6 @@ var Select = /*#__PURE__*/function (_Component) {
 
       if (!focusedValue) {
         focusedIndex = -1;
-        this.announceAriaLiveContext({
-          event: 'value'
-        });
       }
 
       var lastIndex = selectValue.length - 1;
@@ -73664,16 +73793,6 @@ var Select = /*#__PURE__*/function (_Component) {
           break;
       }
 
-      if (nextFocus === -1) {
-        this.announceAriaLiveContext({
-          event: 'input',
-          context: {
-            isSearchable: isSearchable,
-            isMulti: isMulti
-          }
-        });
-      }
-
       this.setState({
         inputIsHidden: nextFocus !== -1,
         focusedValue: selectValue[nextFocus]
@@ -73683,12 +73802,8 @@ var Select = /*#__PURE__*/function (_Component) {
     key: "focusOption",
     value: function focusOption() {
       var direction = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'first';
-      var _this$props11 = this.props,
-          pageSize = _this$props11.pageSize,
-          tabSelectsValue = _this$props11.tabSelectsValue;
-      var _this$state4 = this.state,
-          focusedOption = _this$state4.focusedOption,
-          selectValue = _this$state4.selectValue;
+      var pageSize = this.props.pageSize;
+      var focusedOption = this.state.focusedOption;
       var options = this.getFocusableOptions();
       if (!options.length) return;
       var nextFocus = 0; // handles 'first'
@@ -73697,12 +73812,6 @@ var Select = /*#__PURE__*/function (_Component) {
 
       if (!focusedOption) {
         focusedIndex = -1;
-        this.announceAriaLiveContext({
-          event: 'menu',
-          context: {
-            tabSelectsValue: tabSelectsValue
-          }
-        });
       }
 
       if (direction === 'up') {
@@ -73723,13 +73832,6 @@ var Select = /*#__PURE__*/function (_Component) {
       this.setState({
         focusedOption: options[nextFocus],
         focusedValue: null
-      });
-      this.announceAriaLiveContext({
-        event: 'menu',
-        context: {
-          isDisabled: this.isOptionDisabled(options[nextFocus], selectValue),
-          tabSelectsValue: tabSelectsValue
-        }
       });
     }
   }, {
@@ -73752,7 +73854,7 @@ var Select = /*#__PURE__*/function (_Component) {
       // overlay it with the default theme.
 
 
-      return index_b19cc27c_browser_esm_objectSpread2(index_b19cc27c_browser_esm_objectSpread2({}, defaultTheme), this.props.theme);
+      return index_4bd03571_esm_objectSpread2(index_4bd03571_esm_objectSpread2({}, defaultTheme), this.props.theme);
     }
   }, {
     key: "getCommonProps",
@@ -73761,16 +73863,16 @@ var Select = /*#__PURE__*/function (_Component) {
           cx = this.cx,
           getStyles = this.getStyles,
           getValue = this.getValue,
-          setValue = this.setValue,
           selectOption = this.selectOption,
+          setValue = this.setValue,
           props = this.props;
       var isMulti = props.isMulti,
           isRtl = props.isRtl,
           options = props.options;
       var hasValue = this.hasValue();
       return {
-        cx: cx,
         clearValue: clearValue,
+        cx: cx,
         getStyles: getStyles,
         getValue: getValue,
         hasValue: hasValue,
@@ -73778,8 +73880,8 @@ var Select = /*#__PURE__*/function (_Component) {
         isRtl: isRtl,
         options: options,
         selectOption: selectOption,
-        setValue: setValue,
         selectProps: props,
+        setValue: setValue,
         theme: this.getTheme()
       };
     }
@@ -73795,16 +73897,11 @@ var Select = /*#__PURE__*/function (_Component) {
       return !!this.getFocusableOptions().length;
     }
   }, {
-    key: "countOptions",
-    value: function countOptions() {
-      return this.getFocusableOptions().length;
-    }
-  }, {
     key: "isClearable",
     value: function isClearable() {
-      var _this$props12 = this.props,
-          isClearable = _this$props12.isClearable,
-          isMulti = _this$props12.isMulti; // single select, by default, IS NOT clearable
+      var _this$props7 = this.props,
+          isClearable = _this$props7.isClearable,
+          isMulti = _this$props7.isMulti; // single select, by default, IS NOT clearable
       // multi select, by default, IS clearable
 
       if (isClearable === undefined) return isMulti;
@@ -73889,57 +73986,24 @@ var Select = /*#__PURE__*/function (_Component) {
       }
     }
   }, {
-    key: "constructAriaLiveMessage",
+    key: "renderInput",
     value: // ==============================
     // Renderers
     // ==============================
-    function constructAriaLiveMessage() {
-      var _this$state5 = this.state,
-          ariaLiveContext = _this$state5.ariaLiveContext,
-          selectValue = _this$state5.selectValue,
-          focusedValue = _this$state5.focusedValue,
-          focusedOption = _this$state5.focusedOption;
-      var _this$props13 = this.props,
-          options = _this$props13.options,
-          menuIsOpen = _this$props13.menuIsOpen,
-          inputValue = _this$props13.inputValue,
-          screenReaderStatus = _this$props13.screenReaderStatus; // An aria live message representing the currently focused value in the select.
-
-      var focusedValueMsg = focusedValue ? valueFocusAriaMessage({
-        focusedValue: focusedValue,
-        getOptionLabel: this.getOptionLabel,
-        selectValue: selectValue
-      }) : ''; // An aria live message representing the currently focused option in the select.
-
-      var focusedOptionMsg = focusedOption && menuIsOpen ? optionFocusAriaMessage({
-        focusedOption: focusedOption,
-        getOptionLabel: this.getOptionLabel,
-        options: options
-      }) : ''; // An aria live message representing the set of focusable results and current searchterm/inputvalue.
-
-      var resultsMsg = resultsAriaMessage({
-        inputValue: inputValue,
-        screenReaderMessage: screenReaderStatus({
-          count: this.countOptions()
-        })
-      });
-      return "".concat(focusedValueMsg, " ").concat(focusedOptionMsg, " ").concat(resultsMsg, " ").concat(ariaLiveContext);
-    }
-  }, {
-    key: "renderInput",
-    value: function renderInput() {
-      var _this$props14 = this.props,
-          isDisabled = _this$props14.isDisabled,
-          isSearchable = _this$props14.isSearchable,
-          inputId = _this$props14.inputId,
-          inputValue = _this$props14.inputValue,
-          tabIndex = _this$props14.tabIndex,
-          form = _this$props14.form;
+    function renderInput() {
+      var _this$props8 = this.props,
+          isDisabled = _this$props8.isDisabled,
+          isSearchable = _this$props8.isSearchable,
+          inputId = _this$props8.inputId,
+          inputValue = _this$props8.inputValue,
+          tabIndex = _this$props8.tabIndex,
+          form = _this$props8.form;
 
       var _this$getComponents = this.getComponents(),
           Input = _this$getComponents.Input;
 
       var inputIsHidden = this.state.inputIsHidden;
+      var commonProps = this.commonProps;
       var id = inputId || this.getElementId('input'); // aria attributes makes the JSX "noisy", separated for clarity
 
       var ariaAttributes = {
@@ -73964,16 +74028,10 @@ var Select = /*#__PURE__*/function (_Component) {
         }, ariaAttributes));
       }
 
-      var _this$commonProps = this.commonProps,
-          cx = _this$commonProps.cx,
-          theme = _this$commonProps.theme,
-          selectProps = _this$commonProps.selectProps;
-      return /*#__PURE__*/react.createElement(Input, (0,_index/* default */.Z)({
+      return /*#__PURE__*/react.createElement(Input, (0,_index/* default */.Z)({}, commonProps, {
         autoCapitalize: "none",
         autoComplete: "off",
         autoCorrect: "off",
-        cx: cx,
-        getStyles: this.getStyles,
         id: id,
         innerRef: this.getInputRef,
         isDisabled: isDisabled,
@@ -73981,11 +74039,9 @@ var Select = /*#__PURE__*/function (_Component) {
         onBlur: this.onInputBlur,
         onChange: this.handleInputChange,
         onFocus: this.onInputFocus,
-        selectProps: selectProps,
         spellCheck: "false",
         tabIndex: tabIndex,
         form: form,
-        theme: theme,
         type: "text",
         value: inputValue
       }, ariaAttributes));
@@ -74004,16 +74060,16 @@ var Select = /*#__PURE__*/function (_Component) {
           Placeholder = _this$getComponents2.Placeholder;
 
       var commonProps = this.commonProps;
-      var _this$props15 = this.props,
-          controlShouldRenderValue = _this$props15.controlShouldRenderValue,
-          isDisabled = _this$props15.isDisabled,
-          isMulti = _this$props15.isMulti,
-          inputValue = _this$props15.inputValue,
-          placeholder = _this$props15.placeholder;
-      var _this$state6 = this.state,
-          selectValue = _this$state6.selectValue,
-          focusedValue = _this$state6.focusedValue,
-          isFocused = _this$state6.isFocused;
+      var _this$props9 = this.props,
+          controlShouldRenderValue = _this$props9.controlShouldRenderValue,
+          isDisabled = _this$props9.isDisabled,
+          isMulti = _this$props9.isMulti,
+          inputValue = _this$props9.inputValue,
+          placeholder = _this$props9.placeholder;
+      var _this$state4 = this.state,
+          selectValue = _this$state4.selectValue,
+          focusedValue = _this$state4.focusedValue,
+          isFocused = _this$state4.isFocused;
 
       if (!this.hasValue() || !controlShouldRenderValue) {
         return inputValue ? null : /*#__PURE__*/react.createElement(Placeholder, (0,_index/* default */.Z)({}, commonProps, {
@@ -74071,9 +74127,9 @@ var Select = /*#__PURE__*/function (_Component) {
           ClearIndicator = _this$getComponents3.ClearIndicator;
 
       var commonProps = this.commonProps;
-      var _this$props16 = this.props,
-          isDisabled = _this$props16.isDisabled,
-          isLoading = _this$props16.isLoading;
+      var _this$props10 = this.props,
+          isDisabled = _this$props10.isDisabled,
+          isLoading = _this$props10.isLoading;
       var isFocused = this.state.isFocused;
 
       if (!this.isClearable() || !ClearIndicator || isDisabled || !this.hasValue() || isLoading) {
@@ -74097,9 +74153,9 @@ var Select = /*#__PURE__*/function (_Component) {
           LoadingIndicator = _this$getComponents4.LoadingIndicator;
 
       var commonProps = this.commonProps;
-      var _this$props17 = this.props,
-          isDisabled = _this$props17.isDisabled,
-          isLoading = _this$props17.isLoading;
+      var _this$props11 = this.props,
+          isDisabled = _this$props11.isDisabled,
+          isLoading = _this$props11.isLoading;
       var isFocused = this.state.isFocused;
       if (!LoadingIndicator || !isLoading) return null;
       var innerProps = {
@@ -74166,22 +74222,22 @@ var Select = /*#__PURE__*/function (_Component) {
 
       var commonProps = this.commonProps;
       var focusedOption = this.state.focusedOption;
-      var _this$props18 = this.props,
-          captureMenuScroll = _this$props18.captureMenuScroll,
-          inputValue = _this$props18.inputValue,
-          isLoading = _this$props18.isLoading,
-          loadingMessage = _this$props18.loadingMessage,
-          minMenuHeight = _this$props18.minMenuHeight,
-          maxMenuHeight = _this$props18.maxMenuHeight,
-          menuIsOpen = _this$props18.menuIsOpen,
-          menuPlacement = _this$props18.menuPlacement,
-          menuPosition = _this$props18.menuPosition,
-          menuPortalTarget = _this$props18.menuPortalTarget,
-          menuShouldBlockScroll = _this$props18.menuShouldBlockScroll,
-          menuShouldScrollIntoView = _this$props18.menuShouldScrollIntoView,
-          noOptionsMessage = _this$props18.noOptionsMessage,
-          onMenuScrollToTop = _this$props18.onMenuScrollToTop,
-          onMenuScrollToBottom = _this$props18.onMenuScrollToBottom;
+      var _this$props12 = this.props,
+          captureMenuScroll = _this$props12.captureMenuScroll,
+          inputValue = _this$props12.inputValue,
+          isLoading = _this$props12.isLoading,
+          loadingMessage = _this$props12.loadingMessage,
+          minMenuHeight = _this$props12.minMenuHeight,
+          maxMenuHeight = _this$props12.maxMenuHeight,
+          menuIsOpen = _this$props12.menuIsOpen,
+          menuPlacement = _this$props12.menuPlacement,
+          menuPosition = _this$props12.menuPosition,
+          menuPortalTarget = _this$props12.menuPortalTarget,
+          menuShouldBlockScroll = _this$props12.menuShouldBlockScroll,
+          menuShouldScrollIntoView = _this$props12.menuShouldScrollIntoView,
+          noOptionsMessage = _this$props12.noOptionsMessage,
+          onMenuScrollToTop = _this$props12.onMenuScrollToTop,
+          onMenuScrollToBottom = _this$props12.onMenuScrollToBottom;
       if (!menuIsOpen) return null; // TODO: Internal Option Type here
 
       var render = function render(props, id) {
@@ -74269,11 +74325,11 @@ var Select = /*#__PURE__*/function (_Component) {
         menuPosition: menuPosition,
         menuShouldScrollIntoView: menuShouldScrollIntoView
       };
-      var menuElement = /*#__PURE__*/react.createElement(MenuPlacer, (0,_index/* default */.Z)({}, commonProps, menuPlacementProps), function (_ref6) {
-        var ref = _ref6.ref,
-            _ref6$placerProps = _ref6.placerProps,
-            placement = _ref6$placerProps.placement,
-            maxHeight = _ref6$placerProps.maxHeight;
+      var menuElement = /*#__PURE__*/react.createElement(MenuPlacer, (0,_index/* default */.Z)({}, commonProps, menuPlacementProps), function (_ref4) {
+        var ref = _ref4.ref,
+            _ref4$placerProps = _ref4.placerProps,
+            placement = _ref4$placerProps.placement,
+            maxHeight = _ref4$placerProps.maxHeight;
         return /*#__PURE__*/react.createElement(Menu, (0,_index/* default */.Z)({}, commonProps, menuPlacementProps, {
           innerRef: ref,
           innerProps: {
@@ -74295,7 +74351,8 @@ var Select = /*#__PURE__*/function (_Component) {
               scrollTargetRef(instance);
             },
             isLoading: isLoading,
-            maxHeight: maxHeight
+            maxHeight: maxHeight,
+            focusedOption: focusedOption
           }), menuUI);
         }));
       }); // positioning behaviour is almost identical for portalled and fixed,
@@ -74314,11 +74371,11 @@ var Select = /*#__PURE__*/function (_Component) {
     value: function renderFormField() {
       var _this5 = this;
 
-      var _this$props19 = this.props,
-          delimiter = _this$props19.delimiter,
-          isDisabled = _this$props19.isDisabled,
-          isMulti = _this$props19.isMulti,
-          name = _this$props19.name;
+      var _this$props13 = this.props,
+          delimiter = _this$props13.delimiter,
+          isDisabled = _this$props13.isDisabled,
+          isMulti = _this$props13.isMulti,
+          name = _this$props13.name;
       var selectValue = this.state.selectValue;
       if (!name || isDisabled) return;
 
@@ -74359,14 +74416,22 @@ var Select = /*#__PURE__*/function (_Component) {
   }, {
     key: "renderLiveRegion",
     value: function renderLiveRegion() {
-      if (!this.state.isFocused) return null;
-      return /*#__PURE__*/react.createElement(A11yText, {
-        "aria-live": "polite"
-      }, /*#__PURE__*/react.createElement("span", {
-        id: "aria-selection-event"
-      }, "\xA0", this.state.ariaLiveSelection), /*#__PURE__*/react.createElement("span", {
-        id: "aria-context"
-      }, "\xA0", this.constructAriaLiveMessage()));
+      var commonProps = this.commonProps;
+      var _this$state5 = this.state,
+          ariaSelection = _this$state5.ariaSelection,
+          focusedOption = _this$state5.focusedOption,
+          focusedValue = _this$state5.focusedValue,
+          isFocused = _this$state5.isFocused,
+          selectValue = _this$state5.selectValue;
+      var focusableOptions = this.getFocusableOptions();
+      return /*#__PURE__*/react.createElement(LiveRegion, (0,_index/* default */.Z)({}, commonProps, {
+        ariaSelection: ariaSelection,
+        focusedOption: focusedOption,
+        focusedValue: focusedValue,
+        isFocused: isFocused,
+        selectValue: selectValue,
+        focusableOptions: focusableOptions
+      }));
     }
   }, {
     key: "render",
@@ -74377,11 +74442,11 @@ var Select = /*#__PURE__*/function (_Component) {
           SelectContainer = _this$getComponents8.SelectContainer,
           ValueContainer = _this$getComponents8.ValueContainer;
 
-      var _this$props20 = this.props,
-          className = _this$props20.className,
-          id = _this$props20.id,
-          isDisabled = _this$props20.isDisabled,
-          menuIsOpen = _this$props20.menuIsOpen;
+      var _this$props14 = this.props,
+          className = _this$props14.className,
+          id = _this$props14.id,
+          isDisabled = _this$props14.isDisabled,
+          menuIsOpen = _this$props14.menuIsOpen;
       var isFocused = this.state.isFocused;
       var commonProps = this.commonProps = this.getCommonProps();
       return /*#__PURE__*/react.createElement(SelectContainer, (0,_index/* default */.Z)({}, commonProps, {
@@ -74437,7 +74502,7 @@ var Select = /*#__PURE__*/function (_Component) {
         inputIsHidden: inputIsHiddenAfterUpdate,
         inputIsHiddenAfterUpdate: undefined
       } : {};
-      return index_b19cc27c_browser_esm_objectSpread2(index_b19cc27c_browser_esm_objectSpread2(index_b19cc27c_browser_esm_objectSpread2({}, newMenuOptionsState), newInputIsHiddenState), {}, {
+      return index_4bd03571_esm_objectSpread2(index_4bd03571_esm_objectSpread2(index_4bd03571_esm_objectSpread2({}, newMenuOptionsState), newInputIsHiddenState), {}, {
         prevProps: props
       });
     }
@@ -74448,7 +74513,7 @@ var Select = /*#__PURE__*/function (_Component) {
 
 Select.defaultProps = defaultProps;
 
-;// CONCATENATED MODULE: ./node_modules/react-select/dist/stateManager-ffc9d993.browser.esm.js
+;// CONCATENATED MODULE: ./node_modules/react-select/dist/stateManager-845a3300.esm.js
 
 
 
@@ -74456,7 +74521,7 @@ Select.defaultProps = defaultProps;
 
 
 
-var stateManager_ffc9d993_browser_esm_defaultProps = {
+var stateManager_845a3300_esm_defaultProps = {
   defaultInputValue: '',
   defaultMenuIsOpen: false,
   defaultValue: null
@@ -74582,62 +74647,305 @@ var manageState = function manageState(SelectComponent) {
     }]);
 
     return StateManager;
-  }(react.Component), _class.defaultProps = stateManager_ffc9d993_browser_esm_defaultProps, _temp;
+  }(react.Component), _class.defaultProps = stateManager_845a3300_esm_defaultProps, _temp;
 };
 
 
 // EXTERNAL MODULE: ./node_modules/@emotion/react/dist/emotion-element-4fbd89c5.browser.esm.js + 1 modules
 var emotion_element_4fbd89c5_browser_esm = __webpack_require__(69779);
-// EXTERNAL MODULE: ./node_modules/@emotion/cache/dist/emotion-cache.browser.esm.js + 7 modules
-var emotion_cache_browser_esm = __webpack_require__(55046);
-;// CONCATENATED MODULE: ./node_modules/memoize-one/dist/memoize-one.esm.js
-function areInputsEqual(newInputs, lastInputs) {
-  if (newInputs.length !== lastInputs.length) {
-    return false;
+// EXTERNAL MODULE: ./node_modules/@emotion/sheet/dist/emotion-sheet.browser.esm.js
+var emotion_sheet_browser_esm = __webpack_require__(30985);
+// EXTERNAL MODULE: ./node_modules/stylis/src/Tokenizer.js
+var Tokenizer = __webpack_require__(79942);
+// EXTERNAL MODULE: ./node_modules/stylis/src/Utility.js
+var Utility = __webpack_require__(26447);
+// EXTERNAL MODULE: ./node_modules/stylis/src/Middleware.js + 1 modules
+var Middleware = __webpack_require__(59154);
+// EXTERNAL MODULE: ./node_modules/stylis/src/Serializer.js
+var Serializer = __webpack_require__(37364);
+// EXTERNAL MODULE: ./node_modules/stylis/src/Parser.js
+var Parser = __webpack_require__(66375);
+;// CONCATENATED MODULE: ./node_modules/react-select/node_modules/@emotion/cache/dist/emotion-cache.browser.esm.js
+
+
+
+
+
+var last = function last(arr) {
+  return arr.length ? arr[arr.length - 1] : null;
+};
+
+var toRules = function toRules(parsed, points) {
+  // pretend we've started with a comma
+  var index = -1;
+  var character = 44;
+
+  do {
+    switch ((0,Tokenizer/* token */.r)(character)) {
+      case 0:
+        // &\f
+        if (character === 38 && (0,Tokenizer/* peek */.fj)() === 12) {
+          // this is not 100% correct, we don't account for literal sequences here - like for example quoted strings
+          // stylis inserts \f after & to know when & where it should replace this sequence with the context selector
+          // and when it should just concatenate the outer and inner selectors
+          // it's very unlikely for this sequence to actually appear in a different context, so we just leverage this fact here
+          points[index] = 1;
+        }
+
+        parsed[index] += (0,Tokenizer/* identifier */.QU)(Tokenizer/* position */.FK - 1);
+        break;
+
+      case 2:
+        parsed[index] += (0,Tokenizer/* delimit */.iF)(character);
+        break;
+
+      case 4:
+        // comma
+        if (character === 44) {
+          // colon
+          parsed[++index] = (0,Tokenizer/* peek */.fj)() === 58 ? '&\f' : '';
+          points[index] = parsed[index].length;
+          break;
+        }
+
+      // fallthrough
+
+      default:
+        parsed[index] += (0,Utility/* from */.Dp)(character);
+    }
+  } while (character = (0,Tokenizer/* next */.lp)());
+
+  return parsed;
+};
+
+var getRules = function getRules(value, points) {
+  return (0,Tokenizer/* dealloc */.cE)(toRules((0,Tokenizer/* alloc */.un)(value), points));
+}; // WeakSet would be more appropriate, but only WeakMap is supported in IE11
+
+
+var fixedElements = /* #__PURE__ */new WeakMap();
+
+var compat = function compat(element) {
+  if (element.type !== 'rule' || !element.parent || // .length indicates if this rule contains pseudo or not
+  !element.length) {
+    return;
   }
 
-  for (var i = 0; i < newInputs.length; i++) {
-    if (newInputs[i] !== lastInputs[i]) {
-      return false;
+  var value = element.value,
+      parent = element.parent;
+  var isImplicitRule = element.column === parent.column && element.line === parent.line;
+
+  while (parent.type !== 'rule') {
+    parent = parent.parent;
+    if (!parent) return;
+  } // short-circuit for the simplest case
+
+
+  if (element.props.length === 1 && value.charCodeAt(0) !== 58
+  /* colon */
+  && !fixedElements.get(parent)) {
+    return;
+  } // if this is an implicitly inserted rule (the one eagerly inserted at the each new nested level)
+  // then the props has already been manipulated beforehand as they that array is shared between it and its "rule parent"
+
+
+  if (isImplicitRule) {
+    return;
+  }
+
+  fixedElements.set(element, true);
+  var points = [];
+  var rules = getRules(value, points);
+  var parentRules = parent.props;
+
+  for (var i = 0, k = 0; i < rules.length; i++) {
+    for (var j = 0; j < parentRules.length; j++, k++) {
+      element.props[k] = points[i] ? rules[i].replace(/&\f/g, parentRules[j]) : parentRules[j] + " " + rules[i];
+    }
+  }
+};
+
+var removeLabel = function removeLabel(element) {
+  if (element.type === 'decl') {
+    var value = element.value;
+
+    if ( // charcode for l
+    value.charCodeAt(0) === 108 && // charcode for b
+    value.charCodeAt(2) === 98) {
+      // this ignores label
+      element["return"] = '';
+      element.value = '';
+    }
+  }
+};
+
+var ignoreFlag = 'emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason';
+
+var isIgnoringComment = function isIgnoringComment(element) {
+  return !!element && element.type === 'comm' && element.children.indexOf(ignoreFlag) > -1;
+};
+
+var createUnsafeSelectorsAlarm = function createUnsafeSelectorsAlarm(cache) {
+  return function (element, index, children) {
+    if (element.type !== 'rule') return;
+    var unsafePseudoClasses = element.value.match(/(:first|:nth|:nth-last)-child/g);
+
+    if (unsafePseudoClasses && cache.compat !== true) {
+      var prevElement = index > 0 ? children[index - 1] : null;
+
+      if (prevElement && isIgnoringComment(last(prevElement.children))) {
+        return;
+      }
+
+      unsafePseudoClasses.forEach(function (unsafePseudoClass) {
+        console.error("The pseudo class \"" + unsafePseudoClass + "\" is potentially unsafe when doing server-side rendering. Try changing it to \"" + unsafePseudoClass.split('-child')[0] + "-of-type\".");
+      });
+    }
+  };
+};
+
+var isImportRule = function isImportRule(element) {
+  return element.type.charCodeAt(1) === 105 && element.type.charCodeAt(0) === 64;
+};
+
+var isPrependedWithRegularRules = function isPrependedWithRegularRules(index, children) {
+  for (var i = index - 1; i >= 0; i--) {
+    if (!isImportRule(children[i])) {
+      return true;
     }
   }
 
-  return true;
-}
+  return false;
+}; // use this to remove incorrect elements from further processing
+// so they don't get handed to the `sheet` (or anything else)
+// as that could potentially lead to additional logs which in turn could be overhelming to the user
 
-function memoizeOne(resultFn, isEqual) {
-  if (isEqual === void 0) {
-    isEqual = areInputsEqual;
+
+var nullifyElement = function nullifyElement(element) {
+  element.type = '';
+  element.value = '';
+  element["return"] = '';
+  element.children = '';
+  element.props = '';
+};
+
+var incorrectImportAlarm = function incorrectImportAlarm(element, index, children) {
+  if (!isImportRule(element)) {
+    return;
   }
 
-  var lastThis;
-  var lastArgs = [];
-  var lastResult;
-  var calledOnce = false;
+  if (element.parent) {
+    console.error("`@import` rules can't be nested inside other rules. Please move it to the top level and put it before regular rules. Keep in mind that they can only be used within global styles.");
+    nullifyElement(element);
+  } else if (isPrependedWithRegularRules(index, children)) {
+    console.error("`@import` rules can't be after other rules. Please put your `@import` rules before your other rules.");
+    nullifyElement(element);
+  }
+};
 
-  function memoized() {
-    var newArgs = [];
+var defaultStylisPlugins = [Middleware/* prefixer */.Ji];
 
-    for (var _i = 0; _i < arguments.length; _i++) {
-      newArgs[_i] = arguments[_i];
-    }
+var createCache = function createCache(options) {
+  var key = options.key;
 
-    if (calledOnce && lastThis === this && isEqual(newArgs, lastArgs)) {
-      return lastResult;
-    }
+  if (false) {}
 
-    lastResult = resultFn.apply(this, newArgs);
-    calledOnce = true;
-    lastThis = this;
-    lastArgs = newArgs;
-    return lastResult;
+  if (key === 'css') {
+    var ssrStyles = document.querySelectorAll("style[data-emotion]:not([data-s])"); // get SSRed styles out of the way of React's hydration
+    // document.head is a safe place to move them to(though note document.head is not necessarily the last place they will be)
+    // note this very very intentionally targets all style elements regardless of the key to ensure
+    // that creating a cache works inside of render of a React component
+
+    Array.prototype.forEach.call(ssrStyles, function (node) {
+      // we want to only move elements which have a space in the data-emotion attribute value
+      // because that indicates that it is an Emotion 11 server-side rendered style elements
+      // while we will already ignore Emotion 11 client-side inserted styles because of the :not([data-s]) part in the selector
+      // Emotion 10 client-side inserted styles did not have data-s (but importantly did not have a space in their data-emotion attributes)
+      // so checking for the space ensures that loading Emotion 11 after Emotion 10 has inserted some styles
+      // will not result in the Emotion 10 styles being destroyed
+      var dataEmotionAttribute = node.getAttribute('data-emotion');
+
+      if (dataEmotionAttribute.indexOf(' ') === -1) {
+        return;
+      }
+
+      document.head.appendChild(node);
+      node.setAttribute('data-s', '');
+    });
   }
 
-  return memoized;
-}
+  var stylisPlugins = options.stylisPlugins || defaultStylisPlugins;
 
-/* harmony default export */ const memoize_one_esm = (memoizeOne);
-;// CONCATENATED MODULE: ./node_modules/react-select/dist/react-select.browser.esm.js
+  if (false) {}
+
+  var inserted = {}; // $FlowFixMe
+
+  var container;
+  var nodesToHydrate = [];
+  {
+    container = options.container || document.head;
+    Array.prototype.forEach.call( // this means we will ignore elements which don't have a space in them which
+    // means that the style elements we're looking at are only Emotion 11 server-rendered style elements
+    document.querySelectorAll("style[data-emotion^=\"" + key + " \"]"), function (node) {
+      var attrib = node.getAttribute("data-emotion").split(' '); // $FlowFixMe
+
+      for (var i = 1; i < attrib.length; i++) {
+        inserted[attrib[i]] = true;
+      }
+
+      nodesToHydrate.push(node);
+    });
+  }
+
+  var _insert;
+
+  var omnipresentPlugins = [compat, removeLabel];
+
+  if (false) {}
+
+  {
+    var currentSheet;
+    var finalizingPlugins = [Serializer/* stringify */.P,  false ? 0 : (0,Middleware/* rulesheet */.cD)(function (rule) {
+      currentSheet.insert(rule);
+    })];
+    var serializer = (0,Middleware/* middleware */.qR)(omnipresentPlugins.concat(stylisPlugins, finalizingPlugins));
+
+    var stylis = function stylis(styles) {
+      return (0,Serializer/* serialize */.q)((0,Parser/* compile */.MY)(styles), serializer);
+    };
+
+    _insert = function insert(selector, serialized, sheet, shouldCache) {
+      currentSheet = sheet;
+
+      if (false) {}
+
+      stylis(selector ? selector + "{" + serialized.styles + "}" : serialized.styles);
+
+      if (shouldCache) {
+        cache.inserted[serialized.name] = true;
+      }
+    };
+  }
+  var cache = {
+    key: key,
+    sheet: new emotion_sheet_browser_esm/* StyleSheet */.m({
+      key: key,
+      container: container,
+      nonce: options.nonce,
+      speedy: options.speedy,
+      prepend: options.prepend
+    }),
+    nonce: options.nonce,
+    inserted: inserted,
+    registered: {},
+    insert: _insert
+  };
+  cache.sheet.hydrate(nodesToHydrate);
+  return cache;
+};
+
+/* harmony default export */ const emotion_cache_browser_esm = (createCache);
+;// CONCATENATED MODULE: ./node_modules/react-select/dist/react-select.esm.js
 
 
 
@@ -74672,7 +74980,7 @@ var NonceProvider = /*#__PURE__*/function (_Component) {
     _this = _super.call(this, props);
 
     _this.createEmotionCache = function (nonce, key) {
-      return (0,emotion_cache_browser_esm/* default */.Z)({
+      return emotion_cache_browser_esm({
         nonce: nonce,
         key: key
       });
@@ -74696,7 +75004,7 @@ var NonceProvider = /*#__PURE__*/function (_Component) {
 }(react.Component);
 
 var index = manageState(Select);
-/* harmony default export */ const react_select_browser_esm = (index);
+/* harmony default export */ const react_select_esm = (index);
 
 // EXTERNAL MODULE: ./node_modules/shortid/index.js
 var shortid = __webpack_require__(13402);
@@ -74704,15 +75012,12 @@ var shortid_default = /*#__PURE__*/__webpack_require__.n(shortid);
 // EXTERNAL MODULE: ./src/components/ui/TextField/index.js
 var TextField = __webpack_require__(1618);
 // EXTERNAL MODULE: ./src/styles/index.js + 7 modules
-var styles = __webpack_require__(31877);
+var src_styles = __webpack_require__(31877);
 // EXTERNAL MODULE: ./src/themes/index.js + 1 modules
 var themes = __webpack_require__(58829);
-// EXTERNAL MODULE: ./node_modules/classnames/index.js
-var classnames = __webpack_require__(67064);
-var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
-// EXTERNAL MODULE: ./src/components/ui/List/Item.js
-var Item = __webpack_require__(48748);
-;// CONCATENATED MODULE: ./src/components/ui/Select/Option.js
+// EXTERNAL MODULE: ./src/components/ui/Button/index.js
+var Button = __webpack_require__(39209);
+;// CONCATENATED MODULE: ./src/components/ui/Select/ClearIndicator.js
 
 
 
@@ -74721,73 +75026,62 @@ var Item = __webpack_require__(48748);
 
 
 
-
-var ComponentClassName = 'Nautilus-SelectOption';
-var Option_Option = function Option(props) {
-  var children = props.children,
-      className = props.className,
-      innerProps = props.innerProps,
-      isFocused = props.isFocused,
-      onSelect = props.onSelect,
-      unstyled = props.unstyled;
+var ClearIndicator_ClearIndicator = function ClearIndicator(_ref) {
+  var innerProps = _ref.innerProps;
   var theme = (0,themes.useTheme)();
-  return (0,emotion_react_browser_esm/* jsx */.tZ)(Item/* default */.ZP, (0,_index/* default */.Z)({
-    className: classnames_default()(ComponentClassName, className, 'Nautilus-ComboBoxOptionListItem'),
-    css: unstyled ? undefined :
+  return (0,emotion_react_browser_esm/* jsx */.tZ)(Button.default, (0,_index/* default */.Z)({}, innerProps, {
+    minimal: true,
+    iconOnly: "x",
+    noMargin: true,
+    css:
     /*#__PURE__*/
 
     /*#__PURE__*/
-    (0,emotion_react_browser_esm/* css */.iv)("cursor:pointer;padding:", (0,styles/* toUnits */.xk)(theme.spacing.padding.small), ";width:100%;&:hover{background:", theme.colors.neutral.grey200, ";}", isFocused &&
-    /*#__PURE__*/
-
-    /*#__PURE__*/
-    (0,emotion_react_browser_esm/* css */.iv)("background:", theme.colors.state.focusOutline, ";font-weight:bold;" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), ";" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0),
-    onClick: onSelect,
-    unstyled: true
-  }, innerProps), children);
+    (0,emotion_react_browser_esm/* css */.iv)("color:", theme.colors.neutral.grey800, ";order:2;padding:0;svg{height:2rem;width:2rem;}" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0),
+    tabIndex: "-1"
+  }), "Remove selection");
 };
-Option_Option.defaultProps = {
-  className: undefined,
-  isFocused: false,
-  onSelect: undefined,
-  unstyled: false,
-  value: undefined
-};
-Option_Option.propTypes = {
-  /** @ignore */
-  children: (prop_types_default()).string.isRequired,
 
-  /** @ignore */
-  className: (prop_types_default()).string,
-
+ClearIndicator_ClearIndicator.defaultProps = {};
+ClearIndicator_ClearIndicator.propTypes = {
   /** @ignore */
   // eslint-disable-next-line react/forbid-prop-types
-  innerProps: (prop_types_default()).object.isRequired,
-
-  /** @ignore */
-  isFocused: (prop_types_default()).bool,
-
-  /** Event handler when an item is selected. */
-  onSelect: (prop_types_default()).func,
-
-  /* @ignore Don't output any CSS styles. */
-  unstyled: (prop_types_default()).bool,
-
-  /* @ignore The value used for this option. Can be a simple string or an object with a label and values. */
-  value: prop_types_default().oneOfType([(prop_types_default()).string, // eslint-disable-next-line react/forbid-prop-types
-  prop_types_default().shape({
-    label: (prop_types_default()).string,
-    values: (prop_types_default()).object
-  })])
+  innerProps: (prop_types_default()).object.isRequired
 };
-var Option_defaultProps = Option_Option.defaultProps,
-    propTypes = Option_Option.propTypes;
+ClearIndicator_ClearIndicator.displayName = 'ClearIndicator';
+/* harmony default export */ const Select_ClearIndicator = (ClearIndicator_ClearIndicator);
+;// CONCATENATED MODULE: ./src/components/ui/Select/GroupHeading.js
 
-/* harmony default export */ const Select_Option = (Option_Option);
+
+
+
+
+
+
+var GroupHeading_GroupHeading = function GroupHeading(_ref) {
+  var children = _ref.children;
+  var theme = (0,themes.useTheme)();
+  return (0,emotion_react_browser_esm/* jsx */.tZ)("div", {
+    css:
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+    (0,emotion_react_browser_esm/* css */.iv)(src_styles/* metadata.small */.Pu.small(theme), ";color:", theme.colors.text.light, ";padding:0 ", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.small), " ", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.small), ";width:100%;" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0)
+  }, children);
+};
+
+GroupHeading_GroupHeading.defaultProps = {
+  children: undefined
+};
+GroupHeading_GroupHeading.propTypes = {
+  /** @ignore */
+  children: (prop_types_default()).node
+};
+/* harmony default export */ const Select_GroupHeading = (GroupHeading_GroupHeading);
 // EXTERNAL MODULE: ./src/components/ui/Icon/index.js
 var Icon = __webpack_require__(51328);
-;// CONCATENATED MODULE: ./src/components/ui/Select/IndicatorsContainer.js
-function IndicatorsContainer_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
+;// CONCATENATED MODULE: ./src/components/ui/Select/DropdownIndicator.js
+function DropdownIndicator_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
 
 
@@ -74795,28 +75089,56 @@ function IndicatorsContainer_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have
 
 
 
-var IndicatorsContainer_ref =  true ? {
-  name: "1yvywd",
-  styles: "float:right;margin:-2.6rem 0 0"
+
+
+var DropdownIndicator_ref =  true ? {
+  name: "ti75j2",
+  styles: "margin:0"
 } : 0;
 
-var IndicatorsContainer_IndicatorsContainer = function IndicatorsContainer(props) {
-  var selectProps = props.selectProps;
+var DropdownIndicator_DropdownIndicator = function DropdownIndicator(props) {
+  var isFocused = props.isFocused,
+      selectProps = props.selectProps;
+  var theme = (0,themes.useTheme)();
+
+  if (selectProps.isMulti) {
+    return isFocused || selectProps.hideDropdown ? (0,emotion_react_browser_esm/* jsx */.tZ)("span", null) : (0,emotion_react_browser_esm/* jsx */.tZ)(Icon.default, {
+      name: "plus",
+      background: theme.colors.neutral.grey0,
+      css:
+      /*#__PURE__*/
+
+      /*#__PURE__*/
+      (0,emotion_react_browser_esm/* css */.iv)("margin:-", (0,src_styles/* toUnits */.xk)(theme.spacing.margin.xxSmall), " 0;&:hover{cursor:pointer;}" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0),
+      noMargin: true,
+      small: true
+    });
+  }
+
   return (0,emotion_react_browser_esm/* jsx */.tZ)(Icon.default, {
-    css: IndicatorsContainer_ref,
-    name: selectProps.menuIsOpen ? 'chevron-up' : 'chevron-down'
+    name: selectProps.menuIsOpen ? 'chevron-up' : 'chevron-down',
+    css: DropdownIndicator_ref
   });
 };
 
-IndicatorsContainer_IndicatorsContainer.defaultProps = {
+DropdownIndicator_DropdownIndicator.defaultProps = {
   selectProps: undefined
 };
-IndicatorsContainer_IndicatorsContainer.propTypes = {
-  /* @ignore Don't output any CSS styles. */
+DropdownIndicator_DropdownIndicator.propTypes = {
+  /** @ignore */
+  isFocused: (prop_types_default()).bool.isRequired,
+
+  /** @ignore Don't output any CSS styles. */
   // eslint-disable-next-line react/forbid-prop-types
   selectProps: (prop_types_default()).object
 };
-/* harmony default export */ const Select_IndicatorsContainer = (IndicatorsContainer_IndicatorsContainer);
+/* harmony default export */ const Select_DropdownIndicator = (DropdownIndicator_DropdownIndicator);
+;// CONCATENATED MODULE: ./src/components/ui/Select/IndicatorSeparator.js
+var IndicatorSeparator_IndicatorSeparator = function IndicatorSeparator() {
+  return null;
+};
+
+/* harmony default export */ const Select_IndicatorSeparator = (IndicatorSeparator_IndicatorSeparator);
 // EXTERNAL MODULE: ./src/components/ui/List/index.js
 var List = __webpack_require__(72904);
 ;// CONCATENATED MODULE: ./src/components/ui/Select/Menu.js
@@ -74838,7 +75160,7 @@ var Menu_Menu = function Menu(props) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    (0,emotion_react_browser_esm/* css */.iv)(styles/* interfaceUI.medium */.Hj.medium(theme), ";background:", theme.colors.buttons.neutral, ";border:", (0,styles/* toUnits */.xk)(theme.spacing.padding.xxSmall), " solid ", theme.colors.text["default"], ";color:", theme.colors.text["default"], ";left:-", (0,styles/* toUnits */.xk)(theme.spacing.padding.xxSmall), ";list-style-type:none;margin:0;max-height:60vh;overflow-y:scroll;overflow:hidden;position:absolute;padding:0;top:", (0,styles/* toUnits */.xk)(theme.spacing.padding.xxLarge + theme.spacing.padding.xSmall), ";transition:height 200ms;width:calc(100% + ", (0,styles/* toUnits */.xk)(theme.spacing.padding.xSmall), ");z-index:1000;" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0)
+    (0,emotion_react_browser_esm/* css */.iv)(src_styles/* interfaceUI.medium */.Hj.medium(theme), ";background:", theme.colors.buttons.neutral, ";border:", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.xxSmall), " solid ", theme.colors.text["default"], ";color:", theme.colors.text["default"], ";left:-", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.xxSmall), ";list-style-type:none;margin:0;border-top:0;max-height:60vh;overflow-y:scroll;overflow:hidden;position:absolute;padding:0;padding-top:", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.medium), ";transition:height 200ms;width:calc(100% + ", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.xSmall), ");z-index:1000;" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0)
   }, innerProps), children);
 };
 
@@ -74855,9 +75177,9 @@ Menu_Menu.propTypes = {
   innerProps: (prop_types_default()).object
 };
 /* harmony default export */ const Select_Menu = (Menu_Menu);
-// EXTERNAL MODULE: ./src/components/ui/Tags/index.js + 1 modules
-var Tags = __webpack_require__(24103);
-;// CONCATENATED MODULE: ./src/components/ui/Select/MultiValue.js
+// EXTERNAL MODULE: ./src/components/ui/Tags/index.js
+var Tags = __webpack_require__(67718);
+;// CONCATENATED MODULE: ./src/components/ui/Select/MultiValueContainer.js
 
 
 
@@ -74866,28 +75188,204 @@ var Tags = __webpack_require__(24103);
 
 
 
-var MultiValue_MultiValue = function MultiValue(props) {
-  var children = props.children;
+
+var MultiValueContainer_MultiValueContainer = function MultiValueContainer(props) {
+  var children = props.children,
+      data = props.data;
   var theme = (0,themes.useTheme)();
-  return (0,emotion_react_browser_esm/* jsx */.tZ)(Tags.default.Tag, {
-    color: "hotpink",
+  var defaultTagColor = theme.colors.buttons["default"];
+  var customTagColor = data === null || data === void 0 ? void 0 : data.color;
+  return (0,emotion_react_browser_esm/* jsx */.tZ)(Tags.default.Tag, (0,_index/* default */.Z)({
+    color: customTagColor || defaultTagColor,
     css:
     /*#__PURE__*/
 
     /*#__PURE__*/
-    (0,emotion_react_browser_esm/* css */.iv)("margin-bottom:-", (0,styles/* toUnits */.xk)(theme.spacing.padding.xSmall), ";margin-top:-", (0,styles/* toUnits */.xk)(theme.spacing.padding.xSmall * 2), ";" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0)
-  }, children);
+    (0,emotion_react_browser_esm/* css */.iv)("margin-bottom:0;padding:", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.xSmall), " ", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.xLarge), " ", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.xSmall), " ", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.small), ";position:relative;" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0)
+  }, data === null || data === void 0 ? void 0 : data.optionProps), children);
 };
 
-MultiValue_MultiValue.defaultProps = {
+MultiValueContainer_MultiValueContainer.defaultProps = {
+  children: undefined,
+  data: {}
+};
+MultiValueContainer_MultiValueContainer.propTypes = {
+  /** @ignore */
+  children: (prop_types_default()).node,
+
+  /** @ignore */
+  // eslint-disable-next-line react/forbid-prop-types
+  data: (prop_types_default()).object
+};
+MultiValueContainer_MultiValueContainer.displayName = 'MultiValueContainer';
+/* harmony default export */ const Select_MultiValueContainer = (MultiValueContainer_MultiValueContainer);
+;// CONCATENATED MODULE: ./src/components/ui/Select/MultiValueLabel.js
+
+
+
+
+var MultiValueLabel_MultiValueLabel = function MultiValueLabel(props) {
+  var children = props.children;
+  return (0,emotion_react_browser_esm/* jsx */.tZ)("span", null, children);
+};
+
+MultiValueLabel_MultiValueLabel.defaultProps = {
   children: undefined
 };
-MultiValue_MultiValue.propTypes = {
+MultiValueLabel_MultiValueLabel.propTypes = {
   /** @ignore */
   children: (prop_types_default()).node
 };
-MultiValue_MultiValue.displayName = 'Select > MultiValue';
-/* harmony default export */ const Select_MultiValue = (MultiValue_MultiValue);
+MultiValueLabel_MultiValueLabel.displayName = 'MultiValueLabel';
+/* harmony default export */ const Select_MultiValueLabel = (MultiValueLabel_MultiValueLabel);
+;// CONCATENATED MODULE: ./src/components/ui/Select/MultiValueRemove.js
+
+
+
+
+
+
+
+
+
+var MultiValueRemove_MultiValueRemove = function MultiValueRemove(_ref) {
+  var data = _ref.data,
+      innerProps = _ref.innerProps;
+  var theme = (0,themes.useTheme)();
+  return (0,emotion_react_browser_esm/* jsx */.tZ)(Button.default, (0,_index/* default */.Z)({}, innerProps, {
+    minimal: true,
+    iconOnly: "x",
+    noMargin: true,
+    css:
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+    (0,emotion_react_browser_esm/* css */.iv)("padding:0 ", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.xSmall), " 0;color:inherit;position:absolute;top:0;right:0;bottom:0;&:hover{color:inherit;}svg{height:1.6rem;width:1.6rem;}" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0)
+  }), "Remove ", (data === null || data === void 0 ? void 0 : data.label) || '', " tag");
+};
+
+MultiValueRemove_MultiValueRemove.defaultProps = {
+  children: undefined
+};
+MultiValueRemove_MultiValueRemove.propTypes = {
+  /** @ignore */
+  children: (prop_types_default()).node,
+
+  /** @ignore */
+  // eslint-disable-next-line react/forbid-prop-types
+  data: (prop_types_default()).object.isRequired,
+
+  /** @ignore */
+  // eslint-disable-next-line react/forbid-prop-types
+  innerProps: (prop_types_default()).object.isRequired
+};
+MultiValueRemove_MultiValueRemove.displayName = 'MultiValueRemove';
+/* harmony default export */ const Select_MultiValueRemove = (MultiValueRemove_MultiValueRemove);
+// EXTERNAL MODULE: ./node_modules/classnames/index.js
+var classnames = __webpack_require__(67064);
+var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
+// EXTERNAL MODULE: ./src/components/ui/List/Item.js
+var Item = __webpack_require__(48748);
+// EXTERNAL MODULE: ./src/components/ui/Tags/Tag.js
+var Tag = __webpack_require__(9924);
+;// CONCATENATED MODULE: ./src/components/ui/Select/Option.js
+
+
+
+
+
+
+
+
+
+
+var ComponentClassName = 'Nautilus-SelectOption';
+var Option_Option = function Option(props) {
+  var children = props.children,
+      className = props.className,
+      data = props.data,
+      innerProps = props.innerProps,
+      isFocused = props.isFocused,
+      isMulti = props.isMulti,
+      onSelect = props.onSelect,
+      unstyled = props.unstyled;
+  var theme = (0,themes.useTheme)();
+  var defaultTagColor = isFocused ? theme.colors.buttons.defaultDark : theme.colors.buttons["default"];
+  var customTagColor = isFocused ? data === null || data === void 0 ? void 0 : data.focusColor : data === null || data === void 0 ? void 0 : data.color;
+  return (0,emotion_react_browser_esm/* jsx */.tZ)(Item/* default */.ZP, (0,_index/* default */.Z)({
+    className: classnames_default()(ComponentClassName, className, {
+      'Nautilus-DropdownListItem': !isMulti
+    }),
+    css: unstyled ? undefined :
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+    (0,emotion_react_browser_esm/* css */.iv)("cursor:pointer;width:100%;", isMulti &&
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+    (0,emotion_react_browser_esm/* css */.iv)("padding:", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.xxSmall), " ", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.small), ";" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), " ", !isMulti &&
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+    (0,emotion_react_browser_esm/* css */.iv)("padding:", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.small), " ", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.medium), ";&:hover{background:", theme.colors.neutral.grey200, ";}", isFocused &&
+    /*#__PURE__*/
+
+    /*#__PURE__*/
+    (0,emotion_react_browser_esm/* css */.iv)("background:", theme.colors.state.focusOutline, ";font-weight:bold;" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), ";" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), ";" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0),
+    onClick: onSelect,
+    unstyled: true
+  }, innerProps), isMulti ? (0,emotion_react_browser_esm/* jsx */.tZ)(Tag/* default */.ZP, (0,_index/* default */.Z)({
+    color: customTagColor || defaultTagColor
+  }, data === null || data === void 0 ? void 0 : data.optionProps), children) : (0,emotion_react_browser_esm/* jsx */.tZ)("span", data === null || data === void 0 ? void 0 : data.optionProps, children));
+};
+Option_Option.defaultProps = {
+  className: undefined,
+  data: {},
+  isFocused: false,
+  isMulti: false,
+  onSelect: undefined,
+  unstyled: false,
+  value: undefined
+};
+Option_Option.propTypes = {
+  /** @ignore */
+  children: (prop_types_default()).string.isRequired,
+
+  /** @ignore */
+  className: (prop_types_default()).string,
+
+  /** @ignore */
+  // eslint-disable-next-line react/forbid-prop-types
+  data: (prop_types_default()).object,
+
+  /** @ignore */
+  // eslint-disable-next-line react/forbid-prop-types
+  innerProps: (prop_types_default()).object.isRequired,
+
+  /** @ignore */
+  isFocused: (prop_types_default()).bool,
+
+  /** @ignore */
+  isMulti: (prop_types_default()).bool,
+
+  /** Event handler when an item is selected. */
+  onSelect: (prop_types_default()).func,
+
+  /* @ignore Don't output any CSS styles. */
+  unstyled: (prop_types_default()).bool,
+
+  /* @ignore The value used for this option. Can be a simple string or an object with a label and values. */
+  value: prop_types_default().oneOfType([(prop_types_default()).string, // eslint-disable-next-line react/forbid-prop-types
+  prop_types_default().shape({
+    label: (prop_types_default()).string,
+    values: (prop_types_default()).object
+  })])
+};
+var Option_defaultProps = Option_Option.defaultProps,
+    propTypes = Option_Option.propTypes;
+
+/* harmony default export */ const Select_Option = (Option_Option);
 ;// CONCATENATED MODULE: ./src/components/ui/Select/Placeholder.js
 var Placeholder_Placeholder = function Placeholder() {
   return null;
@@ -74935,6 +75433,7 @@ var SelectContainer_SelectContainer = function SelectContainer(props) {
 
 SelectContainer_SelectContainer.defaultProps = {
   children: undefined,
+  clearValue: undefined,
   innerProps: {},
   isFocused: false
 };
@@ -74943,14 +75442,35 @@ SelectContainer_SelectContainer.propTypes = {
   children: (prop_types_default()).node,
 
   /** @ignore */
+  clearValue: (prop_types_default()).func,
+
+  /** @ignore */
+  hasValue: (prop_types_default()).bool.isRequired,
+
+  /** @ignore */
   // eslint-disable-next-line react/forbid-prop-types
   innerProps: (prop_types_default()).object,
 
   /** Boolean to enable/disable the focus styles for this input. */
-  isFocused: (prop_types_default()).bool
+  isFocused: (prop_types_default()).bool,
+
+  /** @ignore */
+  // eslint-disable-next-line react/forbid-prop-types
+  selectProps: (prop_types_default()).object.isRequired
 };
 /* harmony default export */ const Select_SelectContainer = (SelectContainer_SelectContainer);
 ;// CONCATENATED MODULE: ./src/components/ui/Select/index.js
+
+
+
+
+
+function Select_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function Select_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { Select_ownKeys(Object(source), true).forEach(function (key) { (0,defineProperty_index/* default */.Z)(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { Select_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
+
 
 
 
@@ -74970,7 +75490,8 @@ SelectContainer_SelectContainer.propTypes = {
 
 
 var Select_Select = /*#__PURE__*/(0,react.forwardRef)(function (props, ref) {
-  var disabled = props.disabled,
+  var components = props.components,
+      disabled = props.disabled,
       hint = props.hint,
       id = props.id,
       label = props.label,
@@ -74978,8 +75499,9 @@ var Select_Select = /*#__PURE__*/(0,react.forwardRef)(function (props, ref) {
       onBlur = props.onBlur,
       onFocus = props.onFocus,
       optional = props.optional,
+      styles = props.styles,
       unstyled = props.unstyled,
-      otherProps = (0,objectWithoutProperties_index/* default */.Z)(props, ["disabled", "hint", "id", "label", "labelId", "onBlur", "onFocus", "optional", "unstyled"]);
+      otherProps = (0,objectWithoutProperties_index/* default */.Z)(props, ["components", "disabled", "hint", "id", "label", "labelId", "onBlur", "onFocus", "optional", "styles", "unstyled"]);
 
   var _useState = (0,react.useState)(otherProps.autofocus),
       _useState2 = (0,slicedToArray_index/* default */.Z)(_useState, 2),
@@ -75016,19 +75538,19 @@ var Select_Select = /*#__PURE__*/(0,react.forwardRef)(function (props, ref) {
     /*#__PURE__*/
 
     /*#__PURE__*/
-    (0,emotion_react_browser_esm/* css */.iv)(styles/* interfaceUI.medium */.Hj.medium(theme), ";color:", theme.colors.text["default"], ";display:flex;flex:1 0 50%;flex-direction:row;flex-wrap:wrap;justify-content:space-between;margin:0 0 ", (0,styles/* toUnits */.xk)(theme.spacing.padding.xSmall), ";", !disabled &&
+    (0,emotion_react_browser_esm/* css */.iv)(src_styles/* interfaceUI.medium */.Hj.medium(theme), ";color:", theme.colors.text["default"], ";display:flex;flex:1 0 50%;flex-direction:row;flex-wrap:wrap;justify-content:space-between;margin:0 0 ", (0,src_styles/* toUnits */.xk)(theme.spacing.padding.xSmall), ";", !disabled &&
     /*#__PURE__*/
 
     /*#__PURE__*/
-    (0,emotion_react_browser_esm/* css */.iv)("&:active{", styles/* focusStyle.text */.jq.text(theme), ";}" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), " ", disabled &&
+    (0,emotion_react_browser_esm/* css */.iv)("&:active{", src_styles/* focusStyle.text */.jq.text(theme), ";}" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), " ", disabled &&
     /*#__PURE__*/
 
     /*#__PURE__*/
-    (0,emotion_react_browser_esm/* css */.iv)("color:", theme.colors.state.disabled, ";" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), " &:focus{", styles/* focusStyle.text */.jq.text(theme), ";}", focus &&
+    (0,emotion_react_browser_esm/* css */.iv)("color:", theme.colors.state.disabled, ";" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), " &:focus{", src_styles/* focusStyle.text */.jq.text(theme), ";}", focus &&
     /*#__PURE__*/
 
     /*#__PURE__*/
-    (0,emotion_react_browser_esm/* css */.iv)(styles/* focusStyle.text */.jq.text(theme), ";" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), ";" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0),
+    (0,emotion_react_browser_esm/* css */.iv)(src_styles/* focusStyle.text */.jq.text(theme), ";" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), ";" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0),
     htmlFor: inputId,
     id: labelId
   }, label, optional && theme.components.Select.optionalMessage && (0,emotion_react_browser_esm/* jsx */.tZ)("span", {
@@ -75047,44 +75569,97 @@ var Select_Select = /*#__PURE__*/(0,react.forwardRef)(function (props, ref) {
     (0,emotion_react_browser_esm/* css */.iv)((0,TextField.smallText)({
       theme: theme
     }), ";clear:both;flex:1 0 100%;flex-grow:1;" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0)
-  }, hint)), (0,emotion_react_browser_esm/* jsx */.tZ)(react_select_browser_esm, (0,_index/* default */.Z)({
-    components: {
-      IndicatorsContainer: Select_IndicatorsContainer,
+  }, hint)), (0,emotion_react_browser_esm/* jsx */.tZ)(react_select_esm, (0,_index/* default */.Z)({
+    components: Select_objectSpread({
+      ClearIndicator: Select_ClearIndicator,
+      DropdownIndicator: Select_DropdownIndicator,
+      GroupHeading: Select_GroupHeading,
+      IndicatorSeparator: Select_IndicatorSeparator,
       Menu: Select_Menu,
-      MultiValue: Select_MultiValue,
+      MultiValueContainer: Select_MultiValueContainer,
+      MultiValueLabel: Select_MultiValueLabel,
+      MultiValueRemove: Select_MultiValueRemove,
       Option: Select_Option,
       Placeholder: Select_Placeholder,
       SelectContainer: Select_SelectContainer
-    },
+    }, components),
     disabled: disabled,
     inputId: inputId,
     onBlur: onBlurHandler,
     onFocus: onFocusHandler,
     openMenuOnFocus: true,
     ref: ref,
-    styles: {
+    styles: Select_objectSpread({
       control: function control() {
-        return {};
+        return {
+          display: 'flex'
+        };
+      },
+      indicatorsContainer: function indicatorsContainer(_provided, state) {
+        var selectProps = state.selectProps;
+
+        if (!selectProps.isMulti) {
+          return {};
+        }
+
+        return {
+          alignItems: 'center',
+          display: 'flex',
+          flexGrow: 1,
+          justifyContent: 'space-between'
+        };
       },
       input: function input() {
         return {};
+      },
+      menuList: function menuList() {
+        return {
+          padding: 0
+        };
+      },
+      multiValue: function multiValue() {
+        return {};
+      },
+      multiValueLabel: function multiValueLabel() {
+        return {};
+      },
+      multiValueRemove: function multiValueRemove() {
+        return {};
+      },
+      valueContainer: function valueContainer(provided, state) {
+        var selectProps = state.selectProps;
+        return Select_objectSpread(Select_objectSpread({}, provided), {}, {
+          flex: selectProps.isMulti ? undefined : 1,
+          padding: 0
+        });
       }
-    }
+    }, styles)
   }, otherProps)));
 });
 Select_Select.defaultProps = {
+  components: {},
   disabled: false,
+  hideDropdown: false,
   hint: undefined,
   id: undefined,
+  isClearable: false,
+  isMulti: false,
   labelId: undefined,
   onBlur: undefined,
   onFocus: undefined,
   optional: false,
+  styles: {},
   unstyled: false
 };
 Select_Select.propTypes = {
+  /** Components used to override default components. See `react-select` for more info. */
+  components: prop_types_default().objectOf((prop_types_default()).elementType),
+
   /** Disables this select entirely; this applies a disabled style and disables user input/interaction with this element. This is useful if you have elements that are conditionally allowed based on other states in your UI. */
   disabled: (prop_types_default()).bool,
+
+  /** Hide the dropdown indicator. */
+  hideDropdown: (prop_types_default()).bool,
 
   /** Additional context to help users understand the purpose of the select. */
   hint: (prop_types_default()).node,
@@ -75104,8 +75679,17 @@ Select_Select.propTypes = {
   /** @ignore */
   onFocus: (prop_types_default()).func,
 
+  /** Allow the selection to be entirely clear. Renders a "clear all" button in the UI. */
+  isClearable: (prop_types_default()).bool,
+
+  /** Allow multiple items to be selected. This alters the UI/UX of the Select component, causing it to behave more like a "tag select". */
+  isMulti: (prop_types_default()).bool,
+
   /** Used to mark this select as optional. Will output text in `theme.components.Select.optionalMessage`, if set. */
   optional: (prop_types_default()).bool,
+
+  /** Extra styles to apply to a particular component. See `react-select` for more info. */
+  styles: prop_types_default().objectOf((prop_types_default()).object),
 
   /* @ignore Don't output any CSS styles. */
   unstyled: (prop_types_default()).bool
@@ -75525,45 +76109,24 @@ Tabs.Tab = Tabs_Tab;
 
 /***/ }),
 
-/***/ 24103:
+/***/ 9924:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-// ESM COMPAT FLAG
-__webpack_require__.r(__webpack_exports__);
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, {
-  "default": () => (/* binding */ ui_Tags)
-});
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/slicedToArray/_index.mjs + 3 modules
-var _index = __webpack_require__(96912);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/objectWithoutProperties/_index.mjs
-var objectWithoutProperties_index = __webpack_require__(97651);
-// EXTERNAL MODULE: ./node_modules/prop-types/index.js
-var prop_types = __webpack_require__(23398);
-var prop_types_default = /*#__PURE__*/__webpack_require__.n(prop_types);
-// EXTERNAL MODULE: ./node_modules/react/index.js
-var react = __webpack_require__(87401);
-// EXTERNAL MODULE: ./node_modules/shortid/index.js
-var shortid = __webpack_require__(13402);
-var shortid_default = /*#__PURE__*/__webpack_require__.n(shortid);
-// EXTERNAL MODULE: ./src/components/ui/List/index.js
-var List = __webpack_require__(72904);
-// EXTERNAL MODULE: ./src/components/ui/VisuallyHidden/index.js
-var VisuallyHidden = __webpack_require__(72608);
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/extends/_index.mjs
-var extends_index = __webpack_require__(94527);
-// EXTERNAL MODULE: ./node_modules/@emotion/react/dist/emotion-react.browser.esm.js
-var emotion_react_browser_esm = __webpack_require__(91999);
-// EXTERNAL MODULE: ./src/components/ui/Icon/index.js
-var Icon = __webpack_require__(51328);
-// EXTERNAL MODULE: ./src/styles/index.js + 7 modules
-var styles = __webpack_require__(31877);
-// EXTERNAL MODULE: ./src/themes/index.js + 1 modules
-var themes = __webpack_require__(58829);
-;// CONCATENATED MODULE: ./src/components/ui/Tags/Tag.js
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "ZP": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* unused harmony exports defaultProps, propTypes */
+/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(94527);
+/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(97651);
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(96912);
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(91999);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(23398);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(87401);
+/* harmony import */ var _Icon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(51328);
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(31877);
+/* harmony import */ var _themes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(58829);
 
 
 
@@ -75584,12 +76147,12 @@ var _ref =  true ? {
 } : 0;
 
 var Tag = function Tag(props) {
-  var _useState = (0,react.useState)(false),
-      _useState2 = (0,_index/* default */.Z)(_useState, 2),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z)(_useState, 2),
       isDismissed = _useState2[0],
       setDismissed = _useState2[1];
 
-  var theme = (0,themes.useTheme)();
+  var theme = (0,_themes__WEBPACK_IMPORTED_MODULE_4__.useTheme)();
 
   var badge = props.badge,
       children = props.children,
@@ -75598,7 +76161,7 @@ var Tag = function Tag(props) {
       noMargin = props.noMargin,
       status = props.status,
       unstyled = props.unstyled,
-      otherProps = (0,objectWithoutProperties_index/* default */.Z)(props, ["badge", "children", "color", "onDismiss", "noMargin", "status", "unstyled"]);
+      otherProps = (0,_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(props, ["badge", "children", "color", "onDismiss", "noMargin", "status", "unstyled"]);
 
   if (isDismissed) {
     return null;
@@ -75616,31 +76179,31 @@ var Tag = function Tag(props) {
   }
 
   if (status || color) {
-    textColor = (0,styles/* getContrastingTextColor */.YJ)({
+    textColor = (0,_styles__WEBPACK_IMPORTED_MODULE_3__/* .getContrastingTextColor */ .YJ)({
       color: backgroundColor,
       theme: theme
     });
   }
 
-  return (0,emotion_react_browser_esm/* jsx */.tZ)("span", (0,extends_index/* default */.Z)({
+  return (0,_emotion_react__WEBPACK_IMPORTED_MODULE_7__/* .jsx */ .tZ)("div", (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z)({
     css: unstyled ? undefined :
     /*#__PURE__*/
 
     /*#__PURE__*/
-    (0,emotion_react_browser_esm/* css */.iv)(styles/* metadata.small */.Pu.small(theme), ";color:", textColor, ";margin:0;", !noMargin &&
+    (0,_emotion_react__WEBPACK_IMPORTED_MODULE_7__/* .css */ .iv)(_styles__WEBPACK_IMPORTED_MODULE_3__/* .metadata.small */ .Pu.small(theme), ";color:", textColor, ";display:inline;margin:0;", !noMargin &&
     /*#__PURE__*/
 
     /*#__PURE__*/
-    (0,emotion_react_browser_esm/* css */.iv)("margin:0 ", (0,styles/* toUnits */.xk)(theme.spacing.padding.xSmall), " ", (0,styles/* toUnits */.xk)(theme.spacing.padding.xSmall), " 0;" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), " ", backgroundColor &&
+    (0,_emotion_react__WEBPACK_IMPORTED_MODULE_7__/* .css */ .iv)("margin:0 ", (0,_styles__WEBPACK_IMPORTED_MODULE_3__/* .toUnits */ .xk)(theme.spacing.padding.xSmall), " ", (0,_styles__WEBPACK_IMPORTED_MODULE_3__/* .toUnits */ .xk)(theme.spacing.padding.xSmall), " 0;" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), " ", backgroundColor &&
     /*#__PURE__*/
 
     /*#__PURE__*/
-    (0,emotion_react_browser_esm/* css */.iv)("background:", backgroundColor, ";display:inline-block;padding:", (0,styles/* toUnits */.xk)(theme.spacing.padding.xSmall), " ", (0,styles/* toUnits */.xk)(theme.spacing.padding.small), ";" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), " ", badge &&
+    (0,_emotion_react__WEBPACK_IMPORTED_MODULE_7__/* .css */ .iv)("background:", backgroundColor, ";display:inline-block;padding:", (0,_styles__WEBPACK_IMPORTED_MODULE_3__/* .toUnits */ .xk)(theme.spacing.padding.xSmall), " ", (0,_styles__WEBPACK_IMPORTED_MODULE_3__/* .toUnits */ .xk)(theme.spacing.padding.small), ";" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), " ", badge &&
     /*#__PURE__*/
 
     /*#__PURE__*/
-    (0,emotion_react_browser_esm/* css */.iv)("border-radius:", (0,styles/* toUnits */.xk)(theme.spacing.padding.xLarge), ";min-width:", (0,styles/* toUnits */.xk)(theme.spacing.padding.xLarge), ";height:", (0,styles/* toUnits */.xk)(theme.spacing.padding.xLarge), ";display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), ";" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0)
-  }, otherProps), children, onDismiss && (0,emotion_react_browser_esm/* jsx */.tZ)("button", {
+    (0,_emotion_react__WEBPACK_IMPORTED_MODULE_7__/* .css */ .iv)("border-radius:", (0,_styles__WEBPACK_IMPORTED_MODULE_3__/* .toUnits */ .xk)(theme.spacing.padding.xLarge), ";min-width:", (0,_styles__WEBPACK_IMPORTED_MODULE_3__/* .toUnits */ .xk)(theme.spacing.padding.xLarge), ";height:", (0,_styles__WEBPACK_IMPORTED_MODULE_3__/* .toUnits */ .xk)(theme.spacing.padding.xLarge), ";display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0), ";" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0)
+  }, otherProps), children, onDismiss && (0,_emotion_react__WEBPACK_IMPORTED_MODULE_7__/* .jsx */ .tZ)("button", {
     css: _ref,
     onClick: function onClick(event) {
       event.preventDefault();
@@ -75648,14 +76211,14 @@ var Tag = function Tag(props) {
       onDismiss(event);
     },
     type: "button"
-  }, (0,emotion_react_browser_esm/* jsx */.tZ)(Icon.default, {
+  }, (0,_emotion_react__WEBPACK_IMPORTED_MODULE_7__/* .jsx */ .tZ)(_Icon__WEBPACK_IMPORTED_MODULE_2__.default, {
     name: "x",
     small: true,
     css:
     /*#__PURE__*/
 
     /*#__PURE__*/
-    (0,emotion_react_browser_esm/* css */.iv)("display:inline-block;margin-left:", (0,styles/* toUnits */.xk)(theme.spacing.padding.small), ";margin-top:", (0,styles/* toUnits */.xk)(theme.spacing.padding.xxSmall), ";opacity:1;vertical-align:middle;" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0)
+    (0,_emotion_react__WEBPACK_IMPORTED_MODULE_7__/* .css */ .iv)("display:inline-block;margin-left:", (0,_styles__WEBPACK_IMPORTED_MODULE_3__/* .toUnits */ .xk)(theme.spacing.padding.small), ";margin-top:", (0,_styles__WEBPACK_IMPORTED_MODULE_3__/* .toUnits */ .xk)(theme.spacing.padding.xxSmall), ";opacity:1;vertical-align:middle;" + ( true ? "" : 0),  true ? "" : 0,  true ? "" : 0)
   })));
 };
 
@@ -75670,35 +76233,56 @@ Tag.defaultProps = {
 };
 Tag.propTypes = {
   /** @ignore */
-  children: (prop_types_default()).node,
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().node),
 
   /** Use colour to differentiate different tags or indicate status. */
-  color: (prop_types_default()).string,
+  color: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string),
 
   /** Style numbers or counts with a badge. */
-  badge: (prop_types_default()).bool,
+  badge: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().bool),
 
   /** Remove any outer margins from component. */
-  noMargin: (prop_types_default()).bool,
+  noMargin: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().bool),
 
   /** Function to call when a Tag is dismissed via the close button. */
-  onDismiss: (prop_types_default()).func,
+  onDismiss: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().func),
 
   /** Indicate status using a semantic colour set. */
-  status: prop_types_default().oneOf(['neutral', 'success', 'warning', 'danger', 'inProgress', 'new']),
+  status: prop_types__WEBPACK_IMPORTED_MODULE_0___default().oneOf(['neutral', 'success', 'warning', 'danger', 'inProgress', 'new']),
 
   /* @ignore Don't output any CSS styles. */
-  unstyled: (prop_types_default()).bool
+  unstyled: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().bool)
 };
 var defaultProps = Tag.defaultProps,
     propTypes = Tag.propTypes;
 
-/* harmony default export */ const Tags_Tag = (Tag);
-;// CONCATENATED MODULE: ./src/components/ui/Tags/index.js
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Tag);
+
+/***/ }),
+
+/***/ 67718:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(96912);
+/* harmony import */ var _babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(97651);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(23398);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(87401);
+/* harmony import */ var shortid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(13402);
+/* harmony import */ var shortid__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(shortid__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _List__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(72904);
+/* harmony import */ var _VisuallyHidden__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(72608);
+/* harmony import */ var _Tag__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9924);
+/* harmony import */ var _emotion_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(91999);
 
 
 
-function Tags_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
+function _EMOTION_STRINGIFIED_CSS_ERROR__() { return "You have tried to stringify object returned from `css` function. It isn't supposed to be used directly (e.g. as value of the `className` prop), but rather handed to emotion so it can handle it (e.g. as value of `css` prop)."; }
 
 
 
@@ -75709,7 +76293,7 @@ function Tags_EMOTION_STRINGIFIED_CSS_ERROR_() { return "You have tried to strin
 
 
 
-var Tags_ref =  true ? {
+var _ref =  true ? {
   name: "vtcxrz",
   styles: "display:inline-flex;flex-wrap:wrap;list-style:none;margin:0;padding:0;width:100%"
 } : 0;
@@ -75717,23 +76301,23 @@ var Tags_ref =  true ? {
 var Tags = function Tags(props) {
   var children = props.children,
       label = props.label,
-      otherProps = (0,objectWithoutProperties_index/* default */.Z)(props, ["children", "label"]);
+      otherProps = (0,_babel_runtime_helpers_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z)(props, ["children", "label"]);
 
-  var _useState = (0,react.useState)(shortid_default().generate()),
-      _useState2 = (0,_index/* default */.Z)(_useState, 1),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(shortid__WEBPACK_IMPORTED_MODULE_2___default().generate()),
+      _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z)(_useState, 1),
       generatedId = _useState2[0];
 
-  var items = (0,react.useMemo)(function () {
-    var tagElements = react.Children.toArray(children);
+  var items = (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+    var tagElements = react__WEBPACK_IMPORTED_MODULE_1__.Children.toArray(children);
 
     if (tagElements.length > 1) {
-      return (0,emotion_react_browser_esm/* jsx */.tZ)(List.default, {
+      return (0,_emotion_react__WEBPACK_IMPORTED_MODULE_8__/* .jsx */ .tZ)(_List__WEBPACK_IMPORTED_MODULE_3__.default, {
         "aria-labelledby": label && generatedId,
         unstyled: true,
-        css: Tags_ref
+        css: _ref
       }, tagElements.map(function (tag, index) {
         return (// eslint-disable-next-line react/no-array-index-key
-          (0,emotion_react_browser_esm/* jsx */.tZ)(List.default.Item, {
+          (0,_emotion_react__WEBPACK_IMPORTED_MODULE_8__/* .jsx */ .tZ)(_List__WEBPACK_IMPORTED_MODULE_3__.default.Item, {
             key: "tag-".concat(index),
             unstyled: true
           }, tag)
@@ -75742,17 +76326,17 @@ var Tags = function Tags(props) {
     }
 
     if (label) {
-      return /*#__PURE__*/(0,react.cloneElement)(tagElements[0], {
+      return /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_1__.cloneElement)(tagElements[0], {
         'aria-labelledby': generatedId
       });
     }
 
     return tagElements[0];
   }, [children, generatedId, label]);
-  var WrapperComponent = items.length > 1 ? List.default : 'div';
-  return (0,emotion_react_browser_esm/* jsx */.tZ)(react.Fragment, null, label && (0,emotion_react_browser_esm/* jsx */.tZ)(VisuallyHidden.default, {
+  var WrapperComponent = items.length > 1 ? _List__WEBPACK_IMPORTED_MODULE_3__.default : 'div';
+  return (0,_emotion_react__WEBPACK_IMPORTED_MODULE_8__/* .jsx */ .tZ)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, label && (0,_emotion_react__WEBPACK_IMPORTED_MODULE_8__/* .jsx */ .tZ)(_VisuallyHidden__WEBPACK_IMPORTED_MODULE_4__.default, {
     id: generatedId
-  }, label), (0,emotion_react_browser_esm/* jsx */.tZ)(WrapperComponent, otherProps, items));
+  }, label), (0,_emotion_react__WEBPACK_IMPORTED_MODULE_8__/* .jsx */ .tZ)(WrapperComponent, otherProps, items));
 };
 
 Tags.defaultProps = {
@@ -75761,14 +76345,14 @@ Tags.defaultProps = {
 };
 Tags.propTypes = {
   /** @ignore */
-  children: (prop_types_default()).node,
+  children: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().node),
 
   /** A description of the group of tags. */
-  label: (prop_types_default()).string
+  label: (prop_types__WEBPACK_IMPORTED_MODULE_0___default().string)
 }; // Export Tag as `Tags.Tag`.
 
-Tags.Tag = Tags_Tag;
-/* harmony default export */ const ui_Tags = (Tags);
+Tags.Tag = _Tag__WEBPACK_IMPORTED_MODULE_5__/* .default */ .ZP;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Tags);
 
 /***/ }),
 
@@ -76299,8 +76883,8 @@ var Emphasis = __webpack_require__(69978);
 var Strong = __webpack_require__(59770);
 // EXTERNAL MODULE: ./src/components/ui/Button/index.js
 var Button = __webpack_require__(39209);
-// EXTERNAL MODULE: ./src/components/ui/ComboBox/index.js + 10 modules
-var ComboBox = __webpack_require__(36810);
+// EXTERNAL MODULE: ./src/components/ui/ComboBox/index.js + 22 modules
+var ComboBox = __webpack_require__(21214);
 // EXTERNAL MODULE: ./src/components/ui/Heading/index.js
 var Heading = __webpack_require__(44667);
 // EXTERNAL MODULE: ./src/components/ui/Icon/index.js
@@ -76313,14 +76897,14 @@ var List = __webpack_require__(72904);
 var PageTitle = __webpack_require__(94140);
 // EXTERNAL MODULE: ./src/components/ui/Paragraph/index.js
 var Paragraph = __webpack_require__(43938);
-// EXTERNAL MODULE: ./src/components/ui/Select/index.js + 15 modules
-var Select = __webpack_require__(40721);
+// EXTERNAL MODULE: ./src/components/ui/Select/index.js + 21 modules
+var Select = __webpack_require__(37813);
 // EXTERNAL MODULE: ./src/components/ui/SkipLink/index.js
 var SkipLink = __webpack_require__(23771);
 // EXTERNAL MODULE: ./src/components/ui/Tabs/index.js + 1 modules
 var Tabs = __webpack_require__(62391);
-// EXTERNAL MODULE: ./src/components/ui/Tags/index.js + 1 modules
-var Tags = __webpack_require__(24103);
+// EXTERNAL MODULE: ./src/components/ui/Tags/index.js
+var Tags = __webpack_require__(67718);
 // EXTERNAL MODULE: ./src/components/ui/TextField/index.js
 var TextField = __webpack_require__(1618);
 // EXTERNAL MODULE: ./src/components/ui/VisuallyHidden/index.js
@@ -76744,7 +77328,7 @@ var bodyStyles = function bodyStyles(_ref) {
 
 
 
-
+ // TODO: Export these all from a styles helper.
 
 /***/ }),
 
@@ -79565,7 +80149,7 @@ if (false) {}
 
 var requireMap = {
     'react': __webpack_require__(87401),
-    './index.js': __webpack_require__(36810)
+    './index.js': __webpack_require__(21214)
 };
 var requireInRuntimeBase = __webpack_require__(49022)/* .default */ .Z;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
@@ -79599,7 +80183,7 @@ module.exports = [
     },
     {
         'type': 'code',
-        'content': '<ComboBox label="What do you want to be when you grow up? \uD83C\uDFEB" placeholder="Select">\n  <ComboBox.Option prefix="\uD83E\uDDD1‍\uD83D\uDE92 ">Firefighter</ComboBox.Option>\n  <ComboBox.Option prefix="\uD83E\uDDD1\uD83C\uDFFE‍\uD83C\uDFEB ">Teacher</ComboBox.Option>\n  <ComboBox.Option prefix="\uD83E\uDDDB\uD83C\uDFFB ">Vampire</ComboBox.Option>\n  <ComboBox.Option prefix="\uD83E\uDDD9\uD83C\uDFFD ">Wizard</ComboBox.Option>\n</ComboBox>',
+        'content': '<ComboBox label="What do you want to be when you grow up? \uD83C\uDFEB" placeholder="Select">\n  <ComboBox.Option value="Firefighter">Firefighter \uD83E\uDDD1‍\uD83D\uDE92</ComboBox.Option>\n  <ComboBox.Option value="Teacher">Teacher \uD83E\uDDD1\uD83C\uDFFE‍\uD83C\uDFEB</ComboBox.Option>\n  <ComboBox.Option value="Vampire">Vampire \uD83E\uDDDB\uD83C\uDFFB</ComboBox.Option>\n  <ComboBox.Option value="Wizard">Wizard \uD83E\uDDD9\uD83C\uDFFD</ComboBox.Option>\n</ComboBox>',
         'settings': {},
         'evalInContext': evalInContext
     },
@@ -80151,7 +80735,7 @@ if (false) {}
 var requireMap = {
     '@octopusthink/nautilus': __webpack_require__(38121),
     'react': __webpack_require__(87401),
-    './index.js': __webpack_require__(40721)
+    './index.js': __webpack_require__(37813)
 };
 var requireInRuntimeBase = __webpack_require__(49022)/* .default */ .Z;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
@@ -80165,13 +80749,13 @@ module.exports = [
     },
     {
         'type': 'code',
-        'content': 'import { TextField } from \'@octopusthink/nautilus\'\nimport React from \'react\'\n\nconst tags = [\n  {\n    label: \'Ducati\',\n    value: {\n      backend: \'BACKENDS.FreeAgent\',\n      backendId: 1,\n      id: 1,\n      tagInfo: { fast: true, fun: true, boring: false },\n      type: \'bike\'\n    }\n  },\n  {\n    label: \'Honda\',\n    value: {\n      backend: \'BACKENDS.FreeAgent\',\n      backendId: 1,\n      id: 2,\n      tagInfo: { fast: false, fun: true, boring: true },\n      type: \'bike\'\n    }\n  },\n  {\n    label: \'Yamaha\',\n    value: {\n      backend: \'BACKENDS.FreeAgent\',\n      backendId: 1,\n      id: 3,\n      tagInfo: { fast: true, fun: true, boring: true },\n      type: \'bike\'\n    }\n  },\n  {\n    label: \'Ural\',\n    value: {\n      backend: \'BACKENDS.FreeAgent\',\n      backendId: 1,\n      id: 4,\n      tagInfo: { fast: false, fun: true, boring: false },\n      type: \'sidecar\'\n    }\n  }\n]\n\n;<React.Fragment>\n  <Select\n    closeMenuOnSelect={false}\n    label="Motorcycle Maker"\n    isClearable\n    isMulti\n    options={[{ label: \'Select your bike\', options: tags }]}\n    placeholder="Search or browse"\n  />\n\n  <Select label="Select from this empty list" placeholder="Search or browse" />\n\n  <TextField label="A TextField for comparison" />\n</React.Fragment>',
+        'content': 'import { TextField } from \'@octopusthink/nautilus\'\nimport React from \'react\'\n\nconst tags = [\n  {\n    label: \'Ducati\',\n    color: \'#b00e0a\',\n    focusColor: \'#970000\',\n    value: {\n      backendId: 1,\n      id: 1,\n      tagInfo: { fast: true, fun: true, boring: false },\n      type: \'bike\'\n    }\n  },\n  {\n    label: \'Honda\',\n    color: \'#bd162c\',\n    focusColor: \'#a40013\',\n    optionProps: {\n      badge: true\n    },\n    value: {\n      backendId: 1,\n      id: 2,\n      tagInfo: { fast: false, fun: true, boring: true },\n      type: \'bike\'\n    }\n  },\n  {\n    label: \'Yamaha\',\n    color: \'#000080\',\n    focusColor: \'#000067\',\n    value: {\n      backendId: 1,\n      id: 3,\n      tagInfo: { fast: true, fun: true, boring: true },\n      type: \'bike\'\n    }\n  },\n  {\n    label: \'Ural\',\n    color: \'#5d705f\',\n    focusColor: \'#445746\',\n    value: {\n      backendId: 1,\n      id: 4,\n      tagInfo: { fast: false, fun: true, boring: false },\n      type: \'sidecar\'\n    }\n  }\n]\n\n;<React.Fragment>\n  <Select\n    label="Pick your favourite curry"\n    options={[\n      { label: \'Chicken\', value: 1 },\n      { label: \'Lamb\', value: 2 },\n      { label: \'Veg\', value: 3 }\n    ]}\n    placeholder="All are delicious"\n  />\n\n  <Select\n    closeMenuOnSelect={false}\n    label="Motorcycle Maker"\n    isClearable\n    isMulti\n    options={[{ label: \'Select your bikes\', options: tags }]}\n    placeholder="Search or browse"\n  />\n\n  <Select label="Select from this empty list" placeholder="Search or browse" />\n\n  <TextField label="A TextField for comparison" />\n</React.Fragment>',
         'settings': {},
         'evalInContext': evalInContext
     },
     {
         'type': 'markdown',
-        'content': '## Usage\n\nTBD\n\n## Appearance\n\nTBD\n\n### Ordering list items\n\nTBD\n\n### Headings\n\nTBD\n\n## Interaction\n\n### Default values\n\nTBD\n\n### Autocomplete (in progress)\n\nTBD\n\n### Adding new items (in progress)\n\nTBD\n\n## Voice & Tone\n\nTBD\n\n## Accessibility\n\nTBD'
+        'content': '## Usage\n\nTBD\n\n## Appearance\n\nA Select comes in two variants: multi-select and single-select. A single-select allows only a single selection from the list (for example, choosing your country of residence or native language) whilst a multi-select allows for selecting more than one option (for example, choosing all countries you\'ve visited or all languages you speak). Multi-selects style the options as tags, whereas single selects are styled as pieces of text. The interaction mechanism is also slightly different between these two options, to better shape user expectations.\n\nSelect also uses the generic CSS helper class `Nautilus-DropdownListItem`, also used in Combobox. This helper class is used anywhere where a dropdown list of items is available to choose from in order to allow for more flexible styling.\n\n### Ordering list items\n\nTBD\n\n### Headings\n\nTBD\n\n## Interaction\n\n### Default values\n\nTBD\n\n### Autocomplete (in progress)\n\nTBD\n\n### Adding new items (in progress)\n\nTBD\n\n## Voice & Tone\n\nTBD\n\n## Accessibility\n\nTBD'
     }
 ]
 	
@@ -80325,7 +80909,7 @@ if (false) {}
 var requireMap = {
     '@octopusthink/nautilus': __webpack_require__(38121),
     'react': __webpack_require__(87401),
-    './index.js': __webpack_require__(24103)
+    './index.js': __webpack_require__(67718)
 };
 var requireInRuntimeBase = __webpack_require__(49022)/* .default */ .Z;
 var requireInRuntime = requireInRuntimeBase.bind(null, requireMap);
@@ -81682,6 +82266,20 @@ module.exports = {
             'name': 'label'
         },
         {
+            'type': {
+                'name': 'objectOf',
+                'value': { 'name': 'elementType' }
+            },
+            'required': false,
+            'description': 'Components used to override default components. See `react-select` for more info.',
+            'defaultValue': {
+                'value': '{}',
+                'computed': false
+            },
+            'tags': {},
+            'name': 'components'
+        },
+        {
             'type': { 'name': 'bool' },
             'required': false,
             'description': 'Disables this select entirely; this applies a disabled style and disables user input/interaction with this element. This is useful if you have elements that are conditionally allowed based on other states in your UI.',
@@ -81691,6 +82289,17 @@ module.exports = {
             },
             'tags': {},
             'name': 'disabled'
+        },
+        {
+            'type': { 'name': 'bool' },
+            'required': false,
+            'description': 'Hide the dropdown indicator.',
+            'defaultValue': {
+                'value': 'false',
+                'computed': false
+            },
+            'tags': {},
+            'name': 'hideDropdown'
         },
         {
             'type': { 'name': 'node' },
@@ -81715,6 +82324,28 @@ module.exports = {
             'name': 'id'
         },
         {
+            'type': { 'name': 'bool' },
+            'required': false,
+            'description': 'Allow the selection to be entirely clear. Renders a "clear all" button in the UI.',
+            'defaultValue': {
+                'value': 'false',
+                'computed': false
+            },
+            'tags': {},
+            'name': 'isClearable'
+        },
+        {
+            'type': { 'name': 'bool' },
+            'required': false,
+            'description': 'Allow multiple items to be selected. This alters the UI/UX of the Select component, causing it to behave more like a "tag select".',
+            'defaultValue': {
+                'value': 'false',
+                'computed': false
+            },
+            'tags': {},
+            'name': 'isMulti'
+        },
+        {
             'type': { 'name': 'string' },
             'required': false,
             'description': 'HTML `id` attribute for the `<label>` tag used to label the select component.',
@@ -81735,6 +82366,20 @@ module.exports = {
             },
             'tags': {},
             'name': 'optional'
+        },
+        {
+            'type': {
+                'name': 'objectOf',
+                'value': { 'name': 'object' }
+            },
+            'required': false,
+            'description': 'Extra styles to apply to a particular component. See `react-select` for more info.',
+            'defaultValue': {
+                'value': '{}',
+                'computed': false
+            },
+            'tags': {},
+            'name': 'styles'
         },
         {
             'type': { 'name': 'bool' },
@@ -82387,7 +83032,7 @@ module.exports = {
                             'filepath': 'src/components/ui/ComboBox/index.js',
                             'slug': 'combobox',
                             'pathLine': 'src/components/ui/ComboBox/index.js',
-                            'module': __webpack_require__(36810),
+                            'module': __webpack_require__(21214),
                             'props': __webpack_require__(18151),
                             'hasExamples': true,
                             'metadata': {}
@@ -82450,7 +83095,7 @@ module.exports = {
                             'filepath': 'src/components/ui/Select/index.js',
                             'slug': 'select',
                             'pathLine': 'src/components/ui/Select/index.js',
-                            'module': __webpack_require__(40721),
+                            'module': __webpack_require__(37813),
                             'props': __webpack_require__(286),
                             'hasExamples': true,
                             'metadata': {}
@@ -82477,7 +83122,7 @@ module.exports = {
                             'filepath': 'src/components/ui/Tags/index.js',
                             'slug': 'tags',
                             'pathLine': 'src/components/ui/Tags/index.js',
-                            'module': __webpack_require__(24103),
+                            'module': __webpack_require__(67718),
                             'props': __webpack_require__(53516),
                             'hasExamples': true,
                             'metadata': {}
