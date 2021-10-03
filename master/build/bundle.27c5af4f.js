@@ -36505,8 +36505,14 @@ Prism.languages.js = Prism.languages.javascript;
 /***/ (() => {
 
 Prism.languages.markup = {
-  'comment': /<!--[\s\S]*?-->/,
-  'prolog': /<\?[\s\S]+?\?>/,
+  'comment': {
+    pattern: /<!--(?:(?!<!--)[\s\S])*?-->/,
+    greedy: true
+  },
+  'prolog': {
+    pattern: /<\?[\s\S]+?\?>/,
+    greedy: true
+  },
   'doctype': {
     // https://www.w3.org/TR/xml/#NT-doctypedecl
     pattern: /<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:[^<"'\]]|"[^"]*"|'[^']*'|<(?!!--)|<!--(?:[^-]|-(?!->))*-->)*\]\s*)?>/i,
@@ -36524,11 +36530,14 @@ Prism.languages.markup = {
         greedy: true
       },
       'punctuation': /^<!|>$|[[\]]/,
-      'doctype-tag': /^DOCTYPE/,
+      'doctype-tag': /^DOCTYPE/i,
       'name': /[^\s<>'"]+/
     }
   },
-  'cdata': /<!\[CDATA\[[\s\S]*?\]\]>/i,
+  'cdata': {
+    pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i,
+    greedy: true
+  },
   'tag': {
     pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/,
     greedy: true,
@@ -36887,7 +36896,7 @@ var Prism = function (_self) {
           // Error
           //    at _.util.currentScript (http://localhost/components/prism-core.js:119:5)
           //    at Global code (http://localhost/components/prism-core.js:606:1)
-          var src = (/at [^(\r\n]*\((.*):.+:.+\)$/i.exec(err.stack) || [])[1];
+          var src = (/at [^(\r\n]*\((.*):[^:]+:[^:]+\)$/i.exec(err.stack) || [])[1];
 
           if (src) {
             var scripts = document.getElementsByTagName('script');
@@ -37941,8 +37950,14 @@ if (typeof __webpack_require__.g !== 'undefined') {
 
 
 Prism.languages.markup = {
-  'comment': /<!--[\s\S]*?-->/,
-  'prolog': /<\?[\s\S]+?\?>/,
+  'comment': {
+    pattern: /<!--(?:(?!<!--)[\s\S])*?-->/,
+    greedy: true
+  },
+  'prolog': {
+    pattern: /<\?[\s\S]+?\?>/,
+    greedy: true
+  },
   'doctype': {
     // https://www.w3.org/TR/xml/#NT-doctypedecl
     pattern: /<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:[^<"'\]]|"[^"]*"|'[^']*'|<(?!!--)|<!--(?:[^-]|-(?!->))*-->)*\]\s*)?>/i,
@@ -37960,11 +37975,14 @@ Prism.languages.markup = {
         greedy: true
       },
       'punctuation': /^<!|>$|[[\]]/,
-      'doctype-tag': /^DOCTYPE/,
+      'doctype-tag': /^DOCTYPE/i,
       'name': /[^\s<>'"]+/
     }
   },
-  'cdata': /<!\[CDATA\[[\s\S]*?\]\]>/i,
+  'cdata': {
+    pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i,
+    greedy: true
+  },
   'tag': {
     pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/,
     greedy: true,
