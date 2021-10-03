@@ -1,6 +1,6 @@
 {
   "name": "@octopusthink/nautilus",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Nautilus design system for React",
   "main": "dist/main.js",
   "module": "src/index.js",
@@ -20,8 +20,8 @@
     "lint:stylelint": "stylelint '**/*.js'",
     "lint": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint && npm run lint:markdown",
     "prebuild": "npm run clean",
-    "preinstall": "npx npm-force-resolutions",
-    "prepare": "npm run build",
+    "prepare": "npx npm-force-resolutions",
+    "prepublish": "npm run build",
     "prepublish:styleguide-for-version": "npm run build && npm run build:styleguide",
     "prepublish:styleguide": "npm run build && npm run build:styleguide",
     "publish:styleguide-for-version": "cross-env PUBLISH_VERSION_FOLDER=true node bin/publish-gh-pages.js",
