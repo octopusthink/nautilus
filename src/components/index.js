@@ -4,6 +4,7 @@ export { default as Emphasis } from './inline/Emphasis';
 export { default as Strong } from './inline/Strong';
 
 export { default as Button } from './ui/Button';
+export { default as Checkbox } from './ui/Checkbox';
 export { default as ComboBox } from './ui/ComboBox';
 export { default as Heading } from './ui/Heading';
 export { default as Icon } from './ui/Icon';

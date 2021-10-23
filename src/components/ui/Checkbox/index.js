@@ -1,5 +1,5 @@
 import React, { forwardRef, useMemo, useState } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import shortid from 'shortid';
 import PropTypes from 'prop-types';
 
@@ -7,7 +7,7 @@ import { focusStyle, interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
 export const Checkbox = forwardRef((props, ref) => {
-  const { children, id, noMargin, unstyled, ...otherProps } = props;
+  const { children, disabled, id, noMargin, unstyled, ...otherProps } = props;
   const [generatedId] = useState(shortid.generate());
   const inputId = useMemo(() => {
     return id || generatedId;
@@ -24,9 +24,9 @@ export const Checkbox = forwardRef((props, ref) => {
 
               /* Set external margins */
               ${!noMargin &&
-                css`
-                  margin-bottom: ${toUnits(theme.spacing.margin.xxSmall)};
-                `}
+              css`
+                margin-bottom: ${toUnits(theme.spacing.margin.xxSmall)};
+              `}
             `
       }
     >
@@ -34,29 +34,36 @@ export const Checkbox = forwardRef((props, ref) => {
         id={inputId}
         type="checkbox"
         ref={ref}
+        disabled={disabled}
         css={
           unstyled
             ? undefined
             : css`
-                position: absolute;
-                z-index: 1;
-                width: 44px;
-                height: 44px;
                 margin: 0;
                 opacity: 0;
+                position: absolute;
+                z-index: 1;
 
                 &:checked + label {
                   color: ${theme.colors.text.dark};
+
+                  ${disabled &&
+                  css`
+                    color: ${theme.colors.state.disabled};
+                  `}
                 }
 
                 /* Hide the checkmark by default. */
                 & + label::after {
-                  content: none;
+                  content: '';
+                  opacity: 0;
+                  transform: rotate(-35deg);
                 }
 
-                /*Unhide the checkmark on the checked state*/
+                /* Unhide the checkmark on the checked state*/
                 &:checked + label::after {
-                  content: '';
+                  opacity: 1;
+                  transform: rotate(-50deg);
                 }
 
                 &:focus + label {
@@ -79,13 +86,14 @@ export const Checkbox = forwardRef((props, ref) => {
                 color: ${theme.colors.text.default};
                 position: relative;
                 padding-left: 3.2rem;
+                transition: all 0.1s linear;
 
                 &::before,
                 &::after {
                   position: absolute;
                 }
 
-                /*Outer-box*/
+                /* Outer-box */
                 &::before {
                   border: 2px solid ${theme.colors.neutral.black};
                   background: ${theme.colors.neutral.white};
@@ -93,22 +101,36 @@ export const Checkbox = forwardRef((props, ref) => {
                   display: inline-block;
                   height: 2rem;
                   width: 2rem;
-                  top: -1px;
+                  top: -2px;
                   left: 0;
                 }
 
-                /*Checkmark*/
+                /* Checkmark */
                 &::after {
                   left: 4px;
-                  top: 5px;
+                  top: 4px;
                   content: '';
                   display: inline-block;
                   height: 6px;
                   width: 14px;
                   border-left: 3px solid ${theme.colors.accent.secondary};
                   border-bottom: 3px solid ${theme.colors.accent.secondary};
-                  transform: rotate(-50deg);
+                  transition: opacity 0.1s linear, transform 0.15s ease-in-out;
                 }
+
+                ${disabled &&
+                css`
+                  color: ${theme.colors.state.disabled};
+
+                  /* Outer-box */
+                  &::before {
+                    border-color: ${theme.colors.state.disabled};
+                  }
+
+                  &::after {
+                    border-color: ${theme.colors.state.disabledLight};
+                  }
+                `}
               `
         }
       >
@@ -121,40 +143,23 @@ export const Checkbox = forwardRef((props, ref) => {
 Checkbox.defaultProps = {
   children: undefined,
   disabled: false,
-  error: undefined,
-  hint: undefined,
   id: undefined,
   labelId: undefined,
   noMargin: false,
-  onBlur: undefined,
-  onChange: undefined,
-  onFocus: undefined,
   unstyled: false,
 };
 
 Checkbox.propTypes = {
   /** @ignore */
   children: PropTypes.node,
-  /** @ignore */
-  onBlur: PropTypes.func,
-  /** @ignore */
-  onFocus: PropTypes.func,
   /** Disables this input; this applies a disabled style and disables user input/interaction with this element. This is useful if you have inputs that are conditionally allowed based on other states in your UI. */
   disabled: PropTypes.bool,
-  /** An error message (either a simple string or a component) used to output an error message related to this component's value. If provided, an `aria-errormessage` will be set on the input component that will tell users of assistive technology the error message relates to this input. */
-  error: PropTypes.node,
   /** HTML `id` attribute of the `input` element. Used for both the input's `id` attribute and the `<label>` `for` attribute. */
   id: PropTypes.string,
-  /** Additional context to help users understand the purpose of the input. */
-  hint: PropTypes.node,
-  /** Visible text that serves to introduce the input. */
-  label: PropTypes.node.isRequired,
   /** HTML `id` attribute for the `<label>` tag used to label the text input component. */
   labelId: PropTypes.string,
   /** Remove any outer margins from component. */
   noMargin: PropTypes.bool,
-  /** `onChange` handler for the `TextField` component. */
-  onChange: PropTypes.func,
   /* @ignore Don't output any CSS styles. */
   unstyled: PropTypes.bool,
 };
