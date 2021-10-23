@@ -60,7 +60,7 @@ export const Checkbox = forwardRef((props, ref) => {
                   transform: rotate(-35deg);
                 }
 
-                /* Unhide the checkmark on the checked state*/
+                /* Unhide the checkmark on the checked state. */
                 &:checked + label::after {
                   opacity: 1;
                   transform: rotate(-50deg);
