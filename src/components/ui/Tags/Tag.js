@@ -7,14 +7,9 @@ import { getContrastingTextColor, metadata, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
 const Tag = (props) => {
-  const [isDismissed, setDismissed] = useState(false);
   const theme = useTheme();
 
   const { badge, children, color, onDismiss, noMargin, status, unstyled, ...otherProps } = props;
-
-  if (isDismissed) {
-    return null;
-  }
 
   let textColor = theme.colors.text.light;
   let backgroundColor;
@@ -86,13 +81,7 @@ const Tag = (props) => {
               opacity: 0.75;
             }
           `}
-          onClick={(event) => {
-            event.preventDefault();
-
-            setDismissed(true);
-
-            onDismiss(event);
-          }}
+          onClick={onDismiss}
           type="button"
         >
           <Icon
