@@ -8,6 +8,7 @@ module.exports = {
   },
   setupFilesAfterEnv: ['<rootDir>/utils/jest.setup.js'],
   snapshotSerializers: ['@emotion/jest/serializer'],
+  testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/styleguide/'],
   testURL: 'http://localhost',
   transform: {

@@ -7,7 +7,7 @@ import { focusStyle, interfaceUI, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 
 export const Checkbox = forwardRef((props, ref) => {
-  const { children, disabled, id, noMargin, unstyled, ...otherProps } = props;
+  const { children, disabled, labelId, id, noMargin, unstyled, ...otherProps } = props;
   const [generatedId] = useState(shortid.generate());
   const inputId = useMemo(() => {
     return id || generatedId;
@@ -78,6 +78,7 @@ export const Checkbox = forwardRef((props, ref) => {
       />
       <label
         htmlFor={inputId}
+        id={labelId}
         css={
           unstyled
             ? undefined

@@ -1,6 +1,6 @@
 {
   "name": "@octopusthink/nautilus",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Nautilus design system for React",
   "main": "dist/main.js",
   "module": "src/index.js",
@@ -98,7 +98,7 @@
     "history": "^5.0.1",
     "husky": "^7.0.4",
     "jest": "^27.3.1",
-    "jest-axe": "^5.0.1",
+    "jest-axe": "^4.0.0",
     "lint-staged": "^11.2.3",
     "markdownlint-cli": "^0.29.0",
     "prettier": "^2.4.1",

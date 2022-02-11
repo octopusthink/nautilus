@@ -40,7 +40,7 @@ describe('Checkbox', () => {
 
     // The label styles are altered when the checkbox is activated.
     container = render(
-      <Checkbox id="my-checkbox" checked>
+      <Checkbox id="my-checkbox" defaultChecked>
         My checkbox
       </Checkbox>,
     ).container;
@@ -92,7 +92,7 @@ describe('Checkbox', () => {
 
   it('should allow variables to manage the checked state', async () => {
     const { getByTestId } = render(
-      <Checkbox data-testid="myCheckbox" checked>
+      <Checkbox data-testid="myCheckbox" checked onChange={() => {}}>
         My checkbox
       </Checkbox>,
     );

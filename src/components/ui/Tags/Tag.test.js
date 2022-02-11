@@ -48,7 +48,7 @@ describe('Tag', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should dismiss a Tag with `onDismiss` set', () => {
+  it('should call `onDismiss` on a Tag with `onDismiss` set', () => {
     const onDismiss = jest.fn();
     const { container, getByTestId } = render(
       <Tag data-testid="myTag" onDismiss={onDismiss}>
@@ -61,8 +61,5 @@ describe('Tag', () => {
     fireEvent.click(container.querySelector('button'));
 
     expect(onDismiss).toHaveBeenCalled();
-    expect(() => {
-      getByTestId('myTag');
-    }).toThrow('Unable to find an element');
   });
 });
