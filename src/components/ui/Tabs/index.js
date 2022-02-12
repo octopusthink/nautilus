@@ -25,14 +25,27 @@ const setFocus = (focusedElement, ref, setStateFunc) => {
 };
 
 const Tabs = (props) => {
-  const { children, dark, inverse, light, noMargin, id, unstyled, ...otherProps } = props;
+  const {
+    activeTab: activeTabProp,
+    children,
+    dark,
+    inverse,
+    light,
+    noMargin,
+    id,
+    unstyled,
+    ...otherProps
+  } = props;
   const sectionToFocusRef = useRef();
   const tabToFocusRef = useRef();
   const [generatedId] = useState(shortid.generate());
-  const [activeTab, setActiveTab] = useState(0);
+  const [activeTabState, setActiveTab] = useState(0);
   const [focusedSection, setFocusedSection] = useState(null);
   const [focusedTab, setFocusedTab] = useState(null);
   const theme = useTheme();
+
+  // Allow the active tab to be managed by a prop.
+  const activeTab = activeTabProp ?? activeTabState;
 
   const numberOfTabs = useMemo(() => Children.toArray(children).filter(isTab).length, [children]);
 

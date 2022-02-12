@@ -1,34 +1,35 @@
 import React from 'react';
-
 import { axe, fireEvent, render, waitFor } from '../../../../utils/testing';
 import Paragraph from '../Paragraph';
 import Tabs from '.';
 
-const tabSet = (
-  <Tabs id="myTabSet">
-    <Tabs.Tab
-      data-testid="firstTabSection"
-      label="About"
-      labelProps={{ 'data-testid': 'firstTab' }}
-    >
-      <Paragraph>Puppies are cute.</Paragraph>
-    </Tabs.Tab>
-    <Tabs.Tab
-      data-testid="secondTabSection"
-      label="History"
-      labelProps={{ 'data-testid': 'secondTab' }}
-    >
-      <Paragraph>Puppies have already been cute.</Paragraph>
-    </Tabs.Tab>
-    <Tabs.Tab
-      data-testid="thirdTabSection"
-      label="Other"
-      labelProps={{ 'data-testid': 'thirdTab' }}
-    >
-      <Paragraph>I have run out of things to say in this test.</Paragraph>
-    </Tabs.Tab>
-  </Tabs>
-);
+const tabSet = ({ activeTab } = {}) => {
+  return (
+    <Tabs activeTab={activeTab} id="myTabSet">
+      <Tabs.Tab
+        data-testid="firstTabSection"
+        label="About"
+        labelProps={{ 'data-testid': 'firstTab' }}
+      >
+        <Paragraph>Puppies are cute.</Paragraph>
+      </Tabs.Tab>
+      <Tabs.Tab
+        data-testid="secondTabSection"
+        label="History"
+        labelProps={{ 'data-testid': 'secondTab' }}
+      >
+        <Paragraph>Puppies have already been cute.</Paragraph>
+      </Tabs.Tab>
+      <Tabs.Tab
+        data-testid="thirdTabSection"
+        label="Other"
+        labelProps={{ 'data-testid': 'thirdTab' }}
+      >
+        <Paragraph>I have run out of things to say in this test.</Paragraph>
+      </Tabs.Tab>
+    </Tabs>
+  );
+};
 
 describe('Tabs', () => {
   it('should render nothing when no children are provided', () => {
@@ -38,7 +39,7 @@ describe('Tabs', () => {
   });
 
   it('should render a <ul> with an <li> for each tab', () => {
-    const { container } = render(tabSet);
+    const { container } = render(tabSet());
 
     expect(container.firstChild.tagName).toEqual('UL');
     expect(container.firstChild.children[0].tagName).toEqual('LI');
@@ -47,14 +48,32 @@ describe('Tabs', () => {
   });
 
   it('should render a <section> for each tab', () => {
-    const { container } = render(tabSet);
+    const { container } = render(tabSet());
 
     expect(container.children[1].tagName).toEqual('SECTION');
     expect(container.children[2].tagName).toEqual('SECTION');
   });
 
   it('should set the first tab to active by default', () => {
-    const { getByTestId } = render(tabSet);
+    const { getByTestId } = render(tabSet());
+
+    expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('true');
+    expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual('false');
+    expect(getByTestId('thirdTab').getAttribute('aria-selected')).toEqual('false');
+  });
+
+  it('should allow the active tab to be set by a prop', () => {
+    // Tabs are zero-indexed; this will make the second tab active.
+    const { getByTestId } = render(tabSet({ activeTab: 1 }));
+
+    expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('false');
+    expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual('true');
+    expect(getByTestId('thirdTab').getAttribute('aria-selected')).toEqual('false');
+  });
+
+  it('should not set the active tab when the activeTab prop is undefined', () => {
+    // Tabs are zero-indexed; this will make the second tab active.
+    const { getByTestId } = render(tabSet({ activeTab: undefined }));
 
     expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('true');
     expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual('false');
@@ -62,7 +81,7 @@ describe('Tabs', () => {
   });
 
   it('should change the active tab when that tab is clicked', async () => {
-    const { getByTestId } = render(tabSet);
+    const { getByTestId } = render(tabSet());
 
     fireEvent.click(getByTestId('thirdTab'));
 
@@ -76,7 +95,7 @@ describe('Tabs', () => {
   });
 
   it('should render styles for Tabs', () => {
-    const { container } = render(tabSet);
+    const { container } = render(tabSet());
 
     expect(container).toMatchSnapshot();
   });
@@ -116,7 +135,7 @@ describe('Tabs', () => {
   describe('accessibility', () => {
     describe('keyboard navigation', () => {
       it('should change the active tab to the next tab when the right arrow key is pressed', async () => {
-        const { getByTestId } = render(tabSet);
+        const { getByTestId } = render(tabSet());
 
         fireEvent.focus(getByTestId('firstTab'));
         // A keyCode of 39 is a right arrow; eg. moving the active tab "over" by
@@ -132,7 +151,7 @@ describe('Tabs', () => {
       });
 
       it('should do nothing when the left arrow key is pressed but there are no previous tabs', async () => {
-        const { getByTestId } = render(tabSet);
+        const { getByTestId } = render(tabSet());
 
         fireEvent.focus(getByTestId('firstTab'));
         // A keyCode of 37 is a left arrow, but because we're already at the first
@@ -148,7 +167,7 @@ describe('Tabs', () => {
       });
 
       it('should do nothing when the right arrow key is pressed but there are no more tabs', async () => {
-        const { getByTestId } = render(tabSet);
+        const { getByTestId } = render(tabSet());
 
         fireEvent.click(getByTestId('thirdTab'));
         fireEvent.focus(getByTestId('thirdTab'));
@@ -165,7 +184,7 @@ describe('Tabs', () => {
       });
 
       it('should change the active tab to the previous tab when left arrow key is pressed', async () => {
-        const { getByTestId } = render(tabSet);
+        const { getByTestId } = render(tabSet());
 
         fireEvent.click(getByTestId('thirdTab'));
         fireEvent.focus(getByTestId('thirdTab'));
@@ -182,7 +201,7 @@ describe('Tabs', () => {
       });
 
       it("should focus the active tab's content when the down arrow key is pressed", async () => {
-        const { getByTestId } = render(tabSet);
+        const { getByTestId } = render(tabSet());
 
         fireEvent.focus(getByTestId('firstTab'));
         // A keyCode of 40 is a down arrow.
@@ -197,7 +216,7 @@ describe('Tabs', () => {
     });
 
     it('should pass aXe tests', async () => {
-      const { container } = render(tabSet);
+      const { container } = render(tabSet());
 
       expect(await axe(container.innerHTML)).toHaveNoViolations();
     });
