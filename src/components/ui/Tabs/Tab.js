@@ -6,7 +6,7 @@ import { focusStyle } from '../../../styles';
 import { useTheme } from '../../../themes';
 
 const Tab = forwardRef((props, ref) => {
-  const { isActive, children, label, labelProps, unstyled, ...otherProps } = props;
+  const { isActive, children, label, labelTestId, unstyled, ...otherProps } = props;
 
   const theme = useTheme();
 
@@ -43,7 +43,6 @@ const Tab = forwardRef((props, ref) => {
 Tab.defaultProps = {
   isActive: false,
   children: undefined,
-  labelProps: {},
   unstyled: false,
 };
 
@@ -54,9 +53,6 @@ Tab.propTypes = {
   isActive: PropTypes.bool,
   /** Label used for this tab. */
   label: PropTypes.string.isRequired,
-  /** Props passed to the label component for this tab. */
-  // eslint-disable-next-line react/forbid-prop-types
-  labelProps: PropTypes.object,
   /* @ignore Don't output any CSS styles. */
   unstyled: PropTypes.bool,
 };

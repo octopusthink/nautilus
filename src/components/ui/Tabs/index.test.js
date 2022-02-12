@@ -6,25 +6,13 @@ import Tabs from '.';
 const tabSet = ({ activeTab } = {}) => {
   return (
     <Tabs activeTab={activeTab} id="myTabSet">
-      <Tabs.Tab
-        data-testid="firstTabSection"
-        label="About"
-        labelProps={{ 'data-testid': 'firstTab' }}
-      >
+      <Tabs.Tab data-testid="firstTabSection" label="About" labelTestId="firstTab">
         <Paragraph>Puppies are cute.</Paragraph>
       </Tabs.Tab>
-      <Tabs.Tab
-        data-testid="secondTabSection"
-        label="History"
-        labelProps={{ 'data-testid': 'secondTab' }}
-      >
+      <Tabs.Tab data-testid="secondTabSection" label="History" labelTestId="secondTab">
         <Paragraph>Puppies have already been cute.</Paragraph>
       </Tabs.Tab>
-      <Tabs.Tab
-        data-testid="thirdTabSection"
-        label="Other"
-        labelProps={{ 'data-testid': 'thirdTab' }}
-      >
+      <Tabs.Tab data-testid="thirdTabSection" label="Other" labelTestId="thirdTab">
         <Paragraph>I have run out of things to say in this test.</Paragraph>
       </Tabs.Tab>
     </Tabs>
@@ -103,11 +91,7 @@ describe('Tabs', () => {
   it("shouldn't have a margin when `noMargin` is true", () => {
     const { container } = render(
       <Tabs id="myTabSet" noMargin>
-        <Tabs.Tab
-          data-testid="firstTabSection"
-          label="About"
-          labelProps={{ 'data-testid': 'firstTab' }}
-        >
+        <Tabs.Tab data-testid="firstTabSection" label="About" labelTestId="firstTab">
           <Paragraph>Puppies are cute.</Paragraph>
         </Tabs.Tab>
       </Tabs>,
@@ -119,11 +103,7 @@ describe('Tabs', () => {
   it('should not render styles when unstyled prop is set', () => {
     const { container } = render(
       <Tabs id="myTabSet" unstyled>
-        <Tabs.Tab
-          data-testid="firstTabSection"
-          label="About"
-          labelProps={{ 'data-testid': 'firstTab' }}
-        >
+        <Tabs.Tab data-testid="firstTabSection" label="About" labelTestId="firstTab">
           <Paragraph>Puppies are cute.</Paragraph>
         </Tabs.Tab>
       </Tabs>,

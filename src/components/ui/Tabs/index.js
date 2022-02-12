@@ -112,7 +112,7 @@ const Tabs = (props) => {
       Children.toArray(children)
         .filter(isTab)
         .map((child, index) => {
-          const { label, labelProps } = child.props;
+          const { label, labelTestId, ...labelProps } = child.props;
           const {
             onClick: onClickTab,
             onKeyDown: onKeyDownTab,
@@ -181,6 +181,7 @@ const Tabs = (props) => {
                 role="tab"
                 tabIndex={index !== activeTab ? '-1' : undefined}
                 {...otherTabProps}
+                data-testid={labelTestId}
               >
                 {label}
               </a>
