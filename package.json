@@ -1,6 +1,6 @@
 {
   "name": "@octopusthink/nautilus",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Nautilus design system for React",
   "main": "dist/main.js",
   "module": "src/index.js",
