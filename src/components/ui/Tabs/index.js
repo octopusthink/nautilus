@@ -168,13 +168,13 @@ const Tabs = (props) => {
                 onClick={(event) => {
                   onClickFactory(index)(event);
                   if (onClickTab) {
-                    onClickTab(event);
+                    onClickTab(event, index);
                   }
                 }}
                 onKeyDown={(event) => {
                   onKeyDown(event);
                   if (onKeyDownTab) {
-                    onKeyDownTab(event);
+                    onKeyDownTab(event, index);
                   }
                 }}
                 ref={focusedTab === index ? tabToFocusRef : refTab}
