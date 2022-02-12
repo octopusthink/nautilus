@@ -3,9 +3,9 @@ import { axe, fireEvent, render, waitFor } from '../../../../utils/testing';
 import Paragraph from '../Paragraph';
 import Tabs from '.';
 
-const tabSet = ({ activeTab } = {}) => {
+const tabSet = ({ activeTab, onTabChange } = {}) => {
   return (
-    <Tabs activeTab={activeTab} id="myTabSet">
+    <Tabs activeTab={activeTab} id="myTabSet" onTabChange={onTabChange}>
       <Tabs.Tab data-testid="firstTabSection" label="About" labelTestId="firstTab">
         <Paragraph>Puppies are cute.</Paragraph>
       </Tabs.Tab>
@@ -80,6 +80,22 @@ describe('Tabs', () => {
     expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('false');
     expect(getByTestId('secondTab').getAttribute('aria-selected')).toEqual('false');
     expect(getByTestId('thirdTab').getAttribute('aria-selected')).toEqual('true');
+  });
+
+  it('should run the onTabChange handler if one is supplied', async () => {
+    const onTabChange = jest.fn();
+    const { getByTestId } = render(tabSet({ onTabChange }));
+
+    fireEvent.click(getByTestId('thirdTab'));
+
+    await waitFor(() =>
+      expect(getByTestId('firstTab').getAttribute('aria-selected')).toEqual('false'),
+    );
+
+    // Tabs are zero-indexed, so clicking the third tab means the "active"
+    // tab is 2.
+    expect(onTabChange).toBeCalledTimes(1);
+    expect(onTabChange).toBeCalledWith(2);
   });
 
   it('should render styles for Tabs', () => {

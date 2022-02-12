@@ -10,7 +10,7 @@ import React, {
   useState,
 } from 'react';
 import shortid from 'shortid';
-
+import { useUpdateEffect } from 'react-use';
 import { focusStyle, bodyStyles, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 import Tab from './Tab';
@@ -33,6 +33,7 @@ const Tabs = (props) => {
     light,
     noMargin,
     id,
+    onTabChange,
     unstyled,
     ...otherProps
   } = props;
@@ -104,6 +105,12 @@ const Tabs = (props) => {
     event.preventDefault();
     setActiveTab(index);
   };
+
+  useUpdateEffect(() => {
+    if (onTabChange) {
+      onTabChange(activeTabState);
+    }
+  }, [activeTabState]);
 
   const tabsId = id || generatedId;
 
