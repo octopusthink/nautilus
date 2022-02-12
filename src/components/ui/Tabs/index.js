@@ -121,9 +121,11 @@ const Tabs = (props) => {
         .map((child, index) => {
           const { label, labelTestId, ...labelProps } = child.props;
           const {
+            isActive,
             onClick: onClickTab,
             onKeyDown: onKeyDownTab,
             ref: refTab,
+            unstyled,
             ...otherTabProps
           } = labelProps;
 
