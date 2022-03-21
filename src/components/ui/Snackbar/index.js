@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { toUnits } from '../../../styles';
+import { bodyStyles, toUnits } from '../../../styles';
 import { useTheme } from '../../../themes';
 import Button from '../Button';
 import Paragraph from '../Paragraph';
@@ -17,37 +17,102 @@ const Snackbar = (props) => {
           ? undefined
           : css`
               margin: 0;
-              background-color: ${theme.colors.neutral.grey800};
-              color: ${theme.colors.text.inverseLight};
-              padding: ${toUnits(theme.spacing.padding.small)};
+              background-color: ${theme.components.Snackbar.backgroundColor};
+              color: ${theme.components.Snackbar.textColor};
+              padding: ${toUnits(theme.spacing.padding.medium)}
+                ${toUnits(theme.spacing.padding.large)};
               //border-radius: ${toUnits(theme.radii.small)};
               //box-shadow: ${theme.shadows.small};
-              border-radius: ${toUnits(theme.spacing.padding.xSmall)};
+              border-radius: ${toUnits(theme.spacing.padding.small)};
               //box-shadow: 0 0 0 0.4rem ${theme.colors.text.dark};
               display: flex;
               align-items: center;
               justify-content: space-between;
-              margin-bottom: ${toUnits(theme.spacing.padding.small)};
+              //position: absolute;
+              //flex-wrap: wrap;
+              max-width: 100%;
+              position: absolute;
+              top: ${toUnits(theme.spacing.margin.medium)};
+              left: ${toUnits(theme.spacing.margin.medium)};
+              margin-bottom: 40px;
 
               ${inverse &&
               css`
-                background-color: ${theme.colors.text.inverse};
-                color: ${theme.colors.text.inverseDark};
+                background-color: ${theme.components.Snackbar.backgroundColorInverse};
+                color: ${theme.components.Snackbar.textColorInverse};
               `}
             `
       }
       {...otherProps}
     >
-      <Paragraph inverse noMargin>
+      <Paragraph
+        unstyled={unstyled}
+        noMargin
+        css={
+          unstyled
+            ? undefined
+            : css`
+                color: ${theme.components.Snackbar.textColor};
+                ${inverse &&
+                css`
+                  color: ${theme.components.Snackbar.textColorInverse};
+                `}
+              `
+        }
+      >
         {children}
       </Paragraph>
 
       {action && (
-        <Button minimal inverse unstyled onClick={action}>
+        <Button
+          unstyled={unstyled}
+          minimal
+          inverse
+          noMargin
+          onClick={action}
+          css={
+            unstyled
+              ? undefined
+              : css`
+                  color: ${theme.components.Snackbar.actionLinkColor};
+                  padding-left: ${toUnits(theme.spacing.padding.small)};
+                  padding-right: ${toUnits(theme.spacing.padding.medium)};
+                  text-decoration: underline;
+
+                  ${inverse &&
+                  css`
+                    color: ${theme.components.Snackbar.actionLinkColorInverse};
+                  `}
+                `
+          }
+        >
           {actionLabel}
         </Button>
       )}
-      <Button minimal unstyled iconOnly="x" onClick={onDismiss} />
+      <Button
+        minimal
+        inverse
+        unstyled={unstyled}
+        iconOnly="x"
+        onClick={onDismiss}
+        css={
+          unstyled
+            ? undefined
+            : css`
+                color: ${theme.components.Snackbar.textColor};
+                padding: 0;
+                margin: 0;
+                position: absolute;
+                top: ${toUnits(theme.spacing.padding.small)};
+                right: ${toUnits(theme.spacing.padding.small)};
+
+                ${inverse &&
+                css`
+                  color: ${theme.components.Snackbar.textColorInverse};
+                `}
+              `
+        }
+      />
     </div>
   );
 };

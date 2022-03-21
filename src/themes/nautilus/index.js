@@ -220,14 +220,23 @@ export const theme = {
           strokeWidth: 1.125,
         },
       },
+    },
 
-      // TODO: implement these!
-      Tag: {
-        capitalization: 'uppercase', // uppercase, lowercase, sentence, title
-        colorPosition: 'background', // background or border
-        borderRadius: 0,
-        padding: 'toUnits(theme.spacing.padding.xSmall) toUnits(theme.spacing.padding.small)',
-      },
+    // TODO: implement these!
+    Tag: {
+      capitalization: 'uppercase', // uppercase, lowercase, sentence, title
+      colorPosition: 'background', // background or border
+      borderRadius: 0,
+      padding: 'toUnits(theme.spacing.padding.xSmall) toUnits(theme.spacing.padding.small)',
+    },
+
+    Snackbar: {
+      backgroundColor: colors.black,
+      textColor: colors.grey100,
+      actionLinkColor: colors.pink100,
+      backgroundColorInverse: colors.grey100,
+      textColorInverse: colors.black,
+      actionLinkColorInverse: colors.grey900,
     },
   },
 
