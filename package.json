@@ -1,9 +1,8 @@
 {
   "name": "@octopusthink/nautilus",
-  "version": "0.5.6",
+  "version": "0.5.7",
   "description": "Nautilus design system for React",
   "main": "dist/main.js",
-  "module": "src/index.js",
   "scripts": {
     "build:package": "cross-env NODE_ENV=production webpack --mode=production",
     "build:styleguide": "cross-env DISABLE_PEER_DEPS_PLUGIN=true NODE_ENV=production styleguidist build",
