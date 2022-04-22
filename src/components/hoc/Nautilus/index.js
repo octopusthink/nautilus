@@ -1,9 +1,11 @@
-import { Global, css, ThemeProvider } from '@emotion/react';
-
+import { Global, css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import React from 'react';
-
-import { nautilus as nautilusDefaultTheme, themePropTypes } from '../../../themes';
+import {
+  NautilusThemeContext,
+  nautilus as nautilusDefaultTheme,
+  themePropTypes,
+} from '../../../themes';
 import { NautilusLinkComponentContext } from './context';
 
 const Nautilus = (props) => {
@@ -13,7 +15,7 @@ const Nautilus = (props) => {
 
   return (
     <NautilusLinkComponentContext.Provider value={LinkComponent}>
-      <ThemeProvider theme={theme}>
+      <NautilusThemeContext.Provider value={theme}>
         <Global
           styles={css`
             * {
@@ -38,7 +40,7 @@ const Nautilus = (props) => {
           `}
         />
         {children}
-      </ThemeProvider>
+      </NautilusThemeContext.Provider>
     </NautilusLinkComponentContext.Provider>
   );
 };

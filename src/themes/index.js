@@ -1,7 +1,14 @@
-import { ThemeContext } from '@emotion/react';
-import { useContext } from 'react';
+import { createContext, useContext } from 'react';
 
-export const useTheme = () => useContext(ThemeContext);
+export const NautilusThemeContext = createContext();
+
+export const ThemeProvider = NautilusThemeContext.Provider;
+
+export const useTheme = () => {
+  const theme = useContext(NautilusThemeContext);
+
+  return theme;
+};
 
 export * from './propTypes';
 
